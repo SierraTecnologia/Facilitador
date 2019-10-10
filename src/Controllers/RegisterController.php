@@ -5,8 +5,15 @@ namespace SierraTecnologia\Facilitador\Controllers;
 use Illuminate\Http\Request;
 use Siravel\Models\Components\Code\Commit;
 
-class FormController extends Controller
+class Registerontroller extends Controller
 {
+    protected $service;
+
+    public function __construct(RegisterService $registerService)
+    {
+        $this->service = $registerService;
+    }
+
     /**
      * Display a listing of the resource.
      *

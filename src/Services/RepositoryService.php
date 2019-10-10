@@ -31,7 +31,7 @@ class RepositoryService
      *
      * @param string $connection
      */
-    public function viewIndexJson()
+    public function getTableJson()
     {
         return DataTables::of($this->getModelQuery())->toJson();
     }
