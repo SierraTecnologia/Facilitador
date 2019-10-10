@@ -1,0 +1,48 @@
+{
+    "name": "sierratecnologia/facilitador",
+    "description": "Recursos para Desenvolvimento Complexo",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ricardo Rebello Sierra",
+            "email": "ricardo@sierratecnologia.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "doctrine/dbal": ">=2.5",
+        "illuminate/support": ">=5.4",
+        "laravelcollective/html": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=6.0",
+        "mockery/mockery": ">=0.9.4",
+        "mikey179/vfsstream": ">=1.6",
+        "orchestra/database": ">=3.4",
+        "orchestra/testbench": ">=3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "SierraTecnologia\\Facilitador\\": "src/"
+        },
+        "files": [
+            "src/FormMaker/Helpers/form_maker.php",
+            "src/FormMaker/Helpers/input_maker.php"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SierraTecnologia\\FormMaker\\FormMakerProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
+
