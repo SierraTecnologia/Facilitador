@@ -21,9 +21,9 @@ class RepositoryService
         $this->modelService = new ModelService($modelClass);
     }
 
-    public function getModelQuery()
+    public function getTableData()
     {
-        return $this->modelClass::query();
+        return $this->modelService->getAll();
     }
 
     /**

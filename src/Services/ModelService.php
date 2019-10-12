@@ -23,6 +23,11 @@ class ModelService
         return $this->modelClass::query();
     }
 
+    public function getAll()
+    {
+        return $this->modelClass::all();
+    }
+
     public function getFields()
     {
         
