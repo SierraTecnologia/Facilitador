@@ -4,7 +4,7 @@ namespace SierraTecnologia\Facilitador\Controllers;
 
 use Illuminate\Http\Request;
 use Siravel\Models\Components\Code\Commit;
-namespace SierraTecnologia\Facilitador\Services\RepositoryService;
+use SierraTecnologia\Facilitador\Services\RepositoryService;
 
 class RepositoryController extends Controller
 {

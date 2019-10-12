@@ -4,6 +4,7 @@ namespace SierraTecnologia\Facilitador\Controllers;
 
 use Illuminate\Http\Request;
 use Siravel\Models\Components\Code\Commit;
+use SierraTecnologia\Facilitador\Services\RegisterService;
 
 class Registerontroller extends Controller
 {

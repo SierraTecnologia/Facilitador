@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\View;
 class RepositoryService
 {
 
-    protected $modelClass;
+    protected $modelService;
 
     public function __construct($modelClass)
     {
-        $this->modelClass = $modelClass;
+        $this->modelService = new ModelService($modelClass);
     }
 
     public function getModelQuery()
@@ -33,7 +33,7 @@ class RepositoryService
      */
     public function getTableJson()
     {
-        return DataTables::of($this->getModelQuery())->toJson();
+        return DataTables::of($this->modelService->getModelQuery())->toJson();
     }
 
 

@@ -13,10 +13,11 @@ class RegisterService
 
     protected $model;
     protected $user;
+    protected $modelService;
 
-    public function __construct($model)
+    public function __construct($modelClass)
     {
-        $this->model = $model;
+        $this->modelService = new ModelService($modelClass);
     }
 
     /**
