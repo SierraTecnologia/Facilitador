@@ -31,6 +31,9 @@ class FacilitadorProvider extends ServiceProvider
      */
     public function register()
     {
+        // View namespace
+        $this->loadViewsFrom(__DIR__.'/Views', 'facilitador');
+
         /*
         |--------------------------------------------------------------------------
         | Providers

@@ -18,7 +18,7 @@ class RepositoryService
 
     public function __construct($modelClass)
     {
-        $this->modelClass = new $modelClass;
+        $this->modelClass = $modelClass;
     }
 
     public function getModelQuery()

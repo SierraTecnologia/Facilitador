@@ -24,7 +24,10 @@ class RepositoryController extends Controller
     {
         $registros = $this->service->getTableData();
 
-        return view('registros.index', compact('registros'));
+        return view(
+            'facilitador::repositories.index',
+            compact('registros')
+        );
     }
 
     /**

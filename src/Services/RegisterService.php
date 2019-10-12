@@ -16,7 +16,7 @@ class RegisterService
 
     public function __construct($model)
     {
-        $this->model = new $model;
+        $this->model = $model;
     }
 
     /**
