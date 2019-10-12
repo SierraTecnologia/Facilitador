@@ -3,10 +3,9 @@
 namespace SierraTecnologia\Facilitador\Controllers;
 
 use Illuminate\Http\Request;
-use Siravel\Models\Components\Code\Commit;
 use SierraTecnologia\Facilitador\Services\RepositoryService;
 
-class RepositoryController extends Controller
+class RepositoryController
 {
     protected $service;
 

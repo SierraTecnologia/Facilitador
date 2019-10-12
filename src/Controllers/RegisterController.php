@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Siravel\Models\Components\Code\Commit;
 use SierraTecnologia\Facilitador\Services\RegisterService;
 
-class Registerontroller extends Controller
+class Registerontroller
 {
     protected $service;
 

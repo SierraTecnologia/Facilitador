@@ -1,29 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
+
+@section('pageTitle') Widgets @stop
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            {!! trans('words.cobertura') !!}
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('words.home') !!}</a></li>
-            <li><a href="{!! route('team.coberturas.index') !!}"><i class="fa fa-key"></i> {!! trans('words.coberturas') !!}</a></li>
-            <li class="active">{!! trans('words.addNew') !!}</li>
-        </ol>
-    </section>
-    <div class="content">
 
-        <div class="box box-primary">
-
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'team.coberturas.store']) !!}
-
-                        @include('team.coberturas.fields')
-
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
+    <div class="col-md-12 mt-2">
+        @include('features.widgets.breadcrumbs', ['location' => ['create']])
     </div>
+
+    <div class="col-md-12">
+        {!! Form::open(['route' => 'admin.widgets.store', 'class' => 'add']) !!}
+
+            {!! FormMaker::fromTable('widgets', $service->getFieldForForm()) !!}
+
+            <div class="form-group text-right">
+                <a href="{!! cms()->url('widgets') !!}" class="btn btn-secondary raw-left">Cancel</a>
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            </div>
+
+        {!! Form::close() !!}
+    </div>
+
 @endsection
