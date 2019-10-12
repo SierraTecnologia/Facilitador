@@ -23,6 +23,11 @@ class ModelService
         return $this->modelClass::query();
     }
 
+    public function getFields()
+    {
+        
+    }
+
     public function getFieldForForm()
     {
         return [
