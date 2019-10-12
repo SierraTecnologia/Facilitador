@@ -78,8 +78,7 @@ class ModelService
                     'after' => '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>',
                 ],
             ],
-        ],
-
+        ];
     }
 
 }
