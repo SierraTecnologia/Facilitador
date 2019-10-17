@@ -53,7 +53,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SierraTecnologia\\FacilitadorProvider"
+                "SierraTecnologia\\Facilitador\\FacilitadorProvider"
             ]
         }
     },
