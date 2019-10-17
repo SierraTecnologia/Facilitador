@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SierraTecnologia\Facilitador\Controllers;
+namespace SierraTecnologia\Facilitador\Http\Controllers;
 
 use Auth;
 use Gate;
