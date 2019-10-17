@@ -17,10 +17,9 @@ class FacilitadorProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->publishes([
-        //     __DIR__.'/../config/form-maker.php' => base_path('config/form-maker.php'),
-        // ]);
-        
+        $this->publishes([
+            __DIR__.'/../Publishes/config/sitec-facilitador.php' => base_path('config/sitec-facilitador.php'),
+        ]);
     }
 
 
@@ -70,6 +69,7 @@ class FacilitadorProvider extends ServiceProvider
          * Internos
          */
         $this->app->register(\SierraTecnologia\Facilitador\Providers\ServicesProvider::class);
+        $this->app->register(\SierraTecnologia\Facilitador\Providers\FacilitadorRouteProvider::class);
         $this->app->register(\SierraTecnologia\Facilitador\Providers\FormMakerProvider::class);
         
         
