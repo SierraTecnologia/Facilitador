@@ -67,6 +67,13 @@ class FacilitadorProvider extends ServiceProvider
     {
         
         /**
+         * Internos
+         */
+        $this->app->register(\SierraTecnologia\Facilitador\Providers\ServicesProvider::class);
+        $this->app->register(\SierraTecnologia\Facilitador\Providers\FormMakerProvider::class);
+        
+        
+        /**
          * Externos
          */
         $this->app->register(\SierraTecnologia\Facilitador\Providers\GravatarServiceProvider::class);

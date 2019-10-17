@@ -5,12 +5,8 @@ namespace SierraTecnologia\Facilitador\Providers;
 use App;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use App\Services\BlogService;
-use App\Services\CryptoService;
-use App\Services\EventService;
-use App\Services\ModuleService;
-use App\Services\Negocios\PageService;
-use App\Services\Midia\FileService;
+use SierraTecnologia\Facilitador\Services\CryptoService;
+use SierraTecnologia\Facilitador\Services\Midia\FileService;
 
 class ServicesProvider extends ServiceProvider
 {
@@ -21,15 +17,10 @@ class ServicesProvider extends ServiceProvider
     {
         $loader = AliasLoader::getInstance();
 
-        $loader->alias('CryptoService', \App\Facades\CryptoServiceFacade::class);
-        $loader->alias('FileService', \App\Services\Midia\FileService::class);
+        $loader->alias('CryptoService', \SierraTecnologia\Facilitador\Facades\CryptoServiceFacade::class);
 
         $this->app->bind('CryptoService', function ($app) {
             return new CryptoService();
-        });
-
-        $this->app->bind('FileService', function ($app) {
-            return new FileService();
         });
     }
 }
