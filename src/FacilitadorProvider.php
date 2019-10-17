@@ -6,6 +6,7 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use SierraTecnologia\Facilitador\Services\Facilitador;
+use SierraTecnologia\Facilitador\Services\FacilitadorService;
 use SierraTecnologia\Facilitador\Services\InputMaker;
 
 class FacilitadorProvider extends ServiceProvider
@@ -31,6 +32,11 @@ class FacilitadorProvider extends ServiceProvider
     public function register()
     {
         $this->setProviders();
+
+        $this->app->singleton('FacilitadorService', function($app)
+        {
+            return new FacilitadorService(config('sitec-facilitador.models'));
+        });
 
         // View namespace
         $this->loadViewsFrom(__DIR__.'/Views', 'facilitador');

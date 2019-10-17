@@ -3,16 +3,19 @@
 namespace SierraTecnologia\Facilitador\Http\Controllers\Universal;
 
 use Illuminate\Http\Request;
+use SierraTecnologia\Facilitador\Services\FacilitadorService;
 use Siravel\Models\Components\Code\Commit;
 use SierraTecnologia\Facilitador\Services\RegisterService;
+use SierraTecnologia\Facilitador\Services\RepositoryService;
 
-class RegisterController
+class RegisterController extends Controller
 {
-    protected $service;
+    protected $registerService;
 
-    public function __construct(RegisterService $registerService)
+    public function __construct(FacilitadorService $facilitadorService, RepositoryService $repositoryService, RegisterService $registerService)
     {
-        $this->service = $registerService;
+        $this->registerService = $registerService;
+        parent::__construct($facilitadorService, $repositoryService);
     }
 
     /**
@@ -22,53 +25,12 @@ class RegisterController
      */
     public function index()
     {
-        $commits = Commit::orderBy('id', 'DESC')->get();
+        $register = $this->registerService->find();
 
-        return view('commits.index', compact('commits'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('commits.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-      $request->validate([
-        'commit_name'=>'required',
-        'commit_price'=> 'required|integer',
-        'commit_qty' => 'required|integer'
-      ]);
-      $commit = new Commit([
-        'commit_name' => $request->get('commit_name'),
-        'commit_price'=> $request->get('commit_price'),
-        'commit_qty'=> $request->get('commit_qty')
-      ]);
-      $commit->save();
-      return redirect('/commits')->with('success', 'Stock has been added');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $commit = Commit::findOrFail($id);
-        return view('commits.show', compact('commit'));
+        return view(
+            'facilitador::registers.index',
+            compact('register')
+        );
     }
 
     /**
@@ -77,11 +39,14 @@ class RegisterController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $commit = Commit::findOrFail($id);
+        $register = $this->registerService->find();
 
-        return view('commits.edit', compact('commit'));
+        return view(
+            'facilitador::registers.edit',
+            compact('register')
+        );
     }
 
     /**
@@ -105,7 +70,7 @@ class RegisterController
         $commit->commit_qty = $request->get('commit_qty');
         $commit->save();
 
-        return redirect('/commits')->with('success', 'Stock has been updated');
+        return redirect($this->repositoryService->getRouteIndex())->with('success', 'Stock has been updated');
     }
 
     /**
@@ -119,6 +84,6 @@ class RegisterController
         $commit = Commit::findOrFail($id);
         $commit->delete();
 
-        return redirect('/commits')->with('success', 'Stock has been deleted Successfully');
+        return redirect($this->repositoryService->getRouteIndex())->with('success', 'Stock has been deleted Successfully');
     }
 }

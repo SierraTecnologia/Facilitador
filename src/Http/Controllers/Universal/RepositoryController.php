@@ -3,16 +3,11 @@
 namespace SierraTecnologia\Facilitador\Http\Controllers\Universal;
 
 use Illuminate\Http\Request;
+use SierraTecnologia\Facilitador\Services\FacilitadorService;
 use SierraTecnologia\Facilitador\Services\RepositoryService;
 
-class RepositoryController
+class RepositoryController extends Controller
 {
-    protected $service;
-
-    public function __construct(RepositoryService $repositoryService)
-    {
-        $this->service = $repositoryService;
-    }
 
     /**
      * Display a listing of the resource.

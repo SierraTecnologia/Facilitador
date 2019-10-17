@@ -24,9 +24,9 @@ class AdminController extends Controller
      */
     public function index($modulo, Request $request)
     {
-        $modulos = [
-            'persons' => Person::class,
-        ];
+        $facilitadorService->printCountAll();
+            Person::class,
+        );
 
         $loadClass = $modulos[$modulo];
 
