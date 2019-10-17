@@ -83,6 +83,11 @@ class FacilitadorProvider extends ServiceProvider
          * Layoults
          */
         $this->app->register(\JeroenNoten\LaravelAdminLte\ServiceProvider::class);
+        $this->app->register(\RicardoSierra\Minify\MinifyServiceProvider::class);
+        $this->app->register(\CipeMotion\Medialibrary\ServiceProvider::class);
+        $this->app->register(\Intervention\Image\ImageServiceProvider::class);
+        $this->app->register(\Collective\Html\HtmlServiceProvider::class);
+        $this->app->register(\Laracasts\Flash\FlashServiceProvider::class);
 
     }
 }
