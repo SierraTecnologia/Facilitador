@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Http\Controllers;
+namespace SierraTecnologia\Facilitador\Http\Controllers\Universal;
 
 use Illuminate\Http\Request;
 use SierraTecnologia\Facilitador\Services\RepositoryService;

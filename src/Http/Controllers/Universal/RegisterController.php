@@ -1,12 +1,12 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Http\Controllers;
+namespace SierraTecnologia\Facilitador\Http\Controllers\Universal;
 
 use Illuminate\Http\Request;
 use Siravel\Models\Components\Code\Commit;
 use SierraTecnologia\Facilitador\Services\RegisterService;
 
-class Registerontroller
+class RegisterController
 {
     protected $service;
 

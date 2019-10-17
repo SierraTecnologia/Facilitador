@@ -3,7 +3,9 @@
 return [
 
     'models' => [
-        'persons' => \Siravel\Models\Identity\Person::class,
+        'persons' => [
+            'code' => \Siravel\Models\Identity\Person::class,
+            'policy' => \Siravel\Models\Identity\Person::class,
     ],
 
 ];
