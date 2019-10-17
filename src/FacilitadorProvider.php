@@ -31,6 +31,8 @@ class FacilitadorProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->setProviders();
+
         // View namespace
         $this->loadViewsFrom(__DIR__.'/Views', 'facilitador');
 
@@ -59,6 +61,21 @@ class FacilitadorProvider extends ServiceProvider
         // $this->app->singleton('InputMaker', function () {
         //     return new InputMaker();
         // });
+
+    }
+    protected function setProviders()
+    {
+        
+        /**
+         * Externos
+         */
+        $this->app->register(\SierraTecnologia\Facilitador\Providers\GravatarServiceProvider::class);
+        
+
+        /**
+         * Layoults
+         */
+        $this->app->register(\JeroenNoten\LaravelAdminLte\ServiceProvider::class);
 
     }
 }

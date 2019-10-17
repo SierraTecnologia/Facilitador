@@ -11,7 +11,7 @@
     "require": {
         "php": ">=7.0",
         "doctrine/dbal": ">=2.5",
-        "illuminate/support": ">=5.4",
+        "illuminate/support": "^5.8",
         "intervention/image": "^2.4",
         "intervention/imagecache": "^2.3",
         "yajra/laravel-datatables-oracle": "~9.0",
@@ -21,7 +21,13 @@
         "sierratecnologia/formmaker": "dev-master",
         "laracasts/presenter": "0.2.*",
         "laravelcollective/html": "^5.8",
+        "jeroennoten/laravel-adminlte": "*",
+        "league/csv": "^7.1",
+        "ramsey/uuid": "^3.8",
+        "zendframework/zend-crypt": "*",
         "maatwebsite/excel": "^3.1",
+        "sabre/xml": "*",
+
         "nicolaslopezj/searchable": "^1.10"
     },
     "require-dev": {
