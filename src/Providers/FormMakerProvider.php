@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\FormMaker;
+namespace SierraTecnologia\Facilitador\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
