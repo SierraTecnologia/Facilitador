@@ -2,16 +2,12 @@
 
 namespace SierraTecnologia\Facilitador\Http\Controllers\Universal;
 
-use Illuminate\Http\Request;
+use SierraTecnologia\Facilitador\Http\Controllers\Controller as SierraTecnologiaController;
 use SierraTecnologia\Facilitador\Services\FacilitadorService;
 use SierraTecnologia\Facilitador\Services\RepositoryService;
 
-class Controller
+class Controller extends SierraTecnologiaController
 {
-    /**
-     * The user repository instance.
-     */
-    protected $facilitadorService;
     
     /**
      * The user repository instance.
@@ -27,7 +23,7 @@ class Controller
     public function __construct(FacilitadorService $facilitadorService, RepositoryService $repositoryService)
     {
         $this->repositoryService = $repositoryService;
-        $this->facilitadorService = $facilitadorService;
+        parent::__construct($facilitadorService);
     }
 
 }

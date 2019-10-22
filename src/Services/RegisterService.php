@@ -11,13 +11,24 @@ namespace SierraTecnologia\Facilitador\Services;
 class RegisterService
 {
 
-    protected $model;
-    protected $user;
-    protected $modelService;
+    protected $identify;
+    protected $instance;
+    protected $repositoryService = false;
 
-    public function __construct($modelClass)
+    public function __construct($identify)
     {
-        $this->modelService = new ModelService($modelClass);
+        $this->identify = Crypto::decrypt($identify);
+    }
+
+    public function load(RepositoryService $repository)
+    {
+        if ($this->repositoryService) {
+            return false;
+        }
+
+        $this->repositoryService = $repository;
+        $this->instance = $this->repositoryService->getModelService()->find($this->identify);
+        return $this;
     }
 
     /**

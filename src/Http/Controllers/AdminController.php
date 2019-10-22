@@ -24,15 +24,7 @@ class AdminController extends Controller
      */
     public function index($modulo, Request $request)
     {
-        // $facilitadorService->printCountAll();
-        //     Person::class,
-        // );
-
-        // $loadClass = $modulos[$modulo];
-
-        // return (new \SierraTecnologia\Facilitador\Http\Controllers\Universal\RepositoryController(
-        //     new \SierraTecnologia\Facilitador\Services\RepositoryService($loadClass)
-        // ))->index($request);
+        // $fcode
     }
 
     /**

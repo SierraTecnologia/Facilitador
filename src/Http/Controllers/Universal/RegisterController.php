@@ -14,7 +14,7 @@ class RegisterController extends Controller
 
     public function __construct(FacilitadorService $facilitadorService, RepositoryService $repositoryService, RegisterService $registerService)
     {
-        $this->registerService = $registerService;
+        $this->registerService = $registerService->load($repositoryService);
         parent::__construct($facilitadorService, $repositoryService);
     }
 

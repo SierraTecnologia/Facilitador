@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 use Cms;
 use Log;
 use SplFileInfo;
-use SierraTecnologia\Facilitador\Facades\CryptoServiceFacade;
+use Crypto;
 
 class AssetService
 {
@@ -36,7 +36,7 @@ class AssetService
     {
         try {
             return Cache::remember($encFileName.'_asPublic', 3600, function () use ($encFileName) {
-                $fileName = CryptoServiceFacade::url_decode($encFileName);
+                $fileName = Crypto::url_decode($encFileName);
                 $filePath = $this->getFilePath($fileName);
 
                 $fileTool = new SplFileInfo($filePath);
@@ -67,7 +67,7 @@ class AssetService
     {
         try {
             return Cache::remember($encFileName.'_preview', 3600, function () use ($encFileName, $fileSystem) {
-                $fileName = CryptoServiceFacade::url_decode($encFileName);
+                $fileName = Crypto::url_decode($encFileName);
 
                 if (config('cms.storage-location') === 'local' || config('cms.storage-location') === null) {
                     $filePath = storage_path('app/'.$fileName);
@@ -109,8 +109,8 @@ class AssetService
     {
         try {
             return Cache::remember($encFileName.'_asDownload', 3600, function () use ($encFileName, $encRealFileName) {
-                $fileName = CryptoServiceFacade::url_decode($encFileName);
-                $realFileName = CryptoServiceFacade::url_decode($encRealFileName);
+                $fileName = Crypto::url_decode($encFileName);
+                $realFileName = Crypto::url_decode($encRealFileName);
                 $filePath = $this->getFilePath($fileName);
 
                 $fileTool = new SplFileInfo($filePath);
@@ -143,7 +143,7 @@ class AssetService
     public function asset($encPath, $contentType, Filesystem $fileSystem)
     {
         try {
-            $path = CryptoServiceFacade::url_decode($encPath);
+            $path = Crypto::url_decode($encPath);
 
             if (Request::get('isModule') === 'true') {
                 $filePath = $path;
@@ -166,7 +166,7 @@ class AssetService
             $fileName = basename($filePath);
 
             if (!is_null($contentType)) {
-                $contentType = CryptoServiceFacade::url_decode($contentType);
+                $contentType = Crypto::url_decode($contentType);
             }
 
             if (is_null($contentType) || $contentType=='null') {

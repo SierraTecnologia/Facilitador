@@ -15,7 +15,7 @@ class ModelService
 
     public function __construct($modelClass)
     {
-        $this->modelClass = $modelClass;
+        $this->modelClass = Crypto::decrypt($modelClass);
     }
 
     public function getModelQuery()
