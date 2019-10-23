@@ -7,18 +7,9 @@
 @stop
 
 @section('content')
-    @include('users.numbers', [
-        'collaborators' => $collaborators,
-        'sshKeys' => $sshKeys,
-        'projects' => $projects,
-        'issues' => $issues
+    @include('facilitador::dash.numbers', [
+        'models' => $models,
     ])
-
-    Colaboradores
-
-    Serviços
-
-    Suporte
 
     <example-component></example-component>
 @stop

@@ -13,9 +13,29 @@ class ModelService
 
     protected $modelClass;
 
-    public function __construct($modelClass)
+    public function __construct($modelClass, $crypto = true)
     {
-        $this->modelClass = Crypto::decrypt($modelClass);
+        if ($crypto) {
+            $modelClass = Crypto::decrypt($modelClass);
+        }
+        $this->modelClass = $modelClass;
+    }
+
+
+    public function getUrl()
+    {
+        return url('facilitador/repository');
+    }
+
+
+    public function getName()
+    {
+        return $this->modelClass::getClass()->getName();
+    }
+
+    public function count()
+    {
+        return $this->modelClass::count();
     }
 
     public function getModelQuery()

@@ -15,9 +15,12 @@ class RegisterService
     protected $instance;
     protected $repositoryService = false;
 
-    public function __construct($identify)
+    public function __construct($identify, $crypto = true)
     {
-        $this->identify = Crypto::decrypt($identify);
+        if ($crypto) {
+            $identify = Crypto::decrypt($identify);
+        }
+        $this->identify = $identify;
     }
 
     public function load(RepositoryService $repository)

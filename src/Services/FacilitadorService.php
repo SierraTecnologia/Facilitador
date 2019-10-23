@@ -18,6 +18,16 @@ class FacilitadorService
         $this->config = $config;
     }
 
-    
+    public function getModelsClass()
+    {
+        return config('sitec-facilitador.models');
+    } 
+
+    public function getModelServices()
+    {
+        return $this->getModelsClass()->map(function ($value) {
+            return new ModelService($value, false);
+        });
+    }
 
 }

@@ -22,8 +22,13 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($modulo, Request $request)
+    public function index(Request $request)
     {
-        // $fcode
+        $models = $this->facilitadorService->getModels();
+        
+        return view(
+            'facilitador::dash.home',
+            compact('models')
+        );
     }
 }
