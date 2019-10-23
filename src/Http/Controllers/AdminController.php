@@ -1,6 +1,6 @@
 <?php
 
-namespace Siravel\Http\Controllers;
+namespace SierraTecnologia\Facilitador\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
