@@ -4,7 +4,7 @@ Route::prefix('admin')->group(function () {
 
     
     // ADmin Router
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/', 'AdminController@index');
 
     /**
      * By Model
