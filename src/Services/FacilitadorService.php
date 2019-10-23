@@ -13,9 +13,11 @@ class FacilitadorService
 
     protected $config;
 
-    public function __construct($config)
+    public function __construct($config = false)
     {
-        $this->config = $config;
+        if ($this->config = $config) {
+            $this->config = config('sitec-facilitador.models');
+        }
     }
 
     public function getModelsClass()
