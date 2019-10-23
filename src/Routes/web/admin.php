@@ -4,11 +4,18 @@ Route::prefix('admin')->group(function () {
 
     
     // ADmin Router
-    Route::get('/gerenciar/{modulo}', 'AdminController@index');
-    Route::get('/gerenciar/{modulo}/{id}', 'AdminController@show');
-    Route::post('/gerenciar/{modulo}/', 'AdminController@store');
-    Route::get('/gerenciar/{modulo}/{id}/edit', 'AdminController@edit');
-    Route::put('/gerenciar/{modulo}/{id}', 'AdminController@update');
-    Route::delete('/gerenciar/{modulo}/{id}', 'AdminController@destroy');
+    Route::get('/admin', 'AdminController@index');
 
+    /**
+     * By Model
+     */
+    Route::namespace('Universal')->group(function () {
+        Route::get('/{modelClass}', 'RepositoryController@index');
+        Route::post('/{modelClass}', 'RepositoryController@store');
+
+        Route::get('/{modelClass}/{identify}', 'RegisterController@show');
+        Route::get('/{modelClass}/{identify}/edit', 'RegisterController@edit');
+        Route::put('/{modelClass}/{identify}', 'RegisterController@update');
+        Route::delete('/{modelClass}/{identify}', 'RegisterController@destroy');
+    });
 });
