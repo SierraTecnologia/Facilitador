@@ -15,19 +15,14 @@ class FacilitadorService
 
     public function __construct($config = false)
     {
-        if ($this->config = $config) {
+        if (!$this->config = $config) {
             $this->config = config('sitec-facilitador.models');
         }
     }
 
-    public function getModelsClass()
-    {
-        return config('sitec-facilitador.models');
-    } 
-
     public function getModelServices()
     {
-        return $this->getModelsClass()->map(function ($value) {
+        return $this->config->map(function ($value) {
             return new ModelService($value, false);
         });
     }
