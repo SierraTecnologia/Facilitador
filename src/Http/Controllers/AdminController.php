@@ -26,23 +26,4 @@ class AdminController extends Controller
     {
         // $fcode
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($modulo, Request $request)
-    {
-        $modulos = [
-            'persons' => Person::class,
-        ];
-
-        $loadClass = $modulos[$modulo];
-
-        return (new \SierraTecnologia\Facilitador\Http\Controllers\Universal\RepositoryController(
-            new \SierraTecnologia\Facilitador\Services\RepositoryService($loadClass)
-        ))->index($request);
-    }
-
 }

@@ -59,6 +59,9 @@
         "laravel": {
             "providers": [
                 "SierraTecnologia\\Facilitador\\FacilitadorProvider"
+            ],
+            "dont-discover": [
+                "scaffold-interface"
             ]
         }
     },

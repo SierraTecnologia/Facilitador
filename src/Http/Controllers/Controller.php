@@ -3,8 +3,9 @@
 namespace SierraTecnologia\Facilitador\Http\Controllers;
 
 use SierraTecnologia\Facilitador\Services\FacilitadorService;
+use App\Http\Controllers\Controller as BaseController;
 
-class Controller
+class Controller extends BaseController
 {
     /**
      * The user repository instance.
