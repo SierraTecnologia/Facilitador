@@ -30,9 +30,33 @@ class RegisterService
         }
 
         $this->repositoryService = $repository;
-        $this->instance = $this->repositoryService->getModelService()->find($this->identify);
         return $this;
     }
+
+    protected function getInstance()
+    {
+        if (!$this->instance) {
+            $this->instance = $this->repositoryService->getModelService()->find($this->identify);
+        }
+        return $this->instance;
+    }
+
+    /**
+     * Relações
+     */
+    public function getAtributes()
+    {
+        $modelInstance = $this->getInstance();
+        $relations = $modelInstance->getRelations();
+        return $relations;
+    }
+    public function getRelations()
+    {
+        $modelInstance = $this->getInstance();
+        $relations = $modelInstance->getRelations();
+        return $relations;
+    }
+
 
     /**
      * Set the form maker user.
@@ -57,6 +81,17 @@ class RegisterService
         $this->connection = $connection;
 
         return $this;
+    }
+
+
+    /**
+     * Set the form maker connection.
+     *
+     * @param string $connection
+     */
+    public function find()
+    {
+        return $this->getInstance();
     }
 
 

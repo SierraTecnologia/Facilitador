@@ -21,12 +21,22 @@ class ModelService
         $this->modelClass = $modelClass;
     }
 
+    /**
+     * Verificadores
+     *
+     * @param [type] $modelClass
+     * @return boolean
+     */
     public function isModelClass($modelClass)
     {
         return $this->modelClass == $modelClass;
     }
 
-
+    /**
+     * Atributos da Classe
+     *
+     * @return void
+     */
     public function getUrl()
     {
         return url('facilitador/repository');
@@ -38,6 +48,9 @@ class ModelService
         return $this->modelClass::getClass()->getName();
     }
 
+    /**
+     * Contagens E querys
+     */
     public function count()
     {
         return $this->modelClass::count();
@@ -53,6 +66,27 @@ class ModelService
         return $this->modelClass::all();
     }
 
+    /**
+     * Relações
+     */
+    public function getAtributes()
+    {
+        $modelInstance = new $this->modelClass;
+        $relations = $modelInstance->getRelations();
+        return $relations;
+    }
+    public function getRelations()
+    {
+        $modelInstance = new $this->modelClass;
+        $relations = $modelInstance->getRelations();
+        return $relations;
+    }
+
+    /**
+     * Campos
+     *
+     * @return void
+     */
     public function getFields()
     {
         

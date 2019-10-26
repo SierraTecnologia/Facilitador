@@ -27,10 +27,70 @@ class RegisterController extends Controller
     {
         $register = $this->registerService->find();
 
+
+        dd(
+            $this->registerService->getAtributes(),
+            $this->registerService->getRelations(),
+        );
+
         return view(
             'facilitador::registers.index',
             compact('register')
         );
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit()
+    {
+        $register = $this->registerService->find();
+        return view('facilitador::registers.edit')->with('register', $register);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(RegisterUpdateRequest $request)
+    {
+        $id = $this->registerService->getId();
+        try {
+            $result = $this->service->update($id, $request->except('_token'));
+
+            if ($result) {
+                return back()->with('message', 'Successfully updated');
+            }
+
+            return back()->with('message', 'Failed to update');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy()
+    {
+        $id = $this->registerService->getId();
+        try {
+            $result = $this->service->destroy(Auth::user(), $id);
+
+            if ($result) {
+                return redirect('registers')->with('message', 'Successfully deleted');
+            }
+
+            return redirect('registers')->with('message', 'Failed to delete');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage());
+        }
     }
 
     // /**
@@ -86,58 +146,4 @@ class RegisterController extends Controller
 
     //     return redirect($this->repositoryService->getRouteIndex())->with('success', 'Stock has been deleted Successfully');
     // }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit()
-    {
-        $register = $this->registerService->find();
-        return view('facilitador::registers.edit')->with('register', $register);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update(RegisterUpdateRequest $request)
-    {
-        $id = $this->registerService->getId();
-        try {
-            $result = $this->service->update($id, $request->except('_token'));
-
-            if ($result) {
-                return back()->with('message', 'Successfully updated');
-            }
-
-            return back()->with('message', 'Failed to update');
-        } catch (Exception $e) {
-            return back()->withErrors($e->getMessage());
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy()
-    {
-        $id = $this->registerService->getId();
-        try {
-            $result = $this->service->destroy(Auth::user(), $id);
-
-            if ($result) {
-                return redirect('registers')->with('message', 'Successfully deleted');
-            }
-
-            return redirect('registers')->with('message', 'Failed to delete');
-        } catch (Exception $e) {
-            return back()->withErrors($e->getMessage());
-        }
-    }
 }

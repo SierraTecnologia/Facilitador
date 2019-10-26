@@ -4,6 +4,7 @@ namespace SierraTecnologia\Facilitador\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 use SierraTecnologia\Facilitador\Services\RegisterService;
 use SierraTecnologia\Facilitador\Services\RepositoryService;
 
