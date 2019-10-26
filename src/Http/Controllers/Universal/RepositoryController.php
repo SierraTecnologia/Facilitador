@@ -52,8 +52,12 @@ class RepositoryController extends Controller
      */
     public function search(Request $request)
     {
-        $teams = $this->service->search($request->user()->id, $request->search);
-        return view('team.index')->with('teams', $teams);
+        $registros = $this->service->search($request->user()->id, $request->search);
+
+        return view(
+            'facilitador::repositories.index',
+            compact('registros')
+        );
     }
 
     /**

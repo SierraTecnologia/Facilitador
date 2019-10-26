@@ -31,4 +31,20 @@ class AdminController extends Controller
             compact('models')
         );
     }
+
+    /**
+     * Display a listing of the resource searched.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+
+        $registros = $this->facilitadorService->search($request->user()->id, $request->search);
+
+        return view(
+            'facilitador::dash.search',
+            compact('registros')
+        );
+    }
 }

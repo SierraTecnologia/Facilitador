@@ -94,9 +94,8 @@ class RegisterController extends Controller
      */
     public function edit()
     {
-        $id = $this->registerService->getId();
-        $team = $this->service->find($id);
-        return view('team.edit')->with('team', $team);
+        $register = $this->registerService->find();
+        return view('facilitador::registers.edit')->with('register', $register);
     }
 
     /**
@@ -133,10 +132,10 @@ class RegisterController extends Controller
             $result = $this->service->destroy(Auth::user(), $id);
 
             if ($result) {
-                return redirect('teams')->with('message', 'Successfully deleted');
+                return redirect('registers')->with('message', 'Successfully deleted');
             }
 
-            return redirect('teams')->with('message', 'Failed to delete');
+            return redirect('registers')->with('message', 'Failed to delete');
         } catch (Exception $e) {
             return back()->withErrors($e->getMessage());
         }
