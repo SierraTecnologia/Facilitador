@@ -4,6 +4,8 @@ namespace SierraTecnologia\Facilitador\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
+use SierraTecnologia\Facilitador\Services\RegisterService;
+use SierraTecnologia\Facilitador\Services\RepositoryService;
 
 class FacilitadorRouteProvider extends ServiceProvider
 {
@@ -24,6 +26,14 @@ class FacilitadorRouteProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Route::bind('facilitadorService', function ($value) {
+            return new RepositoryService($value);
+        });
+
+        Route::bind('repositoryService', function ($value) {
+            return new RegisterService($value);
+        });
     }
 
     /**

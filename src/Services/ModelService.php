@@ -21,6 +21,11 @@ class ModelService
         $this->modelClass = $modelClass;
     }
 
+    public function isModelClass($modelClass)
+    {
+        return $this->modelClass == $modelClass;
+    }
+
 
     public function getUrl()
     {

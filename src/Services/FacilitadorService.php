@@ -13,6 +13,8 @@ class FacilitadorService
 
     protected $config;
 
+    protected $modelServices = false;
+
     public function __construct($config = false)
     {
         if (!$this->config = $config) {
@@ -22,9 +24,30 @@ class FacilitadorService
 
     public function getModelServices()
     {
-        return $this->config->map(function ($value) {
-            return new ModelService($value, false);
-        });
+        if (!$this->modelServices) {
+            $this->modelServices = $this->config->map(function ($value) {
+                return new ModelService($value, false);
+            });
+        }
+
+        return $this->modelServices;
+    }
+
+    public function modelIsValid($model)
+    {
+        $services = $this->getModelServices();
+
+        if (!is_array($services)) {
+            return false;
+        }
+
+        foreach ($services as $service) {
+            if ($service->isModelClass($model)) {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
 }

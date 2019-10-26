@@ -104,100 +104,45 @@ class RepositoryController extends Controller
         return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $team = $this->service->find($id);
-        return view('team.edit')->with('team', $team);
-    }
+    // /**
+    //  * Invite a team member
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function inviteMember(UserInviteRequest $request, $id)
+    // {
+    //     try {
+    //         $result = $this->service->invite(Auth::user(), $id, $request->email);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(TeamUpdateRequest $request, $id)
-    {
-        try {
-            $result = $this->service->update($id, $request->except('_token'));
+    //         if ($result) {
+    //             return back()->with('message', 'Successfully invited member');
+    //         }
 
-            if ($result) {
-                return back()->with('message', 'Successfully updated');
-            }
+    //         return back()->with('message', 'Failed to invite member - they may already be a member');
+    //     } catch (Exception $e) {
+    //         return back()->withErrors($e->getMessage());
+    //     }
+    // }
 
-            return back()->with('message', 'Failed to update');
-        } catch (Exception $e) {
-            return back()->withErrors($e->getMessage());
-        }
-    }
+    // /**
+    //  * Remove a team member
+    //  *
+    //  * @param  int  $userId
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function removeMember($id, $userId)
+    // {
+    //     try {
+    //         $result = $this->service->remove(Auth::user(), $id, $userId);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        try {
-            $result = $this->service->destroy(Auth::user(), $id);
+    //         if ($result) {
+    //             return back()->with('message', 'Successfully removed member');
+    //         }
 
-            if ($result) {
-                return redirect('teams')->with('message', 'Successfully deleted');
-            }
-
-            return redirect('teams')->with('message', 'Failed to delete');
-        } catch (Exception $e) {
-            return back()->withErrors($e->getMessage());
-        }
-    }
-
-    /**
-     * Invite a team member
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function inviteMember(UserInviteRequest $request, $id)
-    {
-        try {
-            $result = $this->service->invite(Auth::user(), $id, $request->email);
-
-            if ($result) {
-                return back()->with('message', 'Successfully invited member');
-            }
-
-            return back()->with('message', 'Failed to invite member - they may already be a member');
-        } catch (Exception $e) {
-            return back()->withErrors($e->getMessage());
-        }
-    }
-
-    /**
-     * Remove a team member
-     *
-     * @param  int  $userId
-     * @return \Illuminate\Http\Response
-     */
-    public function removeMember($id, $userId)
-    {
-        try {
-            $result = $this->service->remove(Auth::user(), $id, $userId);
-
-            if ($result) {
-                return back()->with('message', 'Successfully removed member');
-            }
-
-            return back()->with('message', 'Failed to remove member');
-        } catch (Exception $e) {
-            return back()->withErrors($e->getMessage());
-        }
-    }
+    //         return back()->with('message', 'Failed to remove member');
+    //     } catch (Exception $e) {
+    //         return back()->withErrors($e->getMessage());
+    //     }
+    // }
 }
