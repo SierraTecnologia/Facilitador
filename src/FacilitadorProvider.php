@@ -6,6 +6,8 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use SierraTecnologia\Facilitador\Services\FacilitadorService;
 
+use Log;
+
 class FacilitadorProvider extends ServiceProvider
 {
     /**
@@ -32,7 +34,26 @@ class FacilitadorProvider extends ServiceProvider
 
         $this->app->singleton(FacilitadorService::class, function($app)
         {
+            Log::info('Singleton Facilitador');
             return new FacilitadorService(config('sitec-facilitador.models'));
+        });
+        $this->app->bind(RepositoryService::class, function($app)
+        {
+            dd('Bind Repository', $app);
+            return new RepositoryService(config('sitec-facilitador.models'));
+        });
+        $this->app->bind(RegisterService::class, function($app)
+        {
+            dd('Bind Register', $app);
+            return new RegisterService(config('sitec-facilitador.models'));
+        });
+        Route::bind('repositoryService', function ($value) {
+            dd('Route Repository', $value);
+            return new RepositoryService($value);
+        });
+        Route::bind('registerService', function ($value) {
+            dd('Route Register', $value);
+            return new RegisterService($value);
         });
 
         // View namespace

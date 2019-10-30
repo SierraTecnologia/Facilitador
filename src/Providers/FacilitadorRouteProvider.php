@@ -27,15 +27,6 @@ class FacilitadorRouteProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
-        Route::bind('repositoryService', function ($value) {
-            dd($value);
-            return new RepositoryService($value);
-        });
-        Route::bind('registerService', function ($value) {
-            dd($value);
-            return new RegisterService($value);
-        });
     }
 
     /**
