@@ -3,11 +3,8 @@
 namespace SierraTecnologia\Facilitador;
 
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use SierraTecnologia\Facilitador\Services\Facilitador;
 use SierraTecnologia\Facilitador\Services\FacilitadorService;
-use SierraTecnologia\Facilitador\Services\InputMaker;
 
 class FacilitadorProvider extends ServiceProvider
 {

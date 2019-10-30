@@ -11,13 +11,16 @@ Route::prefix('admin')->group(function () {
      * By Model
      */
     Route::namespace('Universal')->group(function () {
-        Route::get('/{facilitadorService}', 'RepositoryController@index');
-        Route::post('/{facilitadorService}', 'RepositoryController@store');
-        Route::get('/{facilitadorService}/search', 'RepositoryController@search');
-
-        Route::get('/{facilitadorService}/{repositoryService}', 'RegisterController@index');
-        Route::get('/{facilitadorService}/{repositoryService}/edit', 'RegisterController@edit');
-        Route::put('/{facilitadorService}/{repositoryService}', 'RegisterController@update');
-        Route::delete('/{facilitadorService}/{repositoryService}', 'RegisterController@destroy');
+        Route::prefix('{repositoryService}')->group(function () {
+            Route::get('/', 'RepositoryController@index');
+            Route::post('/', 'RepositoryController@store');
+            Route::get('/search', 'RepositoryController@search');
+            Route::prefix('{registerService}')->group(function () {
+                Route::get('/', 'RegisterController@index');
+                Route::get('/edit', 'RegisterController@edit');
+                Route::put('/', 'RegisterController@update');
+                Route::delete('/', 'RegisterController@destroy');
+            });
+        });
     });
 });
