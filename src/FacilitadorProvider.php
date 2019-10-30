@@ -33,7 +33,7 @@ class FacilitadorProvider extends ServiceProvider
     {
         $this->setProviders();
 
-        $this->app->singleton('FacilitadorService', function($app)
+        $this->app->singleton(FacilitadorService::class, function($app)
         {
             return new FacilitadorService(config('sitec-facilitador.models'));
         });
