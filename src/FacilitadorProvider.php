@@ -5,6 +5,10 @@ namespace SierraTecnologia\Facilitador;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use SierraTecnologia\Facilitador\Services\FacilitadorService;
+use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
+use SierraTecnologia\Facilitador\Services\RegisterService;
+use SierraTecnologia\Facilitador\Services\RepositoryService;
 
 use Log;
 
