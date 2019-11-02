@@ -16,9 +16,9 @@ class RepositoryService
 
     protected $modelService;
 
-    public function __construct($modelClass)
+    public function __construct(ModelService $modelClass)
     {
-        $this->modelService = new ModelService($modelClass);
+        $this->modelService = $modelClass; //new ModelService($modelClass);
     }
 
     public function getTableData()

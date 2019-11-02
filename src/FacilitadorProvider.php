@@ -9,6 +9,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use SierraTecnologia\Facilitador\Services\RegisterService;
 use SierraTecnologia\Facilitador\Services\RepositoryService;
+use SierraTecnologia\Facilitador\Services\ModelService;
 
 use Log;
 
@@ -24,6 +25,26 @@ class FacilitadorProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Publishes/config/sitec-facilitador.php' => base_path('config/sitec-facilitador.php'),
         ]);
+
+        // $this->app->bind(RepositoryService::class, function($app)
+        // {
+        //     dd('Bind Repository', $app);
+        //     return new RepositoryService();
+        // });
+        // $this->app->bind(RegisterService::class, function($app)
+        // {
+        //     // dd('Bind Register', $app);
+        //     return new RegisterService();
+        // });
+
+        Route::bind('repositoryService', function ($value) {
+            // dd('Route Repository', $value);
+            return new RepositoryService($value);
+        });
+        Route::bind('registerService', function ($value) {
+            // dd('Route Register', $value);
+            return new RegisterService($value);
+        });
     }
 
 
@@ -40,24 +61,6 @@ class FacilitadorProvider extends ServiceProvider
         {
             Log::info('Singleton Facilitador');
             return new FacilitadorService(config('sitec-facilitador.models'));
-        });
-        $this->app->bind(RepositoryService::class, function($app)
-        {
-            dd('Bind Repository', $app);
-            return new RepositoryService(config('sitec-facilitador.models'));
-        });
-        $this->app->bind(RegisterService::class, function($app)
-        {
-            dd('Bind Register', $app);
-            return new RegisterService(config('sitec-facilitador.models'));
-        });
-        Route::bind('repositoryService', function ($value) {
-            dd('Route Repository', $value);
-            return new RepositoryService($value);
-        });
-        Route::bind('registerService', function ($value) {
-            dd('Route Register', $value);
-            return new RegisterService($value);
         });
 
         // View namespace
@@ -88,6 +91,12 @@ class FacilitadorProvider extends ServiceProvider
         // $this->app->singleton('InputMaker', function () {
         //     return new InputMaker();
         // });
+
+        $this->app->when(RepositoryService::class)
+            ->needs('$modelClass')
+          ->give(function ($modelClassValue) {
+              return new ModelService($modelClassValue);
+          });
 
     }
     protected function setProviders()
