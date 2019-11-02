@@ -37,6 +37,10 @@ class FacilitadorProvider extends ServiceProvider
         //     return new RegisterService();
         // });
 
+        Route::bind('modelService', function ($value) {
+            // dd('Route Repository', $value);
+            return new ModelService($value);
+        });
         Route::bind('repositoryService', function ($value) {
             // dd('Route Repository', $value);
             return new RepositoryService($value);
@@ -92,10 +96,11 @@ class FacilitadorProvider extends ServiceProvider
         //     return new InputMaker();
         // });
 
-        $this->app->when(RepositoryService::class)
+        $this->app->when(ModelService::class)
             ->needs('$modelClass')
           ->give(function ($modelClassValue) {
-              return new ModelService($modelClassValue);
+              dd($modelClassValue['request'])->has('modelClassValue');
+              return $modelClassValue;
           });
 
     }

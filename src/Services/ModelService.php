@@ -5,6 +5,8 @@
 
 namespace SierraTecnologia\Facilitador\Services;
 
+use SierraTecnologia\Crypto\Services\Crypto;
+
 /**
  * ModelService helper to make table and object form mapping easy.
  */
@@ -16,6 +18,7 @@ class ModelService
     public function __construct($modelClass, $crypto = true)
     {
         if ($crypto) {
+            dd($modelClass);
             $modelClass = Crypto::decrypt($modelClass);
         }
         $this->modelClass = $modelClass;

@@ -1,98 +1,149 @@
 <?php
-/**
- * Serviço referente a linha no banco de dados
- */
 
-namespace SierraTecnologia\Facilitador\Services;
+namespace SierraTecnologia\Facilitador\Http\Controllers\Universal;
 
-/**
- * RegisterService helper to make table and object form mapping easy.
- */
-class RegisterService
+use Illuminate\Http\Request;
+use SierraTecnologia\Facilitador\Services\FacilitadorService;
+use Siravel\Models\Components\Code\Commit;
+use SierraTecnologia\Facilitador\Services\RegisterService;
+use SierraTecnologia\Facilitador\Services\RepositoryService;
+
+class RegisterController extends Controller
 {
+    protected $registerService;
 
-    protected $identify;
-    protected $instance;
-    protected $repositoryService = false;
-
-    public function __construct($identify, $crypto = true)
+    public function __construct(FacilitadorService $facilitadorService, RepositoryService $repositoryService, RegisterService $registerService)
     {
-        if ($crypto) {
-            $identify = Crypto::decrypt($identify);
-        }
-        $this->identify = $identify;
-    }
-
-    public function load(RepositoryService $repository)
-    {
-        if ($this->repositoryService) {
-            return false;
-        }
-
-        $this->repositoryService = $repository;
-        return $this;
-    }
-
-    protected function getInstance()
-    {
-        if (!$this->instance) {
-            $this->instance = $this->repositoryService->getModelService()->find($this->identify);
-        }
-        return $this->instance;
+        $this->registerService = $registerService->load($repositoryService);
+        parent::__construct($facilitadorService, $repositoryService);
     }
 
     /**
-     * Relações
-     */
-    public function getAtributes()
-    {
-        $modelInstance = $this->getInstance();
-        $relations = $modelInstance->getRelations();
-        return $relations;
-    }
-    public function getRelations()
-    {
-        $modelInstance = $this->getInstance();
-        $relations = $modelInstance->getRelations();
-        return $relations;
-    }
-
-
-    /**
-     * Set the form maker user.
+     * Display a listing of the resource.
      *
-     * @param string $user
+     * @return \Illuminate\Http\Response
      */
-    public function viewEdit($user)
+    public function index()
     {
-        $this->user = $user;
+        $register = $this->registerService->find();
 
-        return $this;
+
+        // dd(
+        //     $this->registerService->getAtributes(),
+        //     $this->registerService->getRelations(),
+        // );
+
+        return view(
+            'facilitador::registers.index',
+            compact('register')
+        );
     }
-
 
     /**
-     * Set the form maker connection.
+     * Show the form for editing the specified resource.
      *
-     * @param string $connection
+     * @return \Illuminate\Http\Response
      */
-    public function viewShow($connection)
+    public function edit()
     {
-        $this->connection = $connection;
-
-        return $this;
+        $register = $this->registerService->find();
+        return view('facilitador::registers.edit')->with('register', $register);
     }
-
 
     /**
-     * Set the form maker connection.
+     * Update the specified resource in storage.
      *
-     * @param string $connection
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function find()
+    public function update(RegisterUpdateRequest $request)
     {
-        return $this->getInstance();
+        $id = $this->registerService->getId();
+        try {
+            $result = $this->service->update($id, $request->except('_token'));
+
+            if ($result) {
+                return back()->with('message', 'Successfully updated');
+            }
+
+            return back()->with('message', 'Failed to update');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage());
+        }
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy()
+    {
+        $id = $this->registerService->getId();
+        try {
+            $result = $this->service->destroy(Auth::user(), $id);
 
+            if ($result) {
+                return redirect('registers')->with('message', 'Successfully deleted');
+            }
+
+            return redirect('registers')->with('message', 'Failed to delete');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit()
+    // {
+    //     $register = $this->registerService->find();
+
+    //     return view(
+    //         'facilitador::registers.edit',
+    //         compact('register')
+    //     );
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request)
+    // {
+        // $id = $this->registerService->getId();
+    //     $request->validate([
+    //         'commit_name'=>'required',
+    //         'commit_price'=> 'required|integer',
+    //         'commit_qty' => 'required|integer'
+    //     ]);
+
+    //     $commit = Commit::findOrFail($id);
+    //     $commit->commit_name = $request->get('commit_name');
+    //     $commit->commit_price = $request->get('commit_price');
+    //     $commit->commit_qty = $request->get('commit_qty');
+    //     $commit->save();
+
+    //     return redirect($this->repositoryService->getRouteIndex())->with('success', 'Stock has been updated');
+    // }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy()
+    // {
+        // $id = $this->registerService->getId();
+    //     $commit = Commit::findOrFail($id);
+    //     $commit->delete();
+
+    //     return redirect($this->repositoryService->getRouteIndex())->with('success', 'Stock has been deleted Successfully');
+    // }
 }
