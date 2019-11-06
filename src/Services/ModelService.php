@@ -6,6 +6,7 @@
 namespace SierraTecnologia\Facilitador\Services;
 
 use SierraTecnologia\Crypto\Services\Crypto;
+use Illuminate\Http\Request;
 
 /**
  * ModelService helper to make table and object form mapping easy.
@@ -15,10 +16,11 @@ class ModelService
 
     protected $modelClass;
 
-    public function __construct($modelClass, $crypto = true)
+    public function __construct(Request $request, $crypto = true)
     {
+        $modelClass = $request->input('modelClass');
+        // $modelClass
         if ($crypto) {
-            dd($modelClass);
             $modelClass = Crypto::decrypt($modelClass);
         }
         $this->modelClass = $modelClass;

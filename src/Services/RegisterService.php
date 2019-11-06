@@ -5,6 +5,9 @@
 
 namespace SierraTecnologia\Facilitador\Services;
 
+use SierraTecnologia\Crypto\Services\Crypto;
+use Illuminate\Http\Request;
+
 /**
  * RegisterService helper to make table and object form mapping easy.
  */
@@ -15,8 +18,9 @@ class RegisterService
     protected $instance;
     protected $repositoryService = false;
 
-    public function __construct($identify, $crypto = true)
+    public function __construct(Request $request, $crypto = true)
     {
+        $identify = $request->input('identify');
         if ($crypto) {
             $identify = Crypto::decrypt($identify);
         }
