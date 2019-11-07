@@ -25,6 +25,9 @@ class FacilitadorProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Publishes/config/sitec-facilitador.php' => base_path('config/sitec-facilitador.php'),
         ]);
+
+        $this->loadViews();
+        $this->loadTranslations();
     }
 
 
@@ -36,9 +39,6 @@ class FacilitadorProvider extends ServiceProvider
     public function register()
     {
         $this->setProviders();
-
-        // View namespace
-        $this->loadViewsFrom(__DIR__.'/Views', 'facilitador');
 
         /*
         |--------------------------------------------------------------------------
@@ -143,5 +143,23 @@ class FacilitadorProvider extends ServiceProvider
         $this->app->register(\Collective\Html\HtmlServiceProvider::class);
         $this->app->register(\Laracasts\Flash\FlashServiceProvider::class);
 
+    }
+
+    private function loadViews()
+    {
+        // View namespace
+        $viewsPath = __DIR__.'/Resources/Views';
+        $this->loadViewsFrom($viewsPath, 'facilitador');
+        $this->publishes([
+            $viewsPath => base_path('resources/views/vendor/facilitador'),
+        ], 'views');
+    }
+    private function loadTranslations()
+    {
+        $translationsPath = __DIR__.'/Resources/Lang';
+        $this->loadTranslationsFrom($translationsPath, 'facilitador');
+        $this->publishes([
+            $translationsPath => base_path('resources/lang/vendor/facilitador'),
+        ], 'translations');
     }
 }
