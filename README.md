@@ -25,6 +25,25 @@ The Facilitator package provides a set of tools to quickly create an admin panel
 | ^6.0.x | 0.1.x | yes |
 | ^5.4.x | 0.1.x | no |
 
+## Features
+
+## Facilitador Crud Admin
+
+- [x] Display Dashboard with all configure models
+- [x] Display Index page only with model class 
+- [x] Display View Page only with model class
+- [ ] Display Add Page only with model class
+- [ ] Display Edit Page only with model class
+- [ ] Display Search Page only with model class
+- [ ] Export/Import for/from excel
+- [ ] Implement policy for view/edit tables info.
+
+## Comands
+
+- [ ] Generate migrations from Database
+- [ ] Generate models from Database
+- [ ] Generate models from migrations
+
 ### Installation
 
 Start a new Laravel project:
