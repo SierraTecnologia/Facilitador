@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Integration;
 
-use Bkwld\Decoy\Models\Element;
+use Facilitador\Decoy\Models\Element;
 use Decoy;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
@@ -252,7 +252,7 @@ class ElementsTest extends TestCase
 
         // Check that image was also created in images table
         $this->assertDatabaseHas('images', [
-            'imageable_type' => 'Bkwld\Decoy\Models\Element',
+            'imageable_type' => 'Facilitador\Decoy\Models\Element',
             'imageable_id' => 'homepage.bukwild.logo',
             'file' => '/uploads/elements/logo.jpg',
         ]);

@@ -6,11 +6,11 @@ The `Former::videoEncoder` form field creates the upload field for a video in th
 
 You'll need to edit the Decoy "encoding.php" config file.  It should be within your app/configs/packages directory.  The comments for each config parameter should be sufficient to explain how to use them.  Depending on where you are pushing the encoded videos to, you may need to spin up an S3 instance.  If you push to SFTP you can generate a key-pair locally (`ssh-keygen`), post the private key to [Zencoder](https://app.zencoder.com/account/credentials) and then add the public key to the server's authorized_keys.
 
-Then, models that support encoding should use the `Bkwld\Decoy\Models\Traits\Encodable` trait.  You also need to itemize each encodable attribute on the model by defining a `$encodable_attributes` property on the model.
+Then, models that support encoding should use the `Facilitador\Decoy\Models\Traits\Encodable` trait.  You also need to itemize each encodable attribute on the model by defining a `$encodable_attributes` property on the model.
 
 ```php?start_inline=1
 class Marquee extends Base {
-	use Bkwld\Decoy\Models\Traits\Encodable;
+	use Facilitador\Decoy\Models\Traits\Encodable;
 	protected $encodable_attributes = ['video'];
 	protected $upload_attributes = ['video'];
 }

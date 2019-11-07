@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Models\Type;
+namespace Facilitador\Support\Entities\Type;
 
-use Rinvex\Attributes\Models\Value;
+use Facilitador\Models\Value;
 
 /**
- * Rinvex\Attributes\Models\Type\Integer.
+ * Facilitador\Support\Entities\Type\Integer.
  *
  * @property int                                                $id
  * @property int                                                $content
@@ -16,16 +16,16 @@ use Rinvex\Attributes\Models\Value;
  * @property string                                             $entity_type
  * @property \Carbon\Carbon|null                                $created_at
  * @property \Carbon\Carbon|null                                $updated_at
- * @property-read \Rinvex\Attributes\Models\Attribute           $attribute
+ * @property-read \Facilitador\Models\Attribute           $attribute
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $entity
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Attributes\Models\Type\Integer whereAttributeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Attributes\Models\Type\Integer whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Attributes\Models\Type\Integer whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Attributes\Models\Type\Integer whereEntityId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Attributes\Models\Type\Integer whereEntityType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Attributes\Models\Type\Integer whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Attributes\Models\Type\Integer whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Support\Entities\Type\Integer whereAttributeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Support\Entities\Type\Integer whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Support\Entities\Type\Integer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Support\Entities\Type\Integer whereEntityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Support\Entities\Type\Integer whereEntityType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Support\Entities\Type\Integer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Support\Entities\Type\Integer whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Integer extends Value
@@ -49,10 +49,10 @@ class Integer extends Value
     {
         parent::__construct($attributes);
 
-        $this->setTable(config('rinvex.attributes.tables.attribute_integer_values'));
+        $this->setTable(config('facilitador.attributes.tables.attribute_integer_values'));
         $this->setRules([
             'content' => 'required|integer',
-            'attribute_id' => 'required|integer|exists:'.config('rinvex.attributes.tables.attributes').',id',
+            'attribute_id' => 'required|integer|exists:'.config('facilitador.attributes.tables.attributes').',id',
             'entity_id' => 'required|integer',
             'entity_type' => 'required|string',
         ]);

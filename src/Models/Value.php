@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Models;
+namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Rinvex\Cacheable\CacheableEloquent;
-use Rinvex\Support\Traits\ValidatingTrait;
-use Rinvex\Attributes\Support\ValueCollection;
+use Facilitador\Cacheable\CacheableEloquent;
+use Facilitador\Support\Traits\ValidatingTrait;
+use Facilitador\Support\Support\ValueCollection;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

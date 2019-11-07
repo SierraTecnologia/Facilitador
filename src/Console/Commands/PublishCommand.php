@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Console\Commands;
+namespace Facilitador\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'rinvex:publish:attributes {--force : Overwrite any existing files.} {--R|resource=all}';
+    protected $signature = 'facilitador:publish:attributes {--force : Overwrite any existing files.} {--R|resource=all}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish Rinvex Attributes Resources.';
+    protected $description = 'Publish Facilitador Attributes Resources.';
 
     /**
      * Execute the console command.
@@ -33,14 +33,14 @@ class PublishCommand extends Command
 
         switch ($this->option('resource')) {
             case 'config':
-                $this->call('vendor:publish', ['--tag' => 'rinvex-attributes-config', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'facilitador-attributes-config', '--force' => $this->option('force')]);
                 break;
             case 'migrations':
-                $this->call('vendor:publish', ['--tag' => 'rinvex-attributes-migrations', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'facilitador-attributes-migrations', '--force' => $this->option('force')]);
                 break;
             default:
-                $this->call('vendor:publish', ['--tag' => 'rinvex-attributes-config', '--force' => $this->option('force')]);
-                $this->call('vendor:publish', ['--tag' => 'rinvex-attributes-migrations', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'facilitador-attributes-config', '--force' => $this->option('force')]);
+                $this->call('vendor:publish', ['--tag' => 'facilitador-attributes-migrations', '--force' => $this->option('force')]);
                 break;
         }
 

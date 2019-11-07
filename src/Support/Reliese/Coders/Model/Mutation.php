@@ -5,7 +5,7 @@
  * Date: 11/10/16 11:43 PM.
  */
 
-namespace Reliese\Coders\Model;
+namespace Facilitador\Support\Reliese\Coders\Model;
 
 use Illuminate\Support\Str;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace EloquentFilter\TestClass;
+namespace Facilitador\TestClass;
 
-use EloquentFilter\ModelFilter;
+use Facilitador\ModelFilter;
 
 class ClientFilter extends ModelFilter
 {

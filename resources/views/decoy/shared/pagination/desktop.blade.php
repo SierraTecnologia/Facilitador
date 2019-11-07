@@ -1,5 +1,5 @@
 <?php
-use Bkwld\Decoy\Markup\UrlWindow;
+use Facilitador\Decoy\Markup\UrlWindow;
 
 // Make a smaller window
 $window = (new UrlWindow($paginator))->get(3);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Console\Commands;
+namespace Facilitador\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class MigrateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'rinvex:migrate:attributes {--force : Force the operation to run when in production.}';
+    protected $signature = 'facilitador:migrate:attributes {--force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Migrate Rinvex Attributes Tables.';
+    protected $description = 'Migrate Facilitador Attributes Tables.';
 
     /**
      * Execute the console command.
@@ -31,14 +31,14 @@ class MigrateCommand extends Command
     {
         $this->alert($this->description);
 
-        if (file_exists($path = 'database/migrations/rinvex/laravel-attributes')) {
+        if (file_exists($path = 'database/migrations/facilitador/laravel-attributes')) {
             $this->call('migrate', [
                 '--step' => true,
                 '--path' => $path,
                 '--force' => $this->option('force'),
             ]);
         } else {
-            $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan rinvex:publish:attributes</>');
+            $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan facilitador:publish:attributes</>');
         }
 
         $this->line('');

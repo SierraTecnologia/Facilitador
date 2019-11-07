@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\FormMaker\Services;
+namespace Facilitador\Services\FormMaker;
 
 /**
  * Input Calibration.

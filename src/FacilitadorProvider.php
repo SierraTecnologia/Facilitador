@@ -23,7 +23,8 @@ class FacilitadorProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../Publishes/config/sitec-facilitador.php' => base_path('config/sitec-facilitador.php'),
+            __DIR__.'/../publishes/config/sitec-facilitador.php' => config_path('sitec-facilitador.php'),
+            __DIR__.'/../publishes/config/eloquentfilter.php' => config_path('eloquentfilter.php'),
         ]);
 
         $this->loadViews();
@@ -39,6 +40,7 @@ class FacilitadorProvider extends ServiceProvider
     public function register()
     {
         $this->setProviders();
+        $this->commands(MakeEloquentFilter::class);
 
         /*
         |--------------------------------------------------------------------------
@@ -148,7 +150,7 @@ class FacilitadorProvider extends ServiceProvider
     private function loadViews()
     {
         // View namespace
-        $viewsPath = __DIR__.'/Resources/Views';
+        $viewsPath = $this->getResourcesPath('views');
         $this->loadViewsFrom($viewsPath, 'facilitador');
         $this->publishes([
             $viewsPath => base_path('resources/views/vendor/facilitador'),
@@ -156,10 +158,17 @@ class FacilitadorProvider extends ServiceProvider
     }
     private function loadTranslations()
     {
-        $translationsPath = __DIR__.'/Resources/Lang';
+        $translationsPath = $this->getResourcesPath('lang');
         $this->loadTranslationsFrom($translationsPath, 'facilitador');
         $this->publishes([
             $translationsPath => base_path('resources/lang/vendor/facilitador'),
         ], 'translations');
+    }
+
+
+
+    private function getResourcesPath($folder)
+    {
+        return __DIR__.'/../resources/'.$folder;
     }
 }

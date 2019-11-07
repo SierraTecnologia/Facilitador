@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Facilitador\FormMaker\Services\FormMaker;
+use Facilitador\Services\FormMaker\FormMaker;
 
 class Entry extends Model
 {

@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Bkwld\Decoy\Models\Base;
-use Bkwld\Decoy\Models\Traits\HasImages;
+use Facilitador\Decoy\Models\Base;
+use Facilitador\Decoy\Models\Traits\HasImages;
 
 class {{model}} extends Base
 {

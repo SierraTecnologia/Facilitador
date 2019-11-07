@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Techouse\SelectAutoComplete\SelectAutoCompleteController;
+use Facilitador\Support\Entities\Fields\SelectAutoCompleteController;
 
 /*
 |--------------------------------------------------------------------------

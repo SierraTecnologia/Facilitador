@@ -1,7 +1,7 @@
 <?php
 
 use Mockery as m;
-use EloquentFilter\ModelFilter;
+use Facilitador\ModelFilter;
 use PHPUnit\Framework\TestCase;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 
@@ -257,7 +257,7 @@ class ModelFilterTest extends TestCase
 
     public function testSetupIsCalled()
     {
-        $filter = m::mock('EloquentFilter\TestClass\UserFilter[setup]', [$this->builder]);
+        $filter = m::mock('Facilitador\TestClass\UserFilter[setup]', [$this->builder]);
         $filter->shouldReceive('setup')->once();
         $this->assertInstanceOf(EloquentBuilder::class, $filter->handle());
     }

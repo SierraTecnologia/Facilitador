@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Requests;
 
 // use Laravel\Nova\Resource;
-// use Laravel\Nova\Fields\Field;
+// use Facilitador\Support\Entities\Fields\Field;
 use Illuminate\Support\Collection;
 
 class ModelUpdateRequest

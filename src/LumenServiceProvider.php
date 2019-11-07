@@ -1,8 +1,8 @@
 <?php
 
-namespace EloquentFilter;
+namespace Facilitador;
 
-use EloquentFilter\Commands\MakeEloquentFilter;
+use Facilitador\Console\Commands\MakeEloquentFilter;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class LumenServiceProvider extends LaravelServiceProvider

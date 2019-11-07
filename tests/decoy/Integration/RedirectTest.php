@@ -2,7 +2,7 @@
 namespace Tests\Integration;
 
 use Tests\TestCase;
-use Bkwld\Decoy\Models\RedirectRule;
+use Facilitador\Decoy\Models\RedirectRule;
 
 class RedirectTest extends TestCase
 {

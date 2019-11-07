@@ -5,7 +5,7 @@
 [![Daily Downloads](https://poser.pugx.org/tucker-eric/eloquentfilter/d/daily)](https://packagist.org/packages/tucker-eric/eloquentfilter)
 [![License](https://poser.pugx.org/tucker-eric/eloquentfilter/license)](https://packagist.org/packages/tucker-eric/eloquentfilter)
 [![StyleCI](https://styleci.io/repos/53163405/shield)](https://styleci.io/repos/53163405/)
-[![Build Status](https://travis-ci.org/Tucker-Eric/EloquentFilter.svg?branch=master)](https://travis-ci.org/Tucker-Eric/EloquentFilter)
+[![Build Status](https://travis-ci.org/Tucker-Eric/Facilitador.svg?branch=master)](https://travis-ci.org/Tucker-Eric/Facilitador)
 
 An Eloquent way to filter Eloquent Models and their relationships
 
@@ -103,7 +103,7 @@ composer require tucker-eric/eloquentfilter
 
 There are a few ways to define the filter a model will use:
 
-- [Use EloquentFilter's Default Settings](#default-settings)
+- [Use Facilitador's Default Settings](#default-settings)
 - [Use A Custom Namespace For All Filters](#with-configuration-file-optional)
 - [Define A Model's Default Filter](#define-the-default-model-filter-optional)
 - [Dynamically Select A Model's Filter](#dynamic-filters)
@@ -124,20 +124,20 @@ The default namespace for all filters is `App\ModelFilters\` and each Model expe
 
 > Registering the service provider will give you access to the `php artisan model:filter {model}` command as well as allow you to publish the configuration file.  Registering the service provider is not required and only needed if you want to change the default namespace or use the artisan command
 
-After installing the Eloquent Filter library, register the `EloquentFilter\ServiceProvider::class` in your `config/app.php` configuration file:
+After installing the Eloquent Filter library, register the `Facilitador\ServiceProvider::class` in your `config/app.php` configuration file:
 
 ```php
 'providers' => [
     // Other service providers...
 
-    EloquentFilter\ServiceProvider::class,
+    Facilitador\ServiceProvider::class,
 ],
 ```
 
 Copy the package config to your local config with the publish command:
 
 ```bash
-php artisan vendor:publish --provider="EloquentFilter\ServiceProvider"
+php artisan vendor:publish --provider="Facilitador\ServiceProvider"
 ```
 
 In the `config/eloquentfilter.php` config file.  Set the namespace your model filters will reside in:
@@ -155,7 +155,7 @@ In the `config/eloquentfilter.php` config file.  Set the namespace your model fi
 In `bootstrap/app.php`:
 
 ```php
-$app->register(EloquentFilter\LumenServiceProvider::class);
+$app->register(Facilitador\LumenServiceProvider::class);
 ```
 
 ##### Change The Default Namespace
@@ -177,7 +177,7 @@ Create a public method `modelFilter()` that returns `$this->provideFilter(Your\M
 
 namespace App;
 
-use EloquentFilter\Filterable;
+use Facilitador\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
@@ -221,7 +221,7 @@ class UserController extends Controller
 ```
 
 ### Generating The Filter
-> Only available if you have registered `EloquentFilter\ServiceProvider::class` in the providers array in your `config/app.php'
+> Only available if you have registered `Facilitador\ServiceProvider::class` in the providers array in your `config/app.php'
 
 You can create a model filter with the following artisan command:
 
@@ -267,7 +267,7 @@ You would use the following methods:
 
 ```php
 
-use EloquentFilter\ModelFilter;
+use Facilitador\ModelFilter;
 
 class UserFilter extends ModelFilter
 {
@@ -343,25 +343,25 @@ public function setup()
 
 The `Filterable` trait also comes with the below query builder helper methods:
 
-|EloquentFilter Method|QueryBuilder Equivalent|
+|Facilitador Method|QueryBuilder Equivalent|
 |---|---|
 |`$this->whereLike($column, $string)`|`$query->where($column, 'LIKE', '%'.$string.'%')`|
 |`$this->whereBeginsWith($column, $string)`|`$query->where($column, 'LIKE', $string.'%')`|
 |`$this->whereEndsWith($column, $string)`|`$query->where($column, 'LIKE', '%'.$string)`|
 
-Since these methods are part of the `Filterable` trait they are accessible from any model that implements the trait without the need to call in the Model's EloquentFilter.
+Since these methods are part of the `Filterable` trait they are accessible from any model that implements the trait without the need to call in the Model's Facilitador.
 
 
 ### Applying The Filter To A Model
 
-Implement the `EloquentFilter\Filterable` trait on any Eloquent model:
+Implement the `Facilitador\Filterable` trait on any Eloquent model:
 
 ```php
 <?php
 
 namespace App;
 
-use EloquentFilter\Filterable;
+use Facilitador\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
@@ -554,7 +554,7 @@ In `app/ModelFilters/UserFilter.php`:
 ```php
 <?php namespace App\ModelFilters;
 
-use EloquentFilter\ModelFilter;
+use Facilitador\ModelFilter;
 
 class UserFilter extends ModelFilter
 {

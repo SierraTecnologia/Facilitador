@@ -1,6 +1,6 @@
 <?php
 
-namespace EloquentFilter;
+namespace Facilitador;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;

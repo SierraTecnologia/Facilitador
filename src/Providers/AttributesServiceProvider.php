@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Providers;
+namespace Facilitador\Attributes\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Attributes\Models\Attribute;
-use Rinvex\Support\Traits\ConsoleTools;
-use Rinvex\Attributes\Models\AttributeEntity;
-use Rinvex\Attributes\Console\Commands\MigrateCommand;
-use Rinvex\Attributes\Console\Commands\PublishCommand;
-use Rinvex\Attributes\Console\Commands\RollbackCommand;
+use Facilitador\Models\Attribute;
+use Facilitador\Support\Traits\ConsoleTools;
+use Facilitador\Models\AttributeEntity;
+use Facilitador\Console\Commands\MigrateCommand;
+use Facilitador\Console\Commands\PublishCommand;
+use Facilitador\Console\Commands\RollbackCommand;
 
 class AttributesServiceProvider extends ServiceProvider
 {
@@ -22,9 +22,9 @@ class AttributesServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        MigrateCommand::class => 'command.rinvex.attributes.migrate',
-        PublishCommand::class => 'command.rinvex.attributes.publish',
-        RollbackCommand::class => 'command.rinvex.attributes.rollback',
+        MigrateCommand::class => 'command.facilitador.attributes.migrate',
+        PublishCommand::class => 'command.facilitador.attributes.publish',
+        RollbackCommand::class => 'command.facilitador.attributes.rollback',
     ];
 
     /**
@@ -33,17 +33,17 @@ class AttributesServiceProvider extends ServiceProvider
     public function register()
     {
         // Merge config
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'rinvex.attributes');
+        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'facilitador.attributes');
 
         // Bind eloquent models to IoC container
-        $this->app->singleton('rinvex.attributes.attribute', $attributeyModel = $this->app['config']['rinvex.attributes.models.attribute']);
-        $attributeyModel === Attribute::class || $this->app->alias('rinvex.attributes.attribute', Attribute::class);
+        $this->app->singleton('facilitador.attributes.attribute', $attributeyModel = $this->app['config']['facilitador.attributes.models.attribute']);
+        $attributeyModel === Attribute::class || $this->app->alias('facilitador.attributes.attribute', Attribute::class);
 
-        $this->app->singleton('rinvex.attributes.attribute_entity', $attributeEntityModel = $this->app['config']['rinvex.attributes.models.attribute_entity']);
-        $attributeEntityModel === AttributeEntity::class || $this->app->alias('rinvex.attributes.attribute_entity', AttributeEntity::class);
+        $this->app->singleton('facilitador.attributes.attribute_entity', $attributeEntityModel = $this->app['config']['facilitador.attributes.models.attribute_entity']);
+        $attributeEntityModel === AttributeEntity::class || $this->app->alias('facilitador.attributes.attribute_entity', AttributeEntity::class);
 
         // Register attributes entities
-        $this->app->singleton('rinvex.attributes.entities', function ($app) {
+        $this->app->singleton('facilitador.attributes.entities', function ($app) {
             return collect();
         });
 
@@ -57,7 +57,7 @@ class AttributesServiceProvider extends ServiceProvider
     public function boot()
     {
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesConfig('rinvex/laravel-attributes');
-        ! $this->app->runningInConsole() || $this->publishesMigrations('rinvex/laravel-attributes');
+        ! $this->app->runningInConsole() || $this->publishesConfig('facilitador/laravel-attributes');
+        ! $this->app->runningInConsole() || $this->publishesMigrations('facilitador/laravel-attributes');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace {{namespace}};
 
-use EloquentFilter\ModelFilter;
+use Facilitador\ModelFilter;
 
 class {{class}} extends ModelFilter
 {

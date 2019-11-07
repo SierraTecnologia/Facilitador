@@ -2,10 +2,10 @@
 
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use EloquentFilter\TestClass\User;
-use EloquentFilter\TestClass\Client;
+use Facilitador\TestClass\User;
+use Facilitador\TestClass\Client;
 use Illuminate\Database\Eloquent\Model;
-use EloquentFilter\TestClass\UserFilter;
+use Facilitador\TestClass\UserFilter;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -67,7 +67,7 @@ class ModelFilterChildTest extends TestCase
 
     public function testGetModelFilterClass()
     {
-        $this->assertEquals($this->model->getModelFilterClass(), EloquentFilter\TestClass\UserFilter::class);
+        $this->assertEquals($this->model->getModelFilterClass(), Facilitador\TestClass\UserFilter::class);
     }
 
     public function testPaginationWorksOnBelongsToMany()

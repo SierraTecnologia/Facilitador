@@ -3,7 +3,7 @@ namespace Tests\Integration;
 
 use Decoy;
 use Tests\TestCase;
-use Bkwld\Decoy\Models\Element;
+use Facilitador\Decoy\Models\Element;
 
 class ElementsLocalizationTest extends TestCase
 {

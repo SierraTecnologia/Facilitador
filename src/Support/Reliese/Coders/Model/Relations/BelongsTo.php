@@ -5,13 +5,13 @@
  * Date: 05/09/16 11:41 PM.
  */
 
-namespace Reliese\Coders\Model\Relations;
+namespace Facilitador\Support\Reliese\Coders\Model\Relations;
 
 use Illuminate\Support\Str;
-use Reliese\Support\Dumper;
+use Facilitador\Support\Reliese\Support\Dumper;
 use Illuminate\Support\Fluent;
-use Reliese\Coders\Model\Model;
-use Reliese\Coders\Model\Relation;
+use Facilitador\Support\Reliese\Coders\Model\Model;
+use Facilitador\Support\Reliese\Coders\Model\Relation;
 
 class BelongsTo implements Relation
 {
@@ -21,12 +21,12 @@ class BelongsTo implements Relation
     protected $command;
 
     /**
-     * @var \Reliese\Coders\Model\Model
+     * @var \Facilitador\Support\Reliese\Coders\Model\Model
      */
     protected $parent;
 
     /**
-     * @var \Reliese\Coders\Model\Model
+     * @var \Facilitador\Support\Reliese\Coders\Model\Model
      */
     protected $related;
 
@@ -34,8 +34,8 @@ class BelongsTo implements Relation
      * BelongsToWriter constructor.
      *
      * @param \Illuminate\Support\Fluent $command
-     * @param \Reliese\Coders\Model\Model $parent
-     * @param \Reliese\Coders\Model\Model $related
+     * @param \Facilitador\Support\Reliese\Coders\Model\Model $parent
+     * @param \Facilitador\Support\Reliese\Coders\Model\Model $related
      */
     public function __construct(Fluent $command, Model $parent, Model $related)
     {

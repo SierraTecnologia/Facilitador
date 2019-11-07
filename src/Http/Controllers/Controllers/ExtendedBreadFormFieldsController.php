@@ -7,8 +7,8 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use TCG\Voyager\Http\Controllers\Controller;
 use TCG\Voyager\Facades\Voyager;
 
-use ExtendedBreadFormFields\ContentTypes\MultipleImagesWithAttrsContentType;
-use ExtendedBreadFormFields\ContentTypes\KeyValueJsonContentType;
+use Facilitador\Support\ContentTypes\MultipleImagesWithAttrsContentType;
+use Facilitador\Support\ContentTypes\KeyValueJsonContentType;
 
 class ExtendedBreadFormFieldsController extends VoyagerBaseController
 {

@@ -41,11 +41,11 @@ use App\AccountData;
 use Illuminate\Bus\Queueable;
 use Laravel\Nova\Actions\Action;
 use Illuminate\Support\Collection;
-use Laravel\Nova\Fields\ActionFields;
+use Facilitador\Support\Entities\Fields\ActionFields;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Techouse\SelectAutoComplete\SelectAutoComplete as Select;
+use Facilitador\Support\Entities\Fields\SelectAutoComplete as Select;
 
 class EmailAccountProfile extends Action
 {
@@ -54,7 +54,7 @@ class EmailAccountProfile extends Action
     /**
      * Perform the action on the given models.
      *
-     * @param  \Laravel\Nova\Fields\ActionFields  $fields
+     * @param  \Facilitador\Support\Entities\Fields\ActionFields  $fields
      * @param  \Illuminate\Support\Collection  $models
      * @return mixed
      */

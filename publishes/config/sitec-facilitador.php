@@ -4,8 +4,8 @@ return [
 
     'models' => [
         'persons' => \Siravel\Models\Identity\Person::class,
-        'attribute' => \Rinvex\Attributes\Models\Attribute::class,
-        'attribute_entity' => \Rinvex\Attributes\Models\AttributeEntity::class,
+        'attribute' => \Facilitador\Models\Attribute::class,
+        'attribute_entity' => \Facilitador\Models\AttributeEntity::class,
     ],
 
 
@@ -207,8 +207,8 @@ return [
         */
 
         'use' => [
-            // Reliese\Database\Eloquent\BitBooleans::class,
-            // Reliese\Database\Eloquent\BlamableBehavior::class,
+            // Facilitador\Support\Reliese\Database\Eloquent\BitBooleans::class,
+            // Facilitador\Support\Reliese\Database\Eloquent\BlamableBehavior::class,
         ],
 
         /*
@@ -546,7 +546,7 @@ return [
     //     'snake_attributes' => false,
     //     'qualified_tables' => true,
     //     'use' => [
-    //         Reliese\Database\Eloquent\BitBooleans::class,
+    //         Facilitador\Support\Reliese\Database\Eloquent\BitBooleans::class,
     //     ],
     //     'except' => ['migrations'],
     //     'only' => ['users'],

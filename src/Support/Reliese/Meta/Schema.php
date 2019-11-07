@@ -5,7 +5,7 @@
  * Date: 02/10/16 07:56 PM.
  */
 
-namespace Reliese\Meta;
+namespace Facilitador\Support\Reliese\Meta;
 
 /**
  * Created by Cristian.
@@ -24,7 +24,7 @@ interface Schema
     public function schema();
 
     /**
-     * @return \Reliese\Meta\Blueprint[]
+     * @return \Facilitador\Support\Reliese\Meta\Blueprint[]
      */
     public function tables();
 
@@ -38,12 +38,12 @@ interface Schema
     /**
      * @param string $table
      *
-     * @return \Reliese\Meta\Blueprint
+     * @return \Facilitador\Support\Reliese\Meta\Blueprint
      */
     public function table($table);
 
     /**
-     * @param \Reliese\Meta\Blueprint $table
+     * @param \Facilitador\Support\Reliese\Meta\Blueprint $table
      *
      * @return array
      */

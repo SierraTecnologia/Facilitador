@@ -55,10 +55,10 @@ return [
     ],
 
     /**
-     * A class that implements the Bkwld\Decoy\Input\EncodingProviders\EncoderInterface
+     * A class that implements the Facilitador\Decoy\Input\EncodingProviders\EncoderInterface
      * interface and contains the logic to push a video encode request to service
      * provider and handle the responses
      */
-    'provider' => '\Bkwld\Decoy\Input\EncodingProviders\Zencoder',
+    'provider' => '\Facilitador\Decoy\Input\EncodingProviders\Zencoder',
 
 ];

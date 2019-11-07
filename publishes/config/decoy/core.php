@@ -10,7 +10,7 @@ return [
 
     // Auth guard and policy to use
     'guard'  => 'decoy',
-    'policy' => 'Bkwld\Decoy\Auth\Policy@check',
+    'policy' => 'Facilitador\Decoy\Auth\Policy@check',
 
     // Use a password input field for admins
     'obscure_admin_password' => false,

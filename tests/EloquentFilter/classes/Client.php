@@ -1,8 +1,8 @@
 <?php
 
-namespace EloquentFilter\TestClass;
+namespace Facilitador\TestClass;
 
-use EloquentFilter\Filterable;
+use Facilitador\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model

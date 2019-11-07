@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Console\Commands;
+namespace Facilitador\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class RollbackCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'rinvex:rollback:attributes {--force : Force the operation to run when in production.}';
+    protected $signature = 'facilitador:rollback:attributes {--force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Rollback Rinvex Attributes Tables.';
+    protected $description = 'Rollback Facilitador Attributes Tables.';
 
     /**
      * Execute the console command.
@@ -31,14 +31,14 @@ class RollbackCommand extends Command
     {
         $this->alert($this->description);
 
-        if (file_exists($path = 'database/migrations/rinvex/laravel-attributes')) {
+        if (file_exists($path = 'database/migrations/facilitador/laravel-attributes')) {
             $this->call('migrate:reset', [
                 '--step' => true,
                 '--path' => $path,
                 '--force' => $this->option('force'),
             ]);
         } else {
-            $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan rinvex:publish:attributes</>');
+            $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan facilitador:publish:attributes</>');
         }
 
         $this->line('');

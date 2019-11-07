@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Events;
+namespace Facilitador\Attributes\Events;
 
 use Exception;
-use Rinvex\Attributes\Models\Value;
-use Rinvex\Attributes\Support\ValueCollection;
+use Facilitador\Models\Value;
+use Facilitador\Support\Support\ValueCollection;
 use Illuminate\Database\Eloquent\Model as Entity;
 
 class EntityWasSaved
@@ -80,7 +80,7 @@ class EntityWasSaved
     /**
      * Save or trash the given value according to it's content.
      *
-     * @param \Rinvex\Attributes\Models\Value $value
+     * @param \Facilitador\Models\Value $value
      *
      * @return void
      */
@@ -101,7 +101,7 @@ class EntityWasSaved
     /**
      * Trash the given value.
      *
-     * @param \Rinvex\Attributes\Models\Value $value
+     * @param \Facilitador\Models\Value $value
      *
      * @return bool
      */

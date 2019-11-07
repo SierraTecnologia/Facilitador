@@ -1,6 +1,6 @@
 <?php
 
-namespace ExtendedBreadFormFields\FormFields;
+namespace Facilitador\Support\FormFields;
 
 use TCG\Voyager\FormFields\AbstractHandler;
 

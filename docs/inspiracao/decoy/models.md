@@ -1,6 +1,6 @@
 # Models
 
-Decoy uses the same model classes that the public app uses.  Thus, put them as per normal in /app and give them the namespace `App\`.  However, instead of extending `Eloquent`, they should extend `Bkwld\Decoy\Models\Base`.  The base model adds a bunch of functionality to the model that is used by the admin as well as some features that can be used in the public site.
+Decoy uses the same model classes that the public app uses.  Thus, put them as per normal in /app and give them the namespace `App\`.  However, instead of extending `Eloquent`, they should extend `Facilitador\Decoy\Models\Base`.  The base model adds a bunch of functionality to the model that is used by the admin as well as some features that can be used in the public site.
 
 ## Conventions
 
@@ -23,7 +23,7 @@ public function getUriAttribute() {
 
 ### Slugs
 
-Slugs are auto created from returned by `Bkwld\Decoy\Model\Base::getAdminTitleAttribute()` as long as your model has a validation rule keyed as `slug`.  Slugs are created using the [cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable) package.  For instance:
+Slugs are auto created from returned by `Facilitador\Decoy\Model\Base::getAdminTitleAttribute()` as long as your model has a validation rule keyed as `slug`.  Slugs are created using the [cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable) package.  For instance:
 
 ```php?start_inline=1
 public static $rules = [
@@ -198,7 +198,7 @@ public function servicesAsChild() {
 
 ## Serialization
 
-Models are configured to return instances of `Bkwld\Decoy\Collections\Base` as their collection.  The `Base` collection adds an API that allows you to register transformations that get applied before serialization.  For instance:
+Models are configured to return instances of `Facilitador\Decoy\Collections\Base` as their collection.  The `Base` collection adds an API that allows you to register transformations that get applied before serialization.  For instance:
 
 ```php?start_inline=1
 Route::get('articles.json', function() {

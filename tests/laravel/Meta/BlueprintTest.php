@@ -1,6 +1,6 @@
 <?php
 
-use Reliese\Meta\Blueprint;
+use Facilitador\Support\Reliese\Meta\Blueprint;
 
 /**
  * Created by Cristian.

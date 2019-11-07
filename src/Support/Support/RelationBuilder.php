@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Support;
+namespace Facilitador\Support\Support;
 
 use Closure;
-use Rinvex\Attributes\Models\Attribute;
+use Facilitador\Models\Attribute;
 use Illuminate\Database\Eloquent\Model as Entity;
 
 class RelationBuilder
@@ -35,7 +35,7 @@ class RelationBuilder
      * Generate the entity attribute relation closure.
      *
      * @param \Illuminate\Database\Eloquent\Model $entity
-     * @param \Rinvex\Attributes\Models\Attribute $attribute
+     * @param \Facilitador\Models\Attribute $attribute
      *
      * @return \Closure
      */

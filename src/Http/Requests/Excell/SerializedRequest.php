@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Requests\Excel;
 
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Facilitador\Http\Requests\FacilitadorRequest as NovaRequest;
 use Laravel\Nova\Http\Requests\ActionRequest;
 use Laravel\Nova\Http\Requests\LensActionRequest;
 

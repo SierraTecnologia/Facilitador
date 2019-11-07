@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Traits;
+namespace Facilitador\Attributes\Traits;
 
 use Schema;
 use Closure;
 use SuperClosure\Serializer;
-use Rinvex\Attributes\Models\Value;
-use Rinvex\Attributes\Models\Attribute;
+use Facilitador\Models\Value;
+use Facilitador\Models\Attribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Rinvex\Attributes\Events\EntityWasSaved;
-use Rinvex\Attributes\Scopes\EagerLoadScope;
-use Rinvex\Attributes\Events\EntityWasDeleted;
-use Rinvex\Attributes\Support\RelationBuilder;
-use Rinvex\Attributes\Support\ValueCollection;
+use Facilitador\Attributes\Events\EntityWasSaved;
+use Facilitador\Support\Scopes\EagerLoadScope;
+use Facilitador\Attributes\Events\EntityWasDeleted;
+use Facilitador\Support\Support\RelationBuilder;
+use Facilitador\Support\Support\ValueCollection;
 use Illuminate\Support\Collection as BaseCollection;
 
 trait Attributable
@@ -157,7 +157,7 @@ trait Attributable
         $morphClass = $this->getMorphClass();
         static::$entityAttributes = static::$entityAttributes ?? collect();
 
-        if (! static::$entityAttributes->has($morphClass) && Schema::hasTable(config('rinvex.attributes.tables.attribute_entity'))) {
+        if (! static::$entityAttributes->has($morphClass) && Schema::hasTable(config('facilitador.attributes.tables.attribute_entity'))) {
             $locale = app()->getLocale();
 
             /* This is a trial to implement per resource attributes,
@@ -170,11 +170,11 @@ trait Attributable
             $entityId = $routeParam && collect(class_uses_recursive(static::class))->contains(HashidsTrait::class) && ! is_numeric($routeParam)
                 ? optional(Hashids::decode($routeParam))[0] : $routeParam;
 
-            $attributes = app('rinvex.attributes.attribute_entity')->where('entity_type', $morphClass)->where('entity_id', $entityId)->get()->pluck('attribute_id');
+            $attributes = app('facilitador.attributes.attribute_entity')->where('entity_type', $morphClass)->where('entity_id', $entityId)->get()->pluck('attribute_id');
              */
 
-            $attributes = app('rinvex.attributes.attribute_entity')->where('entity_type', $morphClass)->get()->pluck('attribute_id');
-            static::$entityAttributes->put($morphClass, app('rinvex.attributes.attribute')->whereIn('id', $attributes)->orderBy('sort_order', 'ASC')->orderBy("name->\${$locale}", 'ASC')->get()->keyBy('slug'));
+            $attributes = app('facilitador.attributes.attribute_entity')->where('entity_type', $morphClass)->get()->pluck('attribute_id');
+            static::$entityAttributes->put($morphClass, app('facilitador.attributes.attribute')->whereIn('id', $attributes)->orderBy('sort_order', 'ASC')->orderBy("name->\${$locale}", 'ASC')->get()->keyBy('slug'));
         }
 
         return static::$entityAttributes->get($morphClass) ?? new Collection();
@@ -375,7 +375,7 @@ trait Attributable
     /**
      * Set the entity attribute value.
      *
-     * @param \Rinvex\Attributes\Models\Attribute $attribute
+     * @param \Facilitador\Models\Attribute $attribute
      * @param mixed                               $value
      *
      * @return $this

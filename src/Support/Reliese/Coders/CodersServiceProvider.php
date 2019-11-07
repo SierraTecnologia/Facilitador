@@ -1,13 +1,13 @@
 <?php
 
-namespace Reliese\Coders;
+namespace Facilitador\Support\Reliese\Coders;
 
-use Reliese\Support\Classify;
-use Reliese\Coders\Model\Config;
+use Facilitador\Support\Reliese\Support\Classify;
+use Facilitador\Support\Reliese\Coders\Model\Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
-use Reliese\Coders\Console\CodeModelsCommand;
-use Reliese\Coders\Model\Factory as ModelFactory;
+use Facilitador\Support\Reliese\Coders\Console\CodeModelsCommand;
+use Facilitador\Support\Reliese\Coders\Model\Factory as ModelFactory;
 
 class CodersServiceProvider extends ServiceProvider
 {

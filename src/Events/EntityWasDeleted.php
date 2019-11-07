@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Attributes\Events;
+namespace Facilitador\Attributes\Events;
 
-use Rinvex\Attributes\Models\Attribute;
+use Facilitador\Models\Attribute;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model as Entity;
 

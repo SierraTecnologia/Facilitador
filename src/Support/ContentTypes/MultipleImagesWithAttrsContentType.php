@@ -1,6 +1,6 @@
 <?php
 
-namespace ExtendedBreadFormFields\ContentTypes;
+namespace Facilitador\Support\ContentTypes;
 
 use TCG\Voyager\Http\Controllers\ContentTypes\BaseType;
 use TCG\Voyager\Http\Controllers\ContentTypes\MultipleImage;

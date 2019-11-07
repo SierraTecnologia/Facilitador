@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Unit;
 
-use Bkwld\Decoy\Helpers;
+use Facilitador\Decoy\Helpers;
 use Tests\TestCase;
 
 class ElementsTest extends TestCase
