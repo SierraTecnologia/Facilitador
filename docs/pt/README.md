@@ -12,6 +12,8 @@ O pacote Facilitador fornece um conjunto de ferramentas para criar rapidamente u
 ##### Author(s):
 * [Ricardo Rebello Sierra](https://github.com/ricardosierra) ([@sierra91jb](http://twitter.com/sierra91jb), sierra dot csi at gmail dot com)
 
+[Agradecimentos a](./docs/pt/agradecendo.md)
+
 ## Requirements
 
 1. PHP 7+
