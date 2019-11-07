@@ -28,7 +28,7 @@ class RepositoryService
 
     public function getTableData()
     {
-        return $this->getModelService()->getAll();
+        return $this->getAll();
     }
 
     /**

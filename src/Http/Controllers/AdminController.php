@@ -23,7 +23,7 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $models = $this->facilitadorService->getModelServices();
+        $models = $this->facilitadorService->getModelServices(); //->sortByDesc('field', [], true);
         
         return view(
             'facilitador::dash.home',
