@@ -7,6 +7,9 @@ namespace SierraTecnologia\Facilitador\Services;
 
 use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Http\Request;
+use ReflectionClass;
+use ReflectionMethod;
+use App;
 
 /**
  * ModelService helper to make table and object form mapping easy.
@@ -16,10 +19,10 @@ class ModelService
 
     protected $modelClass;
 
-    public function __construct(Request $request, $crypto = true)
+    // public function __construct(Request $request, $crypto = true)
+    public function __construct(string $modelClass, $crypto = true)
     {
-        $modelClass = $request->input('modelClass');
-        // $modelClass
+        // $modelClass = $request->input('modelClass');
         if ($crypto) {
             $modelClass = Crypto::decrypt($modelClass);
         }
@@ -44,26 +47,37 @@ class ModelService
      */
     public function getUrl()
     {
-        return url('facilitador/repository');
+        return url('admin/'.$this->getCryptName());
     }
 
 
+    public function getCryptName()
+    {
+        return Crypto::encrypt($this->modelClass);
+    }
+
     public function getName()
     {
-        return $this->modelClass::getClass()->getName();
+        $reflection = new ReflectionClass($this->modelClass);
+        return $reflection->getShortName();
     }
 
     /**
      * Contagens E querys
      */
+    public function getModelQuery()
+    {
+        return $this->modelClass::query();
+    }
+
     public function count()
     {
         return $this->modelClass::count();
     }
 
-    public function getModelQuery()
+    public function find($identity)
     {
-        return $this->modelClass::query();
+        return $this->modelClass::find($identity);
     }
 
     public function getAll()
@@ -72,19 +86,66 @@ class ModelService
     }
 
     /**
+     * Caracteristicas das Tabelas
+     */
+    public function getPrimaryKey()
+    {
+        return App::make($this->modelClass)->relationsToArray();
+    }
+
+    /**
      * Relações
      */
     public function getAtributes()
     {
-        $modelInstance = new $this->modelClass;
-        $relations = $modelInstance->getRelations();
-        return $relations;
+        return App::make($this->modelClass);
     }
     public function getRelations()
     {
-        $modelInstance = new $this->modelClass;
-        $relations = $modelInstance->getRelations();
-        return $relations;
+        $model = new $this->modelClass;
+        $reflector = new ReflectionClass($model);
+        // $relations = [];
+        // dd($reflector->getMethods(ReflectionMethod::IS_PUBLIC));
+        // dd(App::make($this->modelClass)->relationsToArray());
+        // foreach ($reflector->getMethods(ReflectionMethod::IS_PUBLIC) as $reflectionMethod) {
+        //     $returnType = $reflectionMethod->getReturnType();
+        //     var_dump($returnType);
+        //     if ($returnType) {
+        //         if (in_array(class_basename($returnType->getName()), ['HasOne', 'HasMany', 'BelongsTo', 'BelongsToMany', 'MorphToMany', 'MorphTo'])) {
+        //             $relations[] = $reflectionMethod;
+        //         }
+        //     }
+        // }
+
+        // dd($relations);
+        // return App::make($this->modelClass);
+
+
+
+        $relationships = [];
+
+        foreach($reflector->getMethods(ReflectionMethod::IS_PUBLIC) as $method)
+        {
+            if ($method->class != get_class($model) ||
+                !empty($method->getParameters()) ||
+                $method->getName() == __FUNCTION__) {
+                continue;
+            }
+
+            try {
+                $return = $method->invoke($model);
+
+                if ($return instanceof Relation) {
+                    $relationships[$method->getName()] = [
+                        'type' => (new ReflectionClass($return))->getShortName(),
+                        'model' => (new ReflectionClass($return->getRelated()))->getName()
+                    ];
+                }
+            } catch(ErrorException $e) {}
+        }
+
+        dd($relationships);
+        return $relationships;
     }
 
     /**

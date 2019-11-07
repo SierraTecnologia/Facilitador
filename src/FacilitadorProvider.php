@@ -25,30 +25,6 @@ class FacilitadorProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Publishes/config/sitec-facilitador.php' => base_path('config/sitec-facilitador.php'),
         ]);
-
-        // $this->app->bind(RepositoryService::class, function($app)
-        // {
-        //     dd('Bind Repository', $app);
-        //     return new RepositoryService();
-        // });
-        // $this->app->bind(RegisterService::class, function($app)
-        // {
-        //     // dd('Bind Register', $app);
-        //     return new RegisterService();
-        // });
-
-        Route::bind('modelService', function ($value) {
-            // dd('Route Repository', $value->route());
-            return new ModelService($value);
-        });
-        Route::bind('repositoryService', function ($value) {
-            // dd('Route Repository', $value);
-            return new RepositoryService($value);
-        });
-        Route::bind('registerService', function ($value) {
-            // dd('Route Register', $value);
-            return new RegisterService($value);
-        });
     }
 
 
@@ -60,12 +36,6 @@ class FacilitadorProvider extends ServiceProvider
     public function register()
     {
         $this->setProviders();
-
-        $this->app->singleton(FacilitadorService::class, function($app)
-        {
-            Log::info('Singleton Facilitador');
-            return new FacilitadorService(config('sitec-facilitador.models'));
-        });
 
         // View namespace
         $this->loadViewsFrom(__DIR__.'/Views', 'facilitador');
@@ -87,14 +57,50 @@ class FacilitadorProvider extends ServiceProvider
         | Register the Utilities
         |--------------------------------------------------------------------------
         */
+        /**
+         * Singleton Facilitador
+         */
+        $this->app->singleton(FacilitadorService::class, function($app)
+        {
+            Log::info('Singleton Facilitador');
+            return new FacilitadorService(config('sitec-facilitador.models'));
+        });
 
-        // $this->app->singleton('Facilitador', function () {
-        //     return new Facilitador();
-        // });
+        $this->app->bind(ModelService::class, function($app)
+        {
+            Log::info('Bind Model Service');
+            $modelClass = '';
+            if (isset($app['router']->current()->parameters['modelClass'])) {
+                $modelClass = $app['router']->current()->parameters['modelClass'];
+            }
 
-        // $this->app->singleton('InputMaker', function () {
-        //     return new InputMaker();
-        // });
+            return new ModelService($modelClass);
+        });
+        $this->app->bind(RepositoryService::class, function($app)
+        {
+            Log::info('Bind Repository Service');
+            $modelService = $app->make(ModelService::class);
+            return new RepositoryService($modelService);
+        });
+        $this->app->bind(RegisterService::class, function($app)
+        {
+            Log::info('Bind Register Service');
+            $identify = '';
+            if (isset($app['router']->current()->parameters['identify'])) {
+                $identify = $app['router']->current()->parameters['identify'];
+            }
+
+            return new RegisterService($identify);
+        });
+
+        Route::bind('modelClass', function ($value) {
+            Log::info('Route Bind ModelClass');
+            return new ModelService($value);
+        });
+        Route::bind('identify', function ($value) {
+            Log::info('Route Bind Identify');
+            return new RegisterService($value);
+        });
 
         // $this->app->when(ModelService::class)
         //     ->needs('$modelClass')

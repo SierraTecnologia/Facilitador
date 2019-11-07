@@ -16,14 +16,19 @@ class RepositoryService
 
     protected $modelService;
 
-    public function __construct(ModelService $modelService)
+    public function __construct(ModelService $modelClass)
     {
-        $this->modelService = $modelService;
+        $this->modelService = $modelClass;
+    }
+
+    public function getModelService()
+    {
+        return $this->modelService;
     }
 
     public function getTableData()
     {
-        return $this->modelService->getAll();
+        return $this->getModelService()->getAll();
     }
 
     /**
@@ -33,7 +38,7 @@ class RepositoryService
      */
     public function getTableJson()
     {
-        return DataTables::of($this->modelService->getModelQuery())->toJson();
+        return DataTables::of($this->getModelService()->getModelQuery())->toJson();
     }
 
 

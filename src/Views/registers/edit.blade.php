@@ -7,7 +7,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('words.home') !!}</a></li>
-            <li><a href="{!! route('team.coberturas.index') !!}"><i class="fa fa-key"></i> {!! trans('words.coberturas') !!}</a></li>
+            <li><a href="{!! route('facilitador.index') !!}"><i class="fa fa-key"></i> {!! trans('words.coberturas') !!}</a></li>
             <li class="active">{!! trans('words.edit') !!}</li>
         </ol>
    </section>
@@ -21,7 +21,7 @@
 
                    {!! Form::model($cobertura, ['route' => ['coberturas.update', $cobertura->id], 'method' => 'patch']) !!}
 
-                        @include('team.coberturas.fields')
+                        @include('facilitador::repositories.fields')
 
                    {!! Form::close() !!}
                </div>

@@ -7,7 +7,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('words.home') !!}</a></li>
-            <li><a href="{!! route('team.coberturas.index') !!}"><i class="fa fa-key"></i> {!! trans('words.coberturas') !!}</a></li>
+            <li><a href="{!! route('facilitador.index') !!}"><i class="fa fa-key"></i> {!! trans('words.coberturas') !!}</a></li>
             <li class="active">{!! trans('words.addNew') !!}</li>
         </ol>
     </section>
@@ -19,7 +19,7 @@
                 <div class="row">
                     {!! Form::open(['route' => 'team.coberturas.store']) !!}
 
-                        @include('team.coberturas.fields')
+                        @include('facilitador::repositories.fields')
 
                     {!! Form::close() !!}
                 </div>

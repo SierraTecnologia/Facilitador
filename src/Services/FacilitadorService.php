@@ -25,7 +25,7 @@ class FacilitadorService
     public function getModelServices()
     {
         if (!$this->modelServices) {
-            $this->modelServices = $this->config->map(function ($value) {
+            $this->modelServices = collect($this->config)->map(function ($value) {
                 return new ModelService($value, false);
             });
         }

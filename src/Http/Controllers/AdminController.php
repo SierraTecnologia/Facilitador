@@ -3,7 +3,6 @@
 namespace SierraTecnologia\Facilitador\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Banner;
 use App\Models\Link;
@@ -24,7 +23,7 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $models = $this->facilitadorService->getModels();
+        $models = $this->facilitadorService->getModelServices();
         
         return view(
             'facilitador::dash.home',

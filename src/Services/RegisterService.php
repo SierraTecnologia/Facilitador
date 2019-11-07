@@ -18,9 +18,10 @@ class RegisterService
     protected $instance;
     protected $repositoryService = false;
 
-    public function __construct(Request $request, $crypto = true)
+    public function __construct(string $identify, $crypto = true)
+    // public function __construct(Request $request, $crypto = true)
     {
-        $identify = $request->input('identify');
+        // $identify = $request->input('identify');
         if ($crypto) {
             $identify = Crypto::decrypt($identify);
         }
@@ -45,20 +46,9 @@ class RegisterService
         return $this->instance;
     }
 
-    /**
-     * Relações
-     */
-    public function getAtributes()
+    public function getModelService()
     {
-        $modelInstance = $this->getInstance();
-        $relations = $modelInstance->getRelations();
-        return $relations;
-    }
-    public function getRelations()
-    {
-        $modelInstance = $this->getInstance();
-        $relations = $modelInstance->getRelations();
-        return $relations;
+        return $this->repositoryService->getModelService();
     }
 
 

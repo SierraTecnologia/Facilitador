@@ -16,11 +16,12 @@ class RepositoryController extends Controller
      */
     public function index()
     {
-        $registros = $this->service->getTableData();
+        $service = $this->repositoryService;
+        $registros = $service->getTableData();
 
         return view(
             'facilitador::repositories.index',
-            compact('registros')
+            compact('service', 'registros')
         );
     }
 
@@ -31,7 +32,7 @@ class RepositoryController extends Controller
      */
     public function getTableJson()
     {
-        return $this->service->getTableJson();
+        return $this->repositoryService->getTableJson();
     }
 
     // /**
@@ -41,7 +42,7 @@ class RepositoryController extends Controller
     //  */
     // public function index(Request $request)
     // {
-    //     $teams = $this->service->paginated($request->user()->id);
+    //     $teams = $this->repositoryService->paginated($request->user()->id);
     //     return view('team.index')->with('teams', $teams);
     // }
 
@@ -52,7 +53,7 @@ class RepositoryController extends Controller
      */
     public function search(Request $request)
     {
-        $registros = $this->service->search($request->user()->id, $request->search);
+        $registros = $this->repositoryService->search($request->user()->id, $request->search);
 
         return view(
             'facilitador::repositories.index',
@@ -79,7 +80,7 @@ class RepositoryController extends Controller
     public function store(TeamCreateRequest $request)
     {
         try {
-            $result = $this->service->create(Auth::id(), $request->except('_token'));
+            $result = $this->repositoryService->create(Auth::id(), $request->except('_token'));
 
             if ($result) {
                 return redirect('teams/'.$result->id.'/edit')->with('message', 'Successfully created');
@@ -99,7 +100,7 @@ class RepositoryController extends Controller
      */
     public function showByName($name)
     {
-        $team = $this->service->findByName($name);
+        $team = $this->repositoryService->findByName($name);
 
         if (Gate::allows('team-member', [$team, Auth::user()])) {
             return view('team.show')->with('team', $team);
@@ -117,7 +118,7 @@ class RepositoryController extends Controller
     // public function inviteMember(UserInviteRequest $request, $id)
     // {
     //     try {
-    //         $result = $this->service->invite(Auth::user(), $id, $request->email);
+    //         $result = $this->repositoryService->invite(Auth::user(), $id, $request->email);
 
     //         if ($result) {
     //             return back()->with('message', 'Successfully invited member');
@@ -138,7 +139,7 @@ class RepositoryController extends Controller
     // public function removeMember($id, $userId)
     // {
     //     try {
-    //         $result = $this->service->remove(Auth::user(), $id, $userId);
+    //         $result = $this->repositoryService->remove(Auth::user(), $id, $userId);
 
     //         if ($result) {
     //             return back()->with('message', 'Successfully removed member');
