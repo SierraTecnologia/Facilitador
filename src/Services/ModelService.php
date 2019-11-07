@@ -3,16 +3,16 @@
  * Serviço referente a linha no banco de dados
  */
 
-namespace SierraTecnologia\Facilitador\Services;
+namespace Facilitador\Services;
 
 use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Http\Request;
-use SierraTecnologia\Facilitador\Support\Eloquent\Relationships;
+use Facilitador\Support\Eloquent\Relationships;
 use App;
 use Log;
 use Illuminate\Support\Collection;
-use SierraTecnologia\Facilitador\Support\Entities\DataTypes\Varchar;
-use SierraTecnologia\Facilitador\Support\Eloquent\EloquentColumn;
+use Facilitador\Support\Entities\DataTypes\Varchar;
+use Facilitador\Support\Eloquent\EloquentColumn;
 use ReflectionClass;
 
 /**

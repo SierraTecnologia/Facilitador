@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Support\Eloquent;
+namespace Facilitador\Support\Eloquent;
 
 use ErrorException;
 use Illuminate\Database\Eloquent\Relations\Relation;

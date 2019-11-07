@@ -1,8 +1,8 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Http\Controllers;
+namespace Facilitador\Http\Controllers;
 
-use SierraTecnologia\Facilitador\Services\FacilitadorService;
+use Facilitador\Services\FacilitadorService;
 use App\Http\Controllers\Controller as BaseController;
 
 class Controller extends BaseController

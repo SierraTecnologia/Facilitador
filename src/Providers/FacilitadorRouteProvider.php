@@ -1,12 +1,12 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Providers;
+namespace Facilitador\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-use SierraTecnologia\Facilitador\Services\RegisterService;
-use SierraTecnologia\Facilitador\Services\RepositoryService;
+use Facilitador\Services\RegisterService;
+use Facilitador\Services\RepositoryService;
 
 class FacilitadorRouteProvider extends ServiceProvider
 {
@@ -17,7 +17,7 @@ class FacilitadorRouteProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'SierraTecnologia\Facilitador\Http\Controllers';
+    protected $namespace = 'Facilitador\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

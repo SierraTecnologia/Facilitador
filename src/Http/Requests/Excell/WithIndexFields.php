@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Http\Requests\Excel;
+namespace Facilitador\Http\Requests\Excel;
 
 use Laravel\Nova\Resource;
 use Laravel\Nova\Fields\Field;

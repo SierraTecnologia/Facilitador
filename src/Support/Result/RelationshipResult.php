@@ -1,11 +1,11 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Support\Result;
+namespace Facilitador\Support\Result;
 
-use SierraTecnologia\Facilitador\Support\Eloquent\Relationship;
+use Facilitador\Support\Eloquent\Relationship;
 use Illuminate\Support\Collection;
-use SierraTecnologia\Facilitador\Services\ModelService;
-use SierraTecnologia\Facilitador\Services\RepositoryService;
+use Facilitador\Services\ModelService;
+use Facilitador\Services\RepositoryService;
 
 class RelationshipResult
 {

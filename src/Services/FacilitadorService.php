@@ -3,7 +3,7 @@
  * Serviço referente a linha no banco de dados
  */
 
-namespace SierraTecnologia\Facilitador\Services;
+namespace Facilitador\Services;
 
 /**
  * 

@@ -20,7 +20,7 @@ class TestCase extends Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            \SierraTecnologia\Facilitador\FormMaker\FormMakerProvider::class,
+            \Facilitador\FormMaker\FormMakerProvider::class,
         ];
     }
 
@@ -29,8 +29,8 @@ class TestCase extends Orchestra\Testbench\TestCase
         return [
             'Form' => \Collective\Html\FormFacade::class,
             'HTML' => \Collective\Html\HtmlFacade::class,
-            'FormMaker' => \SierraTecnologia\Facilitador\FormMaker\Facades\FormMaker::class,
-            'InputMaker' => \SierraTecnologia\Facilitador\FormMaker\Facades\InputMaker::class,
+            'FormMaker' => \Facilitador\FormMaker\Facades\FormMaker::class,
+            'InputMaker' => \Facilitador\FormMaker\Facades\InputMaker::class,
         ];
     }
 

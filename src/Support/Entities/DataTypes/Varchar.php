@@ -1,8 +1,8 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Support\Entities\DataTypes;
+namespace Facilitador\Support\Entities\DataTypes;
 
-use SierraTecnologia\Facilitador\Support\Entities\DataType;
+use Facilitador\Support\Entities\DataType;
 
 class Varchar extends DataType
 {

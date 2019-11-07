@@ -3,7 +3,7 @@
  * Analisando Dependncia
  */
 
-namespace SierraTecnologia\Facilitador\Services;
+namespace Facilitador\Services;
 
 use Illuminate\Contracts\Config\Repository as Config;
 

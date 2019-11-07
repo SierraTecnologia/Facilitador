@@ -1,10 +1,10 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Http\Controllers\Universal;
+namespace Facilitador\Http\Controllers\Universal;
 
-use SierraTecnologia\Facilitador\Http\Controllers\Controller as SierraTecnologiaController;
-use SierraTecnologia\Facilitador\Services\FacilitadorService;
-use SierraTecnologia\Facilitador\Services\RepositoryService;
+use Facilitador\Http\Controllers\Controller as SierraTecnologiaController;
+use Facilitador\Services\FacilitadorService;
+use Facilitador\Services\RepositoryService;
 
 class Controller extends SierraTecnologiaController
 {

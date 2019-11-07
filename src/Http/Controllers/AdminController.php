@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Http\Controllers;
+namespace Facilitador\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Admin;

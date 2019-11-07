@@ -1,8 +1,8 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\FormMaker\Generators;
+namespace Facilitador\FormMaker\Generators;
 
-use SierraTecnologia\Facilitador\FormMaker\Services\InputCalibrator;
+use Facilitador\FormMaker\Services\InputCalibrator;
 
 /**
  * Generate the CRUD.

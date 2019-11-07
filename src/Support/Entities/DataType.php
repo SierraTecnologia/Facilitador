@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Support\Entities;
+namespace Facilitador\Support\Entities;
 
 class DataType
 {

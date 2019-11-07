@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\FormMaker\Services;
+namespace Facilitador\FormMaker\Services;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;

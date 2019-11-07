@@ -20,7 +20,7 @@
  */
 
 
-namespace SierraTecnologia\Facilitador\Services;
+namespace Facilitador\Services;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;

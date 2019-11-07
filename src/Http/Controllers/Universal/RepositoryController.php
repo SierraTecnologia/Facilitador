@@ -1,10 +1,10 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Http\Controllers\Universal;
+namespace Facilitador\Http\Controllers\Universal;
 
 use Illuminate\Http\Request;
-use SierraTecnologia\Facilitador\Services\FacilitadorService;
-use SierraTecnologia\Facilitador\Services\RepositoryService;
+use Facilitador\Services\FacilitadorService;
+use Facilitador\Services\RepositoryService;
 
 class RepositoryController extends Controller
 {

@@ -3,11 +3,11 @@
  * Serviço referente a linha no banco de dados
  */
 
-namespace SierraTecnologia\Facilitador\Services;
+namespace Facilitador\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use SierraTecnologia\Facilitador\Support\Result\RelationshipResult;
+use Facilitador\Support\Result\RelationshipResult;
 
 /**
  * RegisterService helper to make table and object form mapping easy.

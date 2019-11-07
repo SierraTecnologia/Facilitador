@@ -1,11 +1,11 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Providers;
+namespace Facilitador\Providers;
 
 use App;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use SierraTecnologia\Facilitador\Services\Gravatar;
+use Facilitador\Services\Gravatar;
 
 class GravatarServiceProvider extends ServiceProvider
 {
@@ -35,7 +35,7 @@ class GravatarServiceProvider extends ServiceProvider
     public function register()
     {
         $loader = AliasLoader::getInstance();
-        $loader->alias('Gravatar', \SierraTecnologia\Facilitador\Facades\Gravatar::class);
+        $loader->alias('Gravatar', \Facilitador\Facades\Gravatar::class);
         $this->app->singleton('gravatar', function ($app) {
             return new Gravatar($this->app['config']);
         });

@@ -7,8 +7,7 @@
 [![Packagist](https://img.shields.io/packagist/dt/sierratecnologia/facilitador.svg)](https://packagist.org/packages/sierratecnologia/facilitador)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://packagist.org/packages/sierratecnologia/facilitador)
 
-The Facilitator package provides a set of tools to quickly create an admin panel to view and manage your templates by just configuring template classes (eloquent).
-
+O pacote Facilitador fornece um conjunto de ferramentas para criar rapidamente um painel de administração para ver e gerenciar seus modelos apenas configurando as classes do modelo (eloquent).
 
 ##### Author(s):
 * [Ricardo Rebello Sierra](https://github.com/ricardosierra) ([@sierra91jb](http://twitter.com/sierra91jb), sierra dot csi at gmail dot com)

@@ -1,12 +1,12 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Support\Eloquent;
+namespace Facilitador\Support\Eloquent;
 
-use SierraTecnologia\Facilitador\Support\Eloquent\Relationship;
+use Facilitador\Support\Eloquent\Relationship;
 use Illuminate\Support\Collection;
-use SierraTecnologia\Facilitador\Services\ModelService;
-use SierraTecnologia\Facilitador\Services\RepositoryService;
-use SierraTecnologia\Facilitador\Support\Entities\DataType;
+use Facilitador\Services\ModelService;
+use Facilitador\Services\RepositoryService;
+use Facilitador\Support\Entities\DataType;
 use Illuminate\Database\Eloquent\Model;
 
 class EloquentColumn

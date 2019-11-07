@@ -1,15 +1,15 @@
 <?php
 
-namespace SierraTecnologia\Facilitador;
+namespace Facilitador;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use SierraTecnologia\Facilitador\Services\FacilitadorService;
+use Facilitador\Services\FacilitadorService;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-use SierraTecnologia\Facilitador\Services\RegisterService;
-use SierraTecnologia\Facilitador\Services\RepositoryService;
-use SierraTecnologia\Facilitador\Services\ModelService;
+use Facilitador\Services\RegisterService;
+use Facilitador\Services\RepositoryService;
+use Facilitador\Services\ModelService;
 use SierraTecnologia\Crypto\Services\Crypto;
 use Log;
 
@@ -118,9 +118,9 @@ class FacilitadorProvider extends ServiceProvider
         /**
          * Internos
          */
-        $this->app->register(\SierraTecnologia\Facilitador\Providers\ServicesProvider::class);
-        $this->app->register(\SierraTecnologia\Facilitador\Providers\FacilitadorRouteProvider::class);
-        $this->app->register(\SierraTecnologia\Facilitador\Providers\FormMakerProvider::class);
+        $this->app->register(\Facilitador\Providers\ServicesProvider::class);
+        $this->app->register(\Facilitador\Providers\FacilitadorRouteProvider::class);
+        $this->app->register(\Facilitador\Providers\FormMakerProvider::class);
         
         /*
          * Dependencias
@@ -130,7 +130,7 @@ class FacilitadorProvider extends ServiceProvider
         /**
          * Externos
          */
-        $this->app->register(\SierraTecnologia\Facilitador\Providers\GravatarServiceProvider::class);
+        $this->app->register(\Facilitador\Providers\GravatarServiceProvider::class);
         
 
         /**

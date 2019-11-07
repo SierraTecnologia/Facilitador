@@ -43,7 +43,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SierraTecnologia\\Facilitador\\": "src/"
+            "Facilitador\\": "src/"
         },
         "files": [
             "src/FormMaker/Helpers/form_maker.php",
@@ -58,7 +58,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SierraTecnologia\\Facilitador\\FacilitadorProvider"
+                "Facilitador\\FacilitadorProvider"
             ],
             "dont-discover": [
                 "scaffold-interface"

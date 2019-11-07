@@ -1,8 +1,8 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Support\Entities;
+namespace Facilitador\Support\Entities;
 
-class DataType
+class Field
 {
 
     public function __construct()

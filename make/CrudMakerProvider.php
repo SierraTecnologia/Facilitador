@@ -2,7 +2,7 @@
 
 namespace SierraTecnologia\CrudMaker;
 
-use SierraTecnologia\Facilitador\FormMaker\FormMakerProvider;
+use Facilitador\FormMaker\FormMakerProvider;
 use Illuminate\Support\ServiceProvider;
 
 class CrudMakerProvider extends ServiceProvider

@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Services;
+namespace Facilitador\Services;
 
 use App;
 use Exception;

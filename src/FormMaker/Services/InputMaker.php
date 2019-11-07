@@ -1,11 +1,11 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\FormMaker\Services;
+namespace Facilitador\FormMaker\Services;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
-use SierraTecnologia\Facilitador\FormMaker\Generators\HtmlGenerator;
+use Facilitador\FormMaker\Generators\HtmlGenerator;
 
 /**
  * $this->elper to make an HTML input.

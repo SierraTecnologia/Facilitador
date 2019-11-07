@@ -1,12 +1,12 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Providers;
+namespace Facilitador\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use SierraTecnologia\Facilitador\FormMaker\Services\FormMaker;
-use SierraTecnologia\Facilitador\FormMaker\Services\InputMaker;
+use Facilitador\FormMaker\Services\FormMaker;
+use Facilitador\FormMaker\Services\InputMaker;
 
 class FormMakerProvider extends ServiceProvider
 {
@@ -87,8 +87,8 @@ class FormMakerProvider extends ServiceProvider
 
         $loader = AliasLoader::getInstance();
 
-        $loader->alias('FormMaker', \SierraTecnologia\Facilitador\FormMaker\Facades\FormMaker::class);
-        $loader->alias('InputMaker', \SierraTecnologia\Facilitador\FormMaker\Facades\InputMaker::class);
+        $loader->alias('FormMaker', \Facilitador\FormMaker\Facades\FormMaker::class);
+        $loader->alias('InputMaker', \Facilitador\FormMaker\Facades\InputMaker::class);
 
         // Thrid party
         $loader->alias('Form', \Collective\Html\FormFacade::class);

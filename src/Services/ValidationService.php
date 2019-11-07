@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Facilitador\Services;
+namespace Facilitador\Services;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
