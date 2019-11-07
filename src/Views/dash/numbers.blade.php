@@ -7,7 +7,7 @@
 
                 <div class="info-box-content">
                 <span class="info-box-text"><a href="{{$model->getUrl()}}">{{$model->getName()}}</a></span>
-                <span class="info-box-number">{{$model->count()}}</span>
+                <span class="info-box-number">{{$model->getRepository()->count()}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>

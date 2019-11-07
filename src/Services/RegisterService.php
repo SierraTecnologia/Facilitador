@@ -5,8 +5,9 @@
 
 namespace SierraTecnologia\Facilitador\Services;
 
-use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use SierraTecnologia\Facilitador\Support\Result\RelationshipResult;
 
 /**
  * RegisterService helper to make table and object form mapping easy.
@@ -18,13 +19,8 @@ class RegisterService
     protected $instance;
     protected $repositoryService = false;
 
-    public function __construct(string $identify, $crypto = true)
-    // public function __construct(Request $request, $crypto = true)
+    public function __construct(string $identify)
     {
-        // $identify = $request->input('identify');
-        if ($crypto) {
-            $identify = Crypto::decrypt($identify);
-        }
         $this->identify = $identify;
     }
 
@@ -38,10 +34,11 @@ class RegisterService
         return $this;
     }
 
-    protected function getInstance()
+    public function getInstance()
     {
         if (!$this->instance) {
-            $this->instance = $this->repositoryService->getModelService()->find($this->identify);
+            $modelClass = $this->getModelService()->getModelClass();
+            $this->instance = $modelClass::find($this->identify);
         }
         return $this->instance;
     }
@@ -52,41 +49,46 @@ class RegisterService
     }
 
 
+
+
+    // /**
+    //  * Set the form maker user.
+    //  *
+    //  * @param string $user
+    //  */
+    // public function viewEdit($user)
+    // {
+    //     $this->user = $user;
+
+    //     return $this;
+    // }
+
+
+    // /**
+    //  * Set the form maker.
+    //  *
+    //  */
+    // public function viewShow()
+    // {
+    //     $results = $this->getRelationsResults();
+    //     return $results;
+    // }
+
     /**
-     * Set the form maker user.
-     *
-     * @param string $user
+     * Trabalhos Pesados
      */
-    public function viewEdit($user)
+
+    public function getRelationsResults($returnEmptys = false)
     {
-        $this->user = $user;
+        $results = new Collection;
+        $this->getModelService()->getRelations()->map(function ($value) use ($results, $returnEmptys) {
+            $tmpRelationResults = $this->getInstance()->{$value->name}()->get();
+            
+            if ($returnEmptys || count($tmpRelationResults)>0) {
+                $results[$value->name] = new RelationshipResult($value, $tmpRelationResults);
+            }
+        });
 
-        return $this;
+        return $results;
     }
-
-
-    /**
-     * Set the form maker connection.
-     *
-     * @param string $connection
-     */
-    public function viewShow($connection)
-    {
-        $this->connection = $connection;
-
-        return $this;
-    }
-
-
-    /**
-     * Set the form maker connection.
-     *
-     * @param string $connection
-     */
-    public function find()
-    {
-        return $this->getInstance();
-    }
-
-
 }

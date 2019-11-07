@@ -7,9 +7,13 @@ namespace SierraTecnologia\Facilitador\Services;
 
 use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Http\Request;
-use ReflectionClass;
-use ReflectionMethod;
+use SierraTecnologia\Facilitador\Support\Eloquent\Relationships;
 use App;
+use Log;
+use Illuminate\Support\Collection;
+use SierraTecnologia\Facilitador\Support\Entities\DataTypes\Varchar;
+use SierraTecnologia\Facilitador\Support\Eloquent\EloquentColumn;
+use ReflectionClass;
 
 /**
  * ModelService helper to make table and object form mapping easy.
@@ -18,15 +22,19 @@ class ModelService
 {
 
     protected $modelClass;
+    protected $repository = false;
 
-    // public function __construct(Request $request, $crypto = true)
-    public function __construct(string $modelClass, $crypto = true)
+    public function __construct(string $modelClass)
     {
-        // $modelClass = $request->input('modelClass');
-        if ($crypto) {
-            $modelClass = Crypto::decrypt($modelClass);
-        }
         $this->modelClass = $modelClass;
+    }
+
+    public function getRepository()
+    {
+        if (!$this->repository) {
+            $this->repository = new RepositoryService($this);
+        }
+        return $this->repository;
     }
 
     /**
@@ -56,10 +64,20 @@ class ModelService
         return Crypto::encrypt($this->modelClass);
     }
 
-    public function getName()
+    public function getName($plural = false)
     {
         $reflection = new ReflectionClass($this->modelClass);
-        return $reflection->getShortName();
+        $name = $reflection->getShortName();
+
+        if ($plural) {
+            $name .= '\'s';
+        }
+
+        return $name;
+    }
+    public function getModelClass()
+    {
+        return $this->modelClass;
     }
 
     /**
@@ -70,27 +88,12 @@ class ModelService
         return $this->modelClass::query();
     }
 
-    public function count()
-    {
-        return $this->modelClass::count();
-    }
-
-    public function find($identity)
-    {
-        return $this->modelClass::find($identity);
-    }
-
-    public function getAll()
-    {
-        return $this->modelClass::all();
-    }
-
     /**
      * Caracteristicas das Tabelas
      */
     public function getPrimaryKey()
     {
-        return App::make($this->modelClass)->relationsToArray();
+        return App::make($this->modelClass)->getKeyName();
     }
 
     /**
@@ -98,54 +101,15 @@ class ModelService
      */
     public function getAtributes()
     {
-        return App::make($this->modelClass);
+        // dd(\Schema::getColumnListing($this->modelClass));
+        $fillables = collect(App::make($this->modelClass)->getFillable())->map(function ($value) {
+            return new EloquentColumn($value, new Varchar, true);
+        });
+        return $fillables;
     }
-    public function getRelations()
+    public function getRelations($key = false)
     {
-        $model = new $this->modelClass;
-        $reflector = new ReflectionClass($model);
-        // $relations = [];
-        // dd($reflector->getMethods(ReflectionMethod::IS_PUBLIC));
-        // dd(App::make($this->modelClass)->relationsToArray());
-        // foreach ($reflector->getMethods(ReflectionMethod::IS_PUBLIC) as $reflectionMethod) {
-        //     $returnType = $reflectionMethod->getReturnType();
-        //     var_dump($returnType);
-        //     if ($returnType) {
-        //         if (in_array(class_basename($returnType->getName()), ['HasOne', 'HasMany', 'BelongsTo', 'BelongsToMany', 'MorphToMany', 'MorphTo'])) {
-        //             $relations[] = $reflectionMethod;
-        //         }
-        //     }
-        // }
-
-        // dd($relations);
-        // return App::make($this->modelClass);
-
-
-
-        $relationships = [];
-
-        foreach($reflector->getMethods(ReflectionMethod::IS_PUBLIC) as $method)
-        {
-            if ($method->class != get_class($model) ||
-                !empty($method->getParameters()) ||
-                $method->getName() == __FUNCTION__) {
-                continue;
-            }
-
-            try {
-                $return = $method->invoke($model);
-
-                if ($return instanceof Relation) {
-                    $relationships[$method->getName()] = [
-                        'type' => (new ReflectionClass($return))->getShortName(),
-                        'model' => (new ReflectionClass($return->getRelated()))->getName()
-                    ];
-                }
-            } catch(ErrorException $e) {}
-        }
-
-        dd($relationships);
-        return $relationships;
+        return (new Relationships($this->modelClass))($key);
     }
 
     /**

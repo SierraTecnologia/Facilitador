@@ -26,17 +26,18 @@ class RegisterController extends Controller
     public function index()
     {
         $service = $this->registerService;
-        $register = $service->find();
+        $modelRelationsResults = $service->getRelationsResults();
+        $register = $this->registerService->getInstance();
 
 
-        dd(
-            $service->getModelService()->getAtributes(),
-            $service->getModelService()->getRelations(),
-        );
+        // dd(
+        //     $modelRelationsResults,
+        //     $service->getModelService()->getAtributes(),
+        // );
 
         return view(
             'facilitador::registers.index',
-            compact('service', 'register')
+            compact('service', 'modelRelationsResults', 'register')
         );
     }
 
@@ -47,7 +48,7 @@ class RegisterController extends Controller
      */
     public function edit()
     {
-        $register = $this->registerService->find();
+        $register = $this->registerService->getInstance();
         return view('facilitador::registers.edit')->with('register', $register);
     }
 

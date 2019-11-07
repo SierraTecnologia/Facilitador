@@ -1,14 +1,17 @@
 <table class="table table-responsive" id="coberturas-table">
     <thead>
-        <th>{!! trans('words.name') !!}</th>
-        <th>{!! trans('words.type') !!}</th>
+        @foreach ($service->getModelService()->getAtributes() as $eloquentColumn)
+            <th>{!! $eloquentColumn->getName() !!}</th>
+        @endforeach
         <th colspan="3">{!! trans('words.action') !!}</th>
     </thead>
     <tbody>
         @if (!empty($registros))
             @foreach($registros as $cobertura)
                 <tr>
-                    <td>{!! $cobertura->name !!}</td>
+                    @foreach ($service->getModelService()->getAtributes() as $eloquentColumn)
+                        <td>{!! $eloquentColumn->displayFromModel($cobertura) !!}</td>
+                    @endforeach
                     <td>
                         {!! Form::open(['route' => ['facilitador.destroy', $service->getModelService()->getCryptName(), Crypto::encrypt($cobertura->{$service->getModelService()->getPrimaryKey()})], 'method' => 'delete']) !!}
                         <div class='btn-group'>

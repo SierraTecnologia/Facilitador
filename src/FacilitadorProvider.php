@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 use SierraTecnologia\Facilitador\Services\RegisterService;
 use SierraTecnologia\Facilitador\Services\RepositoryService;
 use SierraTecnologia\Facilitador\Services\ModelService;
-
+use SierraTecnologia\Crypto\Services\Crypto;
 use Log;
 
 class FacilitadorProvider extends ServiceProvider
@@ -71,7 +71,7 @@ class FacilitadorProvider extends ServiceProvider
             Log::info('Bind Model Service');
             $modelClass = '';
             if (isset($app['router']->current()->parameters['modelClass'])) {
-                $modelClass = $app['router']->current()->parameters['modelClass'];
+                $modelClass = Crypto::decrypt($app['router']->current()->parameters['modelClass']);
             }
 
             return new ModelService($modelClass);
@@ -87,7 +87,7 @@ class FacilitadorProvider extends ServiceProvider
             Log::info('Bind Register Service');
             $identify = '';
             if (isset($app['router']->current()->parameters['identify'])) {
-                $identify = $app['router']->current()->parameters['identify'];
+                $identify = Crypto::decrypt($app['router']->current()->parameters['identify']);
             }
 
             return new RegisterService($identify);
