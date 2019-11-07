@@ -1,0 +1,24 @@
+title: Decoy
+
+theme: jekyll-theme-minimal
+
+nav:
+  Setup:
+    About: //github.com/BKWLD/decoy#readme
+    Installation: index
+    Quick start: quick-start
+  Core:
+    Models: models
+    Views: views
+    Controllers: controllers
+    Routing: routing
+  Features:
+    Admin management: admins
+    Console: console
+    Custom form fields: custom-fields
+    Customizing CSS & JS: customize
+    Elements: elements
+    Images: images
+    Localization: localization
+    Validation: validation
+    Video encoding: video-encoding

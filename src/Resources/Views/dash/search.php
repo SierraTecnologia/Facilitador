@@ -2,10 +2,10 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">{!! trans('words.coberturas') !!}</h1>
+        <h1 class="pull-left">{!! $service->getModelService()->getName(true) !!}</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('words.home') !!}</a></li>
-            <li class="active">{!! trans('words.coberturas') !!}</li>
+            <li class="active">{!! $service->getModelService()->getName(true) !!}</li>
         </ol>
     </section>
     <div class="content">

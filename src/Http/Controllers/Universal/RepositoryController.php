@@ -5,6 +5,8 @@ namespace Facilitador\Http\Controllers\Universal;
 use Illuminate\Http\Request;
 use Facilitador\Services\FacilitadorService;
 use Facilitador\Services\RepositoryService;
+use Facilitador\Http\Requests\ModelCreateRequest;
+use Facilitador\Http\Requests\ModelSearchRequest;
 
 class RepositoryController extends Controller
 {
@@ -18,6 +20,7 @@ class RepositoryController extends Controller
     {
         $service = $this->repositoryService;
         $registros = $service->getTableData();
+        //     $teams = $this->repositoryService->paginated($request->user()->id);
 
         return view(
             'facilitador::repositories.index',
@@ -35,23 +38,14 @@ class RepositoryController extends Controller
         return $this->repositoryService->getTableJson();
     }
 
-    // /**
-    //  * Display a listing of the resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function index(Request $request)
-    // {
-    //     $teams = $this->repositoryService->paginated($request->user()->id);
-    //     return view('team.index')->with('teams', $teams);
-    // }
 
     /**
      * Display a listing of the resource searched.
      *
+     * @param  \Facilitador\Http\Requests\ModelSearchRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    public function search(ModelSearchRequest $request)
     {
         $registros = $this->repositoryService->search($request->user()->id, $request->search);
 
@@ -68,25 +62,30 @@ class RepositoryController extends Controller
      */
     public function create()
     {
-        return view('team.create');
+        $service = $this->registerService;
+
+        return view(
+            'facilitador::repositories.create',
+            compact('service')
+        );
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\TeamCreateRequest  $request
+     * @param  \Facilitador\Http\Requests\ModelCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TeamCreateRequest $request)
+    public function store(ModelCreateRequest $request)
     {
         try {
             $result = $this->repositoryService->create(Auth::id(), $request->except('_token'));
 
             if ($result) {
-                return redirect('teams/'.$result->id.'/edit')->with('message', 'Successfully created');
+                return redirect($this->service->getUrl('edit'))->with('message', 'Successfully created');
             }
 
-            return redirect('teams')->with('message', 'Failed to create');
+            return redirect($this->service->getUrl())->with('message', 'Failed to create');
         } catch (Exception $e) {
             return back()->withErrors($e->getMessage());
         }
