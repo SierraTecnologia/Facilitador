@@ -12,6 +12,7 @@ use Facilitador\Services\RepositoryService;
 use Facilitador\Services\ModelService;
 use SierraTecnologia\Crypto\Services\Crypto;
 use Log;
+use Facilitador\Console\Commands\MakeEloquentFilter;
 
 class FacilitadorProvider extends ServiceProvider
 {
