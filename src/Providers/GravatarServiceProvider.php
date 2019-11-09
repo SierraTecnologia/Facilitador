@@ -22,7 +22,7 @@ class GravatarServiceProvider extends ServiceProvider
      */
     protected function setupConfig()
     {
-        $source = realpath(__DIR__.'/../Publishes/config/gravatar.php');
+        $source = realpath(__DIR__.'/../../publishes/config/gravatar.php');
         $this->publishes([$source => config_path('gravatar.php')]);
         $this->mergeConfigFrom($source, 'gravatar');
 	}

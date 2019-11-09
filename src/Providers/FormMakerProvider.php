@@ -18,7 +18,7 @@ class FormMakerProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../Publishes/config/form-maker.php' => base_path('config/form-maker.php'),
+            __DIR__.'/../../publishes/config/form-maker.php' => base_path('config/form-maker.php'),
         ]);
         
 
