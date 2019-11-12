@@ -48,8 +48,26 @@ class RegisterService
         return $this->repositoryService->getModelService();
     }
 
+    /**
+     * Retorna identificador do registro
+     *
+     * @return void
+     */
+    public function getId()
+    {
+        $register = $this->getInstance();
+        return $register->{$this->getModelService()->getPrimaryKey()};
+    }
 
-
+    /**
+     * Identificador criptografado para serem usadas nas urls
+     *
+     * @return void
+     */
+    public function getCryptName()
+    {
+        return Crypto::encrypt($this->getId());
+    }
 
     // /**
     //  * Set the form maker user.

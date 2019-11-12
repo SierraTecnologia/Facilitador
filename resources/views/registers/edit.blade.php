@@ -7,7 +7,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('words.home') !!}</a></li>
-            <li><a href="{!! route('facilitador.index') !!}"><i class="fa fa-key"></i> {!! $service->getModelService()->getName(true) !!}</a></li>
+            <li><a href="{!! route('facilitador.index', , [ $service->getModelService()->getCryptName() ]) !!}) !!}"><i class="fa fa-key"></i> {!! $service->getModelService()->getName(true) !!}</a></li>
             <li class="active">{!! trans('words.edit') !!}</li>
         </ol>
    </section>
@@ -19,7 +19,7 @@
 
                    @include('layouts.partials.message')
 
-                   {!! Form::model($cobertura, ['route' => ['coberturas.update', $cobertura->id], 'method' => 'patch']) !!}
+                   {!! Form::model($cobertura, ['route' => , [ $service->getModelService()->getCryptName(), $service->getCryptName()], 'method' => 'patch']) !!}
 
                         @include('facilitador::repositories.fields')
 

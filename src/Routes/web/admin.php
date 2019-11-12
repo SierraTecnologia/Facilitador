@@ -12,10 +12,18 @@ Route::name('facilitador.')->group(function () {
          */
         Route::namespace('Universal')->group(function () {
             Route::prefix('{modelClass}')->group(function () {
+
+                /**
+                 * Repository Controller
+                 */
                 Route::get('/', 'RepositoryController@index')->name('index');
-                Route::get('/create', 'RegisterController@create')->name('create');
+                Route::get('/create', 'RepositoryController@create')->name('create');
                 Route::post('/', 'RepositoryController@store')->name('store');
                 Route::get('/search', 'RepositoryController@search')->name('search');
+
+                /**
+                 * Register Controller
+                 */
                 Route::prefix('{identify}')->group(function () {
                     Route::get('/', 'RegisterController@index')->name('show');
                     Route::get('/edit', 'RegisterController@edit')->name('edit');
