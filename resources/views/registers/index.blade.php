@@ -26,10 +26,12 @@
 
                 <h2> Show {!! $service->getModelService()->getName() !!}</h2>
 
+                
             </div>
 
             <div class="pull-right">
 
+                {!! $htmlGenerator->optionsButtons() !!}
                 <a href="{!! route('facilitador.index', [ $service->getModelService()->getCryptName()]) !!}" class="btn btn-default">{!! trans('words.back') !!}</a>
 
             </div>

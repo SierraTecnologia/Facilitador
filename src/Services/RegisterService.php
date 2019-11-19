@@ -97,7 +97,7 @@ class RegisterService
      * Trabalhos Pesados
      */
 
-    public function getRelationsResults($returnEmptys = true)
+    public function getRelationsResults($returnEmptys = false)
     {
         $results = new Collection;
         $this->getModelService()->getRelations()->map(function ($value) use ($results, $returnEmptys) {

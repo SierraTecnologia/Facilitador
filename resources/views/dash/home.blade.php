@@ -7,6 +7,28 @@
 @stop
 
 @section('content')
+
+
+    <div class="row">
+
+        <div class="col-lg-12 margin-tb">
+
+            <div class="pull-left">
+
+                <h2> Dashboard</h2>
+
+                
+            </div>
+
+            <div class="pull-right">
+
+                {!! $htmlGenerator->optionsButtons() !!}
+                
+            </div>
+
+        </div>
+
+    </div>
     @include('facilitador::dash.numbers', [
         'models' => $models,
     ])
