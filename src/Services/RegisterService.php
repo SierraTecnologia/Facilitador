@@ -107,6 +107,8 @@ class RegisterService
             }
         });
 
+        dd($results);
+
         return $results;
     }
 }

@@ -69,14 +69,23 @@ class FacilitadorProvider extends ServiceProvider
             return new FacilitadorService(config('sitec-facilitador.models'));
         });
 
+        Route::bind('modelClass', function ($value) {
+            Log::info('Route Bind ModelClass - '.$value);
+            return new ModelService($value);
+        });
+        Route::bind('identify', function ($value) {
+            Log::info('Route Bind Identify - '.$value);
+            return new RegisterService($value);
+        });
+
         $this->app->bind(ModelService::class, function($app)
         {
-            Log::info('Bind Model Service');
-            $modelClass = '';
+            $modelClass = false;
             if (isset($app['router']->current()->parameters['modelClass'])) {
                 $modelClass = Crypto::decrypt($app['router']->current()->parameters['modelClass']);
             }
-
+            
+            Log::info('Bind Model Service - '.$modelClass);
             return new ModelService($modelClass);
         });
         $this->app->bind(RepositoryService::class, function($app)
@@ -87,22 +96,13 @@ class FacilitadorProvider extends ServiceProvider
         });
         $this->app->bind(RegisterService::class, function($app)
         {
-            Log::info('Bind Register Service');
             $identify = '';
             if (isset($app['router']->current()->parameters['identify'])) {
                 $identify = Crypto::decrypt($app['router']->current()->parameters['identify']);
             }
 
+            Log::info('Bind Register Service - '.$identify);
             return new RegisterService($identify);
-        });
-
-        Route::bind('modelClass', function ($value) {
-            Log::info('Route Bind ModelClass');
-            return new ModelService($value);
-        });
-        Route::bind('identify', function ($value) {
-            Log::info('Route Bind Identify');
-            return new RegisterService($value);
         });
 
         // $this->app->when(ModelService::class)
