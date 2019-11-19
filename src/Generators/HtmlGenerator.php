@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\FormMaker\Generators;
+namespace Facilitador\Generators;
 
 use Facilitador\Services\FormMaker\InputCalibrator;
 

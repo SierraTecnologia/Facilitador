@@ -53,9 +53,9 @@ class ModelService
      *
      * @return void
      */
-    public function getUrl()
+    public function getUrl($page = '')
     {
-        return url('admin/'.$this->getCryptName());
+        return url('admin/'.$this->getCryptName().$page);
     }
 
 
@@ -74,6 +74,12 @@ class ModelService
         }
 
         return $name;
+    }
+    public function getTableName()
+    {
+        $name = $this->getModelClass();
+        $model = new $name;
+        return $model->getTable();
     }
     public function getModelClass()
     {
@@ -112,6 +118,21 @@ class ModelService
         return (new Relationships($this->modelClass))($key);
     }
 
+    public function getRelationsByGroup()
+    {
+
+        $classes = $this->getRelations();
+        
+        $group = [];
+        foreach ($classes as $class) {
+            if (!isset($group[$class->type])) {
+                $group[$class->type] = [];
+            }
+            $group[$class->type][] = $class;
+        }
+        return $group;
+    }
+
     /**
      * Campos
      *
@@ -124,7 +145,7 @@ class ModelService
 
     public function getFieldForForm()
     {
-        $atributes = $this->getAtributes;
+        $atributes = $this->getAtributes();
         $fields = [
             'identity' =>  $atributes->all(),
         ];

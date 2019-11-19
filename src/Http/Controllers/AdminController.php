@@ -25,9 +25,12 @@ class AdminController extends Controller
     {
         $models = $this->facilitadorService->getModelServices(); //->sortByDesc('field', [], true);
         
+
+        $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
+        
         return view(
             'facilitador::dash.home',
-            compact('models')
+            compact('models', 'htmlGenerator')
         );
     }
 

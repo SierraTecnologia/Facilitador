@@ -62,7 +62,7 @@ class RepositoryController extends Controller
      */
     public function create()
     {
-        $service = $this->registerService;
+        $service = $this->repositoryService;
 
         return view(
             'facilitador::repositories.create',

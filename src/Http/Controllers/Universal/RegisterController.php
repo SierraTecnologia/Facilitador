@@ -30,6 +30,8 @@ class RegisterController extends Controller
         $modelRelationsResults = $service->getRelationsResults();
         $register = $this->registerService->getInstance();
 
+        $htmlGenerator = new \Facilitador\Generators\RegisterGenerator($service);
+
 
         // dd(
         //     $modelRelationsResults,
@@ -38,7 +40,7 @@ class RegisterController extends Controller
 
         return view(
             'facilitador::registers.index',
-            compact('service', 'modelRelationsResults', 'register')
+            compact('service', 'modelRelationsResults', 'register', 'htmlGenerator')
         );
     }
 

@@ -8,6 +8,7 @@ namespace Facilitador\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Facilitador\Support\Result\RelationshipResult;
+use SierraTecnologia\Crypto\Services\Crypto;
 
 /**
  * RegisterService helper to make table and object form mapping easy.
@@ -96,7 +97,7 @@ class RegisterService
      * Trabalhos Pesados
      */
 
-    public function getRelationsResults($returnEmptys = false)
+    public function getRelationsResults($returnEmptys = true)
     {
         $results = new Collection;
         $this->getModelService()->getRelations()->map(function ($value) use ($results, $returnEmptys) {
@@ -106,8 +107,6 @@ class RegisterService
                 $results[$value->name] = new RelationshipResult($value, $tmpRelationResults);
             }
         });
-
-        dd($results);
 
         return $results;
     }
