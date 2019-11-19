@@ -2,7 +2,7 @@
 
 use Illuminate\Container\Container as Container;
 use Illuminate\Support\Facades\Facade as Facade;
-use Facilitador\FormMaker\Generators\HtmlGenerator;
+use Facilitador\Generators\FormMaker\HtmlGenerator;
 
 class HtmlGeneratorTest extends TestCase
 {
