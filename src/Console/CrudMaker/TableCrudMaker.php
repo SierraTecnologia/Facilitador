@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use SierraTecnologia\CrudMaker\Services\TableService;
+use SierraTecnologia\Services\CrudMaker\TableService;
 
 class TableCrudMaker extends Command
 {

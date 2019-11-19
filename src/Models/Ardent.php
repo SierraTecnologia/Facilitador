@@ -1,4 +1,4 @@
-<?php namespace LaravelArdent\Ardent;
+<?php namespace Facilitador\Models;
 
 use Closure;
 use Illuminate\Container\Container;

@@ -5,11 +5,11 @@ namespace SierraTecnologia\CrudMaker\Console;
 use Config;
 use Exception;
 use Illuminate\Console\Command;
-use SierraTecnologia\CrudMaker\Generators\CrudGenerator;
-use SierraTecnologia\CrudMaker\Services\AppService;
-use SierraTecnologia\CrudMaker\Services\ConfigService;
-use SierraTecnologia\CrudMaker\Services\CrudService;
-use SierraTecnologia\CrudMaker\Services\ValidatorService;
+use SierraTecnologia\Generators\CrudMaker\CrudGenerator;
+use SierraTecnologia\Services\CrudMaker\AppService;
+use SierraTecnologia\Services\CrudMaker\ConfigService;
+use SierraTecnologia\Services\CrudMaker\CrudService;
+use SierraTecnologia\Services\CrudMaker\ValidatorService;
 
 class CrudMaker extends Command
 {

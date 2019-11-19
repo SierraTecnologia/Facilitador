@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Filesystem\Filesystem;
-use SierraTecnologia\CrudMaker\Services\TestService;
+use SierraTecnologia\Services\CrudMaker\TestService;
 
 class TestServiceTest extends TestCase
 {

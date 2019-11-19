@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\CrudMaker\Services;
+namespace SierraTecnologia\Services\CrudMaker;
 
 use RuntimeException;
 

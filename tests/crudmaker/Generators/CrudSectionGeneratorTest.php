@@ -1,7 +1,7 @@
 <?php
 
 use org\bovigo\vfs\vfsStream;
-use SierraTecnologia\CrudMaker\Generators\CrudGenerator;
+use SierraTecnologia\Generators\CrudMaker\CrudGenerator;
 
 class CrudSectionGeneratorTest extends TestCase
 {

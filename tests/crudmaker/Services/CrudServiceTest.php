@@ -1,7 +1,7 @@
 <?php
 
 use org\bovigo\vfs\vfsStream;
-use SierraTecnologia\CrudMaker\Services\CrudService;
+use SierraTecnologia\Services\CrudMaker\CrudService;
 
 class MockProgressBar
 {

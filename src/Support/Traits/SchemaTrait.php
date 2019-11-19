@@ -2,7 +2,7 @@
 
 namespace SierraTecnologia\CrudMaker\Traits;
 
-use SierraTecnologia\CrudMaker\Services\ValidatorService;
+use SierraTecnologia\Services\CrudMaker\ValidatorService;
 
 trait SchemaTrait
 {
