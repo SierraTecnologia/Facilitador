@@ -2085,6 +2085,59 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
+            "name": "igaster/laravel_cities",
+            "version": "v1.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/igaster/laravel_cities.git",
+                "reference": "69e307c3b302ef8d007a26c4e9fba6f18d700613"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/igaster/laravel_cities/zipball/69e307c3b302ef8d007a26c4e9fba6f18d700613",
+                "reference": "69e307c3b302ef8d007a26c4e9fba6f18d700613",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~5.1 || ^6.0"
+            },
+            "require-dev": {
+                "facade/ignition": "^1.4",
+                "fzaninotto/faker": "^1.4",
+                "mockery/mockery": "^1.0",
+                "nunomaduro/collision": "^3.0",
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Igaster\\LaravelCities\\": "src/",
+                    "Igaster\\LaravelCities\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Giannis Gasteratos",
+                    "email": "igasteratos@gmail.com"
+                }
+            ],
+            "description": "Seed all countries/cities from geonames.org database. Searchable DB tree, ready to use API & a bonus vue.js component!",
+            "homepage": "https://github.com/igaster/laravel_cities.git",
+            "keywords": [
+                "GeoNames.org",
+                "cities",
+                "countries",
+                "geolocation",
+                "laravel"
+            ],
+            "time": "2019-09-05T09:40:19+00:00"
+        },
+        {
             "name": "intervention/image",
             "version": "2.5.1",
             "source": {
@@ -6592,10 +6645,11 @@
             "dist": {
                 "type": "path",
                 "url": "../Locaravel",
-                "reference": "18f782628d9e2197870dcf8f3ed84d0c7a22066b"
+                "reference": "2ee809c3256636bb96987fe9ea61f96dfb182949"
             },
             "require": {
                 "doctrine/dbal": ">=2.5",
+                "igaster/laravel_cities": ">=1.3.7",
                 "illuminate/support": ">=5.8",
                 "php": ">=7.0",
                 "sierratecnologia/crypto": "dev-master"
