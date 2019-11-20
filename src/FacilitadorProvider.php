@@ -128,6 +128,7 @@ class FacilitadorProvider extends ServiceProvider
         /*
          * Dependencias
          */
+        $this->app->register(\Locaravel\LocaravelProvider::class);
         $this->app->register(\SierraTecnologia\Crypto\CryptoProvider::class);
         
         /**

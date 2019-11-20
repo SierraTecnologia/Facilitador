@@ -60,11 +60,10 @@
         "cipemotion/medialibrary": "*",
         "laracasts/flash": "*",
         "google/recaptcha": "*",
-        "anahkiasen/former": "^4.3.0",
+        "sierratecnologia/former": "5.0.2",
         "bkwld/cloner": "^3.5.1",
 
 
-        "sierratecnologia/former": "^5.0.0",
         "anahkiasen/html-object": "^1.4",
         "bkwld/croppa": "~4.0",
         "bkwld/laravel-haml": "~2.0",
@@ -97,6 +96,20 @@
             "tests/TestCase.php"
         ]
     },
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": [],
+        "post-create-project-cmd": []
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../Locaravel",
+            "options": {
+                "symlink": false
+            }
+        }
+    ],
     "extra": {
         "laravel": {
             "providers": [
