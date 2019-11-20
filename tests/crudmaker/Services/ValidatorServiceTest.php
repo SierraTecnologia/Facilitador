@@ -13,7 +13,7 @@ class ValidatorServiceTest extends TestCase
     {
         parent::setUp();
 
-        $this->command = Mockery::mock('SierraTecnologia\CrudMaker\Console\CrudMaker');
+        $this->command = Mockery::mock('Siravel\Console\Commands\CrudMaker\CrudMaker');
         $this->validator = new ValidatorService();
         $this->config = [
             'bootstrap' => false,

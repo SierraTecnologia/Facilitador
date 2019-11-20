@@ -62,27 +62,27 @@ class DecoyProvider extends BaseServiceProvider
     {
         // Publish config files
         $this->publishes([
-             __DIR__.'/../config' => config_path('decoy')
+             __DIR__.'/../../publishes/config/decoy' => config_path('decoy')
         ], 'config');
 
         // Publish decoy css and js to public directory
         $this->publishes([
-            __DIR__.'/../dist' => public_path('assets/decoy')
+            __DIR__.'/../../dist' => public_path('assets/decoy')
         ], 'assets');
 
         // Publish lanaguage files
         $this->publishes([
-            __DIR__.'/../lang' => resource_path('lang/vendor/decoy')
+            __DIR__.'/../../resources/lang' => resource_path('lang/vendor/decoy')
         ], 'lang');
 
         // Register views
-        $this->loadViewsFrom(__DIR__.'/../views', 'decoy');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views/decoy', 'decoy');
 
         // Load translations
-        $this->loadTranslationsFrom(__DIR__.'/../lang', 'decoy');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'decoy');
 
         // Load migrations
-        $this->loadMigrationsFrom(__DIR__.'/../migrations/');
+        $this->loadMigrationsFrom(__DIR__.'/../../migrations/');
     }
 
     /**
@@ -144,7 +144,7 @@ class DecoyProvider extends BaseServiceProvider
 
         Config::set('auth.providers.decoy', [
             'driver' => 'eloquent',
-            'model'  => Models\Admin::class,
+            'model'  => Models\Decoy\Admin::class,
         ]);
 
         Config::set('auth.passwords.decoy', [
@@ -212,10 +212,10 @@ class DecoyProvider extends BaseServiceProvider
 
         // Register middleware individually
         foreach ([
-            'decoy.auth'          => Middleware\Auth::class,
-            'decoy.edit-redirect' => Middleware\EditRedirect::class,
-            'decoy.guest'         => Middleware\Guest::class,
-            'decoy.save-redirect' => Middleware\SaveRedirect::class,
+            'decoy.auth'          => \Siravel\Http\Middleware\Auth::class,
+            'decoy.edit-redirect' => \Siravel\Http\Middleware\EditRedirect::class,
+            'decoy.guest'         => \Siravel\Http\Middleware\Guest::class,
+            'decoy.save-redirect' => \Siravel\Http\Middleware\SaveRedirect::class,
         ] as $key => $class) {
             $this->app['router']->aliasMiddleware($key, $class);
         }
@@ -254,9 +254,9 @@ class DecoyProvider extends BaseServiceProvider
     public function register()
     {
         // Merge own configs into user configs
-        $this->mergeConfigFrom(__DIR__.'/../config/core.php', 'decoy.core');
-        $this->mergeConfigFrom(__DIR__.'/../config/encode.php', 'decoy.encode');
-        $this->mergeConfigFrom(__DIR__.'/../config/site.php', 'decoy.site');
+        $this->mergeConfigFrom(__DIR__.'/../../publishes/config/decoy/core.php', 'decoy.core');
+        $this->mergeConfigFrom(__DIR__.'/../../publishes/config/decoy/encode.php', 'decoy.encode');
+        $this->mergeConfigFrom(__DIR__.'/../../publishes/config/decoy/site.php', 'decoy.site');
 
         // Register external packages
         $this->registerPackages();
@@ -270,14 +270,14 @@ class DecoyProvider extends BaseServiceProvider
         $this->app->singleton('decoy.router', function ($app) {
             $dir = config('decoy.core.dir');
 
-            return new Routing\Router($dir);
+            return new \Siravel\Routing\Router($dir);
         });
 
         // Wildcard router
         $this->app->singleton('decoy.wildcard', function ($app) {
             $request = $app['request'];
 
-            return new Routing\Wildcard(
+            return new \Siravel\Routing\Wildcard(
                 config('decoy.core.dir'),
                 $request->getMethod(),
                 $request->path()
@@ -300,17 +300,17 @@ class DecoyProvider extends BaseServiceProvider
 
         // Register URL Generators as "DecoyURL".
         $this->app->singleton('decoy.url', function ($app) {
-            return new Routing\UrlGenerator($app['request']->path());
+            return new \Siravel\Routing\UrlGenerator($app['request']->path());
         });
 
         // Build the Elements collection
         $this->app->singleton('decoy.elements', function ($app) {
-            return with(new Collections\Elements)->setModel(Models\Element::class);
+            return with(new \Siravel\Collections\Elements)->setModel(Models\Element::class);
         });
 
         // Build the Breadcrumbs store
         $this->app->singleton('decoy.breadcrumbs', function ($app) {
-            $breadcrumbs = new Layout\Breadcrumbs();
+            $breadcrumbs = new \Siravel\Layout\Breadcrumbs();
             $breadcrumbs->set($breadcrumbs->parseURL());
 
             return $breadcrumbs;
@@ -320,8 +320,8 @@ class DecoyProvider extends BaseServiceProvider
         $this->app->singleton(ExceptionHandler::class, Exceptions\Handler::class);
 
         // Register commands
-        $this->commands([Commands\Generate::class]);
-        $this->commands([Commands\Admin::class]);
+        $this->commands([\Siravel\Console\Commands\Generate\Generate::class]);
+        $this->commands([\Siravel\Console\Commands\Generate\Admin::class]);
     }
 
     /**

@@ -44,8 +44,8 @@ class CrudMakerProvider extends ServiceProvider
         */
 
         $this->commands([
-            \SierraTecnologia\CrudMaker\Console\CrudMaker::class,
-            \SierraTecnologia\CrudMaker\Console\TableCrudMaker::class,
+            \Siravel\Console\Commands\CrudMaker\CrudMaker::class,
+            \Siravel\Console\Commands\CrudMaker\TableCrudMaker::class,
         ]);
     }
 }

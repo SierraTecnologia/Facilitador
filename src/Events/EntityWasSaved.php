@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Facilitador\Attributes\Events;
+namespace Facilitador\Events;
 
 use Exception;
 use Facilitador\Models\Value;

@@ -63,7 +63,7 @@ class CrudService
      * @param string                                        $section
      * @param string                                        $table
      * @param array                                         $splitTable
-     * @param \SierraTecnologia\CrudMaker\Console\CrudMaker              $command
+     * @param \Siravel\Console\Commands\CrudMaker\CrudMaker              $command
      */
     public function generateDB($config, $bar, $section, $table, $splitTable, $command)
     {

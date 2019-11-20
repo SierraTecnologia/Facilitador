@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Commands;
+namespace Facilitador\Console\Commands\Generate;
 
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;

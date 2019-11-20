@@ -30,7 +30,7 @@ class DatabaseGenerator
      * @param string                           $section
      * @param string                           $table
      * @param array                            $splitTable
-     * @param \SierraTecnologia\CrudMaker\Console\CrudMaker $command
+     * @param \Siravel\Console\Commands\CrudMaker\CrudMaker $command
      *
      * @return bool
      */

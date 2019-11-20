@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Facilitador\Attributes\Events;
+namespace Facilitador\Events;
 
 use Facilitador\Models\Attribute;
 use Illuminate\Database\Eloquent\SoftDeletes;

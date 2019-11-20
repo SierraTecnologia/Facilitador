@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\CrudMaker\Console;
+namespace Siravel\Console\Commands\CrudMaker;
 
 use Exception;
 use Illuminate\Console\DetectsApplicationNamespace;

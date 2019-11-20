@@ -26,7 +26,7 @@ class LumenCrudMakerProvider extends CrudMakerProvider
         parent::register();
 
         $this->commands([
-            \SierraTecnologia\CrudMaker\Console\Publish::class,
+            \Siravel\Console\Commands\CrudMaker\Publish::class,
         ]);
     }
 }

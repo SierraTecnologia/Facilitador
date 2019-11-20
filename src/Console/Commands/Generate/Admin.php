@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Commands;
+namespace Facilitador\Console\Commands\Generate;
 
 use Illuminate\Console\Command;
 use Facilitador\Models\Decoy\Admin as BkwldAdmin;

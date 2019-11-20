@@ -17,7 +17,7 @@ class ValidatorService
     /**
      * Validate the Schema.
      *
-     * @param \SierraTecnologia\CrudMaker\Console\CrudMaker $command
+     * @param \Siravel\Console\Commands\CrudMaker\CrudMaker $command
      *
      * @return bool|Exception
      */
@@ -48,7 +48,7 @@ class ValidatorService
     /**
      * Validate the options.
      *
-     * @param \SierraTecnologia\CrudMaker\Console\CrudMaker $command
+     * @param \Siravel\Console\Commands\CrudMaker\CrudMaker $command
      *
      * @return bool|Exception
      */
