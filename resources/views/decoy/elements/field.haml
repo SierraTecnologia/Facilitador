@@ -10,7 +10,7 @@
 	-# Display form
 	!= Former::vertical_open_for_files()
 	!= Former::hidden('key')
-	!= \Facilitador\Decoy\Controllers\Elements::renderField($element, 'value')
+	!= \Facilitador\Http\Controllers\Decoy\Elements::renderField($element, 'value')
 
 	.form-actions
 		%button.btn.btn-success.save(name="_save" value="save" type="submit")

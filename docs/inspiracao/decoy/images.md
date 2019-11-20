@@ -4,11 +4,11 @@ Decoy has an polymorphic `Image` model that should be used to store all model im
 
 ## Setup
 
-Add the `Facilitador\Decoy\Models\Traits\HasImages` trait to models that have images:
+Add the `Facilitador\Models\Decoy\Traits\HasImages` trait to models that have images:
 
 ```php
 class Article extends Base {
-  use \Facilitador\Decoy\Models\Traits\HasImages;
+  use \Facilitador\Models\Decoy\Traits\HasImages;
 }
 ```
 
@@ -53,4 +53,4 @@ $rules = [
 
 #### JSON
 
-The `Facilitador\Decoy\Collections\Base` collection that all models return adds some helpers for adding cropped images to models before they get serialized.  See the [model docs](model).
+The `Facilitador\Collections\Base` collection that all models return adds some helpers for adding cropped images to models before they get serialized.  See the [model docs](model).

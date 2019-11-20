@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Unit;
 
-use Facilitador\Decoy\Helpers;
+use Facilitador\Helpers;
 use Tests\TestCase;
 
 class ElementsTest extends TestCase

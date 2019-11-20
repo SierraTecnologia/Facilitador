@@ -8,7 +8,7 @@ use ReflectionClass;
 use PHPUnit\Framework\TestCase;
 use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
-use Facilitador\Attributes\Providers\AttributesServiceProvider;
+use Facilitador\Providers\AttributesServiceProvider;
 
 class ServiceProviderTest extends TestCase
 {

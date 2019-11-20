@@ -6,7 +6,7 @@ namespace Facilitador\Attributes\Tests\Feature;
 
 use Facilitador\Models\Attribute;
 use Facilitador\Attributes\Tests\Stubs\User;
-use Facilitador\Attributes\Providers\AttributesServiceProvider;
+use Facilitador\Providers\AttributesServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

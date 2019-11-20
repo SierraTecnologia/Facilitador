@@ -1,6 +1,6 @@
 <?php
 
-namespace ExtendedBreadFormFields;
+namespace Facilitador\Providers;
 
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\ServiceProvider;

@@ -1,15 +1,15 @@
 <?php
 
-namespace Achillesp\CrudForms\Test;
+namespace Facilitador\Test\Forms;
 
 use Carbon\Carbon;
-use Achillesp\CrudForms\Test\Models\Tag;
-use Achillesp\CrudForms\Test\Models\Post;
-use Achillesp\CrudForms\Test\Models\Category;
+use Facilitador\Test\Forms\Models\Tag;
+use Facilitador\Test\Forms\Models\Post;
+use Facilitador\Test\Forms\Models\Category;
 use Illuminate\Database\Capsule\Manager as DB;
-use Achillesp\CrudForms\CrudFormsServiceProvider;
+use Facilitador\Support\Traits\CrudFormsServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Achillesp\CrudForms\Test\Providers\RouteServiceProvider;
+use Facilitador\Test\Forms\Providers\RouteServiceProvider;
 
 abstract class TestCase extends OrchestraTestCase
 {

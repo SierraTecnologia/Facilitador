@@ -1,5 +1,5 @@
 -$admin = app('decoy.user')
--$pages = (new Facilitador\Decoy\Layout\Nav)->generate();
+-$pages = (new Facilitador\Layout\Nav)->generate();
 .navigation
 	.top-level-nav
 		-foreach($pages as $page)
@@ -53,5 +53,5 @@
 				-if($admin->can('read', 'commands'))
 					%a(href=route('decoy::commands') class=(Request::segment(2)=='commands'?'active':null))!= __('decoy::sidebar.nav.commands')
 
-				-if($admin->can('read', 'workers') && count(Facilitador\Decoy\Models\Worker::all()))
+				-if($admin->can('read', 'workers') && count(Facilitador\Models\Decoy\Worker::all()))
 					%a(href=route('decoy::workers')  class=(Request::segment(2)=='workers'?'active':null))!= __('decoy::sidebar.nav.workers')

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Facilitador\Attributes\Traits;
+namespace Facilitador\Support\Traits;
 
 use Schema;
 use Closure;

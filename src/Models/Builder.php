@@ -1,5 +1,5 @@
 <?php
-namespace LaravelArdent\Ardent;
+namespace Facilitador\Exceptions;
 
 class Builder extends \Illuminate\Database\Eloquent\Builder {
 

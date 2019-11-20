@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\CrudMaker\Traits;
+namespace Facilitador\Support\Traits;
 
 use SierraTecnologia\Services\CrudMaker\ValidatorService;
 

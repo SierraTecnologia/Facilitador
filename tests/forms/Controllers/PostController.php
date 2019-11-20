@@ -1,10 +1,10 @@
 <?php
 
-namespace Achillesp\CrudForms\Test\Controllers;
+namespace Facilitador\Test\Forms\Controllers;
 
-use Achillesp\CrudForms\CrudForms;
+use Facilitador\Support\Traits\CrudForms;
 use Illuminate\Routing\Controller;
-use Achillesp\CrudForms\Test\Models\Post;
+use Facilitador\Test\Forms\Models\Post;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

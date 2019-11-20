@@ -1,6 +1,6 @@
 <?php
 
-namespace Achillesp\CrudForms\Test\Providers;
+namespace Facilitador\Test\Forms\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Achillesp\CrudForms\Test\Controllers';
+    protected $namespace = 'Facilitador\Test\Forms\Controllers';
 
     /**
      * Define the routes for the application.

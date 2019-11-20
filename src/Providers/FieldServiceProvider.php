@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Support\Entities\Fields;
+namespace Facilitador\Providers;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;

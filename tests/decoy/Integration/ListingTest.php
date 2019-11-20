@@ -4,7 +4,7 @@ namespace Tests\Integration;
 use App\Article;
 use App\Tag;
 use Tests\TestCase;
-use Facilitador\Decoy\Input\Search;
+use Facilitador\Input\Search;
 use Illuminate\Http\UploadedFile;
 
 class ListingTest extends TestCase

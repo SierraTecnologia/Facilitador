@@ -55,10 +55,10 @@ return [
     ],
 
     /**
-     * A class that implements the Facilitador\Decoy\Input\EncodingProviders\EncoderInterface
+     * A class that implements the Facilitador\Input\EncodingProviders\EncoderInterface
      * interface and contains the logic to push a video encode request to service
      * provider and handle the responses
      */
-    'provider' => '\Facilitador\Decoy\Input\EncodingProviders\Zencoder',
+    'provider' => '\Facilitador\Input\EncodingProviders\Zencoder',
 
 ];

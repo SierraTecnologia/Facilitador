@@ -5,7 +5,7 @@ namespace SierraTecnologia\Generators\CrudMaker;
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 use SierraTecnologia\Services\CrudMaker\FileService;
-use SierraTecnologia\CrudMaker\Traits\SchemaTrait;
+use Facilitador\Support\Traits\SchemaTrait;
 
 /**
  * Generate the CRUD database components.

@@ -1,8 +1,8 @@
 <?php
 
-namespace Achillesp\CrudForms\Test;
+namespace Facilitador\Test\Forms;
 
-use Achillesp\CrudForms\Test\Models\Post;
+use Facilitador\Test\Forms\Models\Post;
 
 class CrudFormsTest extends TestCase
 {

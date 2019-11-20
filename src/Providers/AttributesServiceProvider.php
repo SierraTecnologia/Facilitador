@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Facilitador\Attributes\Providers;
+namespace Facilitador\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Facilitador\Models\Attribute;

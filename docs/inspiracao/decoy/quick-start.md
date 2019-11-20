@@ -43,8 +43,8 @@ You'll notice that the generated model has a bunch of commented out code by defa
 
 ```php
 <?php namespace App;
-use Facilitador\Decoy\Models\Base;
-use Facilitador\Decoy\Models\Traits\HasImages;
+use Facilitador\Models\Decoy\Base;
+use Facilitador\Models\Decoy\Traits\HasImages;
 
 class Article extends Base {
   use HasImages;
@@ -140,7 +140,7 @@ Change your Article controller to:
 
 ```php
 <?php namespace App\Http\Controllers\Admin;
-use Facilitador\Decoy\Controllers\Base;
+use Facilitador\Http\Controllers\Decoy\Base;
 
 class Articles extends Base {
   protected $title = 'News';

@@ -1,7 +1,7 @@
 <?php // The UI for the collapsable search menu for full listings?>
 <?php
 if (empty($search)) return;
-$search = (new Facilitador\Decoy\Input\Search)->longhand($search);
+$search = (new Facilitador\Input\Search)->longhand($search);
 ?>
 
 <form class="form-inline search" data-js-view="search" data-schema='<?=json_encode($search)?>' data-title='<?=strtolower($title)?>' >

@@ -3,7 +3,7 @@
 namespace SierraTecnologia\Services\CrudMaker;
 
 use Exception;
-use SierraTecnologia\CrudMaker\Traits\SchemaTrait;
+use Facilitador\Support\Traits\SchemaTrait;
 
 /**
  * CRUD Validator.
