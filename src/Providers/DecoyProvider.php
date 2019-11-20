@@ -317,7 +317,7 @@ class DecoyProvider extends BaseServiceProvider
         });
 
         // Register Decoy's custom handling of some exception
-        $this->app->singleton(ExceptionHandler::class, Exceptions\Handler::class);
+        $this->app->singleton(ExceptionHandler::class, \Siravel\Exceptions\Handler::class);
 
         // Register commands
         $this->commands([\Siravel\Console\Commands\Generate\Generate::class]);
