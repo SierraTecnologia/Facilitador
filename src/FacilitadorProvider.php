@@ -119,8 +119,8 @@ class FacilitadorProvider extends ServiceProvider
         
 
         $loader = AliasLoader::getInstance();
-        $loader->alias('Decoy', Bkwld\Decoy\Facades\Decoy::class);
-        $loader->alias('DecoyURL', Bkwld\Decoy\Facades\DecoyURL::class);
+        $loader->alias('Decoy', \Facilitador\Facades\Decoy::class);
+        $loader->alias('DecoyURL', \Facilitador\Facades\DecoyURL::class);
 
         /**
          * Externos
