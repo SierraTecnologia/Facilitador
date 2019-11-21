@@ -67,7 +67,7 @@ class DecoyProvider extends BaseServiceProvider
 
         // Publish decoy css and js to public directory
         $this->publishes([
-            __DIR__.'/../../dist' => public_path('assets/decoy')
+            __DIR__.'/../../dist/decoy' => public_path('assets/decoy')
         ], 'assets');
 
         // Publish lanaguage files
@@ -81,8 +81,6 @@ class DecoyProvider extends BaseServiceProvider
         // Load translations
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'decoy');
 
-        // Load migrations
-        $this->loadMigrationsFrom(__DIR__.'/../../migrations/');
     }
 
     /**
@@ -212,10 +210,10 @@ class DecoyProvider extends BaseServiceProvider
 
         // Register middleware individually
         foreach ([
-            'decoy.auth'          => \Siravel\Http\Middleware\Auth::class,
-            'decoy.edit-redirect' => \Siravel\Http\Middleware\EditRedirect::class,
-            'decoy.guest'         => \Siravel\Http\Middleware\Guest::class,
-            'decoy.save-redirect' => \Siravel\Http\Middleware\SaveRedirect::class,
+            'decoy.auth'          => \Facilitador\Http\Middleware\Auth::class,
+            'decoy.edit-redirect' => \Facilitador\Http\Middleware\EditRedirect::class,
+            'decoy.guest'         => \Facilitador\Http\Middleware\Guest::class,
+            'decoy.save-redirect' => \Facilitador\Http\Middleware\SaveRedirect::class,
         ] as $key => $class) {
             $this->app['router']->aliasMiddleware($key, $class);
         }
@@ -263,21 +261,21 @@ class DecoyProvider extends BaseServiceProvider
 
         // Register HTML view helpers as "Decoy".  So they get invoked like: `Decoy::title()`
         $this->app->singleton('decoy', function ($app) {
-            return new Helpers;
+            return new \Facilitador\Helpers;
         });
 
         // Registers explicit rotues and wildcarding routing
         $this->app->singleton('decoy.router', function ($app) {
             $dir = config('decoy.core.dir');
 
-            return new \Siravel\Routing\Router($dir);
+            return new \Facilitador\Routing\Router($dir);
         });
 
         // Wildcard router
         $this->app->singleton('decoy.wildcard', function ($app) {
             $request = $app['request'];
 
-            return new \Siravel\Routing\Wildcard(
+            return new \Facilitador\Routing\Wildcard(
                 config('decoy.core.dir'),
                 $request->getMethod(),
                 $request->path()
@@ -300,28 +298,28 @@ class DecoyProvider extends BaseServiceProvider
 
         // Register URL Generators as "DecoyURL".
         $this->app->singleton('decoy.url', function ($app) {
-            return new \Siravel\Routing\UrlGenerator($app['request']->path());
+            return new \Facilitador\Routing\UrlGenerator($app['request']->path());
         });
 
         // Build the Elements collection
         $this->app->singleton('decoy.elements', function ($app) {
-            return with(new \Siravel\Collections\Elements)->setModel(Models\Element::class);
+            return with(new \Facilitador\Collections\Elements)->setModel(Models\Element::class);
         });
 
         // Build the Breadcrumbs store
         $this->app->singleton('decoy.breadcrumbs', function ($app) {
-            $breadcrumbs = new \Siravel\Layout\Breadcrumbs();
+            $breadcrumbs = new \Facilitador\Layout\Breadcrumbs();
             $breadcrumbs->set($breadcrumbs->parseURL());
 
             return $breadcrumbs;
         });
 
         // Register Decoy's custom handling of some exception
-        $this->app->singleton(ExceptionHandler::class, \Siravel\Exceptions\Handler::class);
+        $this->app->singleton(ExceptionHandler::class, \Facilitador\Exceptions\Handler::class);
 
         // Register commands
-        $this->commands([\Siravel\Console\Commands\Generate\Generate::class]);
-        $this->commands([\Siravel\Console\Commands\Generate\Admin::class]);
+        $this->commands([\Facilitador\Console\Commands\Generate\Generate::class]);
+        $this->commands([\Facilitador\Console\Commands\Generate\Admin::class]);
     }
 
     /**

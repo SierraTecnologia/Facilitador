@@ -137,7 +137,7 @@ class FacilitadorProvider extends ServiceProvider
         $this->app->register(\Facilitador\Providers\GravatarServiceProvider::class);
         
         $this->app->register(\Facilitador\Providers\DecoyProvider::class);
-        $this->app->register(\Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class);
+        // $this->app->register(\Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class);
         // $this->app->register(\Facilitador\Providers\FieldServiceProvider::class);
 
         /**
