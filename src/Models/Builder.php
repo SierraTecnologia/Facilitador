@@ -1,5 +1,5 @@
 <?php
-namespace Facilitador\Exceptions;
+namespace Facilitador\Models;
 
 class Builder extends \Illuminate\Database\Eloquent\Builder {
 
