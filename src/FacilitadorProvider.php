@@ -125,18 +125,33 @@ class FacilitadorProvider extends ServiceProvider
         $this->app->register(\Facilitador\Providers\FacilitadorRouteProvider::class);
         $this->app->register(\Facilitador\Providers\FormMakerProvider::class);
         
+        $this->app->register(\Facilitador\Providers\DecoyProvider::class);
+        
         /*
          * Dependencias
          */
-        $this->app->register(\Locaravel\LocaravelProvider::class);
         $this->app->register(\SierraTecnologia\Crypto\CryptoProvider::class);
+        $this->app->register(\Locaravel\LocaravelProvider::class);
+        $this->app->register(\Siravel\Providers\HorizonServiceProvider::class);
+        $this->app->register(\Siravel\Providers\TelescopeServiceProvider::class);
+        $this->app->register(\Laravel\Passport\PassportServiceProvider::class);
         
+
+        /**
+         * Admin
+         */
+        $this->app->register(\Laravel\Tinker\TinkerServiceProvider::class);
+
+
+        /**
+         * Logs Views
+         */
+        $this->app->register(\Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
+
         /**
          * Externos
          */
         $this->app->register(\Facilitador\Providers\GravatarServiceProvider::class);
-        
-        $this->app->register(\Facilitador\Providers\DecoyProvider::class);
         // $this->app->register(\Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class);
         // $this->app->register(\Facilitador\Providers\FieldServiceProvider::class);
 
