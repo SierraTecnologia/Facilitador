@@ -142,7 +142,7 @@ class DecoyProvider extends BaseServiceProvider
 
         Config::set('auth.providers.decoy', [
             'driver' => 'eloquent',
-            'model'  => \Facilitador\Models\Decoy\Admin::class,
+            'model'  => Models\Decoy\Admin::class,
         ]);
 
         Config::set('auth.passwords.decoy', [

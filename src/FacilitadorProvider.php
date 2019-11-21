@@ -40,20 +40,8 @@ class FacilitadorProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->setProviders();
+        $this->registerPackages();
         $this->commands(MakeEloquentFilter::class);
-
-        /*
-        |--------------------------------------------------------------------------
-        | Providers
-        |--------------------------------------------------------------------------
-        */
-
-        $this->app->register(\Yajra\DataTables\DataTablesServiceProvider::class);
-
-        $loader = AliasLoader::getInstance();
-
-        $loader->alias('DataTables', \Yajra\DataTables\Facades\DataTables::class);
 
         /*
         |--------------------------------------------------------------------------
@@ -115,7 +103,11 @@ class FacilitadorProvider extends ServiceProvider
         //   });
 
     }
-    protected function setProviders()
+
+    /**
+     * Register external dependencies
+     */
+    private function registerPackages()
     {
         
         /**
@@ -125,45 +117,20 @@ class FacilitadorProvider extends ServiceProvider
         $this->app->register(\Facilitador\Providers\FacilitadorRouteProvider::class);
         $this->app->register(\Facilitador\Providers\FormMakerProvider::class);
         
-        $this->app->register(\Facilitador\Providers\DecoyProvider::class);
-        
-        /*
-         * Dependencias
-         */
-        $this->app->register(\SierraTecnologia\Crypto\CryptoProvider::class);
-        $this->app->register(\Locaravel\LocaravelProvider::class);
-        $this->app->register(\Siravel\Providers\HorizonServiceProvider::class);
-        $this->app->register(\Siravel\Providers\TelescopeServiceProvider::class);
-        $this->app->register(\Laravel\Passport\PassportServiceProvider::class);
-        
 
-        /**
-         * Admin
-         */
-        $this->app->register(\Laravel\Tinker\TinkerServiceProvider::class);
-
-
-        /**
-         * Logs Views
-         */
-        $this->app->register(\Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Decoy', Bkwld\Decoy\Facades\Decoy::class);
+        $loader->alias('DecoyURL', Bkwld\Decoy\Facades\DecoyURL::class);
 
         /**
          * Externos
          */
         $this->app->register(\Facilitador\Providers\GravatarServiceProvider::class);
+        
+        $this->app->register(\Facilitador\Providers\DecoyProvider::class);
         // $this->app->register(\Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class);
         // $this->app->register(\Facilitador\Providers\FieldServiceProvider::class);
 
-        /**
-         * Layoults
-         */
-        $this->app->register(\JeroenNoten\LaravelAdminLte\ServiceProvider::class);
-        $this->app->register(\RicardoSierra\Minify\MinifyServiceProvider::class);
-        $this->app->register(\CipeMotion\Medialibrary\ServiceProvider::class);
-        $this->app->register(\Intervention\Image\ImageServiceProvider::class);
-        $this->app->register(\Collective\Html\HtmlServiceProvider::class);
-        $this->app->register(\Laracasts\Flash\FlashServiceProvider::class);
 
     }
 
