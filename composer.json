@@ -103,16 +103,44 @@
     "repositories": [
         {
             "type": "path",
+            "url": "../Informate",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../Populate",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
             "url": "../Finder",
             "options": {
-                "symlink": false
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../Audit",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../Tracking",
+            "options": {
+                "symlink": true
             }
         },
         {
             "type": "path",
             "url": "../Locaravel",
             "options": {
-                "symlink": false
+                "symlink": true
             }
         }
     ],
