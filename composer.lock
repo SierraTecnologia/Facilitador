@@ -7813,12 +7813,12 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "4926ddc2c5149165d7fea7a8aa48e26d04efb6eb"
+                "reference": "89bfd7188907df0535b4e73d90d264894b06f864"
             },
             "require": {
                 "kassner/log-parser": "*",
                 "php": "^7.3.0",
-                "sierratecnologia/informate": "dev-master"
+                "sierratecnologia/population": "dev-master"
             },
             "bin": [
                 "bin/observador"
@@ -7861,7 +7861,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Casa",
-                "reference": "a4c1b6e2bd3a2dc92e36ed73922b87008aae9cf2"
+                "reference": "63b4da5e2736085e75665d298f45095d8471e2a4"
             },
             "require": {
                 "php": "^7.3.0",
@@ -8028,7 +8028,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Finder",
-                "reference": "1f0b1d904bd84a2ac6bd273141b7df13b6945623"
+                "reference": "93595020a7ed10961b8534900f780bfbdd7c0e78"
             },
             "require": {
                 "cache/filesystem-adapter": "^1.0",
@@ -8050,8 +8050,8 @@
                 "pulkitjalan/google-apiclient": "^4.0",
                 "sabre/xml": "*",
                 "sebastian/diff": "*",
-                "sierratecnologia/audit": "dev-master",
                 "sierratecnologia/casa": "dev-master",
+                "sierratecnologia/tracking": "dev-master",
                 "spatie/laravel-medialibrary": "^7.9.0",
                 "srmklive/flysystem-dropbox-v2": "*",
                 "symfony/finder": "^4.4.0"
@@ -8311,6 +8311,90 @@
                 }
             ],
             "description": "Recursos para GeoLocalização",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "sierratecnologia/population",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../Population",
+                "reference": "de175863f9b6d9af4cb1f651e7c51db8d6885d0b"
+            },
+            "require": {
+                "sierratecnologia/informate": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Population\\PopulationProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Population\\": "src/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [],
+                "post-update-cmd": [],
+                "post-create-project-cmd": []
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Population",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "sierratecnologia/tracking",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../Tracking",
+                "reference": "b8725fed519182185274278febc4d91533280a3c"
+            },
+            "require": {
+                "php": "^7.3.0",
+                "sierratecnologia/audit": "dev-master"
+            },
+            "bin": [
+                "bin/observador"
+            ],
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tracking\\TrackingProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tracking\\": "src/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [],
+                "post-update-cmd": [],
+                "post-create-project-cmd": []
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ricardo Rebello Sierra",
+                    "email": "contato@ricardosierra.com.br"
+                }
+            ],
+            "description": "Tracking",
             "transport-options": {
                 "symlink": true
             }
