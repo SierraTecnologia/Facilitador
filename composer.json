@@ -1,6 +1,6 @@
 {
     "name": "sierratecnologia/facilitador",
-    "description": "Recursos para Desenvolvimento Complexo",
+    "description": "Facilitador para ajudar no desenvolvimento de páginas web",
     "license": "MIT",
     "authors": [
         {
@@ -29,11 +29,6 @@
         "laravel/horizon": "3.*",
         "laravel/telescope": "^2.0",
         "laravel/tinker": "*",
-        "league/climate": "3.1.*",
-        "league/flysystem": "*",
-        "league/flysystem-cached-adapter": "*",
-        "league/flysystem-sftp": "*",
-        "league/flysystem-ziparchive": "*",
         "league/pipeline": "*",
         "league/plates": "^3.1",
         "ricardosierra/changelog": "~1.4",
@@ -41,15 +36,11 @@
         "socialiteproviders/jira": "^2.1",
         "socialiteproviders/linkedin": "^3.0",
         "laracasts/presenter": "0.2.*",
-        "kassner/log-parser": "*",
         "wnx/laravel-stats": "*",
         "laravelcollective/html": "^5.8",
         "jeroennoten/laravel-adminlte": "*",
-        "league/csv": "^7.1",
         "ramsey/uuid": "^3.8",
         "zendframework/zend-crypt": "*",
-        "maatwebsite/excel": "^3.1",
-        "sabre/xml": "*",
         "larapack/hooks": "^1.0.5",
 
         "nicolaslopezj/searchable": "^1.10",
@@ -103,42 +94,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../Informate",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../Populate",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../Finder",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../Audit",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../Tracking",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../Locaravel",
+            "url": "../**",
             "options": {
                 "symlink": true
             }

@@ -1,6 +1,6 @@
 # Facilitador
 
-**Facilitador** - A remarkably magical form and input maker tool for Laravel.
+**Facilitador** - Facilitador para ajudar no desenvolvimento de páginas web
 
 [![Build Status](https://travis-ci.org/SierraTecnologiaInc/Facilitador.svg?branch=master)](https://travis-ci.org/SierraTecnologiaInc/Facilitador)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8c00a046fec32d8b8ac7/maintainability)](https://codeclimate.com/github/SierraTecnologiaInc/Facilitador/maintainability)
