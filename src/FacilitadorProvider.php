@@ -16,6 +16,31 @@ use Facilitador\Console\Commands\MakeEloquentFilter;
 
 class FacilitadorProvider extends ServiceProvider
 {
+    public static $providers = [
+        // \Facilitador\Providers\ServicesProvider::class,
+        // \Facilitador\Providers\FacilitadorRouteProvider::class,
+        // \Facilitador\Providers\FormMakerProvider::class,
+
+        \Tracking\TrackingProvider::class,
+        
+        /**
+         * Internos
+         */
+        \Facilitador\Providers\ServicesProvider::class,
+        \Facilitador\Providers\FacilitadorRouteProvider::class,
+        \Facilitador\Providers\FormMakerProvider::class,
+        \Tracking\TrackingProvider::class,
+        
+        /**
+         * Externos
+         */
+        \Facilitador\Providers\GravatarServiceProvider::class,
+        
+        \Facilitador\Providers\DecoyProvider::class,
+        // \Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class,
+        // \Facilitador\Providers\FieldServiceProvider::class,
+    ];
+
     /**
      * Boot method.
      *
@@ -40,8 +65,8 @@ class FacilitadorProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerPackages();
-        $this->commands(MakeEloquentFilter::class);
+        $this->setDependencesAlias();
+        $this->setProviders();
 
         /*
         |--------------------------------------------------------------------------
@@ -102,36 +127,18 @@ class FacilitadorProvider extends ServiceProvider
         //       return $modelClassValue;
         //   });
 
+        $this->commands(MakeEloquentFilter::class);
     }
 
     /**
-     * Register external dependencies
+     * Set Alias dependencies
      */
-    private function registerPackages()
+    private function setDependencesAlias()
     {
-        
-        /**
-         * Internos
-         */
-        $this->app->register(\Facilitador\Providers\ServicesProvider::class);
-        $this->app->register(\Facilitador\Providers\FacilitadorRouteProvider::class);
-        $this->app->register(\Facilitador\Providers\FormMakerProvider::class);
-        
 
         $loader = AliasLoader::getInstance();
         $loader->alias('Decoy', \Facilitador\Facades\Decoy::class);
         $loader->alias('DecoyURL', \Facilitador\Facades\DecoyURL::class);
-
-        /**
-         * Externos
-         */
-        $this->app->register(\Facilitador\Providers\GravatarServiceProvider::class);
-        
-        $this->app->register(\Facilitador\Providers\DecoyProvider::class);
-        // $this->app->register(\Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class);
-        // $this->app->register(\Facilitador\Providers\FieldServiceProvider::class);
-
-
     }
 
     private function loadViews()
@@ -143,6 +150,7 @@ class FacilitadorProvider extends ServiceProvider
             $viewsPath => base_path('resources/views/vendor/facilitador'),
         ], 'views');
     }
+    
     private function loadTranslations()
     {
         $translationsPath = $this->getResourcesPath('lang');
@@ -152,10 +160,15 @@ class FacilitadorProvider extends ServiceProvider
         ], 'translations');
     }
 
-
-
     private function getResourcesPath($folder)
     {
         return __DIR__.'/../resources/'.$folder;
+    }
+
+    private function setProviders()
+    {
+        collection(self::$providers)->map(function ($provider) {
+            $this->app->register($provider);
+        });
     }
 }
