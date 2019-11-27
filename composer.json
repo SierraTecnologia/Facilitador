@@ -56,7 +56,6 @@
         "zencoder/zencoder-php": "~2.2",
         "ricardosierra/minify": "dev-master",
         "ricardosierra/changelog": "~1.4",
-        "ricardosierra/translation": "dev-master",
         "ricardosierra/validate": "^0.2",
         "sierratecnologia/crudmaker": "dev-master",
         "sierratecnologia/crypto": "dev-master",

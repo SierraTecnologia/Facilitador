@@ -40,6 +40,11 @@ class FacilitadorProvider extends ServiceProvider
         \Facilitador\Providers\DecoyProvider::class,
         // \Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class,
         // \Facilitador\Providers\FieldServiceProvider::class,
+
+        /**
+         * Base
+         */
+        // \RicardoSierra\Translation\TranslationServiceProvider::class,
     ];
 
     /**
@@ -136,8 +141,11 @@ class FacilitadorProvider extends ServiceProvider
      */
     private function setDependencesAlias()
     {
-
         $loader = AliasLoader::getInstance();
+
+        // $loader->alias('TranslationCache', \RicardoSierra\Translation\Facades\TranslationCache::class);
+        // $loader->alias('Translation', \RicardoSierra\Translation\Facades\Translation::class);
+
         $loader->alias('Decoy', \Facilitador\Facades\Decoy::class);
         $loader->alias('DecoyURL', \Facilitador\Facades\DecoyURL::class);
     }
