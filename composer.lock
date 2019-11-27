@@ -5638,16 +5638,15 @@
         {
             "name": "ricardosierra/translation",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ricardosierra/translation.git",
-                "reference": "e980c991a19b8b3ff4204b7e06c047da16dc08db"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ricardosierra/translation/zipball/e980c991a19b8b3ff4204b7e06c047da16dc08db",
-                "reference": "e980c991a19b8b3ff4204b7e06c047da16dc08db",
-                "shasum": ""
+                "type": "path",
+                "url": "../Translation",
+                "reference": "f346f27b4fe3bb33ea2c875a62abff24f4f85a48"
+            },
+            "archive": {
+                "exclude": [
+                    "/tests"
+                ]
             },
             "require": {
                 "doctrine/dbal": "*",
@@ -5682,7 +5681,12 @@
                     "Waavi\\Translation\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "RicardoSierra\\Translation\\Tests\\": "tests/",
+                    "Waavi\\Translation\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -5705,7 +5709,9 @@
                 }
             ],
             "description": "An easy automatic database driven translator for Laravel 5.*",
-            "time": "2019-11-06T20:02:35+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "ricardosierra/validate",
