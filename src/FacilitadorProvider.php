@@ -44,7 +44,7 @@ class FacilitadorProvider extends ServiceProvider
         /**
          * Base
          */
-        // \RicardoSierra\Translation\TranslationServiceProvider::class,
+        \RicardoSierra\Translation\TranslationServiceProvider::class,
     ];
 
     /**
@@ -143,8 +143,8 @@ class FacilitadorProvider extends ServiceProvider
     {
         $loader = AliasLoader::getInstance();
 
-        // $loader->alias('TranslationCache', \RicardoSierra\Translation\Facades\TranslationCache::class);
-        // $loader->alias('Translation', \RicardoSierra\Translation\Facades\Translation::class);
+        $loader->alias('TranslationCache', \RicardoSierra\Translation\Facades\TranslationCache::class);
+        $loader->alias('Translation', \RicardoSierra\Translation\Facades\Translation::class);
 
         $loader->alias('Decoy', \Facilitador\Facades\Decoy::class);
         $loader->alias('DecoyURL', \Facilitador\Facades\DecoyURL::class);

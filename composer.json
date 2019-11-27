@@ -55,6 +55,7 @@
         "symfony/yaml": "~2.5 || ^3.0 || ^4.0",
         "zencoder/zencoder-php": "~2.2",
         "ricardosierra/minify": "dev-master",
+        "ricardosierra/translation": "dev-master",
         "ricardosierra/changelog": "~1.4",
         "ricardosierra/validate": "^0.2",
         "sierratecnologia/crudmaker": "dev-master",
