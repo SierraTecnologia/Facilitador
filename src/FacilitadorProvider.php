@@ -13,6 +13,7 @@ use Facilitador\Services\ModelService;
 use SierraTecnologia\Crypto\Services\Crypto;
 use Log;
 use Facilitador\Console\Commands\MakeEloquentFilter;
+use Illuminate\Support\Collection;
 
 class FacilitadorProvider extends ServiceProvider
 {
@@ -167,7 +168,7 @@ class FacilitadorProvider extends ServiceProvider
 
     private function setProviders()
     {
-        collection(self::$providers)->map(function ($provider) {
+        (new Collection(self::$providers))->map(function ($provider) {
             $this->app->register($provider);
         });
     }
