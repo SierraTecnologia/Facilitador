@@ -1,6 +1,6 @@
 <?php
 Route::name('facilitador.')->group(function () {
-    Route::prefix('admin')->group(function () {
+    Route::prefix('manager')->group(function () {
 
         
         // ADmin Router
