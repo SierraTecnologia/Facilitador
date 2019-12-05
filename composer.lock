@@ -2547,12 +2547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "a60301f01f18601ff4a0f3f5c781431aac74eb9e"
+                "reference": "a44c1ab6cd48c3d25449efa84a068c8cd12bac3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/a60301f01f18601ff4a0f3f5c781431aac74eb9e",
-                "reference": "a60301f01f18601ff4a0f3f5c781431aac74eb9e",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/a44c1ab6cd48c3d25449efa84a068c8cd12bac3a",
+                "reference": "a44c1ab6cd48c3d25449efa84a068c8cd12bac3a",
                 "shasum": ""
             },
             "type": "library",
@@ -2592,7 +2592,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2019-12-05T07:34:25+00:00"
+            "time": "2019-12-05T09:01:55+00:00"
         },
         {
             "name": "kassner/log-parser",
@@ -6002,7 +6002,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "ec1d84a8018d700c0873e633882a589ce0ebfada"
+                "reference": "066eb9007f1f1d0ce37852d7aa943c8a0851f96c"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -6291,7 +6291,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "68e28225224fea3f7266a288242fa2bd0bc037e8"
+                "reference": "9e7d9d78eea1019aa18be8612df3c6a44a732c7f"
             },
             "require": {
                 "php": "^7.3.0"
@@ -6392,7 +6392,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "9ab43dc3e01f04663391e37d20e9e66ed218ce9a"
+                "reference": "1c6b14dd87c70c691c19892c29000538cfb2bdce"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master"
@@ -6429,7 +6429,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "c87b34441c89f7b336b5e3033a8ff1208d165e2c"
+                "reference": "3c4a6216b9885582c3c7b35f6c9706e70e7b29fa"
             },
             "require": {
                 "markrogoyski/math-php": "*",
