@@ -2,7 +2,7 @@
 return [
 
     'models' => [
-        'persons' => \Siravel\Models\Identity\Person::class,
+        'persons' => \Informate\Models\Identity\Actors::class,
     ],
 
 ];

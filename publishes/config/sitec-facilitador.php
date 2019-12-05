@@ -3,7 +3,7 @@
 return [
 
     'models' => [
-        'persons' => \Siravel\Models\Identity\Person::class,
+        'persons' => \Informate\Models\Identity\Actors::class,
         'attribute' => \Facilitador\Models\Attribute::class,
         'attribute_entity' => \Facilitador\Models\AttributeEntity::class,
     ],

@@ -11,7 +11,7 @@ use App\Models\HotTopic;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Auth;
-use Siravel\Models\Identity\Person;
+use Informate\Models\Identity\Actors;
 
 class AdminController extends Controller
 {
