@@ -1041,25 +1041,25 @@
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
-            "version": "0.1",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dnoegel/php-xdg-base-dir.git",
-                "reference": "265b8593498b997dc2d31e75b89f053b5cc9621a"
+                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/265b8593498b997dc2d31e75b89f053b5cc9621a",
-                "reference": "265b8593498b997dc2d31e75b89f053b5cc9621a",
+                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
+                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "@stable"
+                "phpunit/phpunit": "~7.0|~6.0|~5.0|~4.8.35"
             },
-            "type": "project",
+            "type": "library",
             "autoload": {
                 "psr-4": {
                     "XdgBaseDir\\": "src/"
@@ -1070,7 +1070,7 @@
                 "MIT"
             ],
             "description": "implementation of xdg base directory specification for php",
-            "time": "2014-10-24T07:27:01+00:00"
+            "time": "2019-12-04T15:06:13+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -3304,16 +3304,16 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v2.1",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "d9c5c53d3a0c60dcd4ef3777884d0cf368eb3e6f"
+                "reference": "05af183b914b6f8dca890eadb3edccbbc3ce887b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/d9c5c53d3a0c60dcd4ef3777884d0cf368eb3e6f",
-                "reference": "d9c5c53d3a0c60dcd4ef3777884d0cf368eb3e6f",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/05af183b914b6f8dca890eadb3edccbbc3ce887b",
+                "reference": "05af183b914b6f8dca890eadb3edccbbc3ce887b",
                 "shasum": ""
             },
             "require": {
@@ -3362,7 +3362,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "time": "2019-08-30T11:58:27+00:00"
+            "time": "2019-11-23T16:51:14+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -5275,20 +5275,20 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.9.11",
+            "version": "v0.9.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "75d9ac1c16db676de27ab554a4152b594be4748e"
+                "reference": "90da7f37568aee36b116a030c5f99c915267edd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/75d9ac1c16db676de27ab554a4152b594be4748e",
-                "reference": "75d9ac1c16db676de27ab554a4152b594be4748e",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/90da7f37568aee36b116a030c5f99c915267edd4",
+                "reference": "90da7f37568aee36b116a030c5f99c915267edd4",
                 "shasum": ""
             },
             "require": {
-                "dnoegel/php-xdg-base-dir": "0.1",
+                "dnoegel/php-xdg-base-dir": "0.1.*",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "jakub-onderka/php-console-highlighter": "0.3.*|0.4.*",
@@ -5345,7 +5345,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2019-11-27T22:44:29+00:00"
+            "time": "2019-12-06T14:19:43+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -6002,7 +6002,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "066eb9007f1f1d0ce37852d7aa943c8a0851f96c"
+                "reference": "528f5ca8cce975ab4ca76a9d6eb7daf3f929a1fb"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -6291,7 +6291,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "9e7d9d78eea1019aa18be8612df3c6a44a732c7f"
+                "reference": "10b4d74c0986d63999f12dfa8cd29e89c50a48e4"
             },
             "require": {
                 "php": "^7.3.0"
@@ -6335,7 +6335,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Locaravel",
-                "reference": "b251420adaf038e6d88b03955b2483037699bd65"
+                "reference": "f7bffb946b32947b820b3f8b24532894c4f80f6a"
             },
             "require": {
                 "doctrine/dbal": ">=2.5",
@@ -6392,7 +6392,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "1c6b14dd87c70c691c19892c29000538cfb2bdce"
+                "reference": "b14fd4f7f6702d6e546497fc6fcf5d240e25a817"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master"
@@ -6429,7 +6429,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "3c4a6216b9885582c3c7b35f6c9706e70e7b29fa"
+                "reference": "73cdefeca9358449bcd8b1e1b69622d7b69c3287"
             },
             "require": {
                 "markrogoyski/math-php": "*",
@@ -10401,16 +10401,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.4.3",
+            "version": "8.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "67f9e35bffc0dd52d55d565ddbe4230454fd6a4e"
+                "reference": "3ee1c1fd6fc264480c25b6fb8285edefe1702dab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/67f9e35bffc0dd52d55d565ddbe4230454fd6a4e",
-                "reference": "67f9e35bffc0dd52d55d565ddbe4230454fd6a4e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3ee1c1fd6fc264480c25b6fb8285edefe1702dab",
+                "reference": "3ee1c1fd6fc264480c25b6fb8285edefe1702dab",
                 "shasum": ""
             },
             "require": {
@@ -10454,7 +10454,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.4-dev"
+                    "dev-master": "8.5-dev"
                 }
             },
             "autoload": {
@@ -10480,7 +10480,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-11-06T09:42:23+00:00"
+            "time": "2019-12-06T05:41:38+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
