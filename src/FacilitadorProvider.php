@@ -74,6 +74,8 @@ class FacilitadorProvider extends ServiceProvider
         $this->setDependencesAlias();
         $this->setProviders();
 
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->commands(MakeEloquentFilter::class);
         /*
         |--------------------------------------------------------------------------
         | Register the Utilities
@@ -133,7 +135,6 @@ class FacilitadorProvider extends ServiceProvider
         //       return $modelClassValue;
         //   });
 
-        $this->commands(MakeEloquentFilter::class);
     }
 
     /**

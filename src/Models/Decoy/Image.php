@@ -39,6 +39,9 @@ class Image extends Base
         'l', 'l2x',
         'xl', 'xl2x',
         'bkgd_pos',
+        'url',
+        'js_url',
+        'data_url',
     ];
 
     /**
@@ -61,6 +64,7 @@ class Image extends Base
      */
     public static $rules = [
         'file' => 'image',
+        'location' => 'mimes:jpeg,jpg,bmp,png,gif',
     ];
 
     /**
@@ -97,6 +101,10 @@ class Image extends Base
      * @var array
      */
     private $config = [];
+
+
+
+
 
     /**
      * Register events
@@ -536,6 +544,88 @@ class Image extends Base
      */
     public function shouldLogChange($action)
     {
+        return false;
+    }
+
+
+
+
+    /***
+     * Adicionei do outro Image Class
+     */
+    /**
+     * Get the images url location.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function getJsUrlAttribute()
+    {
+        return $this->remember('js_url', function () {
+            if ($this->isLocalFile()) {
+                $file = url(str_replace('public/', 'storage/', $this->location));
+            } else {
+                $file = FileService::fileAsPublicAsset($this->location);
+            }
+
+            return str_replace(url('/'), '', $file);
+        });
+    }
+
+    /**
+     * Get the images url location.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function getDataUrlAttribute()
+    {
+        return $this->remember('data_url', function () {
+            if ($this->isLocalFile()) {
+                $imagePath = storage_path('app/'.$this->location);
+            } else {
+                $imagePath = Storage::disk(config('gpower.storage-location', 'local'))->url($this->location);
+            }
+
+            $image = InterventionImage::make($imagePath)->resize(800, null);
+
+            return (string) $image->encode('data-url');
+        });
+    }
+
+    public function remember($attribute, $closure)
+    {
+        $key = $attribute.'_'.$this->location;
+
+        if (!Cache::has($key)) {
+            $expiresAt = Carbon::now()->addMinutes(15);
+            Cache::put($key, $closure(), $expiresAt);
+        }
+
+        return Cache::get($key);
+    }
+
+    /**
+     * Check the location of the file.
+     *
+     * @return bool
+     */
+    private function isLocalFile()
+    {
+        try {
+            $headers = @get_headers(url(str_replace('public/', 'storage/', $this->location)));
+
+            if (strpos($headers[0], '200')) {
+                return true;
+            }
+        } catch (Exception $e) {
+            Log::debug('Could not find the image');
+
+            return false;
+        }
+
         return false;
     }
 }
