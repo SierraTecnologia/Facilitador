@@ -3,7 +3,7 @@
 return [
 
     'models' => [
-        'persons' => \Informate\Models\Identity\Actors::class,
+        'persons' => \Population\Models\Identity\Actors::class,
         'attribute' => \Facilitador\Models\Attribute::class,
         'attribute_entity' => \Facilitador\Models\AttributeEntity::class,
     ],

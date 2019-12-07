@@ -2,7 +2,7 @@
 return [
 
     'models' => [
-        'persons' => \Informate\Models\Identity\Actors::class,
+        'persons' => \Population\Models\Identity\Actors::class,
     ],
 
 ];
