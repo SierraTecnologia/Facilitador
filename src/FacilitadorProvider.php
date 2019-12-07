@@ -89,6 +89,11 @@ class FacilitadorProvider extends ServiceProvider
         \Cviebrock\EloquentSluggable\ServiceProvider::class,
         // Support for cloning models
         \Bkwld\Cloner\ServiceProvider::class,
+
+        /**
+         * Outros meus
+         */
+        \Laravel\Tinker\TinkerServiceProvider::class,
     ];
 
     /**
