@@ -35,7 +35,7 @@ class GenerateModelFromMySQL extends Command
 
 	public function handle()
 	{
-		$this->fire() ;
+		$this->dispatch() ;
 	}
 	
 	/**
@@ -43,7 +43,7 @@ class GenerateModelFromMySQL extends Command
 	 *
 	 * @return mixed
 	 */
-	public function fire()
+	public function dispatch()
 	{
 		preg_match('/((.+)\.)?(.+)/', $this->argument('database_table'), $matches);
 		if (empty($matches[2]))

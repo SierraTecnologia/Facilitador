@@ -71,6 +71,6 @@ class ManyToManyChecklist
         $model->$relationship()->sync($ids);
 
         // Fire completion event
-        Event::fire($prefix."synced: $relationship");
+        Event::dispatch($prefix."synced: $relationship");
     }
 }

@@ -38,7 +38,7 @@ class GenerateRequestFromMySQL extends Command
 	 *
 	 * @return mixed
 	 */
-	public function fire()
+	public function dispatch()
 	{
 		preg_match('/((.+)\.)?(.+)/', $this->argument('database_table'), $matches);
 		if(empty($matches[2]))

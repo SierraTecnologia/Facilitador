@@ -62,7 +62,7 @@ class Wildcard
         $id = $this->detectId();
 
         // Tell other classes what was found
-        $event = Event::fire('wildcard.detection', [
+        $event = Event::dispatch('wildcard.detection', [
             $controller, $action, $id
         ]);
 

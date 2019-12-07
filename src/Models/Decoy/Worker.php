@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Workers are tasks that define logic designed to be run as a never
  * ending worker routine.  Commands can and should extend this class.
- * The command's fire() method will be executed on every tick of the
+ * The command's dispatch() method will be executed on every tick of the
  * worker.
  */
 class Worker extends \Illuminate\Console\Command
@@ -101,7 +101,7 @@ class Worker extends \Illuminate\Console\Command
 
         // Run this stuff as long as the worker is running
         while (true) {
-            $this->fire();
+            $this->dispatch();
             Cache::forever($this->HEARTBEAT_WORKER_KEY, time());
             sleep($this->WORKER_SLEEP_SECS);
         }
@@ -114,7 +114,7 @@ class Worker extends \Illuminate\Console\Command
     protected function cron()
     {
         $this->addLogging();
-        $this->fire();
+        $this->dispatch();
         Cache::forever($this->HEARTBEAT_WORKER_KEY, time());
     }
 
@@ -144,7 +144,7 @@ class Worker extends \Illuminate\Console\Command
             $this->error('The '.$this->name.' worker has stopped');
 
             // Do work (since the worker has stopped)
-            $this->fire();
+            $this->dispatch();
 
         // The worker appears to be fine
         } else {

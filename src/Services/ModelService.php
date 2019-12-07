@@ -55,7 +55,7 @@ class ModelService
      */
     public function getUrl($page = '')
     {
-        return url('admin/'.$this->getCryptName().$page);
+        return url('manager/'.$this->getCryptName().$page);
     }
 
 

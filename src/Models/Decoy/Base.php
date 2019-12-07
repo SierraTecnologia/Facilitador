@@ -780,7 +780,7 @@ abstract class Base extends Eloquent
     {
         $event = "decoy::model.{$event}: ".get_class($this);
 
-        return Event::fire($event, $args);
+        return Event::dispatch($event, $args);
     }
 
     /**
