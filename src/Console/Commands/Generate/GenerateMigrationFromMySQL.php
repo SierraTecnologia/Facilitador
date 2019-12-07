@@ -1,4 +1,6 @@
-<?php namespace Locaravel\Console\Commands;
+<?php
+
+namespace Locaravel\Console\Commands;
 
 use DB;
 use Illuminate\Console\Command;

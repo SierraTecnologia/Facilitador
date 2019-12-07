@@ -552,7 +552,9 @@ If the following array is passed to the `filter()` method:
 In `app/ModelFilters/UserFilter.php`:
 
 ```php
-<?php namespace App\ModelFilters;
+<?php
+
+namespace App\ModelFilters;
 
 use Facilitador\ModelFilter;
 

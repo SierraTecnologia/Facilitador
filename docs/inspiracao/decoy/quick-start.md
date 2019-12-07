@@ -42,7 +42,9 @@ Decoy provides [a generator](generator) that creates the controller, model, and 
 You'll notice that the generated model has a bunch of commented out code by default.  That code represents common functionality and is there to help you get started.  Edit it until it looks like this:
 
 ```php
-<?php namespace App;
+<?php
+
+namespace App;
 use Facilitador\Models\Decoy\Base;
 use Facilitador\Models\Decoy\Traits\HasImages;
 
@@ -139,7 +141,9 @@ Like the model, the generated controller contains a number of commented out line
 Change your Article controller to:
 
 ```php
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 use Facilitador\Http\Controllers\Decoy\Base;
 
 class Articles extends Base {

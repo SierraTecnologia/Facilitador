@@ -94,7 +94,9 @@ The search property takes an array like the following example:
 Several of these properties have accessor functions that can be overrode in your subclass.  This has the advantage of allowing you to generate the configuration programmatically or to use closures in the configuration.  For instance:
 
 ```php
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 use Facilitador\Http\Controllers\Decoy\Base;
 class Articles extends Base {
 
