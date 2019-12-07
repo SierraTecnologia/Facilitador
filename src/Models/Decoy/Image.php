@@ -103,9 +103,6 @@ class Image extends Base
     private $config = [];
 
 
-
-
-
     /**
      * Register events
      *
@@ -307,6 +304,24 @@ class Image extends Base
         // Return the url
         return $url;
     }
+
+    // /**
+    //  * Get the images url location. (Da outra classe, antiga) @todo
+    //  *
+    //  * @param string $value
+    //  *
+    //  * @return string
+    //  */
+    // public function getUrlAttribute()
+    // {
+    //     return $this->remember('url', function () {
+    //         if ($this->isLocalFile()) {
+    //             return url(str_replace('public/', 'storage/', $this->location));
+    //         }
+
+    //         return FileService::fileAsPublicAsset($this->location);
+    //     });
+    // }
 
     /**
      * Output image for background style
