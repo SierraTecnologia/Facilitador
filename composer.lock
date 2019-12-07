@@ -161,11 +161,59 @@
             "time": "2019-03-25T14:20:55+00:00"
         },
         {
+            "name": "aschmelyun/larametrics",
+            "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aschmelyun/larametrics.git",
+                "reference": "2b8e435d4d8d4ab9fa3a73b1b41264a3732cb08c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aschmelyun/larametrics/zipball/2b8e435d4d8d4ab9fa3a73b1b41264a3732cb08c",
+                "reference": "2b8e435d4d8d4ab9fa3a73b1b41264a3732cb08c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Aschmelyun\\Larametrics\\LarametricsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aschmelyun\\Larametrics\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Schmelyun",
+                    "email": "me@aschmelyun.com",
+                    "homepage": "https://aschmelyun.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A self-hosted metrics and notifications platform for Laravel apps",
+            "time": "2019-09-15T22:43:38+00:00"
+        },
+        {
             "name": "bkwld/cloner",
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sierratcnologia/cloner.git",
+                "url": "https://github.com/BKWLD/cloner.git",
                 "reference": "4a0765517a018b99db0aa5ff8dfe1e8c95bc53c2"
             },
             "dist": {
@@ -220,7 +268,7 @@
             "version": "4.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sierratcnologia/croppa.git",
+                "url": "https://github.com/BKWLD/croppa.git",
                 "reference": "2ca553795085f21b77829053a9da0d1221d6cd77"
             },
             "dist": {
@@ -279,7 +327,7 @@
             "version": "2.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sierratcnologia/laravel-haml.git",
+                "url": "https://github.com/BKWLD/laravel-haml.git",
                 "reference": "4d2d6734a8e58a2fce25f54e2fe8665637e5b352"
             },
             "dist": {
@@ -318,7 +366,7 @@
             "version": "4.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sierratcnologia/php-library.git",
+                "url": "https://github.com/BKWLD/php-library.git",
                 "reference": "47a0256d4647998e39ca112d382192f13ad644ce"
             },
             "dist": {
@@ -359,7 +407,7 @@
             "version": "2.6.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sierratcnologia/upchuck.git",
+                "url": "https://github.com/BKWLD/upchuck.git",
                 "reference": "2d2202b1bc4a86a0a91ceb319521a263b0c88f54"
             },
             "dist": {
@@ -6002,7 +6050,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "10de0266e46edad543aa4b85ed62280191daed7d"
+                "reference": "33d527ccd3f202c21b18c54e95184663f98d5b2c"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -6291,7 +6339,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "cb6145229763413e81fcd75c469687d72fd58bc7"
+                "reference": "fec107d66e23f1c920fe48f11d1e196da9e64164"
             },
             "require": {
                 "php": "^7.3.0"
@@ -6392,7 +6440,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "c6c3bcb32ebafa522b9b84c0405b1e87f205ff1a"
+                "reference": "1acd35c025bf6c325e790276fdc8db4d838f468f"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master"
@@ -6429,9 +6477,10 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "908708c5f258da7876fb71adea40c2a9cdc2b848"
+                "reference": "0094be6058a86c42a595c471aaac4e64e287207b"
             },
             "require": {
+                "aschmelyun/larametrics": "^1.1",
                 "markrogoyski/math-php": "*",
                 "php": "^7.3.0",
                 "php-ai/php-ml": "^0.8.0",
