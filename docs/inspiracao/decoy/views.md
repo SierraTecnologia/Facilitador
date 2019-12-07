@@ -8,7 +8,7 @@ Admin views are stored in /app/views/admin/CONTROLLER where "CONTROLLER" is the 
 Use a `fieldset` and a div of class `.legend` to contain groups of fields in box.  For instance:
 
 ```haml
-!= View::make('decoy::shared.form._header', $__data)->render()
+!= View::make('facilitador::shared.form._header', $__data)->render()
 %fieldset
   .legend=empty($item)?'New':'Edit'
   != Former::text('title')
@@ -17,9 +17,9 @@ Use a `fieldset` and a div of class `.legend` to contain groups of fields in box
 
 ## Overriding a Decoy partial
 
-You can override any of the Decoy partials on a per-controller basis.  This is done by creating a file structure within a controller's views directory that matches the decoy views structure.  Any mirrored path will be used in place of the Decoy partial.  For instance, if you create a file at `/resources/views/admin/articles/shared/pagination/index.php` you can customize the pagination partial JUST for the articles controller.
+You can override any of the Decoy partials on a per-controller basis.  This is done by creating a file structure within a controller's views directory that matches the facilitador views structure.  Any mirrored path will be used in place of the Decoy partial.  For instance, if you create a file at `/resources/views/admin/articles/shared/pagination/index.php` you can customize the pagination partial JUST for the articles controller.
 
-In addition, you can override a partial for ALL controllers through built in [Laravel functionality](http://laravel.com/docs/packages#package-views).  For instance, change the sidebar with a file at `/resources/views/vendor/decoy/layouts/sidebar/_sidebar.haml`.
+In addition, you can override a partial for ALL controllers through built in [Laravel functionality](http://laravel.com/docs/packages#package-views).  For instance, change the sidebar with a file at `/resources/views/vendor/facilitador/layouts/sidebar/_sidebar.haml`.
 
 ## Sidebar
 
@@ -30,7 +30,7 @@ $sidebar->add(Former::listing('Contributor')->take(30))
 $sidebar->add('<p>A paragraph</p>')
 ```
 
-Note: This must be run **before** the include of the `decoy::shared.form._header` partial.
+Note: This must be run **before** the include of the `facilitador::shared.form._header` partial.
 
 
 ## Embeded / inline relationship list

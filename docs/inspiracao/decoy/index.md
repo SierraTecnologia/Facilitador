@@ -1,6 +1,6 @@
 # Installation
 
-1. Add to your app with `composer require bkwld/decoy`
+1. Add to your app with `composer require sierratecnologia/facilitador`
 
 2. Add `Facilitador\ServiceProvider::class` to the `providers` in your Laravel's app config file.
 
@@ -30,4 +30,4 @@ Decoy is tested to support the following browsers:
 
 ## Version history
 
-See the [Github "Releases"](https://github.com/BKWLD/decoy/releases) history.
+See the [Github "Releases"](https://github.com/sierratcnologia/facilitador/releases) history.

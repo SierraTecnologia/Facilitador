@@ -2,7 +2,7 @@
 
 ## Generator
 
-The Decoy workflow begins with generating a migration for a database table using the [standard Laravel approach](http://laravel.com/docs/migrations).  Then, Decoy provides a generator that creates the controller, model, and view for that table.  Run `php artisan decoy:generate Model` where "Model" is the name of the Model class you intend to create.  This should be the singular form of the table you created.
+The Decoy workflow begins with generating a migration for a database table using the [standard Laravel approach](http://laravel.com/docs/migrations).  Then, Decoy provides a generator that creates the controller, model, and view for that table.  Run `php artisan facilitador:generate Model` where "Model" is the name of the Model class you intend to create.  This should be the singular form of the table you created.
 
 
 ## Workers

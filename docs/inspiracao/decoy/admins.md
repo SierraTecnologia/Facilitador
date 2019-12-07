@@ -4,7 +4,7 @@
 
 ![](assets/img/admins.png)
 
-Decoy ships with an interface for the management of admin user accounts.  In addition, admins can be created through the console by running `php artisan decoy:admin`.
+Decoy ships with an interface for the management of admin user accounts.  In addition, admins can be created through the console by running `php artisan facilitador:admin`.
 
 ![](assets/img/create-admin.gif)
 
@@ -60,7 +60,7 @@ The roles array generates the list of roles on the Admin edit screen. The permis
 - publish (set the `visibility`)
 - manage (combines all of the above)
 
-In addition, you can make custom permissions and check for them using the same methods.  For instance, you could add an `approve.articles` permission to the config and then check for it using `app('decoy.user')->can('approve', 'articles')`.  This is preferred over checking the admin's role as it is more flexible and expressive.
+In addition, you can make custom permissions and check for them using the same methods.  For instance, you could add an `approve.articles` permission to the config and then check for it using `app('facilitador.user')->can('approve', 'articles')`.  This is preferred over checking the admin's role as it is more flexible and expressive.
 
 ## Tracking changes
 

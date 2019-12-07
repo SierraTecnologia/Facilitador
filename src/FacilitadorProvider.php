@@ -224,7 +224,7 @@ class FacilitadorProvider extends ServiceProvider
         $this->app->singleton(FacilitadorService::class, function($app)
         {
             Log::info('Singleton Facilitador');
-            return new FacilitadorService(config('sitec-facilitador.models'));
+            return new FacilitadorService(config('facilitador.sitec.models'));
         });
 
         Route::bind('modelClass', function ($value) {

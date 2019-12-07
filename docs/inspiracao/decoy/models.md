@@ -115,7 +115,7 @@ public function onRemoved($parent) {}
 
 ![](assets/img/duplicate.png)
 
-Decoy implements [Cloner](https://github.com/BKWLD/cloner) to allow admins to duplicate models.  A single model and it's files should work right out of the box.  To support cloning relationships, specify a `$cloneable_relations` array on the model.  Read the [Cloner docs](https://github.com/BKWLD/cloner#usage) for more info and some other options.
+Decoy implements [Cloner](https://github.com/sierratcnologia/cloner) to allow admins to duplicate models.  A single model and it's files should work right out of the box.  To support cloning relationships, specify a `$cloneable_relations` array on the model.  Read the [Cloner docs](https://github.com/sierratcnologia/cloner#usage) for more info and some other options.
 
 
 ## Relationships
@@ -209,7 +209,7 @@ Route::get('articles.json', function() {
 });
 ```
 
-It also adds a convenience method for registering transformations to generate crops of [`Images`](https://github.com/BKWLD/decoy/wiki/6.-Feature:-Images):
+It also adds a convenience method for registering transformations to generate crops of [`Images`](https://github.com/sierratcnologia/facilitador/wiki/6.-Feature:-Images):
 
 ```php?start_inline=1
 Route::get('articles.json', function() {

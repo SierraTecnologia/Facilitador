@@ -24,7 +24,6 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $models = $this->facilitadorService->getModelServices(); //->sortByDesc('field', [], true);
-        
 
         $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
         

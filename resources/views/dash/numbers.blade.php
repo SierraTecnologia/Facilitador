@@ -7,7 +7,7 @@ $i = 1
     @endif
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+            <span class="info-box-icon bg-aqua">{!!\Facilitador\Layout\Icons::getRandon()!!}</span>
 
             <div class="info-box-content">
             <span class="info-box-text"><a href="{{$model->getUrl()}}">{{$model->getName()}}</a></span>

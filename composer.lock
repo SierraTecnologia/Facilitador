@@ -165,7 +165,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BKWLD/cloner.git",
+                "url": "https://github.com/sierratcnologia/cloner.git",
                 "reference": "4a0765517a018b99db0aa5ff8dfe1e8c95bc53c2"
             },
             "dist": {
@@ -220,7 +220,7 @@
             "version": "4.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BKWLD/croppa.git",
+                "url": "https://github.com/sierratcnologia/croppa.git",
                 "reference": "2ca553795085f21b77829053a9da0d1221d6cd77"
             },
             "dist": {
@@ -279,7 +279,7 @@
             "version": "2.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BKWLD/laravel-haml.git",
+                "url": "https://github.com/sierratcnologia/laravel-haml.git",
                 "reference": "4d2d6734a8e58a2fce25f54e2fe8665637e5b352"
             },
             "dist": {
@@ -318,7 +318,7 @@
             "version": "4.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BKWLD/php-library.git",
+                "url": "https://github.com/sierratcnologia/php-library.git",
                 "reference": "47a0256d4647998e39ca112d382192f13ad644ce"
             },
             "dist": {
@@ -359,7 +359,7 @@
             "version": "2.6.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BKWLD/upchuck.git",
+                "url": "https://github.com/sierratcnologia/upchuck.git",
                 "reference": "2d2202b1bc4a86a0a91ceb319521a263b0c88f54"
             },
             "dist": {

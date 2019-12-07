@@ -87,7 +87,6 @@ class Wildcard
      */
     public function detectController($class_name = null)
     {
-
         // Setup the two schemes
         if (!$class_name) {
             $class_name = $this->detectControllerClass();
@@ -100,7 +99,9 @@ class Wildcard
         // Find the right one
         if (class_exists($app)) {
             return $app;
-        } elseif (class_exists($facilitador)) {
+        }
+        
+        if (class_exists($facilitador)) {
             return $facilitador;
         }
 

@@ -9,8 +9,8 @@ The minified JS that Decoy ships with exposes it's internal jQuery, Backbone, an
 ```coffee
 # Load Decoy js from the public/assets directory where it was installed by
 # `php artisan vendor:publish`
-decoy = require '../../../public/assets/facilitador/index'
-{ $, _, Backbone } = decoy
+facilitador = require '../../../public/assets/facilitador/index'
+{ $, _, Backbone } = facilitador
 
 # Prevent clicks of disabled buttons
 $('.btn[disabled]').on 'click', (e) -> e.preventDefault()
@@ -24,15 +24,15 @@ Decoy uses [Redactor](http://imperavi.com/redactor/) as its WYSIWYG editors.  He
 ```coffee
 # Load Decoy js from the public/assets directory where it was installed by
 # `php artisan vendor:publish`
-decoy = require '../../../public/assets/facilitador/index'
+facilitador = require '../../../public/assets/facilitador/index'
 
 # Make a single stylesheet with Decoy and extended styles
 require '../../../public/assets/facilitador/index.css'
 require './start.styl'
 
 # Customize wysiwyg options
-decoy.wysiwyg.config.allowUploads()
-decoy.wysiwyg.config.merge({
+facilitador.wysiwyg.config.allowUploads()
+facilitador.wysiwyg.config.merge({
   plugins: ['fontcolor'],
   buttons: ['formatting', 'bold', 'italic', 'link', 'file', 'image', 'horizontalrule', 'orderedlist', 'unorderedlist', 'html'],
   formatting: ['p', 'h2', 'h3', 'blockquote'],
@@ -50,6 +50,6 @@ decoy.wysiwyg.config.merge({
   ],
 })
 
-# Start up decoy
-decoy.init()
+# Start up facilitador
+facilitador.init()
 ```

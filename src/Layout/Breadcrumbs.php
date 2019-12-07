@@ -55,6 +55,7 @@ class Breadcrumbs
         $path = Request::path();
         $segments = explode('/', $path);
 
+
         // Loop through them in blocks of 2: [list, detail]
         $url = $segments[0];
         for ($i=1; $i<count($segments); $i+=2) {
@@ -64,9 +65,11 @@ class Breadcrumbs
                 break;
             }
 
+
             // Figure out the controller given the url partial
             $url .= '/' . $segments[$i];
             $router = new Wildcard($segments[0], 'GET', $url);
+            
             if (!($controller = $router->detectController())) {
                 continue;
             }
@@ -181,7 +184,7 @@ class Breadcrumbs
 
         // Otherwise, skip the previous (the listing) and go direct to the previous detail
         $urls = array_keys($this->links);
-
+        
         return $urls[count($urls) - 3];
     }
 }

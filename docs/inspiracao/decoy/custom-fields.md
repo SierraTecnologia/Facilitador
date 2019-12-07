@@ -13,7 +13,7 @@ The following additional fields come with Decoy.  They are implemented through [
 ```php?start_inline=1
 echo Former::belongsTo('related_product_id', 'Related product')->route('/admin/products');
 echo Former::belongsTo('related_product_id', 'Related product')->parent(App\Project::class);
-echo Former::belongsTo('author_id', 'Author')->route('/admin/admins')->value(app('decoy.user')->id)->title(app('decoy.user')->getAdminTitleAttribute());
+echo Former::belongsTo('author_id', 'Author')->route('/admin/admins')->value(app('facilitador.user')->id)->title(app('facilitador.user')->getAdminTitleAttribute());
 ```
 
 ### Boolean
@@ -145,7 +145,7 @@ echo Former::time('time')->value('now');
 ### Upload
 
 - Creates a [file upload field](http://cl.ly/image/1a0q0C0p3V3y) with additional UI for reviewing the last upload and deleting it.
-- Decoy uses [Upchuck](https://github.com/BKWLD/upchuck) to facilitate file upload handling.  As a result, file upload fields need to be white listed on the model using the `upload_attributes` property.  See [the usage](https://github.com/BKWLD/upchuck#usage) section of the [Upchuck README](https://github.com/BKWLD/upchuck/blob/master/README.md) for examples.
+- Decoy uses [Upchuck](https://github.com/sierratcnologia/upchuck) to facilitate file upload handling.  As a result, file upload fields need to be white listed on the model using the `upload_attributes` property.  See [the usage](https://github.com/sierratcnologia/upchuck#usage) section of the [Upchuck README](https://github.com/sierratcnologia/upchuck/blob/master/README.md) for examples.
 
 ```php?start_inline=1
 echo Former::upload('file');
@@ -157,7 +157,7 @@ echo Former::upload('file');
 
 - Creates a [video upload field](http://yo.bkwld.com/image/1R3V1T2o1R1P) with additional UI for checking the progress of the encoding and then playing back the video.
 - Review the feature on Encoding from this doc for more information on the setup of the video encoding feature of Decoy.
-- Decoy uses [Upchuck](https://github.com/BKWLD/upchuck) to facilitate file upload handling.  As a result, file upload fields need to be white listed on the model using the `upload_attributes` property.  See [the usage](https://github.com/BKWLD/upchuck#usage) section of the [Upchuck README](https://github.com/BKWLD/upchuck/blob/master/README.md) for examples.
+- Decoy uses [Upchuck](https://github.com/sierratcnologia/upchuck) to facilitate file upload handling.  As a result, file upload fields need to be white listed on the model using the `upload_attributes` property.  See [the usage](https://github.com/sierratcnologia/upchuck#usage) section of the [Upchuck README](https://github.com/sierratcnologia/upchuck/blob/master/README.md) for examples.
 
 ```php?start_inline=1
 echo Former::videoEncoder('video');

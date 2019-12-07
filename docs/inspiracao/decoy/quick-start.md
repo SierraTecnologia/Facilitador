@@ -31,7 +31,7 @@ Run the migration: `php artisan migrate`.
 
 ![](assets/img/generate.gif)
 
-Decoy provides [a generator](generator) that creates the controller, model, and view for the data you are managing.  Run `php artisan decoy:generate Article`. This creates the following files:
+Decoy provides [a generator](generator) that creates the controller, model, and view for the data you are managing.  Run `php artisan facilitador:generate Article`. This creates the following files:
 
 - `app/Article` - The model (shared by admin and public sites)
 - `app/Http/Controllers/Admin/Articles.php` - The controller
@@ -116,7 +116,7 @@ For more information, see [Models](models).
 The create and edit form are both created by a simple Laravel view.  The view file created by the generator is written in [HAML](https://github.com/arnaud-lb/MtHaml) but can be changed to php, blade, or anything else by just changing the file suffix.  Change the edit view to this to create the fields required for our Article model.
 
 ```haml
-!= View::make('decoy::shared.form._header', $__data)->render()
+!= View::make('facilitador::shared.form._header', $__data)->render()
 
 %fieldset
   .legend= empty($item) ? 'New' : 'Edit'
@@ -126,10 +126,10 @@ The create and edit form are both created by a simple Laravel view.  The view fi
   != Former::wysiwyg('body')
 
 %fieldset
-  != View::make('decoy::shared.form._display_module', $__data)->render()
+  != View::make('facilitador::shared.form._display_module', $__data)->render()
   != Former::date('date')->value('now')
 
-!= View::make('decoy::shared.form._footer', $__data)->render()
+!= View::make('facilitador::shared.form._footer', $__data)->render()
 ```
 
 For more information, see [Views](views) and [Custom form fields](custom-fields).
@@ -184,7 +184,7 @@ Route::get('news', ['as' => 'news', function() {
 
 ## Step 7 - Edit the Decoy navigation
 
-Now, update the admin navigation to include "News", the label for managing Article models.  The contents of the navigation are stored in the `config/decoy/site.php` file.  There is no need to setup any special routing definitions, this happens [automatically](routing).
+Now, update the admin navigation to include "News", the label for managing Article models.  The contents of the navigation are stored in the `config/facilitador/site.php` file.  There is no need to setup any special routing definitions, this happens [automatically](routing).
 
 ```php
 <?php return [
@@ -203,7 +203,7 @@ The `align-left` defines an icon to use in the navigation sidebar.  These can be
 
 ## Step 8 - Create an admin account
 
-Create yourself an admin account by running `php artisan decoy:admin` in the [console](console) and answering its prompts.
+Create yourself an admin account by running `php artisan facilitador:admin` in the [console](console) and answering its prompts.
 
 ![](assets/img/create-admin.gif)
 

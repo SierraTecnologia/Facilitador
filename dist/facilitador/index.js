@@ -3,11 +3,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("decoy", [], factory);
+		define("facilitador", [], factory);
 	else if(typeof exports === 'object')
-		exports["decoy"] = factory();
+		exports["facilitador"] = factory();
 	else
-		root["decoy"] = factory();
+		root["facilitador"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -36354,7 +36354,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			_ = __webpack_require__(5),
 			Backbone = __webpack_require__(7),
 			Autocomplete = __webpack_require__(23),
-			storage = __webpack_require__(29)('decoy.belongs-to');
+			storage = __webpack_require__(29)('facilitador.belongs-to');
 
 		// Public view module
 		var BelongsTo = Autocomplete.extend({
@@ -37373,7 +37373,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			}, this), 1000);
 
 
-			//Add decoy login animation on screens greater than screen-sm
+			//Add facilitador login animation on screens greater than screen-sm
 			if( $win.width() >= 768 ) {
 
 				// If using hot module reloading, wait an arbitrary amount to styles have
@@ -37486,7 +37486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.stage.interactive = true;
 	    this.graphics = new PIXI.Graphics();
 	    this.renderer = PIXI.autoDetectRenderer(this.$parent.width(), this.$parent.height(), null, true, true);
-	    this.renderer.view.id = "decoy-animation";
+	    this.renderer.view.id = "facilitador-animation";
 	    this.$canvas = $('#' + this.renderer.view.id);
 	    this.resetAnimation();
 	    this.$parent.append(this.renderer.view);
@@ -44589,10 +44589,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Apply listeners to delete buttons that require an
 	// admin to confirm the delete.  This must be manually
 	// opted into by requiring this module from an app's
-	// admin/start.js before the decoy is started.
+	// admin/start.js before the facilitador is started.
 	//
-	// require('decoy/modules/chicken-switch').register();
-	// decoy.trigger('ready');
+	// require('facilitador/modules/chicken-switch').register();
+	// facilitador.trigger('ready');
 	//
 	// --------------------------------------------------
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require) {

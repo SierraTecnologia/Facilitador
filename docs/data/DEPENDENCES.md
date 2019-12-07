@@ -1,4 +1,4 @@
 ,
         "anahkiasen/former": "^4.3.0"
 
-        https://github.com/BKWLD/cloner
+        https://github.com/sierratcnologia/cloner

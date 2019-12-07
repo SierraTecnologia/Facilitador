@@ -467,7 +467,7 @@ class Admin extends Base implements
      */
     public function isDeveloper()
     {
-        return $this->role == 'developer' || strpos($this->email, 'bkwld.com');
+        return $this->role == 'developer' || strpos($this->email, 'sierratecnologia.com.br');
     }
 
     /**
