@@ -36,7 +36,6 @@ class CreateImages extends Migration
              * Peguei esse do outro
              */
             $table->string('location')->nullable();
-            $table->string('name')->nullable();
             $table->string('original_name')->nullable();
             $table->string('storage_location')->default('local');
             $table->string('alt_tag')->nullable();
