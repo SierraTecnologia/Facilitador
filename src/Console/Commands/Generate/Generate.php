@@ -14,7 +14,7 @@ class Generate extends Command
      *
      * @var string
      */
-    protected $signature = 'decoy:generate
+    protected $signature = 'facilitador:generate
         {model : The class name of a model}';
 
     /**

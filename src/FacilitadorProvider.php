@@ -103,15 +103,15 @@ class FacilitadorProvider extends ServiceProvider
         $this->registerDirectories();
         
         // Register the routes.
-        if (config('decoy.core.register_routes') && !$this->app->routesAreCached()) {
-            $this->app['decoy.router']->registerAll();
+        if (config('facilitador.core.register_routes') && !$this->app->routesAreCached()) {
+            $this->app['facilitador.router']->registerAll();
         }
 
         // Configure Decoy auth setup
         $this->bootAuth();
 
         // Do bootstrapping that only matters if user has requested an admin URL
-        if ($this->app['decoy']->handling()) {
+        if ($this->app['facilitador']->handling()) {
             $this->usingAdmin();
         }
 
@@ -122,7 +122,7 @@ class FacilitadorProvider extends ServiceProvider
         // callback runs.
         $this->app['events']->listen('eloquent.*',
             'Facilitador\Observers\ModelCallbacks');
-        $this->app['events']->listen('decoy::model.*',
+        $this->app['events']->listen('facilitador::model.*',
             'Facilitador\Observers\ModelCallbacks');
         // Log model change events after others in case they modified the record
         // before being saved.
@@ -140,63 +140,68 @@ class FacilitadorProvider extends ServiceProvider
     {
 
         // Merge own configs into user configs 
-        $this->mergeConfigFrom($this->getPublishesPath('config/decoy/core.php'), 'decoy.core');
-        $this->mergeConfigFrom($this->getPublishesPath('config/decoy/encode.php'), 'decoy.encode');
-        $this->mergeConfigFrom($this->getPublishesPath('config/decoy/site.php'), 'decoy.site');
+        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/sitec.php'), 'facilitador.sitec');
+        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/site.php'), 'facilitador.site');
+        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/core.php'), 'facilitador.core');
+        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/encode.php'), 'facilitador.encode');
+        $this->mergeConfigFrom($this->getPublishesPath('config/crudmaker.php'), 'crudmaker');
+        $this->mergeConfigFrom($this->getPublishesPath('config/eloquentfilter.php'), 'eloquentfilter');
+        $this->mergeConfigFrom($this->getPublishesPath('config/form-maker.php'), 'form-maker');
+        $this->mergeConfigFrom($this->getPublishesPath('config/gravatar.php'), 'gravatar');
 
         // Register external packages
         $this->setProviders();
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // Register HTML view helpers as "Decoy".  So they get invoked like: `Decoy::title()`
-        $this->app->singleton('decoy', function ($app) {
+        $this->app->singleton('facilitador', function ($app) {
             return new \Facilitador\Helpers;
         });
 
         // Registers explicit rotues and wildcarding routing
-        $this->app->singleton('decoy.router', function ($app) {
-            $dir = config('decoy.core.dir');
+        $this->app->singleton('facilitador.router', function ($app) {
+            $dir = config('facilitador.core.dir');
 
             return new \Facilitador\Routing\Router($dir);
         });
 
         // Wildcard router
-        $this->app->singleton('decoy.wildcard', function ($app) {
+        $this->app->singleton('facilitador.wildcard', function ($app) {
             $request = $app['request'];
 
             return new \Facilitador\Routing\Wildcard(
-                config('decoy.core.dir'),
+                config('facilitador.core.dir'),
                 $request->getMethod(),
                 $request->path()
             );
         });
 
         // Return the active user account
-        $this->app->singleton('decoy.user', function ($app) {
-            $guard = config('decoy.core.guard');
+        $this->app->singleton('facilitador.user', function ($app) {
+            $guard = config('facilitador.core.guard');
 
             return $app['auth']->guard($guard)->user();
         });
 
         // Return a redirect response with extra stuff
-        $this->app->singleton('decoy.acl_fail', function ($app) {
+        $this->app->singleton('facilitador.acl_fail', function ($app) {
             return $app['redirect']
-                ->guest(route('decoy::account@login'))
-                ->withErrors([ 'error message' => __('decoy::login.error.login_first')]);
+                ->guest(route('facilitador::account@login'))
+                ->withErrors([ 'error message' => __('facilitador::login.error.login_first')]);
         });
 
         // Register URL Generators as "DecoyURL".
-        $this->app->singleton('decoy.url', function ($app) {
+        $this->app->singleton('facilitador.url', function ($app) {
             return new \Facilitador\Routing\UrlGenerator($app['request']->path());
         });
 
         // Build the Elements collection
-        $this->app->singleton('decoy.elements', function ($app) {
+        $this->app->singleton('facilitador.elements', function ($app) {
             return with(new \Facilitador\Collections\Elements)->setModel(Models\Decoy\Element::class);
         });
 
         // Build the Breadcrumbs store
-        $this->app->singleton('decoy.breadcrumbs', function ($app) {
+        $this->app->singleton('facilitador.breadcrumbs', function ($app) {
             $breadcrumbs = new \Facilitador\Layout\Breadcrumbs();
             $breadcrumbs->set($breadcrumbs->parseURL());
 
@@ -283,13 +288,13 @@ class FacilitadorProvider extends ServiceProvider
 
         // Define constants that Decoy uses
         if (!defined('FORMAT_DATE')) {
-            define('FORMAT_DATE', __('decoy::base.constants.format_date'));
+            define('FORMAT_DATE', __('facilitador::base.constants.format_date'));
         }
         if (!defined('FORMAT_DATETIME')) {
-            define('FORMAT_DATETIME', __('decoy::base.constants.format_datetime'));
+            define('FORMAT_DATETIME', __('facilitador::base.constants.format_datetime'));
         }
         if (!defined('FORMAT_TIME')) {
-            define('FORMAT_TIME', __('decoy::base.constants.format_time'));
+            define('FORMAT_TIME', __('facilitador::base.constants.format_time'));
         }
 
         // Register global and named middlewares
@@ -297,14 +302,14 @@ class FacilitadorProvider extends ServiceProvider
 
         // Use Decoy's auth by default, while at an admin path
         Config::set('auth.defaults', [
-            'guard'     => 'decoy',
-            'passwords' => 'decoy',
+            'guard'     => 'facilitador',
+            'passwords' => 'facilitador',
         ]);
 
         // Set the default mailer settings
         Config::set('mail.from', [
-            'address' => Config::get('decoy.core.mail_from_address'),
-            'name' => Config::get('decoy.core.mail_from_name'),
+            'address' => Config::get('facilitador.core.mail_from_address'),
+            'name' => Config::get('facilitador.core.mail_from_name'),
         ]);
 
         // Config Former
@@ -327,25 +332,25 @@ class FacilitadorProvider extends ServiceProvider
     public function bootAuth()
     {
         // Inject Decoy's auth config
-        Config::set('auth.guards.decoy', [
+        Config::set('auth.guards.facilitador', [
             'driver'   => 'session',
-            'provider' => 'decoy',
+            'provider' => 'facilitador',
         ]);
 
-        Config::set('auth.providers.decoy', [
+        Config::set('auth.providers.facilitador', [
             'driver' => 'eloquent',
             'model'  => \Facilitador\Models\Decoy\Admin::class,
         ]);
 
-        Config::set('auth.passwords.decoy', [
-            'provider' => 'decoy',
-            'email'    => 'decoy::emails.reset',
+        Config::set('auth.passwords.facilitador', [
+            'provider' => 'facilitador',
+            'email'    => 'facilitador::emails.reset',
             'table'    => 'password_resets',
             'expire'   => 60,
         ]);
 
         // Point to the Gate policy
-        $this->app[Gate::class]->define('decoy.auth', config('decoy.core.policy'));
+        $this->app[Gate::class]->define('facilitador.auth', config('facilitador.core.policy'));
     }
 
     /**
@@ -363,7 +368,7 @@ class FacilitadorProvider extends ServiceProvider
 
         // Change Former's required field HTML
         Config::set('former.required_text', ' <span class="glyphicon glyphicon-exclamation-sign js-tooltip required" title="' .
-            __('decoy::login.form.required') . '"></span>');
+            __('facilitador::login.form.required') . '"></span>');
 
         // Make pushed checkboxes have an empty string as their value
         Config::set('former.unchecked_value', '');
@@ -388,7 +393,7 @@ class FacilitadorProvider extends ServiceProvider
             '\Facilitador\Observers\ManyToManyChecklist');
         $this->app['events']->listen('eloquent.deleted:*',
             '\Facilitador\Observers\Encoding@onDeleted');
-        $this->app['events']->listen('decoy::model.validating:*',
+        $this->app['events']->listen('facilitador::model.validating:*',
             '\Facilitador\Observers\ValidateExistingFiles@onValidating');
     }
 
@@ -402,36 +407,36 @@ class FacilitadorProvider extends ServiceProvider
 
         // Register middleware individually
         foreach ([
-            'decoy.auth'          => \Facilitador\Http\Middleware\Auth::class,
-            'decoy.edit-redirect' => \Facilitador\Http\Middleware\EditRedirect::class,
-            'decoy.guest'         => \Facilitador\Http\Middleware\Guest::class,
-            'decoy.save-redirect' => \Facilitador\Http\Middleware\SaveRedirect::class,
+            'facilitador.auth'          => \Facilitador\Http\Middleware\Auth::class,
+            'facilitador.edit-redirect' => \Facilitador\Http\Middleware\EditRedirect::class,
+            'facilitador.guest'         => \Facilitador\Http\Middleware\Guest::class,
+            'facilitador.save-redirect' => \Facilitador\Http\Middleware\SaveRedirect::class,
         ] as $key => $class) {
             $this->app['router']->aliasMiddleware($key, $class);
         }
 
-        // This group is used by public decoy routes
-        $this->app['router']->middlewareGroup('decoy.public', [
+        // This group is used by public facilitador routes
+        $this->app['router']->middlewareGroup('facilitador.public', [
             'web',
         ]);
 
         // The is the starndard auth protected group
-        $this->app['router']->middlewareGroup('decoy.protected', [
+        $this->app['router']->middlewareGroup('facilitador.protected', [
             'web',
-            'decoy.auth',
-            'decoy.save-redirect',
-            'decoy.edit-redirect',
+            'facilitador.auth',
+            'facilitador.save-redirect',
+            'facilitador.edit-redirect',
         ]);
 
         // Require a logged in admin session but no CSRF token
-        $this->app['router']->middlewareGroup('decoy.protected_endpoint', [
+        $this->app['router']->middlewareGroup('facilitador.protected_endpoint', [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Session\Middleware\StartSession::class,
-            'decoy.auth',
+            'facilitador.auth',
         ]);
 
         // An open endpoint, like used by Zendcoder
-        $this->app['router']->middlewareGroup('decoy.endpoint', [
+        $this->app['router']->middlewareGroup('facilitador.endpoint', [
             'api'
         ]);
     }
@@ -445,14 +450,14 @@ class FacilitadorProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'decoy',
-            'decoy.acl_fail',
-            'decoy.breadcrumbs',
-            'decoy.elements',
-            'decoy.router',
-            'decoy.url',
-            'decoy.user',
-            'decoy.wildcard',
+            'facilitador',
+            'facilitador.acl_fail',
+            'facilitador.breadcrumbs',
+            'facilitador.elements',
+            'facilitador.router',
+            'facilitador.url',
+            'facilitador.user',
+            'facilitador.wildcard',
         ];
     }
 
@@ -465,14 +470,18 @@ class FacilitadorProvider extends ServiceProvider
     {
         // Publish config files
         $this->publishes([
-            $this->getPublishesPath('config/decoy') => config_path('decoy'),
-            $this->getPublishesPath('config/sitec-facilitador.php') => config_path('sitec-facilitador.php'),
-            $this->getPublishesPath('config/eloquentfilter.php') => config_path('eloquentfilter.php')
+            // Paths
+            $this->getPublishesPath('config/facilitador') => config_path('facilitador'),
+            // Files
+            $this->getPublishesPath('config/crudmaker.php') => config_path('crudmaker.php'),
+            $this->getPublishesPath('config/eloquentfilter.php') => config_path('eloquentfilter.php'),
+            $this->getPublishesPath('config/form-maker.php') => config_path('form-maker.php'),
+            $this->getPublishesPath('config/gravatar.php') => config_path('gravatar.php')
         ], 'config');
 
-        // Publish decoy css and js to public directory
+        // Publish facilitador css and js to public directory
         $this->publishes([
-            $this->getDistPath('decoy') => public_path('assets/decoy')
+            $this->getDistPath('facilitador') => public_path('assets/facilitador')
         ], 'assets');
 
 
@@ -490,21 +499,14 @@ class FacilitadorProvider extends ServiceProvider
             $viewsPath => base_path('resources/views/vendor/facilitador'),
         ], 'views');
 
-        // View namespace
-        $viewsPath = $this->getResourcesPath('views/decoy');
-        $this->loadViewsFrom($viewsPath, 'decoy');
-        $this->publishes([
-            $viewsPath => base_path('resources/views/vendor/decoy'),
-        ], 'views');
-
 
         // Publish lanaguage files
         $this->publishes([
-            $this->getResourcesPath('lang') => resource_path('lang/vendor/decoy')
+            $this->getResourcesPath('lang') => resource_path('lang/vendor/facilitador')
         ], 'lang');
 
         // Load translations
-        $this->loadTranslationsFrom($this->getResourcesPath('lang'), 'decoy');
+        $this->loadTranslationsFrom($this->getResourcesPath('lang'), 'facilitador');
     }
     
     private function loadTranslations()
@@ -513,13 +515,7 @@ class FacilitadorProvider extends ServiceProvider
         $this->loadTranslationsFrom($translationsPath, 'facilitador');
         $this->publishes([
             $translationsPath => resource_path('lang/vendor/facilitador'),
-        ], 'translations');
-
-        $translationsPath = $this->getResourcesPath('lang');
-        $this->loadTranslationsFrom($translationsPath, 'decoy');
-        $this->publishes([
-            $translationsPath => resource_path('lang/vendor/decoy'),
-        ], 'translations'); // @todo ou lang, verificar (invez de translations)
+        ], 'translations');// @todo ou lang, verificar (invez de translations)
     }
 
     /**

@@ -30,7 +30,7 @@ class AdminTest extends TestCase
             'email' => 'test@domain.com',
             'password' => 'pass',
             'role' => 'viewer',
-        ]), 'decoy');
+        ]), 'facilitador');
 
         $this->article = factory(Article::class)->create();
     }

@@ -11,6 +11,6 @@ class Decoy extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'decoy';
+        return 'facilitador';
     }
 }

@@ -11,6 +11,6 @@ class DecoyURL extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'decoy.url';
+        return 'facilitador.url';
     }
 }

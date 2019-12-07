@@ -130,7 +130,7 @@ class Zencoder extends EncodingProvider
 
             // Register for notifications for when the conding is done. If testing
             // from CLI, just set the app.url config to a ngork domain.
-            'notifications' => [route('decoy::encode@notify')],
+            'notifications' => [route('facilitador::encode@notify')],
 
         ];
 
@@ -161,8 +161,8 @@ class Zencoder extends EncodingProvider
 
             // If a destination_root was set, subsitute that in for the destination
             // in the retured URL
-            if ($root = Config::get('decoy.encode.destination_root')) {
-                return str_replace(Config::get('decoy.encode.destination'), $root, $output->url);
+            if ($root = Config::get('facilitador.encode.destination_root')) {
+                return str_replace(Config::get('facilitador.encode.destination'), $root, $output->url);
             }
 
             // Else just return the URL
@@ -252,7 +252,7 @@ class Zencoder extends EncodingProvider
      */
     public function sdk()
     {
-        return new Services_Zencoder(Config::get('decoy.encode.api_key'));
+        return new Services_Zencoder(Config::get('facilitador.encode.api_key'));
     }
 
     /**

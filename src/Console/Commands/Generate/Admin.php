@@ -12,7 +12,7 @@ class Admin extends Command
      *
      * @var string
      */
-    protected $name = 'decoy:admin';
+    protected $name = 'facilitador:admin';
 
     /**
      * The console command description.

@@ -37,29 +37,29 @@ class Changes extends Base
     {
         $options = [
             'model' => [
-                'label' => __('decoy::changes.controller.search.type'),
+                'label' => __('facilitador::changes.controller.search.type'),
                 'type' => 'text',
             ],
             'key' => [
-                'label' => __('decoy::changes.controller.search.key'),
+                'label' => __('facilitador::changes.controller.search.key'),
                 'type' => 'text',
             ],
             'action' => [
-                'label' => __('decoy::changes.controller.search.action'),
+                'label' => __('facilitador::changes.controller.search.action'),
                 'type' => 'select',
                 'options' => 'Facilitador\Models\Decoy\Change::getActions()',
             ],
             'title' => [
-                'label' => __('decoy::changes.controller.search.title'),
+                'label' => __('facilitador::changes.controller.search.title'),
                 'type' => 'text',
             ],
             'admin_id' => [
-                'label' => __('decoy::changes.controller.search.admin'),
+                'label' => __('facilitador::changes.controller.search.admin'),
                 'type' => 'select',
                 'options' => 'Facilitador\Models\Decoy\Change::getAdmins()',
             ],
             'created_at' => [
-                'label' => __('decoy::changes.controller.search.date'),
+                'label' => __('facilitador::changes.controller.search.date'),
                 'type' => 'date',
             ],
         ];
@@ -91,7 +91,7 @@ class Changes extends Base
         $change = Change::findOrFail($id);
         $admin = $change->admin;
         return Response::json([
-            'action' => __("decoy::changes.actions.$change->action"),
+            'action' => __("facilitador::changes.actions.$change->action"),
             'title' => $change->title,
             'admin' => $admin ? $admin->getAdminTitleHtmlAttribute() : 'someone',
             'admin_edit' => $admin ? $admin->getAdminEditAttribute() : null,
@@ -105,10 +105,10 @@ class Changes extends Base
      */
     public function __construct()
     {
-        $this->title = __('decoy::changes.controller.title');
-        $this->description = __('decoy::changes.controller.description');
+        $this->title = __('facilitador::changes.controller.title');
+        $this->description = __('facilitador::changes.controller.description');
         $this->columns = [
-            __('decoy::changes.controller.column.activity') => 'getAdminTitleHtmlAttribute',
+            __('facilitador::changes.controller.column.activity') => 'getAdminTitleHtmlAttribute',
         ];
 
         parent::__construct();

@@ -42,7 +42,7 @@ trait Exportable
     protected function makeCsvQuery()
     {
         return $this->makeIndexQuery()
-            ->withoutGlobalScopes(['decoy.images'])
+            ->withoutGlobalScopes(['facilitador.images'])
             ->exporting();
     }
 

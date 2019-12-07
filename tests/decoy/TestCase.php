@@ -70,7 +70,7 @@ abstract class TestCase extends LaravelTestCase
             'last_name' => 'Last',
             'email' => 'test@domain.com',
             'password' => 'pass',
-        ]), 'decoy');
+        ]), 'facilitador');
     }
 
     /**
@@ -80,8 +80,8 @@ abstract class TestCase extends LaravelTestCase
      */
     protected function logout()
     {
-        Auth::guard('decoy')->logout();
-        app()->forgetInstance('decoy.user');
+        Auth::guard('facilitador')->logout();
+        app()->forgetInstance('facilitador.user');
     }
 
     /**

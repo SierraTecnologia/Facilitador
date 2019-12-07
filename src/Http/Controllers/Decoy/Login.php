@@ -24,7 +24,7 @@ class Login extends Controller
      */
     public function __construct()
     {
-        $this->middleware('decoy.guest', ['except' => 'logout']);
+        $this->middleware('facilitador.guest', ['except' => 'logout']);
     }
 
     /**
@@ -41,8 +41,8 @@ class Login extends Controller
         ));
 
         // Show the login homepage
-        return view('decoy::layouts.blank', [
-            'content' => view('decoy::account.login'),
+        return view('facilitador::layouts.blank', [
+            'content' => view('facilitador::account.login'),
         ]);
     }
 
@@ -60,7 +60,7 @@ class Login extends Controller
         // your previous page.
         $previous = url()->previous();
         if ($previous == url('/')) {
-            return redirect(route('decoy::account@login'));
+            return redirect(route('facilitador::account@login'));
         }
 
         return redirect($previous);
@@ -75,6 +75,6 @@ class Login extends Controller
      */
     public function redirectPath()
     {
-        return route('decoy::account@login');
+        return route('facilitador::account@login');
     }
 }

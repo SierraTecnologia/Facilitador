@@ -287,11 +287,11 @@ class Listing extends Field
         if (empty($this->parent_item)) {
             $this->addGroupClass('note');
 
-            return $this->group->wrapField(Former::note($this->label_text, trans('decoy::form.listing.pending_save', ['model' => $this->label_text, 'description' => $this->controller->description()])));
+            return $this->group->wrapField(Former::note($this->label_text, trans('facilitador::form.listing.pending_save', ['model' => $this->label_text, 'description' => $this->controller->description()])));
         }
 
         // Add create button if we have permission and if there is a parent item
-        if (app('decoy.user')->can('create', $this->controller)) {
+        if (app('facilitador.user')->can('create', $this->controller)) {
             $this->group->setLabel(
                 '<a href="'.$this->getIndexURL().'">'
                 .$this->label_text
@@ -313,14 +313,14 @@ class Listing extends Field
     public function getContent()
     {
         // Check that the current user has permission to access this controller
-        if (!app('decoy.user')->can('read', $this->controller)) {
+        if (!app('facilitador.user')->can('read', $this->controller)) {
             return;
         }
 
         // If in a sidebar and there is no parent (like if you are on a create page)
         // then don't show a special message
         if ($this->layout == 'sidebar' && !$this->parent_item) {
-            return View::make('decoy::shared.list._pending', [
+            return View::make('facilitador::shared.list._pending', [
                 'title' => $this->label_text,
                 'description' => $this->controller->description(),
             ])->render();
@@ -359,7 +359,7 @@ class Listing extends Field
         }
 
         // Return the view, passing in a bunch of variables
-        return View::make('decoy::shared.list._standard', $vars)->render();
+        return View::make('facilitador::shared.list._standard', $vars)->render();
     }
 
     /**
@@ -371,7 +371,7 @@ class Listing extends Field
     {
         return '<div class="btn-group">
             <a href="'.URL::to($this->getCreateURL()).'" class="btn btn-info btn-small new">
-            <span class="glyphicon glyphicon-plus"></span> ' . __('decoy::form.listing.new') . '</a>
+            <span class="glyphicon glyphicon-plus"></span> ' . __('facilitador::form.listing.new') . '</a>
             </div>';
     }
 

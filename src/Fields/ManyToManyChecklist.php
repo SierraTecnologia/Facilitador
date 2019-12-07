@@ -57,7 +57,7 @@ class ManyToManyChecklist extends Checkbox
     public function wrapAndRender()
     {
         // Do not show the form at all if they don't have permission
-        if (!app('decoy.user')->can('read', $this->name)) {
+        if (!app('facilitador.user')->can('read', $this->name)) {
             return '';
         }
 
@@ -158,9 +158,9 @@ class ManyToManyChecklist extends Checkbox
         $html = '<span class="title">'.$row->getAdminTitleHtmlAttribute().'</span>';
 
         // Add link to edit
-        $url = '/'.Config::get('decoy.core.dir').'/'.Str::snake($this->name, '-')
+        $url = '/'.Config::get('facilitador.core.dir').'/'.Str::snake($this->name, '-')
             .'/'.$row->getKey().'/edit';
-        if (app('decoy.user')->can('update', $url)) {
+        if (app('facilitador.user')->can('update', $url)) {
             $html .= '<a href="'.$url.'"><span class="glyphicon glyphicon-pencil edit"></span></a>';
         }
 

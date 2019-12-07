@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 /**
  * The wildcard router is what allows us to wildcard the admin routes so that the
- * developer doesn't need to hard code those.  One thing to know is that decoy
+ * developer doesn't need to hard code those.  One thing to know is that facilitador
  * uses routes that are very literal with how the content is organized.  This
  * informs the breadcrumbs.  So, if you are looking at the edit view of a photo
  * that belongsTo() an article, the path would be admin/article/2/photo/4/edit
@@ -95,13 +95,13 @@ class Wildcard
         $app = 'App\\Http\\Controllers\\'
             . ucfirst(Str::studly($this->dir))
             . '\\'.$class_name;
-        $decoy = 'Facilitador\Http\Controllers\Decoy\\'.$class_name;
+        $facilitador = 'Facilitador\Http\Controllers\Decoy\\'.$class_name;
 
         // Find the right one
         if (class_exists($app)) {
             return $app;
-        } elseif (class_exists($decoy)) {
-            return $decoy;
+        } elseif (class_exists($facilitador)) {
+            return $facilitador;
         }
 
         return false;

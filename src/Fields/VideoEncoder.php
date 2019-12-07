@@ -53,7 +53,7 @@ class VideoEncoder extends Upload
         $this->group->data_js_view('video-encoder');
 
         // Set the model_attribute for the encoding
-        $this->model_attribute = Route::is('decoy::elements') ? 'value' : $this->name;
+        $this->model_attribute = Route::is('facilitador::elements') ? 'value' : $this->name;
     }
 
     /**
@@ -126,7 +126,7 @@ class VideoEncoder extends Upload
     protected function renderPresets()
     {
         // Create the dropdown menu options
-        $config = config('decoy.encode.presets');
+        $config = config('facilitador.encode.presets');
         $presets = array_keys($config);
         $dropdown = implode('', array_map(function ($config, $preset) {
             return '<li>
@@ -172,7 +172,7 @@ class VideoEncoder extends Upload
             return $this->preset;
         }
 
-        return array_keys(config('decoy.encode.presets'))[0];
+        return array_keys(config('facilitador.encode.presets'))[0];
     }
 
     /**

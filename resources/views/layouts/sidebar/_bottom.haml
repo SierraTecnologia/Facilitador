@@ -1,0 +1,18 @@
+-# Holder for the ajax bar, logout, and view public site
+.bottom-nav
+	-# Add AJAX progress indicator
+	!= View::make('facilitador::layouts.sidebar._progress')->render()
+
+	.controls
+		.left
+			%a.logout(href=route('facilitador::account@logout'))
+				%span.glyphicon.glyphicon-log-out
+				!= __('facilitador::sidebar.bottom.logout')
+			.subtitle
+				%span.glyphicon.glyphicon-heart
+				%a(href="http://facilitador.bukwild.com" target="_blank") Decoy 5.10
+				by
+				%a(href="http://www.bukwild.com" target="_blank") Bukwild
+		%a.right(href="/")
+			.glyphicon.glyphicon-globe
+			.subtitle!= __('facilitador::sidebar.bottom.open_site')

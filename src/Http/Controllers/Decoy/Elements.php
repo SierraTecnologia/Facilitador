@@ -42,7 +42,7 @@ class Elements extends Base
     public function index($locale = null, $tab = null)
     {
         // If there are no locales, treat the first argument as the tab
-        if (!($locales = Config::get('decoy.site.locales')) || empty($locales)) {
+        if (!($locales = Config::get('facilitador.site.locales')) || empty($locales)) {
             $tab = $locale;
             $locale = null;
 
@@ -52,11 +52,11 @@ class Elements extends Base
         }
 
         // Get all the elements for the current locale
-        $elements = app('decoy.elements')->localize($locale)->hydrate(true);
+        $elements = app('facilitador.elements')->localize($locale)->hydrate(true);
 
         // If the user has customized permissions, filter the elements to only the
         // allowed pages of elements.
-        if ($permissions = app('decoy.user')->getPermissionsAttribute()) {
+        if ($permissions = app('facilitador.user')->getPermissionsAttribute()) {
             $elements->onlyPages($permissions->elements);
         }
 
@@ -78,12 +78,12 @@ class Elements extends Base
         $elements = $elements->asModels();
 
         // Set the breadcrumbs NOT include the locale/tab
-        app('decoy.breadcrumbs')->set([
-            route('decoy::elements') => $this->title,
+        app('facilitador.breadcrumbs')->set([
+            route('facilitador::elements') => $this->title,
         ]);
 
         // Render the view
-        return $this->populateView('decoy::elements.index', [
+        return $this->populateView('facilitador::elements.index', [
             'elements' => $elements,
             'locale' => $locale,
             'tab' => $tab,
@@ -190,13 +190,13 @@ class Elements extends Base
         }
 
         // Hydrate the elements collection
-        $elements = app('decoy.elements')
+        $elements = app('facilitador.elements')
             ->localize($locale)
             ->hydrate(true);
 
         // If the user has customized permissions, filter the elements to only the
         // allowed pages of elements.
-        if ($permissions = app('decoy.user')->getPermissionsAttribute()) {
+        if ($permissions = app('facilitador.user')->getPermissionsAttribute()) {
             $elements->onlyPages($permissions->elements);
         }
 
@@ -272,7 +272,7 @@ class Elements extends Base
 
         // Redirect back to index
         return Redirect::to(URL::current())->with('success',
-            __('decoy::elements.successfully_saved'));
+            __('facilitador::elements.successfully_saved'));
     }
 
     /**
@@ -328,9 +328,9 @@ class Elements extends Base
      */
     public function field($key)
     {
-        return View::make('decoy::layouts.blank')
-            ->nest('content', 'decoy::elements.field', [
-                'element' => app('decoy.elements')
+        return View::make('facilitador::layouts.blank')
+            ->nest('content', 'facilitador::elements.field', [
+                'element' => app('facilitador.elements')
                     ->localize(Decoy::locale())
                     ->hydrate(true)
                     ->get($key),
@@ -346,7 +346,7 @@ class Elements extends Base
      */
     public function fieldUpdate($key)
     {
-        $elements = app('decoy.elements')->localize(Decoy::locale());
+        $elements = app('facilitador.elements')->localize(Decoy::locale());
 
         // If the value has changed, update or an insert a record in the database.
         $el = Decoy::el($key);
@@ -368,7 +368,7 @@ class Elements extends Base
 
         // Return the layout with JUST a script variable with the element value
         // after saving.  Thus, post any saving callback operations.
-        return View::make('decoy::layouts.blank', [
+        return View::make('facilitador::layouts.blank', [
             'content' => "<div id='response' data-key='{$key}'>{$el}</div>"
         ]);
     }
@@ -381,7 +381,7 @@ class Elements extends Base
     public function getPermissionOptions()
     {
         // Get all the grouped elements
-        $elements = app('decoy.elements')
+        $elements = app('facilitador.elements')
             ->localize(Decoy::locale())
             ->hydrate(true)
             ->asModels()
@@ -402,8 +402,8 @@ class Elements extends Base
      */
     public function __construct()
     {
-        $this->title = __('decoy::elements.controller.title');
-        $this->description = __('decoy::elements.controller.description');
+        $this->title = __('facilitador::elements.controller.title');
+        $this->description = __('facilitador::elements.controller.description');
 
         parent::__construct();
     }

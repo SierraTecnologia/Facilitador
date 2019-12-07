@@ -46,11 +46,11 @@ class Changes
         }
 
         // Get the admin acting on the record
-        $admin = app('decoy.user');
+        $admin = app('facilitador.user');
 
         // If `log_changes` was configed as a callable, see if this model event
         // should not be logged
-        if ($check = config('decoy.site.log_changes')) {
+        if ($check = config('facilitador.site.log_changes')) {
             if (is_bool($check) && !$check) {
                 return;
             }

@@ -26,13 +26,13 @@ class Auth
     public function handle($request, Closure $next)
     {
         // Require a logged in user
-        if (!$admin = app('decoy.user')) {
-            return App::make('decoy.acl_fail');
+        if (!$admin = app('facilitador.user')) {
+            return App::make('facilitador.acl_fail');
         }
 
         // Determine the action and controller differently depending on how the
         // request is routed.
-        if (Route::is('decoy::wildcard')) {
+        if (Route::is('facilitador::wildcard')) {
             list($action, $controller) = $this->dectectFromWildcardRouter();
         } else {
             list($action, $controller) = $this->dectectFromExplicitRoute();
@@ -59,7 +59,7 @@ class Auth
         // Get the action
         $action = Route::current()->getActionName();
         if ($action == 'Closure') {
-            throw new \Exception('decoy.auth requires routing to controllers.');
+            throw new \Exception('facilitador.auth requires routing to controllers.');
         }
 
         // Get parse the `uses` from the route definition
@@ -81,7 +81,7 @@ class Auth
      */
     protected function dectectFromWildcardRouter()
     {
-        $wildcard = App::make('decoy.wildcard');
+        $wildcard = App::make('facilitador.wildcard');
 
         // Attach / detach are ACL-ed by the parent controller.  It's the one being
         // touched,

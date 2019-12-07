@@ -180,7 +180,7 @@ class Base extends Controller
     private function init()
     {
         // Set the layout from the Config file
-        $this->layout = View::make(config('decoy.core.layout'));
+        $this->layout = View::make(config('facilitador.core.layout'));
 
         // Store the controller class for routing
         $this->controller = get_class($this);
@@ -311,7 +311,7 @@ class Base extends Controller
     public function detailPath($class)
     {
         // Remove Decoy from the class
-        $path = str_replace('Facilitador\Http\Controllers\Decoy\\', '', $class, $is_decoy);
+        $path = str_replace('Facilitador\Http\Controllers\Decoy\\', '', $class, $is_facilitador);
 
         // Remove the App controller prefix
         $path = str_replace('App\Http\Controllers\\', '', $path);
@@ -327,8 +327,8 @@ class Base extends Controller
         $path = implode('.', $parts);
 
         // If the controller is part of Decoy, add it to the path
-        if ($is_decoy) {
-            $path = 'decoy::'.$path;
+        if ($is_facilitador) {
+            $path = 'facilitador::'.$path;
         }
 
         // Done
@@ -1010,7 +1010,7 @@ class Base extends Controller
     {
         $dir = Str::snake($this->controllerName());
         $path = base_path('resources/views/admin/').$dir;
-        app('view')->prependNamespace('decoy', $path);
+        app('view')->prependNamespace('facilitador', $path);
     }
 
     /**
@@ -1068,17 +1068,17 @@ class Base extends Controller
         }
 
         // Render the message
-        $message = __('decoy::base.success_message', ['model' => Str::singular($this->title), 'title' => $title, 'verb' => __("decoy::base.verb.$verb")]);
+        $message = __('facilitador::base.success_message', ['model' => Str::singular($this->title), 'title' => $title, 'verb' => __("facilitador::base.verb.$verb")]);
 
         // Add extra messaging for copies
         if ($verb == 'duplicated') {
             $url = preg_replace('#/duplicate#', '/edit', Request::url());
-            $message .= __('decoy::base.success_duplicated', ['url' => $url]);
+            $message .= __('facilitador::base.success_duplicated', ['url' => $url]);
         }
 
         // Add extra messaging if the creation was begun from the localize UI
         if ($verb == 'duplicated' && is_a($input, '\Facilitador\Models\Decoy\Base') && !empty($input->locale)) {
-            $message .= __('decoy::base.success_localized', ['locale' => config('decoy.site.locales')[$input->locale]]);
+            $message .= __('facilitador::base.success_localized', ['locale' => config('facilitador.site.locales')[$input->locale]]);
         }
 
         // Return message

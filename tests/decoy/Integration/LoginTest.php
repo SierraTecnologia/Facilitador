@@ -95,7 +95,7 @@ class LoginTest extends TestCase
     {
         $this->auth();
 
-        config()->set('decoy.site.post_login_redirect', '/admin/something');
+        config()->set('facilitador.site.post_login_redirect', '/admin/something');
 
         // Should redirect to the first route in the config
         $response = $this->get('admin');

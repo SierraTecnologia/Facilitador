@@ -21,7 +21,7 @@ class Workers extends Base
      */
     public function index()
     {
-        return $this->populateView('decoy::workers.index', [
+        return $this->populateView('facilitador::workers.index', [
             'workers' => Model::all(),
         ]);
     }

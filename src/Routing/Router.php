@@ -45,7 +45,7 @@ class Router
         // Public routes
         Route::group([
             'prefix' => $this->dir,
-            'middleware' => 'decoy.public',
+            'middleware' => 'facilitador.public',
         ], function () {
             $this->registerLogin();
             $this->registerResetPassword();
@@ -54,7 +54,7 @@ class Router
         // Routes that don't require auth or CSRF
         Route::group([
             'prefix' => $this->dir,
-            'middleware' => 'decoy.endpoint',
+            'middleware' => 'facilitador.endpoint',
         ], function () {
             $this->registerExternalEndpoints();
         });
@@ -62,7 +62,7 @@ class Router
         // Protected, admin routes
         Route::group([
             'prefix' => $this->dir,
-            'middleware' => 'decoy.protected',
+            'middleware' => 'facilitador.protected',
         ], function () {
             $this->registerAdmins();
             $this->registerCommands();
@@ -82,17 +82,17 @@ class Router
     public function registerLogin()
     {
         Route::get('/', [
-            'as' => 'decoy::account@login',
+            'as' => 'facilitador::account@login',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Login@showLoginForm',
         ]);
 
         Route::post('/', [
-            'as' => 'decoy::account@postLogin',
+            'as' => 'facilitador::account@postLogin',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Login@login',
         ]);
 
         Route::get('logout', [
-            'as' => 'decoy::account@logout',
+            'as' => 'facilitador::account@logout',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Login@logout',
         ]);
     }
@@ -104,19 +104,19 @@ class Router
      */
     public function registerResetPassword()
     {
-        Route::get('forgot', ['as' => 'decoy::account@forgot',
+        Route::get('forgot', ['as' => 'facilitador::account@forgot',
             'uses' => '\Facilitador\Http\Controllers\Decoy\ForgotPassword@showLinkRequestForm',
         ]);
 
-        Route::post('forgot', ['as' => 'decoy::account@postForgot',
+        Route::post('forgot', ['as' => 'facilitador::account@postForgot',
             'uses' => '\Facilitador\Http\Controllers\Decoy\ForgotPassword@sendResetLinkEmail',
         ]);
 
-        Route::get('password/reset/{code}', ['as' => 'decoy::account@reset',
+        Route::get('password/reset/{code}', ['as' => 'facilitador::account@reset',
             'uses' => '\Facilitador\Http\Controllers\Decoy\ResetPassword@showResetForm',
         ]);
 
-        Route::post('password/reset/{code}', ['as' => 'decoy::account@postReset',
+        Route::post('password/reset/{code}', ['as' => 'facilitador::account@postReset',
             'uses' => '\Facilitador\Http\Controllers\Decoy\ResetPassword@reset',
         ]);
     }
@@ -129,7 +129,7 @@ class Router
     public function registerWildcard()
     {
         // Setup a wildcarded catch all route
-        Route::any('{path}', ['as' => 'decoy::wildcard', function ($path) {
+        Route::any('{path}', ['as' => 'facilitador::wildcard', function ($path) {
 
             // Remember the detected route
             App::make('events')->listen('wildcard.detection', function ($controller, $action) {
@@ -137,7 +137,7 @@ class Router
             });
 
             // Do the detection
-            $router = App::make('decoy.wildcard');
+            $router = App::make('facilitador.wildcard');
             $response = $router->detectAndExecute();
             if (is_a($response, 'Symfony\Component\HttpFoundation\Response')
                 || is_a($response, 'Illuminate\View\View')) { // Possible when layout is involved
@@ -156,12 +156,12 @@ class Router
     public function registerAdmins()
     {
         Route::get('admins/{id}/disable', [
-            'as' => 'decoy::admins@disable',
+            'as' => 'facilitador::admins@disable',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Admins@disable',
         ]);
 
         Route::get('admins/{id}/enable', [
-            'as' => 'decoy::admins@enable',
+            'as' => 'facilitador::admins@enable',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Admins@enable',
         ]);
     }
@@ -174,12 +174,12 @@ class Router
     public function registerCommands()
     {
         Route::get('commands', [
-            'as' => 'decoy::commands',
+            'as' => 'facilitador::commands',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Commands@index',
         ]);
 
         Route::post('commands/{command}', [
-            'as' => 'decoy::commands@execute',
+            'as' => 'facilitador::commands@execute',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Commands@execute',
         ]);
     }
@@ -192,12 +192,12 @@ class Router
     public function registerWorkers()
     {
         Route::get('workers', [
-            'as' => 'decoy::workers',
+            'as' => 'facilitador::workers',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Workers@index',
         ]);
 
         Route::get('workers/tail/{worker}', [
-            'as' => 'decoy::workers@tail',
+            'as' => 'facilitador::workers@tail',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Workers@tail',
         ]);
     }
@@ -210,7 +210,7 @@ class Router
     public function registerEncode()
     {
         Route::get('encode/{id}/progress', [
-            'as' => 'decoy::encode@progress',
+            'as' => 'facilitador::encode@progress',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Encoder@progress',
         ]);
     }
@@ -223,22 +223,22 @@ class Router
     public function registerElements()
     {
         Route::get('elements/field/{key}', [
-            'as' => 'decoy::elements@field',
+            'as' => 'facilitador::elements@field',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Elements@field',
         ]);
 
         Route::post('elements/field/{key}', [
-            'as' => 'decoy::elements@field-update',
+            'as' => 'facilitador::elements@field-update',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Elements@fieldUpdate',
         ]);
 
         Route::get('elements/{locale?}/{tab?}', [
-            'as' => 'decoy::elements',
+            'as' => 'facilitador::elements',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Elements@index',
         ]);
 
         Route::post('elements/{locale?}/{tab?}', [
-            'as' => 'decoy::elements@store',
+            'as' => 'facilitador::elements@store',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Elements@store',
         ]);
     }
@@ -262,7 +262,7 @@ class Router
     public function registerExternalEndpoints()
     {
         Route::post('encode/notify', [
-            'as' => 'decoy::encode@notify',
+            'as' => 'facilitador::encode@notify',
             'uses' => '\Facilitador\Http\Controllers\Decoy\Encoder@notify',
         ]);
     }

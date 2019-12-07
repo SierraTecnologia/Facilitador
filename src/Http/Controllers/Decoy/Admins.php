@@ -16,7 +16,7 @@ class Admins extends Base
     /**
      * @var string
      */
-    protected $show_view = 'decoy::admins.edit';
+    protected $show_view = 'facilitador::admins.edit';
 
     /**
      * Make search options dependent on whether the site is using roles
@@ -27,30 +27,30 @@ class Admins extends Base
     {
         $options = [
             'first_name' => [
-                'label' => __('decoy::admins.controller.search.first_name'),
+                'label' => __('facilitador::admins.controller.search.first_name'),
                 'type' => 'text',
             ],
             'last_name' => [
-                'label' => __('decoy::admins.controller.search.last_name'),
+                'label' => __('facilitador::admins.controller.search.last_name'),
                 'type' => 'text',
             ],
             'email' => [
-                'label' => __('decoy::admins.controller.search.email'),
+                'label' => __('facilitador::admins.controller.search.email'),
                 'type' => 'text',
             ],
             'status' => [
-                'label' => __('decoy::admins.controller.search.status'),
+                'label' => __('facilitador::admins.controller.search.status'),
                 'type' => 'select',
                 'options' => [
-                    1 => __('decoy::admins.controller.search.enabled'),
-                    0 => __('decoy::admins.controller.search.disabled'),
+                    1 => __('facilitador::admins.controller.search.enabled'),
+                    0 => __('facilitador::admins.controller.search.disabled'),
                 ],
             ],
         ];
 
         if (($roles = Admin::getRoleTitles()) && count($roles)) {
             $options['role'] = [
-                'label' => __('decoy::admins.controller.search.role'),
+                'label' => __('facilitador::admins.controller.search.role'),
                 'type' => 'select',
                 'options' => $roles,
             ];
@@ -82,8 +82,8 @@ class Admins extends Base
      */
     public function index()
     {
-        if (!app('decoy.user')->can('read', 'admins')) {
-            return Redirect::to(app('decoy.user')->getUserUrl());
+        if (!app('facilitador.user')->can('read', 'admins')) {
+            return Redirect::to(app('facilitador.user')->getUserUrl());
         }
         return parent::index();
     }
@@ -110,7 +110,7 @@ class Admins extends Base
     public function update($id)
     {
         // Encorce permissions on updating ones own role
-        if (!app('decoy.user')->can('update', 'admins') && Request::has('role')) {
+        if (!app('facilitador.user')->can('update', 'admins') && Request::has('role')) {
             throw new AccessDeniedHttpException;
         }
 
@@ -130,7 +130,7 @@ class Admins extends Base
      */
     public function disable($id)
     {
-        if (!app('decoy.user')->can('grant', 'admins')) {
+        if (!app('facilitador.user')->can('grant', 'admins')) {
             throw new AccessDeniedHttpException;
         }
 
@@ -151,7 +151,7 @@ class Admins extends Base
      */
     public function enable($id)
     {
-        if (!app('decoy.user')->can('grant', 'admins')) {
+        if (!app('facilitador.user')->can('grant', 'admins')) {
             throw new AccessDeniedHttpException;
         }
 
@@ -172,12 +172,12 @@ class Admins extends Base
      */
     public function __construct()
     {
-        $this->title = __('decoy::admins.controller.title');
-        $this->description = __('decoy::admins.controller.description');
+        $this->title = __('facilitador::admins.controller.title');
+        $this->description = __('facilitador::admins.controller.description');
         $this->columns = [
-            __('decoy::admins.controller.column.name') => 'getAdminTitleHtmlAttribute',
-            __('decoy::admins.controller.column.status') => 'getAdminStatusAttribute',
-            __('decoy::admins.controller.column.email') => 'email',
+            __('facilitador::admins.controller.column.name') => 'getAdminTitleHtmlAttribute',
+            __('facilitador::admins.controller.column.status') => 'getAdminStatusAttribute',
+            __('facilitador::admins.controller.column.email') => 'email',
         ];
 
         parent::__construct();

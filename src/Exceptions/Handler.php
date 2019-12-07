@@ -78,7 +78,7 @@ class Handler extends AppHandler
             return;
         }
 
-        return app('decoy.acl_fail');
+        return app('facilitador.acl_fail');
     }
 
     /**

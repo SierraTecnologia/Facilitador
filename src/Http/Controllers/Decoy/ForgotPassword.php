@@ -28,8 +28,8 @@ class ForgotPassword extends Base
         ]);
 
         // Set the breadcrumbs
-        app('decoy.breadcrumbs')->set([
-            route('decoy::account@login') => 'Login',
+        app('facilitador.breadcrumbs')->set([
+            route('facilitador::account@login') => 'Login',
             url()->current() => 'Forgot Password',
         ]);
 
@@ -37,6 +37,6 @@ class ForgotPassword extends Base
         $this->title = 'Forgot Password';
         $this->description = 'You know the drill.';
 
-        return $this->populateView('decoy::account.forgot');
+        return $this->populateView('facilitador::account.forgot');
     }
 }

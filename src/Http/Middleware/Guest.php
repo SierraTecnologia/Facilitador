@@ -20,7 +20,7 @@ class Guest
     public function handle($request, Closure $next)
     {
         // If logged in, redirect to user's home
-        if (app('decoy.user')) {
+        if (app('facilitador.user')) {
             return redirect($this->getHome());
         }
 
@@ -37,8 +37,8 @@ class Guest
     public function getHome()
     {
         // Vars
-        $config = config('decoy.site.post_login_redirect');
-        $auth = app('decoy.user');
+        $config = config('facilitador.site.post_login_redirect');
+        $auth = app('facilitador.user');
 
         // Make the config optional
         if ($config) {
@@ -77,7 +77,7 @@ class Guest
     {
         // If no nav passed, as it would be for a sub navs, get the configed nav
         if (empty($nav)) {
-            $nav = config('decoy.site.nav');
+            $nav = config('facilitador.site.nav');
         }
 
         // Allow for the nav to be acallable

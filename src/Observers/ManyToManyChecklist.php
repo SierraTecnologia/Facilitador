@@ -61,7 +61,7 @@ class ManyToManyChecklist
 
         // Allow a single listener to transform the list of ids to, for instance,
         // add pivot data.
-        $prefix = 'decoy::many-to-many-checklist.';
+        $prefix = 'facilitador::many-to-many-checklist.';
         if ($mutated = Event::until($prefix."syncing: $relationship", [$ids])) {
             $ids = $mutated;
         }

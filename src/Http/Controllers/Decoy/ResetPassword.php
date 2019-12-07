@@ -37,9 +37,9 @@ class ResetPassword extends Base
         ]);
 
         // Set the breadcrumbs
-        app('decoy.breadcrumbs')->set([
-            route('decoy::account@login') => 'Login',
-            route('decoy::account@forgot') => 'Forgot Password',
+        app('facilitador.breadcrumbs')->set([
+            route('facilitador::account@login') => 'Login',
+            route('facilitador::account@forgot') => 'Forgot Password',
             url()->current() => 'Reset Password',
         ]);
 
@@ -47,7 +47,7 @@ class ResetPassword extends Base
         $this->title = 'Reset Password';
         $this->description = 'Almost done.';
 
-        return $this->populateView('decoy::account.reset', [
+        return $this->populateView('facilitador::account.reset', [
             'token' => $token,
         ]);
     }
@@ -61,7 +61,7 @@ class ResetPassword extends Base
      */
     public function redirectPath()
     {
-        return route('decoy::account@login');
+        return route('facilitador::account@login');
     }
 
     /**

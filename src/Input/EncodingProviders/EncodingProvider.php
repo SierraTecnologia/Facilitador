@@ -46,7 +46,7 @@ abstract class EncodingProvider
      */
     protected function destination()
     {
-        return Config::get('decoy.encode.destination').'/'.Str::random(32).'/';
+        return Config::get('facilitador.encode.destination').'/'.Str::random(32).'/';
     }
 
     /**
@@ -77,7 +77,7 @@ abstract class EncodingProvider
     protected function mergeConfigWithDefaults($preset)
     {
         // Get the preset settings
-        if (!$settings = Config::get('decoy.encode.presets.'.$preset.'.settings')) {
+        if (!$settings = Config::get('facilitador.encode.presets.'.$preset.'.settings')) {
             throw new Exception('Encoding preset not found: '.$preset);
         }
 

@@ -18,7 +18,7 @@ class Nav
     public function generate()
     {
         // Get the navigation pages from the config
-        $pages = Config::get('decoy.site.nav');
+        $pages = Config::get('facilitador.site.nav');
         if (is_callable($pages)) {
             $pages = call_user_func($pages);
         }

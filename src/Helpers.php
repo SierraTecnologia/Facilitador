@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 
 /**
  * These function like the Laravel `Html` view helpers.  This class is bound
- * to the App IoC container as "decoy".  Thus, Decoy::helperName() can be
+ * to the App IoC container as "facilitador".  Thus, Decoy::helperName() can be
  * used to invoke them from views.
  */
 class Helpers
@@ -34,7 +34,7 @@ class Helpers
         // If no title has been set, try to figure it out based on breadcrumbs
         $title = View::yieldContent('title');
         if (empty($title)) {
-            $title = app('decoy.breadcrumbs')->title();
+            $title = app('facilitador.breadcrumbs')->title();
         }
 
         // Set the title
@@ -50,7 +50,7 @@ class Helpers
      */
     public function site()
     {
-        $site = Config::get('decoy.site.name');
+        $site = Config::get('facilitador.site.name');
         if (is_callable($site)) {
             $site = call_user_func($site);
         }
@@ -89,7 +89,7 @@ class Helpers
         array_push($classes, $controller, $action);
 
         // Add the admin roles
-        if ($admin = app('decoy.user')) {
+        if ($admin = app('facilitador.user')) {
             $classes[] = 'role-'.$admin->role;
         }
 
@@ -154,7 +154,7 @@ class Helpers
 
         // If the column is named, locale, convert it to its label
         if ($column == 'locale') {
-            $locales = Config::get('decoy.site.locales');
+            $locales = Config::get('facilitador.site.locales');
             if (isset($locales[$item->locale])) {
                 return $locales[$item->locale];
             }
@@ -207,7 +207,7 @@ class Helpers
      */
     public function el($key)
     {
-        return app('decoy.elements')->localize($this->locale())->get($key);
+        return app('facilitador.elements')->localize($this->locale())->get($key);
     }
 
     /**
@@ -220,7 +220,7 @@ class Helpers
      */
     public function els($prefix, $crops = [])
     {
-        return app('decoy.elements')
+        return app('facilitador.elements')
             ->localize($this->locale())
             ->getMany($prefix, $crops);
     }
@@ -233,7 +233,7 @@ class Helpers
      */
     public function hasEl($key)
     {
-        return app('decoy.elements')
+        return app('facilitador.elements')
             ->localize($this->locale())
             ->hydrate()
             ->has($key);
@@ -253,7 +253,7 @@ class Helpers
             return $this->is_handling;
         }
         if (env('DECOY_TESTING')) return true;
-        $this->is_handling = preg_match('#^'.Config::get('decoy.core.dir').'($|/)'.'#i', Request::path());
+        $this->is_handling = preg_match('#^'.Config::get('facilitador.core.dir').'($|/)'.'#i', Request::path());
 
         return $this->is_handling;
     }
@@ -271,16 +271,16 @@ class Helpers
 
     /**
      * Set or return the current locale.  Default to the first key from
-     * `decoy::site.locale`.
+     * `facilitador::site.locale`.
      *
-     * @param  string $locale A key from the `decoy::site.locale` array
+     * @param  string $locale A key from the `facilitador::site.locale` array
      * @return string
      */
     public function locale($locale = null)
     {
         // Set the locale if a valid local is passed
         if ($locale
-            && ($locales = Config::get('decoy.site.locales'))
+            && ($locales = Config::get('facilitador.site.locales'))
             && is_array($locales)
             && isset($locales[$locale])) {
             return Session::put('locale', $locale);
@@ -303,7 +303,7 @@ class Helpers
      */
     public function defaultLocale()
     {
-        if (($locales = Config::get('decoy.site.locales'))
+        if (($locales = Config::get('facilitador.site.locales'))
             && is_array($locales)) {
             reset($locales);
 
@@ -319,15 +319,15 @@ class Helpers
      */
     public function modelForController($controller)
     {
-        // Swap out the namespace if decoy
+        // Swap out the namespace if facilitador
         $model = str_replace('Facilitador\Http\Controllers\Decoy',
             'Facilitador\Models\Decoy',
             $controller,
-            $is_decoy);
+            $is_facilitador);
 
-        // Replace non-decoy controller's with the standard model namespace
-        if (!$is_decoy) {
-            $namespace = ucfirst(Config::get('decoy.core.dir'));
+        // Replace non-facilitador controller's with the standard model namespace
+        if (!$is_facilitador) {
+            $namespace = ucfirst(Config::get('facilitador.core.dir'));
             $model = str_replace('App\Http\Controllers\\'.$namespace.'\\', 'App\\', $model);
         }
 
@@ -345,12 +345,12 @@ class Helpers
      */
     public function controllerForModel($model)
     {
-        // Swap out the namespace if decoy
-        $controller = str_replace('Facilitador\Models\Decoy', 'Facilitador\Http\Controllers\Decoy', $model, $is_decoy);
+        // Swap out the namespace if facilitador
+        $controller = str_replace('Facilitador\Models\Decoy', 'Facilitador\Http\Controllers\Decoy', $model, $is_facilitador);
 
-        // Replace non-decoy controller's with the standard model namespace
-        if (!$is_decoy) {
-            $namespace = ucfirst(Config::get('decoy.core.dir'));
+        // Replace non-facilitador controller's with the standard model namespace
+        if (!$is_facilitador) {
+            $namespace = ucfirst(Config::get('facilitador.core.dir'));
             $controller = str_replace('App\\', 'App\Http\Controllers\\'.$namespace.'\\', $controller);
         }
 

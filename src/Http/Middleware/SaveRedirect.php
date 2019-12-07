@@ -32,7 +32,7 @@ class SaveRedirect
 
         // Go back to the listing
         if (request('_save') == 'back') {
-            Session::flash('save_redirect', app('decoy.breadcrumbs')->smartBack());
+            Session::flash('save_redirect', app('facilitador.breadcrumbs')->smartBack());
         }
 
         // Go to new form by stripping the last segment from the URL

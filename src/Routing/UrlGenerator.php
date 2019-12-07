@@ -109,10 +109,10 @@ class UrlGenerator
      */
     public function action($controller = null, $id = null)
     {
-        // Assume that the current, first path segment is the directory decoy is
+        // Assume that the current, first path segment is the directory facilitador is
         // running in
         preg_match('#[a-z-]+#i', $this->path, $matches);
-        $decoy = $matches[0];
+        $facilitador = $matches[0];
 
         // Strip the action from the controller
         $action = '';
@@ -125,7 +125,7 @@ class UrlGenerator
         $controller = $this->slugController($controller);
 
         // Begin the url
-        $path = '/'.$decoy.'/'.$controller;
+        $path = '/'.$facilitador.'/'.$controller;
 
         // If there is an id, add it now
         if ($id) {

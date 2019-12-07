@@ -150,7 +150,7 @@ class Element extends Base
      */
     protected function relatedModel()
     {
-        $yaml = app('decoy.elements')->getConfig();
+        $yaml = app('facilitador.elements')->getConfig();
         $model = array_get($yaml, $this->key.'.class')
             ?: array_get($yaml, $this->key.',model.class');
 
@@ -223,7 +223,7 @@ class Element extends Base
 
         // Get the current file value form the YAML.  Need to check for the
         // shorthand with the type suffix as well.
-        $yaml = app('decoy.elements')->assocConfig();
+        $yaml = app('facilitador.elements')->assocConfig();
         $replacement = $yaml[$this->key]['value'];
 
         // Check if the filenames are the same

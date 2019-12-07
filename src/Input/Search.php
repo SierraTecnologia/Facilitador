@@ -95,7 +95,7 @@ class Search
         // Convert date formats
         if ($type == 'date') {
             $field = $this->convertDateField($field);
-            $input = Carbon::createFromFormat(__('decoy::form.date.format'), $input)
+            $input = Carbon::createFromFormat(__('facilitador::form.date.format'), $input)
                 ->format('Y-m-d');
         }
 
@@ -268,7 +268,7 @@ class Search
                 $search['locale'] = [
                     'type' => 'select',
                     'label' => 'Locale',
-                    'options' => Config::get('decoy.site.locales'),
+                    'options' => Config::get('facilitador.site.locales'),
                 ];
 
             // Not associative assume it's a text field

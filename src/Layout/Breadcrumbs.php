@@ -84,7 +84,7 @@ class Breadcrumbs
             // On a "new" page
             if ($id == 'create') {
                 $url .= '/' . $id;
-                $breadcrumbs[URL::to($url)] = __('decoy::breadcrumbs.new');
+                $breadcrumbs[URL::to($url)] = __('facilitador::breadcrumbs.new');
 
             // On an edit page
             } elseif (is_numeric($id)) {

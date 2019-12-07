@@ -36,7 +36,7 @@ class Commands extends Base
      */
     public function index()
     {
-        return $this->populateView('decoy::commands.index', [
+        return $this->populateView('facilitador::commands.index', [
             'commands' => Command::all(),
         ]);
     }
@@ -68,8 +68,8 @@ class Commands extends Base
      */
     public function __construct()
     {
-        $this->title = __('decoy::commands.controller.title');
-        $this->description = __('decoy::commands.controller.description');
+        $this->title = __('facilitador::commands.controller.title');
+        $this->description = __('facilitador::commands.controller.description');
 
         parent::__construct();
     }

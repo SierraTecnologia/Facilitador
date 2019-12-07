@@ -41,8 +41,8 @@ class RedirectRule extends Base
     public static function getCodes()
     {
         return [
-            '301' => __('decoy::redirect_rules.model.301'),
-            '302' => __('decoy::redirect_rules.model.302'),
+            '301' => __('facilitador::redirect_rules.model.301'),
+            '302' => __('facilitador::redirect_rules.model.302'),
         ];
     }
 
@@ -111,7 +111,7 @@ class RedirectRule extends Base
             $escaped_from = DB::connection()->getPdo()->quote($from);
             $from_col = DB::getDriverName() == 'sqlsrv' ? '[from]' : '`from`';
             $query->where('from', $from)->orWhereRaw("{$escaped_from} LIKE {$from_col}");
-            if (Config::get('decoy::core.allow_regex_in_redirects')) {
+            if (Config::get('facilitador::core.allow_regex_in_redirects')) {
                 $query->orWhereRaw("{$escaped_from} REGEXP {$from_col}");
             }
         });

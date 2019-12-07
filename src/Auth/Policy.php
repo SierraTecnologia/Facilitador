@@ -41,7 +41,7 @@ class Policy
         // Get the slug version of the controller.  Test if a URL was passed first
         // and, if not, treat it like a full controller name.  URLs are used in the
         // nav. Also, an already slugified controller name will work fine too.
-        $pattern = '#/'.Config::get('decoy.core.dir').'/([^/]+)#';
+        $pattern = '#/'.Config::get('facilitador.core.dir').'/([^/]+)#';
         if (preg_match($pattern, $controller, $matches)) {
             $controller = $matches[1];
         } else {
@@ -97,7 +97,7 @@ class Policy
 
         // If there are "can" rules, then apply them as a whitelist.  Only those
         // actions are allowed.
-        $can = Config::get('decoy.site.permissions.'.$admin->role.'.can');
+        $can = Config::get('facilitador.site.permissions.'.$admin->role.'.can');
         if (is_callable($can)) {
             $can = call_user_func($can, $action, $controller);
         }
@@ -109,7 +109,7 @@ class Policy
 
         // If the action is listed as "can't" then immediately deny.  Also check for
         // "manage" which means they can't do ANYTHING
-        $cant = Config::get('decoy.site.permissions.'.$admin->role.'.cant');
+        $cant = Config::get('facilitador.site.permissions.'.$admin->role.'.cant');
         if (is_callable($cant)) {
             $cant = call_user_func($cant, $action, $controller);
         }

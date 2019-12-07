@@ -25,7 +25,7 @@ class Elements extends Collection
      *
      * @var string
      */
-    protected $cache_key = 'decoy.elements.data';
+    protected $cache_key = 'facilitador.elements.data';
 
     /**
      * The parse YAML contents
@@ -444,7 +444,7 @@ class Elements extends Collection
         $this->config = [];
 
         // Build a lit of all the paths
-        $dir = config_path('decoy').'/';
+        $dir = config_path('facilitador').'/';
         $files = [];
         if (is_readable($dir.'elements.yaml')) {
             $files[] = $dir.'elements.yaml';

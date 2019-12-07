@@ -48,7 +48,7 @@ class LocalizationTest extends TestCase
      */
     public function testAutoLocalizeRootModelsConfig()
     {
-        config()->set('decoy.site.auto_localize_root_models', true);
+        config()->set('facilitador.site.auto_localize_root_models', true);
         $response = $this->get('admin/articles/create');
         $response->assertStatus(200);
         $this->assertFalse($response->original->content->localize->hidden());

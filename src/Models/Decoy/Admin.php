@@ -118,8 +118,8 @@ class Admin extends Base implements
         // If the current user can't grant permissions, make the new admin
         // have the same role as themselves.  Admins created from the CLI (like as
         // part of a migration) won't be logged in.
-        if (($admin = app('decoy.user'))
-            && !app('decoy.user')->can('grant', 'admins')) {
+        if (($admin = app('facilitador.user'))
+            && !app('facilitador.user')->can('grant', 'admins')) {
             $this->role = $admin->role;
 
         // Otherwise, give the admin a default role if none was defined
@@ -168,18 +168,18 @@ class Admin extends Base implements
     public function sendCreateEmail()
     {
         // Prepare data for mail
-        $admin = app('decoy.user');
+        $admin = app('facilitador.user');
         $email = [
             'first_name' => $admin->first_name,
             'last_name' => $admin->last_name,
             'email' => request('email'),
-            'url' => Request::root().'/'.Config::get('decoy.core.dir'),
+            'url' => Request::root().'/'.Config::get('facilitador.core.dir'),
             'root' => Request::root(),
             'password' => request('password'),
         ];
 
         // Send the email
-        Mail::send('decoy::emails.create', $email, function ($m) use ($email) {
+        Mail::send('facilitador::emails.create', $email, function ($m) use ($email) {
             $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
             $m->subject('Welcome to the '.Decoy::site().' admin site');
         });
@@ -193,7 +193,7 @@ class Admin extends Base implements
     public function sendUpdateEmail()
     {
         // Prepare data for mail
-        $admin = app('decoy.user');
+        $admin = app('facilitador.user');
         $email = [
             'editor_first_name' => $admin->first_name,
             'editor_last_name' => $admin->last_name,
@@ -201,12 +201,12 @@ class Admin extends Base implements
             'last_name' =>request('last_name'),
             'email' => request('email'),
             'password' =>request('password'),
-            'url' => Request::root().'/'.Config::get('decoy.core.dir'),
+            'url' => Request::root().'/'.Config::get('facilitador.core.dir'),
             'root' => Request::root(),
         ];
 
         // Send the email
-        Mail::send('decoy::emails.update', $email, function ($m) use ($email) {
+        Mail::send('facilitador::emails.update', $email, function ($m) use ($email) {
             $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
             $m->subject('Your '.Decoy::site().' admin account info has been updated');
         });
@@ -223,7 +223,7 @@ class Admin extends Base implements
     {
         return app(Gate::class)
             ->forUser($this)
-            ->check('decoy.auth', [$action, $controller]);
+            ->check('facilitador.auth', [$action, $controller]);
     }
 
     /**
@@ -326,15 +326,15 @@ class Admin extends Base implements
         }
 
         // If row is you
-        if ($this->id == app('decoy.user')->id) {
-            $html .= '<span class="label label-info">' . __('decoy::admins.standard_list.you') . '</span>';
+        if ($this->id == app('facilitador.user')->id) {
+            $html .= '<span class="label label-info">' . __('facilitador::admins.standard_list.you') . '</span>';
         }
 
         // If row is disabled
         if ($this->disabled()) {
             $html .= '<a href="' . URL::to(DecoyURL::relative('enable', $this->id)) . '" class="label label-warning
-                js-tooltip" title="' . __('decoy::admins.standard_list.click') . '">' .
-                __('decoy::admins.standard_list.disabled') . '</a>';
+                js-tooltip" title="' . __('facilitador::admins.standard_list.click') . '">' .
+                __('facilitador::admins.standard_list.disabled') . '</a>';
         }
 
         // Return HTML
@@ -379,7 +379,7 @@ class Admin extends Base implements
             }
 
             return $title;
-        }, config('decoy.site.roles'));
+        }, config('facilitador.site.roles'));
     }
 
     /**
@@ -425,7 +425,7 @@ class Admin extends Base implements
 
                 // Add permission options for the controller
                 'permissions' => array_map(function ($value, $action) use ($class, $admin) {
-                    $roles = array_keys(Config::get('decoy.site.roles'));
+                    $roles = array_keys(Config::get('facilitador.site.roles'));
 
                     return (object) [
                         'slug' => $action,

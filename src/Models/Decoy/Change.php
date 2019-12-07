@@ -197,7 +197,7 @@ class Change extends Base
     static protected function getAdminId(Admin $admin = null)
     {
         if (!$admin) {
-            $admin = app('decoy.user');
+            $admin = app('facilitador.user');
         }
         return $admin ? $admin->getKey() : null;
     }
@@ -235,7 +235,7 @@ class Change extends Base
     {
         return static::groupBy('action')->pluck('action', 'action')
             ->mapWithKeys(function ($item) {
-                return [$item => __("decoy::changes.actions.$item")];
+                return [$item => __("facilitador::changes.actions.$item")];
             });
     }
 
@@ -256,7 +256,7 @@ class Change extends Base
      */
     public function getAdminTitleHtmlAttribute()
     {
-        return __('decoy::changes.admin_title', [
+        return __('facilitador::changes.admin_title', [
             'admin' => $this->getAdminLinkAttribute(),
             'action' => $this->getActionLabelAttribute(),
             'model' => $this->getModelNameHtmlAttribute(),
@@ -299,7 +299,7 @@ class Change extends Base
         return sprintf('<a href="%s" class="label label-%s">%s</a>',
             $this->filterUrl(['action' => $this->action]),
             isset($map[$this->action]) ? $map[$this->action] : 'info',
-            __("decoy::changes.actions.$this->action"));
+            __("facilitador::changes.actions.$this->action"));
     }
 
     /**
@@ -362,7 +362,7 @@ class Change extends Base
      */
     public function getHumanDateAttribute()
     {
-        return $this->created_at->format(__('decoy::changes.human_date'));
+        return $this->created_at->format(__('facilitador::changes.human_date'));
     }
 
     /**
@@ -389,7 +389,7 @@ class Change extends Base
     {
         return sprintf('<a href="%s"
             class="glyphicon glyphicon-filter js-tooltip"
-            title="' . __('decoy::changes.standard_list.filter') . '"
+            title="' . __('facilitador::changes.standard_list.filter') . '"
             data-placement="left"></a>',
             $this->filterUrl(['model' => $this->model, 'key' => $this->key]),
             strip_tags($this->getModelNameHtmlAttribute()));
@@ -418,14 +418,14 @@ class Change extends Base
                 class="glyphicon glyphicon-export js-tooltip changes-modal-link"
                 title="%s" data-placement="left"></a>',
                 DecoyURL::action('changes@edit', $this->id),
-                __('decoy::changes.standard_list.view'));
+                __('facilitador::changes.standard_list.view'));
         }
 
         // Else, show a disabled button
         else {
             return sprintf('<span
             class="glyphicon glyphicon-export js-tooltip"
-            title="%s" data-placement="left"></span>', __('decoy::changes.standard_list.no_changed'));
+            title="%s" data-placement="left"></span>', __('facilitador::changes.standard_list.no_changed'));
         }
     }
 
@@ -444,7 +444,7 @@ class Change extends Base
                 class="glyphicon glyphicon-bookmark js-tooltip"
                 title="%s" data-placement="left"></a>',
                 $this->preview_url,
-                __('decoy::changes.standard_list.preview'));
+                __('facilitador::changes.standard_list.preview'));
         } else {
             return '<span class="glyphicon glyphicon-bookmark disabled"></span>';
         }

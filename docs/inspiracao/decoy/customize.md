@@ -9,7 +9,7 @@ The minified JS that Decoy ships with exposes it's internal jQuery, Backbone, an
 ```coffee
 # Load Decoy js from the public/assets directory where it was installed by
 # `php artisan vendor:publish`
-decoy = require '../../../public/assets/decoy/index'
+decoy = require '../../../public/assets/facilitador/index'
 { $, _, Backbone } = decoy
 
 # Prevent clicks of disabled buttons
@@ -24,10 +24,10 @@ Decoy uses [Redactor](http://imperavi.com/redactor/) as its WYSIWYG editors.  He
 ```coffee
 # Load Decoy js from the public/assets directory where it was installed by
 # `php artisan vendor:publish`
-decoy = require '../../../public/assets/decoy/index'
+decoy = require '../../../public/assets/facilitador/index'
 
 # Make a single stylesheet with Decoy and extended styles
-require '../../../public/assets/decoy/index.css'
+require '../../../public/assets/facilitador/index.css'
 require './start.styl'
 
 # Customize wysiwyg options
