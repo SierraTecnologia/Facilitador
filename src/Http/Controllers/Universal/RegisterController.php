@@ -4,7 +4,7 @@ namespace Facilitador\Http\Controllers\Universal;
 
 use Illuminate\Http\Request;
 use Facilitador\Services\FacilitadorService;
-use Informate\Models\Components\Code\Commit;
+use Population\Models\Components\Code\Commit;
 use Facilitador\Services\RegisterService;
 use Facilitador\Services\RepositoryService;
 use Facilitador\Http\Requests\ModelUpdateRequest;
