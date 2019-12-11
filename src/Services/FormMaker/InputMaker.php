@@ -74,9 +74,9 @@ class InputMaker
         $defaultConfig = include __DIR__.'/../../../publishes/config/form-maker.php';
 
         if (is_null($class)) {
-            $class = config('form-maker.forms.form-class', 'form-control');
+            $class = config('form-maker.form.form-class', 'form-control');
         }
-
+        
         $inputConfig = [
             'populated' => $populated,
             'name' => $this->inputCalibrator->getName($name, $config),

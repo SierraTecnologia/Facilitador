@@ -416,10 +416,10 @@ class Icons
                         'class' => 'fa fa-fw fa-ban',
                         'name' => 'fa-ban',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-bank',
-                        'name' => 'fa-bank <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-bank',
+                    //     'name' => 'fa-bank <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-bar-chart',
@@ -568,10 +568,10 @@ class Icons
                         'class' => 'fa fa-fw fa-bus',
                         'name' => 'fa-bus',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-cab',
-                        'name' => 'fa-cab <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-cab',
+                    //     'name' => 'fa-cab <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-calculator',
@@ -697,19 +697,20 @@ class Icons
                         'class' => 'fa fa-fw fa-clone',
                         'name' => 'fa-clone',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-close',
-                        'name' => 'fa-close <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-close',
+                    //     'name' => 'fa-close <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-cloud',
                         'name' => 'fa-cloud',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-cloud-download',
-                        'name' => 'fa-cloud-download',
-                    ],
+                    // @todo Não funcionando (Em Brando)
+                    // [
+                    //     'class' => 'fa fa-fw fa-cloud-download',
+                    //     'name' => 'fa-cloud-download',
+                    // ],
                     [
                         'class' => 'fa fa-fw fa-cloud-upload',
                         'name' => 'fa-cloud-upload',
@@ -820,10 +821,10 @@ class Icons
                         'class' => 'fa fa-fw fa-download',
                         'name' => 'fa-download',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-edit',
-                        'name' => 'fa-edit <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-edit',
+                    //     'name' => 'fa-edit <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-ellipsis-h',
@@ -891,10 +892,10 @@ class Icons
                         'class' => 'fa fa-fw fa-fax',
                         'name' => 'fa-fax',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-feed',
-                        'name' => 'fa-feed <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-feed',
+                    //     'name' => 'fa-feed <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-female',
@@ -920,10 +921,11 @@ class Icons
                         'class' => 'fa fa-fw fa-file-excel-o',
                         'name' => 'fa-file-excel-o',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-file-image-o',
-                        'name' => 'fa-file-image-o',
-                    ],
+                    // @todo Não funcionando (Em Brando)
+                    // [
+                    //     'class' => 'fa fa-fw fa-file-image-o',
+                    //     'name' => 'fa-file-image-o',
+                    // ],
                     [
                         'class' => 'fa fa-fw fa-file-movie-o',
                         'name' => 'fa-file-movie-o',
@@ -995,10 +997,10 @@ class Icons
                         'class' => 'fa fa-fw fa-flag-o',
                         'name' => 'fa-flag-o',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-flash',
-                        'name' => 'fa-flash <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-flash',
+                    //     'name' => 'fa-flash <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-flask',
@@ -1036,15 +1038,15 @@ class Icons
                         'class' => 'fa fa-fw fa-gavel',
                         'name' => 'fa-gavel',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-gear',
-                        'name' => 'fa-gear <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-gear',
+                    //     'name' => 'fa-gear <span class="text-muted">(alias)</span>',
+                    // ],
                     
-                    [
-                        'class' => 'fa fa-fw fa-gears',
-                        'name' => 'fa-gears <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-gears',
+                    //     'name' => 'fa-gears <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-gift',
@@ -1062,10 +1064,10 @@ class Icons
                         'class' => 'fa fa-fw fa-graduation-cap',
                         'name' => 'fa-graduation-cap',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-group',
-                        'name' => 'fa-group <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-group',
+                    //     'name' => 'fa-group <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-hand-grab-o',
@@ -1088,10 +1090,11 @@ class Icons
                         'class' => 'fa fa-fw fa-hand-pointer-o',
                         'name' => 'fa-hand-pointer-o',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-hand-rock-o',
-                        'name' => 'fa-hand-rock-o',
-                    ],
+                    // @todo Não funcionando (Em Brando)
+                    // [
+                    //     'class' => 'fa fa-fw fa-hand-rock-o',
+                    //     'name' => 'fa-hand-rock-o',
+                    // ],
                     [
                         'class' => 'fa fa-fw fa-hand-scissors-o',
                         'name' => 'fa-hand-scissors-o',
@@ -1133,10 +1136,10 @@ class Icons
                         'class' => 'fa fa-fw fa-home',
                         'name' => 'fa-home',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-hotel',
-                        'name' => 'fa-hotel <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-hotel',
+                    //     'name' => 'fa-hotel <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-hourglass',
@@ -1177,10 +1180,10 @@ class Icons
                         'class' => 'fa fa-fw fa-i-cursor',
                         'name' => 'fa-i-cursor',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-image',
-                        'name' => 'fa-image <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-image',
+                    //     'name' => 'fa-image <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-inbox',
@@ -1223,10 +1226,10 @@ class Icons
                         'class' => 'fa fa-fw fa-leaf',
                         'name' => 'fa-leaf',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-legal',
-                        'name' => 'fa-legal <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-legal',
+                    //     'name' => 'fa-legal <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-lemon-o',
@@ -1438,10 +1441,10 @@ class Icons
                         'class' => 'fa fa-fw fa-phone-square',
                         'name' => 'fa-phone-square',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-photo',
-                        'name' => 'fa-photo <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-photo',
+                    //     'name' => 'fa-photo <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-picture-o',
@@ -1573,10 +1576,10 @@ class Icons
                         'class' => 'fa fa-fw fa-search-plus',
                         'name' => 'fa-search-plus',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-send',
-                        'name' => 'fa-send <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-send',
+                    //     'name' => 'fa-send <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-send-o',
@@ -2087,10 +2090,10 @@ class Icons
                         'class' => 'fa fa-fw fa-bus',
                         'name' => 'fa-bus',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-cab',
-                        'name' => 'fa-cab <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-cab',
+                    //     'name' => 'fa-cab <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-car',
@@ -2309,10 +2312,10 @@ class Icons
                         'class' => 'fa fa-fw fa-cog',
                         'name' => 'fa-cog',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-gear',
-                        'name' => 'fa-gear <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-gear',
+                    //     'name' => 'fa-gear <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-refresh',
@@ -2480,10 +2483,10 @@ class Icons
                         'class' => 'fa fa-fw fa-btc',
                         'name' => 'fa-btc',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-cny',
-                        'name' => 'fa-cny <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-cny',
+                    //     'name' => 'fa-cny <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-dollar',
@@ -2494,10 +2497,10 @@ class Icons
                         'class' => 'fa fa-fw fa-eur',
                         'name' => 'fa-eur',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-euro',
-                        'name' => 'fa-euro <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-euro',
+                    //     'name' => 'fa-euro <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-gbp',
@@ -2531,29 +2534,30 @@ class Icons
                         'class' => 'fa fa-fw fa-money',
                         'name' => 'fa-money',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-rmb',
-                        'name' => 'fa-rmb <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-rmb',
+                    //     'name' => 'fa-rmb <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-rouble',
                         'name' => 'fa-rouble',
                     ],
                      // Alias
-                    [
-                        'class' => 'fa fa-fw fa-rub',
-                        'name' => 'fa-rub',
-                    ],
-                    [
-                        'class' => 'fa fa-fw fa-ruble',
-                        'name' => 'fa-ruble <span class="text-muted">(alias)</span>',
-                    ],
+                    // @todo Não funcionando (Em Brando)
+                    // [
+                    //     'class' => 'fa fa-fw fa-rub',
+                    //     'name' => 'fa-rub',
+                    // ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-ruble',
+                    //     'name' => 'fa-ruble <span class="text-muted">(alias)</span>',
+                    // ],
                     
-                    [
-                        'class' => 'fa fa-fw fa-rupee',
-                        'name' => 'fa-rupee <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-rupee',
+                    //     'name' => 'fa-rupee <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-shekel',
@@ -2578,15 +2582,15 @@ class Icons
                         'class' => 'fa fa-fw fa-usd',
                         'name' => 'fa-usd',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-won',
-                        'name' => 'fa-won <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-won',
+                    //     'name' => 'fa-won <span class="text-muted">(alias)</span>',
+                    // ],
                     
-                    [
-                        'class' => 'fa fa-fw fa-yen',
-                        'name' => 'fa-yen <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-yen',
+                    //     'name' => 'fa-yen <span class="text-muted">(alias)</span>',
+                    // ],
                     
                   
             //     ];
@@ -2618,10 +2622,10 @@ class Icons
                         'class' => 'fa fa-fw fa-bold',
                         'name' => 'fa-bold',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-chain',
-                        'name' => 'fa-chain <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-chain',
+                    //     'name' => 'fa-chain <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-chain-broken',
@@ -2635,15 +2639,15 @@ class Icons
                         'class' => 'fa fa-fw fa-columns',
                         'name' => 'fa-columns',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-copy',
-                        'name' => 'fa-copy <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-copy',
+                    //     'name' => 'fa-copy <span class="text-muted">(alias)</span>',
+                    // ],
                     
-                    [
-                        'class' => 'fa fa-fw fa-cut',
-                        'name' => 'fa-cut <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-cut',
+                    //     'name' => 'fa-cut <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-dedent',
@@ -2726,10 +2730,10 @@ class Icons
                         'class' => 'fa fa-fw fa-paragraph',
                         'name' => 'fa-paragraph',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-paste',
-                        'name' => 'fa-paste <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-paste',
+                    //     'name' => 'fa-paste <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-repeat',
@@ -2745,10 +2749,10 @@ class Icons
                         'name' => 'fa-rotate-right',
                     ],
                      // Alias
-                    [
-                        'class' => 'fa fa-fw fa-save',
-                        'name' => 'fa-save <span class="text-muted">(alias)</span>',
-                    ],
+                    // [
+                    //     'class' => 'fa fa-fw fa-save',
+                    //     'name' => 'fa-save <span class="text-muted">(alias)</span>',
+                    // ],
                     
                     [
                         'class' => 'fa fa-fw fa-scissors',
@@ -2908,10 +2912,11 @@ class Icons
                         'class' => 'fa fa-fw fa-arrows-alt',
                         'name' => 'fa-arrows-alt',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-arrows-h',
-                        'name' => 'fa-arrows-h',
-                    ],
+                    // @todo Não funcionando (Em Brando)
+                    // [
+                    //     'class' => 'fa fa-fw fa-arrows-h',
+                    //     'name' => 'fa-arrows-h',
+                    // ],
                     [
                         'class' => 'fa fa-fw fa-arrows-v',
                         'name' => 'fa-arrows-v',
@@ -2982,18 +2987,20 @@ class Icons
                         'class' => 'fa fa-fw fa-chevron-up',
                         'name' => 'fa-chevron-up',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-exchange',
-                        'name' => 'fa-exchange',
-                    ],
+                    // @todo Não funcionando (Em Brando)
+                    // [
+                    //     'class' => 'fa fa-fw fa-exchange',
+                    //     'name' => 'fa-exchange',
+                    // ],
                     [
                         'class' => 'fa fa-fw fa-hand-o-down',
                         'name' => 'fa-hand-o-down',
                     ],
-                    [
-                        'class' => 'fa fa-fw fa-hand-o-left',
-                        'name' => 'fa-hand-o-left',
-                    ],
+                    // @todo Não funcionando (Em Brando)
+                    // [
+                    //     'class' => 'fa fa-fw fa-hand-o-left',
+                    //     'name' => 'fa-hand-o-left',
+                    // ],
                     [
                         'class' => 'fa fa-fw fa-hand-o-right',
                         'name' => 'fa-hand-o-right',

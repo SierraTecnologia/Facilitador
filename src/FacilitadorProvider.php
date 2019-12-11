@@ -232,13 +232,16 @@ class FacilitadorProvider extends ServiceProvider
             return new FacilitadorService(config('facilitador.sitec.models'));
         });
 
+        /**
+         * @todo Ta passando duas vezes por aqui
+         */
         Route::bind('modelClass', function ($value) {
-            Log::info('Route Bind ModelClass - '.$value);
-            return new ModelService($value);
+            Log::info('Route Bind ModelClass - '.Crypto::decrypt($value));
+            return new ModelService(Crypto::decrypt($value));
         });
         Route::bind('identify', function ($value) {
-            Log::info('Route Bind Identify - '.$value);
-            return new RegisterService($value);
+            Log::info('Route Bind Identify - '.Crypto::decrypt($value));
+            return new RegisterService(Crypto::decrypt($value));
         });
 
         $this->app->bind(ModelService::class, function($app)

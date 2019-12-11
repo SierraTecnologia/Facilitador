@@ -97,7 +97,7 @@ class FormMaker
         $formBuild = [];
 
         if (is_null($class)) {
-            $class = config('form-maker.forms.form-class', 'form-control');
+            $class = config('form-maker.form.form-class', 'form-control');
         }
 
         $tableColumns = $this->getTableColumns($table, true);
@@ -152,7 +152,7 @@ class FormMaker
         $formBuild = [];
 
         if (is_null($class)) {
-            $class = config('form-maker.forms.form-class', 'form-control');
+            $class = config('form-maker.form.form-class', 'form-control');
         }
 
         $array = $this->cleanupIdAndTimeStamps($array, $timestamps, false);
@@ -206,7 +206,7 @@ class FormMaker
         }
 
         if (is_null($class)) {
-            $class = config('form-maker.forms.form-class', 'form-control');
+            $class = config('form-maker.form.form-class', 'form-control');
         }
 
         $columns = $this->cleanupIdAndTimeStamps($columns, $timestamps, false);

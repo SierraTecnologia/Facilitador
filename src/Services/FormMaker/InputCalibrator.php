@@ -50,6 +50,7 @@ class InputCalibrator
      */
     public function getName($name, $config)
     {
+        // dd($name, $config);
         if (isset($config['name'])) {
             $name = $config['name'];
         }
@@ -67,6 +68,9 @@ class InputCalibrator
      */
     public function getId($name, $config)
     {
+        // if(!is_string($name)) {
+        //     dd($name, $config);
+        // }
         $inputId = str_replace('[]', '', ucfirst($name));
 
         if (isset($config['id'])) {
@@ -89,7 +93,8 @@ class InputCalibrator
         $selected = false;
 
         if (!is_object($config['objectValue'])) {
-            $selected = (isset($config['inputs'][$config['name']])
+            // dd($config['inputs'], $config['name'], $config);
+            $selected = (!empty($config['inputs']) && !is_array($config['name']) && (isset($config['inputs'][$config['name']]))
                 || isset($config['config']['selected'])
                 || $config['objectValue'] === 'on'
                 || ($config['objectValue'] == 1 && $checkType == 'checked')

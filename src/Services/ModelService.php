@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 use Facilitador\Support\Entities\DataTypes\Varchar;
 use Facilitador\Support\Eloquent\EloquentColumn;
 use ReflectionClass;
+use TCG\Voyager\Database\Schema\SchemaManager;
 
 /**
  * ModelService helper to make table and object form mapping easy.
@@ -23,10 +24,13 @@ class ModelService
 
     protected $modelClass;
     protected $repository = false;
+    protected $schemaManagerTable = false;
 
     public function __construct(string $modelClass)
     {
+        Log::warning($modelClass);
         $this->modelClass = $modelClass;
+        $this->renderTableInfos();
     }
 
     public function getRepository()
@@ -78,6 +82,7 @@ class ModelService
     public function getTableName()
     {
         $name = $this->getModelClass();
+        Log::warning($name);
         $model = new $name;
         return $model->getTable();
     }
@@ -95,45 +100,6 @@ class ModelService
     }
 
     /**
-     * Caracteristicas das Tabelas
-     */
-    public function getPrimaryKey()
-    {
-        return App::make($this->modelClass)->getKeyName();
-    }
-
-    /**
-     * Relações
-     */
-    public function getAtributes()
-    {
-        // dd(\Schema::getColumnListing($this->modelClass));
-        $fillables = collect(App::make($this->modelClass)->getFillable())->map(function ($value) {
-            return new EloquentColumn($value, new Varchar, true);
-        });
-        return $fillables;
-    }
-    public function getRelations($key = false)
-    {
-        return (new Relationships($this->modelClass))($key);
-    }
-
-    public function getRelationsByGroup()
-    {
-
-        $classes = $this->getRelations();
-        
-        $group = [];
-        foreach ($classes as $class) {
-            if (!isset($group[$class->type])) {
-                $group[$class->type] = [];
-            }
-            $group[$class->type][] = $class;
-        }
-        return $group;
-    }
-
-    /**
      * Campos
      *
      * @return void
@@ -145,11 +111,34 @@ class ModelService
 
     public function getFieldForForm()
     {
-        $atributes = $this->getAtributes();
-        $fields = [
-            'identity' =>  $atributes->all(),
-        ];
-        return $fields;
+        $atributes = $this->getColumnsForForm();
+        $formGroup = 'identity';
+        $fieldsArray = [];
+
+        foreach ($atributes as $atribute) {
+            if (!isset($fieldsArray[$formGroup])) {
+                $fieldsArray[$formGroup] = [];
+            }
+            //@todo COnsertando erro pois da conflito
+            if ($atribute->getName()=='name') {
+                continue;
+            }
+            $nameType = $atribute->getType()->getName();
+            $fieldsArray[$formGroup][$atribute->getName()] = [];
+            $fieldsArray[$formGroup][$atribute->getName()]['type'] = $nameType;
+                // 'class' => 'redactor',
+                // 'alt_name' => 'Content',
+
+            // // Caso seja Data // @todo Removido
+            // if ($nameType = 'datetime') {
+            //     $fieldsArray[$formGroup][$atribute->getName()]['type'] = 'string';
+            //     $fieldsArray[$formGroup][$atribute->getName()]['class'] = 'datetimepicker';
+            // }
+        }
+
+        // dd( $fieldsArray);
+        // return $fieldsArray;  // @todo Sections nao funcionando
+        return $fieldsArray[$formGroup];
 
         // return [
         //     'identity' => [
@@ -202,4 +191,60 @@ class ModelService
         // ];
     }
 
+
+    private function renderTableInfos()
+    {
+        $this->schemaManagerTable = SchemaManager::listTableDetails($this->getTableName());
+    }
+
+    /**
+     * Caracteristicas das Tabelas
+     */
+    public function getPrimaryKey()
+    {
+        return App::make($this->modelClass)->getKeyName();
+    }
+
+    public function getColumnsForForm()
+    {
+        // dd($this->getAtributes(), $this->schemaManagerTable->toArray(), $this->getColumns());
+        return $this->getColumns();
+    }
+
+    public function getColumns()
+    {
+        // dd($this->getAtributes(), $this->schemaManagerTable->getColumns());
+        return $this->schemaManagerTable->getColumns();
+    }
+
+    /**
+     * Relações
+     */
+    public function getAtributes()
+    {
+        // dd(\Schema::getColumnListing($this->modelClass));
+        $fillables = collect(App::make($this->modelClass)->getFillable())->map(function ($value) {
+            return new EloquentColumn($value, new Varchar, true);
+        });
+        return $fillables;
+    }
+    public function getRelations($key = false)
+    {
+        return (new Relationships($this->modelClass))($key);
+    }
+
+    public function getRelationsByGroup()
+    {
+
+        $classes = $this->getRelations();
+        
+        $group = [];
+        foreach ($classes as $class) {
+            if (!isset($group[$class->type])) {
+                $group[$class->type] = [];
+            }
+            $group[$class->type][] = $class;
+        }
+        return $group;
+    }
 }
