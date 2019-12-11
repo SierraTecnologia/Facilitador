@@ -6,14 +6,12 @@ $i = 1
         <div class="row">
     @endif
     <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-            <span class="info-box-icon bg-aqua">{!!\Facilitador\Layout\Icons::getRandon()!!}</span>
 
-            <div class="info-box-content">
-            <span class="info-box-text"><a href="{{$model->getUrl()}}">{{$model->getName()}}</a></span>
-            <span class="info-box-number">{{$model->getRepository()->count()}}</span>
-            </div>
-            <!-- /.info-box-content -->
+        <div class="info-box">
+            <a class="btn btn-app" href="{{$model->getUrl()}}">
+                <span class="badge bg-yellow">{{$model->getRepository()->count()}}</span>
+                {!!\Facilitador\Layout\Icons::getRandon()!!} {{$model->getName()}}
+            </a>
         </div>
         <!-- /.info-box -->
     </div>

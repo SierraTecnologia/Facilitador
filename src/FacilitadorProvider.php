@@ -202,7 +202,7 @@ class FacilitadorProvider extends ServiceProvider
 
         // Build the Elements collection
         $this->app->singleton('facilitador.elements', function ($app) {
-            return with(new \Facilitador\Collections\Elements)->setModel(Models\Decoy\Element::class);
+            return with(new \Facilitador\Collections\Elements)->setModel(Models\Element::class);
         });
 
         // Build the Breadcrumbs store

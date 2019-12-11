@@ -29,6 +29,11 @@
         </div>
 
     </div>
+
+    @include('facilitador::dash.topbar', [
+    
+    ])
+
     @include('facilitador::dash.numbers', [
         'models' => $models,
     ])

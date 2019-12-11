@@ -123,14 +123,6 @@ class User extends \TCG\Voyager\Models\User
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function photos()
@@ -204,11 +196,9 @@ class User extends \TCG\Voyager\Models\User
         return $name[strlen($name)-1];
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany('App\Models\Role')->withTimestamps();
-    }
-
+    /**
+     * @todo VErificar esse aqui pq agora usa o role do voyager
+     */
     public function hasRole($name)
     {
         foreach($this->roles as $role)
@@ -219,11 +209,17 @@ class User extends \TCG\Voyager\Models\User
         return false;
     }
 
+    /**
+     * @todo VErificar esse aqui pq agora usa o role do voyager
+     */
     public function assignRole($role)
     {
         return $this->roles()->attach($role);
     }
 
+    /**
+     * @todo VErificar esse aqui pq agora usa o role do voyager
+     */
     public function removeRole($role)
     {
         return $this->roles()->detach($role);
