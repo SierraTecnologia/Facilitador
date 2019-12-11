@@ -5,7 +5,7 @@ namespace Facilitador\Input\EncodingProviders;
 use Config;
 use Request;
 use Illuminate\Support\Str;
-use Facilitador\Models\Decoy\Encoding;
+use Facilitador\Models\Encoding;
 use Facilitador\Exceptions\Exception;
 
 /**
@@ -25,14 +25,14 @@ abstract class EncodingProvider
     /**
      * The Encoding model instance that this encode is related to
      *
-     * @var Facilitador\Models\Decoy\Encoding
+     * @var Facilitador\Models\Encoding
      */
     protected $model;
 
     /**
      * Inject dependencies
      *
-     * @param Facilitador\Models\Decoy\Encoding $model
+     * @param Facilitador\Models\Encoding $model
      */
     public function __construct(Encoding $model = null)
     {

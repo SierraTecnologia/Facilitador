@@ -12,9 +12,9 @@ use Request;
 use Redirect;
 use Validator;
 use Illuminate\Support\Str;
-use Facilitador\Models\Decoy\Image;
+use Facilitador\Models\Image;
 use Bkwld\Library\Utils\File;
-use Facilitador\Models\Decoy\Element;
+use Facilitador\Models\Element;
 use Facilitador\Exceptions\ValidationFail;
 
 /**
@@ -93,7 +93,7 @@ class Elements extends Base
     /**
      * A helper function for rendering the list of fields
      *
-     * @param  Facilitador\Models\Decoy\Element $el
+     * @param  Facilitador\Models\Element $el
      * @param  string                     $key
      * @return Former\Traits\Object
      */

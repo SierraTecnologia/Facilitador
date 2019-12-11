@@ -24,7 +24,7 @@ use Facilitador\Input\Position;
 use Illuminate\Routing\Controller;
 use Facilitador\Input\NestedModels;
 use Facilitador\Input\ModelValidator;
-use Facilitador\Models\Decoy\Base as BaseModel;
+use Facilitador\Models\Base as BaseModel;
 use Facilitador\Exceptions\ValidationFail;
 use Bkwld\Library\Laravel\Validator as BkwldLibraryValidator;
 
@@ -1059,7 +1059,7 @@ class Base extends Controller
     {
         // Figure out the title and wrap it in quotes
         $title = $input;
-        if (is_a($input, '\Facilitador\Models\Decoy\Base')) {
+        if (is_a($input, '\Facilitador\Models\Base')) {
             $title = $input->getAdminTitleAttribute();
         }
 
@@ -1077,7 +1077,7 @@ class Base extends Controller
         }
 
         // Add extra messaging if the creation was begun from the localize UI
-        if ($verb == 'duplicated' && is_a($input, '\Facilitador\Models\Decoy\Base') && !empty($input->locale)) {
+        if ($verb == 'duplicated' && is_a($input, '\Facilitador\Models\Base') && !empty($input->locale)) {
             $message .= __('facilitador::base.success_localized', ['locale' => config('facilitador.site.locales')[$input->locale]]);
         }
 

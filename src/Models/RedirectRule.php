@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Models\Decoy;
+namespace Facilitador\Models;
 
 use DB;
 use Config;

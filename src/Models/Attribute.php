@@ -4,14 +4,20 @@ declare(strict_types=1);
 
 namespace Facilitador\Models;
 
-use Spatie\Sluggable\SlugOptions;
-use Facilitador\Support\Traits\HasSlug;
-use Spatie\EloquentSortable\Sortable;
+use Informate\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
-use Facilitador\Cacheable\CacheableEloquent;
-use Facilitador\Support\Traits\HasTranslations;
-use Facilitador\Support\Traits\ValidatingTrait;
-use Spatie\EloquentSortable\SortableTrait;
+// // // // @Arquivo no existe
+// use Spatie\Sluggable\SlugOptions;
+// // // // @Arquivo no existe
+// use Spatie\EloquentSortable\Sortable;
+// // // @Arquivo no existe
+// use Facilitador\Cacheable\CacheableEloquent;
+// // @Arquivo no existe
+// use Facilitador\Support\Traits\HasTranslations;
+// // @Arquivo no existe
+// use Facilitador\Support\Traits\ValidatingTrait;
+// // @todo Add Essa lib Trait 'Spatie\EloquentSortable\SortableTrait' not found
+// use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -47,13 +53,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Models\Attribute whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class Attribute extends Model implements Sortable
+class Attribute extends Model// implements Sortable
 {
     use HasSlug;
-    use SortableTrait;
-    use HasTranslations;
-    use ValidatingTrait;
-    use CacheableEloquent;
+    // use SortableTrait;
+    // use HasTranslations;
+    // use ValidatingTrait;
+    // use CacheableEloquent;
 
     /**
      * {@inheritdoc}

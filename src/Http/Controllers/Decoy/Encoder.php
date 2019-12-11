@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers\Decoy;
 
 use Request;
-use Facilitador\Models\Decoy\Encoding;
+use Facilitador\Models\Encoding;
 use Illuminate\Routing\Controller;
 
 /**

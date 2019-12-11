@@ -7,7 +7,7 @@ use Decoy;
 use Former;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Facilitador\Models\Decoy\Admin;
+use Facilitador\Models\Admin;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPassword extends Base

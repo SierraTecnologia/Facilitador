@@ -7,9 +7,9 @@ use Former;
 use Bkwld\Library\Utils;
 use Former\LiveValidation;
 use Former\Form\Fields\File;
-use Facilitador\Models\Decoy\Element;
+use Facilitador\Models\Element;
 use Illuminate\Container\Container;
-use Facilitador\Models\Decoy\Image as ImageModel;
+use Facilitador\Models\Image as ImageModel;
 
 /**
  * Creates an image file upload field with addtional UI for displaing previously

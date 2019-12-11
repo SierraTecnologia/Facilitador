@@ -6,7 +6,7 @@ namespace Facilitador\Http\Controllers\Decoy;
 use Artisan;
 use App;
 use Response;
-use Facilitador\Models\Decoy\Command;
+use Facilitador\Models\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Illuminate\Console\Application as ConsoleApplication;

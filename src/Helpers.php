@@ -321,7 +321,7 @@ class Helpers
     {
         // Swap out the namespace if facilitador
         $model = str_replace('Facilitador\Http\Controllers\Decoy',
-            'Facilitador\Models\Decoy',
+            'Facilitador\Models',
             $controller,
             $is_facilitador);
 
@@ -346,7 +346,7 @@ class Helpers
     public function controllerForModel($model)
     {
         // Swap out the namespace if facilitador
-        $controller = str_replace('Facilitador\Models\Decoy', 'Facilitador\Http\Controllers\Decoy', $model, $is_facilitador);
+        $controller = str_replace('Facilitador\Models', 'Facilitador\Http\Controllers\Decoy', $model, $is_facilitador);
 
         // Replace non-facilitador controller's with the standard model namespace
         if (!$is_facilitador) {

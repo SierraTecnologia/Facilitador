@@ -3,7 +3,7 @@
 namespace Facilitador\Exceptions;
 
 use Exception as BaseException;
-use Facilitador\Models\Decoy\RedirectRule;
+use Facilitador\Models\RedirectRule;
 use App\Exceptions\Handler as AppHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

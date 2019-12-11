@@ -22,7 +22,7 @@ class ManyToManyChecklist
      *
      * @param  string $event
      * @param  array $payload Contains:
-     *    - Facilitador\Models\Decoy\Base $model
+     *    - Facilitador\Models\Base $model
      * @return void
      */
     public function handle($event, $payload)
@@ -40,7 +40,7 @@ class ManyToManyChecklist
     /**
      * Process a particular input instance
      *
-     * @param Facilitador\Models\Decoy\Base $model        A model instance
+     * @param Facilitador\Models\Base $model        A model instance
      * @param string                  $relationship The relationship name
      */
     private function updateRelationship($model, $relationship)

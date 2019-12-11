@@ -2,7 +2,7 @@
 namespace Tests\Integration;
 
 use Auth;
-use Facilitador\Models\Decoy\Admin;
+use Facilitador\Models\Admin;
 use Tests\TestCase;
 
 class LoginTest extends TestCase

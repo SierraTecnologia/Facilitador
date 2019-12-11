@@ -2,7 +2,7 @@
 namespace Tests\Integration;
 
 use App\Article;
-use Facilitador\Models\Decoy\Admin;
+use Facilitador\Models\Admin;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Str;

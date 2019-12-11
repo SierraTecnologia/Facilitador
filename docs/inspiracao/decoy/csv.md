@@ -3,7 +3,7 @@
 To mark a model as available for export to CSV, set the `exportable` property of your model to `true`:
 
 ```php?start_inline=1
-class Article extends \Facilitador\Models\Decoy\Base
+class Article extends \Facilitador\Models\Base
 {
     /**
      * Should the model be exportable as CSV?
@@ -21,7 +21,7 @@ Without any further configuration, all models will be converted to CSV rows by t
 You can configure the Eloquent query used to build the CSV by adding an `exporting` scope to your model:
 
 ```php?start_inline=1
-class Article extends \Facilitador\Models\Decoy\Base
+class Article extends \Facilitador\Models\Base
 {
     /**
      * Should the model be exportable as CSV?
@@ -47,7 +47,7 @@ class Article extends \Facilitador\Models\Decoy\Base
 You can configure how a model is converted to a CSV by defining a `forExport` method on your model.  
 
 ```php?start_inline=1
-class Article extends \Facilitador\Models\Decoy\Base
+class Article extends \Facilitador\Models\Base
 {
     /**
      * Should the model be exportable as CSV?

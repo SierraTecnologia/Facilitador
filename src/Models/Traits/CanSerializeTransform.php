@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Models\Decoy\Traits;
+namespace Facilitador\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;

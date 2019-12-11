@@ -1,6 +1,6 @@
 # Models
 
-Decoy uses the same model classes that the public app uses.  Thus, put them as per normal in /app and give them the namespace `App\`.  However, instead of extending `Eloquent`, they should extend `Facilitador\Models\Decoy\Base`.  The base model adds a bunch of functionality to the model that is used by the admin as well as some features that can be used in the public site.
+Decoy uses the same model classes that the public app uses.  Thus, put them as per normal in /app and give them the namespace `App\`.  However, instead of extending `Eloquent`, they should extend `Facilitador\Models\Base`.  The base model adds a bunch of functionality to the model that is used by the admin as well as some features that can be used in the public site.
 
 ## Conventions
 

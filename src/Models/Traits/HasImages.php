@@ -1,9 +1,9 @@
 <?php
 
-namespace Facilitador\Models\Decoy\Traits;
+namespace Facilitador\Models\Traits;
 
 use Event;
-use Facilitador\Models\Decoy\Image;
+use Facilitador\Models\Image;
 use Illuminate\Database\Eloquent\Builder;
 
 /**

@@ -6,7 +6,7 @@ namespace Facilitador\Collections;
 use App;
 use Bkwld\Library\Utils;
 use Facilitador\Exceptions\Exception;
-use Facilitador\Models\Decoy\Element;
+use Facilitador\Models\Element;
 use Cache;
 use Illuminate\Database\Eloquent\Collection as ModelCollection;
 use Illuminate\Support\Collection;
@@ -83,7 +83,7 @@ class Elements extends Collection
      * Get an element given it's key
      *
      * @param  string  $key
-     * @return Facilitador\Models\Decoy\Element
+     * @return Facilitador\Models\Element
      */
     public function get($key, $default = null)
     {
@@ -559,7 +559,7 @@ class Elements extends Collection
     /**
      * When a model is updated, update the corresponding key-val pair
      *
-     * @param  Facilitador\Models\Decoy\Element $element
+     * @param  Facilitador\Models\Element $element
      * @return void
      */
     public function onModelUpdate($element)

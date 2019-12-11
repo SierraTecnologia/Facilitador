@@ -3,8 +3,8 @@
 namespace Facilitador\Observers;
 
 // Deps
-use Facilitador\Models\Decoy;
-use Facilitador\Models\Decoy\Change;
+use Facilitador\Models;
+use Facilitador\Models\Change;
 use Event;
 use Route;
 
@@ -25,7 +25,7 @@ class Changes
      *
      * @param  string $event
      * @param  array $payload Contains:
-     *    - Facilitador\Models\Decoy\Base $model
+     *    - Facilitador\Models\Base $model
      */
     public function handle($event, $payload)
     {

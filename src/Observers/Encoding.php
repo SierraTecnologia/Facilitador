@@ -12,7 +12,7 @@ class Encoding
      *
      * @param  string $event
      * @param  array $payload Contains:
-     *    - Facilitador\Models\Decoy\Base $model
+     *    - Facilitador\Models\Base $model
      * @return void
      */
     public function onSaving($event, $payload)
@@ -41,7 +41,7 @@ class Encoding
      * Delete all encodes on the model
      *
      * @param  string $event
-     * @param  Facilitador\Models\Decoy\Base $model
+     * @param  Facilitador\Models\Base $model
      * @return void
      */
     public function onDeleted($event, $model)
@@ -56,7 +56,7 @@ class Encoding
     /**
      * Check if a model should be encoded
      *
-     * @param  Facilitador\Models\Decoy\Base $model
+     * @param  Facilitador\Models\Base $model
      * @return boolean
      */
     public function isEncodable($model)
@@ -65,7 +65,7 @@ class Encoding
             return false;
         }
 
-        if (is_a($model, 'Facilitador\Models\Decoy\Element') && $model->getAttribute('type') != 'video-encoder') {
+        if (is_a($model, 'Facilitador\Models\Element') && $model->getAttribute('type') != 'video-encoder') {
             return false;
         }
 

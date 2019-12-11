@@ -44,32 +44,32 @@ class FacilitadorProvider extends ServiceProvider
     ];
 
     public static $providers = [
-        // \Facilitador\Providers\ServicesProvider::class,
-        // \Facilitador\Providers\FacilitadorRouteProvider::class,
-        // \Facilitador\Providers\FormMakerProvider::class,
-
-        \Tracking\TrackingProvider::class,
+        \Facilitador\Providers\ServicesProvider::class,
+        \Facilitador\Providers\FacilitadorRouteProvider::class,
         
         /**
          * Internos
          */
-        \Facilitador\Providers\ServicesProvider::class,
-        \Facilitador\Providers\FacilitadorRouteProvider::class,
-        \Facilitador\Providers\FormMakerProvider::class,
         \Tracking\TrackingProvider::class,
         
         /**
          * Externos
          */
-        \Facilitador\Providers\GravatarServiceProvider::class,
-        
+        \Facilitador\Providers\FormMakerProvider::class,
         // \Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class,
         // \Facilitador\Providers\FieldServiceProvider::class,
+        \Facilitador\Providers\GravatarServiceProvider::class,
+        
 
         /**
          * Base
          */
         \RicardoSierra\Translation\TranslationServiceProvider::class,
+
+        /**
+         * Voyager
+         **/
+        \TCG\Voyager\VoyagerServiceProvider::class,
 
         /**
          * VEio pelo Decoy
@@ -344,7 +344,7 @@ class FacilitadorProvider extends ServiceProvider
 
         Config::set('auth.providers.facilitador', [
             'driver' => 'eloquent',
-            'model'  => \Facilitador\Models\Decoy\Admin::class,
+            'model'  => \Facilitador\Models\Admin::class,
         ]);
 
         Config::set('auth.passwords.facilitador', [

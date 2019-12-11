@@ -4,7 +4,7 @@ namespace Facilitador\Input\EncodingProviders;
 
 use Config;
 use Services_Zencoder;
-use Facilitador\Models\Decoy\Encoding;
+use Facilitador\Models\Encoding;
 use Services_Zencoder_Exception;
 use Facilitador\Exceptions\Exception;
 

@@ -11,7 +11,7 @@
 		echo Former::text('from')->label(__('facilitador::redirect_rules.form.from'))->blockHelp($help);
 
 	!= Former::text('to')->label(__('facilitador::redirect_rules.form.to'))->blockHelp(__('facilitador::redirect_rules.form.to_help'))
-	!= Former::radiolist('code')->label(__('facilitador::redirect_rules.form.code'))->from(Facilitador\Models\Decoy\RedirectRule::getCodes())->blockHelp(__('facilitador::redirect_rules.form.radio_help'));
+	!= Former::radiolist('code')->label(__('facilitador::redirect_rules.form.code'))->from(Facilitador\Models\RedirectRule::getCodes())->blockHelp(__('facilitador::redirect_rules.form.radio_help'));
 	!= Former::text('label')->label(__('facilitador::redirect_rules.form.label'))->help(__('facilitador::redirect_rules.form.label_help'))
 
 != View::make('facilitador::shared.form._footer', $__data)->render()

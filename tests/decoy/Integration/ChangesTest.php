@@ -3,7 +3,7 @@ namespace Tests\Integration;
 
 use App\Article;
 use App\Tag;
-use Facilitador\Models\Decoy\Change;
+use Facilitador\Models\Change;
 use Cache;
 use Carbon\Carbon;
 use Decoy;
@@ -111,7 +111,7 @@ class ChangesTest extends TestCase
         // Verify no logout change was written for admin
         $this->logout();
         $this->assertEquals(1,
-            Change::where('model', 'Facilitador\Models\Decoy\Admin')->count());
+            Change::where('model', 'Facilitador\Models\Admin')->count());
 
         // Create the article unpublic so no published change gets written
         $article = factory(Article::class)->create([

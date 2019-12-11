@@ -2,7 +2,7 @@
 namespace Tests;
 
 use Auth;
-use Facilitador\Models\Decoy\Admin;
+use Facilitador\Models\Admin;
 use Cache;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

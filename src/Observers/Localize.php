@@ -2,7 +2,7 @@
 
 namespace Facilitador\Observers;
 
-use Facilitador\Models\Decoy\Element;
+use Facilitador\Models\Element;
 use Config;
 use Illuminate\Support\Str;
 
@@ -17,7 +17,7 @@ class Localize
      *
      * @param  string $event
      * @param  array $payload Contains:
-     *    - Facilitador\Models\Decoy\Base $model
+     *    - Facilitador\Models\Base $model
      * @return void
      */
     public function handle($event, $payload)

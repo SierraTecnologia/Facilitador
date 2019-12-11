@@ -3,7 +3,7 @@
 namespace Facilitador\Input;
 
 use Decoy;
-use Facilitador\Models\Decoy\Image;
+use Facilitador\Models\Image;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 /**

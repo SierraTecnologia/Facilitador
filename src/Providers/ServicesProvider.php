@@ -35,10 +35,6 @@ class ServicesProvider extends ServiceProvider
         $this->app->register(\Yajra\DataTables\DataTablesServiceProvider::class);
         
         /*
-         * Fodas
-         */
-        $this->app->register(\TCG\Voyager\VoyagerServiceProvider::class);
-        /*
          * Dependencias
          */
         $this->app->register(\Locaravel\LocaravelProvider::class);

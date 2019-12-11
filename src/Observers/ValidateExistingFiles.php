@@ -18,7 +18,7 @@ class ValidateExistingFiles
      *
      * @param  string $event
      * @param  array $payload Contains:
-     *    - Facilitador\Models\Decoy\Base
+     *    - Facilitador\Models\Base
      *    - Illuminate\Validation\Validator
      * @return void
      */

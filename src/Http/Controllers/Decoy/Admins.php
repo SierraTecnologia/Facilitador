@@ -5,7 +5,7 @@ namespace Facilitador\Http\Controllers\Decoy;
 use App;
 use Request;
 use Redirect;
-use Facilitador\Models\Decoy\Admin;
+use Facilitador\Models\Admin;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**

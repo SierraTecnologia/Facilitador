@@ -5,7 +5,7 @@ namespace Facilitador\Auth;
 use Config;
 use Request;
 use DecoyURL;
-use Facilitador\Models\Decoy\Admin;
+use Facilitador\Models\Admin;
 
 /**
  * Check if a user has permission to do something.

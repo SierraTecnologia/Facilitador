@@ -45,8 +45,8 @@ You'll notice that the generated model has a bunch of commented out code by defa
 <?php
 
 namespace App;
-use Facilitador\Models\Decoy\Base;
-use Facilitador\Models\Decoy\Traits\HasImages;
+use Facilitador\Models\Base;
+use Facilitador\Models\Traits\HasImages;
 
 class Article extends Base {
   use HasImages;

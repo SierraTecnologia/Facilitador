@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers\Decoy;
 
 use Response;
-use Facilitador\Models\Decoy\Change;
+use Facilitador\Models\Change;
 
 /**
  * A log of model changes, used for auditing Admin activity. Can also be used
@@ -47,7 +47,7 @@ class Changes extends Base
             'action' => [
                 'label' => __('facilitador::changes.controller.search.action'),
                 'type' => 'select',
-                'options' => 'Facilitador\Models\Decoy\Change::getActions()',
+                'options' => 'Facilitador\Models\Change::getActions()',
             ],
             'title' => [
                 'label' => __('facilitador::changes.controller.search.title'),
@@ -56,7 +56,7 @@ class Changes extends Base
             'admin_id' => [
                 'label' => __('facilitador::changes.controller.search.admin'),
                 'type' => 'select',
-                'options' => 'Facilitador\Models\Decoy\Change::getAdmins()',
+                'options' => 'Facilitador\Models\Change::getAdmins()',
             ],
             'created_at' => [
                 'label' => __('facilitador::changes.controller.search.date'),

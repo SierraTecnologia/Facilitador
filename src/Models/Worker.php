@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Models\Decoy;
+namespace Facilitador\Models;
 
 use Log;
 use Cache;
@@ -230,7 +230,7 @@ class Worker extends \Illuminate\Console\Command
         $namespaced = Command::allCustom();
         foreach ($namespaced as $namespace => $commands) {
             foreach ($commands as $title => $command) {
-                if (is_a($command, 'Facilitador\Models\Decoy\Worker')) {
+                if (is_a($command, 'Facilitador\Models\Worker')) {
                     $output[] = $command;
                 }
             }

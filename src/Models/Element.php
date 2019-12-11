@@ -1,10 +1,10 @@
 <?php
 
-namespace Facilitador\Models\Decoy;
+namespace Facilitador\Models;
 
 // Dependencies
-use Facilitador\Models\Decoy\Traits\Encodable;
-use Facilitador\Models\Decoy\Traits\HasImages;
+use Facilitador\Models\Traits\Encodable;
+use Facilitador\Models\Traits\HasImages;
 use Bkwld\Library\Utils\File;
 use Config;
 use DB;

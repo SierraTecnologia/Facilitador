@@ -53,5 +53,5 @@
 				-if($admin->can('read', 'commands'))
 					%a(href=route('facilitador::commands') class=(Request::segment(2)=='commands'?'active':null))!= __('facilitador::sidebar.nav.commands')
 
-				-if($admin->can('read', 'workers') && count(Facilitador\Models\Decoy\Worker::all()))
+				-if($admin->can('read', 'workers') && count(Facilitador\Models\Worker::all()))
 					%a(href=route('facilitador::workers')  class=(Request::segment(2)=='workers'?'active':null))!= __('facilitador::sidebar.nav.workers')

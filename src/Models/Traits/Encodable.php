@@ -1,8 +1,8 @@
 <?php
 
-namespace Facilitador\Models\Decoy\Traits;
+namespace Facilitador\Models\Traits;
 
-use Facilitador\Models\Decoy\Encoding;
+use Facilitador\Models\Encoding;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -40,7 +40,7 @@ trait Encodable
      */
     public function encodings()
     {
-        return $this->morphMany('Facilitador\Models\Decoy\Encoding', 'encodable');
+        return $this->morphMany('Facilitador\Models\Encoding', 'encodable');
     }
 
     /**
@@ -126,7 +126,7 @@ trait Encodable
      */
     public function encodingPresetInputKey($attribute)
     {
-        $key = is_a($this, 'Facilitador\Models\Decoy\Element')
+        $key = is_a($this, 'Facilitador\Models\Element')
             ? $this->inputName() : $attribute;
 
         return '_preset.'.$key;

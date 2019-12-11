@@ -1,12 +1,12 @@
 <?php
 
-namespace Facilitador\Models\Decoy\Traits;
+namespace Facilitador\Models\Traits;
 
 // Deps
 use App;
-use Facilitador\Models\Decoy\Admin;
-use Facilitador\Models\Decoy\Change;
-use Facilitador\Models\Decoy\Image;
+use Facilitador\Models\Admin;
+use Facilitador\Models\Change;
+use Facilitador\Models\Image;
 use Decoy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;

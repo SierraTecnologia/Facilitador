@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Models\Decoy\Traits;
+namespace Facilitador\Models\Traits;
 
 // Deps
 use Facilitador\Exceptions\Exception;

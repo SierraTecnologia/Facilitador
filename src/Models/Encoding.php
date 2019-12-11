@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Models\Decoy;
+namespace Facilitador\Models;
 
 use URL;
 use Config;
@@ -51,7 +51,7 @@ class Encoding extends Base
      * Return an assoc array for output to JSON when admin asks
      * for progress on an encode
      *
-     * @return Facilitador\Models\Decoy\Encoding
+     * @return Facilitador\Models\Encoding
      */
     public function forProgress()
     {
@@ -132,7 +132,7 @@ class Encoding extends Base
     /**
      * Get an instance of the configured encoding provider
      *
-     * @param Facilitador\Models\Decoy\Encoding
+     * @param Facilitador\Models\Encoding
      * @return Facilitador\Input\EncodingProviders\EncodingProvider
      */
     public static function encoder(Encoding $model = null)

@@ -4,8 +4,8 @@ namespace Facilitador\Input;
 
 use Validator;
 use Illuminate\Support\Arr;
-use Facilitador\Models\Decoy\Image;
-use Facilitador\Models\Decoy\Base as BaseModel;
+use Facilitador\Models\Image;
+use Facilitador\Models\Base as BaseModel;
 use Facilitador\Exceptions\ValidationFail;
 use Bkwld\Library\Laravel\Validator as BkwldLibraryValidator;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Models\Decoy;
+namespace Facilitador\Models;
 
 use DB;
 use Decoy;
@@ -40,7 +40,7 @@ class Change extends Base
      */
     public function admin()
     {
-        return $this->belongsTo('Facilitador\Models\Decoy\Admin');
+        return $this->belongsTo('Facilitador\Models\Admin');
     }
 
     /**

@@ -16,7 +16,7 @@ class VideoEncoder extends Upload
     /**
      * The encoding row for the field
      *
-     * @var Facilitador\Models\Decoy\Encoding
+     * @var Facilitador\Models\Encoding
      */
     protected $encoding;
 
