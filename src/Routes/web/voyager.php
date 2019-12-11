@@ -1,5 +1,5 @@
 <?php
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'voyager'], function () {
     Voyager::routes();
 });
