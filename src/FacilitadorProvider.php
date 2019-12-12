@@ -552,10 +552,17 @@ class FacilitadorProvider extends ServiceProvider
     {
         $this->setDependencesAlias();
         (new Collection(self::$providers))->map(function ($provider) {
-            if (class_exists($provider)) {
-                $this->app->register($provider);
-            }
+            $this->app->register($provider);
         });
+
+        // Incluindo Debug
+        if ($this->app->environment('local', 'testing')) {
+            $this->app->register(DuskServiceProvider::class);
+        }
+        
+        if ($this->app->environment('local')) {
+            $this->app->register(DebugService::class);
+        }
     }
     private function setDependencesAlias()
     {
