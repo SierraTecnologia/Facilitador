@@ -22,6 +22,8 @@ use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Barryvdh\Debugbar\ServiceProvider as DebugService;
+use Laravel\Dusk\DuskServiceProvider;
 
 class FacilitadorProvider extends ServiceProvider
 {
@@ -43,6 +45,7 @@ class FacilitadorProvider extends ServiceProvider
         'Agent' => \Jenssegers\Agent\Facades\Agent::class,
     ];
 
+    // public static $providers = [
     public static $providers = [
         \Facilitador\Providers\ServicesProvider::class,
         \Facilitador\Providers\FacilitadorRouteProvider::class,
@@ -552,7 +555,9 @@ class FacilitadorProvider extends ServiceProvider
     {
         $this->setDependencesAlias();
         (new Collection(self::$providers))->map(function ($provider) {
-            $this->app->register($provider);
+            if (class_exists($provider)) {
+                $this->app->register($provider);
+            }
         });
 
         // Incluindo Debug
