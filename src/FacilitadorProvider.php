@@ -154,9 +154,15 @@ class FacilitadorProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/core.php'), 'facilitador.core');
         $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/encode.php'), 'facilitador.encode');
         $this->mergeConfigFrom($this->getPublishesPath('config/crudmaker.php'), 'crudmaker');
+        $this->mergeConfigFrom($this->getPublishesPath('config/debug-server.php'), 'debug-server');
+        $this->mergeConfigFrom($this->getPublishesPath('config/debugbar.php'), 'debugbar');
         $this->mergeConfigFrom($this->getPublishesPath('config/eloquentfilter.php'), 'eloquentfilter');
+        $this->mergeConfigFrom($this->getPublishesPath('config/excel.php'), 'excel');
         $this->mergeConfigFrom($this->getPublishesPath('config/form-maker.php'), 'form-maker');
         $this->mergeConfigFrom($this->getPublishesPath('config/gravatar.php'), 'gravatar');
+        $this->mergeConfigFrom($this->getPublishesPath('config/tinker.php'), 'tinker');
+        $this->mergeConfigFrom($this->getPublishesPath('config/voyager-hooks.php'), 'voyager-hooks');
+        $this->mergeConfigFrom($this->getPublishesPath('config/voyager.php'), 'voyager');
 
         // Register external packages
         $this->setProviders();
@@ -486,9 +492,15 @@ class FacilitadorProvider extends ServiceProvider
             $this->getPublishesPath('config/facilitador') => config_path('facilitador'),
             // Files
             $this->getPublishesPath('config/crudmaker.php') => config_path('crudmaker.php'),
+            $this->getPublishesPath('config/debug-server.php') => config_path('debug-server.php'),
+            $this->getPublishesPath('config/debugbar.php') => config_path('debugbar.php'),
             $this->getPublishesPath('config/eloquentfilter.php') => config_path('eloquentfilter.php'),
+            $this->getPublishesPath('config/excel.php') => config_path('excel.php'),
             $this->getPublishesPath('config/form-maker.php') => config_path('form-maker.php'),
-            $this->getPublishesPath('config/gravatar.php') => config_path('gravatar.php')
+            $this->getPublishesPath('config/gravatar.php') => config_path('gravatar.php'),
+            $this->getPublishesPath('config/tinker.php') => config_path('tinker.php'),
+            $this->getPublishesPath('config/voyager-hooks.php') => config_path('voyager-hooks.php'),
+            $this->getPublishesPath('config/voyager.php') => config_path('voyager.php')
         ], 'config');
 
         // Publish facilitador css and js to public directory
@@ -510,6 +522,11 @@ class FacilitadorProvider extends ServiceProvider
         $this->publishes([
             $viewsPath => base_path('resources/views/vendor/facilitador'),
         ], 'views');
+        
+        // Publish tracking css and js to public directory
+        $this->publishes([
+            $this->getPublishesPath('public/adminlte') => public_path('vendor/adminlte')
+        ], 'public');
 
 
         // Publish lanaguage files
