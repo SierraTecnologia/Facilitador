@@ -34,7 +34,6 @@
         "ramsey/uuid": "^3.8",
         "zendframework/zend-crypt": "*",
         "larapack/hooks": "^1.0.5",
-
         "nicolaslopezj/searchable": "^1.10",
         "laracasts/flash": "*",
         "google/recaptcha": "*",
