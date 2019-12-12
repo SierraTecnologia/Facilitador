@@ -629,16 +629,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "10bb96592168a0f8e8f6dcde3532d9fa50b0b527"
+                "reference": "62e8fc2dc550e5d6d8c9360c7721662670f58149"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/10bb96592168a0f8e8f6dcde3532d9fa50b0b527",
-                "reference": "10bb96592168a0f8e8f6dcde3532d9fa50b0b527",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/62e8fc2dc550e5d6d8c9360c7721662670f58149",
+                "reference": "62e8fc2dc550e5d6d8c9360c7721662670f58149",
                 "shasum": ""
             },
             "require": {
@@ -649,7 +649,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^4.8.35 || ^5.7 || 6.5 - 8",
                 "psr/log": "^1.0",
-                "symfony/process": "^2.5 || ^3.0 || ^4.0"
+                "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0"
             },
             "type": "library",
             "extra": {
@@ -681,7 +681,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2019-08-30T08:44:50+00:00"
+            "time": "2019-12-11T14:44:42+00:00"
         },
         {
             "name": "composer/composer",
@@ -2596,12 +2596,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "a44c1ab6cd48c3d25449efa84a068c8cd12bac3a"
+                "reference": "c575bc9b8ce10ecb521d93f51508f564f6cbf342"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/a44c1ab6cd48c3d25449efa84a068c8cd12bac3a",
-                "reference": "a44c1ab6cd48c3d25449efa84a068c8cd12bac3a",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/c575bc9b8ce10ecb521d93f51508f564f6cbf342",
+                "reference": "c575bc9b8ce10ecb521d93f51508f564f6cbf342",
                 "shasum": ""
             },
             "type": "library",
@@ -2641,7 +2641,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2019-12-05T09:01:55+00:00"
+            "time": "2019-12-11T08:07:22+00:00"
         },
         {
             "name": "kassner/log-parser",
@@ -3149,16 +3149,16 @@
         },
         {
             "name": "laravel/horizon",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "37226dd66318014fac20351b4cc7ca209dd4ccb6"
+                "reference": "7c36d24b200b60a059ab20f5b53f5bb6f4d2da40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/37226dd66318014fac20351b4cc7ca209dd4ccb6",
-                "reference": "37226dd66318014fac20351b4cc7ca209dd4ccb6",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/7c36d24b200b60a059ab20f5b53f5bb6f4d2da40",
+                "reference": "7c36d24b200b60a059ab20f5b53f5bb6f4d2da40",
                 "shasum": ""
             },
             "require": {
@@ -3166,9 +3166,9 @@
                 "ext-json": "*",
                 "ext-pcntl": "*",
                 "ext-posix": "*",
-                "illuminate/contracts": "~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/queue": "~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/support": "~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/contracts": "~5.7.0|~5.8.0|^6.0",
+                "illuminate/queue": "~5.7.0|~5.8.0|^6.0",
+                "illuminate/support": "~5.7.0|~5.8.0|^6.0",
                 "php": ">=7.1.0",
                 "predis/predis": "^1.1",
                 "ramsey/uuid": "^3.5",
@@ -3177,7 +3177,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^3.7|^4.0|^5.0",
+                "orchestra/testbench": "^3.7|^4.0",
                 "phpunit/phpunit": "^7.0|^8.0"
             },
             "type": "library",
@@ -3214,7 +3214,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2019-11-19T16:23:21+00:00"
+            "time": "2019-12-10T16:50:59+00:00"
         },
         {
             "name": "laravel/passport",
@@ -4882,16 +4882,16 @@
         },
         {
             "name": "phpoption/phpoption",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "f4e7a6a1382183412246f0d361078c29fb85089e"
+                "reference": "a8593bf5176bf3d3f2966942c530be19b44ec87c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/f4e7a6a1382183412246f0d361078c29fb85089e",
-                "reference": "f4e7a6a1382183412246f0d361078c29fb85089e",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/a8593bf5176bf3d3f2966942c530be19b44ec87c",
+                "reference": "a8593bf5176bf3d3f2966942c530be19b44ec87c",
                 "shasum": ""
             },
             "require": {
@@ -4932,7 +4932,7 @@
                 "php",
                 "type"
             ],
-            "time": "2019-11-30T20:20:49+00:00"
+            "time": "2019-12-11T13:45:14+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -6051,7 +6051,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "291b40af03fdcead1f2b551e46b8945ae2d2e0a0"
+                "reference": "9d4e71cb2d389baa193cc89c58ba4e8dedb5f417"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -6340,7 +6340,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "fec107d66e23f1c920fe48f11d1e196da9e64164"
+                "reference": "81434bf3e31dfafa5b2d88aa8ef11086404cbd04"
             },
             "require": {
                 "php": "^7.3.0"
@@ -6384,7 +6384,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Locaravel",
-                "reference": "83597a709d4ea14367b55d996517d82490d1581e"
+                "reference": "924ae8210026743b36a025730a047d63ae70398d"
             },
             "require": {
                 "doctrine/dbal": ">=2.5",
@@ -6441,7 +6441,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "1acd35c025bf6c325e790276fdc8db4d838f468f"
+                "reference": "c58aa5c949ebfe1bb2a6bec00422a790b5543bef"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master"
@@ -6478,7 +6478,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "8e2c3667c50a31abda9131dcc102a4fb31cda577"
+                "reference": "5e5e00b767d48256f875fb64c3623ef14785620c"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
