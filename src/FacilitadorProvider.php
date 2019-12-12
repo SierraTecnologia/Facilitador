@@ -66,6 +66,7 @@ class FacilitadorProvider extends ServiceProvider
          */
         \RicardoSierra\Translation\TranslationServiceProvider::class,
 
+        \Laravel\Tinker\TinkerProvider::class,
         /**
          * Voyager
          **/
