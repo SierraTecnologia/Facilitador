@@ -13,9 +13,9 @@ use Spatie\EloquentSortable\Sortable;
 // // @Arquivo no existe
 use Facilitador\Support\Cacheable\CacheableEloquent;
 // @Arquivo no existe
-use Rinvex\Support\Traits\HasTranslations;
+use Support\Traits\HasTranslations;
 // @Arquivo no existe
-use Rinvex\Support\Traits\ValidatingTrait;
+use Support\Traits\ValidatingTrait;
 // @todo Add Essa lib Trait 'Spatie\EloquentSortable\SortableTrait' not found
 use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -56,10 +56,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Attribute extends Model// implements Sortable
 {
     use HasSlug;
-    // use SortableTrait;
-    // use HasTranslations;
-    // use ValidatingTrait;
-    // use CacheableEloquent;
+    use SortableTrait;
+    use HasTranslations;
+    use ValidatingTrait;
+    use CacheableEloquent;
 
     /**
      * {@inheritdoc}

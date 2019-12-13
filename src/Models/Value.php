@@ -6,8 +6,8 @@ namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Facilitador\Support\Cacheable\CacheableEloquent;
-use Rinvex\Support\Traits\ValidatingTrait;
-use Rinvex\Support\Support\ValueCollection;
+use Support\Traits\ValidatingTrait;
+use Support\Support\ValueCollection;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
