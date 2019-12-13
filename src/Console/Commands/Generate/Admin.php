@@ -105,7 +105,7 @@ class Admin extends Command
      *
      * @return \App\User
      */
-    protected function getUser($create = false)
+    protected function getUser($create = true)
     {
         $email = $this->argument('email');
         $model = Auth::guard(app('VoyagerGuard'))->getProvider()->getModel();
