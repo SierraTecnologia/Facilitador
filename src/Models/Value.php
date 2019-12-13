@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Facilitador\Cacheable\CacheableEloquent;
-use Facilitador\Support\Traits\ValidatingTrait;
-use Facilitador\Support\Support\ValueCollection;
+use Facilitador\Support\Cacheable\CacheableEloquent;
+use Rinvex\Support\Traits\ValidatingTrait;
+use Rinvex\Support\Support\ValueCollection;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

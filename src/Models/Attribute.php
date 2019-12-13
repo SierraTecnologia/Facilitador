@@ -6,18 +6,18 @@ namespace Facilitador\Models;
 
 use Informate\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
-// // // // @Arquivo no existe
-// use Spatie\Sluggable\SlugOptions;
-// // // // @Arquivo no existe
-// use Spatie\EloquentSortable\Sortable;
 // // // @Arquivo no existe
-// use Facilitador\Cacheable\CacheableEloquent;
+use Spatie\Sluggable\SlugOptions;
+// // // @Arquivo no existe
+use Spatie\EloquentSortable\Sortable;
 // // @Arquivo no existe
-// use Facilitador\Support\Traits\HasTranslations;
-// // @Arquivo no existe
-// use Facilitador\Support\Traits\ValidatingTrait;
-// // @todo Add Essa lib Trait 'Spatie\EloquentSortable\SortableTrait' not found
-// use Spatie\EloquentSortable\SortableTrait;
+use Facilitador\Support\Cacheable\CacheableEloquent;
+// @Arquivo no existe
+use Rinvex\Support\Traits\HasTranslations;
+// @Arquivo no existe
+use Rinvex\Support\Traits\ValidatingTrait;
+// @todo Add Essa lib Trait 'Spatie\EloquentSortable\SortableTrait' not found
+use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
