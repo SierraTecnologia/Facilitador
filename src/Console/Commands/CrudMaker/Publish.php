@@ -1,6 +1,6 @@
 <?php
 
-namespace Siravel\Console\Commands\CrudMaker;
+namespace Facilitador\Console\Commands\CrudMaker;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

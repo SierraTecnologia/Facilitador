@@ -182,6 +182,13 @@ class FacilitadorProvider extends ServiceProvider
 
         // Register external packages
         $this->setProviders();
+        if ($this->app->environment('local', 'testing')) {
+            $this->app->register(DuskServiceProvider::class);
+        }
+        if ($this->app->environment('local')) {
+            $this->app->register(DebugService::class);
+        }
+        // Register Migrations
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // Register HTML view helpers as "Decoy".  So they get invoked like: `Decoy::title()`
@@ -309,7 +316,7 @@ class FacilitadorProvider extends ServiceProvider
 
         // Register commands
         $this->registerCommandFolders([
-            base_path('vendor/sierratecnologia/facilitador/src/Console/Commands'),
+            base_path('vendor/sierratecnologia/facilitador/src/Console/Commands') => '\Facilitador\Console\Commands',
         ]);
         /**
          * Cryptos
@@ -565,20 +572,4 @@ class FacilitadorProvider extends ServiceProvider
         $this->loadTranslationsFrom($this->getResourcesPath('lang'), 'facilitador');
     }
 
-    /**
-     * Load Alias and Providers
-     */
-    private function setProviders()
-    {
-        parent::setProviders();
-
-        // Incluindo Debug
-        if ($this->app->environment('local', 'testing')) {
-            $this->app->register(DuskServiceProvider::class);
-        }
-        
-        if ($this->app->environment('local')) {
-            $this->app->register(DebugService::class);
-        }
-    }
 }

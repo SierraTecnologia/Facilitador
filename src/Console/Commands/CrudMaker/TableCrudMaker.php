@@ -1,12 +1,12 @@
 <?php
 
-namespace Siravel\Console\Commands\CrudMaker;
+namespace Facilitador\Console\Commands\CrudMaker;
 
 use Exception;
 use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use SierraTecnologia\Services\CrudMaker\TableService;
+use Facilitador\Services\CrudMaker\TableService;
 
 class TableCrudMaker extends Command
 {

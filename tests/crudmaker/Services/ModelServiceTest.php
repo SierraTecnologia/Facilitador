@@ -1,6 +1,6 @@
 <?php
 
-use SierraTecnologia\Services\CrudMaker\ModelService;
+use Facilitador\Services\CrudMaker\ModelService;
 
 class ModelServiceTest extends TestCase
 {

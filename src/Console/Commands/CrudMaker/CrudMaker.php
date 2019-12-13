@@ -1,15 +1,15 @@
 <?php
 
-namespace Siravel\Console\Commands\CrudMaker;
+namespace Facilitador\Console\Commands\CrudMaker;
 
 use Config;
 use Exception;
 use Illuminate\Console\Command;
-use SierraTecnologia\Generators\CrudMaker\CrudGenerator;
-use SierraTecnologia\Services\CrudMaker\AppService;
-use SierraTecnologia\Services\CrudMaker\ConfigService;
-use SierraTecnologia\Services\CrudMaker\CrudService;
-use SierraTecnologia\Services\CrudMaker\ValidatorService;
+use Facilitador\Generators\CrudGenerator;
+use Facilitador\Services\CrudMaker\AppService;
+use Facilitador\Services\CrudMaker\ConfigService;
+use Facilitador\Services\CrudMaker\CrudService;
+use Facilitador\Services\CrudMaker\ValidatorService;
 
 class CrudMaker extends Command
 {

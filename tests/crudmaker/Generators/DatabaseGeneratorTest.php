@@ -1,6 +1,6 @@
 <?php
 
-use SierraTecnologia\Generators\CrudMaker\DatabaseGenerator;
+use Facilitador\Generators\DatabaseGenerator;
 
 class DatabaseGeneratorTest extends TestCase
 {

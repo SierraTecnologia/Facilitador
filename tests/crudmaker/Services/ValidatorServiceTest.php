@@ -1,7 +1,7 @@
 <?php
 
 use org\bovigo\vfs\vfsStream;
-use SierraTecnologia\Services\CrudMaker\ValidatorService;
+use Facilitador\Services\CrudMaker\ValidatorService;
 
 class ValidatorServiceTest extends TestCase
 {

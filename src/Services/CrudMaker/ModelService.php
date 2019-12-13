@@ -1,8 +1,8 @@
 <?php
 
-namespace SierraTecnologia\Services\CrudMaker;
+namespace Facilitador\Services\CrudMaker;
 
-use SierraTecnologia\Services\CrudMaker\TableService;
+use Facilitador\Services\CrudMaker\TableService;
 
 class ModelService
 {

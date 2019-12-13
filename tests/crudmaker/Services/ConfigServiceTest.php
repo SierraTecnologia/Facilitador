@@ -1,7 +1,7 @@
 <?php
 
 use org\bovigo\vfs\vfsStream;
-use SierraTecnologia\Services\CrudMaker\ConfigService;
+use Facilitador\Services\CrudMaker\ConfigService;
 
 class ConfigServiceTest extends TestCase
 {

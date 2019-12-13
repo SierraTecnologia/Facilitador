@@ -1,9 +1,9 @@
 <?php
 
-namespace SierraTecnologia\Services\CrudMaker;
+namespace Facilitador\Services\CrudMaker;
 
-use SierraTecnologia\Generators\CrudMaker\CrudGenerator;
-use SierraTecnologia\Generators\CrudMaker\DatabaseGenerator;
+use Facilitador\Generators\CrudGenerator;
+use Facilitador\Generators\DatabaseGenerator;
 
 class CrudService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Siravel\Http\Controllers\ExtendedBreadFormFields;
+namespace Facilitador\Http\Controllers\ExtendedBreadFormFields;
 
 use Exception;
 use Illuminate\Http\Request;

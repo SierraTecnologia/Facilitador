@@ -1,6 +1,6 @@
 <?php
 
-namespace Siravel\Http\Controllers\ExtendedBreadFormFields;
+namespace Facilitador\Http\Controllers\ExtendedBreadFormFields;
 
 use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;

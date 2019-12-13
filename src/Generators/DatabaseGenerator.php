@@ -1,10 +1,10 @@
 <?php
 
-namespace SierraTecnologia\Generators\CrudMaker;
+namespace Facilitador\Generators;
 
 use Exception;
 use Illuminate\Filesystem\Filesystem;
-use SierraTecnologia\Services\CrudMaker\FileService;
+use Facilitador\Services\CrudMaker\FileService;
 use Facilitador\Support\Traits\SchemaTrait;
 
 /**

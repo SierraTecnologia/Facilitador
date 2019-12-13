@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Services\CrudMaker;
+namespace Facilitador\Services\CrudMaker;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;

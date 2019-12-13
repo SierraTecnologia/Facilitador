@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\CrudMaker;
+namespace Facilitador\CrudMaker;
 
 use Facilitador\FormMaker\FormMakerProvider;
 use Illuminate\Support\ServiceProvider;

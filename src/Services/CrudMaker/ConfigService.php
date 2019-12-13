@@ -1,6 +1,6 @@
 <?php
 
-namespace SierraTecnologia\Services\CrudMaker;
+namespace Facilitador\Services\CrudMaker;
 
 class ConfigService
 {
