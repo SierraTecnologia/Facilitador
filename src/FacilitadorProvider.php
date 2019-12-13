@@ -27,6 +27,14 @@ use Laravel\Dusk\DuskServiceProvider;
 
 class FacilitadorProvider extends ServiceProvider
 {
+    /**
+     * This namespace is applied to the controller routes in your routes file.
+     *
+     * In addition, it is set as the URL generator's root namespace.
+     *
+     * @var string
+     */
+    protected $namespace = 'Facilitador\Http\Controllers';
 
     public static $aliasProviders = [
         'TranslationCache' => \RicardoSierra\Translation\Facades\TranslationCache::class,
@@ -47,9 +55,6 @@ class FacilitadorProvider extends ServiceProvider
 
     // public static $providers = [
     public static $providers = [
-        \Facilitador\Providers\ServicesProvider::class,
-        \Facilitador\Providers\FacilitadorRouteProvider::class,
-        
         /**
          * Internos
          */
@@ -98,6 +103,23 @@ class FacilitadorProvider extends ServiceProvider
          * Outros meus
          */
         \Laravel\Tinker\TinkerServiceProvider::class,
+
+        /**
+         * Services Providers
+         */
+        \Yajra\DataTables\DataTablesServiceProvider::class,
+        
+        /*
+         * Dependencias
+         */
+        \Locaravel\LocaravelProvider::class,
+        /**
+         * Layoults
+         */
+        \JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        \RicardoSierra\Minify\MinifyServiceProvider::class,
+        \Collective\Html\HtmlServiceProvider::class,
+        \Laracasts\Flash\FlashServiceProvider::class,
     ];
 
     /**
@@ -280,7 +302,7 @@ class FacilitadorProvider extends ServiceProvider
             Log::info('Bind Register Service - '.$identify);
             return new RegisterService($identify);
         });
-
+        
         // $this->app->when(ModelService::class)
         //     ->needs('$modelClass')
         //   ->give(function ($modelClassValue) {
@@ -294,6 +316,14 @@ class FacilitadorProvider extends ServiceProvider
         $this->commands([\Facilitador\Console\Commands\Generate\Generate::class]);
         $this->commands([\Facilitador\Console\Commands\Generate\Admin::class]);
         $this->commands(MakeEloquentFilter::class);
+
+        /**
+         * Cryptos
+         */
+        $this->app->bind('CryptoService', function ($app) {
+            return new CryptoService();
+        });
+
     }
 
     
@@ -501,12 +531,12 @@ class FacilitadorProvider extends ServiceProvider
             $this->getPublishesPath('config/tinker.php') => config_path('tinker.php'),
             $this->getPublishesPath('config/voyager-hooks.php') => config_path('voyager-hooks.php'),
             $this->getPublishesPath('config/voyager.php') => config_path('voyager.php')
-        ], 'config');
+        ], ['config', 'sitec-config']);
 
         // Publish facilitador css and js to public directory
         $this->publishes([
             $this->getDistPath('facilitador') => public_path('assets/facilitador')
-        ], 'assets');
+        ], ['public', 'sitec-public']);
 
 
         $this->loadViews();
@@ -521,30 +551,39 @@ class FacilitadorProvider extends ServiceProvider
         $this->loadViewsFrom($viewsPath, 'facilitador');
         $this->publishes([
             $viewsPath => base_path('resources/views/vendor/facilitador'),
-        ], 'views');
+        ], ['views', 'sitec-views']);
         
         // Publish tracking css and js to public directory
         $this->publishes([
             $this->getPublishesPath('public/adminlte') => public_path('vendor/adminlte')
-        ], 'public');
+        ], ['public', 'sitec-public']);
 
-
-        // Publish lanaguage files
-        $this->publishes([
-            $this->getResourcesPath('lang') => resource_path('lang/vendor/facilitador')
-        ], 'lang');
-
-        // Load translations
-        $this->loadTranslationsFrom($this->getResourcesPath('lang'), 'facilitador');
     }
     
     private function loadTranslations()
     {
-        $translationsPath = $this->getResourcesPath('lang');
-        $this->loadTranslationsFrom($translationsPath, 'facilitador');
+        // Publish lanaguage files
         $this->publishes([
-            $translationsPath => resource_path('lang/vendor/facilitador'),
-        ], 'translations');// @todo ou lang, verificar (invez de translations)
+            $this->getResourcesPath('lang') => resource_path('lang/vendor/facilitador')
+        ], ['lang', 'sitec-lang', 'translations']);
+
+        // Load translations
+        $this->loadTranslationsFrom($this->getResourcesPath('lang'), 'facilitador');
+    }
+
+    /**
+     * Define the routes for the application.
+     *
+     * @param \Illuminate\Routing\Router $router
+     */
+    public function map(Router $router)
+    {
+        
+        $router->group([
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require __DIR__.'/Routes/web.php';
+        });
     }
 
     /**
