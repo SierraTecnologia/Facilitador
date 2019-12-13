@@ -42,6 +42,17 @@ class Router
      */
     public function registerAll()
     {
+        /**
+         * Facilitador Routes
+         */
+        Route::group([
+            'namespace' => '\Facilitador\Http\Controllers',
+        ], function (/**$router**/) {
+            require __DIR__.'/../Routes/web.php';
+        });
+
+
+
         // Public routes
         Route::group([
             'prefix' => $this->dir,

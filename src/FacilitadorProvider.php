@@ -27,14 +27,6 @@ use Laravel\Dusk\DuskServiceProvider;
 
 class FacilitadorProvider extends ServiceProvider
 {
-    /**
-     * This namespace is applied to the controller routes in your routes file.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'Facilitador\Http\Controllers';
 
     public static $aliasProviders = [
         'TranslationCache' => \RicardoSierra\Translation\Facades\TranslationCache::class,
@@ -284,6 +276,7 @@ class FacilitadorProvider extends ServiceProvider
             }
             
             Log::info('Bind Model Service - '.$modelClass);
+
             return new ModelService($modelClass);
         });
         $this->app->bind(RepositoryService::class, function($app)
@@ -569,21 +562,6 @@ class FacilitadorProvider extends ServiceProvider
 
         // Load translations
         $this->loadTranslationsFrom($this->getResourcesPath('lang'), 'facilitador');
-    }
-
-    /**
-     * Define the routes for the application.
-     *
-     * @param \Illuminate\Routing\Router $router
-     */
-    public function map(Router $router)
-    {
-        
-        $router->group([
-            'namespace' => $this->namespace,
-        ], function ($router) {
-            require __DIR__.'/Routes/web.php';
-        });
     }
 
     /**

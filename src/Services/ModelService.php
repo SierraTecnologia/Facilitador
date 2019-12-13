@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Facilitador\Support\Eloquent\Relationships;
 use App;
 use Log;
+use Exception;
+use Artisan;
 use Illuminate\Support\Collection;
 use Facilitador\Support\Entities\DataTypes\Varchar;
 use Facilitador\Support\Eloquent\EloquentColumn;
@@ -26,11 +28,11 @@ class ModelService
     protected $repository = false;
     protected $schemaManagerTable = false;
 
-    public function __construct(string $modelClass)
+    public function __construct($modelClass = false)
     {
-        Log::warning($modelClass);
-        $this->modelClass = $modelClass;
-        $this->renderTableInfos();
+        if ($this->modelClass = $modelClass) {
+            $this->renderTableInfos();
+        }
     }
 
     public function getRepository()
@@ -83,11 +85,21 @@ class ModelService
     {
         $name = $this->getModelClass();
         Log::warning($name);
+
+        if (!class_exists($name)) {
+            throw new Exception('Class não encontrada no ModelService' . $name);
+        }
+
         $model = new $name;
         return $model->getTable();
     }
     public function getModelClass()
     {
+        if (empty($this->modelClass)) {
+            Artisan::call('cache:clear');
+            Artisan::call('down');
+            throw new Exception('Criptografia inválida ' . $this->modelClass);
+        }
         return $this->modelClass;
     }
 
