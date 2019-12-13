@@ -524,12 +524,12 @@ class FacilitadorProvider extends ServiceProvider
             $this->getPublishesPath('config/tinker.php') => config_path('tinker.php'),
             $this->getPublishesPath('config/voyager-hooks.php') => config_path('voyager-hooks.php'),
             $this->getPublishesPath('config/voyager.php') => config_path('voyager.php')
-        ], ['config', 'sitec-config']);
+        ], ['config',  'sitec', 'sitec-config']);
 
         // Publish facilitador css and js to public directory
         $this->publishes([
             $this->getDistPath('facilitador') => public_path('assets/facilitador')
-        ], ['public', 'sitec-public']);
+        ], ['public',  'sitec', 'sitec-public']);
 
 
         $this->loadViews();
@@ -544,12 +544,12 @@ class FacilitadorProvider extends ServiceProvider
         $this->loadViewsFrom($viewsPath, 'facilitador');
         $this->publishes([
             $viewsPath => base_path('resources/views/vendor/facilitador'),
-        ], ['views', 'sitec-views']);
+        ], ['views',  'sitec', 'sitec-views']);
         
         // Publish tracking css and js to public directory
         $this->publishes([
             $this->getPublishesPath('public/adminlte') => public_path('vendor/adminlte')
-        ], ['public', 'sitec-public']);
+        ], ['public',  'sitec', 'sitec-public']);
 
     }
     
@@ -558,7 +558,7 @@ class FacilitadorProvider extends ServiceProvider
         // Publish lanaguage files
         $this->publishes([
             $this->getResourcesPath('lang') => resource_path('lang/vendor/facilitador')
-        ], ['lang', 'sitec-lang', 'translations']);
+        ], ['lang',  'sitec', 'sitec-lang', 'translations']);
 
         // Load translations
         $this->loadTranslationsFrom($this->getResourcesPath('lang'), 'facilitador');
