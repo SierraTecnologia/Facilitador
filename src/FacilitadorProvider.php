@@ -24,7 +24,6 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Barryvdh\Debugbar\ServiceProvider as DebugService;
 use Laravel\Dusk\DuskServiceProvider;
-
 class FacilitadorProvider extends ServiceProvider
 {
 

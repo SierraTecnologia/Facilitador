@@ -72,7 +72,13 @@
         "mockery/mockery": ">=0.9.4",
         "mikey179/vfsstream": ">=1.6",
         "orchestra/database": ">=3.4",
-        "orchestra/testbench": ">=3.4"
+        "orchestra/testbench": ">=3.4",
+        "beyondcode/laravel-dump-server": "*",
+        "brianium/paratest": "*",
+        "filp/whoops": "*",
+        "laravel/dusk": "*",
+        "beyondcode/dusk-dashboard": "*",
+        "nunomaduro/collision": "*"
     },
     "autoload": {
         "psr-4": {
