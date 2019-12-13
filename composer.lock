@@ -3058,12 +3058,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "5f1685ab831774489c48acd68e4581f6bb53d022"
+                "reference": "ee58364de6efd775f6a14cdd00cd49ec68e7d7be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/5f1685ab831774489c48acd68e4581f6bb53d022",
-                "reference": "5f1685ab831774489c48acd68e4581f6bb53d022",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/ee58364de6efd775f6a14cdd00cd49ec68e7d7be",
+                "reference": "ee58364de6efd775f6a14cdd00cd49ec68e7d7be",
                 "shasum": ""
             },
             "type": "library",
@@ -3103,7 +3103,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2019-12-13T08:20:39+00:00"
+            "time": "2019-12-13T09:09:04+00:00"
         },
         {
             "name": "kassner/log-parser",
@@ -7562,7 +7562,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "b826cd109e3f7de206680ae1521d502bff4c1b31"
+                "reference": "2c95e78356241922ae4337bf84ee2d4e0c9fde60"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
