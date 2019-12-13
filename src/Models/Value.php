@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Facilitador\Support\Cacheable\CacheableEloquent;
+use Support\Cacheable\CacheableEloquent;
 use Support\Traits\ValidatingTrait;
 use Support\Support\ValueCollection;
 use Illuminate\Database\Eloquent\Relations\MorphTo;

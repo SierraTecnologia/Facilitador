@@ -11,7 +11,7 @@ use Spatie\Sluggable\SlugOptions;
 // // // @Arquivo no existe
 use Spatie\EloquentSortable\Sortable;
 // // @Arquivo no existe
-use Facilitador\Support\Cacheable\CacheableEloquent;
+use Support\Cacheable\CacheableEloquent;
 // @Arquivo no existe
 use Support\Traits\HasTranslations;
 // @Arquivo no existe
