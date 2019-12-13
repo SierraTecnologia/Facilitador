@@ -6,11 +6,11 @@ namespace Facilitador\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Facilitador\Models\Attribute;
-use Facilitador\Support\Traits\ConsoleTools;
 use Facilitador\Models\AttributeEntity;
 use Facilitador\Console\Commands\MigrateCommand;
 use Facilitador\Console\Commands\PublishCommand;
 use Facilitador\Console\Commands\RollbackCommand;
+use Support\Traits\ConsoleTools;
 
 class AttributesServiceProvider extends ServiceProvider
 {

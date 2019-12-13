@@ -24,8 +24,11 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Barryvdh\Debugbar\ServiceProvider as DebugService;
 use Laravel\Dusk\DuskServiceProvider;
+use Support\Traits\ConsoleTools;
+
 class FacilitadorProvider extends ServiceProvider
 {
+    use ConsoleTools;
 
     public static $aliasProviders = [
         'TranslationCache' => \RicardoSierra\Translation\Facades\TranslationCache::class,
@@ -305,10 +308,9 @@ class FacilitadorProvider extends ServiceProvider
         //   });
 
         // Register commands
-        $this->commands([\Facilitador\Console\Commands\Generate\Generate::class]);
-        $this->commands([\Facilitador\Console\Commands\Generate\Admin::class]);
-        $this->commands(MakeEloquentFilter::class);
-
+        $this->registerCommandFolders([
+            base_path('vendor/sierratecnologia/facilitador/src/Console/Commands'),
+        ]);
         /**
          * Cryptos
          */

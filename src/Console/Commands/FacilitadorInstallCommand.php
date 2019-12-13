@@ -133,7 +133,7 @@ class FacilitadorInstallCommand extends Command
         $this->call('storage:link');
 
         $this->info('Creating admin');
-        $this->call('facilitador:admin');
+        $this->call('facilitador:admin', ['--force' => '']);
 
         $this->info('Successfully installed Facilitador! Enjoy');
     }

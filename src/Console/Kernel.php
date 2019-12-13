@@ -19,32 +19,6 @@ class Kernel extends ConsoleKernel
     
 
     /**
-     * @param string $path
-     * @return $this
-     */
-    protected function loadCommands($path) {
-        $realPath = app_path($path);
-        
-        collect(scandir($realPath))
-            ->each(function ($item) use ($path, $realPath) {
-                if (in_array($item, ['.', '..'])) return;
-
-                if (is_dir($realPath . $item)) {
-                    $this->loadCommands($path . $item . '/');
-                }
-
-                if (is_file($realPath . $item)) {
-                    $item = str_replace('.php', '', $item);
-                    $class = str_replace('/', '\\', "Facilitador\\{$path}$item");
-
-                    if (class_exists($class)) {
-                        $this->commands[] = $class;
-                    }                  
-                }
-            });
-    }
-
-    /**
      * Define the application's command schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule $schedule
