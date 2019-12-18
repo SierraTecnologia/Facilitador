@@ -7021,7 +7021,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "0a309bad0bfd3a8d69c474a3f740c99fb0a752b3"
+                "reference": "e7643384dd53646e705ab4c57177a038d64523d5"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -7401,7 +7401,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "77ac62b31eecb7dea44622fd97aea27edd20ef04"
+                "reference": "3703812d3ef5aa69d3933721d9b21aa7b9ab9b8a"
             },
             "require": {
                 "php": ">=7.2.0",
@@ -7548,7 +7548,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Locaravel",
-                "reference": "e0841674df48c0d737f7498373021d1af79960e8"
+                "reference": "71740770e2e749d0abe5caf86c5198acdda31212"
             },
             "require": {
                 "doctrine/dbal": ">=2.5",
@@ -7605,7 +7605,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "4fb3838d2f2ab28d3a658c1e285fef19d8752cab"
+                "reference": "e6a3880390f0e4c4fec442c04d2bfd781c483e79"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master"
@@ -7642,7 +7642,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "c37da60ce4e9715083fde6b0730983663f8b8827"
+                "reference": "4ad2ddc2f7ed598edd20ff1ba9a97509e26e8b2c"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
