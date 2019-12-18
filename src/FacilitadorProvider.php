@@ -135,14 +135,60 @@ class FacilitadorProvider extends ServiceProvider
             $facilitador = [];
             $facilitador[] = [
                 'text'        => 'Manager',
-                'url'         => route('facilitador.index'),
+                'url'         => route('facilitador.dash'),
                 'icon'        => 'dashboard',
                 'icon_color'  => 'blue',
                 'label_color' => 'success',
                 // 'access' => \App\Models\Role::$ADMIN
             ];
             // $event->menu->add('Packages');
+            /**
+             * Audits
+             */
+            $audit = [];
+            $audit[] = [
+                'text'        => 'Logs',
+                'url'         => route('larametrics::metrics.index'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $audit[] = [
+                'text'        => 'Telescope',
+                'url'         => route('telescope'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $audit[] = [
+                'text'        => 'Horizon',
+                'url'         => route('horizon.index'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
             $facilitador[] = [
+                'text'    => 'Audits',
+                'icon'    => 'cog',
+                'nivel' => \App\Models\Role::$GOOD,
+                'submenu' => $audit,
+            ];
+            /**
+             * Tracking
+             */
+            $tracking = [];
+            $tracking[] = [
+                'text'        => 'Analytics',
+                'url'         => route('tracking.analytics'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $tracking[] = [
                 'text'        => 'Metrics',
                 'url'         => route('larametrics::metrics.index'),
                 'icon'        => 'dashboard',
@@ -151,28 +197,10 @@ class FacilitadorProvider extends ServiceProvider
                 // 'access' => \App\Models\Role::$ADMIN
             ];
             $facilitador[] = [
-                'text'        => 'Logs',
-                'url'         => route('larametrics::metrics.index'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $facilitador[] = [
-                'text'        => 'Telescope',
-                'url'         => route('telescope'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $facilitador[] = [
-                'text'        => 'Horizon',
-                'url'         => route('horizon.index'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
+                'text'    => 'Trackings',
+                'icon'    => 'cog',
+                'nivel' => \App\Models\Role::$GOOD,
+                'submenu' => $tracking,
             ];
             $event->menu->add([
                 'text'    => 'Facilitador',
