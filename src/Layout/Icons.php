@@ -30,8 +30,11 @@ class Icons
                 foreach ($name as $searchName) {
 
 
-                    if (strpos($icon['uses'], 'are') !== false) {
-                        echo 'true';
+                    if (strpos($icon['class'], $searchName) !== false) {
+                        $reject = false;
+                    }
+                    if (strpos($icon['name'], $searchName) !== false) {
+                        $reject = false;
                     }
 
                     if (!isset($icon['uses']) || !is_array($icon['uses']) || empty($icon['uses'])) {
