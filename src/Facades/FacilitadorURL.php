@@ -4,7 +4,7 @@ namespace Facilitador\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class DecoyURL extends Facade
+class FacilitadorURL extends Facade
 {
     /**
      * @return string

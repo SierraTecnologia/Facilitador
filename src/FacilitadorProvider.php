@@ -42,8 +42,8 @@ class FacilitadorProvider extends ServiceProvider
         /**
          * Decoy
          */
-        'Decoy' => \Facilitador\Facades\Decoy::class,
-        'DecoyURL' => \Facilitador\Facades\DecoyURL::class,
+        'Facilitador' => \Facilitador\Facades\Facilitador::class,
+        'FacilitadorURL' => \Facilitador\Facades\FacilitadorURL::class,
         // Form field generation
         'Former' => \Former\Facades\Former::class,
         // Image resizing
