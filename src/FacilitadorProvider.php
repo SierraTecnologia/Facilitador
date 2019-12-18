@@ -27,6 +27,7 @@ use Laravel\Dusk\DuskServiceProvider;
 use Support\Traits\ConsoleTools;
 
 
+use Facilitador\Facades\Facilitador as FacilitadorFacade;
 use Illuminate\Contracts\Events\Dispatcher;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
@@ -233,10 +234,17 @@ class FacilitadorProvider extends ServiceProvider
         // Register Migrations
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        // Register HTML view helpers as "Decoy".  So they get invoked like: `Decoy::title()`
-        $this->app->singleton('facilitador', function ($app) {
-            return new \Facilitador\Helpers;
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Facilitador', FacilitadorFacade::class);
+
+        $this->app->singleton('facilitador', function () {
+            return new Facilitador();
         });
+        // @todo Apaguei, nao sei pra q serve
+        // // Register HTML view helpers as "Decoy".  So they get invoked like: `Decoy::title()`
+        // $this->app->singleton('facilitador', function ($app) {
+        //     return new \Facilitador\Helpers;
+        // });
 
         // Registers explicit rotues and wildcarding routing
         $this->app->singleton('facilitador.router', function ($app) {
