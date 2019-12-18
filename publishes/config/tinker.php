@@ -28,6 +28,9 @@ return [
     |
     */
 
-    'dont_alias' => [],
+    'dont_alias' => [
+        'Data',
+        'Elasticsearch\Endpoints',
+    ],
 
 ];

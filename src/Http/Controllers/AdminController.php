@@ -23,8 +23,11 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $models = $this->facilitadorService->getModelServices(); //->sortByDesc('field', [], true);
-
+        $models = $this->facilitadorService->getModelServicesToArray(); //->sortByDesc('field', [], true);
+        $models = $models->reject(function ($item) {
+            return empty($item['count']);
+        })->SortByDesc('count');
+// dd($models);
         $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
         
         return view(

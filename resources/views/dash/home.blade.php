@@ -34,7 +34,7 @@
     
     ])
 
-    @include('facilitador::dash.numbers', [
+    @include('facilitador::dash.numbers-big', [
         'models' => $models,
     ])
 

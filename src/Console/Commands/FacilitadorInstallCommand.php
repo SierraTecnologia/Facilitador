@@ -96,6 +96,10 @@ class FacilitadorInstallCommand extends Command
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->run();
 
+        $this->info('Install passport');
+        $this->call('passport:install');
+
+
         $this->info('Adding Facilitador routes to routes/web.php');
         $routes_contents = $filesystem->get(base_path('routes/web.php'));
         if (false === strpos($routes_contents, 'Facilitador::routes()')) {

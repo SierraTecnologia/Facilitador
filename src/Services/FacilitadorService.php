@@ -22,11 +22,29 @@ class FacilitadorService
         }
     }
 
+    public function getModelServicesToArray()
+    {
+
+        $models = $this->getModelServices(); 
+        $array = [];
+
+        foreach ($models as $model) {
+            $array[] = [
+                'model' => $model,
+                'url' => $model->getUrl(),
+                'count' => $model->getRepository()->count(),
+                'icon' => \Facilitador\Layout\Icons::getForNameAndCache($model->getName()),
+                'name' => $model->getName(),
+            ];
+        }
+        return collect($array);
+    }
+
     public function getModelServices()
     {
         if (!$this->modelServices) {
             $this->modelServices = collect($this->config)->map(function ($value) {
-                return new ModelService($value, false);
+                return new ModelService($value);
             });
         }
 

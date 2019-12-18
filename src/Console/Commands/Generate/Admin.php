@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 use TCG\Voyager\Facades\Voyager;
 use Facilitador\Models\Admin as BkwldAdmin;
+use Log;
 
 class Admin extends Command
 {
@@ -17,7 +18,7 @@ class Admin extends Command
      *
      * @var string
      */
-    protected $name = 'facilitador:admin';
+    protected $name = 'facilitador:admin {email}';
 
     /**
      * The console command description.
@@ -48,9 +49,11 @@ class Admin extends Command
      */
     public function handle()
     {
-        // Get or create user
+        // Get or create user @todo descomentar a opcao
+        Log::info('Opção para handle');
+        Log::info($this->option('create'));
         $user = $this->getUser(
-            $this->option('create')
+            // $this->option('create')
         );
         // the user not returned
         if (!$user) {

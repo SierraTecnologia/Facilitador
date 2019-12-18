@@ -26,6 +26,10 @@ use Barryvdh\Debugbar\ServiceProvider as DebugService;
 use Laravel\Dusk\DuskServiceProvider;
 use Support\Traits\ConsoleTools;
 
+
+use Illuminate\Contracts\Events\Dispatcher;
+use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
+
 class FacilitadorProvider extends ServiceProvider
 {
     use ConsoleTools;
@@ -121,9 +125,97 @@ class FacilitadorProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Dispatcher $events)
     {
-
+        
+        $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
+            /**
+             * Pacotes
+             */
+            $event->menu->add('Siravel');
+            $event->menu->add([
+                'text'        => 'Dash',
+                'url'         => 'sitec/dash',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ]);
+            $event->menu->add([
+                'text'        => 'Profile',
+                'url'         => 'sitec/profile',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ]);
+            $event->menu->add([
+                'text'        => 'Actors',
+                'url'         => 'actors',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ]);
+            $event->menu->add([
+                'text'    => 'Bots',
+                'icon'    => 'cog',
+                'nivel' => \App\Models\Role::$GOOD,
+                'submenu' => [
+                    [
+                        'text'        => 'Runners',
+                        'url'         => 'runners',
+                        'icon'        => 'industry',
+                        'icon_color'  => 'red',
+                        'label_color' => 'success',
+                        'nivel' => \App\Models\Role::$GOOD,
+                    ],
+                    [
+                        'text'        => 'Actions',
+                        'url'         => 'actions',
+                        'icon'        => 'coffee',
+                        'icon_color'  => 'red',
+                        'label_color' => 'success',
+                        'nivel' => \App\Models\Role::$GOOD,
+                    ],
+                ]
+            ]);
+            $event->menu->add('Facilitador');
+            $event->menu->add([
+                'text'        => 'Decoy',
+                'url'         => 'admin',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ]);
+            $event->menu->add([
+                'text'        => 'Manager',
+                'url'         => 'manager',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ]);
+            $event->menu->add('Packages');
+            $event->menu->add([
+                'text'        => 'Metrics',
+                'url'         => 'metrics',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ]);
+            $event->menu->add([
+                'text'        => 'Logs',
+                'url'         => 'logs',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ]);
+        });
+        
         // Register configs, migrations, etc
         $this->registerDirectories();
         
