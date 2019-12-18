@@ -132,38 +132,118 @@ class FacilitadorProvider extends ServiceProvider
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             
             $event->menu->add('Facilitador');
+            $facilitador = [];
+            $facilitador[] = [
+                'text'        => 'Manager',
+                'url'         => route('facilitador.index'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            // $event->menu->add('Packages');
+            $facilitador[] = [
+                'text'        => 'Metrics',
+                'url'         => route('larametrics::metrics.index'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $facilitador[] = [
+                'text'        => 'Logs',
+                'url'         => route('larametrics::metrics.index'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $facilitador[] = [
+                'text'        => 'Telescope',
+                'url'         => route('telescope'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $facilitador[] = [
+                'text'        => 'Horizon',
+                'url'         => route('horizon.index'),
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
             $event->menu->add([
+                'text'    => 'Facilitador',
+                'icon'    => 'cog',
+                'nivel' => \App\Models\Role::$GOOD,
+                'submenu' => $facilitador,
+            ]);
+
+
+            $decoy = [];
+            $decoy[] = [
                 'text'        => 'Decoy',
                 'url'         => 'admin',
                 'icon'        => 'dashboard',
                 'icon_color'  => 'blue',
                 'label_color' => 'success',
                 // 'access' => \App\Models\Role::$ADMIN
-            ]);
+            ];
             $event->menu->add([
-                'text'        => 'Manager',
-                'url'         => 'manager',
+                'text'    => 'Decoy',
+                'icon'    => 'cog',
+                'nivel' => \App\Models\Role::$GOOD,
+                'submenu' => $decoy,
+            ]);
+
+            $voyager = [];
+            $voyager[] = [
+                'text'        => 'Tools',
+                'url'         => 'voyager/hooks',
                 'icon'        => 'dashboard',
                 'icon_color'  => 'blue',
                 'label_color' => 'success',
                 // 'access' => \App\Models\Role::$ADMIN
-            ]);
-            $event->menu->add('Packages');
-            $event->menu->add([
-                'text'        => 'Metrics',
-                'url'         => 'metrics',
+            ];
+            $voyager[] = [
+                'text'        => 'hooks',
+                'url'         => 'voyager/hooks',
                 'icon'        => 'dashboard',
                 'icon_color'  => 'blue',
                 'label_color' => 'success',
                 // 'access' => \App\Models\Role::$ADMIN
-            ]);
-            $event->menu->add([
-                'text'        => 'Logs',
-                'url'         => 'logs',
+            ];
+            $voyager[] = [
+                'text'        => 'bread',
+                'url'         => 'voyager/bread',
                 'icon'        => 'dashboard',
                 'icon_color'  => 'blue',
                 'label_color' => 'success',
                 // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $voyager[] = [
+                'text'        => 'Database',
+                'url'         => 'voyager/database',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $voyager[] = [
+                'text'        => 'settings',
+                'url'         => 'voyager/settings',
+                'icon'        => 'dashboard',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ];
+            $event->menu->add([
+                'text'    => 'Voyager',
+                'icon'    => 'cog',
+                'nivel' => \App\Models\Role::$GOOD,
+                'submenu' => $voyager,
             ]);
         });
         

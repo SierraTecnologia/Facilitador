@@ -260,11 +260,6 @@ class Facilitador
         return $default;
     }
 
-    public function routes()
-    {
-        require __DIR__.'/Routes/web.php';
-    }
-
     public function getVersion()
     {
         return $this->version;
