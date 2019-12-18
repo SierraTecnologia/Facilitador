@@ -4,8 +4,8 @@ namespace Facilitador\Providers;
 
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\ServiceProvider;
-use Facilitador\Support\FormFields\MultipleImagesWithAttrsFormField;
-use Facilitador\Support\FormFields\KeyValueJsonFormField;
+use Support\FormFields\MultipleImagesWithAttrsFormField;
+use Support\FormFields\KeyValueJsonFormField;
 
 class ExtendedBreadFormFieldsServiceProvider extends ServiceProvider
 {

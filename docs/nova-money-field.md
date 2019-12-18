@@ -19,7 +19,7 @@ In resource:
 
 ```php
 // ...
-use Facilitador\Support\Entities\Fields\Money;
+use Support\Entities\Fields\Money;
 
 public function fields(Request $request)
 {

@@ -7,7 +7,7 @@ namespace Facilitador\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Facilitador\Support\Result\RelationshipResult;
+use Support\Result\RelationshipResult;
 use SierraTecnologia\Crypto\Services\Crypto;
 
 /**
@@ -47,6 +47,11 @@ class RegisterService
     public function getModelService()
     {
         return $this->repositoryService->getModelService();
+    }
+
+    public function getDiscoverService()
+    {
+        return $this->getModelService()->getDiscoverService();
     }
 
     /**
@@ -100,7 +105,7 @@ class RegisterService
     public function getRelationsResults($returnEmptys = false)
     {
         $results = new Collection;
-        $this->getModelService()->getRelations()->map(function ($value) use ($results, $returnEmptys) {
+        $this->getDiscoverService()->getRelations()->map(function ($value) use ($results, $returnEmptys) {
             $tmpRelationResults = $this->getInstance()->{$value->name}()->get();
             
             if ($returnEmptys || count($tmpRelationResults)>0) {

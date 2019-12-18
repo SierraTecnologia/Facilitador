@@ -26,6 +26,11 @@ class RepositoryService
         return $this->modelService;
     }
 
+    public function getDiscoverService()
+    {
+        return $this->getModelService()->getDiscoverService();
+    }
+
     public function getTableData()
     {
         return $this->getAll();

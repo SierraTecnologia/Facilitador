@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Requests\Excel;
 
 use Laravel\Nova\Resource;
-use Facilitador\Support\Entities\Fields\Field;
+use Support\Entities\Fields\Field;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Http\Requests\ActionRequest;
 

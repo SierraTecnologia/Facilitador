@@ -106,7 +106,7 @@ Loading values as relationships will let us load only those values we may requir
 
 ### More technical details
 
-#### `Facilitador\Support\Traits\Attributable`
+#### `Support\Traits\Attributable`
 
 This trait is the most important and let the other classes play together.
 
@@ -138,9 +138,9 @@ setRelation()
 getRelationValue()
 ```
 
-#### `Facilitador\Support\Support\RelationBuilder`
+#### `Support\Support\RelationBuilder`
 
-This class creates the Eloquent relations to the attribute values based on their type. If they are multi-valued, it will provide a `hasMany` relation, otherwise just a `hasOne`. This class creates closures that return this kind of relations and may be called straight from the entity model. These closures are stored in `$entityAttributeRelations` property in the `\Facilitador\Support\Traits\Attributable` trait.
+This class creates the Eloquent relations to the attribute values based on their type. If they are multi-valued, it will provide a `hasMany` relation, otherwise just a `hasOne`. This class creates closures that return this kind of relations and may be called straight from the entity model. These closures are stored in `$entityAttributeRelations` property in the `\Support\Traits\Attributable` trait.
 
 
 ## Installation
@@ -167,12 +167,12 @@ This class creates the Eloquent relations to the attribute values based on their
 
 ### Add EAV to eloquent model
 
-**Facilitador Attributes** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add EAV functionality to your Eloquent model just use the `\Facilitador\Support\Traits\Attributable` trait like this:
+**Facilitador Attributes** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add EAV functionality to your Eloquent model just use the `\Support\Traits\Attributable` trait like this:
 
 ```php
 class Company extends Model
 {
-    use \Facilitador\Support\Traits\Attributable;
+    use \Support\Traits\Attributable;
 }
 ```
 
@@ -181,11 +181,11 @@ That's it, we only have to include that trait in our Eloquent model!
 ### Core types
 
 ```php
-\Facilitador\Support\Entities\Type\Text::class
-\Facilitador\Support\Entities\Type\Boolean::class
-\Facilitador\Support\Entities\Type\Integer::class
-\Facilitador\Support\Entities\Type\Varchar::class
-\Facilitador\Support\Entities\Type\Datetime::class
+\Support\Entities\Type\Text::class
+\Support\Entities\Type\Boolean::class
+\Support\Entities\Type\Integer::class
+\Support\Entities\Type\Varchar::class
+\Support\Entities\Type\Datetime::class
 ```
 
 ### Register your types
@@ -196,7 +196,7 @@ That's it, we only have to include that trait in our Eloquent model!
 use Facilitador\Models\Attribute;
 
 Attribute::typeMap([
-    'varchar' => Facilitador\Support\Entities\Type\Varchar,
+    'varchar' => Support\Entities\Type\Varchar,
     // ...
     'custom' => \Path\To\Your\Type::class,
 ]);
@@ -280,7 +280,7 @@ $product->fill(['price' => 123])->save();
 
 Yes, just like that. Easy! You can work with custom attributes like normal attributes, no difference. All the good stuff you know about eloquent applies here too, whether you are updating single field, mass assigning, creating, or updating, **it just works!**
 
-#### `Facilitador\Support\Support\ValueCollection`
+#### `Support\Support\ValueCollection`
 
 **Facilitador Attributes** let you register multi-valued attributes. In order to make playing with collections easier, we have included a new collection type which just extends `Illuminate\Database\Eloquent\Collection` and provide some extra functionality. This class let us add and remove values from the attribute. What it basically does is to let the user play with a collection class without having to worry about creating Value model instances. A bit of code will help here:
 
@@ -349,7 +349,7 @@ Eloquent ships with a `$with` which accepts an array of relationships that shoul
 ```php
 namespace App\Models;
 
-use Facilitador\Support\Traits\Attributable;
+use Support\Traits\Attributable;
 
 class Company extends Model
 {

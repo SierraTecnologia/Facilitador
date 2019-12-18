@@ -7,31 +7,31 @@ namespace Facilitador\Services;
 
 use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Http\Request;
-use Facilitador\Support\Eloquent\Relationships;
+use Support\Eloquent\Relationships;
 use App;
 use Log;
 use Exception;
 use Artisan;
 use Illuminate\Support\Collection;
-use Facilitador\Support\Entities\DataTypes\Varchar;
-use Facilitador\Support\Eloquent\EloquentColumn;
+use Support\Entities\DataTypes\Varchar;
+use Support\Eloquent\EloquentColumn;
 use ReflectionClass;
 use TCG\Voyager\Database\Schema\SchemaManager;
+use Facilitador\Services\Discovers\DiscoverModelService;
 
 /**
  * ModelService helper to make table and object form mapping easy.
  */
 class ModelService
 {
-
-    protected $modelClass;
     protected $repository = false;
-    protected $schemaManagerTable = false;
+    protected $discoverModel = false;
+    protected $modelClass;
 
     public function __construct($modelClass = false)
     {
         if ($this->modelClass = $modelClass) {
-            $this->renderTableInfos();
+            $this->getDiscoverService();
         }
     }
 
@@ -41,6 +41,13 @@ class ModelService
             $this->repository = new RepositoryService($this);
         }
         return $this->repository;
+    }
+    public function getDiscoverService()
+    {
+        if (!$this->discoverModel) {
+            $this->discoverModel = new DiscoverModelService($this->getModelClass());
+        }
+        return $this->discoverModel;
     }
 
     /**
@@ -81,23 +88,12 @@ class ModelService
 
         return $name;
     }
-    public function getTableName()
-    {
-        $name = $this->getModelClass();
-        Log::warning($name);
-
-        if (!class_exists($name)) {
-            throw new Exception('Class não encontrada no ModelService' . $name);
-        }
-
-        $model = new $name;
-        return $model->getTable();
-    }
     public function getModelClass()
     {
         if (empty($this->modelClass)) {
             Artisan::call('cache:clear');
-            Artisan::call('down');
+            Artisan::call('view:clear');
+            // return redirect()->route('facilitador.dash');
             throw new Exception('Criptografia inválida ' . $this->modelClass);
         }
         return $this->modelClass;
@@ -116,11 +112,6 @@ class ModelService
      *
      * @return void
      */
-    public function getFields()
-    {
-        
-    }
-
     public function getFieldForForm()
     {
         $atributes = $this->getColumnsForForm();
@@ -204,53 +195,21 @@ class ModelService
     }
 
 
-    private function renderTableInfos()
-    {
-        $this->schemaManagerTable = SchemaManager::listTableDetails($this->getTableName());
-        // dd($this->schemaManagerTable);
-    }
 
     /**
      * Caracteristicas das Tabelas
      */
-    public function getPrimaryKey()
-    {
-        return App::make($this->modelClass)->getKeyName();
-    }
 
     public function getColumnsForForm()
     {
-        // dd($this->getAtributes(), $this->schemaManagerTable->toArray(), $this->getColumns());
-        return $this->getColumns();
-    }
-
-    public function getColumns()
-    {
-        // dd($this->getAtributes(), $this->schemaManagerTable->getColumns());
-        return $this->schemaManagerTable->getColumns();
-    }
-
-    /**
-     * Relações
-     */
-    public function getAtributes()
-    {
-        // dd(\Schema::getColumnListing($this->modelClass));
-        $fillables = collect(App::make($this->modelClass)->getFillable())->map(function ($value) {
-            return new EloquentColumn($value, new Varchar, true);
-        });
-        return $fillables;
-    }
-    public function getRelations($key = false)
-    {
-        // dd($key, (new Relationships($this->modelClass)),(new Relationships($this->modelClass))($key));
-        return (new Relationships($this->modelClass))($key);
+        // dd($this->getDiscoverService()->getAtributes(), $this->getDiscoverService()->schemaManagerTable->toArray(), $this->getDiscoverService()->getColumns());
+        return $this->getDiscoverService()->getColumns();
     }
 
     public function getRelationsByGroup()
     {
 
-        $classes = $this->getRelations();
+        $classes = $this->getDiscoverService()->getRelations();
         
         $group = [];
         foreach ($classes as $class) {

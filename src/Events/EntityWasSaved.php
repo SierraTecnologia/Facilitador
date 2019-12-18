@@ -6,7 +6,7 @@ namespace Facilitador\Events;
 
 use Exception;
 use Facilitador\Models\Value;
-use Facilitador\Support\Support\ValueCollection;
+use Support\Support\ValueCollection;
 use Illuminate\Database\Eloquent\Model as Entity;
 
 class EntityWasSaved
