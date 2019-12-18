@@ -207,6 +207,7 @@ class ModelService
     private function renderTableInfos()
     {
         $this->schemaManagerTable = SchemaManager::listTableDetails($this->getTableName());
+        // dd($this->schemaManagerTable);
     }
 
     /**
@@ -242,6 +243,7 @@ class ModelService
     }
     public function getRelations($key = false)
     {
+        // dd($key, (new Relationships($this->modelClass)),(new Relationships($this->modelClass))($key));
         return (new Relationships($this->modelClass))($key);
     }
 

@@ -129,57 +129,7 @@ class FacilitadorProvider extends ServiceProvider
     {
         
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            /**
-             * Pacotes
-             */
-            $event->menu->add('Siravel');
-            $event->menu->add([
-                'text'        => 'Dash',
-                'url'         => 'sitec/dash',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ]);
-            $event->menu->add([
-                'text'        => 'Profile',
-                'url'         => 'sitec/profile',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ]);
-            $event->menu->add([
-                'text'        => 'Actors',
-                'url'         => 'actors',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ]);
-            $event->menu->add([
-                'text'    => 'Bots',
-                'icon'    => 'cog',
-                'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => [
-                    [
-                        'text'        => 'Runners',
-                        'url'         => 'runners',
-                        'icon'        => 'industry',
-                        'icon_color'  => 'red',
-                        'label_color' => 'success',
-                        'nivel' => \App\Models\Role::$GOOD,
-                    ],
-                    [
-                        'text'        => 'Actions',
-                        'url'         => 'actions',
-                        'icon'        => 'coffee',
-                        'icon_color'  => 'red',
-                        'label_color' => 'success',
-                        'nivel' => \App\Models\Role::$GOOD,
-                    ],
-                ]
-            ]);
+            
             $event->menu->add('Facilitador');
             $event->menu->add([
                 'text'        => 'Decoy',

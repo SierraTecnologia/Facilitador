@@ -24,10 +24,13 @@ class ReturnSimilars
         $word = $this->word;
         
         if (isset($this->similars[$word])) {
-            return $this->similars[$word];
+            return array_merge(
+                $this->similars[$word],
+                [$word]
+            );
         }
 
-        return $word;
+        return [$word];
     }
 
 

@@ -29,18 +29,19 @@ class Icons
                 }
                 foreach ($name as $searchName) {
 
-
-                    if (strpos($icon['class'], $searchName) !== false) {
+                    // Procura na class
+                    if (isset($icon['class']) && strpos($icon['class'], $searchName) !== false) {
                         $reject = false;
                     }
-                    if (strpos($icon['name'], $searchName) !== false) {
+                    // Procura no nome
+                    if (isset($icon['name']) && strpos($icon['name'], $searchName) !== false) {
                         $reject = false;
                     }
 
+                    // Procura no uses
                     if (!isset($icon['uses']) || !is_array($icon['uses']) || empty($icon['uses'])) {
                         continue;
                     }
-
                     if (in_array($searchName, $icon['uses'])) {
                         $reject = false;
                     }
@@ -48,6 +49,10 @@ class Icons
 
                 return $reject;
             });
+            
+            if (empty($icons)) {
+                return $this->getRandon();
+            }
             
             if (empty($icons)) {
                 return $this->getRandon();
@@ -3323,7 +3328,7 @@ class Icons
                         'class' => 'fa fa-fw fa-user',
                         'name' => 'fa-user',
                         'uses' => [
-
+                            'person'
                         ],
                     ],
                     [
