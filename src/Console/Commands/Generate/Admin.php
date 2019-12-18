@@ -18,7 +18,7 @@ class Admin extends Command
      *
      * @var string
      */
-    protected $name = 'facilitador:admin {email}';
+    protected $name = 'facilitador:admin';
 
     /**
      * The console command description.
@@ -124,7 +124,7 @@ class Admin extends Command
             }
 
             // Check the email to see if its already being used
-            while ($admin = BkwldAdmin::where('email', $email)->exists()) {
+            while (BkwldAdmin::where('email', $email)->exists()) {
                 $this->error('That email is already in use');
                 $email = $this->ask('Enter the admin email');
             }
@@ -146,12 +146,14 @@ class Admin extends Command
             // Save out the new admin
             $admin->save();
 
-            $this->info('Creating admin account');
-            return call_user_func($model.'::create', [
-                'name'     => $name,
-                'email'    => $email,
-                'password' => Hash::make($password),
-            ]);
+            if (!call_user_func($model.'::where', 'email', $email)->exists()) {
+                $this->info('Creating admin account');
+                return call_user_func($model.'::create', [
+                    'name'     => $name,
+                    'email'    => $email,
+                    'password' => Hash::make($password),
+                ]);
+            }
 
             
         }

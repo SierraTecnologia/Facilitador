@@ -68,8 +68,6 @@ class FacilitadorInstallCommand extends Command
         $tags = ['sitec'];
 
         $this->call('vendor:publish', ['--tag' => $tags]);
-        // $this->call('vendor:publish', ['--provider' => FacilitadorServiceProvider::class, '--tag' => $tags]);
-        $this->call('vendor:publish', ['--provider' => ImageServiceProviderLaravel5::class]);
 
         $this->info('Migrating the database tables into your application');
         $this->call('migrate', ['--force' => $this->option('force')]);
@@ -98,6 +96,9 @@ class FacilitadorInstallCommand extends Command
 
         $this->info('Install passport');
         $this->call('passport:install');
+        // Install voyager
+        $this->info('Install voyager');
+        $this->call('voyager:install');
 
 
         $this->info('Adding Facilitador routes to routes/web.php');
