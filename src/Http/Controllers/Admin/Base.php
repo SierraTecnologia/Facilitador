@@ -5,11 +5,11 @@ namespace Facilitador\Http\Controllers\Decoy;
 use App;
 use URL;
 use View;
-use Decoy;
+use Facilitador;
 use Event;
 use Former;
 use Request;
-use DecoyURL;
+use FacilitadorURL;
 use Redirect;
 use Response;
 use stdClass;
@@ -344,7 +344,7 @@ class Base extends Controller
     public function model($class = null)
     {
         if ($class) {
-            return Decoy::modelForController($class);
+            return Facilitador::modelForController($class);
         }
 
         return $this->model;
@@ -364,12 +364,12 @@ class Base extends Controller
 
         // Save out sub properties that I hope to deprecate
         $this->parent_model = get_class($this->parent);
-        $this->parent_controller = Decoy::controllerForModel($this->parent_model);
+        $this->parent_controller = Facilitador::controllerForModel($this->parent_model);
 
         // Figure out what the relationship function to the child (this controller's
         // model) on the parent model .  It will be the plural version of this
         // model's name.
-        $this->parent_to_self = Decoy::hasManyName($this->model);
+        $this->parent_to_self = Facilitador::hasManyName($this->model);
 
         // If the parent is the same as this controller, assume that it's a
         // many-to-many-to-self relationship.  Thus, expect a relationship method to
@@ -382,14 +382,14 @@ class Base extends Controller
         // "able".  For instance, the Link model would have it's relationship to
         // parent called "linkable".
         } elseif (is_a($this->parentRelation(), 'Illuminate\Database\Eloquent\Relations\MorphMany')) {
-            $this->self_to_parent = Decoy::belongsToName($this->model).'able';
+            $this->self_to_parent = Facilitador::belongsToName($this->model).'able';
 
         // Save out to self to parent relationship.  It will be singular if the
         // relationship is a many to many.
         } else {
             $this->self_to_parent = $this->isChildInManyToMany()?
-                Decoy::hasManyName($this->parent_model):
-                Decoy::belongsToName($this->parent_model);
+                Facilitador::hasManyName($this->parent_model):
+                Facilitador::belongsToName($this->parent_model);
         }
 
         // Make chainable
@@ -519,7 +519,7 @@ class Base extends Controller
         if (Request::ajax()) {
             return Response::json(['id' => $item->id]);
         } else {
-            return Redirect::to(DecoyURL::relative('edit', $item->id))
+            return Redirect::to(FacilitadorURL::relative('edit', $item->id))
             ->with('success', $this->successMessage($item, 'created'));
         }
     }
@@ -628,7 +628,7 @@ class Base extends Controller
         if (Request::ajax()) {
             return Response::json();
         } else {
-            return Redirect::to(DecoyURL::relative('index'))
+            return Redirect::to(FacilitadorURL::relative('index'))
             ->with('success', $this->successMessage($item, 'deleted'));
         }
     }
@@ -679,7 +679,7 @@ class Base extends Controller
         $new->save();
 
         // Save the new record and redirect to its edit view
-        return Redirect::to(DecoyURL::relative('edit', $new->getKey()))
+        return Redirect::to(FacilitadorURL::relative('edit', $new->getKey()))
             ->with('success', $this->successMessage($src, 'duplicated'));
     }
 
@@ -950,7 +950,7 @@ class Base extends Controller
 
             // Add properties for the columns mentioned in the list view within the
             // 'columns' property of this row in the response.  Use the same logic
-            // found in Decoy::renderListColumn();
+            // found in Facilitador::renderListColumn();
             $item->columns = [];
             foreach ($this->columns() as $column) {
                 if (method_exists($row, $column)) {

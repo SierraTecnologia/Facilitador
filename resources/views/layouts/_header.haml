@@ -10,7 +10,7 @@
 	%h1.title
 
 		-# The page title
-		%span.site = Decoy::site()
+		%span.site = Facilitador::site()
 		%br.mobile-break
 		%span.controller != $title
 
@@ -24,7 +24,7 @@
 			-# Controller actions
 			.pull-right.btn-toolbar
 				.btn-group
-					%a.btn.outline.new(href=URL::to(DecoyURL::relative('create')))
+					%a.btn.outline.new(href=URL::to(FacilitadorURL::relative('create')))
 						%span.glyphicon.glyphicon-plus
 					!=View::make('facilitador::shared.form._create-locales', $__data)->render()
 

@@ -7,7 +7,7 @@ use App;
 use Facilitador\Models\Admin;
 use Facilitador\Models\Change;
 use Facilitador\Models\Image;
-use Decoy;
+use Facilitador;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -71,7 +71,7 @@ trait Loggable
      */
     public function shouldLogChange($action)
     {
-        return Decoy::handling()
+        return Facilitador::handling()
             || (App::runningInConsole() && request()->path() == '/');
     }
 

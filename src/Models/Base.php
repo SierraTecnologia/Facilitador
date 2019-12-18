@@ -5,11 +5,11 @@ namespace Facilitador\Models;
 use DB;
 use App;
 use URL;
-use Decoy;
+use Facilitador;
 use Event;
 use Config;
 use Session;
-use DecoyURL;
+use FacilitadorURL;
 use Bkwld\Cloner\Cloneable;
 use Bkwld\Upchuck\SupportsUploads;
 use Bkwld\Library\Utils\Collection;
@@ -123,7 +123,7 @@ abstract class Base extends Eloquent
      */
     public function hasGetMutator($key)
     {
-        if (!Decoy::handling()
+        if (!Facilitador::handling()
             || !array_key_exists($key, $this->attributes)
             || in_array($key, $this->admin_mutators)) {
             return parent::hasGetMutator($key);
@@ -140,7 +140,7 @@ abstract class Base extends Eloquent
      */
     public function hasSetMutator($key)
     {
-        if (!Decoy::handling()
+        if (!Facilitador::handling()
             || !array_key_exists($key, $this->attributes)
             || in_array($key, $this->admin_mutators)) {
             return parent::hasSetMutator($key);
@@ -193,7 +193,7 @@ abstract class Base extends Eloquent
     {
         // Remove any settings that affect JSON conversion (visible / hidden) and
         // mass assignment protection (fillable / guarded) while in the admin
-        if (Decoy::handling()) {
+        if (Facilitador::handling()) {
             $this->visible = $this->hidden = $this->fillable = $this->guarded = [];
         }
 
@@ -492,10 +492,10 @@ abstract class Base extends Eloquent
     public function getAdminEditUri($controller, $many_to_many = false)
     {
         if ($many_to_many) {
-            return URL::to(DecoyURL::action($controller.'@edit', $this->getKey()));
+            return URL::to(FacilitadorURL::action($controller.'@edit', $this->getKey()));
         }
 
-        return URL::to(DecoyURL::relative('edit', $this->getKey(), $controller));
+        return URL::to(FacilitadorURL::relative('edit', $this->getKey(), $controller));
     }
 
     /**
@@ -713,7 +713,7 @@ abstract class Base extends Eloquent
      */
     public function scopeLocalize($query, $locale = null)
     {
-        return $query->where('locale', $locale ?: Decoy::locale());
+        return $query->where('locale', $locale ?: Facilitador::locale());
     }
 
     /**

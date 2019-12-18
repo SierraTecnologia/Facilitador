@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Integration;
 
-use Decoy;
+use Facilitador;
 use Tests\TestCase;
 use Facilitador\Models\Element;
 
@@ -55,7 +55,7 @@ class ElementsLocalizationTest extends TestCase
         app('facilitador.elements')->reset();
 
         // Test that in english, we don't see the sapnish title
-        $element = (string) Decoy::el('homepage.marquee.title');
+        $element = (string) Facilitador::el('homepage.marquee.title');
         $this->assertEquals('Welcome to Decoy', $element);
     }
 
@@ -74,8 +74,8 @@ class ElementsLocalizationTest extends TestCase
         app('facilitador.elements')->reset();
 
         // Set to spanish adn confirm the locale scene
-        Decoy::locale('es');
-        $element = (string) Decoy::el('homepage.marquee.title');
+        Facilitador::locale('es');
+        $element = (string) Facilitador::el('homepage.marquee.title');
         $this->assertEquals('Spanish', $element);
     }
 

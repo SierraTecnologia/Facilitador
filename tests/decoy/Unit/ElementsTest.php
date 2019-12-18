@@ -7,7 +7,7 @@ use Tests\TestCase;
 class ElementsTest extends TestCase
 {
     /**
-     * Test `Decoy::hasEl()`
+     * Test `Facilitador::hasEl()`
      *
      * @return void
      */
@@ -18,7 +18,7 @@ class ElementsTest extends TestCase
     }
 
     /**
-     * Test `Decoy::els()`
+     * Test `Facilitador::els()`
      *
      * @return void
      */

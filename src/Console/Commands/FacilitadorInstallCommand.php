@@ -140,7 +140,7 @@ class FacilitadorInstallCommand extends Command
         // @todo o parametro nao funciona  query results for model [App\Models\
         $this->info('Creating admin');
         // $this->call('facilitador:admin');
-        $this->call('facilitador:admin', ['create' => true]);
+        $this->call('facilitador:admin', ['--create' => true]);
 
         $this->info('Successfully installed Facilitador! Enjoy');
     }

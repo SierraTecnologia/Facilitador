@@ -3,7 +3,7 @@ namespace Tests\Integration;
 
 use Cache;
 use Carbon\Carbon;
-use Decoy;
+use Facilitador;
 use Tests\TestCase;
 
 class CommandsTest extends TestCase

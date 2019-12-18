@@ -1,19 +1,19 @@
 #elements-tests
 	
-	.standard-block(data-facilitador-el='homepage.body.body' data-placement='bottom') !=Decoy::el('homepage.body.body')
+	.standard-block(data-facilitador-el='homepage.body.body' data-placement='bottom') !=Facilitador::el('homepage.body.body')
 
 	.float-right
-		%div(data-facilitador-el='homepage.marquee.title' data-placement='left')!=Decoy::el('homepage.marquee.title')
+		%div(data-facilitador-el='homepage.marquee.title' data-placement='left')!=Facilitador::el('homepage.marquee.title')
 
 	<br><br><br><br>
-	%p(data-facilitador-el='other.body.subtitle')!=Decoy::el('other.body.subtitle')
+	%p(data-facilitador-el='other.body.subtitle')!=Facilitador::el('other.body.subtitle')
 
 	<br><br><br><br>
 	%p
-		%a(href=Decoy::el('other.body.link') data-facilitador-el='other.body.link' data-placement='right') An example of a link
+		%a(href=Facilitador::el('other.body.link') data-facilitador-el='other.body.link' data-placement='right') An example of a link
 
 	%p
-		%a(href=Decoy::el('other.body.pdf') data-facilitador-el='other.body.pdf' data-placement='bottom') A downloadable file
+		%a(href=Facilitador::el('other.body.pdf') data-facilitador-el='other.body.pdf' data-placement='bottom') A downloadable file
 
 	<br><br>
-	%img(src=Decoy::el('other.body.image') data-facilitador-el='other.body.image' data-placement='bottom')
+	%img(src=Facilitador::el('other.body.image') data-facilitador-el='other.body.image' data-placement='bottom')

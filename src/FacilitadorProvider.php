@@ -241,7 +241,7 @@ class FacilitadorProvider extends ServiceProvider
             return new Facilitador();
         });
         // @todo Apaguei, nao sei pra q serve
-        // // Register HTML view helpers as "Decoy".  So they get invoked like: `Decoy::title()`
+        // // Register HTML view helpers as "Decoy".  So they get invoked like: `Facilitador::title()`
         // $this->app->singleton('facilitador', function ($app) {
         //     return new \Facilitador\Helpers;
         // });
@@ -278,7 +278,7 @@ class FacilitadorProvider extends ServiceProvider
                 ->withErrors([ 'error message' => __('facilitador::login.error.login_first')]);
         });
 
-        // Register URL Generators as "DecoyURL".
+        // Register URL Generators as "FacilitadorURL".
         $this->app->singleton('facilitador.url', function ($app) {
             return new \Facilitador\Routing\UrlGenerator($app['request']->path());
         });

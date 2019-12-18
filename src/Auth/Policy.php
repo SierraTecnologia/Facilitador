@@ -4,7 +4,7 @@ namespace Facilitador\Auth;
 
 use Config;
 use Request;
-use DecoyURL;
+use FacilitadorURL;
 use Facilitador\Models\Admin;
 
 /**
@@ -45,7 +45,7 @@ class Policy
         if (preg_match($pattern, $controller, $matches)) {
             $controller = $matches[1];
         } else {
-            $controller = DecoyURL::slugController($controller);
+            $controller = FacilitadorURL::slugController($controller);
         }
 
         // Allow all admins to upload to redactor

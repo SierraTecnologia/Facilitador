@@ -6,8 +6,8 @@
 
 3. Add the following config to the `aliases` in your Laravel's app config file:
 
-		'Decoy' => Facilitador\Facades\Decoy::class,
-		'DecoyURL' => Facilitador\Facades\DecoyURL::class,
+		'Decoy' => Facilitador\Facades\Facilitador::class,
+		'FacilitadorURL' => Facilitador\Facades\FacilitadorURL::class,
 
 4. Publish the migrations, config files, and public assets by running `php artisan vendor:publish --provider="Facilitador\ServiceProvider"`
 

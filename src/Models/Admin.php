@@ -6,10 +6,10 @@ namespace Facilitador\Models;
 use URL;
 use HTML;
 use Mail;
-use Decoy;
+use Facilitador;
 use Config;
 use Request;
-use DecoyURL;
+use FacilitadorURL;
 use Bkwld\Library\Utils\Text;
 use Facilitador\Auth\AuthInterface;
 use Facilitador\Notifications\ResetPassword;
@@ -181,7 +181,7 @@ class Admin extends Base implements
         // Send the email
         Mail::send('facilitador::emails.create', $email, function ($m) use ($email) {
             $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
-            $m->subject('Welcome to the '.Decoy::site().' admin site');
+            $m->subject('Welcome to the '.Facilitador::site().' admin site');
         });
     }
 
@@ -208,7 +208,7 @@ class Admin extends Base implements
         // Send the email
         Mail::send('facilitador::emails.update', $email, function ($m) use ($email) {
             $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
-            $m->subject('Your '.Decoy::site().' admin account info has been updated');
+            $m->subject('Your '.Facilitador::site().' admin account info has been updated');
         });
     }
 
@@ -332,7 +332,7 @@ class Admin extends Base implements
 
         // If row is disabled
         if ($this->disabled()) {
-            $html .= '<a href="' . URL::to(DecoyURL::relative('enable', $this->id)) . '" class="label label-warning
+            $html .= '<a href="' . URL::to(FacilitadorURL::relative('enable', $this->id)) . '" class="label label-warning
                 js-tooltip" title="' . __('facilitador::admins.standard_list.click') . '">' .
                 __('facilitador::admins.standard_list.disabled') . '</a>';
         }
@@ -348,7 +348,7 @@ class Admin extends Base implements
      */
     public function getAdminEditAttribute()
     {
-        return DecoyURL::action('Facilitador\Http\Controllers\Decoy\Admins@edit', $this->id);
+        return FacilitadorURL::action('Facilitador\Http\Controllers\Decoy\Admins@edit', $this->id);
     }
 
     /**
@@ -419,7 +419,7 @@ class Admin extends Base implements
             return (object) [
 
                 // Add controller information
-                'slug' => DecoyURL::slugController($class),
+                'slug' => FacilitadorURL::slugController($class),
                 'title' => $obj->title(),
                 'description' => $obj->description(),
 

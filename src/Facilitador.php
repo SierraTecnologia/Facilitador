@@ -36,7 +36,6 @@ use Request;
 use Session;
 use Bkwld\Library;
 use ReflectionClass;
-use Illuminate\Support\Str;
 
 class Facilitador
 {
@@ -263,7 +262,7 @@ class Facilitador
 
     public function routes()
     {
-        require __DIR__.'/../routes/voyager.php';
+        require __DIR__.'/Routes/web.php';
     }
 
     public function getVersion()

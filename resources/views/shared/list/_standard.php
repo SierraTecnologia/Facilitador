@@ -1,6 +1,6 @@
 <div class="standard-list <?=$layout!='form'?'fieldset':null?>"
 	data-js-view="standard-list"
-	data-controller-route="<?=URL::to(DecoyURL::action($controller))?>"
+	data-controller-route="<?=URL::to(FacilitadorURL::action($controller))?>"
 	data-position-offset="<?=$paginator_from?>"
 	data-with-trashed="<?=$with_trashed?>"
 	<?php if ($parent_controller):?> data-parent-controller="<?=$parent_controller?><?php endif?>"
@@ -24,7 +24,7 @@
 
 	// Add sidebar pagination
 	if (!empty($layout) && $layout != 'full' && $count > count($listing)): ?>
-		<a href="<?=DecoyURL::relative('index', $parent_id, $controller)?>" class="btn btn-default btn-sm btn-block full-list"><?= __('facilitador::list.standard.related', ['title' => title_case($title)]) ?></b></a>
+		<a href="<?=FacilitadorURL::relative('index', $parent_id, $controller)?>" class="btn btn-default btn-sm btn-block full-list"><?= __('facilitador::list.standard.related', ['title' => title_case($title)]) ?></b></a>
 	<?php endif ?>
 
 </div>

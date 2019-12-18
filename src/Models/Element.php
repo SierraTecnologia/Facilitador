@@ -8,7 +8,7 @@ use Facilitador\Models\Traits\HasImages;
 use Bkwld\Library\Utils\File;
 use Config;
 use DB;
-use Decoy;
+use Facilitador;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
@@ -63,7 +63,7 @@ class Element extends Base
         // Set the locale automatically using the locale key in the URL or the
         // default.
         static::creating(function (Element $el) {
-            $el->setAttribute('locale', request()->segment(3) ?: Decoy::defaultLocale());
+            $el->setAttribute('locale', request()->segment(3) ?: Facilitador::defaultLocale());
         });
 
         // A lot of extra stuff gets added to attributes with how I am hydrating

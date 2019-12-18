@@ -6,7 +6,7 @@ use App\Tag;
 use Facilitador\Models\Change;
 use Cache;
 use Carbon\Carbon;
-use Decoy;
+use Facilitador;
 use Tests\TestCase;
 
 class ChangesTest extends TestCase

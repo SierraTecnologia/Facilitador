@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers\Decoy;
 
 use Auth;
-use Decoy;
+use Facilitador;
 use Former;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;

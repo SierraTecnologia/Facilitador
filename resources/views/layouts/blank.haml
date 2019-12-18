@@ -3,7 +3,7 @@
 	%head
 
 		-# Title
-		!= Decoy::title()
+		!= Facilitador::title()
 
 		-# Boilerplate meta tags
 		%meta(charset='utf-8')
@@ -23,7 +23,7 @@
 		- $localization = json_encode(__('facilitador::javascript'), JSON_HEX_APOS)
 		!= "<script>var LOCALIZATIONS = JSON.parse('$localization');</script>";
 
-	%body(class=Decoy::bodyClass())
+	%body(class=Facilitador::bodyClass())
 
 		-# The main page content
 		#main!= $content

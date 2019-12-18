@@ -3,9 +3,9 @@
 namespace Facilitador\Models;
 
 use DB;
-use Decoy;
+use Facilitador;
 use Config;
-use DecoyURL;
+use FacilitadorURL;
 use Illuminate\Support\Str;
 use Facilitador\Input\Search;
 use Bkwld\Library\Utils\Text;
@@ -310,7 +310,7 @@ class Change extends Base
      */
     public function getModelNameHtmlAttribute()
     {
-        $class = Decoy::controllerForModel($this->model);
+        $class = Facilitador::controllerForModel($this->model);
 
         // There is not a controller for the model
         if (!$class || !class_exists($class)) {
@@ -348,7 +348,7 @@ class Change extends Base
      */
     public function getDateAttribute()
     {
-        \Carbon\Carbon::setLocale(Decoy::locale());
+        \Carbon\Carbon::setLocale(Facilitador::locale());
         return sprintf('<a href="%s" class="js-tooltip" title="%s">%s</a>',
             $this->filterUrl(['created_at' => $this->created_at->format('m/d/Y')]),
             $this->getHumanDateAttribute(),
@@ -402,7 +402,7 @@ class Change extends Base
      */
     public function filterUrl($query)
     {
-        return DecoyURL::action('changes').'?'.Search::query($query);
+        return FacilitadorURL::action('changes').'?'.Search::query($query);
     }
 
     /**
@@ -417,7 +417,7 @@ class Change extends Base
             return sprintf('<a href="%s"
                 class="glyphicon glyphicon-export js-tooltip changes-modal-link"
                 title="%s" data-placement="left"></a>',
-                DecoyURL::action('changes@edit', $this->id),
+                FacilitadorURL::action('changes@edit', $this->id),
                 __('facilitador::changes.standard_list.view'));
         }
 

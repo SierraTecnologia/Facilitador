@@ -5,7 +5,7 @@ namespace Facilitador\Http\Middleware;
 use Closure;
 use Request;
 use Session;
-use DecoyURL;
+use FacilitadorURL;
 use Redirect;
 
 /**
@@ -37,7 +37,7 @@ class SaveRedirect
 
         // Go to new form by stripping the last segment from the URL
         if (request('_save') == 'new') {
-            Session::flash('save_redirect', DecoyURL::relative('create'));
+            Session::flash('save_redirect', FacilitadorURL::relative('create'));
         }
 
         // Chain

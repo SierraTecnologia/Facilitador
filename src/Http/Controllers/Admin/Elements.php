@@ -5,7 +5,7 @@ namespace Facilitador\Http\Controllers\Decoy;
 use App;
 use URL;
 use View;
-use Decoy;
+use Facilitador;
 use Config;
 use Former;
 use Request;
@@ -48,7 +48,7 @@ class Elements extends Base
 
         // Otherwise, set a default locale if none was specified
         } elseif (!$locale) {
-            $locale = Decoy::defaultLocale();
+            $locale = Facilitador::defaultLocale();
         }
 
         // Get all the elements for the current locale
@@ -186,7 +186,7 @@ class Elements extends Base
     {
         // Get the default locale
         if (!$locale) {
-            $locale = Decoy::defaultLocale();
+            $locale = Facilitador::defaultLocale();
         }
 
         // Hydrate the elements collection
@@ -201,7 +201,7 @@ class Elements extends Base
         }
 
         // Get all the input such that empty file fields are removed from the input.
-        $input = Decoy::filteredInput();
+        $input = Facilitador::filteredInput();
 
         // Validate the input
         $validator = Validator::make($input, $elements->rules());
@@ -331,7 +331,7 @@ class Elements extends Base
         return View::make('facilitador::layouts.blank')
             ->nest('content', 'facilitador::elements.field', [
                 'element' => app('facilitador.elements')
-                    ->localize(Decoy::locale())
+                    ->localize(Facilitador::locale())
                     ->hydrate(true)
                     ->get($key),
             ]);
@@ -346,10 +346,10 @@ class Elements extends Base
      */
     public function fieldUpdate($key)
     {
-        $elements = app('facilitador.elements')->localize(Decoy::locale());
+        $elements = app('facilitador.elements')->localize(Facilitador::locale());
 
         // If the value has changed, update or an insert a record in the database.
-        $el = Decoy::el($key);
+        $el = Facilitador::el($key);
         $value = request('value');
         if ($value != $el->value || Request::hasFile('value')) {
 
@@ -359,7 +359,7 @@ class Elements extends Base
 
             // Save it.  Files will be automatically attached via model callbacks
             $el->value = $value;
-            $el->locale = Decoy::locale();
+            $el->locale = Facilitador::locale();
             $el->save();
 
             // Clear the cache
@@ -382,7 +382,7 @@ class Elements extends Base
     {
         // Get all the grouped elements
         $elements = app('facilitador.elements')
-            ->localize(Decoy::locale())
+            ->localize(Facilitador::locale())
             ->hydrate(true)
             ->asModels()
             ->sortBy('page_label')

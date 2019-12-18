@@ -47,16 +47,16 @@ The "Compare" radio buttons enable tooltips for each form group that show the va
 
 ## Frontend implementation
 
-Decoy provides some helpers for selecting a locale on the frontend of the site.  It's assumed that there will be some way that a user chooses a locale.  This might be from a menu or by accessing the site from a special domain.  It is up to the developer to implement this uniquely for the site.  To tell Decoy what was selected, call `Decoy::locale($locale)` where `$locale` is the slug of the locale (the key from the "site.php" `locales` config array).  Here is an example route that would set the locale based on what was passed in:
+Decoy provides some helpers for selecting a locale on the frontend of the site.  It's assumed that there will be some way that a user chooses a locale.  This might be from a menu or by accessing the site from a special domain.  It is up to the developer to implement this uniquely for the site.  To tell Decoy what was selected, call `Facilitador::locale($locale)` where `$locale` is the slug of the locale (the key from the "site.php" `locales` config array).  Here is an example route that would set the locale based on what was passed in:
 
 ```php?start_inline=1
 Route::get('locale/{locale}', ['as' => 'change locale', function($locale) {
-	Decoy::locale($locale);
+	Facilitador::locale($locale);
 	return Redirect::back();
 }]);
 ```
 
-You can get the current locale by calling `Decoy::locale()` with no argument.  The Decoy Base Model provides a scope for restricting queries by the current locale by chaining `->localize()` onto your query.  For instance:
+You can get the current locale by calling `Facilitador::locale()` with no argument.  The Decoy Base Model provides a scope for restricting queries by the current locale by chaining `->localize()` onto your query.  For instance:
 
 ```php?start_inline=1
 Article::ordered()->public()->localize()->paginate(10)

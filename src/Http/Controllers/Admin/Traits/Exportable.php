@@ -4,7 +4,7 @@ namespace Facilitador\Http\Controllers\Decoy\Traits;
 
 // Deps
 use Carbon\Carbon;
-use Decoy;
+use Facilitador;
 use League\Csv\Writer;
 use SplTempFileObject;
 
@@ -86,7 +86,7 @@ trait Exportable
     protected function makeCsvFileTitle()
     {
         return vsprintf('%s %s as of %s at %s.csv', [
-            Decoy::site(),
+            Facilitador::site(),
             $this->title(),
             Carbon::now()->format('n.j.y'),
             Carbon::now()->format('g:i A'),

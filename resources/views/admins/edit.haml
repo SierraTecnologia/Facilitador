@@ -45,11 +45,11 @@
 
 		-# Disable admin
 		-if (!$item->disabled())
-			%a.btn.btn-warning.js-tooltip(title=__('facilitador::admins.form.disable_tooltip') href=URL::to(DecoyURL::relative('disable', $item->id)))
+			%a.btn.btn-warning.js-tooltip(title=__('facilitador::admins.form.disable_tooltip') href=URL::to(FacilitadorURL::relative('disable', $item->id)))
 				%span.glyphicon.glyphicon-ban-circle
 				!= __('facilitador::admins.form.disable')
 		-else
-			%a.btn.btn-warning.js-tooltip(title=__('facilitador::admins.form.enable_tooltip') href=URL::to(DecoyURL::relative('enable', $item->id)))
+			%a.btn.btn-warning.js-tooltip(title=__('facilitador::admins.form.enable_tooltip') href=URL::to(FacilitadorURL::relative('enable', $item->id)))
 				%span.glyphicon.glyphicon-ban-circle
 				!= __('facilitador::admins.form.enable')
 	-$actions = ob_get_clean();

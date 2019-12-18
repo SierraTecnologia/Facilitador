@@ -43,7 +43,7 @@ Alternatively, you can create a directory at `config/facilitador/elements` and c
 
 ## Usage
 
-Call `Decoy::el('key')` in your frontend views to return the value for an Element.  They key is the `.` concatented keys for the three heirachies: `page.section.field`.  The value will be massaged in different ways depending on the element type:
+Call `Facilitador::el('key')` in your frontend views to return the value for an Element.  They key is the `.` concatented keys for the three heirachies: `page.section.field`.  The value will be massaged in different ways depending on the element type:
 
 - Texteareas will have `nl2br()` applied
 - WYSIWYG will be wrapped in a `<p>` if there is no containing HTML element
@@ -52,6 +52,6 @@ Call `Decoy::el('key')` in your frontend views to return the value for an Elemen
 #### Additional notes
 
 - The default format for a field in the admin is a text input
-- Images **must** be stored in the /public/img directory.  Decoy will automatically make a copy in the uploads directory for Croppa to act on.  Decoy::el() will then return the path to the uploads copy.  This is done because PagodaBox doesn't let you push things via git to shared writeable directories, so committing the image to the uploads dir would not work.
+- Images **must** be stored in the /public/img directory.  Decoy will automatically make a copy in the uploads directory for Croppa to act on.  Facilitador::el() will then return the path to the uploads copy.  This is done because PagodaBox doesn't let you push things via git to shared writeable directories, so committing the image to the uploads dir would not work.
 - YAML only allows whitespace indenting, no tabs
-- You can use `Image` `crop()` on `image` fields.  For instance: `Decoy::el('home.intro.image')->crop(500)->url`
+- You can use `Image` `crop()` on `image` fields.  For instance: `Facilitador::el('home.intro.image')->crop(500)->url`
