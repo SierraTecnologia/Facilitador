@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Facilitador\Console\Commands;
+namespace Facilitador\Console\Commands\System;
 
 use Illuminate\Console\Command;
 

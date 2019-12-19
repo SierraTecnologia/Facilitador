@@ -1,6 +1,6 @@
 <?php
 
-namespace Locaravel\Console\Commands;
+namespace Facilitador\Console\Commands\Generate;
 
 use DB;
 use Illuminate\Console\Command;
@@ -354,7 +354,7 @@ class GenerateModelFromMySQL extends Command
 	{
 		return '<?php
 
-namespace Locaravel;
+namespace Facilitador;
 
 use Illuminate\Database\Eloquent\Model;
 #IMPORT_SOFT_DELETE#

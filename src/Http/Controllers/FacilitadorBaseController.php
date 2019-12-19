@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace Facilitador\Http\Controllers;
 
 use Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;

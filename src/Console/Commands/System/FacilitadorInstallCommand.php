@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Console\Commands;
+namespace Facilitador\Console\Commands\System;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

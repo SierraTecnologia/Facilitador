@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Http\Controllers\Decoy\Traits;
+namespace Facilitador\Http\Controllers\Admin\Traits;
 
 // Deps
 use Carbon\Carbon;

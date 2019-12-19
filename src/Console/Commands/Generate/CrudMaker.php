@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Console\Commands\CrudMaker;
+namespace Facilitador\Console\Commands\Generate;
 
 use Config;
 use Exception;
@@ -54,7 +54,7 @@ class CrudMaker extends Command
      *
      * @var string
      */
-    protected $signature = 'crudmaker:new {table}
+    protected $signature = 'generate:crudmaker {table}
         {--api : Creates an API Controller and Routes}
         {--apiOnly : Creates only the API Controller and Routes}
         {--ui= : Select one of bootstrap|semantic for the UI}

@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Models;
+namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;

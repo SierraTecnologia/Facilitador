@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Console\Commands;
+namespace Facilitador\Console\Commands\Generate;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -12,7 +12,7 @@ class MakeEloquentFilter extends Command
      *
      * @var string
      */
-    protected $signature = 'model:filter {name}';
+    protected $signature = 'generate:filter {name}';
 
     /**
      * The console command description.

@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Policies;
+namespace Facilitador\Http\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use TCG\Voyager\Contracts\User;

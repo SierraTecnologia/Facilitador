@@ -639,7 +639,7 @@ class Facilitador
     public function modelForController($controller)
     {
         // Swap out the namespace if facilitador
-        $model = str_replace('Facilitador\Http\Controllers\Decoy',
+        $model = str_replace('Facilitador\Http\Controllers\Admin',
             'Facilitador\Models',
             $controller,
             $is_facilitador);
@@ -665,7 +665,7 @@ class Facilitador
     public function controllerForModel($model)
     {
         // Swap out the namespace if facilitador
-        $controller = str_replace('Facilitador\Models', 'Facilitador\Http\Controllers\Decoy', $model, $is_facilitador);
+        $controller = str_replace('Facilitador\Models', 'Facilitador\Http\Controllers\Admin', $model, $is_facilitador);
 
         // Replace non-facilitador controller's with the standard model namespace
         if (!$is_facilitador) {

@@ -103,7 +103,7 @@ class UrlGenerator
      * Make a URL given a fully namespaced controller.  This only generates routes
      * as if the controller is in the root level; as if it has no parents.
      *
-     * @param  string  $controller ex: Facilitador\Http\Controllers\Decoy\Admins@create
+     * @param  string  $controller ex: Facilitador\Http\Controllers\Admin\Admins@create
      * @param  integer $id
      * @return string  ex: http://admin/admins/create
      */
@@ -150,7 +150,7 @@ class UrlGenerator
     public function slugController($controller)
     {
         // Get the controller name
-        $controller = preg_replace('#^('.preg_quote('Facilitador\Http\Controllers\Decoy\\')
+        $controller = preg_replace('#^('.preg_quote('Facilitador\Http\Controllers\Admin\\')
             .'|'.preg_quote('App\Http\Controllers\Admin\\').')#', '', $controller);
 
         // Convert study caps to dashes

@@ -141,65 +141,24 @@ class FacilitadorProvider extends ServiceProvider
                 'label_color' => 'success',
                 // 'access' => \App\Models\Role::$ADMIN
             ];
-            // $event->menu->add('Packages');
+            
             /**
              * Audits
              */
-            $audit = [];
-            $audit[] = [
-                'text'        => 'Logs',
-                'url'         => route('larametrics::metrics.index'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $audit[] = [
-                'text'        => 'Telescope',
-                'url'         => route('telescope'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $audit[] = [
-                'text'        => 'Horizon',
-                'url'         => route('horizon.index'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
             $facilitador[] = [
                 'text'    => 'Audits',
                 'icon'    => 'cog',
                 'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => $audit,
+                'submenu' => \Audit\Services\MenuService::getAdminMenu(),
             ];
             /**
              * Tracking
              */
-            $tracking = [];
-            $tracking[] = [
-                'text'        => 'Analytics',
-                'url'         => route('tracking.analytics'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $tracking[] = [
-                'text'        => 'Metrics',
-                'url'         => route('larametrics::metrics.index'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
             $facilitador[] = [
                 'text'    => 'Trackings',
                 'icon'    => 'cog',
                 'nivel' => \App\Models\Role::$GOOD,
+                'submenu' => \Tracking\Services\MenuService::getAdminMenu(),
                 'submenu' => $tracking,
             ];
             $event->menu->add([
@@ -300,10 +259,6 @@ class FacilitadorProvider extends ServiceProvider
             'Facilitador\Observers\ModelCallbacks');
         $this->app['events']->listen('facilitador::model.*',
             'Facilitador\Observers\ModelCallbacks');
-        // Log model change events after others in case they modified the record
-        // before being saved.
-        $this->app['events']->listen('eloquent.*',
-            'Facilitador\Observers\Changes');
     }
 
 

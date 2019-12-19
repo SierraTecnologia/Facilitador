@@ -94,17 +94,17 @@ class Router
     {
         Route::get('/', [
             'as' => 'facilitador::account@login',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Login@showLoginForm',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Login@showLoginForm',
         ]);
 
         Route::post('/', [
             'as' => 'facilitador::account@postLogin',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Login@login',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Login@login',
         ]);
 
         Route::get('logout', [
             'as' => 'facilitador::account@logout',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Login@logout',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Login@logout',
         ]);
     }
 
@@ -116,19 +116,19 @@ class Router
     public function registerResetPassword()
     {
         Route::get('forgot', ['as' => 'facilitador::account@forgot',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\ForgotPassword@showLinkRequestForm',
+            'uses' => '\Facilitador\Http\Controllers\Admin\ForgotPassword@showLinkRequestForm',
         ]);
 
         Route::post('forgot', ['as' => 'facilitador::account@postForgot',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\ForgotPassword@sendResetLinkEmail',
+            'uses' => '\Facilitador\Http\Controllers\Admin\ForgotPassword@sendResetLinkEmail',
         ]);
 
         Route::get('password/reset/{code}', ['as' => 'facilitador::account@reset',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\ResetPassword@showResetForm',
+            'uses' => '\Facilitador\Http\Controllers\Admin\ResetPassword@showResetForm',
         ]);
 
         Route::post('password/reset/{code}', ['as' => 'facilitador::account@postReset',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\ResetPassword@reset',
+            'uses' => '\Facilitador\Http\Controllers\Admin\ResetPassword@reset',
         ]);
     }
 
@@ -168,12 +168,12 @@ class Router
     {
         Route::get('admins/{id}/disable', [
             'as' => 'facilitador::admins@disable',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Admins@disable',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Admins@disable',
         ]);
 
         Route::get('admins/{id}/enable', [
             'as' => 'facilitador::admins@enable',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Admins@enable',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Admins@enable',
         ]);
     }
 
@@ -186,12 +186,12 @@ class Router
     {
         Route::get('commands', [
             'as' => 'facilitador::commands',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Commands@index',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Commands@index',
         ]);
 
         Route::post('commands/{command}', [
             'as' => 'facilitador::commands@execute',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Commands@execute',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Commands@execute',
         ]);
     }
 
@@ -204,12 +204,12 @@ class Router
     {
         Route::get('workers', [
             'as' => 'facilitador::workers',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Workers@index',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Workers@index',
         ]);
 
         Route::get('workers/tail/{worker}', [
             'as' => 'facilitador::workers@tail',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Workers@tail',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Workers@tail',
         ]);
     }
 
@@ -222,7 +222,7 @@ class Router
     {
         Route::get('encode/{id}/progress', [
             'as' => 'facilitador::encode@progress',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Encoder@progress',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Encoder@progress',
         ]);
     }
 
@@ -235,22 +235,22 @@ class Router
     {
         Route::get('elements/field/{key}', [
             'as' => 'facilitador::elements@field',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Elements@field',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Elements@field',
         ]);
 
         Route::post('elements/field/{key}', [
             'as' => 'facilitador::elements@field-update',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Elements@fieldUpdate',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Elements@fieldUpdate',
         ]);
 
         Route::get('elements/{locale?}/{tab?}', [
             'as' => 'facilitador::elements',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Elements@index',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Elements@index',
         ]);
 
         Route::post('elements/{locale?}/{tab?}', [
             'as' => 'facilitador::elements@store',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Elements@store',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Elements@store',
         ]);
     }
 
@@ -262,7 +262,7 @@ class Router
      */
     public function registerRedactor()
     {
-        Route::post('redactor', '\Facilitador\Http\Controllers\Decoy\Redactor@store');
+        Route::post('redactor', '\Facilitador\Http\Controllers\Admin\Redactor@store');
     }
 
     /**
@@ -274,14 +274,14 @@ class Router
     {
         Route::post('encode/notify', [
             'as' => 'facilitador::encode@notify',
-            'uses' => '\Facilitador\Http\Controllers\Decoy\Encoder@notify',
+            'uses' => '\Facilitador\Http\Controllers\Admin\Encoder@notify',
         ]);
     }
 
     /**
      * Set and get the action for this request
      *
-     * @return string '\Facilitador\Http\Controllers\Decoy\Account@forgot'
+     * @return string '\Facilitador\Http\Controllers\Admin\Account@forgot'
      */
     public function action($name = null)
     {

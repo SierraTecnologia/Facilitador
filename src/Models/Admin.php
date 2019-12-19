@@ -348,7 +348,7 @@ class Admin extends Base implements
      */
     public function getAdminEditAttribute()
     {
-        return FacilitadorURL::action('Facilitador\Http\Controllers\Decoy\Admins@edit', $this->id);
+        return FacilitadorURL::action('Facilitador\Http\Controllers\Admin\Admins@edit', $this->id);
     }
 
     /**
@@ -396,10 +396,10 @@ class Admin extends Base implements
         }, glob(app_path('/Http/Controllers/Admin/*.php')));
 
         // Add some Decoy controllers
-        $controllers[] = 'Facilitador\Http\Controllers\Decoy\Admins';
-        $controllers[] = 'Facilitador\Http\Controllers\Decoy\Changes';
-        $controllers[] = 'Facilitador\Http\Controllers\Decoy\Elements';
-        $controllers[] = 'Facilitador\Http\Controllers\Decoy\RedirectRules';
+        $controllers[] = 'Facilitador\Http\Controllers\Admin\Admins';
+        $controllers[] = 'Facilitador\Http\Controllers\Admin\Changes';
+        $controllers[] = 'Facilitador\Http\Controllers\Admin\Elements';
+        $controllers[] = 'Facilitador\Http\Controllers\Admin\RedirectRules';
 
         // Alphabetize the controller classes
         usort($controllers, function ($a, $b) {

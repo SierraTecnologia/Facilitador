@@ -1,6 +1,6 @@
 <?php
 
-namespace Locaravel\Console\Commands;
+namespace Facilitador\Console\Commands\Generate;
 
 use DB;
 use Illuminate\Console\Command;

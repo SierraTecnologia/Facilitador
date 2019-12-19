@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Http\Controllers\Decoy;
+namespace Facilitador\Http\Controllers\Admin;
 
 use App;
 use URL;
@@ -231,7 +231,7 @@ class Base extends Controller
     public function controllerName($class = null)
     {
         $name = $class ? $class : get_class($this);
-        $name = preg_replace('#^('.preg_quote('Facilitador\Http\Controllers\Decoy\\')
+        $name = preg_replace('#^('.preg_quote('Facilitador\Http\Controllers\Admin\\')
             .'|'.preg_quote('App\Http\Controllers\Admin\\').')#', '', $name);
 
         return $name;
@@ -311,7 +311,7 @@ class Base extends Controller
     public function detailPath($class)
     {
         // Remove Decoy from the class
-        $path = str_replace('Facilitador\Http\Controllers\Decoy\\', '', $class, $is_facilitador);
+        $path = str_replace('Facilitador\Http\Controllers\Admin\\', '', $class, $is_facilitador);
 
         // Remove the App controller prefix
         $path = str_replace('App\Http\Controllers\\', '', $path);

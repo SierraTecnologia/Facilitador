@@ -144,7 +144,7 @@ Change your Article controller to:
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Facilitador\Http\Controllers\Decoy\Base;
+use Facilitador\Http\Controllers\Admin\Base;
 
 class Articles extends Base {
   protected $title = 'News';

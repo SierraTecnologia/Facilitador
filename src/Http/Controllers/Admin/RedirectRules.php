@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Http\Controllers\Decoy;
+namespace Facilitador\Http\Controllers\Admin;
 
 /**
  * Allow admin to manage redirection rules

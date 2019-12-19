@@ -66,20 +66,21 @@ class MigrationController extends Controller
         $response = null;
 
         // Read in entire file
-        $lines = file(storage_path("uploads") . '/' . $localFileName);
+        $fileLines = file(storage_path("uploads") . '/' . $localFileName);
 
         try
         {
             // Clear existing database
             $this->clearTempDB();
 
-            DB::connection(env("TEMP_DB_CONNECTION", "mysql_temp"))->transaction(function($lines) use ($lines)
+            $mysqlTemp = env("TEMP_DB_CONNECTION", "mysql_temp");
+            DB::connection($mysqlTemp)->transaction(function($lines) use ($fileLines)
             {
 
                 $tempQuery = '';
 
                 // Loop through each line
-                foreach ($lines as $line)
+                foreach ($fileLines as $line)
                 {
                     // Skip it if it's a comment
                     if (substr($line, 0, 2) == '--' || $line == '')

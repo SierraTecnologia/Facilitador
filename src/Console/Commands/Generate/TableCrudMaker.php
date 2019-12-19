@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Console\Commands\CrudMaker;
+namespace Facilitador\Console\Commands\Generate;
 
 use Exception;
 use Illuminate\Console\DetectsApplicationNamespace;
@@ -17,7 +17,7 @@ class TableCrudMaker extends Command
      *
      * @var string
      */
-    protected $signature = 'crudmaker:table {table}
+    protected $signature = 'generate:table {table}
         {--api : Creates an API Controller and Routes}
         {--ui= : Select one of bootstrap|semantic for the UI}
         {--serviceOnly : Does not generate a Controller or Routes}

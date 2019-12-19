@@ -83,7 +83,7 @@ class Wildcard
      * Get the full namespaced controller
      *
      * @return string i.e. App\Http\Controllers\Admin\People or
-     *                Facilitador\Http\Controllers\Decoy\Admins
+     *                Facilitador\Http\Controllers\Admin\Admins
      */
     public function detectController($class_name = null)
     {
@@ -94,7 +94,7 @@ class Wildcard
         $app = 'App\\Http\\Controllers\\'
             . ucfirst(Str::studly($this->dir))
             . '\\'.$class_name;
-        $facilitador = 'Facilitador\Http\Controllers\Decoy\\'.$class_name;
+        $facilitador = 'Facilitador\Http\Controllers\Admin\\'.$class_name;
 
         // Find the right one
         if (class_exists($app)) {

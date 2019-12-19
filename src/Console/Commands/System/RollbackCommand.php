@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Facilitador\Console\Commands;
+namespace Facilitador\Console\Commands\System;
 
 use Illuminate\Console\Command;
 
-class MigrateCommand extends Command
+class RollbackCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'facilitador:migrate:attributes {--force : Force the operation to run when in production.}';
+    protected $signature = 'facilitador:rollback:attributes {--force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Migrate Facilitador Attributes Tables.';
+    protected $description = 'Rollback Facilitador Attributes Tables.';
 
     /**
      * Execute the console command.
@@ -32,7 +32,7 @@ class MigrateCommand extends Command
         $this->alert($this->description);
 
         if (file_exists($path = 'database/migrations/facilitador/laravel-attributes')) {
-            $this->call('migrate', [
+            $this->call('migrate:reset', [
                 '--step' => true,
                 '--path' => $path,
                 '--force' => $this->option('force'),

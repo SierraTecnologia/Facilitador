@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Console\Commands\CrudMaker;
+namespace Facilitador\Console\Commands\System;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -12,7 +12,7 @@ class Publish extends Command
      *
      * @var string
      */
-    protected $signature = 'crudmaker:init';
+    protected $signature = 'facilitador:init';
     /**
      * The console command description.
      *

@@ -1,6 +1,6 @@
 <?php
 
-namespace Locaravel\Console\Commands;
+namespace Facilitador\Console\Commands\Generate;
 
 use DB;
 use Illuminate\Console\Command;
@@ -241,7 +241,7 @@ class GenerateRequestFromMySQL extends Command
 	{
 		return '<?php
 
-	namespace Locaravel\Http\Requests;
+	namespace Facilitador\Http\Requests;
 	
 	use Illuminate\Foundation\Http\FormRequest;
 	
