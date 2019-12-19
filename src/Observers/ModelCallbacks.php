@@ -98,7 +98,8 @@ class ModelCallbacks
         if (method_exists($influencia, $method)) {
             return call_user_func_array([$influencia, $method], [])->save($model);
         }
-        Log::warning('Facilitador Influencia não encontrou o metodo '.$method.' na classe '.class_basename($influencia));
+        // @todo Resolver isso, o log faz o calbback ficar em looping infinito
+        //Log::warning('Facilitador Influencia não encontrou o metodo '.$method.' na classe '.class_basename($influencia));
         return false;
     }
 }
