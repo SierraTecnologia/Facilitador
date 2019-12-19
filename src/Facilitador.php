@@ -746,12 +746,16 @@ class Facilitador
     /**
      * Set Influencia
      */
-    public function setInfluencia($influencia)
+    public function setInfluencia($influencia = false)
     {
         $this->influenciaModel = $influencia;
     }
     public function getInfluencia()
     {
         return $this->influenciaModel;
+    }
+    public function emptyInfluencia()
+    {
+        $this->setInfluencia();
     }
 }

@@ -3,6 +3,7 @@
 namespace Facilitador\Observers;
 
 use Event;
+use Log;
 use Illuminate\Support\Str;
 use Facilitador;
 
@@ -91,6 +92,13 @@ class ModelCallbacks
         if (!$influencia = Facilitador::getInfluencia()) {
             return false;
         }
-        return $influencia->persons()->save($model);
+        $method = Str::plural(Str::lower(class_basename($model)));
+
+        
+        if (method_exists($influencia, $method)) {
+            return call_user_func_array([$influencia, $method], [])->save($model);
+        }
+        Log::warning('Facilitador Influencia não encontrou o metodo '.$method.' na classe '.class_basename($influencia));
+        return false;
     }
 }

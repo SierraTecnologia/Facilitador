@@ -114,7 +114,6 @@ class User extends Base implements
         'cpf',
         'username',
         'email',
-        'role_id',
         'token',
         'token_public',
     ];
@@ -143,16 +142,12 @@ class User extends Base implements
             'type' => 'string',
             "analyzer" => "standard",
         ],
-        // 'cpf' => [
-        //     'type' => 'string',
-        //     "analyzer" => "standard",
-        // ],
-        'email' => [
+        'cpf' => [
             'type' => 'string',
             "analyzer" => "standard",
         ],
-        'role_id' => [
-            'type' => 'integer',
+        'email' => [
+            'type' => 'string',
             "analyzer" => "standard",
         ],
     );
@@ -188,14 +183,6 @@ class User extends Base implements
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function photos()
-    {
-        return $this->hasMany(Photo::class, 'created_by_user_id');
-    }
-
-    /**
      * @return UserEntity
      */
     public function toEntity(): UserEntity
@@ -205,10 +192,18 @@ class User extends Base implements
             'name' => $this->name,
             'email' => $this->email,
             'password_hash' => $this->password,
-            'role' => optional($this->role)->name,
+            // 'role' => optional($this->role)->name,
             'created_at' => $this->created_at->toAtomString(),
             'updated_at' => $this->updated_at->toAtomString(),
         ]);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function photos()
+    {
+        return $this->hasMany(Photo::class, 'created_by_user_id');
     }
     
 
@@ -366,17 +361,18 @@ class User extends Base implements
         // Make them active
         $this->active = 1;
 
-        // If the current user can't grant permissions, make the new admin
-        // have the same role as themselves.  Admins created from the CLI (like as
-        // part of a migration) won't be logged in.
-        if (($admin = app('facilitador.user'))
-            && !app('facilitador.user')->can('grant', 'admins')) {
-            $this->role = $admin->role;
+        // @todo Comentado pq nao mais role
+        // // If the current user can't grant permissions, make the new admin
+        // // have the same role as themselves.  Admins created from the CLI (like as
+        // // part of a migration) won't be logged in.
+        // if (($admin = app('facilitador.user'))
+        //     && !app('facilitador.user')->can('grant', 'admins')) {
+        //     $this->role = $admin->role;
 
-        // Otherwise, give the admin a default role if none was defined
-        } elseif (empty($this->role)) {
-            $this->role = 'admin';
-        }
+        // // Otherwise, give the admin a default role if none was defined
+        // } elseif (empty($this->role)) {
+        //     $this->role = 'admin';
+        // }
     }
 
     /**
@@ -529,15 +525,15 @@ class User extends Base implements
         $this->notify(new ResetPassword($token));
     }
 
-    /**
-     * A shorthand for getting the admin name as a string
-     *
-     * @return string
-     */
-    public function getNameAttribute()
-    {
-        return $this->getAdminTitleAttribute();
-    }
+    // /** @todo
+    //  * A shorthand for getting the admin name as a string
+    //  *
+    //  * @return string
+    //  */
+    // public function getNameAttribute()
+    // {
+    //     return $this->getAdminTitleAttribute();
+    // }
 
     /**
      * Produce the title for the list view
@@ -571,7 +567,7 @@ class User extends Base implements
     {
         $html ='';
 
-        // Add the role
+        // Add the role // @todo verificar aqui
         if (($roles = static::getRoleTitles()) && count($roles)) {
             $html .= '<span class="label label-primary">'.$roles[$this->role].'</span>';
         }
