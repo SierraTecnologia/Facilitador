@@ -4,6 +4,7 @@ namespace Facilitador\Observers;
 
 use Event;
 use Illuminate\Support\Str;
+use Facilitador;
 
 /**
  * Call no-op classes on models for all event types.  This just simplifies
@@ -23,6 +24,48 @@ class ModelCallbacks
     {
         list($model) = $payload;
 
+        // // Payload
+        // ^ Cmgmyr\Messenger\Models\Message^ {#4332
+        //     #table: "messages"
+        //     #touches: array:1 [
+        //       0 => "thread"
+        //     ]
+        //     #fillable: array:3 [
+        //       0 => "thread_id"
+        //       1 => "user_id"
+        //       2 => "body"
+        //     ]
+        //     #dates: array:1 [
+        //       0 => "deleted_at"
+        //     ]
+        //     #connection: null
+        //     #primaryKey: "id"
+        //     #keyType: "int"
+        //     +incrementing: true
+        //     #with: []
+        //     #withCount: []
+        //     #perPage: 15
+        //     +exists: false
+        //     +wasRecentlyCreated: false
+        //     #attributes: []
+        //     #original: []
+        //     #changes: []
+        //     #casts: []
+        //     #dateFormat: null
+        //     #appends: []
+        //     #dispatchesEvents: []
+        //     #observables: []
+        //     #relations: []
+        //     +timestamps: true
+        //     #hidden: []
+        //     #visible: []
+        //     #guarded: array:1 [
+        //       0 => "*"
+        //     ]
+        //     #forceDeleting: false
+        //   }
+          
+
         // Get the action from the event name
         preg_match('#\.(\w+)#', $event, $matches);
         $action = $matches[1];
@@ -30,8 +73,24 @@ class ModelCallbacks
         // If there is matching callback method on the model, call it, passing
         // any additional event arguments to it
         $method = 'on'.Str::studly($action);
+
+        if ($method == 'onCreated') {
+            $this->linkToInfluencia($model);
+        }
+
         if (method_exists($model, $method)) {
             return call_user_func_array([$model, $method], array_slice($payload, 1));
         }
+    }
+
+    /**
+     * 
+     */
+    protected function linkToInfluencia($model)
+    {
+        if (!$influencia = Facilitador::getInfluencia()) {
+            return false;
+        }
+        return $influencia->persons()->save($model);
     }
 }

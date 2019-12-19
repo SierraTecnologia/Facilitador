@@ -20,6 +20,7 @@ use Facilitador\Collections\Base as BaseCollection;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Audit\Traits\Loggable;
 
 abstract class Base extends Eloquent
 {
@@ -34,7 +35,7 @@ abstract class Base extends Eloquent
         SupportsUploads,
         Traits\CanSerializeTransform,
         Traits\Exportable,
-        Traits\Loggable
+        Loggable
     ;
 
     /**

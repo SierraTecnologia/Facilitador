@@ -10,13 +10,13 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use TCG\Voyager\Actions\DeleteAction;
-use TCG\Voyager\Actions\EditAction;
-use TCG\Voyager\Actions\RestoreAction;
-use TCG\Voyager\Actions\ViewAction;
-use TCG\Voyager\Events\AlertsCollection;
-use TCG\Voyager\FormFields\After\HandlerInterface as AfterHandlerInterface;
-use TCG\Voyager\FormFields\HandlerInterface;
+use Support\Actions\DeleteAction;
+use Support\Actions\EditAction;
+use Support\Actions\RestoreAction;
+use Support\Actions\ViewAction;
+use Support\Events\AlertsCollection;
+use Support\FormFields\After\HandlerInterface as AfterHandlerInterface;
+use Support\FormFields\HandlerInterface;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\DataRow;
 use TCG\Voyager\Models\DataType;
@@ -28,7 +28,7 @@ use TCG\Voyager\Models\Post;
 use TCG\Voyager\Models\Role;
 use TCG\Voyager\Models\Setting;
 use TCG\Voyager\Models\Translation;
-use TCG\Voyager\Models\User;
+use App\Models\User;
 use TCG\Voyager\Traits\Translatable;
 use View;
 use Config;
@@ -56,6 +56,11 @@ class Facilitador
         EditAction::class,
         ViewAction::class,
     ];
+
+    /**
+     * Caso selecionado, modelos craidos que podem se relacionar com ele serão ligados
+     */
+    protected $influenciaModel = false;
 
     protected $models = [
         'Category'    => Category::class,
@@ -733,5 +738,20 @@ class Facilitador
         }
 
         return array_filter($array);
+    }
+
+
+
+
+    /**
+     * Set Influencia
+     */
+    public function setInfluencia($influencia)
+    {
+        $this->influenciaModel = $influencia;
+    }
+    public function getInfluencia()
+    {
+        return $this->influenciaModel;
     }
 }
