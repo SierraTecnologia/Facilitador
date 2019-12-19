@@ -50,8 +50,10 @@ class User extends Base implements
     // UserContract # Comentei pq deu erro
 // extends Authenticatable implements UserContract
 {
-    use Authenticatable, CanResetPassword, Traits\HasImages, Notifiable;
+    use Authenticatable, CanResetPassword, Traits\HasImages;
     use VoyagerUser;
+    use HasApiTokens, Notifiable;
+    // use CanResetPassword;
 
     /**
      * Don't allow cloning because duplicate emails are not allowed.
