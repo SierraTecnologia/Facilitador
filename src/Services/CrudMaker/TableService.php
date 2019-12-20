@@ -4,7 +4,7 @@ namespace Facilitador\Services\CrudMaker;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Support\Traits\SchemaTrait;
+use Support\ClassesHelpers\Traits\Models\SchemaTrait;
 use Faker\Factory as Faker;
 
 class TableService

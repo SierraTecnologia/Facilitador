@@ -7,14 +7,14 @@ namespace Facilitador\Services;
 
 use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Http\Request;
-use Support\Eloquent\Relationships;
+use Support\Discovers\Eloquent\Relationships;
 use App;
 use Log;
 use Exception;
 use Artisan;
 use Illuminate\Support\Collection;
-use Support\Entities\DataTypes\Varchar;
-use Support\Eloquent\EloquentColumn;
+use Support\Elements\Entities\DataTypes\Varchar;
+use Support\Discovers\Eloquent\EloquentColumn;
 use ReflectionClass;
 use TCG\Voyager\Database\Schema\SchemaManager;
 use Facilitador\Services\Discovers\DiscoverModelService;

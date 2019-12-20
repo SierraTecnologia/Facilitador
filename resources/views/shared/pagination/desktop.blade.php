@@ -1,5 +1,5 @@
 <?php
-use Facilitador\Markup\UrlWindow;
+use Support\Template\Markup\UrlWindow;
 
 // Make a smaller window
 $window = (new UrlWindow($paginator))->get(3);

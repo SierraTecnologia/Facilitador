@@ -10,7 +10,7 @@
                 @else
                     <a class="btn btn-app" href="{{$model->getUrl()}}">
                         <span class="badge bg-yellow">{{$model->getRepository()->count()}}</span>
-                        {!!\Facilitador\Layout\Icons::getRandon()!!} {{$model->getName()}}
+                        {!!\Support\Template\Layout\Icons::getRandon()!!} {{$model->getName()}}
                     </a>
                 @endif
             @endforeach

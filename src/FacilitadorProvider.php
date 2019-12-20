@@ -24,7 +24,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Barryvdh\Debugbar\ServiceProvider as DebugService;
 use Laravel\Dusk\DuskServiceProvider;
-use Support\Traits\ConsoleTools;
+use Support\ClassesHelpers\Traits\Models\ConsoleTools;
 
 
 use Facilitador\Facades\Facilitador as FacilitadorFacade;
@@ -353,7 +353,7 @@ class FacilitadorProvider extends ServiceProvider
 
         // Build the Breadcrumbs store
         $this->app->singleton('facilitador.breadcrumbs', function ($app) {
-            $breadcrumbs = new \Facilitador\Layout\Breadcrumbs();
+            $breadcrumbs = new \Support\Template\Layout\Breadcrumbs();
             $breadcrumbs->set($breadcrumbs->parseURL());
 
             return $breadcrumbs;

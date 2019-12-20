@@ -3,7 +3,7 @@
 namespace Facilitador\Models;
 
 use Croppa;
-use Facilitador\Markup\ImageElement;
+use Support\Template\Markup\ImageElement;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**

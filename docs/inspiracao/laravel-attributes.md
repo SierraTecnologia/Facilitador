@@ -106,7 +106,7 @@ Loading values as relationships will let us load only those values we may requir
 
 ### More technical details
 
-#### `Support\Traits\Attributable`
+#### `Support\ClassesHelpers\Traits\Models\Attributable`
 
 This trait is the most important and let the other classes play together.
 
@@ -140,7 +140,7 @@ getRelationValue()
 
 #### `Support\Support\RelationBuilder`
 
-This class creates the Eloquent relations to the attribute values based on their type. If they are multi-valued, it will provide a `hasMany` relation, otherwise just a `hasOne`. This class creates closures that return this kind of relations and may be called straight from the entity model. These closures are stored in `$entityAttributeRelations` property in the `\Support\Traits\Attributable` trait.
+This class creates the Eloquent relations to the attribute values based on their type. If they are multi-valued, it will provide a `hasMany` relation, otherwise just a `hasOne`. This class creates closures that return this kind of relations and may be called straight from the entity model. These closures are stored in `$entityAttributeRelations` property in the `\Support\ClassesHelpers\Traits\Models\Attributable` trait.
 
 
 ## Installation
@@ -167,12 +167,12 @@ This class creates the Eloquent relations to the attribute values based on their
 
 ### Add EAV to eloquent model
 
-**Facilitador Attributes** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add EAV functionality to your Eloquent model just use the `\Support\Traits\Attributable` trait like this:
+**Facilitador Attributes** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add EAV functionality to your Eloquent model just use the `\Support\ClassesHelpers\Traits\Models\Attributable` trait like this:
 
 ```php
 class Company extends Model
 {
-    use \Support\Traits\Attributable;
+    use \Support\ClassesHelpers\Traits\Models\Attributable;
 }
 ```
 
@@ -181,11 +181,11 @@ That's it, we only have to include that trait in our Eloquent model!
 ### Core types
 
 ```php
-\Support\Entities\Type\Text::class
-\Support\Entities\Type\Boolean::class
-\Support\Entities\Type\Integer::class
-\Support\Entities\Type\Varchar::class
-\Support\Entities\Type\Datetime::class
+\Support\Elements\Entities\Type\Text::class
+\Support\Elements\Entities\Type\Boolean::class
+\Support\Elements\Entities\Type\Integer::class
+\Support\Elements\Entities\Type\Varchar::class
+\Support\Elements\Entities\Type\Datetime::class
 ```
 
 ### Register your types
@@ -196,7 +196,7 @@ That's it, we only have to include that trait in our Eloquent model!
 use Facilitador\Models\Attribute;
 
 Attribute::typeMap([
-    'varchar' => Support\Entities\Type\Varchar,
+    'varchar' => Support\Elements\Entities\Type\Varchar,
     // ...
     'custom' => \Path\To\Your\Type::class,
 ]);
@@ -349,7 +349,7 @@ Eloquent ships with a `$with` which accepts an array of relationships that shoul
 ```php
 namespace App\Models;
 
-use Support\Traits\Attributable;
+use Support\ClassesHelpers\Traits\Models\Attributable;
 
 class Company extends Model
 {

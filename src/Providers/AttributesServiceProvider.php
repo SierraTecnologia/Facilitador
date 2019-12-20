@@ -10,7 +10,7 @@ use Facilitador\Models\AttributeEntity;
 use Facilitador\Console\Commands\MigrateCommand;
 use Facilitador\Console\Commands\PublishCommand;
 use Facilitador\Console\Commands\RollbackCommand;
-use Support\Traits\ConsoleTools;
+use Support\ClassesHelpers\Traits\Models\ConsoleTools;
 
 class AttributesServiceProvider extends ServiceProvider
 {

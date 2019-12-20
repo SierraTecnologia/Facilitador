@@ -33,7 +33,7 @@ class FacilitadorService
                 'model' => $model,
                 'url' => $model->getUrl(),
                 'count' => $model->getRepository()->count(),
-                'icon' => \Facilitador\Layout\Icons::getForNameAndCache($model->getName()),
+                'icon' => \Support\Template\Layout\Icons::getForNameAndCache($model->getName()),
                 'name' => $model->getName(),
             ];
         }

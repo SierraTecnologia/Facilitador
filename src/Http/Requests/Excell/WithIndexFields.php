@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Requests\Excel;
 
 use Laravel\Nova\Resource;
-use Support\Entities\Fields\Field;
+use Support\Elements\Entities\Fields\Field;
 use Illuminate\Support\Collection;
 
 trait WithIndexFields

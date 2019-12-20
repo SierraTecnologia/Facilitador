@@ -5,7 +5,7 @@ namespace Facilitador\Generators;
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 use Facilitador\Services\CrudMaker\FileService;
-use Support\Traits\SchemaTrait;
+use Support\ClassesHelpers\Traits\Models\SchemaTrait;
 
 /**
  * Generate the CRUD database components.

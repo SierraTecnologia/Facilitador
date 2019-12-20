@@ -20,11 +20,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         // Registering the core type map
         Attribute::typeMap([
-            'text' => \Support\Entities\Type\Text::class,
-            'bool' => \Support\Entities\Type\Boolean::class,
-            'integer' => \Support\Entities\Type\Integer::class,
-            'varchar' => \Support\Entities\Type\Varchar::class,
-            'datetime' => \Support\Entities\Type\Datetime::class,
+            'text' => \Support\Elements\Entities\Type\Text::class,
+            'bool' => \Support\Elements\Entities\Type\Boolean::class,
+            'integer' => \Support\Elements\Entities\Type\Integer::class,
+            'varchar' => \Support\Elements\Entities\Type\Varchar::class,
+            'datetime' => \Support\Elements\Entities\Type\Datetime::class,
         ]);
 
         // Push your entity fully qualified namespace

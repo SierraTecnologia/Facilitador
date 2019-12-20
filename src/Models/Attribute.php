@@ -11,11 +11,11 @@ use Spatie\Sluggable\SlugOptions;
 // // // @Arquivo no existe
 use Spatie\EloquentSortable\Sortable;
 // // @Arquivo no existe
-use Support\Cacheable\CacheableEloquent;
+use Support\Recursos\Cacheable\CacheableEloquent;
 // @Arquivo no existe
-use Support\Traits\HasTranslations;
+use Support\ClassesHelpers\Traits\Models\HasTranslations;
 // @Arquivo no existe
-use Support\Traits\ValidatingTrait;
+use Support\ClassesHelpers\Traits\Models\ValidatingTrait;
 // @todo Add Essa lib Trait 'Spatie\EloquentSortable\SortableTrait' not found
 use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Relations\HasMany;

@@ -5,7 +5,7 @@ namespace Facilitador\Exceptions;
 /**
  * Generic exception
  */
-class Exception extends \Exception
+class Exception extends \Support\Exceptions\Exception
 {
     //
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Support\Cacheable\CacheableEloquent;
+use Support\Recursos\Cacheable\CacheableEloquent;
 
 /**
  * Facilitador\Models\AttributeEntity.

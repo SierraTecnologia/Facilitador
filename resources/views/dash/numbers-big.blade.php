@@ -15,7 +15,7 @@ $i = 1
                 <span class="info-box-number">{{$model['count']}}</span>
                 </div>
             @else
-                <span class="info-box-icon bg-aqua">{!!\Facilitador\Layout\Icons::getRandon()!!}</span>
+                <span class="info-box-icon bg-aqua">{!!\Support\Template\Layout\Icons::getRandon()!!}</span>
 
                 <div class="info-box-content">
                 <span class="info-box-text"><a href="{{$model->getUrl()}}">{{$model->getName()}}</a></span>

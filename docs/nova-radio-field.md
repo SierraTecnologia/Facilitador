@@ -22,7 +22,7 @@ This is a simple nova field type to introduce a radio button with the ability to
 
 ```php
 
-use Support\Entities\Fields\RadioButton;
+use Support\Elements\Entities\Fields\RadioButton;
 
 public function fields(Request $request)
 {

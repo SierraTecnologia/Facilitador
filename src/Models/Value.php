@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Support\Cacheable\CacheableEloquent;
-use Support\Traits\ValidatingTrait;
+use Support\Recursos\Cacheable\CacheableEloquent;
+use Support\ClassesHelpers\Traits\Models\ValidatingTrait;
 use Support\Support\ValueCollection;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
