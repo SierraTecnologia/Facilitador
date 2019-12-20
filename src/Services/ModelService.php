@@ -16,8 +16,8 @@ use Illuminate\Support\Collection;
 use Support\Elements\Entities\DataTypes\Varchar;
 use Support\Discovers\Eloquent\EloquentColumn;
 use ReflectionClass;
-use TCG\Voyager\Database\Schema\SchemaManager;
-use Facilitador\Services\Discovers\DiscoverModelService;
+use Support\Discovers\Database\Schema\SchemaManager;
+use Support\Discovers\Eloquent\ModelEloquent;
 
 /**
  * ModelService helper to make table and object form mapping easy.
@@ -45,7 +45,7 @@ class ModelService
     public function getDiscoverService()
     {
         if (!$this->discoverModel) {
-            $this->discoverModel = new DiscoverModelService($this->getModelClass());
+            $this->discoverModel = new ModelEloquent($this->getModelClass());
         }
         return $this->discoverModel;
     }

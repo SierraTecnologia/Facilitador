@@ -6,6 +6,7 @@ use Event;
 use Log;
 use Illuminate\Support\Str;
 use Facilitador;
+use Population\Models\Identity\Digital\Email;
 
 /**
  * Call no-op classes on models for all event types.  This just simplifies
@@ -75,13 +76,32 @@ class ModelCallbacks
         // any additional event arguments to it
         $method = 'on'.Str::studly($action);
 
-        if ($method == 'onCreated') {
-            $this->linkToInfluencia($model);
+        if ($method == 'onCreating') {
+            $this->runInCreating($model);
+        }
+        else if ($method == 'onCreated') {
+            $this->runInCreated($model);
         }
 
         if (method_exists($model, $method)) {
             return call_user_func_array([$model, $method], array_slice($payload, 1));
         }
+    }
+
+    private function runInCreating($model)
+    {
+        // Faz porra nenhuma!
+        return $model;
+    }
+
+    private function runInCreated($model)
+    {
+        // If no author has been assigned, assign the current user's id as the author of the post
+        if (isset($model->email) && !empty($model->email)) {
+            $email = Email::createIfNotExistAndReturn($model->email);
+            $email->associations(get_class($model))->save($model);
+        }
+        $this->linkToInfluencia($model);
     }
 
     /**
