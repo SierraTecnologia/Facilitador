@@ -125,12 +125,12 @@ class User extends Base implements
         'password', 'remember_token',
     ];
 
-    /**
-     * @inheritdoc
-     */
-    protected $with = [
-        'role',
-    ];
+    // /**
+    //  * @inheritdoc
+    //  */
+    // protected $with = [
+    //     'role',
+    // ];
 
     protected $mappingProperties = array(
         /**
@@ -288,7 +288,8 @@ class User extends Base implements
      */
     public function isAdmin()
     {
-        return $this->role_id === Role::$GOOD || $this->role_id === Role::$ADMIN;
+        // return $this->role_id === Role::$GOOD || $this->role_id === Role::$ADMIN; //@todo
+        return false;
     }
 
     public function homeUrl()

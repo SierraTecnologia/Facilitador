@@ -96,6 +96,10 @@ class ModelCallbacks
 
     private function runInCreated($model)
     {
+        $executeTo = [
+
+        ];
+        
         // If no author has been assigned, assign the current user's id as the author of the post
         if (isset($model->email) && !empty($model->email)) {
             $email = Email::createIfNotExistAndReturn($model->email);
