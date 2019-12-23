@@ -2479,16 +2479,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.1",
+            "version": "6.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "0274c05370a7bc9bb3a33838858253418bd7d14b"
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0274c05370a7bc9bb3a33838858253418bd7d14b",
-                "reference": "0274c05370a7bc9bb3a33838858253418bd7d14b",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
                 "shasum": ""
             },
             "require": {
@@ -2542,7 +2542,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-12-21T08:51:15+00:00"
+            "time": "2019-12-23T11:57:10+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -3881,16 +3881,16 @@
         },
         {
             "name": "laravel/horizon",
-            "version": "v3.4.4",
+            "version": "v3.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "7c36d24b200b60a059ab20f5b53f5bb6f4d2da40"
+                "reference": "025f953b4902a9b0b172e6d5fe19d0809701259e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/7c36d24b200b60a059ab20f5b53f5bb6f4d2da40",
-                "reference": "7c36d24b200b60a059ab20f5b53f5bb6f4d2da40",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/025f953b4902a9b0b172e6d5fe19d0809701259e",
+                "reference": "025f953b4902a9b0b172e6d5fe19d0809701259e",
                 "shasum": ""
             },
             "require": {
@@ -3946,7 +3946,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2019-12-10T16:50:59+00:00"
+            "time": "2019-12-23T19:45:03+00:00"
         },
         {
             "name": "laravel/passport",
@@ -6875,16 +6875,16 @@
         },
         {
             "name": "rap2hpoutre/fast-excel",
-            "version": "v1.5.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rap2hpoutre/fast-excel.git",
-                "reference": "2a0253ba936c7d9afdb538d9f43540473244cdfa"
+                "reference": "24abb21ecf25f50dca0b3554250688d758bee2c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/2a0253ba936c7d9afdb538d9f43540473244cdfa",
-                "reference": "2a0253ba936c7d9afdb538d9f43540473244cdfa",
+                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/24abb21ecf25f50dca0b3554250688d758bee2c9",
+                "reference": "24abb21ecf25f50dca0b3554250688d758bee2c9",
                 "shasum": ""
             },
             "require": {
@@ -6930,7 +6930,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2019-12-03T20:59:23+00:00"
+            "time": "2019-12-23T07:57:53+00:00"
         },
         {
             "name": "rap2hpoutre/laravel-log-viewer",
@@ -7506,7 +7506,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "7b6fbf4760757b48bca21d6aaef9d11b9f22c444"
+                "reference": "c1efcdb3c33ac835f97d454c12f110dc2e0635c7"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -7886,7 +7886,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "3d696364c8ac9c75f28fc8394e335f3101621b84"
+                "reference": "83045579b81ec0a5a5e477044273cd3ea6e1c321"
             },
             "require": {
                 "php": ">=7.2.0",
@@ -7931,7 +7931,7 @@
             "dist": {
                 "type": "path",
                 "url": "../LaravelSupport",
-                "reference": "1e800b10c90933da282b006dd6da33cae97b9c3a"
+                "reference": "391327d50238023ff6cdf8801f32065901c23de9"
             },
             "require": {
                 "barryvdh/laravel-debugbar": "*",
@@ -8037,7 +8037,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Locaravel",
-                "reference": "9c8d1a751337620758ddaee3972dd8e62a8a5c2b"
+                "reference": "2bb2e41ff41177ca3f5e9c8de12584afce5d61ad"
             },
             "require": {
                 "doctrine/dbal": ">=2.5",
@@ -8094,7 +8094,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "53fba1f922214d389dc8caae0f77a1052bd1ffd1"
+                "reference": "2615f4530599573c700c82c996411ea9b5c5b950"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master"
@@ -8131,7 +8131,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "71b833eb1cc663fc27c4dac72847970989794121"
+                "reference": "7b89dc87bb0e7fbd14aea3f75e12d84053d918ec"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
@@ -13060,16 +13060,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.10.0",
+            "version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "d638ebbb58daba25a6a0dc7969e1358a0e3c6682"
+                "reference": "cbe1df668b3fe136bcc909126a0f529a78d4cbbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/d638ebbb58daba25a6a0dc7969e1358a0e3c6682",
-                "reference": "d638ebbb58daba25a6a0dc7969e1358a0e3c6682",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/cbe1df668b3fe136bcc909126a0f529a78d4cbbc",
+                "reference": "cbe1df668b3fe136bcc909126a0f529a78d4cbbc",
                 "shasum": ""
             },
             "require": {
@@ -13119,7 +13119,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2019-12-17T16:54:23+00:00"
+            "time": "2019-12-22T21:05:45+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
