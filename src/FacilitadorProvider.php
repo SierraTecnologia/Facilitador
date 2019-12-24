@@ -190,10 +190,13 @@ class FacilitadorProvider extends ServiceProvider
     {
 
         // Merge own configs into user configs 
-        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/sitec.php'), 'facilitador.sitec');
-        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/site.php'), 'facilitador.site');
-        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/core.php'), 'facilitador.core');
-        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/encode.php'), 'facilitador.encode');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/discover.php'), 'sitec.discover');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/generator.php'), 'sitec.generator');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/facilitador.php'), 'sitec.facilitador');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/site.php'), 'sitec.site');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/core.php'), 'sitec.core');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/encode.php'), 'sitec.encode');
+        
         $this->mergeConfigFrom($this->getPublishesPath('config/crudmaker.php'), 'crudmaker');
         $this->mergeConfigFrom($this->getPublishesPath('config/debug-server.php'), 'debug-server');
         $this->mergeConfigFrom($this->getPublishesPath('config/debugbar.php'), 'debugbar');
