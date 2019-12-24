@@ -136,16 +136,6 @@ class Admin extends Command
                 $confirmPassword = $this->secret('Confirm Password');
             }
 
-
-            // Create a new admin
-            $admin = new BkwldAdmin;
-            $admin->first_name = $name;
-            $admin->last_name = $name;
-            $admin->email = $email;
-            $admin->password = $password;
-            // Save out the new admin
-            $admin->save();
-
             if (!call_user_func($model.'::where', 'email', $email)->exists()) {
                 $this->info('Creating admin account');
                 return call_user_func($model.'::create', [
