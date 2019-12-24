@@ -94,6 +94,10 @@ class FacilitadorInstallCommand extends Command
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->run();
 
+        // Cache clear
+        $this->info('Cache Clear');
+        $this->call('cache:clear');
+        // Install Passport
         $this->info('Install passport');
         $this->call('passport:install');
         // Install voyager

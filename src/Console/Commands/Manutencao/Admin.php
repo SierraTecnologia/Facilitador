@@ -123,12 +123,6 @@ class Admin extends Command
                 $email = $this->ask('Enter the admin email');
             }
 
-            // Check the email to see if its already being used
-            while (BkwldAdmin::where('email', $email)->exists()) {
-                $this->error('That email is already in use');
-                $email = $this->ask('Enter the admin email');
-            }
-
             // Passwords don't match
             while ($password != $confirmPassword) {
                 $this->info("Passwords don't match");
