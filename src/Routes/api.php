@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+Route::get('download', ExcelController::class . '@download');
+
 $routePrefix = config('cms.backend-route-prefix', 'cms');
 
 Route::group(['middleware' => 'web'], function () use ($routePrefix) {

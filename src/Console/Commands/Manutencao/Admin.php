@@ -141,6 +141,7 @@ class Admin extends Command
 
             
         }
+        $this->info('Using existing user account');
         return call_user_func($model.'::where', 'email', $email)->firstOrFail();
 
     }

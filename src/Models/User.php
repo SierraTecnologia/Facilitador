@@ -18,6 +18,7 @@ use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 use Carbon\Carbon;
 use TCG\Voyager\Contracts\User as UserContract;
@@ -46,10 +47,8 @@ class User extends Base implements
     AuthenticatableContract,
     CanResetPasswordContract
     // UserContract # Comentei pq deu erro
-// extends Authenticatable implements UserContract
 {
     use Authenticatable, CanResetPassword, Traits\HasImages;
-    use VoyagerUser;
     use HasApiTokens, Notifiable;
     // use CanResetPassword;
 
@@ -89,10 +88,9 @@ class User extends Base implements
      * @var array
      */
     public static $rules = [
-        'first_name' => 'required',
-        'last_name' => 'required',
+        'name' => 'required',
         'images.default' => 'image',
-        'email' => 'required|email|unique:admins,email',
+        'email' => 'required|email|unique:users,email',
         'password' => 'required',
         'confirm_password' => 'sometimes|required_with:password|same:password',
     ];
@@ -165,36 +163,39 @@ class User extends Base implements
     }
 
     /**
-     * @inheritdoc
+     * Comentei pq nao sei se esta dando problema
      */
-    public function newEloquentBuilder($query): UserBuilder
-    {
-        return new UserBuilder($query);
-    }
+    // /**
+    //  * @inheritdoc
+    //  */
+    // public function newEloquentBuilder($query): UserBuilder
+    // {
+    //     return new UserBuilder($query);
+    // }
 
-    /**
-     * @inheritdoc
-     */
-    public function newQuery(): UserBuilder
-    {
-        return parent::newQuery();
-    }
+    // /**
+    //  * @inheritdoc
+    //  */
+    // public function newQuery(): UserBuilder
+    // {
+    //     return parent::newQuery();
+    // }
 
-    /**
-     * @return UserEntity
-     */
-    public function toEntity(): UserEntity
-    {
-        return new UserEntity([
-            'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'password_hash' => $this->password,
-            // 'role' => optional($this->role)->name,
-            'created_at' => $this->created_at->toAtomString(),
-            'updated_at' => $this->updated_at->toAtomString(),
-        ]);
-    }
+    // /**
+    //  * @return UserEntity
+    //  */
+    // public function toEntity(): UserEntity
+    // {
+    //     return new UserEntity([
+    //         'id' => $this->id,
+    //         'name' => $this->name,
+    //         'email' => $this->email,
+    //         'password_hash' => $this->password,
+    //         // 'role' => optional($this->role)->name,
+    //         'created_at' => $this->created_at->toAtomString(),
+    //         'updated_at' => $this->updated_at->toAtomString(),
+    //     ]);
+    // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -252,35 +253,6 @@ class User extends Base implements
     {
         $name = explode(' ', $this->name);
         return $name[strlen($name)-1];
-    }
-
-    /**
-     * @todo VErificar esse aqui pq agora usa o role do voyager
-     */
-    public function hasRole($name)
-    {
-        foreach($this->roles as $role)
-        {
-            if($role->name == $name) return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * @todo VErificar esse aqui pq agora usa o role do voyager
-     */
-    public function assignRole($role)
-    {
-        return $this->roles()->attach($role);
-    }
-
-    /**
-     * @todo VErificar esse aqui pq agora usa o role do voyager
-     */
-    public function removeRole($role)
-    {
-        return $this->roles()->detach($role);
     }
 
     /**
@@ -778,5 +750,122 @@ class User extends Base implements
     public function getLocaleAttribute()
     {
         return $this->settings->get('locale');
+    }
+
+    /**
+     * From Voyager
+     */
+
+    /**
+     * Return default User Role.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Facilitador::modelClass('Role'));
+    }
+
+    /**
+     * Return alternative User Roles.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Facilitador::modelClass('Role'), 'user_roles', 'user_id', 'role_id');
+    }
+
+    /**
+     * Return all User Roles, merging the default and alternative roles.
+     */
+    public function roles_all()
+    {
+        $this->loadRolesRelations();
+
+        return collect([$this->role])->merge($this->roles);
+    }
+
+    /**
+     * Check if User has a Role(s) associated.
+     *
+     * @param string|array $name The role(s) to check.
+     *
+     * @return bool
+     */
+    public function hasRole($name)
+    {
+        $roles = $this->roles_all()->pluck('name')->toArray();
+
+        foreach ((is_array($name) ? $name : [$name]) as $role) {
+            if (in_array($role, $roles)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Set default User Role.
+     *
+     * @param string $name The role name to associate.
+     */
+    public function setRole($name)
+    {
+        $role = Facilitador::model('Role')->where('name', '=', $name)->first();
+
+        if ($role) {
+            $this->role()->associate($role);
+            $this->save();
+        }
+
+        return $this;
+    }
+
+    public function hasPermission($name)
+    {
+        $this->loadPermissionsRelations();
+
+        $_permissions = $this->roles_all()
+                              ->pluck('permissions')->flatten()
+                              ->pluck('key')->unique()->toArray();
+
+        return in_array($name, $_permissions);
+    }
+
+    public function hasPermissionOrFail($name)
+    {
+        if (!$this->hasPermission($name)) {
+            throw new UnauthorizedHttpException(null);
+        }
+
+        return true;
+    }
+
+    public function hasPermissionOrAbort($name, $statusCode = 403)
+    {
+        if (!$this->hasPermission($name)) {
+            return abort($statusCode);
+        }
+
+        return true;
+    }
+
+    private function loadRolesRelations()
+    {
+        if (!$this->relationLoaded('role')) {
+            $this->load('role');
+        }
+
+        if (!$this->relationLoaded('roles')) {
+            $this->load('roles');
+        }
+    }
+
+    private function loadPermissionsRelations()
+    {
+        $this->loadRolesRelations();
+
+        if ($this->role && !$this->role->relationLoaded('permissions')) {
+            $this->role->load('permissions');
+            $this->load('roles.permissions');
+        }
     }
 }

@@ -33,6 +33,7 @@ class Policy
      */
     public function check(Admin $admin, $action, $controller)
     {
+        
         // Convert controller instance to its string name
         if (is_object($controller)) {
             $controller = get_class($controller);

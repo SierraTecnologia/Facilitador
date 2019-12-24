@@ -196,6 +196,8 @@ class FacilitadorProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getPublishesPath('config/sitec/site.php'), 'sitec.site');
         $this->mergeConfigFrom($this->getPublishesPath('config/sitec/core.php'), 'sitec.core');
         $this->mergeConfigFrom($this->getPublishesPath('config/sitec/encode.php'), 'sitec.encode');
+        // @todo Remover mais pra frente esse aqui
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/attributes.php'), 'sitec.attributes');
         
         $this->mergeConfigFrom($this->getPublishesPath('config/crudmaker.php'), 'crudmaker');
         $this->mergeConfigFrom($this->getPublishesPath('config/debug-server.php'), 'debug-server');
@@ -297,7 +299,7 @@ class FacilitadorProvider extends ServiceProvider
         $this->app->singleton(FacilitadorService::class, function($app)
         {
             Log::info('Singleton Facilitador');
-            return new FacilitadorService(config('sitec.sitec.models'));
+            return new FacilitadorService(config('sitec.facilitador.models'));
         });
 
         /**

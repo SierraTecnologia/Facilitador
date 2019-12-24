@@ -18,7 +18,7 @@ class FacilitadorService
     public function __construct($config = false)
     {
         if (!$this->config = $config) {
-            $this->config = config('sitec.sitec.models');
+            $this->config = config('sitec.facilitador.models');
         }
     }
 
@@ -43,12 +43,29 @@ class FacilitadorService
     public function getModelServices()
     {
         if (!$this->modelServices) {
-            $this->modelServices = collect($this->config)->map(function ($value) {
-                return new ModelService($value);
-            });
+            $this->modelServices = $this->recoverModelsFromConfig($this->config);
         }
 
         return $this->modelServices;
+    }
+
+    private function recoverModelsFromConfig($configModels)
+    {
+        $models = [];
+        if (empty($configModels)) {
+            return $models;
+        }
+        foreach ($configModels as $model) {
+            if (is_array($model)) {
+                $models = array_merge(
+                    $models,
+                    $this->recoverModelsFromConfig($model)
+                );
+            } else {
+                $models[] = new ModelService($model);
+            }
+        }
+        return $models;
     }
 
     public function modelIsValid($model)

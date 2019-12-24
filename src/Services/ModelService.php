@@ -30,6 +30,7 @@ class ModelService
 
     public function __construct($modelClass = false)
     {
+        if (!is_string($modelClass)) dd($modelClass);
         if ($this->modelClass = $modelClass) {
             $this->getDiscoverService();
         }
