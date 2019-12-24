@@ -419,7 +419,7 @@ class User extends Base implements
             'first_name' => $admin->first_name,
             'last_name' => $admin->last_name,
             'email' => request('email'),
-            'url' => Request::root().'/'.Config::get('facilitador.core.dir'),
+            'url' => Request::root().'/'.Config::get('sitec.core.dir'),
             'root' => Request::root(),
             'password' => request('password'),
         ];
@@ -447,7 +447,7 @@ class User extends Base implements
             'last_name' =>request('last_name'),
             'email' => request('email'),
             'password' =>request('password'),
-            'url' => Request::root().'/'.Config::get('facilitador.core.dir'),
+            'url' => Request::root().'/'.Config::get('sitec.core.dir'),
             'root' => Request::root(),
         ];
 
@@ -625,7 +625,7 @@ class User extends Base implements
             }
 
             return $title;
-        }, config('facilitador.site.roles'));
+        }, config('sitec.site.roles'));
     }
 
     /**
@@ -671,7 +671,7 @@ class User extends Base implements
 
                 // Add permission options for the controller
                 'permissions' => array_map(function ($value, $action) use ($class, $admin) {
-                    $roles = array_keys(Config::get('facilitador.site.roles'));
+                    $roles = array_keys(Config::get('sitec.site.roles'));
 
                     return (object) [
                         'slug' => $action,

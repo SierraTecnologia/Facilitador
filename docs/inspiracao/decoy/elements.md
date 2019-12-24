@@ -6,7 +6,7 @@ Copy, images, and files that aren't managed as part of an item in a list.  If co
 
 ## Setup
 
-Begin by customizing the `config/facilitador/elements.yaml` file that will have been published during the Decoy installation.  Roughly speaking, there are 3 nested layers of hashes that configure elements:
+Begin by customizing the `config/sitec/elements.yaml` file that will have been published during the Decoy installation.  Roughly speaking, there are 3 nested layers of hashes that configure elements:
 
 - A page
   - A section
@@ -39,7 +39,7 @@ homepage:
 
 The two forms can be intermixed. Check out the `elements.yaml` file for more examples.
 
-Alternatively, you can create a directory at `config/facilitador/elements` and create many different .yaml files within there. They all share the same syntax as the main `elements.yaml` and get merged into recursively merged into one another.
+Alternatively, you can create a directory at `config/sitec/elements` and create many different .yaml files within there. They all share the same syntax as the main `elements.yaml` and get merged into recursively merged into one another.
 
 ## Usage
 

@@ -22,7 +22,7 @@ class ResetPassword extends LaravelResetPassword
     public function toMail($notifiable)
     {
         // Make the URL
-        $dir = config('facilitador.core.dir');
+        $dir = config('sitec.core.dir');
         $url = url($dir.'/password/reset', $this->token);
 
         // Send the message

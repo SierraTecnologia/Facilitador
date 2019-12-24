@@ -184,7 +184,7 @@ Route::get('news', ['as' => 'news', function() {
 
 ## Step 7 - Edit the Decoy navigation
 
-Now, update the admin navigation to include "News", the label for managing Article models.  The contents of the navigation are stored in the `config/facilitador/site.php` file.  There is no need to setup any special routing definitions, this happens [automatically](routing).
+Now, update the admin navigation to include "News", the label for managing Article models.  The contents of the navigation are stored in the `config/sitec/site.php` file.  There is no need to setup any special routing definitions, this happens [automatically](routing).
 
 ```php
 <?php return [

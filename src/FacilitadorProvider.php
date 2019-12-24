@@ -157,7 +157,7 @@ class FacilitadorProvider extends ServiceProvider
         $this->registerDirectories();
         
         // Register the routes.
-        if (config('facilitador.core.register_routes') && !$this->app->routesAreCached()) {
+        if (config('sitec.core.register_routes') && !$this->app->routesAreCached()) {
             $this->app['facilitador.router']->registerAll();
         }
 
@@ -190,10 +190,10 @@ class FacilitadorProvider extends ServiceProvider
     {
 
         // Merge own configs into user configs 
-        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/sitec.php'), 'facilitador.sitec');
-        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/site.php'), 'facilitador.site');
-        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/core.php'), 'facilitador.core');
-        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador/encode.php'), 'facilitador.encode');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/sitec.php'), 'facilitador.sitec');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/site.php'), 'facilitador.site');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/core.php'), 'facilitador.core');
+        $this->mergeConfigFrom($this->getPublishesPath('config/sitec/encode.php'), 'facilitador.encode');
         $this->mergeConfigFrom($this->getPublishesPath('config/crudmaker.php'), 'crudmaker');
         $this->mergeConfigFrom($this->getPublishesPath('config/debug-server.php'), 'debug-server');
         $this->mergeConfigFrom($this->getPublishesPath('config/debugbar.php'), 'debugbar');
@@ -230,7 +230,7 @@ class FacilitadorProvider extends ServiceProvider
 
         // Registers explicit rotues and wildcarding routing
         $this->app->singleton('facilitador.router', function ($app) {
-            $dir = config('facilitador.core.dir');
+            $dir = config('sitec.core.dir');
 
             return new \Facilitador\Routing\Router($dir);
         });
@@ -240,7 +240,7 @@ class FacilitadorProvider extends ServiceProvider
             $request = $app['request'];
 
             return new \Facilitador\Routing\Wildcard(
-                config('facilitador.core.dir'),
+                config('sitec.core.dir'),
                 $request->getMethod(),
                 $request->path()
             );
@@ -248,7 +248,7 @@ class FacilitadorProvider extends ServiceProvider
 
         // Return the active user account
         $this->app->singleton('facilitador.user', function ($app) {
-            $guard = config('facilitador.core.guard');
+            $guard = config('sitec.core.guard');
 
             return $app['auth']->guard($guard)->user();
         });
@@ -294,7 +294,7 @@ class FacilitadorProvider extends ServiceProvider
         $this->app->singleton(FacilitadorService::class, function($app)
         {
             Log::info('Singleton Facilitador');
-            return new FacilitadorService(config('facilitador.sitec.models'));
+            return new FacilitadorService(config('sitec.sitec.models'));
         });
 
         /**
@@ -389,8 +389,8 @@ class FacilitadorProvider extends ServiceProvider
 
         // Set the default mailer settings
         Config::set('mail.from', [
-            'address' => Config::get('facilitador.core.mail_from_address'),
-            'name' => Config::get('facilitador.core.mail_from_name'),
+            'address' => Config::get('sitec.core.mail_from_address'),
+            'name' => Config::get('sitec.core.mail_from_name'),
         ]);
 
         // Config Former
@@ -431,7 +431,7 @@ class FacilitadorProvider extends ServiceProvider
         ]);
 
         // Point to the Gate policy
-        $this->app[Gate::class]->define('facilitador.auth', config('facilitador.core.policy'));
+        $this->app[Gate::class]->define('facilitador.auth', config('sitec.core.policy'));
     }
 
     /**
@@ -552,7 +552,7 @@ class FacilitadorProvider extends ServiceProvider
         // Publish config files
         $this->publishes([
             // Paths
-            $this->getPublishesPath('config/facilitador') => config_path('facilitador'),
+            $this->getPublishesPath('config/sitec') => config_path('sitec'),
             // Files
             $this->getPublishesPath('config/crudmaker.php') => config_path('crudmaker.php'),
             $this->getPublishesPath('config/debug-server.php') => config_path('debug-server.php'),

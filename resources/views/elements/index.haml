@@ -15,13 +15,13 @@
 -# Create navigation
 .padded-col.tab-sidebar.affixable(data-top="58")
 
-	-if(($locales = Config::get('facilitador.site.locales')) && count($locales) > 1)
+	-if(($locales = Config::get('sitec.site.locales')) && count($locales) > 1)
 		%fieldset.locale
 			.legend
 				!= __('facilitador::elements.legend.locale')
 				.btn-group.pull-right
 					%button.btn.btn-sm.outline.dropdown-toggle(type="button" data-toggle="dropdown" aria-expanded="false")
-						=Config::get('facilitador.site.locales')[$locale]
+						=Config::get('sitec.site.locales')[$locale]
 						%spen.caret
 					%ul.dropdown-menu(role="menu")
 						-foreach($locales as $slug => $label)

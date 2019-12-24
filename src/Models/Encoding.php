@@ -137,7 +137,7 @@ class Encoding extends Base
      */
     public static function encoder(Encoding $model = null)
     {
-        $class = Config::get('facilitador.encode.provider');
+        $class = Config::get('sitec.encode.provider');
 
         return new $class($model);
     }

@@ -27,7 +27,7 @@ class Localize
         if (!empty($model->locale)
             && empty($model->locale_group)
             && !is_a($model, Element::class) // Elements don't have groups
-            && ($locales = Config::get('facilitador.site.locales'))
+            && ($locales = Config::get('sitec.site.locales'))
             && count($locales) > 1) {
             $model->setAttribute('locale_group', Str::random());
         }

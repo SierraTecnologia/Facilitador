@@ -12,7 +12,7 @@
 
 		// Email and password
 		echo Former::text('email')->label(__('facilitador::admins.form.email'));
-		if (Config::get('facilitador.core.obscure_admin_password')) {
+		if (Config::get('sitec.core.obscure_admin_password')) {
 			echo Former::password('password')->label(__('facilitador::admins.form.password'));
 			echo Former::password('confirm_password')->label(__('facilitador::admins.form.confirm_password'));
 		} else {
@@ -26,7 +26,7 @@
 
 		// Roles and permissions
 		if (app('facilitador.user')->can('grant', $controller)
-			&& ($roles = Config::get('facilitador.site.roles'))
+			&& ($roles = Config::get('sitec.site.roles'))
 			&& !empty($roles)) {
 			echo Former::radiolist('role')->label(__('facilitador::admins.form.role'))->from($roles);
 			echo View::make('facilitador::admins._permissions', $__data)->render();

@@ -30,7 +30,7 @@ Assuming your model is `App\ProjectCategory` with a controller of `App\Http\Cont
 
 Decoy's wildcard router will interfere with creating custom /admin routes because it runs before app routes gets registered (and I [haven't found a way](https://github.com/sierratcnologia/facilitador/issues/490) to delay it).  You can stop Decoy from registering it's routes via the `facilitador.core.register_routes` boolean config value and then manually register them after you finish registering your own routes. Thus:
 
-- `config/facilitador/core.php`:
+- `config/sitec/core.php`:
 
   ```php?start_inline=1
   'register_routes' => false,

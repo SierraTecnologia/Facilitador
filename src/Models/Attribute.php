@@ -144,11 +144,11 @@ class Attribute extends Model// implements Sortable
     {
         parent::__construct($attributes);
 
-        $this->setTable(config('facilitador.attributes.tables.attributes'));
+        $this->setTable(config('sitec.attributes.tables.attributes'));
         $this->setRules([
             'name' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('facilitador.attributes.tables.attributes').',slug',
+            'slug' => 'required|alpha_dash|max:150|unique:'.config('sitec.attributes.tables.attributes').',slug',
             'sort_order' => 'nullable|integer|max:10000000',
             'group' => 'nullable|string|max:150',
             'type' => 'required|string|max:150',
@@ -262,7 +262,7 @@ class Attribute extends Model// implements Sortable
      */
     public function entities(): HasMany
     {
-        return $this->hasMany(config('facilitador.attributes.models.attribute_entity'), 'attribute_id', 'id');
+        return $this->hasMany(config('sitec.attributes.models.attribute_entity'), 'attribute_id', 'id');
     }
 
     /**

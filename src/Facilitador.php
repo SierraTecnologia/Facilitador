@@ -374,7 +374,7 @@ class Facilitador
      */
     public function site()
     {
-        $site = Config::get('facilitador.site.name');
+        $site = Config::get('sitec.site.name');
         if (is_callable($site)) {
             $site = call_user_func($site);
         }
@@ -478,7 +478,7 @@ class Facilitador
 
         // If the column is named, locale, convert it to its label
         if ($column == 'locale') {
-            $locales = Config::get('facilitador.site.locales');
+            $locales = Config::get('sitec.site.locales');
             if (isset($locales[$item->locale])) {
                 return $locales[$item->locale];
             }
@@ -577,7 +577,7 @@ class Facilitador
             return $this->is_handling;
         }
         if (env('DECOY_TESTING')) return true;
-        $this->is_handling = preg_match('#^'.Config::get('facilitador.core.dir').'($|/)'.'#i', Request::path());
+        $this->is_handling = preg_match('#^'.Config::get('sitec.core.dir').'($|/)'.'#i', Request::path());
 
         return $this->is_handling;
     }
@@ -604,7 +604,7 @@ class Facilitador
     {
         // Set the locale if a valid local is passed
         if ($locale
-            && ($locales = Config::get('facilitador.site.locales'))
+            && ($locales = Config::get('sitec.site.locales'))
             && is_array($locales)
             && isset($locales[$locale])) {
             return Session::put('locale', $locale);
@@ -627,7 +627,7 @@ class Facilitador
      */
     public function defaultLocale()
     {
-        if (($locales = Config::get('facilitador.site.locales'))
+        if (($locales = Config::get('sitec.site.locales'))
             && is_array($locales)) {
             reset($locales);
 
@@ -651,7 +651,7 @@ class Facilitador
 
         // Replace non-facilitador controller's with the standard model namespace
         if (!$is_facilitador) {
-            $namespace = ucfirst(Config::get('facilitador.core.dir'));
+            $namespace = ucfirst(Config::get('sitec.core.dir'));
             $model = str_replace('App\Http\Controllers\\'.$namespace.'\\', 'App\\', $model);
         }
 
@@ -674,7 +674,7 @@ class Facilitador
 
         // Replace non-facilitador controller's with the standard model namespace
         if (!$is_facilitador) {
-            $namespace = ucfirst(Config::get('facilitador.core.dir'));
+            $namespace = ucfirst(Config::get('sitec.core.dir'));
             $controller = str_replace('App\\', 'App\Http\Controllers\\'.$namespace.'\\', $controller);
         }
 

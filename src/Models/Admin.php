@@ -26,7 +26,7 @@ class Admin extends \Facilitador\Models\User
 //     AuthInterface,
 //     AuthenticatableContract,
 //     CanResetPasswordContract
-// {
+{
 //     // Note, not using the Authorizable trait because I've defined my own versions
 //     // for backwards compatability with Decoy 4 and also to have a tigher syntax.
 //     use Authenticatable, CanResetPassword, Traits\HasImages, Notifiable;
@@ -175,7 +175,7 @@ class Admin extends \Facilitador\Models\User
 //             'first_name' => $admin->first_name,
 //             'last_name' => $admin->last_name,
 //             'email' => request('email'),
-//             'url' => Request::root().'/'.Config::get('facilitador.core.dir'),
+//             'url' => Request::root().'/'.Config::get('sitec.core.dir'),
 //             'root' => Request::root(),
 //             'password' => request('password'),
 //         ];
@@ -203,7 +203,7 @@ class Admin extends \Facilitador\Models\User
 //             'last_name' =>request('last_name'),
 //             'email' => request('email'),
 //             'password' =>request('password'),
-//             'url' => Request::root().'/'.Config::get('facilitador.core.dir'),
+//             'url' => Request::root().'/'.Config::get('sitec.core.dir'),
 //             'root' => Request::root(),
 //         ];
 
@@ -381,7 +381,7 @@ class Admin extends \Facilitador\Models\User
 //             }
 
 //             return $title;
-//         }, config('facilitador.site.roles'));
+//         }, config('sitec.site.roles'));
 //     }
 
 //     /**
@@ -427,7 +427,7 @@ class Admin extends \Facilitador\Models\User
 
 //                 // Add permission options for the controller
 //                 'permissions' => array_map(function ($value, $action) use ($class, $admin) {
-//                     $roles = array_keys(Config::get('facilitador.site.roles'));
+//                     $roles = array_keys(Config::get('sitec.site.roles'));
 
 //                     return (object) [
 //                         'slug' => $action,
