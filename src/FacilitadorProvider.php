@@ -12,10 +12,10 @@ use Facilitador\Services\RepositoryService;
 use Facilitador\Services\ModelService;
 use SierraTecnologia\Crypto\Services\Crypto;
 use Log;
-use Facilitador\Console\Commands\MakeEloquentFilter;
-use Illuminate\Support\Collection;
 use App;
 use Config;
+use Facilitador\Console\Commands\MakeEloquentFilter;
+use Illuminate\Support\Collection;
 use Former\Former;
 use Facilitador\Observers\Validation;
 use Illuminate\Contracts\Auth\Access\Gate;
@@ -132,105 +132,24 @@ class FacilitadorProvider extends ServiceProvider
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             
             $event->menu->add('Facilitador');
-            $facilitador = [];
-            $facilitador[] = [
-                'text'        => 'Manager',
-                'url'         => route('facilitador.dash'),
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            
-            /**
-             * Audits
-             */
-            $facilitador[] = [
-                'text'    => 'Audits',
-                'icon'    => 'cog',
-                'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => \Audit\Services\MenuService::getAdminMenu(),
-            ];
-            /**
-             * Tracking
-             */
-            $facilitador[] = [
-                'text'    => 'Trackings',
-                'icon'    => 'cog',
-                'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => \Tracking\Services\MenuService::getAdminMenu(),
-                'submenu' => $tracking,
-            ];
             $event->menu->add([
                 'text'    => 'Facilitador',
                 'icon'    => 'cog',
                 'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => $facilitador,
+                'submenu' => \Facilitador\Services\MenuService::getAdminMenu(),
             ]);
-
-
-            $decoy = [];
-            $decoy[] = [
-                'text'        => 'Decoy',
-                'url'         => 'admin',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
             $event->menu->add([
                 'text'    => 'Decoy',
                 'icon'    => 'cog',
                 'nivel' => \App\Models\Role::$GOOD,
                 'submenu' => $decoy,
+                'submenu' => \Facilitador\Services\MenuService::getDecoyMenu(),
             ]);
-
-            $voyager = [];
-            $voyager[] = [
-                'text'        => 'Tools',
-                'url'         => 'voyager/hooks',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $voyager[] = [
-                'text'        => 'hooks',
-                'url'         => 'voyager/hooks',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $voyager[] = [
-                'text'        => 'bread',
-                'url'         => 'voyager/bread',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $voyager[] = [
-                'text'        => 'Database',
-                'url'         => 'voyager/database',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
-            $voyager[] = [
-                'text'        => 'settings',
-                'url'         => 'voyager/settings',
-                'icon'        => 'dashboard',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ];
             $event->menu->add([
                 'text'    => 'Voyager',
                 'icon'    => 'cog',
                 'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => $voyager,
+                'submenu' => \Facilitador\Services\MenuService::getVoyagerMenu(),
             ]);
         });
         
