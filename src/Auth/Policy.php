@@ -5,7 +5,7 @@ namespace Facilitador\Auth;
 use Config;
 use Request;
 use FacilitadorURL;
-use Facilitador\Models\Admin;
+use App\Models\User;
 
 /**
  * Check if a user has permission to do something.
@@ -31,9 +31,9 @@ class Policy
      *                             - slug (articles)
      * @return boolean
      */
-    public function check(Admin $admin, $action, $controller)
+    public function check(User $admin, $action, $controller)
     {
-        
+        dd($admin, 'aqui');
         // Convert controller instance to its string name
         if (is_object($controller)) {
             $controller = get_class($controller);

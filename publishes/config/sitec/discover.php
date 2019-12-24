@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'discover_models_alias' => [
+    'models_alias' => [
+        'App\Models',
         'Informate\Models',
         'Population\Models',
         'Audit\Models',

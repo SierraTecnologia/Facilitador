@@ -142,7 +142,6 @@ class FacilitadorProvider extends ServiceProvider
                 'text'    => 'Decoy',
                 'icon'    => 'cog',
                 'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => $decoy,
                 'submenu' => \Facilitador\Services\MenuService::getDecoyMenu(),
             ]);
             $event->menu->add([
@@ -425,7 +424,7 @@ class FacilitadorProvider extends ServiceProvider
 
         Config::set('auth.providers.facilitador', [
             'driver' => 'eloquent',
-            'model'  => \Facilitador\Models\Admin::class,
+            'model'  => \App\Models\User::class,
         ]);
 
         Config::set('auth.passwords.facilitador', [

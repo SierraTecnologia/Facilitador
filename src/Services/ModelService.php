@@ -30,8 +30,13 @@ class ModelService
 
     public function __construct($modelClass = false)
     {
-        if (!is_string($modelClass)) dd($modelClass);
         if ($this->modelClass = $modelClass) {
+            if (!is_string($modelClass)) {
+                throw new Exception(
+                    "Essa classe deveria ser uma string: ".print_r($modelClass, true),
+                    400
+                );
+            }
             $this->getDiscoverService();
         }
     }

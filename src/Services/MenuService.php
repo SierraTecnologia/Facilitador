@@ -11,7 +11,7 @@ class MenuService
         $facilitador = [];
         $facilitador[] = [
             'text'        => 'Manager',
-            'url'         => route('facilitador.dash'),
+            'route'       => 'facilitador.dash',
             'icon'        => 'dashboard',
             'icon_color'  => 'blue',
             'label_color' => 'success',

@@ -19,6 +19,7 @@ class Guest
     */
     public function handle($request, Closure $next)
     {
+        dd('aqui foi ');
         // If logged in, redirect to user's home
         if (app('facilitador.user')) {
             return redirect($this->getHome());
