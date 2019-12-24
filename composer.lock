@@ -8131,7 +8131,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "8a32ee1068d99c0691656e230e421c3eaa52f2dc"
+                "reference": "6c849bc8d6c3f0baf450c9d13e35b7c2ac02e764"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
