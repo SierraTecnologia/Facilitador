@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Articles\Api;
+namespace Facilitador\Http\Controllers\Articles\Api;
 
 use App\Models\Post;
 use Illuminate\Http\Request;

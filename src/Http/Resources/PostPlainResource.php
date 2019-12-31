@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace Facilitador\Http\Resources;
 
 use App\Models\Entities\PostEntity;
 use Illuminate\Http\Resources\Json\Resource;

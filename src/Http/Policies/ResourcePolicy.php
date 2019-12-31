@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Policies;
+namespace Facilitador\Http\Policies;
 
 use App\Models\User;
 
@@ -11,6 +11,13 @@ use App\Models\User;
  */
 class ResourcePolicy
 {
+
+    public function __construct()
+    {
+
+        dd('Polyci: aqui foi2 ');
+    }
+
     /**
      * Create a resource.
      *

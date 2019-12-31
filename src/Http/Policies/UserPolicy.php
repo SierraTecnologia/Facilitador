@@ -6,6 +6,13 @@ use TCG\Voyager\Contracts\User;
 
 class UserPolicy extends BasePolicy
 {
+
+    public function __construct()
+    {
+
+        dd('Polyci: aqui foi4 ');
+    }
+
     /**
      * Determine if the given model can be viewed by the user.
      *

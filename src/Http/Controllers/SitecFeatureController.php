@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Facilitador\Http\Controllers;
 
 use Cms;
 use App\Models\Archive;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace Facilitador\Http\Resources;
 
 use function SiUtils\html_purify;
 use function SiUtils\to_object;

@@ -12,6 +12,13 @@ class BasePolicy
 
     protected static $datatypes = [];
 
+
+    public function __construct()
+    {
+
+        dd('Polyci: aqui foi2 ');
+    }
+    
     /**
      * Handle all requested permission checks.
      *
@@ -22,6 +29,7 @@ class BasePolicy
      */
     public function __call($name, $arguments)
     {
+        dd('Polyci: aqui foi ');
         if (count($arguments) < 2) {
             throw new \InvalidArgumentException('not enough arguments');
         }

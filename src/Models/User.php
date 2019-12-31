@@ -260,6 +260,7 @@ class User extends Base implements
      */
     public function isAdmin()
     {
+        dd('aquiiiii');
         // return $this->role_id === Role::$GOOD || $this->role_id === Role::$ADMIN; //@todo
         return false;
     }
@@ -439,6 +440,7 @@ class User extends Base implements
      */
     public function can($action, $controller)
     {
+        dd('can');
         return app(Gate::class)
             ->forUser($this)
             ->check('facilitador.auth', [$action, $controller]);

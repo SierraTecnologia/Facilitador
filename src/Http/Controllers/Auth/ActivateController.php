@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Facilitador\Http\Controllers\Auth;
 
 use App\Services\UserService;
 use Siravel\Services\System\ActivateService;

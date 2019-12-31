@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace Facilitador\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Plugins\Integrations\SitecPayment\SitecPayment;

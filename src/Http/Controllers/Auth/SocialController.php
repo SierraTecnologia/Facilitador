@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Facilitador\Http\Controllers\Auth;
 
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Config;

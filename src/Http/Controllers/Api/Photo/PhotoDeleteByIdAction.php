@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Actions;
+namespace Facilitador\Http\Actions;
 
 use App\Models\Contracts\PhotoManager;
 use Illuminate\Contracts\Routing\ResponseFactory;

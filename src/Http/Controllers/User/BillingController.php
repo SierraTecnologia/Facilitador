@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace Facilitador\Http\Controllers\User;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;

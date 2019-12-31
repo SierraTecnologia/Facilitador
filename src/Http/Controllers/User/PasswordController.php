@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace Facilitador\Http\Controllers\User;
 
 use Hash;
 use Auth;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Logic\Activation;
+namespace Facilitador\Logic\Activation;
 
 use App\Models\Activation;
 use App\Models\User;

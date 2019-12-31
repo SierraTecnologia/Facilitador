@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Http\Middleware;
+namespace Facilitador\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
@@ -8,8 +8,6 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Applicaion;
-
-use App\AssignedRoles;
 
 class Subscription {
 

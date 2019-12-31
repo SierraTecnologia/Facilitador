@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Facilitador\Models;
 
 use App\Models\Model;
 use App\Models\User;

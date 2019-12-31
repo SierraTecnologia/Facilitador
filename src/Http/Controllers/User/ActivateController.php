@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace Facilitador\Http\Controllers\User;
 
 use App\Services\Traits\ActivationTrait;
 use App\Models\Activation;

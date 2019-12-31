@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Actions;
+namespace Facilitador\Http\Actions;
 
 use App\Http\Proxy\Contracts\OAuthProxy;
 use Illuminate\Contracts\Routing\ResponseFactory;

@@ -3,7 +3,7 @@
  * Meio duplicado em relacao a essa
  */
 
-namespace App\Http\Controllers\Auth;
+namespace Facilitador\Http\Controllers\Auth;
 
 use DB;
 use URL;
