@@ -5,7 +5,7 @@ namespace Facilitador\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use Support\Discovers\Database\Schema\SchemaManager;
+use Support\Coder\Discovers\Database\Schema\SchemaManager;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Traits\Translatable;
 

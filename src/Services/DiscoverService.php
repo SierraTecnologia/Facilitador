@@ -1,6 +1,7 @@
 <?php
 /**
  * Serviço referente a linha no banco de dados
+ * @todo Fazer Aqui
  */
 
 namespace Facilitador\Services;
@@ -13,14 +14,14 @@ use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Support\Discovers\Database\DatabaseUpdater;
-use Support\Discovers\Database\Schema\Column;
-use Support\Discovers\Database\Schema\Identifier;
-use Support\Discovers\Database\Schema\SchemaManager;
-use Support\Discovers\Database\Schema\Table;
-use Support\Discovers\Database\Types\Type;
+use Support\Coder\Discovers\Database\DatabaseUpdater;
+use Support\Coder\Discovers\Database\Schema\Column;
+use Support\Coder\Discovers\Database\Schema\Identifier;
+use Support\Coder\Discovers\Database\Schema\SchemaManager;
+use Support\Coder\Discovers\Database\Schema\Table;
+use Support\Coder\Discovers\Database\Types\Type;
 
-use Support\Discovers\Code\ComposerParser;
+use Support\Coder\Parser\ComposerParser;
 
 /**
  * DiscoverService helper to make table and object form mapping easy.

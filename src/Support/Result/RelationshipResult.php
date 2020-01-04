@@ -2,7 +2,7 @@
 
 namespace Support\Result;
 
-use Support\Discovers\Eloquent\Relationship;
+use Support\Coder\Discovers\Eloquent\Relationship;
 use Illuminate\Support\Collection;
 use Facilitador\Services\ModelService;
 use Facilitador\Services\RepositoryService;

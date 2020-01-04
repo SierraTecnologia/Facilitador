@@ -7,17 +7,17 @@ namespace Facilitador\Services;
 
 use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Http\Request;
-use Support\Discovers\Eloquent\Relationships;
+use Support\Coder\Discovers\Eloquent\Relationships;
 use App;
 use Log;
 use Exception;
 use Artisan;
 use Illuminate\Support\Collection;
 use Support\Elements\Entities\DataTypes\Varchar;
-use Support\Discovers\Eloquent\EloquentColumn;
+use Support\Coder\Discovers\Eloquent\EloquentColumn;
 use ReflectionClass;
-use Support\Discovers\Database\Schema\SchemaManager;
-use Support\Discovers\Eloquent\ModelEloquent;
+use Support\Coder\Discovers\Database\Schema\SchemaManager;
+use Support\Coder\Discovers\Eloquent\ModelEloquent;
 
 /**
  * ModelService helper to make table and object form mapping easy.
