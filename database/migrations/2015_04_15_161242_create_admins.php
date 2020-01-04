@@ -13,6 +13,7 @@ class CreateAdmins extends Migration
      */
     public function up()
     {
+        // @todo PRecisa mesmo ?
         Schema::create('admins', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
