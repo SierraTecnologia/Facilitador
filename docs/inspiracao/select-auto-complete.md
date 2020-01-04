@@ -80,7 +80,7 @@ class EmailAccountProfile extends Action
                   ->displayUsingLabels(),
                   
             Select::make(__('Partner'), 'partner')
-                  ->options(\App\User::all()->pluck('name', 'id'))
+                  ->options(\App\Models\User::all()->pluck('name', 'id'))
                   ->displayUsingLabels()
                   ->default(7)         // set the default to the User with the ID 7
                   ->maxResults(5)      // limit the dropdown select to a max of 5 hits

@@ -72,7 +72,7 @@ class FacilitadorInstallCommand extends Command
         $this->info('Migrating the database tables into your application');
         $this->call('migrate', ['--force' => $this->option('force')]);
 
-        $this->info('Attempting to set Facilitador User model as parent to App\User');
+        $this->info('Attempting to set Facilitador User model as parent to App\Models\User');
         if (file_exists(app_path($this->userModelFile))) {
             $str = file_get_contents(app_path($this->userModelFile));
 

@@ -35,7 +35,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\User;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -82,7 +82,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\User;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -114,7 +114,7 @@ The default namespace for all filters is `App\ModelFilters\` and each Model expe
 
 |Model|ModelFilter|
 |-----|-----------|
-|`App\User`|`App\ModelFilters\UserFilter`|
+|`App\Models\User`|`App\ModelFilters\UserFilter`|
 |`App\FrontEnd\PrivatePost`|`App\ModelFilters\PrivatePostFilter`|
 |`App\FrontEnd\Public\GuestPost`|`App\ModelFilters\GuestPostFilter`|
 
@@ -203,7 +203,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\User;
+use App\Models\User;
 use App\ModelFilters\Admin\UserFilter as AdminFilter;
 use App\ModelFilters\User\UserFilter as BasicUserFilter;
 use Auth;
@@ -389,7 +389,7 @@ class UserController extends Controller
 
 For both examples we will use the following models:
 
-A `App\User` that `hasMany` `App\Client::class`:
+A `App\Models\User` that `hasMany` `App\Client::class`:
 
 ```php
 class User extends Model
