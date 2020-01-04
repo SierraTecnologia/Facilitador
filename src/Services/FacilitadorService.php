@@ -22,14 +22,23 @@ class FacilitadorService
         }
     }
 
-    public function getModelServicesToArray($all = false)
+    public function getModelServicesToArray($onlyConfig = true)
     {
 
-        $modelServiceDiscover = new \Facilitador\Services\Discover\ModelsService;
+        $models = $this->getModelServices(); 
+dd(collect(app(\Facilitador\Services\Discover\ModelsServiceDiscover::class)->getAllModels())->map(function($file, $class) {
+    return new ModelService($class);
+}));
+        if (!$onlyConfig) {
+            $models = array_merge(
+                $models,
+                collect(app(\Facilitador\Services\Discover\ModelsServiceDiscover::class)->getAllModels())->map(function($file, $class) {
+                    return new ModelService($class);
+                })
+            );
+        }
 
         /////////////
-
-        $models = $this->getModelServices(); 
         $array = [];
 
         foreach ($models as $model) {

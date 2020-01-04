@@ -23,7 +23,7 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $models = $this->facilitadorService->getModelServicesToArray(); //->sortByDesc('field', [], true);
+        $models = $this->facilitadorService->getModelServicesToArray(false); //->sortByDesc('field', [], true);
         $models = $models->reject(function ($item) {
             return empty($item['count']);
         })->SortByDesc('count');
