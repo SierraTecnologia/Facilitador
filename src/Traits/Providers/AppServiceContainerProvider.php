@@ -72,7 +72,6 @@ trait AppServiceContainerProvider
         // Return the active user account
         $this->app->singleton('facilitador.user', function ($app) {
             $guard = config('sitec.core.guard');
-
             return $app['auth']->guard($guard)->user();
         });
 

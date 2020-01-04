@@ -59,6 +59,7 @@ class FacilitadorProvider extends ServiceProvider
         }
 
         $this->bootEvents($events);
+
     }
 
 

@@ -111,17 +111,20 @@ class Admin extends Command
     protected function getUser($create = true)
     {
         $email = $this->argument('email');
+
         $model = Auth::guard(app('VoyagerGuard'))->getProvider()->getModel();
         $model = Str::start($model, '\\');
+
+        // Ask for email if there wasnt set one
+        if (!$email) {
+            $email = $this->ask('Enter the admin email');
+        }
+
         // If we need to create a new user go ahead and create it
-        if ($create) {
+        if (!call_user_func($model.'::where', 'email', $email)->exists() && $create) {
             $name = $this->ask('Enter the admin name');
             $password = $this->secret('Enter admin password');
             $confirmPassword = $this->secret('Confirm Password');
-            // Ask for email if there wasnt set one
-            if (!$email) {
-                $email = $this->ask('Enter the admin email');
-            }
 
             // Passwords don't match
             while ($password != $confirmPassword) {
@@ -130,14 +133,14 @@ class Admin extends Command
                 $confirmPassword = $this->secret('Confirm Password');
             }
 
-            if (!call_user_func($model.'::where', 'email', $email)->exists()) {
-                $this->info('Creating admin account');
-                return call_user_func($model.'::create', [
-                    'name'     => $name,
-                    'email'    => $email,
-                    'password' => Hash::make($password),
-                ]);
-            }
+            // if (!call_user_func($model.'::where', 'email', $email)->exists()) {
+            $this->info('Creating admin account');
+            return call_user_func($model.'::create', [
+                'name'     => $name,
+                'email'    => $email,
+                'password' => Hash::make($password),
+            ]);
+            // }
 
             
         }
