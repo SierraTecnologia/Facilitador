@@ -306,7 +306,7 @@ class User extends Base implements
             return;
         }
 
-        $rules = self::$rules;
+        $rules = $this->rules;
 
         // Make password optional
         $rules = array_except($rules, 'password');

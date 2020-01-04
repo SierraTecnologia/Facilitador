@@ -104,11 +104,11 @@ class Element extends Base
     {
         if ($key == 'type') {
             switch ($value) {
-            case 'image': self::$rules['value'] = 'image';
+            case 'image': $this->rules['value'] = 'image';
             break;
-            case 'file': self::$rules['value'] = 'file';
+            case 'file': $this->rules['value'] = 'file';
             break;
-            case 'video-encoder': self::$rules['value'] = 'video';
+            case 'video-encoder': $this->rules['value'] = 'video';
             break;
         }
         }

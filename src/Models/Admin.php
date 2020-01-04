@@ -90,7 +90,7 @@ class Admin extends \Facilitador\Models\User
 //             return;
 //         }
 
-//         $rules = self::$rules;
+//         $rules = $this->rules;
 
 //         // Make password optional
 //         $rules = array_except($rules, 'password');
