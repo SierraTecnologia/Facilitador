@@ -72,7 +72,7 @@ trait AppEventsProvider
     }
 
 
-    protected function bootEvents()
+    protected function bootEvents($events)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             

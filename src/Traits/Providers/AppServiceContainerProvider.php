@@ -27,19 +27,11 @@ use Laravel\Dusk\DuskServiceProvider;
 use Support\ClassesHelpers\Traits\Models\ConsoleTools;
 
 
+
+
+
 use Facilitador\Facades\Facilitador as FacilitadorFacade;
-use Illuminate\Contracts\Events\Dispatcher;
-use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
-
-
-
-
-use Facilitador\Traits\Providers\AppEventsProvider;
-use Facilitador\Traits\Providers\AppMiddlewaresProvider;
-use Facilitador\Traits\Providers\FacilitadorLoadClasses;
-use Facilitador\Traits\Providers\AppServiceContainerProvider;
-use Facilitador\Traits\Providers\FacilitadorRegisterPackages;
-use Facilitador\Traits\Providers\FacilitadorRegisterPublishes;
+use Facilitador\Facilitador;
 
 trait AppServiceContainerProvider
 {
