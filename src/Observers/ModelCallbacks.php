@@ -83,10 +83,9 @@ class ModelCallbacks
             $this->runInCreated($model);
         }
 
-        // dd($model, $method, $payload,  array_slice($payload, 1));
-        \Log::info('[Facilitador] ModelCallbacks: '.print_r($payload, true));
-
         if (method_exists($model, $method)) {
+            // dd($model, $method, $payload,  array_slice($payload, 1));
+            \Log::info('[Facilitador] ModelCallbacks: '.print_r($payload, true));
             return call_user_func_array([$model, $method], array_slice($payload, 1));
         }
     }
@@ -128,5 +127,15 @@ class ModelCallbacks
         // @todo Resolver isso, o log faz o calbback ficar em looping infinito
         //Log::warning('Facilitador Influencia não encontrou o metodo '.$method.' na classe '.class_basename($influencia));
         return false;
+    }
+
+    protected function getDontLog()
+    {
+        return config('sitec.audit.dontLog');
+    }
+
+    protected function getDontLogAlias()
+    {
+        return config('sitec.audit.dontLogAlias');
     }
 }
