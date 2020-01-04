@@ -83,6 +83,9 @@ class ModelCallbacks
             $this->runInCreated($model);
         }
 
+        // dd($model, $method, $payload,  array_slice($payload, 1));
+        \Log::info('[Facilitador] ModelCallbacks: '.print_r($payload, true));
+
         if (method_exists($model, $method)) {
             return call_user_func_array([$model, $method], array_slice($payload, 1));
         }

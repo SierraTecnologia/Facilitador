@@ -177,7 +177,7 @@ class AssetService
 
             return response()->download($filePath, $fileName, $headers);
         } catch (Exception $e) {
-            Log::info($e->getMessage());
+            Log::info('[Facilitador] Services -> Asset Error Exception: '.$e->getMessage());
             return Response::make('file not found');
         }
     }
