@@ -315,7 +315,12 @@ class User extends Base implements
         $rules['email'] .= ','.$this->id;
 
         // Update rules
-        $validation->setRules($rules);
+        if (is_a($validation, \Illuminate\Validation\Validator::class)) {
+            $validation->setRules($rules);
+            return true;
+        }
+
+        $this->setRules($rules);
     }
 
     /**
