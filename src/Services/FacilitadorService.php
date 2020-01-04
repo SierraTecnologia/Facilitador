@@ -22,8 +22,12 @@ class FacilitadorService
         }
     }
 
-    public function getModelServicesToArray()
+    public function getModelServicesToArray($all = false)
     {
+
+        $modelServiceDiscover = new \Facilitador\Services\Discover\ModelsService;
+
+        /////////////
 
         $models = $this->getModelServices(); 
         $array = [];

@@ -85,7 +85,7 @@ class ModelCallbacks
 
         if (method_exists($model, $method)) {
             // dd($model, $method, $payload,  array_slice($payload, 1));
-            \Log::info('[Facilitador] ModelCallbacks: '.print_r($payload, true));
+            // \Log::info('[Facilitador] ModelCallbacks: '.print_r($payload, true));
             return call_user_func_array([$model, $method], array_slice($payload, 1));
         }
     }
