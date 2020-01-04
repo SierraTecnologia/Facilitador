@@ -22,26 +22,27 @@ trait AppMiddlewaresProvider
      */
     public function bootAuth()
     {
-        // Inject Decoy's auth config
-        Config::set('auth.guards.facilitador', [
-            'driver'   => 'session',
-            'provider' => 'facilitador',
-        ]);
+        // @todo Desfazer Esse comentario
+        // // Inject Decoy's auth config
+        // Config::set('auth.guards.facilitador', [
+        //     'driver'   => 'session',
+        //     'provider' => 'facilitador',
+        // ]);
 
-        Config::set('auth.providers.facilitador', [
-            'driver' => 'eloquent',
-            'model'  => \App\Models\User::class,
-        ]);
+        // Config::set('auth.providers.facilitador', [
+        //     'driver' => 'eloquent',
+        //     'model'  => \App\Models\User::class,
+        // ]);
 
-        Config::set('auth.passwords.facilitador', [
-            'provider' => 'facilitador',
-            'email'    => 'facilitador::emails.reset',
-            'table'    => 'password_resets',
-            'expire'   => 60,
-        ]);
+        // Config::set('auth.passwords.facilitador', [
+        //     'provider' => 'facilitador',
+        //     'email'    => 'facilitador::emails.reset',
+        //     'table'    => 'password_resets',
+        //     'expire'   => 60,
+        // ]);
 
-        // Point to the Gate policy
-        $this->app[Gate::class]->define('facilitador.auth', config('sitec.core.policy'));
+        // // Point to the Gate policy
+        // $this->app[Gate::class]->define('facilitador.auth', config('sitec.core.policy'));
     }
 
     /**
@@ -64,11 +65,12 @@ trait AppMiddlewaresProvider
         // Register global and named middlewares
         $this->registerMiddlewares();
 
-        // Use Decoy's auth by default, while at an admin path
-        Config::set('auth.defaults', [
-            'guard'     => 'facilitador',
-            'passwords' => 'facilitador',
-        ]);
+        // @todo Desfazer Esse comentario
+        // // Use Decoy's auth by default, while at an admin path
+        // Config::set('auth.defaults', [
+        //     'guard'     => 'facilitador',
+        //     'passwords' => 'facilitador',
+        // ]);
 
         // Set the default mailer settings
         Config::set('mail.from', [
@@ -96,40 +98,41 @@ trait AppMiddlewaresProvider
     protected function registerMiddlewares()
     {
 
-        // Register middleware individually
-        foreach ([
-            'facilitador.auth'          => \Facilitador\Http\Middleware\Auth::class,
-            'facilitador.edit-redirect' => \Facilitador\Http\Middleware\EditRedirect::class,
-            'facilitador.guest'         => \Facilitador\Http\Middleware\Guest::class,
-            'facilitador.save-redirect' => \Facilitador\Http\Middleware\SaveRedirect::class,
-        ] as $key => $class) {
-            $this->app['router']->aliasMiddleware($key, $class);
-        }
+        // @todo Desfazer Esse comentario
+        // // Register middleware individually
+        // foreach ([
+        //     'facilitador.auth'          => \Facilitador\Http\Middleware\Auth::class,
+        //     'facilitador.edit-redirect' => \Facilitador\Http\Middleware\EditRedirect::class,
+        //     'facilitador.guest'         => \Facilitador\Http\Middleware\Guest::class,
+        //     'facilitador.save-redirect' => \Facilitador\Http\Middleware\SaveRedirect::class,
+        // ] as $key => $class) {
+        //     $this->app['router']->aliasMiddleware($key, $class);
+        // }
 
-        // This group is used by public facilitador routes
-        $this->app['router']->middlewareGroup('facilitador.public', [
-            'web',
-        ]);
+        // // This group is used by public facilitador routes
+        // $this->app['router']->middlewareGroup('facilitador.public', [
+        //     'web',
+        // ]);
 
-        // The is the starndard auth protected group
-        $this->app['router']->middlewareGroup('facilitador.protected', [
-            'web',
-            'facilitador.auth',
-            'facilitador.save-redirect',
-            'facilitador.edit-redirect',
-        ]);
+        // // The is the starndard auth protected group
+        // $this->app['router']->middlewareGroup('facilitador.protected', [
+        //     'web',
+        //     'facilitador.auth',
+        //     'facilitador.save-redirect',
+        //     'facilitador.edit-redirect',
+        // ]);
 
-        // Require a logged in admin session but no CSRF token
-        $this->app['router']->middlewareGroup('facilitador.protected_endpoint', [
-            \App\Http\Middleware\EncryptCookies::class,
-            \Illuminate\Session\Middleware\StartSession::class,
-            'facilitador.auth',
-        ]);
+        // // Require a logged in admin session but no CSRF token
+        // $this->app['router']->middlewareGroup('facilitador.protected_endpoint', [
+        //     \App\Http\Middleware\EncryptCookies::class,
+        //     \Illuminate\Session\Middleware\StartSession::class,
+        //     'facilitador.auth',
+        // ]);
 
-        // An open endpoint, like used by Zendcoder
-        $this->app['router']->middlewareGroup('facilitador.endpoint', [
-            'api'
-        ]);
+        // // An open endpoint, like used by Zendcoder
+        // $this->app['router']->middlewareGroup('facilitador.endpoint', [
+        //     'api'
+        // ]);
     }
 
     /****************************************************************************************************

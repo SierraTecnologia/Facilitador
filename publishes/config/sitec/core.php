@@ -9,7 +9,7 @@ return [
     'layout' => 'facilitador::layouts.default',
 
     // Auth guard and policy to use
-    'guard'  => 'facilitador',
+    'guard'  => 'web', //'facilitador',
     'policy' => 'Facilitador\Auth\Policy@check',
 
     // Use a password input field for admins
