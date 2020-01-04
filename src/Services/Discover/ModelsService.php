@@ -36,7 +36,11 @@ class ModelsService
     {
         $composerParser = new ComposerParser;
         
-        $models = config('sitec.discover.models_alias');
+        $models = $composerParser->returnClassesByAlias(config('sitec.discover.models_alias'));
+
+        $models->reject(function($filePath, $class) {
+            return !(new \Support\Coder\Discovers\Identificadores\ClasseType($class))->typeIs('model');
+        });
 
         dd($composerParser->returnClassesByAlias($models));
 
