@@ -63,7 +63,7 @@ trait FacilitadorLoadClasses
     protected function loadMigrations()
     {
         // Register Migrations
-        $this->loadMigrationsFrom(__DIR__.'../../../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../../../database/migrations');
        
     }
 
