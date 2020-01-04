@@ -5,7 +5,7 @@ namespace Facilitador\Models;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Facades\Voyager;
 
-class Role extends Model
+class Role extends \TCG\Voyager\Models\Role
 {
     protected $guarded = [];
 
