@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers;
 
 use Cms;
-use App\Models\Archive;
+use Informate\Models\System\Archive;
 use App\Services\Midia\FileService;
 use Siravel\Services\System\LanguageService;
 use Illuminate\Http\Request;

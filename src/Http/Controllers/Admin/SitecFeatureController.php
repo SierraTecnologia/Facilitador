@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers\Admin;
 
 use Cms;
-use App\Models\Archive;
+use Informate\Models\System\Archive;
 use App\Services\Midia\FileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
