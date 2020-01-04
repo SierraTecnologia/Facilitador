@@ -14,28 +14,18 @@ use Facilitador\Traits\Providers\AppServiceContainerProvider;
 use Facilitador\Traits\Providers\FacilitadorRegisterPackages;
 use Facilitador\Traits\Providers\FacilitadorRegisterPublishes;
 
+use Illuminate\Support\ServiceProvider;
+
 /**
  * Verificar se ta usando
  */
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
-use Facilitador\Services\FacilitadorService;
-use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Route;
-use Facilitador\Services\RegisterService;
-use Facilitador\Services\RepositoryService;
-use Facilitador\Services\ModelService;
-use SierraTecnologia\Crypto\Services\Crypto;
-use Log;
 use App;
 use Config;
-use Facilitador\Console\Commands\MakeEloquentFilter;
 
 
 
 class FacilitadorProvider extends ServiceProvider
 {
-    use ConsoleTools;
 
     use AppEventsProvider, AppMiddlewaresProvider, AppServiceContainerProvider, FacilitadorLoadClasses, FacilitadorRegisterPackages, FacilitadorRegisterPublishes;
 

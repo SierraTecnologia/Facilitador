@@ -3,7 +3,7 @@
 namespace Facilitador\Traits\Providers;
 
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Facilitador\Services\FacilitadorService;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -14,22 +14,6 @@ use SierraTecnologia\Crypto\Services\Crypto;
 use Log;
 use App;
 use Config;
-use Facilitador\Console\Commands\MakeEloquentFilter;
-use Illuminate\Support\Collection;
-use Former\Former;
-use Facilitador\Observers\Validation;
-use Illuminate\Contracts\Auth\Access\Gate;
-use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use Barryvdh\Debugbar\ServiceProvider as DebugService;
-use Laravel\Dusk\DuskServiceProvider;
-use Support\ClassesHelpers\Traits\Models\ConsoleTools;
-
-
-
-
-
 use Facilitador\Facades\Facilitador as FacilitadorFacade;
 use Facilitador\Facilitador;
 
