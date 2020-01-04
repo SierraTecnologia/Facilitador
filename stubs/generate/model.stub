@@ -14,7 +14,7 @@ class {{model}} extends Base
      *
      * @var array
      */
-    // public static $rules = [
+    // public $rules = [
     //    'title' => 'required',
     //    'slug' => 'alpha_dash|unique:articles',
     //    'images.default' => 'image|required',

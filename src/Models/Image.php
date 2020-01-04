@@ -62,7 +62,7 @@ class Image extends Base
      *
      * @return array
      */
-    public static $rules = [
+    public $rules = [
         'file' => 'image',
         'location' => 'mimes:jpeg,jpg,bmp,png,gif',
     ];

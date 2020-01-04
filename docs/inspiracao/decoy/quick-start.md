@@ -63,7 +63,7 @@ class Article extends Base {
    *
    * @var array
    */
-  public static $rules = [
+  public $rules = [
     'title' => 'required',
     'slug' => 'alpha_dash|unique:articles',
     'body' => 'required',

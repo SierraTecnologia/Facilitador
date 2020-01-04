@@ -26,7 +26,7 @@ public function getUriAttribute() {
 Slugs are auto created from returned by `Facilitador\Model\Base::getAdminTitleAttribute()` as long as your model has a validation rule keyed as `slug`.  Slugs are created using the [cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable) package.  For instance:
 
 ```php?start_inline=1
-public static $rules = [
+public $rules = [
 	'slug' => 'alpha_dash|unique:articles',
 ];
 ```

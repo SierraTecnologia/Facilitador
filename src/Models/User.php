@@ -87,7 +87,7 @@ class User extends Base implements
      *
      * @var array
      */
-    public static $rules = [
+    public $rules = [
         'name' => 'required',
         'images.default' => 'image',
         'email' => 'required|email|unique:users,email',
@@ -366,10 +366,13 @@ class User extends Base implements
      */
     public function onSaving()
     {
-        // If the password is changing, hash it
-        if ($this->isDirty('password')) {
-            $this->password = bcrypt($this->password);
-        }
+        // @todo Ver como consertar esse erro;
+        // // If the password is changing, hash it
+        // if ($this->isDirty('password')) {
+        //     dd(
+        //         $this->password, bcrypt($this->password));
+        //     $this->password = bcrypt($this->password);
+        // }
 
         // Save or clear permission choices if the form had a "custom permissions"
         // pushed checkbox
@@ -729,6 +732,13 @@ class User extends Base implements
         return $value ?? config('voyager.user.default_avatar', 'users/default.png');
     }
 
+    /**
+     * Sets Attributes
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = \Hash::make($password);
+    }
     public function setCreatedAtAttribute($value)
     {
         $this->attributes['created_at'] = Carbon::parse($value)->format('Y-m-d H:i:s');

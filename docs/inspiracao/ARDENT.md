@@ -152,7 +152,7 @@ Ardent models use Laravel's built-in [Validator class](http://laravel.com/docs/v
 
 ```php
 class User extends \Facilitador\Models\Ardent {
-  public static $rules = array(
+  public $rules = array(
     'name'                  => 'required|between:3,80|alpha_dash',
     'email'                 => 'required|between:5,64|email|unique:users',
     'password'              => 'required|min:6|confirmed',
@@ -410,7 +410,7 @@ In the past, programmers had to manually manage the passing of the ID and changi
 In your extended model define your rules
 
 ```php
-  public static $rules = array(
+  public $rules = array(
      'email' => 'required|email|unique',
      'password' => 'required|between:4,20|confirmed',
      'password_confirmation' => 'between:4,20',
