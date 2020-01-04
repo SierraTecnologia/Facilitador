@@ -7505,7 +7505,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "8c9f46b2825125f5c01d83acca66774c36ec65b3"
+                "reference": "bda8bdb539aefe3bd52083493937a2c5071b6310"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -7885,7 +7885,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "5676696ecaf7f618d84712e2ab8c1c1c18d19bef"
+                "reference": "83445f26dd49db193a26cb998af7f2dd34b46db2"
             },
             "require": {
                 "php": ">=7.2.0",
@@ -7930,7 +7930,7 @@
             "dist": {
                 "type": "path",
                 "url": "../LaravelSupport",
-                "reference": "828034e331b2eab139bfa929e82a45aef82d1611"
+                "reference": "f782e7a59ed03f3b35bc98b6f9ee6e27e2f9cfd4"
             },
             "require": {
                 "barryvdh/laravel-debugbar": "*",
@@ -8093,7 +8093,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "d8da5cddb8c94f0979edc569de6b1a121710bcc7"
+                "reference": "ef0939bf85fe8e7cc989a6de370dd34f1ccb1c99"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master"
@@ -8130,7 +8130,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "24f6891eee1990bd45fb3fb5473c0c0895345597"
+                "reference": "98048d8e8cb86e53e75cbff62925dd3f4d466e7e"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
