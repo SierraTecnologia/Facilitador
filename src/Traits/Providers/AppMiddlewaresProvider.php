@@ -31,7 +31,7 @@ trait AppMiddlewaresProvider
 
         // Config::set('auth.providers.facilitador', [
         //     'driver' => 'eloquent',
-        //     'model'  => \App\Models\User::class,
+        //     'model'  => config('sitec.core.models.user', \App\Models\User::class),
         // ]);
 
         // Config::set('auth.passwords.facilitador', [
