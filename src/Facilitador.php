@@ -73,7 +73,7 @@ class Facilitador
         'Post'        => Post::class,
         'Role'        => Role::class,
         'Setting'     => Setting::class,
-        'User'        => config('sitec.core.models.user', \App\Models\User::class),
+        'User'        => User::class,
         'Translation' => Translation::class,
     ];
 
