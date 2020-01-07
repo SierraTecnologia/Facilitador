@@ -5,7 +5,7 @@ namespace Facilitador\Models;
 use App\Models\Model;
 use App\Models\User;
 use App\Models\Negocio;
-use App\Models\System\Language;
+use RicardoSierra\Translation\Models\Language;
 use App\Models\Traits\EloquentGetTableNameTrait;
 
 class Setting extends Model
@@ -62,7 +62,7 @@ class Setting extends Model
                 'code' => '',
                 'options' => 'string',
                 'defaultValue' => 'PT',
-                'target' => User::class,
+                'target' => config('sitec.core.models.user', \App\Models\User::class),
                 'config' => null,
             ],
             [
@@ -71,7 +71,7 @@ class Setting extends Model
                 'code' => '',
                 'options' => 'string',
                 'defaultValue' => 'BTC',
-                'target' => User::class,
+                'target' => config('sitec.core.models.user', \App\Models\User::class),
                 'config' => null,
             ],
         ];
