@@ -2,11 +2,13 @@
 
 namespace Facilitador\Models;
 
-use App\Models\Builders\NotificationBuilder;
 use App\Contants\Tables;
-use App\Models\Entities\NotificationEntity;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\Model;
+
+// @todo CRiar e ativar esses dois
+use App\Models\Entities\NotificationEntity;
+use App\Models\Builders\NotificationBuilder;
 
 /**
  * Class Notification.
@@ -74,13 +76,13 @@ class Notification extends Model
         });
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function newEloquentBuilder($query): NotificationBuilder
-    {
-        return new NotificationBuilder($query);
-    }
+    // /**
+    //  * @inheritdoc
+    //  */
+    // public function newEloquentBuilder($query): NotificationBuilder
+    // {
+    //     return new NotificationBuilder($query);
+    // }
 
     /**
      * @inheritdoc
@@ -111,14 +113,14 @@ class Notification extends Model
         return $this;
     }
 
-    /**
-     * @return NotificationEntity
-     */
-    public function toEntity(): NotificationEntity
-    {
-        return new NotificationEntity([
-            'id' => $this->id,
-            'value' => $this->value,
-        ]);
-    }
+    // /**
+    //  * @return NotificationEntity
+    //  */
+    // public function toEntity(): NotificationEntity
+    // {
+    //     return new NotificationEntity([
+    //         'id' => $this->id,
+    //         'value' => $this->value,
+    //     ]);
+    // }
 }

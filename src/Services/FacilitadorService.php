@@ -26,15 +26,13 @@ class FacilitadorService
     {
 
         $models = $this->getModelServices(); 
-dd(collect(app(\Facilitador\Services\Discover\ModelsServiceDiscover::class)->getAllModels())->map(function($file, $class) {
-    return new ModelService($class);
-}));
         if (!$onlyConfig) {
+            $allModels = collect(app(\Facilitador\Services\Discover\ModelsServiceDiscover::class)->getAllModels())->map(function($file, $class) {
+                return new ModelService($class);
+            })->values()->all();
             $models = array_merge(
                 $models,
-                collect(app(\Facilitador\Services\Discover\ModelsServiceDiscover::class)->getAllModels())->map(function($file, $class) {
-                    return new ModelService($class);
-                })
+                $allModels
             );
         }
 
@@ -42,13 +40,23 @@ dd(collect(app(\Facilitador\Services\Discover\ModelsServiceDiscover::class)->get
         $array = [];
 
         foreach ($models as $model) {
-            $array[] = [
-                'model' => $model,
-                'url' => $model->getUrl(),
-                'count' => $model->getRepository()->count(),
-                'icon' => \Support\Template\Layout\Icons::getForNameAndCache($model->getName()),
-                'name' => $model->getName(),
-            ];
+            try {
+                $array[] = [
+                    'model' => $model,
+                    'url' => $model->getUrl(),
+                    'count' => $model->getRepository()->count(),
+                    'icon' => \Support\Template\Layout\Icons::getForNameAndCache($model->getName()),
+                    'name' => $model->getName(),
+                ];
+            } catch(\Symfony\Component\Debug\Exception\FatalThrowableError $e) {
+                // dd($e);
+                //@todo fazer aqui
+            } catch(\Exception $e) {
+                // @todo Tratar aqui
+            } catch(\Throwable $e) {
+                // dd($e);
+                // @todo Tratar aqui
+            }
         }
         return collect($array);
     }

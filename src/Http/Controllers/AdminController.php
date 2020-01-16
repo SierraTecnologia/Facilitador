@@ -27,7 +27,6 @@ class AdminController extends Controller
         $models = $models->reject(function ($item) {
             return empty($item['count']);
         })->SortByDesc('count');
-dd($models);
         $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
         
         return view(
