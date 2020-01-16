@@ -16,7 +16,7 @@ class Policy
      * Check an Admin model against an action performed on a controller against
      * permissions from the config.
      *
-     * @param  Admin   $admin
+     * @param  User   $admin
      * @param  string  $action     The verb we're checking.  Examples:
      *                             - create
      *                             - read
@@ -33,7 +33,7 @@ class Policy
      */
     public function check(User $admin, $action, $controller)
     {
-        dd($admin, 'aqui');
+        // dd($admin, 'aqui');
         // Convert controller instance to its string name
         if (is_object($controller)) {
             $controller = get_class($controller);

@@ -19,6 +19,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Illuminate\Database\Eloquent\Builder;
 
 use Carbon\Carbon;
 use TCG\Voyager\Contracts\User as UserContract;
@@ -289,9 +290,9 @@ class User extends Base implements
      * @param  Illuminate\Database\Query\Builder $query
      * @return void
      */
-    public function scopeOrdered($query)
+    public function scopeOrdered(Builder $query, string $direction = 'asc')
     {
-        $query->orderBy('last_name')->orderBy('first_name');
+        $query->orderBy('last_name', $direction)->orderBy('first_name', $direction);
     }
 
     /**
@@ -448,7 +449,7 @@ class User extends Base implements
      */
     public function can($action, $controller)
     {
-        dd('can');
+        
         return app(Gate::class)
             ->forUser($this)
             ->check('facilitador.auth', [$action, $controller]);

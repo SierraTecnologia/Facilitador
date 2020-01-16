@@ -25,7 +25,6 @@ class Auth
     */
     public function handle($request, Closure $next)
     {
-        dd('aqui foi ');
         // Require a logged in user
         if (!$admin = app('facilitador.user')) {
             return App::make('facilitador.acl_fail');

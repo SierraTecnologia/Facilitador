@@ -45,7 +45,6 @@ class Admin {
 	 */
 	public function handle($request, Closure $next)
 	{
-        dd('aqui foi ');
         if ($this->auth->check())
         {
             $admin = (int) $this->auth->user()->admin;

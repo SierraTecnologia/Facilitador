@@ -72,7 +72,7 @@ trait AppServiceContainerProvider
         // Return the active user account
         $this->app->singleton('facilitador.user', function ($app) {
             $guard = config('sitec.core.guard');
-            return $app['auth']->guard($guard)->user();
+            return \App\Models\User::first(); //$app['auth']->guard($guard)->user();
         });
 
         // Return a redirect response with extra stuff
@@ -89,7 +89,7 @@ trait AppServiceContainerProvider
 
         // Build the Elements collection
         $this->app->singleton('facilitador.elements', function ($app) {
-            return with(new \Facilitador\Collections\Elements)->setModel(Models\Element::class);
+            return with(new \Facilitador\Collections\Elements)->setModel(\Facilitador\Models\Element::class);
         });
 
         // Build the Breadcrumbs store
