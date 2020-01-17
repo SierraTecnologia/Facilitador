@@ -39,27 +39,6 @@ trait AppEventsProvider
     protected function bootEvents(Dispatcher $events)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            
-            $event->menu->add('Facilitador');
-            $event->menu->add([
-                'text'    => 'Facilitador',
-                'icon'    => 'cog',
-                'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => \Facilitador\Services\MenuService::getAdminMenu(),
-            ]);
-            $event->menu->add([
-                'text'    => 'Decoy',
-                'icon'    => 'cog',
-                'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => \Facilitador\Services\MenuService::getDecoyMenu(),
-            ]);
-            $event->menu->add([
-                'text'    => 'Voyager',
-                'icon'    => 'cog',
-                'nivel' => \App\Models\Role::$GOOD,
-                'submenu' => \Facilitador\Services\MenuService::getVoyagerMenu(),
-            ]);
-
             (new \Support\Mounters\SystemMount())->loadMenuForAdminlte($event);
         });
 

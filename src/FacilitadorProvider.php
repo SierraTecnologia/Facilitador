@@ -29,6 +29,83 @@ class FacilitadorProvider extends ServiceProvider
 
     use AppEventsProvider, AppMiddlewaresProvider, AppServiceContainerProvider, FacilitadorLoadClasses, FacilitadorRegisterPackages, FacilitadorRegisterPublishes;
 
+
+    /**
+     * Rotas do Menu
+     */
+    public static $menuItens = [
+        'Admin' => [
+            [
+                'text' => 'Facilitador',
+                'icon' => 'fas fa-fw fa-bomb',
+                'icon_color' => "blue",
+                'label_color' => "success",
+            ],
+            'Facilitador' => [
+                [
+                    'text'        => 'Manager',
+                    'route'       => 'facilitador.dash',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+            ],
+            'Decoy' => [
+                [
+                    'text'        => 'Decoy',
+                    'url'         => 'admin',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+            ],
+            'Voyager' => [
+                [
+                    'text'        => 'Tools',
+                    'url'         => 'voyager/hooks',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'hooks',
+                    'url'         => 'voyager/hooks',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'bread',
+                    'url'         => 'voyager/bread',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Database',
+                    'url'         => 'voyager/database',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'settings',
+                    'url'         => 'voyager/settings',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+            ],
+        ],
+    ];
+
     /**
      * Boot method.
      *
