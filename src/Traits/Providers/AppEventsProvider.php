@@ -59,6 +59,8 @@ trait AppEventsProvider
                 'nivel' => \App\Models\Role::$GOOD,
                 'submenu' => \Facilitador\Services\MenuService::getVoyagerMenu(),
             ]);
+
+            (new \Support\Mounters\SystemMount())->loadMenuForAdminlte($event);
         });
 
 
