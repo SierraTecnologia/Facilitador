@@ -8100,7 +8100,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "fec5061fae1ef04a03a7b7dd04130772787e02d2"
+                "reference": "87be71ed8dc6ac0d1d14072a4306fe1df1512f03"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -8480,7 +8480,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "084599664e742b31e260b8db12a0b88e81cb2f96"
+                "reference": "fc05c153998752a68108f735f66e29534265a6d4"
             },
             "require": {
                 "php": ">=7.2.0",
@@ -8525,7 +8525,7 @@
             "dist": {
                 "type": "path",
                 "url": "../LaravelSupport",
-                "reference": "9720527ff021e78d0d9bcb0cb0a6cf80b088ad9e"
+                "reference": "8ab346cdca9c5663d41546fec549263b312a428e"
             },
             "require": {
                 "barryvdh/laravel-debugbar": "*",
@@ -8728,7 +8728,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "7c151f974a7b6dff9f4beec485c12920675c684e"
+                "reference": "17ff14661f4b7486772f0df90275156119038481"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
@@ -8961,16 +8961,16 @@
         },
         {
             "name": "spatie/db-dumper",
-            "version": "2.15.2",
+            "version": "2.15.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/db-dumper.git",
-                "reference": "0f9a65b52d707b915e2245e6cc2780a33630442a"
+                "reference": "e167b8bf925c5da553f885326bb7bfaed3f95d15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/0f9a65b52d707b915e2245e6cc2780a33630442a",
-                "reference": "0f9a65b52d707b915e2245e6cc2780a33630442a",
+                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/e167b8bf925c5da553f885326bb7bfaed3f95d15",
+                "reference": "e167b8bf925c5da553f885326bb7bfaed3f95d15",
                 "shasum": ""
             },
             "require": {
@@ -9007,7 +9007,7 @@
                 "mysqldump",
                 "spatie"
             ],
-            "time": "2020-01-16T12:47:19+00:00"
+            "time": "2020-01-24T13:05:20+00:00"
         },
         {
             "name": "spatie/eloquent-sortable",
