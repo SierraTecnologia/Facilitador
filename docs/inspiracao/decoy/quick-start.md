@@ -79,7 +79,7 @@ class Article extends Base {
    * @param  Illuminate\Database\Query\Builder $query
    * @return void
    */
-  public function scopeOrdered($query) {
+  public function scopeOrdered(Builder $query, string $direction = 'asc') {
     $query->orderBy('date', 'desc');
   }
 

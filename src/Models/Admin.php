@@ -20,6 +20,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Database\Eloquent\Builder;
 
 class Admin extends \Facilitador\Models\User
 //  implements
@@ -73,7 +74,7 @@ class Admin extends \Facilitador\Models\User
 //      * @param  Illuminate\Database\Query\Builder $query
 //      * @return void
 //      */
-//     public function scopeOrdered($query)
+//     public function scopeOrdered(Builder $query, string $direction = 'asc')
 //     {
 //         $query->orderBy('last_name')->orderBy('first_name');
 //     }

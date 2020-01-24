@@ -57,7 +57,7 @@ Decoy also supports drag and drop ordering of rows if you add a `position` integ
  * @param  Illuminate\Database\Query\Builder $query
  * @return void
  */
-public function scopeOrdered($query) {
+public function scopeOrdered(Builder $query, string $direction = 'asc') {
 	$query->positioned();
 }
 

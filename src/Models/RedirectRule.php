@@ -6,6 +6,7 @@ use DB;
 use Config;
 use Request;
 use Bkwld\Library\Utils;
+use Illuminate\Database\Eloquent\Builder;
 
 class RedirectRule extends Base
 {
@@ -92,9 +93,9 @@ class RedirectRule extends Base
      * @param  Illuminate\Database\Query\Builder $query
      * @return void
      */
-    public function scopeOrdered($query)
+    public function scopeOrdered(Builder $query, string $direction = 'asc')
     {
-        return $query->orderBy('from');
+        return $query->orderBy('from', $direction);
     }
 
     /**
