@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Actions;
 
 use App\Http\Resources\UserPlainResource;
-use Informate\Managers\UserManager;
+use Population\Manipule\Managers\UserManager;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

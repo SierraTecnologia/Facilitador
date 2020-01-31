@@ -33,7 +33,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as UserAuthenticatable;
 use Population\Traits\AsHuman;
 use Laravel\Passport\HasApiTokens;
-use SiObjects\Manipule\Builders\UserBuilder;
+use Population\Manipule\Builders\UserBuilder;
 
 // class Admin extends Base implements
 //     AuthInterface,
