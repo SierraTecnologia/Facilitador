@@ -50,7 +50,8 @@ class AnaliseCode extends Command
     {
         $discoverService = new DiscoverService;
 
-        dd($discoverService);
+        dd('Aqui Facilitador');//,
+        // $discoverService);
 
         
 
