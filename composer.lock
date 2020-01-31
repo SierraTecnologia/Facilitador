@@ -2643,16 +2643,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.123",
+            "version": "v0.124",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "a8c3c7563729ecb98a9ed66f675366527bcbad4d"
+                "reference": "7bdd526abda4d802e973816cd7b4f3f3bc75fa03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/a8c3c7563729ecb98a9ed66f675366527bcbad4d",
-                "reference": "a8c3c7563729ecb98a9ed66f675366527bcbad4d",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/7bdd526abda4d802e973816cd7b4f3f3bc75fa03",
+                "reference": "7bdd526abda4d802e973816cd7b4f3f3bc75fa03",
                 "shasum": ""
             },
             "require": {
@@ -2676,7 +2676,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2020-01-19T00:24:13+00:00"
+            "time": "2020-01-25T00:24:16+00:00"
         },
         {
             "name": "google/auth",
@@ -2933,36 +2933,36 @@
         },
         {
             "name": "graham-campbell/markdown",
-            "version": "v11.1.0",
+            "version": "v11.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-Markdown.git",
-                "reference": "80f545b417db2103122c7f094bfa5bb2444b28e1"
+                "reference": "f6271cb869fcf91a9066cd61729750641f5299e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Markdown/zipball/80f545b417db2103122c7f094bfa5bb2444b28e1",
-                "reference": "80f545b417db2103122c7f094bfa5bb2444b28e1",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Markdown/zipball/f6271cb869fcf91a9066cd61729750641f5299e9",
+                "reference": "f6271cb869fcf91a9066cd61729750641f5299e9",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "^5.5|^6.0",
-                "illuminate/support": "^5.5|^6.0",
-                "illuminate/view": "^5.5|^6.0",
+                "illuminate/contracts": "^5.5|^6.0|^7.0",
+                "illuminate/support": "^5.5|^6.0|^7.0",
+                "illuminate/view": "^5.5|^6.0|^7.0",
                 "league/commonmark": "^1.0",
                 "php": "^7.1.3"
             },
             "require-dev": {
-                "graham-campbell/analyzer": "^2.1",
-                "graham-campbell/testbench": "^5.2",
+                "graham-campbell/analyzer": "^2.4",
+                "graham-campbell/testbench": "^5.4",
                 "league/commonmark-extras": "^1.0",
-                "mockery/mockery": "^1.0",
+                "mockery/mockery": "^1.3.1",
                 "phpunit/phpunit": "^6.5|^7.0|^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "11.1-dev"
+                    "dev-master": "11.2-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -2985,7 +2985,7 @@
                     "email": "graham@alt-three.com"
                 }
             ],
-            "description": "Markdown Is A CommonMark Wrapper For Laravel 5",
+            "description": "Markdown Is A CommonMark Wrapper For Laravel",
             "keywords": [
                 "Graham Campbell",
                 "GrahamCampbell",
@@ -2997,7 +2997,7 @@
                 "laravel",
                 "markdown"
             ],
-            "time": "2019-08-26T16:31:24+00:00"
+            "time": "2020-01-25T13:19:30+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3288,6 +3288,7 @@
                 "Guzzle",
                 "stream"
             ],
+            "abandoned": true,
             "time": "2014-10-12T19:18:40+00:00"
         },
         {
@@ -4415,16 +4416,16 @@
         },
         {
             "name": "laravel/horizon",
-            "version": "v3.4.7",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "45a76521b4c378eb97bbc86ef59fd6e323f9d8d1"
+                "reference": "6f1e718956b431c721f9eb11a57de65947f06e66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/45a76521b4c378eb97bbc86ef59fd6e323f9d8d1",
-                "reference": "45a76521b4c378eb97bbc86ef59fd6e323f9d8d1",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/6f1e718956b431c721f9eb11a57de65947f06e66",
+                "reference": "6f1e718956b431c721f9eb11a57de65947f06e66",
                 "shasum": ""
             },
             "require": {
@@ -4480,7 +4481,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2020-01-14T16:41:11+00:00"
+            "time": "2020-01-28T21:07:02+00:00"
         },
         {
             "name": "laravel/passport",
@@ -5972,16 +5973,16 @@
         },
         {
             "name": "nategood/httpful",
-            "version": "0.3.0",
+            "version": "0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nategood/httpful.git",
-                "reference": "8ba7fa7eb409902db906772bf50488f8a92a61af"
+                "reference": "0cded3ea97ba905600de9ceb9ef13f3ab681587c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nategood/httpful/zipball/8ba7fa7eb409902db906772bf50488f8a92a61af",
-                "reference": "8ba7fa7eb409902db906772bf50488f8a92a61af",
+                "url": "https://api.github.com/repos/nategood/httpful/zipball/0cded3ea97ba905600de9ceb9ef13f3ab681587c",
+                "reference": "0cded3ea97ba905600de9ceb9ef13f3ab681587c",
                 "shasum": ""
             },
             "require": {
@@ -6018,7 +6019,7 @@
                 "rest",
                 "restful"
             ],
-            "time": "2019-12-29T22:14:13+00:00"
+            "time": "2020-01-25T01:13:13+00:00"
         },
         {
             "name": "natxet/cssmin",
@@ -8100,7 +8101,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "87be71ed8dc6ac0d1d14072a4306fe1df1512f03"
+                "reference": "6d5c185caab5be491b2980d03ca54e3a57b728e0"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -8690,7 +8691,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "39250488695f800de1713f00a8d136d7b4012dda"
+                "reference": "f980e4297d984a1b36695a2e555158edbfde3ce4"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master",
@@ -8728,7 +8729,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "17ff14661f4b7486772f0df90275156119038481"
+                "reference": "0e156fd5b6f7e5e58b00d75bc81d0d33d9f8d292"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
@@ -9206,16 +9207,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "6.7.6",
+            "version": "6.7.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "9526cd53072644de6e4850cffaf79376c9a4f2d0"
+                "reference": "c2aeb1685007ee1cc2b3f86c26315aeb32602a93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/9526cd53072644de6e4850cffaf79376c9a4f2d0",
-                "reference": "9526cd53072644de6e4850cffaf79376c9a4f2d0",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/c2aeb1685007ee1cc2b3f86c26315aeb32602a93",
+                "reference": "c2aeb1685007ee1cc2b3f86c26315aeb32602a93",
                 "shasum": ""
             },
             "require": {
@@ -9277,7 +9278,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2019-12-12T13:39:26+00:00"
+            "time": "2020-01-27T13:58:27+00:00"
         },
         {
             "name": "spatie/laravel-pjax",
@@ -12638,16 +12639,16 @@
         },
         {
             "name": "cboden/ratchet",
-            "version": "v0.4.1",
+            "version": "v0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/Ratchet.git",
-                "reference": "0d31f3a8ad4795fd48397712709e55cd07f51360"
+                "reference": "57721e1f184f9e29378fc5363867c47ddda743fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/0d31f3a8ad4795fd48397712709e55cd07f51360",
-                "reference": "0d31f3a8ad4795fd48397712709e55cd07f51360",
+                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/57721e1f184f9e29378fc5363867c47ddda743fd",
+                "reference": "57721e1f184f9e29378fc5363867c47ddda743fd",
                 "shasum": ""
             },
             "require": {
@@ -12655,8 +12656,8 @@
                 "php": ">=5.4.2",
                 "ratchet/rfc6455": "^0.2",
                 "react/socket": "^1.0 || ^0.8 || ^0.7 || ^0.6 || ^0.5",
-                "symfony/http-foundation": "^2.6|^3.0|^4.0",
-                "symfony/routing": "^2.6|^3.0|^4.0"
+                "symfony/http-foundation": "^2.6|^3.0|^4.0|^5.0",
+                "symfony/routing": "^2.6|^3.0|^4.0|^5.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8"
@@ -12687,7 +12688,7 @@
                 "sockets",
                 "websocket"
             ],
-            "time": "2017-12-12T00:49:31+00:00"
+            "time": "2020-01-27T23:08:40+00:00"
         },
         {
             "name": "clue/buzz-react",
@@ -12904,16 +12905,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v5.8.2",
+            "version": "v5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "c95d70b5fff000c54a9186c2011b236592fcf948"
+                "reference": "3e54875a69d2cb7136a56d9889c11eb2988c8eb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/c95d70b5fff000c54a9186c2011b236592fcf948",
-                "reference": "c95d70b5fff000c54a9186c2011b236592fcf948",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/3e54875a69d2cb7136a56d9889c11eb2988c8eb4",
+                "reference": "3e54875a69d2cb7136a56d9889c11eb2988c8eb4",
                 "shasum": ""
             },
             "require": {
@@ -12968,7 +12969,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2020-01-21T20:57:39+00:00"
+            "time": "2020-01-28T20:55:30+00:00"
         },
         {
             "name": "mikey179/vfsstream",
