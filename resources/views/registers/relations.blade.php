@@ -12,9 +12,6 @@
                 </h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-                    @include('facilitador::repositories.table', ['registros' => $relationResult->results,'service' => $relationResult->repository] )
-            </div>
             <!-- /.box-body -->
         </div>
         </div>

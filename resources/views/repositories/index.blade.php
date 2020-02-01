@@ -23,7 +23,7 @@
                 </h1>
             </div>
             <div class="box-body">
-                    @include('facilitador::repositories.table')
+                    @include('facilitador::repositories.table', ['registros' => $registros, 'service' => $service] )
             </div>
         </div>
     </div>

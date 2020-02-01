@@ -208,7 +208,7 @@ class ModelService
 
     public function getColumnsForForm()
     {
-        // dd($this->getDiscoverService()->getColumns()), $this->getDiscoverService()->schemaManagerTable->toArray(), $this->getDiscoverService()->getColumns());
+        // dd($this->getDiscoverService()->getColumns(), $this->getDiscoverService()->schemaManagerTable->toArray(), $this->getDiscoverService()->getColumns());
         return $this->getDiscoverService()->getColumns();
     }
 
