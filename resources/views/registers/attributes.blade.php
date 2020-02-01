@@ -10,7 +10,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl>
-                        @foreach ($service->getDiscoverService()->getAtributes() as $eloquentColumn)
+                        @foreach ($service->getDiscoverService()->getColumns) as $eloquentColumn)
                             <dt>{!! $eloquentColumn->getName() !!}</dt>
                             <dd>{!! $eloquentColumn->displayFromModel($register) !!}</dd>
                         @endforeach

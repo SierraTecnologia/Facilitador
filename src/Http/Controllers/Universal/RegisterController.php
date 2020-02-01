@@ -36,7 +36,7 @@ class RegisterController extends Controller
         // dd(
         //     $service,
         //     $modelRelationsResults,
-        //     $service->getModelService()->getAtributes()
+        //     $service->getModelService()->getColumns)
         // );
 
         return view(
