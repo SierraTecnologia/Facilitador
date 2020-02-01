@@ -1,6 +1,6 @@
 <table class="table table-responsive" id="coberturas-table">
     <thead>
-        @foreach ($service->getDiscoverService()->getColumns) as $eloquentColumn)
+        @foreach ($service->getDiscoverService()->getColumns()) as $eloquentColumn)
             <th>{!! $eloquentColumn->getName() !!}</th>
         @endforeach
         <th colspan="3">{!! trans('words.action') !!}</th>
@@ -9,7 +9,7 @@
         @if (!empty($registros))
             @foreach($registros as $cobertura)
                 <tr>
-                    @foreach ($service->getDiscoverService()->getColumns) as $eloquentColumn)
+                    @foreach ($service->getDiscoverService()->getColumns()) as $eloquentColumn)
                         <td>{!! $eloquentColumn->displayFromModel($cobertura) !!}</td>
                     @endforeach
                     <td>
