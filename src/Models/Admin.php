@@ -63,7 +63,7 @@ class Admin extends \Facilitador\Models\User
 //         'first_name' => 'required',
 //         'last_name' => 'required',
 //         'images.default' => 'image',
-//         'email' => 'required|email|unique:admins,email',
+//         'email' => 'required|unique:admins,email',
 //         'password' => 'required',
 //         'confirm_password' => 'sometimes|required_with:password|same:password',
 //     ];

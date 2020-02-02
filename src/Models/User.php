@@ -91,7 +91,7 @@ class User extends Base implements
     public $rules = [
         'name' => 'required',
         'images.default' => 'image',
-        'email' => 'required|email|unique:users,email',
+        'email' => 'required|unique:users,email',
         'password' => 'required',
         'confirm_password' => 'sometimes|required_with:password|same:password',
     ];
