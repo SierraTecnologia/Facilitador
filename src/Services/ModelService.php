@@ -17,7 +17,7 @@ use Support\Elements\Entities\DataTypes\Varchar;
 use Support\Coder\Discovers\Eloquent\EloquentColumn;
 use ReflectionClass;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
-use Support\Coder\Discovers\Eloquent\ModelEloquent;
+use Support\Services\EloquentService;
 
 /**
  * ModelService helper to make table and object form mapping easy.
@@ -51,7 +51,7 @@ class ModelService
     public function getDiscoverService()
     {
         if (!$this->discoverModel) {
-            $this->discoverModel = new ModelEloquent($this->getModelClass());
+            $this->discoverModel = new EloquentService($this->getModelClass());
         }
         return $this->discoverModel;
     }
@@ -85,14 +85,7 @@ class ModelService
 
     public function getName($plural = false)
     {
-        $reflection = new ReflectionClass($this->modelClass);
-        $name = $reflection->getShortName();
-
-        if ($plural) {
-            $name .= '\'s';
-        }
-
-        return $name;
+        return $this->getDiscoverService()->getName($plural);
     }
     public function getModelClass()
     {

@@ -32,7 +32,6 @@ class RegisterController extends Controller
 
         $htmlGenerator = new \Facilitador\Generators\RegisterGenerator($service);
 
-
         // dd(
         //     $service,
         //     $modelRelationsResults,

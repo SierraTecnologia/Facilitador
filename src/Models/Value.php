@@ -7,7 +7,7 @@ namespace Facilitador\Models;
 use Illuminate\Database\Eloquent\Model;
 use Support\Recursos\Cacheable\CacheableEloquent;
 use Support\ClassesHelpers\Traits\Models\ValidatingTrait;
-use Support\Support\ValueCollection;
+use Facilitador\Support\ValueCollection;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

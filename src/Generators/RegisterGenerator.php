@@ -19,8 +19,12 @@ class RegisterGenerator
         $classes = $this->service->getModelService()->getRelationsByGroup();
 
         $html = '';
-        $html .= $this->optionsButtonsMorphMany($classes['MorphToMany']);
-        $html .= $this->optionsButtonsMorphMany($classes['MorphMany']);
+        if (isset($classes['MorphMany'])) {
+          $html .= $this->optionsButtonsMorphMany($classes['MorphMany']);
+        }
+        if (isset($classes['MorphToMany'])) {
+          $html .= $this->optionsButtonsMorphToMany($classes['MorphToMany']);
+        }
 
         return $html;
     }

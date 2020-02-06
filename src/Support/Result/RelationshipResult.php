@@ -1,6 +1,6 @@
 <?php
 
-namespace Support\Result;
+namespace Facilitador\Support\Result;
 
 use Support\Coder\Discovers\Eloquent\Relationship;
 use Illuminate\Support\Collection;

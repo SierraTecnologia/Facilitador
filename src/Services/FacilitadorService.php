@@ -5,6 +5,8 @@
 
 namespace Facilitador\Services;
 
+use Support\Coder\Parser\ComposerParser;
+
 /**
  * 
  */
@@ -24,10 +26,10 @@ class FacilitadorService
 
     public function getModelServicesToArray($onlyConfig = true)
     {
-
+// dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new ComposerParser))->getAllModels());
         $models = $this->getModelServices(); 
         if (!$onlyConfig) {
-            $allModels = collect(app(\Facilitador\Services\Discover\ModelsServiceDiscover::class)->getAllModels())->map(function($file, $class) {
+            $allModels = collect((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new ComposerParser))->getAllModels())->map(function($file, $class) {
                 return new ModelService($class);
             })->values()->all();
             $models = array_merge(

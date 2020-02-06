@@ -22,6 +22,8 @@ class RepositoryController extends Controller
         $registros = $service->getTableData();
         //     $teams = $this->repositoryService->paginated($request->user()->id);
 
+        
+
         return view(
             'facilitador::repositories.index',
             compact('service', 'registros')

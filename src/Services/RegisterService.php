@@ -7,7 +7,7 @@ namespace Facilitador\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Support\Result\RelationshipResult;
+use Facilitador\Support\Result\RelationshipResult;
 use SierraTecnologia\Crypto\Services\Crypto;
 
 /**
@@ -17,7 +17,7 @@ class RegisterService
 {
 
     protected $identify;
-    protected $instance;
+    protected $instance = false;
     protected $repositoryService = false;
 
     public function __construct(string $identify)
@@ -39,7 +39,8 @@ class RegisterService
     {
         if (!$this->instance) {
             $modelClass = $this->getModelService()->getModelClass();
-            $this->instance = $modelClass::find($this->identify);
+            // dd($modelClass, $this->identify,  $modelClass::find($this->identify));
+            $this->instance = $modelClass::findOrFail($this->identify);
         }
         return $this->instance;
     }
