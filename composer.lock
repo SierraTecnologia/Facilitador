@@ -3810,12 +3810,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "5d9c09364b8bf9e7ef0238bbb84cd108199eef05"
+                "reference": "39423eed9988991672e268af9e313330185489bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/5d9c09364b8bf9e7ef0238bbb84cd108199eef05",
-                "reference": "5d9c09364b8bf9e7ef0238bbb84cd108199eef05",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/39423eed9988991672e268af9e313330185489bc",
+                "reference": "39423eed9988991672e268af9e313330185489bc",
                 "shasum": ""
             },
             "type": "library",
@@ -3855,7 +3855,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2019-12-13T10:21:22+00:00"
+            "time": "2020-02-06T14:10:34+00:00"
         },
         {
             "name": "kassner/log-parser",
@@ -8102,7 +8102,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "f3bc036cb38c5f365bf5d723826e8cf34c125c10"
+                "reference": "50810407a3e2c9e7ff7858a89910922a3d49c0df"
             },
             "require": {
                 "kassner/log-parser": "*",
@@ -8482,7 +8482,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "f465ffa610e904486323e3a6859353a15ef96ced"
+                "reference": "31fd34b2ce7a15695bc80760ac493bf20bf68ffa"
             },
             "require": {
                 "php": ">=7.2.0",
@@ -8692,7 +8692,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Population",
-                "reference": "d8e345b3f107a592608cd2f4d5d30e356765b8b4"
+                "reference": "3d0a1767ed98aaaea692d6c06505540f7ad936e1"
             },
             "require": {
                 "sierratecnologia/informate": "dev-master",
@@ -8730,7 +8730,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "2e57e6b27fa87f250444372cc91eef1a96c17d8d"
+                "reference": "8b0a535c5e93c6016ae4caaafc1994b8b70649cf"
             },
             "require": {
                 "aschmelyun/larametrics": "^1.1",
