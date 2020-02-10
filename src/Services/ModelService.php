@@ -56,6 +56,11 @@ class ModelService
         return $this->discoverModel;
     }
 
+    public function getPrimaryKey()
+    {
+        return $this->getDiscoverService()->getPrimaryKey();   
+    }
+
     /**
      * Verificadores
      *

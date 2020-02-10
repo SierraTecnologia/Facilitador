@@ -24,9 +24,9 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $models = $this->facilitadorService->getModelServicesToArray(false); //->sortByDesc('field', [], true);
-        // $models = $models->reject(function ($item) {
-        //     return empty($item['count']);
-        // })->SortByDesc('count');
+        $models = $models->reject(function ($item) {
+            return empty($item['count']);
+        })->SortByDesc('count');
         $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
         
         return view(

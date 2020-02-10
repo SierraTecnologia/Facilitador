@@ -40,8 +40,18 @@
 
     </div>
 
-    @include('facilitador::registers.attributes')
+    <div class="row">
 
-    @include('facilitador::registers.relations')
+        <div class="col-lg-8 margin-tb">
+            @include('facilitador::registers.relations')
+        </div>
+
+        <div class="col-lg-4 margin-tb">
+            @include('facilitador::registers.attributes')
+        </div>
+
+    </div>
+
+
 
 @endsection
