@@ -15,6 +15,13 @@ use Population\Models\Identity\Actors;
 
 class AdminController extends Controller
 {
+    /**
+     * Controller Class ou array
+     */
+    public $topBarParent = [
+        'name' => 'Inicio',
+        'url' => '/',
+    ];
 
     /**
      * Display a listing of the resource.

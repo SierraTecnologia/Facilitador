@@ -46,8 +46,8 @@ use Population\Manipule\Builders\UserBuilder;
 class User extends Base implements
     AuthInterface,
     AuthenticatableContract,
-    CanResetPasswordContract
-    // UserContract # Comentei pq deu erro
+    CanResetPasswordContract,
+    UserContract # Comentei pq deu erro
 {
     use Authenticatable, CanResetPassword, Traits\HasImages;
     use HasApiTokens, Notifiable;

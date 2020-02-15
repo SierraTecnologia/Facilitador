@@ -19,13 +19,16 @@ use ReflectionClass;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
 use Support\Services\EloquentService;
 
+use Facilitador\Models\DataRow;
+use Facilitador\Models\DataType;
+
 /**
  * ModelService helper to make table and object form mapping easy.
  */
 class ModelService
 {
     protected $repository = false;
-    protected $discoverModel = false;
+    protected $modelDataType = false;
     protected $modelClass;
 
     public function __construct($modelClass = false)
@@ -50,10 +53,62 @@ class ModelService
     }
     public function getDiscoverService()
     {
-        if (!$this->discoverModel) {
-            $this->discoverModel = new EloquentService($this->getModelClass());
+        if (!$this->modelDataType) {
+
+            $this->modelDataType = $this->dataType('model_name', $this->getModelClass());
+            if (!$this->modelDataType->exists) {
+                $eloquentService = new EloquentService($this->getModelClass());
+                // dd(
+                //     $eloquentService,
+                //     $eloquentService->toArray()
+                // );
+                $managerArray = $eloquentService->managerToArray()['modelManager'];
+                // Name e Slug sao unicos
+                $this->modelDataType->fill([
+                    'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
+                    'slug'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
+                    'display_name_singular' => $eloquentService->getName(false),
+                    'display_name_plural'   => $eloquentService->getName(true),
+                    'icon'                  => \Support\Template\Layout\Icons::getForNameAndCache($eloquentService->getName(), false),
+                    'model_name'            => $eloquentService->getModelClass(),
+                    'controller'            => '',
+                    'generate_permissions'  => 1,
+                    'description'           => '',
+                    'table_name'              => $managerArray['table'],
+                    'key_name'                => $managerArray['getKeyName'],
+                    'key_type'                => $managerArray['getKeyType'],
+                    'foreign_key'             => $managerArray['getForeignKey'],
+                ])->save();
+
+                $order = 1;
+                foreach ($eloquentService->getColumns() as $column) {
+                    // dd(
+                    //     $eloquentService->getColumns(),
+                    //     $column,
+                    //     $column->getData('notnull')
+                    // );
+
+                    $dataRow = $this->dataRow($this->modelDataType, $column->getColumnName());
+                    if (!$dataRow->exists) {
+                        $dataRow->fill([
+                            // 'type'         => 'select_dropdown',
+                            'type'         => $column->getColumnType(),
+                            'display_name' => $column->getName(),
+                            'required'     => $column->isRequired() ? 1 : 0,
+                            'browse'     => $column->isBrowse() ? 1 : 0,
+                            'read'     => $column->isRead() ? 1 : 0,
+                            'edit'     => $column->isEdit() ? 1 : 0,
+                            'add'     => $column->isAdd() ? 1 : 0,
+                            'delete'     => $column->isDelete() ? 1 : 0,
+                            'details'      => $column->getDetails(),
+                            'order' => $order,
+                        ])->save();
+                        ++$order;
+                    }
+                }
+            }
         }
-        return $this->discoverModel;
+        return $this->modelDataType;
     }
 
     public function getPrimaryKey()
@@ -223,5 +278,36 @@ class ModelService
             $group[$class->type][] = $class;
         }
         return $group;
+    }
+
+
+
+    /**
+     * [dataRow description].
+     *
+     * @param [type] $type  [description]
+     * @param [type] $field [description]
+     *
+     * @return [type] [description]
+     */
+    protected function dataRow($type, $field)
+    {
+        return DataRow::firstOrNew([
+                'data_type_id' => $type->id,
+                'field'        => $field,
+            ]);
+    }
+
+    /**
+     * [dataType description].
+     *
+     * @param [type] $field [description]
+     * @param [type] $for   [description]
+     *
+     * @return [type] [description]
+     */
+    protected function dataType($field, $for)
+    {
+        return DataType::firstOrNew([$field => $for]);
     }
 }

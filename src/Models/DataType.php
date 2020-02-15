@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
-use TCG\Voyager\Facades\Voyager;
+use Facilitador\Facades\Facilitador;
 use TCG\Voyager\Traits\Translatable;
 
 class DataType extends Model
@@ -39,7 +39,7 @@ class DataType extends Model
 
     public function rows()
     {
-        return $this->hasMany(Voyager::modelClass('DataRow'))->orderBy('order');
+        return $this->hasMany(Facilitador::modelClass('DataRow'))->orderBy('order');
     }
 
     public function browseRows()
@@ -69,7 +69,7 @@ class DataType extends Model
 
     public function lastRow()
     {
-        return $this->hasMany(Voyager::modelClass('DataRow'))->orderBy('order', 'DESC')->first();
+        return $this->hasMany(Facilitador::modelClass('DataRow'))->orderBy('order', 'DESC')->first();
     }
 
     public function setGeneratePermissionsAttribute($value)
@@ -136,7 +136,7 @@ class DataType extends Model
 
                 // It seems everything was fine. Let's check if we need to generate permissions
                 if ($this->generate_permissions) {
-                    Voyager::model('Permission')->generateFor($this->name);
+                    Facilitador::model('Permission')->generateFor($this->name);
                 }
 
                 DB::commit();
@@ -302,5 +302,29 @@ class DataType extends Model
     public function setScopeAttribute($value)
     {
         $this->attributes['details'] = collect($this->details)->merge(['scope' => $value]);
+    }
+
+
+    /**
+     * Eu que criei. Nao tava no voyager
+     */
+    public function getName($plural = false)
+    {
+        // @todo Fazer plural
+        if ($plural) {
+            return $this->display_name_plural;
+        }
+
+        return $this->display_name_singular;
+    }
+
+    public function getColumns()
+    {
+        return $this->rows()->get();
+    }
+
+    public function getPrimaryKey()
+    {
+        return $this->key_name;
     }
 }

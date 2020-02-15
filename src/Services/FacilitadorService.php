@@ -20,7 +20,7 @@ class FacilitadorService
     public function __construct($config = false)
     {
         if (!$this->config = $config) {
-            $this->config = config('sitec.facilitador.models');
+            $this->config = config('sitec.discover.models_alias');
         }
     }
 

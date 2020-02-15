@@ -21,6 +21,11 @@ class RepositoryService
         $this->modelService = $modelClass;
     }
 
+    public function getSlug()
+    {
+        return $this->getModelService()->getModelClass();
+    }
+
     public function getModelService()
     {
         return $this->modelService;
