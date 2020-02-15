@@ -159,10 +159,10 @@ class RepositoryController extends Controller
             }
         }
 
-        $view = 'voyager::bread.browse';
+        $view = 'facilitador::bread.browse';
 
-        if (view()->exists("voyager::$slug.browse")) {
-            $view = "voyager::$slug.browse";
+        if (view()->exists("facilitador::$slug.browse")) {
+            $view = "facilitador::$slug.browse";
         }
 
         return Facilitador::view($view, compact(
@@ -234,10 +234,10 @@ class RepositoryController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.read';
+        $view = 'facilitador::bread.read';
 
-        if (view()->exists("voyager::$slug.read")) {
-            $view = "voyager::$slug.read";
+        if (view()->exists("facilitador::$slug.read")) {
+            $view = "facilitador::$slug.read";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
@@ -290,10 +290,10 @@ class RepositoryController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.edit-add';
+        $view = 'facilitador::bread.edit-add';
 
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
+        if (view()->exists("facilitador::$slug.edit-add")) {
+            $view = "facilitador::$slug.edit-add";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
@@ -329,13 +329,13 @@ class RepositoryController extends Controller
         event(new BreadDataUpdated($dataType, $data));
 
         if (auth()->user()->can('browse', $model)) {
-            $redirect = redirect()->route("voyager.{$dataType->slug}.index");
+            $redirect = redirect()->route("facilitador.{$dataType->slug}.index");
         } else {
             $redirect = redirect()->back();
         }
 
         return $redirect->with([
-            'message'    => __('voyager::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+            'message'    => __('facilitador::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
             'alert-type' => 'success',
         ]);
     }
@@ -376,10 +376,10 @@ class RepositoryController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.edit-add';
+        $view = 'facilitador::bread.edit-add';
 
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
+        if (view()->exists("facilitador::$slug.edit-add")) {
+            $view = "facilitador::$slug.edit-add";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
@@ -409,13 +409,13 @@ class RepositoryController extends Controller
 
         if (!$request->has('_tagging')) {
             if (auth()->user()->can('browse', $data)) {
-                $redirect = redirect()->route("voyager.{$dataType->slug}.index");
+                $redirect = redirect()->route("facilitador.{$dataType->slug}.index");
             } else {
                 $redirect = redirect()->back();
             }
 
             return $redirect->with([
-                    'message'    => __('voyager::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+                    'message'    => __('facilitador::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                     'alert-type' => 'success',
                 ]);
         } else {
@@ -467,11 +467,11 @@ class RepositoryController extends Controller
         $res = $data->destroy($ids);
         $data = $res
             ? [
-                'message'    => __('voyager::generic.successfully_deleted')." {$displayName}",
+                'message'    => __('facilitador::generic.successfully_deleted')." {$displayName}",
                 'alert-type' => 'success',
             ]
             : [
-                'message'    => __('voyager::generic.error_deleting')." {$displayName}",
+                'message'    => __('facilitador::generic.error_deleting')." {$displayName}",
                 'alert-type' => 'error',
             ];
 
@@ -479,7 +479,7 @@ class RepositoryController extends Controller
             event(new BreadDataDeleted($dataType, $data));
         }
 
-        return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+        return redirect()->route("facilitador.{$dataType->slug}.index")->with($data);
     }
 
     public function restore(Request $request, $id)
@@ -503,11 +503,11 @@ class RepositoryController extends Controller
         $res = $data->restore($id);
         $data = $res
             ? [
-                'message'    => __('voyager::generic.successfully_restored')." {$displayName}",
+                'message'    => __('facilitador::generic.successfully_restored')." {$displayName}",
                 'alert-type' => 'success',
             ]
             : [
-                'message'    => __('voyager::generic.error_restoring')." {$displayName}",
+                'message'    => __('facilitador::generic.error_restoring')." {$displayName}",
                 'alert-type' => 'error',
             ];
 
@@ -515,7 +515,7 @@ class RepositoryController extends Controller
             event(new BreadDataRestored($dataType, $data));
         }
 
-        return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+        return redirect()->route("facilitador.{$dataType->slug}.index")->with($data);
     }
 
     //***************************************
@@ -550,7 +550,7 @@ class RepositoryController extends Controller
 
             // Check if field exists
             if (!isset($data->{$field})) {
-                throw new Exception(__('voyager::generic.field_does_not_exist'), 400);
+                throw new Exception(__('facilitador::generic.field_does_not_exist'), 400);
             }
 
             // Check permission
@@ -559,7 +559,7 @@ class RepositoryController extends Controller
             if (@json_decode($multi)) {
                 // Check if valid json
                 if (is_null(@json_decode($data->{$field}))) {
-                    throw new Exception(__('voyager::json.invalid'), 500);
+                    throw new Exception(__('facilitador::json.invalid'), 500);
                 }
 
                 // Decode field value
@@ -581,7 +581,7 @@ class RepositoryController extends Controller
 
                 // Check if file was found in array
                 if (is_null($key) || $key === false) {
-                    throw new Exception(__('voyager::media.file_does_not_exist'), 400);
+                    throw new Exception(__('facilitador::media.file_does_not_exist'), 400);
                 }
 
                 $fileToRemove = $fieldData[$key];
@@ -597,12 +597,12 @@ class RepositoryController extends Controller
 
                     $data->{$field} = null;
                 } else {
-                    throw new Exception(__('voyager::media.file_does_not_exist'), 400);
+                    throw new Exception(__('facilitador::media.file_does_not_exist'), 400);
                 }
             }
 
             // Remove file from filesystem
-            if ($fileToRemove != config('voyager.user.default_avatar')) {
+            if ($fileToRemove != config('facilitador.user.default_avatar')) {
                 $this->deleteFileIfExists($fileToRemove);
             }
 
@@ -626,12 +626,12 @@ class RepositoryController extends Controller
             return response()->json([
                'data' => [
                    'status'  => 200,
-                   'message' => __('voyager::media.file_removed'),
+                   'message' => __('facilitador::media.file_removed'),
                ],
             ]);
         } catch (Exception $e) {
             $code = 500;
-            $message = __('voyager::generic.internal_error');
+            $message = __('facilitador::generic.internal_error');
 
             if ($e->getCode()) {
                 $code = $e->getCode();
@@ -706,7 +706,7 @@ class RepositoryController extends Controller
     public function deleteBreadImages($data, $rows)
     {
         foreach ($rows as $row) {
-            if ($data->{$row->field} != config('voyager.user.default_avatar')) {
+            if ($data->{$row->field} != config('facilitador.user.default_avatar')) {
                 $this->deleteFileIfExists($data->{$row->field});
             }
 
@@ -747,9 +747,9 @@ class RepositoryController extends Controller
 
         if (!isset($dataType->order_column) || !isset($dataType->order_display_column)) {
             return redirect()
-            ->route("voyager.{$dataType->slug}.index")
+            ->route("facilitador.{$dataType->slug}.index")
             ->with([
-                'message'    => __('voyager::bread.ordering_not_set'),
+                'message'    => __('facilitador::bread.ordering_not_set'),
                 'alert-type' => 'error',
             ]);
         }
@@ -764,10 +764,10 @@ class RepositoryController extends Controller
 
         $dataRow = Facilitador::model('DataRow')->whereDataTypeId($dataType->id)->whereField($display_column)->first();
 
-        $view = 'voyager::bread.order';
+        $view = 'facilitador::bread.order';
 
-        if (view()->exists("voyager::$slug.order")) {
-            $view = "voyager::$slug.order";
+        if (view()->exists("facilitador::$slug.order")) {
+            $view = "facilitador::$slug.order";
         }
 
         return Facilitador::view($view, compact(
@@ -849,7 +849,7 @@ class RepositoryController extends Controller
                 if (!$row->required && !$search) {
                     $results[] = [
                         'id'   => '',
-                        'text' => __('voyager::generic.none'),
+                        'text' => __('facilitador::generic.none'),
                     ];
                 }
 

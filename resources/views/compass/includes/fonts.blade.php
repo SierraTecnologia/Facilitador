@@ -1,832 +1,832 @@
-<h2>{{ __('voyager::compass.fonts.font_class') }}</h2>
+<h2>{{ __('facilitador::compass.fonts.font_class') }}</h2>
 <ul class="glyphs css-mapping">
     <li>
-        <div class="icon voyager-bread"></div>
-        <input type="text" readonly="readonly" value="voyager-bread">
+        <div class="icon facilitador-bread"></div>
+        <input type="text" readonly="readonly" value="facilitador-bread">
     </li>
     <li>
-        <div class="icon voyager-helm"></div>
-        <input type="text" readonly="readonly" value="voyager-helm">
+        <div class="icon facilitador-helm"></div>
+        <input type="text" readonly="readonly" value="facilitador-helm">
     </li>
     <li>
-        <div class="icon voyager-play"></div>
-        <input type="text" readonly="readonly" value="voyager-play">
+        <div class="icon facilitador-play"></div>
+        <input type="text" readonly="readonly" value="facilitador-play">
     </li>
     <li>
-        <div class="icon voyager-activity"></div>
-        <input type="text" readonly="readonly" value="voyager-activity">
+        <div class="icon facilitador-activity"></div>
+        <input type="text" readonly="readonly" value="facilitador-activity">
     </li>
     <li>
-        <div class="icon voyager-company"></div>
-        <input type="text" readonly="readonly" value="voyager-company">
+        <div class="icon facilitador-company"></div>
+        <input type="text" readonly="readonly" value="facilitador-company">
     </li>
     <li>
-        <div class="icon voyager-file-text"></div>
-        <input type="text" readonly="readonly" value="voyager-file-text">
+        <div class="icon facilitador-file-text"></div>
+        <input type="text" readonly="readonly" value="facilitador-file-text">
     </li>
     <li>
-        <div class="icon voyager-folder"></div>
-        <input type="text" readonly="readonly" value="voyager-folder">
+        <div class="icon facilitador-folder"></div>
+        <input type="text" readonly="readonly" value="facilitador-folder">
     </li>
     <li>
-        <div class="icon voyager-paw"></div>
-        <input type="text" readonly="readonly" value="voyager-paw">
+        <div class="icon facilitador-paw"></div>
+        <input type="text" readonly="readonly" value="facilitador-paw">
     </li>
     <li>
-        <div class="icon voyager-sort"></div>
-        <input type="text" readonly="readonly" value="voyager-sort">
+        <div class="icon facilitador-sort"></div>
+        <input type="text" readonly="readonly" value="facilitador-sort">
     </li>
     <li>
-        <div class="icon voyager-sort-asc"></div>
-        <input type="text" readonly="readonly" value="voyager-sort-asc">
+        <div class="icon facilitador-sort-asc"></div>
+        <input type="text" readonly="readonly" value="facilitador-sort-asc">
     </li>
     <li>
-        <div class="icon voyager-sort-desc"></div>
-        <input type="text" readonly="readonly" value="voyager-sort-desc">
+        <div class="icon facilitador-sort-desc"></div>
+        <input type="text" readonly="readonly" value="facilitador-sort-desc">
     </li>
     <li>
-        <div class="icon voyager-handle"></div>
-        <input type="text" readonly="readonly" value="voyager-handle">
+        <div class="icon facilitador-handle"></div>
+        <input type="text" readonly="readonly" value="facilitador-handle">
     </li>
     <li>
-        <div class="icon voyager-hammer"></div>
-        <input type="text" readonly="readonly" value="voyager-hammer">
+        <div class="icon facilitador-hammer"></div>
+        <input type="text" readonly="readonly" value="facilitador-hammer">
     </li>
     <li>
-        <div class="icon voyager-images"></div>
-        <input type="text" readonly="readonly" value="voyager-images">
+        <div class="icon facilitador-images"></div>
+        <input type="text" readonly="readonly" value="facilitador-images">
     </li>
     <li>
-        <div class="icon voyager-categories"></div>
-        <input type="text" readonly="readonly" value="voyager-categories">
+        <div class="icon facilitador-categories"></div>
+        <input type="text" readonly="readonly" value="facilitador-categories">
     </li>
     <li>
-        <div class="icon voyager-group"></div>
-        <input type="text" readonly="readonly" value="voyager-group">
+        <div class="icon facilitador-group"></div>
+        <input type="text" readonly="readonly" value="facilitador-group">
     </li>
     <li>
-        <div class="icon voyager-person"></div>
-        <input type="text" readonly="readonly" value="voyager-person">
+        <div class="icon facilitador-person"></div>
+        <input type="text" readonly="readonly" value="facilitador-person">
     </li>
     <li>
-        <div class="icon voyager-people"></div>
-        <input type="text" readonly="readonly" value="voyager-people">
+        <div class="icon facilitador-people"></div>
+        <input type="text" readonly="readonly" value="facilitador-people">
     </li>
     <li>
-        <div class="icon voyager-power"></div>
-        <input type="text" readonly="readonly" value="voyager-power">
+        <div class="icon facilitador-power"></div>
+        <input type="text" readonly="readonly" value="facilitador-power">
     </li>
     <li>
-        <div class="icon voyager-tools"></div>
-        <input type="text" readonly="readonly" value="voyager-tools">
+        <div class="icon facilitador-tools"></div>
+        <input type="text" readonly="readonly" value="facilitador-tools">
     </li>
     <li>
-        <div class="icon voyager-anchor"></div>
-        <input type="text" readonly="readonly" value="voyager-anchor">
+        <div class="icon facilitador-anchor"></div>
+        <input type="text" readonly="readonly" value="facilitador-anchor">
     </li>
     <li>
-        <div class="icon voyager-double-down"></div>
-        <input type="text" readonly="readonly" value="voyager-double-down">
+        <div class="icon facilitador-double-down"></div>
+        <input type="text" readonly="readonly" value="facilitador-double-down">
     </li>
     <li>
-        <div class="icon voyager-double-up"></div>
-        <input type="text" readonly="readonly" value="voyager-double-up">
+        <div class="icon facilitador-double-up"></div>
+        <input type="text" readonly="readonly" value="facilitador-double-up">
     </li>
     <li>
-        <div class="icon voyager-double-left"></div>
-        <input type="text" readonly="readonly" value="voyager-double-left">
+        <div class="icon facilitador-double-left"></div>
+        <input type="text" readonly="readonly" value="facilitador-double-left">
     </li>
     <li>
-        <div class="icon voyager-double-right"></div>
-        <input type="text" readonly="readonly" value="voyager-double-right">
+        <div class="icon facilitador-double-right"></div>
+        <input type="text" readonly="readonly" value="facilitador-double-right">
     </li>
     <li>
-        <div class="icon voyager-window-list"></div>
-        <input type="text" readonly="readonly" value="voyager-window-list">
+        <div class="icon facilitador-window-list"></div>
+        <input type="text" readonly="readonly" value="facilitador-window-list">
     </li>
     <li>
-        <div class="icon voyager-x"></div>
-        <input type="text" readonly="readonly" value="voyager-x">
+        <div class="icon facilitador-x"></div>
+        <input type="text" readonly="readonly" value="facilitador-x">
     </li>
     <li>
-        <div class="icon voyager-dot"></div>
-        <input type="text" readonly="readonly" value="voyager-dot">
+        <div class="icon facilitador-dot"></div>
+        <input type="text" readonly="readonly" value="facilitador-dot">
     </li>
     <li>
-        <div class="icon voyager-dot-2"></div>
-        <input type="text" readonly="readonly" value="voyager-dot-2">
+        <div class="icon facilitador-dot-2"></div>
+        <input type="text" readonly="readonly" value="facilitador-dot-2">
     </li>
     <li>
-        <div class="icon voyager-dot-3"></div>
-        <input type="text" readonly="readonly" value="voyager-dot-3">
+        <div class="icon facilitador-dot-3"></div>
+        <input type="text" readonly="readonly" value="facilitador-dot-3">
     </li>
     <li>
-        <div class="icon voyager-list"></div>
-        <input type="text" readonly="readonly" value="voyager-list">
+        <div class="icon facilitador-list"></div>
+        <input type="text" readonly="readonly" value="facilitador-list">
     </li>
     <li>
-        <div class="icon voyager-list-add"></div>
-        <input type="text" readonly="readonly" value="voyager-list-add">
+        <div class="icon facilitador-list-add"></div>
+        <input type="text" readonly="readonly" value="facilitador-list-add">
     </li>
     <li>
-        <div class="icon voyager-pie-chart"></div>
-        <input type="text" readonly="readonly" value="voyager-pie-chart">
+        <div class="icon facilitador-pie-chart"></div>
+        <input type="text" readonly="readonly" value="facilitador-pie-chart">
     </li>
     <li>
-        <div class="icon voyager-watch"></div>
-        <input type="text" readonly="readonly" value="voyager-watch">
+        <div class="icon facilitador-watch"></div>
+        <input type="text" readonly="readonly" value="facilitador-watch">
     </li>
     <li>
-        <div class="icon voyager-data"></div>
-        <input type="text" readonly="readonly" value="voyager-data">
+        <div class="icon facilitador-data"></div>
+        <input type="text" readonly="readonly" value="facilitador-data">
     </li>
     <li>
-        <div class="icon voyager-music"></div>
-        <input type="text" readonly="readonly" value="voyager-music">
+        <div class="icon facilitador-music"></div>
+        <input type="text" readonly="readonly" value="facilitador-music">
     </li>
     <li>
-        <div class="icon voyager-settings"></div>
-        <input type="text" readonly="readonly" value="voyager-settings">
+        <div class="icon facilitador-settings"></div>
+        <input type="text" readonly="readonly" value="facilitador-settings">
     </li>
     <li>
-        <div class="icon voyager-video"></div>
-        <input type="text" readonly="readonly" value="voyager-video">
+        <div class="icon facilitador-video"></div>
+        <input type="text" readonly="readonly" value="facilitador-video">
     </li>
     <li>
-        <div class="icon voyager-trash"></div>
-        <input type="text" readonly="readonly" value="voyager-trash">
+        <div class="icon facilitador-trash"></div>
+        <input type="text" readonly="readonly" value="facilitador-trash">
     </li>
     <li>
-        <div class="icon voyager-tv"></div>
-        <input type="text" readonly="readonly" value="voyager-tv">
+        <div class="icon facilitador-tv"></div>
+        <input type="text" readonly="readonly" value="facilitador-tv">
     </li>
     <li>
-        <div class="icon voyager-lock"></div>
-        <input type="text" readonly="readonly" value="voyager-lock">
+        <div class="icon facilitador-lock"></div>
+        <input type="text" readonly="readonly" value="facilitador-lock">
     </li>
     <li>
-        <div class="icon voyager-news"></div>
-        <input type="text" readonly="readonly" value="voyager-news">
+        <div class="icon facilitador-news"></div>
+        <input type="text" readonly="readonly" value="facilitador-news">
     </li>
     <li>
-        <div class="icon voyager-bag"></div>
-        <input type="text" readonly="readonly" value="voyager-bag">
+        <div class="icon facilitador-bag"></div>
+        <input type="text" readonly="readonly" value="facilitador-bag">
     </li>
     <li>
-        <div class="icon voyager-upload"></div>
-        <input type="text" readonly="readonly" value="voyager-upload">
+        <div class="icon facilitador-upload"></div>
+        <input type="text" readonly="readonly" value="facilitador-upload">
     </li>
     <li>
-        <div class="icon voyager-refresh"></div>
-        <input type="text" readonly="readonly" value="voyager-refresh">
+        <div class="icon facilitador-refresh"></div>
+        <input type="text" readonly="readonly" value="facilitador-refresh">
     </li>
     <li>
-        <div class="icon voyager-character"></div>
-        <input type="text" readonly="readonly" value="voyager-character">
+        <div class="icon facilitador-character"></div>
+        <input type="text" readonly="readonly" value="facilitador-character">
     </li>
     <li>
-        <div class="icon voyager-move"></div>
-        <input type="text" readonly="readonly" value="voyager-move">
+        <div class="icon facilitador-move"></div>
+        <input type="text" readonly="readonly" value="facilitador-move">
     </li>
     <li>
-        <div class="icon voyager-paypal"></div>
-        <input type="text" readonly="readonly" value="voyager-paypal">
+        <div class="icon facilitador-paypal"></div>
+        <input type="text" readonly="readonly" value="facilitador-paypal">
     </li>
     <li>
-        <div class="icon voyager-paper-plane"></div>
-        <input type="text" readonly="readonly" value="voyager-paper-plane">
+        <div class="icon facilitador-paper-plane"></div>
+        <input type="text" readonly="readonly" value="facilitador-paper-plane">
     </li>
     <li>
-        <div class="icon voyager-ticket"></div>
-        <input type="text" readonly="readonly" value="voyager-ticket">
+        <div class="icon facilitador-ticket"></div>
+        <input type="text" readonly="readonly" value="facilitador-ticket">
     </li>
     <li>
-        <div class="icon voyager-youtube-play"></div>
-        <input type="text" readonly="readonly" value="voyager-youtube-play">
+        <div class="icon facilitador-youtube-play"></div>
+        <input type="text" readonly="readonly" value="facilitador-youtube-play">
     </li>
     <li>
-        <div class="icon voyager-boat"></div>
-        <input type="text" readonly="readonly" value="voyager-boat">
+        <div class="icon facilitador-boat"></div>
+        <input type="text" readonly="readonly" value="facilitador-boat">
     </li>
     <li>
-        <div class="icon voyager-check"></div>
-        <input type="text" readonly="readonly" value="voyager-check">
+        <div class="icon facilitador-check"></div>
+        <input type="text" readonly="readonly" value="facilitador-check">
     </li>
     <li>
-        <div class="icon voyager-alarm-clock"></div>
-        <input type="text" readonly="readonly" value="voyager-alarm-clock">
+        <div class="icon facilitador-alarm-clock"></div>
+        <input type="text" readonly="readonly" value="facilitador-alarm-clock">
     </li>
     <li>
-        <div class="icon voyager-controller"></div>
-        <input type="text" readonly="readonly" value="voyager-controller">
+        <div class="icon facilitador-controller"></div>
+        <input type="text" readonly="readonly" value="facilitador-controller">
     </li>
     <li>
-        <div class="icon voyager-pizza"></div>
-        <input type="text" readonly="readonly" value="voyager-pizza">
+        <div class="icon facilitador-pizza"></div>
+        <input type="text" readonly="readonly" value="facilitador-pizza">
     </li>
     <li>
-        <div class="icon voyager-backpack"></div>
-        <input type="text" readonly="readonly" value="voyager-backpack">
+        <div class="icon facilitador-backpack"></div>
+        <input type="text" readonly="readonly" value="facilitador-backpack">
     </li>
     <li>
-        <div class="icon voyager-barbeque"></div>
-        <input type="text" readonly="readonly" value="voyager-barbeque">
+        <div class="icon facilitador-barbeque"></div>
+        <input type="text" readonly="readonly" value="facilitador-barbeque">
     </li>
     <li>
-        <div class="icon voyager-bomb"></div>
-        <input type="text" readonly="readonly" value="voyager-bomb">
+        <div class="icon facilitador-bomb"></div>
+        <input type="text" readonly="readonly" value="facilitador-bomb">
     </li>
     <li>
-        <div class="icon voyager-book-download"></div>
-        <input type="text" readonly="readonly" value="voyager-book-download">
+        <div class="icon facilitador-book-download"></div>
+        <input type="text" readonly="readonly" value="facilitador-book-download">
     </li>
     <li>
-        <div class="icon voyager-browser"></div>
-        <input type="text" readonly="readonly" value="voyager-browser">
+        <div class="icon facilitador-browser"></div>
+        <input type="text" readonly="readonly" value="facilitador-browser">
     </li>
     <li>
-        <div class="icon voyager-brush"></div>
-        <input type="text" readonly="readonly" value="voyager-brush">
+        <div class="icon facilitador-brush"></div>
+        <input type="text" readonly="readonly" value="facilitador-brush">
     </li>
     <li>
-        <div class="icon voyager-bubble-hear"></div>
-        <input type="text" readonly="readonly" value="voyager-bubble-hear">
+        <div class="icon facilitador-bubble-hear"></div>
+        <input type="text" readonly="readonly" value="facilitador-bubble-hear">
     </li>
     <li>
-        <div class="icon voyager-polaroid"></div>
-        <input type="text" readonly="readonly" value="voyager-polaroid">
+        <div class="icon facilitador-polaroid"></div>
+        <input type="text" readonly="readonly" value="facilitador-polaroid">
     </li>
     <li>
-        <div class="icon voyager-crop"></div>
-        <input type="text" readonly="readonly" value="voyager-crop">
+        <div class="icon facilitador-crop"></div>
+        <input type="text" readonly="readonly" value="facilitador-crop">
     </li>
     <li>
-        <div class="icon voyager-dashboard"></div>
-        <input type="text" readonly="readonly" value="voyager-dashboard">
+        <div class="icon facilitador-dashboard"></div>
+        <input type="text" readonly="readonly" value="facilitador-dashboard">
     </li>
     <li>
-        <div class="icon voyager-hotdog"></div>
-        <input type="text" readonly="readonly" value="voyager-hotdog">
+        <div class="icon facilitador-hotdog"></div>
+        <input type="text" readonly="readonly" value="facilitador-hotdog">
     </li>
     <li>
-        <div class="icon voyager-laptop"></div>
-        <input type="text" readonly="readonly" value="voyager-laptop">
+        <div class="icon facilitador-laptop"></div>
+        <input type="text" readonly="readonly" value="facilitador-laptop">
     </li>
     <li>
-        <div class="icon voyager-paint-bucket"></div>
-        <input type="text" readonly="readonly" value="voyager-paint-bucket">
+        <div class="icon facilitador-paint-bucket"></div>
+        <input type="text" readonly="readonly" value="facilitador-paint-bucket">
     </li>
     <li>
-        <div class="icon voyager-photo"></div>
-        <input type="text" readonly="readonly" value="voyager-photo">
+        <div class="icon facilitador-photo"></div>
+        <input type="text" readonly="readonly" value="facilitador-photo">
     </li>
     <li>
-        <div class="icon voyager-photos"></div>
-        <input type="text" readonly="readonly" value="voyager-photos">
+        <div class="icon facilitador-photos"></div>
+        <input type="text" readonly="readonly" value="facilitador-photos">
     </li>
     <li>
-        <div class="icon voyager-receipt"></div>
-        <input type="text" readonly="readonly" value="voyager-receipt">
+        <div class="icon facilitador-receipt"></div>
+        <input type="text" readonly="readonly" value="facilitador-receipt">
     </li>
     <li>
-        <div class="icon voyager-buy"></div>
-        <input type="text" readonly="readonly" value="voyager-buy">
+        <div class="icon facilitador-buy"></div>
+        <input type="text" readonly="readonly" value="facilitador-buy">
     </li>
     <li>
-        <div class="icon voyager-lightbulb"></div>
-        <input type="text" readonly="readonly" value="voyager-lightbulb">
+        <div class="icon facilitador-lightbulb"></div>
+        <input type="text" readonly="readonly" value="facilitador-lightbulb">
     </li>
     <li>
-        <div class="icon voyager-archive"></div>
-        <input type="text" readonly="readonly" value="voyager-archive">
+        <div class="icon facilitador-archive"></div>
+        <input type="text" readonly="readonly" value="facilitador-archive">
     </li>
     <li>
-        <div class="icon voyager-paperclip"></div>
-        <input type="text" readonly="readonly" value="voyager-paperclip">
+        <div class="icon facilitador-paperclip"></div>
+        <input type="text" readonly="readonly" value="facilitador-paperclip">
     </li>
     <li>
-        <div class="icon voyager-warning"></div>
-        <input type="text" readonly="readonly" value="voyager-warning">
+        <div class="icon facilitador-warning"></div>
+        <input type="text" readonly="readonly" value="facilitador-warning">
     </li>
     <li>
-        <div class="icon voyager-basket"></div>
-        <input type="text" readonly="readonly" value="voyager-basket">
+        <div class="icon facilitador-basket"></div>
+        <input type="text" readonly="readonly" value="facilitador-basket">
     </li>
     <li>
-        <div class="icon voyager-bell"></div>
-        <input type="text" readonly="readonly" value="voyager-bell">
+        <div class="icon facilitador-bell"></div>
+        <input type="text" readonly="readonly" value="facilitador-bell">
     </li>
     <li>
-        <div class="icon voyager-book"></div>
-        <input type="text" readonly="readonly" value="voyager-book">
+        <div class="icon facilitador-book"></div>
+        <input type="text" readonly="readonly" value="facilitador-book">
     </li>
     <li>
-        <div class="icon voyager-chat"></div>
-        <input type="text" readonly="readonly" value="voyager-chat">
+        <div class="icon facilitador-chat"></div>
+        <input type="text" readonly="readonly" value="facilitador-chat">
     </li>
     <li>
-        <div class="icon voyager-down-circled"></div>
-        <input type="text" readonly="readonly" value="voyager-down-circled">
+        <div class="icon facilitador-down-circled"></div>
+        <input type="text" readonly="readonly" value="facilitador-down-circled">
     </li>
     <li>
-        <div class="icon voyager-location"></div>
-        <input type="text" readonly="readonly" value="voyager-location">
+        <div class="icon facilitador-location"></div>
+        <input type="text" readonly="readonly" value="facilitador-location">
     </li>
     <li>
-        <div class="icon voyager-forward"></div>
-        <input type="text" readonly="readonly" value="voyager-forward">
+        <div class="icon facilitador-forward"></div>
+        <input type="text" readonly="readonly" value="facilitador-forward">
     </li>
     <li>
-        <div class="icon voyager-flashlight"></div>
-        <input type="text" readonly="readonly" value="voyager-flashlight">
+        <div class="icon facilitador-flashlight"></div>
+        <input type="text" readonly="readonly" value="facilitador-flashlight">
     </li>
     <li>
-        <div class="icon voyager-trophy"></div>
-        <input type="text" readonly="readonly" value="voyager-trophy">
+        <div class="icon facilitador-trophy"></div>
+        <input type="text" readonly="readonly" value="facilitador-trophy">
     </li>
     <li>
-        <div class="icon voyager-diamond"></div>
-        <input type="text" readonly="readonly" value="voyager-diamond">
+        <div class="icon facilitador-diamond"></div>
+        <input type="text" readonly="readonly" value="facilitador-diamond">
     </li>
     <li>
-        <div class="icon voyager-credit-cards"></div>
-        <input type="text" readonly="readonly" value="voyager-credit-cards">
+        <div class="icon facilitador-credit-cards"></div>
+        <input type="text" readonly="readonly" value="facilitador-credit-cards">
     </li>
     <li>
-        <div class="icon voyager-shop"></div>
-        <input type="text" readonly="readonly" value="voyager-shop">
+        <div class="icon facilitador-shop"></div>
+        <input type="text" readonly="readonly" value="facilitador-shop">
     </li>
     <li>
-        <div class="icon voyager-sound"></div>
-        <input type="text" readonly="readonly" value="voyager-sound">
+        <div class="icon facilitador-sound"></div>
+        <input type="text" readonly="readonly" value="facilitador-sound">
     </li>
     <li>
-        <div class="icon voyager-study"></div>
-        <input type="text" readonly="readonly" value="voyager-study">
+        <div class="icon facilitador-study"></div>
+        <input type="text" readonly="readonly" value="facilitador-study">
     </li>
     <li>
-        <div class="icon voyager-pen"></div>
-        <input type="text" readonly="readonly" value="voyager-pen">
+        <div class="icon facilitador-pen"></div>
+        <input type="text" readonly="readonly" value="facilitador-pen">
     </li>
     <li>
-        <div class="icon voyager-params"></div>
-        <input type="text" readonly="readonly" value="voyager-params">
+        <div class="icon facilitador-params"></div>
+        <input type="text" readonly="readonly" value="facilitador-params">
     </li>
     <li>
-        <div class="icon voyager-fire"></div>
-        <input type="text" readonly="readonly" value="voyager-fire">
+        <div class="icon facilitador-fire"></div>
+        <input type="text" readonly="readonly" value="facilitador-fire">
     </li>
     <li>
-        <div class="icon voyager-dollar"></div>
-        <input type="text" readonly="readonly" value="voyager-dollar">
+        <div class="icon facilitador-dollar"></div>
+        <input type="text" readonly="readonly" value="facilitador-dollar">
     </li>
     <li>
-        <div class="icon voyager-bulb"></div>
-        <input type="text" readonly="readonly" value="voyager-bulb">
+        <div class="icon facilitador-bulb"></div>
+        <input type="text" readonly="readonly" value="facilitador-bulb">
     </li>
     <li>
-        <div class="icon voyager-lab"></div>
-        <input type="text" readonly="readonly" value="voyager-lab">
+        <div class="icon facilitador-lab"></div>
+        <input type="text" readonly="readonly" value="facilitador-lab">
     </li>
     <li>
-        <div class="icon voyager-cup"></div>
-        <input type="text" readonly="readonly" value="voyager-cup">
+        <div class="icon facilitador-cup"></div>
+        <input type="text" readonly="readonly" value="facilitador-cup">
     </li>
     <li>
-        <div class="icon voyager-megaphone"></div>
-        <input type="text" readonly="readonly" value="voyager-megaphone">
+        <div class="icon facilitador-megaphone"></div>
+        <input type="text" readonly="readonly" value="facilitador-megaphone">
     </li>
     <li>
-        <div class="icon voyager-heart"></div>
-        <input type="text" readonly="readonly" value="voyager-heart">
+        <div class="icon facilitador-heart"></div>
+        <input type="text" readonly="readonly" value="facilitador-heart">
     </li>
     <li>
-        <div class="icon voyager-bubble"></div>
-        <input type="text" readonly="readonly" value="voyager-bubble">
+        <div class="icon facilitador-bubble"></div>
+        <input type="text" readonly="readonly" value="facilitador-bubble">
     </li>
     <li>
-        <div class="icon voyager-search"></div>
-        <input type="text" readonly="readonly" value="voyager-search">
+        <div class="icon facilitador-search"></div>
+        <input type="text" readonly="readonly" value="facilitador-search">
     </li>
     <li>
-        <div class="icon voyager-tag"></div>
-        <input type="text" readonly="readonly" value="voyager-tag">
+        <div class="icon facilitador-tag"></div>
+        <input type="text" readonly="readonly" value="facilitador-tag">
     </li>
     <li>
-        <div class="icon voyager-world"></div>
-        <input type="text" readonly="readonly" value="voyager-world">
+        <div class="icon facilitador-world"></div>
+        <input type="text" readonly="readonly" value="facilitador-world">
     </li>
     <li>
-        <div class="icon voyager-camera"></div>
-        <input type="text" readonly="readonly" value="voyager-camera">
+        <div class="icon facilitador-camera"></div>
+        <input type="text" readonly="readonly" value="facilitador-camera">
     </li>
     <li>
-        <div class="icon voyager-calendar"></div>
-        <input type="text" readonly="readonly" value="voyager-calendar">
+        <div class="icon facilitador-calendar"></div>
+        <input type="text" readonly="readonly" value="facilitador-calendar">
     </li>
     <li>
-        <div class="icon voyager-mail"></div>
-        <input type="text" readonly="readonly" value="voyager-mail">
+        <div class="icon facilitador-mail"></div>
+        <input type="text" readonly="readonly" value="facilitador-mail">
     </li>
     <li>
-        <div class="icon voyager-phone"></div>
-        <input type="text" readonly="readonly" value="voyager-phone">
+        <div class="icon facilitador-phone"></div>
+        <input type="text" readonly="readonly" value="facilitador-phone">
     </li>
     <li>
-        <div class="icon voyager-star"></div>
-        <input type="text" readonly="readonly" value="voyager-star">
+        <div class="icon facilitador-star"></div>
+        <input type="text" readonly="readonly" value="facilitador-star">
     </li>
     <li>
-        <div class="icon voyager-star-half"></div>
-        <input type="text" readonly="readonly" value="voyager-star-half">
+        <div class="icon facilitador-star-half"></div>
+        <input type="text" readonly="readonly" value="facilitador-star-half">
     </li>
     <li>
-        <div class="icon voyager-star-half-1"></div>
-        <input type="text" readonly="readonly" value="voyager-star-half-1">
+        <div class="icon facilitador-star-half-1"></div>
+        <input type="text" readonly="readonly" value="facilitador-star-half-1">
     </li>
     <li>
-        <div class="icon voyager-star-two"></div>
-        <input type="text" readonly="readonly" value="voyager-star-two">
+        <div class="icon facilitador-star-two"></div>
+        <input type="text" readonly="readonly" value="facilitador-star-two">
     </li>
     <li>
-        <div class="icon voyager-medal-rank-star"></div>
-        <input type="text" readonly="readonly" value="voyager-medal-rank-star">
+        <div class="icon facilitador-medal-rank-star"></div>
+        <input type="text" readonly="readonly" value="facilitador-medal-rank-star">
     </li>
     <li>
-        <div class="icon voyager-facebook"></div>
-        <input type="text" readonly="readonly" value="voyager-facebook">
+        <div class="icon facilitador-facebook"></div>
+        <input type="text" readonly="readonly" value="facilitador-facebook">
     </li>
     <li>
-        <div class="icon voyager-google-plus"></div>
-        <input type="text" readonly="readonly" value="voyager-google-plus">
+        <div class="icon facilitador-google-plus"></div>
+        <input type="text" readonly="readonly" value="facilitador-google-plus">
     </li>
     <li>
-        <div class="icon voyager-twitter"></div>
-        <input type="text" readonly="readonly" value="voyager-twitter">
+        <div class="icon facilitador-twitter"></div>
+        <input type="text" readonly="readonly" value="facilitador-twitter">
     </li>
     <li>
-        <div class="icon voyager-github"></div>
-        <input type="text" readonly="readonly" value="voyager-github">
+        <div class="icon facilitador-github"></div>
+        <input type="text" readonly="readonly" value="facilitador-github">
     </li>
     <li>
-        <div class="icon voyager-code"></div>
-        <input type="text" readonly="readonly" value="voyager-code">
+        <div class="icon facilitador-code"></div>
+        <input type="text" readonly="readonly" value="facilitador-code">
     </li>
     <li>
-        <div class="icon voyager-pie-graph"></div>
-        <input type="text" readonly="readonly" value="voyager-pie-graph">
+        <div class="icon facilitador-pie-graph"></div>
+        <input type="text" readonly="readonly" value="facilitador-pie-graph">
     </li>
     <li>
-        <div class="icon voyager-javascript"></div>
-        <input type="text" readonly="readonly" value="voyager-javascript">
+        <div class="icon facilitador-javascript"></div>
+        <input type="text" readonly="readonly" value="facilitador-javascript">
     </li>
     <li>
-        <div class="icon voyager-wand"></div>
-        <input type="text" readonly="readonly" value="voyager-wand">
+        <div class="icon facilitador-wand"></div>
+        <input type="text" readonly="readonly" value="facilitador-wand">
     </li>
     <li>
-        <div class="icon voyager-wineglass"></div>
-        <input type="text" readonly="readonly" value="voyager-wineglass">
+        <div class="icon facilitador-wineglass"></div>
+        <input type="text" readonly="readonly" value="facilitador-wineglass">
     </li>
     <li>
-        <div class="icon voyager-milestone"></div>
-        <input type="text" readonly="readonly" value="voyager-milestone">
+        <div class="icon facilitador-milestone"></div>
+        <input type="text" readonly="readonly" value="facilitador-milestone">
     </li>
     <li>
-        <div class="icon voyager-terminal"></div>
-        <input type="text" readonly="readonly" value="voyager-terminal">
+        <div class="icon facilitador-terminal"></div>
+        <input type="text" readonly="readonly" value="facilitador-terminal">
     </li>
     <li>
-        <div class="icon voyager-plug"></div>
-        <input type="text" readonly="readonly" value="voyager-plug">
+        <div class="icon facilitador-plug"></div>
+        <input type="text" readonly="readonly" value="facilitador-plug">
     </li>
     <li>
-        <div class="icon voyager-gift"></div>
-        <input type="text" readonly="readonly" value="voyager-gift">
+        <div class="icon facilitador-gift"></div>
+        <input type="text" readonly="readonly" value="facilitador-gift">
     </li>
     <li>
-        <div class="icon voyager-markdown"></div>
-        <input type="text" readonly="readonly" value="voyager-markdown">
+        <div class="icon facilitador-markdown"></div>
+        <input type="text" readonly="readonly" value="facilitador-markdown">
     </li>
     <li>
-        <div class="icon voyager-beer"></div>
-        <input type="text" readonly="readonly" value="voyager-beer">
+        <div class="icon facilitador-beer"></div>
+        <input type="text" readonly="readonly" value="facilitador-beer">
     </li>
     <li>
-        <div class="icon voyager-credit-card"></div>
-        <input type="text" readonly="readonly" value="voyager-credit-card">
+        <div class="icon facilitador-credit-card"></div>
+        <input type="text" readonly="readonly" value="facilitador-credit-card">
     </li>
     <li>
-        <div class="icon voyager-bolt"></div>
-        <input type="text" readonly="readonly" value="voyager-bolt">
+        <div class="icon facilitador-bolt"></div>
+        <input type="text" readonly="readonly" value="facilitador-bolt">
     </li>
     <li>
-        <div class="icon voyager-external"></div>
-        <input type="text" readonly="readonly" value="voyager-external">
+        <div class="icon facilitador-external"></div>
+        <input type="text" readonly="readonly" value="facilitador-external">
     </li>
     <li>
-        <div class="icon voyager-magnet"></div>
-        <input type="text" readonly="readonly" value="voyager-magnet">
+        <div class="icon facilitador-magnet"></div>
+        <input type="text" readonly="readonly" value="facilitador-magnet">
     </li>
     <li>
-        <div class="icon voyager-certificate"></div>
-        <input type="text" readonly="readonly" value="voyager-certificate">
+        <div class="icon facilitador-certificate"></div>
+        <input type="text" readonly="readonly" value="facilitador-certificate">
     </li>
     <li>
-        <div class="icon voyager-cloud-download"></div>
-        <input type="text" readonly="readonly" value="voyager-cloud-download">
+        <div class="icon facilitador-cloud-download"></div>
+        <input type="text" readonly="readonly" value="facilitador-cloud-download">
     </li>
     <li>
-        <div class="icon voyager-campfire"></div>
-        <input type="text" readonly="readonly" value="voyager-campfire">
+        <div class="icon facilitador-campfire"></div>
+        <input type="text" readonly="readonly" value="facilitador-campfire">
     </li>
     <li>
-        <div class="icon voyager-new"></div>
-        <input type="text" readonly="readonly" value="voyager-new">
+        <div class="icon facilitador-new"></div>
+        <input type="text" readonly="readonly" value="facilitador-new">
     </li>
     <li>
-        <div class="icon voyager-skull"></div>
-        <input type="text" readonly="readonly" value="voyager-skull">
+        <div class="icon facilitador-skull"></div>
+        <input type="text" readonly="readonly" value="facilitador-skull">
     </li>
     <li>
-        <div class="icon voyager-telephone"></div>
-        <input type="text" readonly="readonly" value="voyager-telephone">
+        <div class="icon facilitador-telephone"></div>
+        <input type="text" readonly="readonly" value="facilitador-telephone">
     </li>
     <li>
-        <div class="icon voyager-trees"></div>
-        <input type="text" readonly="readonly" value="voyager-trees">
+        <div class="icon facilitador-trees"></div>
+        <input type="text" readonly="readonly" value="facilitador-trees">
     </li>
     <li>
-        <div class="icon voyager-bar-chart"></div>
-        <input type="text" readonly="readonly" value="voyager-bar-chart">
+        <div class="icon facilitador-bar-chart"></div>
+        <input type="text" readonly="readonly" value="facilitador-bar-chart">
     </li>
     <li>
-        <div class="icon voyager-check-circle"></div>
-        <input type="text" readonly="readonly" value="voyager-check-circle">
+        <div class="icon facilitador-check-circle"></div>
+        <input type="text" readonly="readonly" value="facilitador-check-circle">
     </li>
     <li>
-        <div class="icon voyager-exclamation"></div>
-        <input type="text" readonly="readonly" value="voyager-exclamation">
+        <div class="icon facilitador-exclamation"></div>
+        <input type="text" readonly="readonly" value="facilitador-exclamation">
     </li>
     <li>
-        <div class="icon voyager-font"></div>
-        <input type="text" readonly="readonly" value="voyager-font">
+        <div class="icon facilitador-font"></div>
+        <input type="text" readonly="readonly" value="facilitador-font">
     </li>
     <li>
-        <div class="icon voyager-puzzle"></div>
-        <input type="text" readonly="readonly" value="voyager-puzzle">
+        <div class="icon facilitador-puzzle"></div>
+        <input type="text" readonly="readonly" value="facilitador-puzzle">
     </li>
     <li>
-        <div class="icon voyager-smile"></div>
-        <input type="text" readonly="readonly" value="voyager-smile">
+        <div class="icon facilitador-smile"></div>
+        <input type="text" readonly="readonly" value="facilitador-smile">
     </li>
     <li>
-        <div class="icon voyager-frown"></div>
-        <input type="text" readonly="readonly" value="voyager-frown">
+        <div class="icon facilitador-frown"></div>
+        <input type="text" readonly="readonly" value="facilitador-frown">
     </li>
     <li>
-        <div class="icon voyager-meh"></div>
-        <input type="text" readonly="readonly" value="voyager-meh">
+        <div class="icon facilitador-meh"></div>
+        <input type="text" readonly="readonly" value="facilitador-meh">
     </li>
     <li>
-        <div class="icon voyager-leaf"></div>
-        <input type="text" readonly="readonly" value="voyager-leaf">
+        <div class="icon facilitador-leaf"></div>
+        <input type="text" readonly="readonly" value="facilitador-leaf">
     </li>
     <li>
-        <div class="icon voyager-info-circled"></div>
-        <input type="text" readonly="readonly" value="voyager-info-circled">
+        <div class="icon facilitador-info-circled"></div>
+        <input type="text" readonly="readonly" value="facilitador-info-circled">
     </li>
     <li>
-        <div class="icon voyager-underline"></div>
-        <input type="text" readonly="readonly" value="voyager-underline">
+        <div class="icon facilitador-underline"></div>
+        <input type="text" readonly="readonly" value="facilitador-underline">
     </li>
     <li>
-        <div class="icon voyager-wallet"></div>
-        <input type="text" readonly="readonly" value="voyager-wallet">
+        <div class="icon facilitador-wallet"></div>
+        <input type="text" readonly="readonly" value="facilitador-wallet">
     </li>
     <li>
-        <div class="icon voyager-truck"></div>
-        <input type="text" readonly="readonly" value="voyager-truck">
+        <div class="icon facilitador-truck"></div>
+        <input type="text" readonly="readonly" value="facilitador-truck">
     </li>
     <li>
-        <div class="icon voyager-eye"></div>
-        <input type="text" readonly="readonly" value="voyager-eye">
+        <div class="icon facilitador-eye"></div>
+        <input type="text" readonly="readonly" value="facilitador-eye">
     </li>
     <li>
-        <div class="icon voyager-sun"></div>
-        <input type="text" readonly="readonly" value="voyager-sun">
+        <div class="icon facilitador-sun"></div>
+        <input type="text" readonly="readonly" value="facilitador-sun">
     </li>
     <li>
-        <div class="icon voyager-barbell"></div>
-        <input type="text" readonly="readonly" value="voyager-barbell">
+        <div class="icon facilitador-barbell"></div>
+        <input type="text" readonly="readonly" value="facilitador-barbell">
     </li>
     <li>
-        <div class="icon voyager-bookmark"></div>
-        <input type="text" readonly="readonly" value="voyager-bookmark">
+        <div class="icon facilitador-bookmark"></div>
+        <input type="text" readonly="readonly" value="facilitador-bookmark">
     </li>
     <li>
-        <div class="icon voyager-volume-up"></div>
-        <input type="text" readonly="readonly" value="voyager-volume-up">
+        <div class="icon facilitador-volume-up"></div>
+        <input type="text" readonly="readonly" value="facilitador-volume-up">
     </li>
     <li>
-        <div class="icon voyager-volume-down"></div>
-        <input type="text" readonly="readonly" value="voyager-volume-down">
+        <div class="icon facilitador-volume-down"></div>
+        <input type="text" readonly="readonly" value="facilitador-volume-down">
     </li>
     <li>
-        <div class="icon voyager-wifi"></div>
-        <input type="text" readonly="readonly" value="voyager-wifi">
+        <div class="icon facilitador-wifi"></div>
+        <input type="text" readonly="readonly" value="facilitador-wifi">
     </li>
     <li>
-        <div class="icon voyager-pause"></div>
-        <input type="text" readonly="readonly" value="voyager-pause">
+        <div class="icon facilitador-pause"></div>
+        <input type="text" readonly="readonly" value="facilitador-pause">
     </li>
     <li>
-        <div class="icon voyager-resize-full"></div>
-        <input type="text" readonly="readonly" value="voyager-resize-full">
+        <div class="icon facilitador-resize-full"></div>
+        <input type="text" readonly="readonly" value="facilitador-resize-full">
     </li>
     <li>
-        <div class="icon voyager-resize-small"></div>
-        <input type="text" readonly="readonly" value="voyager-resize-small">
+        <div class="icon facilitador-resize-small"></div>
+        <input type="text" readonly="readonly" value="facilitador-resize-small">
     </li>
     <li>
-        <div class="icon voyager-download"></div>
-        <input type="text" readonly="readonly" value="voyager-download">
+        <div class="icon facilitador-download"></div>
+        <input type="text" readonly="readonly" value="facilitador-download">
     </li>
     <li>
-        <div class="icon voyager-droplet"></div>
-        <input type="text" readonly="readonly" value="voyager-droplet">
+        <div class="icon facilitador-droplet"></div>
+        <input type="text" readonly="readonly" value="facilitador-droplet">
     </li>
     <li>
-        <div class="icon voyager-umbrella"></div>
-        <input type="text" readonly="readonly" value="voyager-umbrella">
+        <div class="icon facilitador-umbrella"></div>
+        <input type="text" readonly="readonly" value="facilitador-umbrella">
     </li>
     <li>
-        <div class="icon voyager-harddrive"></div>
-        <input type="text" readonly="readonly" value="voyager-harddrive">
+        <div class="icon facilitador-harddrive"></div>
+        <input type="text" readonly="readonly" value="facilitador-harddrive">
     </li>
     <li>
-        <div class="icon voyager-css3"></div>
-        <input type="text" readonly="readonly" value="voyager-css3">
+        <div class="icon facilitador-css3"></div>
+        <input type="text" readonly="readonly" value="facilitador-css3">
     </li>
     <li>
-        <div class="icon voyager-html5"></div>
-        <input type="text" readonly="readonly" value="voyager-html5">
+        <div class="icon facilitador-html5"></div>
+        <input type="text" readonly="readonly" value="facilitador-html5">
     </li>
     <li>
-        <div class="icon voyager-tree"></div>
-        <input type="text" readonly="readonly" value="voyager-tree">
+        <div class="icon facilitador-tree"></div>
+        <input type="text" readonly="readonly" value="facilitador-tree">
     </li>
     <li>
-        <div class="icon voyager-file-code"></div>
-        <input type="text" readonly="readonly" value="voyager-file-code">
+        <div class="icon facilitador-file-code"></div>
+        <input type="text" readonly="readonly" value="facilitador-file-code">
     </li>
     <li>
-        <div class="icon voyager-bug"></div>
-        <input type="text" readonly="readonly" value="voyager-bug">
+        <div class="icon facilitador-bug"></div>
+        <input type="text" readonly="readonly" value="facilitador-bug">
     </li>
     <li>
-        <div class="icon voyager-rocket"></div>
-        <input type="text" readonly="readonly" value="voyager-rocket">
+        <div class="icon facilitador-rocket"></div>
+        <input type="text" readonly="readonly" value="facilitador-rocket">
     </li>
     <li>
-        <div class="icon voyager-key"></div>
-        <input type="text" readonly="readonly" value="voyager-key">
+        <div class="icon facilitador-key"></div>
+        <input type="text" readonly="readonly" value="facilitador-key">
     </li>
     <li>
-        <div class="icon voyager-question"></div>
-        <input type="text" readonly="readonly" value="voyager-question">
+        <div class="icon facilitador-question"></div>
+        <input type="text" readonly="readonly" value="facilitador-question">
     </li>
     <li>
-        <div class="icon voyager-cursor"></div>
-        <input type="text" readonly="readonly" value="voyager-cursor">
+        <div class="icon facilitador-cursor"></div>
+        <input type="text" readonly="readonly" value="facilitador-cursor">
     </li>
     <li>
-        <div class="icon voyager-lifebuoy"></div>
-        <input type="text" readonly="readonly" value="voyager-lifebuoy">
+        <div class="icon facilitador-lifebuoy"></div>
+        <input type="text" readonly="readonly" value="facilitador-lifebuoy">
     </li>
     <li>
-        <div class="icon voyager-thumbs-up"></div>
-        <input type="text" readonly="readonly" value="voyager-thumbs-up">
+        <div class="icon facilitador-thumbs-up"></div>
+        <input type="text" readonly="readonly" value="facilitador-thumbs-up">
     </li>
     <li>
-        <div class="icon voyager-thumb-tack"></div>
-        <input type="text" readonly="readonly" value="voyager-thumb-tack">
+        <div class="icon facilitador-thumb-tack"></div>
+        <input type="text" readonly="readonly" value="facilitador-thumb-tack">
     </li>
     <li>
-        <div class="icon voyager-edit"></div>
-        <input type="text" readonly="readonly" value="voyager-edit">
+        <div class="icon facilitador-edit"></div>
+        <input type="text" readonly="readonly" value="facilitador-edit">
     </li>
     <li>
-        <div class="icon voyager-angle-down"></div>
-        <input type="text" readonly="readonly" value="voyager-angle-down">
+        <div class="icon facilitador-angle-down"></div>
+        <input type="text" readonly="readonly" value="facilitador-angle-down">
     </li>
     <li>
-        <div class="icon voyager-angle-left"></div>
-        <input type="text" readonly="readonly" value="voyager-angle-left">
+        <div class="icon facilitador-angle-left"></div>
+        <input type="text" readonly="readonly" value="facilitador-angle-left">
     </li>
     <li>
-        <div class="icon voyager-angle-right"></div>
-        <input type="text" readonly="readonly" value="voyager-angle-right">
+        <div class="icon facilitador-angle-right"></div>
+        <input type="text" readonly="readonly" value="facilitador-angle-right">
     </li>
     <li>
-        <div class="icon voyager-angle-up"></div>
-        <input type="text" readonly="readonly" value="voyager-angle-up">
+        <div class="icon facilitador-angle-up"></div>
+        <input type="text" readonly="readonly" value="facilitador-angle-up">
     </li>
     <li>
-        <div class="icon voyager-home"></div>
-        <input type="text" readonly="readonly" value="voyager-home">
+        <div class="icon facilitador-home"></div>
+        <input type="text" readonly="readonly" value="facilitador-home">
     </li>
     <li>
-        <div class="icon voyager-pirate-swords"></div>
-        <input type="text" readonly="readonly" value="voyager-pirate-swords">
+        <div class="icon facilitador-pirate-swords"></div>
+        <input type="text" readonly="readonly" value="facilitador-pirate-swords">
     </li>
     <li>
-        <div class="icon voyager-pirate"></div>
-        <input type="text" readonly="readonly" value="voyager-pirate">
+        <div class="icon facilitador-pirate"></div>
+        <input type="text" readonly="readonly" value="facilitador-pirate">
     </li>
     <li>
-        <div class="icon voyager-rum"></div>
-        <input type="text" readonly="readonly" value="voyager-rum">
+        <div class="icon facilitador-rum"></div>
+        <input type="text" readonly="readonly" value="facilitador-rum">
     </li>
     <li>
-        <div class="icon voyager-cannon"></div>
-        <input type="text" readonly="readonly" value="voyager-cannon">
+        <div class="icon facilitador-cannon"></div>
+        <input type="text" readonly="readonly" value="facilitador-cannon">
     </li>
     <li>
-        <div class="icon voyager-hook"></div>
-        <input type="text" readonly="readonly" value="voyager-hook">
+        <div class="icon facilitador-hook"></div>
+        <input type="text" readonly="readonly" value="facilitador-hook">
     </li>
     <li>
-        <div class="icon voyager-kraken"></div>
-        <input type="text" readonly="readonly" value="voyager-kraken">
+        <div class="icon facilitador-kraken"></div>
+        <input type="text" readonly="readonly" value="facilitador-kraken">
     </li>
     <li>
-        <div class="icon voyager-lighthouse"></div>
-        <input type="text" readonly="readonly" value="voyager-lighthouse">
+        <div class="icon facilitador-lighthouse"></div>
+        <input type="text" readonly="readonly" value="facilitador-lighthouse">
     </li>
     <li>
-        <div class="icon voyager-pirate-hat"></div>
-        <input type="text" readonly="readonly" value="voyager-pirate-hat">
+        <div class="icon facilitador-pirate-hat"></div>
+        <input type="text" readonly="readonly" value="facilitador-pirate-hat">
     </li>
     <li>
-        <div class="icon voyager-rum-1"></div>
-        <input type="text" readonly="readonly" value="voyager-rum-1">
+        <div class="icon facilitador-rum-1"></div>
+        <input type="text" readonly="readonly" value="facilitador-rum-1">
     </li>
     <li>
-        <div class="icon voyager-ship"></div>
-        <input type="text" readonly="readonly" value="voyager-ship">
+        <div class="icon facilitador-ship"></div>
+        <input type="text" readonly="readonly" value="facilitador-ship">
     </li>
     <li>
-        <div class="icon voyager-treasure"></div>
-        <input type="text" readonly="readonly" value="voyager-treasure">
+        <div class="icon facilitador-treasure"></div>
+        <input type="text" readonly="readonly" value="facilitador-treasure">
     </li>
     <li>
-        <div class="icon voyager-treasure-open"></div>
-        <input type="text" readonly="readonly" value="voyager-treasure-open">
+        <div class="icon facilitador-treasure-open"></div>
+        <input type="text" readonly="readonly" value="facilitador-treasure-open">
     </li>
     <li>
-        <div class="icon voyager-whale"></div>
-        <input type="text" readonly="readonly" value="voyager-whale">
+        <div class="icon facilitador-whale"></div>
+        <input type="text" readonly="readonly" value="facilitador-whale">
     </li>
     <li>
-        <div class="icon voyager-compass"></div>
-        <input type="text" readonly="readonly" value="voyager-compass">
+        <div class="icon facilitador-compass"></div>
+        <input type="text" readonly="readonly" value="facilitador-compass">
     </li>
     <li>
-        <div class="icon voyager-logbook"></div>
-        <input type="text" readonly="readonly" value="voyager-logbook">
+        <div class="icon facilitador-logbook"></div>
+        <input type="text" readonly="readonly" value="facilitador-logbook">
     </li>
     <li>
-        <div class="icon voyager-plus"></div>
-        <input type="text" readonly="readonly" value="voyager-plus">
+        <div class="icon facilitador-plus"></div>
+        <input type="text" readonly="readonly" value="facilitador-plus">
     </li>
     <li>
-        <div class="icon voyager-documentation"></div>
-        <input type="text" readonly="readonly" value="voyager-documentation">
+        <div class="icon facilitador-documentation"></div>
+        <input type="text" readonly="readonly" value="facilitador-documentation">
     </li>
     <li>
-        <div class="icon voyager-belt"></div>
-        <input type="text" readonly="readonly" value="voyager-belt">
+        <div class="icon facilitador-belt"></div>
+        <input type="text" readonly="readonly" value="facilitador-belt">
     </li>
     <li>
-        <div class="icon voyager-zoom-in"></div>
-        <input type="text" readonly="readonly" value="voyager-zoom-in">
+        <div class="icon facilitador-zoom-in"></div>
+        <input type="text" readonly="readonly" value="facilitador-zoom-in">
     </li>
     <li>
-        <div class="icon voyager-zoom-out"></div>
-        <input type="text" readonly="readonly" value="voyager-zoom-out">
+        <div class="icon facilitador-zoom-out"></div>
+        <input type="text" readonly="readonly" value="facilitador-zoom-out">
     </li>
     <li>
-        <div class="icon voyager-scissors"></div>
-        <input type="text" readonly="readonly" value="voyager-scissors">
+        <div class="icon facilitador-scissors"></div>
+        <input type="text" readonly="readonly" value="facilitador-scissors">
     </li>
     <li>
-        <div class="icon voyager-github-icon"></div>
-        <input type="text" readonly="readonly" value="voyager-github-icon">
+        <div class="icon facilitador-github-icon"></div>
+        <input type="text" readonly="readonly" value="facilitador-github-icon">
     </li>
 </ul>
 
-<h2>{{ __('voyager::compass.fonts.font_character') }}</h2>
+<h2>{{ __('facilitador::compass.fonts.font_character') }}</h2>
 <ul class="glyphs character-mapping">
     <li>
         <div data-icon="a" class="icon"></div>

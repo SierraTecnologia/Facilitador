@@ -1,5 +1,5 @@
 @php
-$dimmers = Voyager::dimmers();
+$dimmers = Facilitador::dimmers();
 $count = $dimmers->count();
 $classes = [
     'col-xs-12',

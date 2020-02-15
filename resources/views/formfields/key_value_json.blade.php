@@ -18,7 +18,7 @@
             </div>
             
             <div class="col-xs-1" style="margin-bottom:0;">
-                <button type="button" class="btn old_btn btn-xs" style="margin-top:0px;"><i class="voyager-trash"></i></button>
+                <button type="button" class="btn old_btn btn-xs" style="margin-top:0px;"><i class="facilitador-trash"></i></button>
             </div>
         </div>
         @php 
@@ -34,7 +34,7 @@
             <input type="text" class="form-control" name="{{ $row->field }}[{{ $end_id }}][value]" value="" id="value"/>
         </div>
         <div class="col-xs-1" style="margin-bottom:0;">
-            <button type="button" class="btn btn-success btn-xs" style="margin-top:0px;"><i class="voyager-plus"></i></button>
+            <button type="button" class="btn btn-success btn-xs" style="margin-top:0px;"><i class="facilitador-plus"></i></button>
         </div>
     </div>
 
@@ -64,7 +64,7 @@
         new_row.setAttribute('row-id', parseInt(this.parentNode.parentNode.getAttribute('row-id'))+1)
         
         this.classList.remove('btn-success');
-        this.innerHTML = '<i class="voyager-trash"></i>';
+        this.innerHTML = '<i class="facilitador-trash"></i>';
         new_row.querySelector('.btn-success').onclick = this.onclick;
         this.onclick = removeRow;
         this.parentNode.parentNode.parentNode.appendChild(new_row);

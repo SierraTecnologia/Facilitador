@@ -134,6 +134,9 @@ class ModelService
      */
     public function getUrl($page = '')
     {
+        if (!empty($page)) {
+            $page = '/'.$page;
+        }
         return url('manager/'.$this->getCryptName().$page);
     }
 

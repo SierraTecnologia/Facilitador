@@ -7,14 +7,14 @@
             @section('breadcrumbs')
             <ol class="breadcrumb hidden-xs">
                 @php
-                $segments = array_filter(explode('/', str_replace(route('voyager.dashboard'), '', Request::url())));
-                $url = route('voyager.dashboard');
+                $segments = array_filter(explode('/', str_replace(route('facilitador.dashboard'), '', Request::url())));
+                $url = route('facilitador.dashboard');
                 @endphp
                 @if(count($segments) == 0)
-                    <li class="active"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</li>
+                    <li class="active"><i class="facilitador-boat"></i> {{ __('facilitador::generic.dashboard') }}</li>
                 @else
                     <li class="active">
-                        <a href="{{ route('voyager.dashboard')}}"><i class="voyager-boat"></i> {{ __('voyager::generic.dashboard') }}</a>
+                        <a href="{{ route('facilitador.dashboard')}}"><i class="facilitador-boat"></i> {{ __('facilitador::generic.dashboard') }}</a>
                     </li>
                     @foreach ($segments as $segment)
                         @php
@@ -32,7 +32,7 @@
             </ol>
             @show
         </div>
-        <ul class="nav navbar-nav @if (__('voyager::generic.is_rtl') == 'true') navbar-left @else navbar-right @endif">
+        <ul class="nav navbar-nav @if (__('facilitador::generic.is_rtl') == 'true') navbar-left @else navbar-right @endif">
             <li class="dropdown profile">
                 <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button"
                    aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img"> <span
@@ -46,12 +46,12 @@
                         </div>
                     </li>
                     <li class="divider"></li>
-                    <?php $nav_items = config('voyager.dashboard.navbar_items'); ?>
+                    <?php $nav_items = config('facilitador.dashboard.navbar_items'); ?>
                     @if(is_array($nav_items) && !empty($nav_items))
                     @foreach($nav_items as $name => $item)
                     <li {!! isset($item['classes']) && !empty($item['classes']) ? 'class="'.$item['classes'].'"' : '' !!}>
-                        @if(isset($item['route']) && $item['route'] == 'voyager.logout')
-                        <form action="{{ route('voyager.logout') }}" method="POST">
+                        @if(isset($item['route']) && $item['route'] == 'facilitador.logout')
+                        <form action="{{ route('facilitador.logout') }}" method="POST">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-block">
                                 @if(isset($item['icon_class']) && !empty($item['icon_class']))

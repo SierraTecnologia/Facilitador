@@ -5,7 +5,7 @@
     <li class="dd-item" data-id="{{ $item->id }}">
         <div class="pull-right item_actions">
             <div class="btn btn-sm btn-danger pull-right delete" data-id="{{ $item->id }}">
-                <i class="voyager-trash"></i> {{ __('voyager::generic.delete') }}
+                <i class="facilitador-trash"></i> {{ __('facilitador::generic.delete') }}
             </div>
             <div class="btn btn-sm btn-primary pull-right edit"
                 data-id="{{ $item->id }}"
@@ -17,12 +17,12 @@
                 data-route="{{ $item->route }}"
                 data-parameters="{{ json_encode($item->parameters) }}"
             >
-                <i class="voyager-edit"></i> {{ __('voyager::generic.edit') }}
+                <i class="facilitador-edit"></i> {{ __('facilitador::generic.edit') }}
             </div>
         </div>
         <div class="dd-handle">
             @if($options->isModelTranslatable)
-                @include('voyager::multilingual.input-hidden', [
+                @include('facilitador::multilingual.input-hidden', [
                     'isModelTranslatable' => true,
                     '_field_name'         => 'title'.$item->id,
                     '_field_trans'        => json_encode($item->getTranslationsOf('title'))
@@ -31,7 +31,7 @@
             <span>{{ $item->title }}</span> <small class="url">{{ $item->link() }}</small>
         </div>
         @if(!$item->children->isEmpty())
-            @include('voyager::menu.admin', ['items' => $item->children])
+            @include('facilitador::menu.admin', ['items' => $item->children])
         @endif
     </li>
 

@@ -5,10 +5,10 @@
         <div class="multiple-images">
             @foreach($images as $image)
                 <div class="img_settings_container" data-field-name="{{ $row->field }}">
-                    <img src="{{ Voyager::image( $image->name ) }}" data-image="{{ $image->name }}" data-id="{{ $dataTypeContent->getKey() }}">
+                    <img src="{{ Facilitador::image( $image->name ) }}" data-image="{{ $image->name }}" data-id="{{ $dataTypeContent->getKey() }}">
                     <div class="links">
-                        <a href="#" class="voyager-params show-inputs"></a>
-                        <a href="#" class="voyager-x remove-multi-image-ext"></a>
+                        <a href="#" class="facilitador-params show-inputs"></a>
+                        <a href="#" class="facilitador-x remove-multi-image-ext"></a>
                     </div>
                     
                     <div class="form-group">

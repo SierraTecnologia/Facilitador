@@ -6,22 +6,22 @@
                 <div class="file_link selected" aria-hidden="true" data-toggle="tooltip" data-placement="auto" :title="file">
                     <div class="link_icon">
                         <template v-if="fileIs(file, 'image')">
-                            <div class="img_icon" :style="imgIcon('{{ Storage::disk(config('voyager.storage.disk'))->url('/') }}'+file)"></div>
+                            <div class="img_icon" :style="imgIcon('{{ Storage::disk(config('facilitador.storage.disk'))->url('/') }}'+file)"></div>
                         </template>
                         <template v-else-if="fileIs(file, 'video')">
-                            <i class="icon voyager-video"></i>
+                            <i class="icon facilitador-video"></i>
                         </template>
                         <template v-else-if="fileIs(file, 'audio')">
-                            <i class="icon voyager-music"></i>
+                            <i class="icon facilitador-music"></i>
                         </template>
                         <template v-else-if="fileIs(file, 'zip')">
-                            <i class="icon voyager-archive"></i>
+                            <i class="icon facilitador-archive"></i>
                         </template>
                         <template v-else-if="fileIs(file, 'folder')">
-                            <i class="icon voyager-folder"></i>
+                            <i class="icon facilitador-folder"></i>
                         </template>
                         <template v-else>
-                            <i class="icon voyager-file-text"></i>
+                            <i class="icon facilitador-file-text"></i>
                         </template>
                     </div>
                     <div class="details">
@@ -29,43 +29,43 @@
                             <h4>@{{ getFileName(file) }}</h4>
                         </div>
                     </div>
-                    <i class="voyager-x dd-nodrag" v-on:click="removeFileFromInput(file)"></i>
+                    <i class="facilitador-x dd-nodrag" v-on:click="removeFileFromInput(file)"></i>
                 </div>
             </li>
         </ol>
     </div>
     <div v-if="hidden_element">
         <div class="btn btn-sm btn-default" v-on:click="expanded = !expanded;" style="width:100%">
-            <div v-if="!expanded"><i class="voyager-double-down"></i> {{ __('voyager::generic.open') }}</div>
-            <div v-if="expanded"><i class="voyager-double-up"></i> {{ __('voyager::generic.close') }}</div>
+            <div v-if="!expanded"><i class="facilitador-double-down"></i> {{ __('facilitador::generic.open') }}</div>
+            <div v-if="expanded"><i class="facilitador-double-up"></i> {{ __('facilitador::generic.close') }}</div>
         </div>
     </div>
     <div id="toolbar" v-if="showToolbar" :style="expanded ? 'display:block' : 'display:none'">
         <div class="btn-group offset-right">
             <button type="button" class="btn btn-primary" id="upload" v-if="allowUpload">
-                <i class="voyager-upload"></i>
-                {{ __('voyager::generic.upload') }}
+                <i class="facilitador-upload"></i>
+                {{ __('facilitador::generic.upload') }}
             </button>
             <button type="button" class="btn btn-primary" v-if="allowCreateFolder" data-toggle="modal" :data-target="'#create_dir_modal_'+this._uid">
-                <i class="voyager-folder"></i>
-                {{ __('voyager::generic.add_folder') }}
+                <i class="facilitador-folder"></i>
+                {{ __('facilitador::generic.add_folder') }}
             </button>
         </div>
         <button type="button" class="btn btn-default" v-on:click="getFiles()">
-            <i class="voyager-refresh"></i>
+            <i class="facilitador-refresh"></i>
         </button>
         <div class="btn-group offset-right">
             <button type="button" v-if="showFolders && allowMove" class="btn btn-default" data-toggle="modal" :data-target="'#move_files_modal_'+this._uid">
-                <i class="voyager-move"></i>
-                {{ __('voyager::generic.move') }}
+                <i class="facilitador-move"></i>
+                {{ __('facilitador::generic.move') }}
             </button>
             <button type="button" v-if="allowDelete" :disabled="selected_files.length == 0" class="btn btn-default" data-toggle="modal" :data-target="'#confirm_delete_modal_'+this._uid">
-                <i class="voyager-trash"></i>
-                {{ __('voyager::generic.delete') }}
+                <i class="facilitador-trash"></i>
+                {{ __('facilitador::generic.delete') }}
             </button>
             <button v-if="allowCrop" :disabled="selected_files.length != 1 || !fileIs(selected_file, 'image')" type="button" class="btn btn-default" data-toggle="modal" :data-target="'#crop_modal_'+this._uid">
-                <i class="voyager-crop"></i>
-                {{ __('voyager::media.crop') }}
+                <i class="facilitador-crop"></i>
+                {{ __('facilitador::media.crop') }}
             </button>
         </div>
     </div>
@@ -78,7 +78,7 @@
             <ol class="breadcrumb filemanager">
                 <li class="media_breadcrumb" v-on:click="setCurrentPath(-1)">
                     <span class="arrow"></span>
-                    <strong>{{ __('voyager::media.library') }}</strong>
+                    <strong>{{ __('facilitador::media.library') }}</strong>
                 </li>
                 <li v-for="(folder, i) in getCurrentPath()" v-on:click="setCurrentPath(i)">
                     <span class="arrow"></span>
@@ -96,19 +96,19 @@
                                     <div class="img_icon" :style="imgIcon(file.path)"></div>
                                 </template>
                                 <template v-else-if="fileIs(file, 'video')">
-                                    <i class="icon voyager-video"></i>
+                                    <i class="icon facilitador-video"></i>
                                 </template>
                                 <template v-else-if="fileIs(file, 'audio')">
-                                    <i class="icon voyager-music"></i>
+                                    <i class="icon facilitador-music"></i>
                                 </template>
                                 <template v-else-if="fileIs(file, 'zip')">
-                                    <i class="icon voyager-archive"></i>
+                                    <i class="icon facilitador-archive"></i>
                                 </template>
                                 <template v-else-if="fileIs(file, 'folder')">
-                                    <i class="icon voyager-folder"></i>
+                                    <i class="icon facilitador-folder"></i>
                                 </template>
                                 <template v-else>
-                                    <i class="icon voyager-file-text"></i>
+                                    <i class="icon facilitador-file-text"></i>
                                 </template>
                             </div>
                             <div class="details">
@@ -123,24 +123,24 @@
                     </li>
                 </ul>
                 <div id="file_loader" v-if="is_loading">
-                    <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
+                    <?php $admin_loader_img = Facilitador::setting('admin.loader', ''); ?>
                     @if($admin_loader_img == '')
-                    <img src="{{ voyager_asset('images/logo-icon.png') }}" alt="Voyager Loader">
+                    <img src="{{ facilitador_asset('images/logo-icon.png') }}" alt="Facilitador Loader">
                     @else
-                    <img src="{{ Voyager::image($admin_loader_img) }}" alt="Voyager Loader">
+                    <img src="{{ Facilitador::image($admin_loader_img) }}" alt="Facilitador Loader">
                     @endif
-                    <p>{{ __('voyager::media.loading') }}</p>
+                    <p>{{ __('facilitador::media.loading') }}</p>
                 </div>
 
                 <div id="no_files" v-if="files.length == 0">
-                    <h3><i class="voyager-meh"></i> {{ __('voyager::media.no_files_in_folder') }}</h3>
+                    <h3><i class="facilitador-meh"></i> {{ __('facilitador::media.no_files_in_folder') }}</h3>
                 </div>
             </div>
             <div id="right">
                 <div class="right_details">
                     <div v-if="selected_files.length > 1" class="right_none_selected">
-                        <i class="voyager-list"></i>
-                        <p>@{{ selected_files.length }} {{ __('voyager::media.files_selected') }}</p>
+                        <i class="facilitador-list"></i>
+                        <p>@{{ selected_files.length }} {{ __('facilitador::media.files_selected') }}</p>
                     </div>
                     <div v-else-if="selected_files.length == 1" class="right_details">
                         <div class="detail_img">
@@ -152,49 +152,49 @@
                                     <source :src="selected_file.path" type="video/mp4">
                                     <source :src="selected_file.path" type="video/ogg">
                                     <source :src="selected_file.path" type="video/webm">
-                                    {{ __('voyager::media.browser_video_support') }}
+                                    {{ __('facilitador::media.browser_video_support') }}
                                 </video>
                             </div>
                             <div v-else-if="fileIs(selected_file, 'audio')">
-                                <i class="voyager-music"></i>
+                                <i class="facilitador-music"></i>
                                 <audio controls style="width:100%; margin-top:5px;" ref="audioplayer">
                                     <source :src="selected_file.path" type="audio/ogg">
                                     <source :src="selected_file.path" type="audio/mpeg">
-                                    {{ __('voyager::media.browser_audio_support') }}
+                                    {{ __('facilitador::media.browser_audio_support') }}
                                 </audio>
                             </div>
                             <div v-else-if="fileIs(selected_file, 'zip')">
-                                <i class="voyager-archive"></i>
+                                <i class="facilitador-archive"></i>
                             </div>
                             <div v-else-if="fileIs(selected_file, 'folder')">
-                                <i class="voyager-folder"></i>
+                                <i class="facilitador-folder"></i>
                             </div>
                             <div v-else>
-                                <i class="voyager-file-text"></i>
+                                <i class="facilitador-file-text"></i>
                             </div>
                         </div>
                         <div class="detail_info">
                             <span>
-                                <h4>{{ __('voyager::media.title') }}:</h4>
+                                <h4>{{ __('facilitador::media.title') }}:</h4>
                                 <input v-if="allowRename" type="text" class="form-control" :value="selected_file.name" @keydown.enter.prevent="renameFile">
                                 <p v-else>@{{ selected_file.name }}</p>
                             </span>
                             <span>
-                                <h4>{{ __('voyager::media.type') }}:</h4>
+                                <h4>{{ __('facilitador::media.type') }}:</h4>
                                 <p>@{{ selected_file.type }}</p>
                             </span>
 
                             <template v-if="!fileIs(selected_file, 'folder')">
                                 <span>
-                                    <h4>{{ __('voyager::media.size') }}:</h4>
+                                    <h4>{{ __('facilitador::media.size') }}:</h4>
                                     <p><span class="selected_file_size">@{{ bytesToSize(selected_file.size) }}</span></p>
                                 </span>
                                 <span>
-                                    <h4>{{ __('voyager::media.public_url') }}:</h4>
-                                    <p><a :href="selected_file.path" target="_blank">{{ __('voyager::generic.click_here') }}</a></p>
+                                    <h4>{{ __('facilitador::media.public_url') }}:</h4>
+                                    <p><a :href="selected_file.path" target="_blank">{{ __('facilitador::generic.click_here') }}</a></p>
                                 </span>
                                 <span>
-                                    <h4>{{ __('voyager::media.last_modified') }}:</h4>
+                                    <h4>{{ __('facilitador::media.last_modified') }}:</h4>
                                     <p>@{{ dateFilter(selected_file.last_modified) }}</p>
                                 </span>
                             </template>
@@ -212,8 +212,8 @@
                         </div>
                     </div>
                     <div v-else class="right_none_selected">
-                        <i class="voyager-cursor"></i>
-                        <p>{{ __('voyager::media.nothing_selected') }}</p>
+                        <i class="facilitador-cursor"></i>
+                        <p>{{ __('facilitador::media.nothing_selected') }}</p>
                     </div>
                 </div>
             </div>
@@ -246,16 +246,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="voyager-folder"></i> {{ __('voyager::media.add_new_folder') }}</h4>
+                    <h4 class="modal-title"><i class="facilitador-folder"></i> {{ __('facilitador::media.add_new_folder') }}</h4>
                 </div>
 
                 <div class="modal-body">
-                    <input name="new_folder_name" placeholder="{{ __('voyager::media.new_folder_name') }}" class="form-control" value="" v-model="modals.new_folder.name" />
+                    <input name="new_folder_name" placeholder="{{ __('facilitador::media.new_folder_name') }}" class="form-control" value="" v-model="modals.new_folder.name" />
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-                    <button type="button" class="btn btn-info" v-on:click="createFolder">{{ __('voyager::media.create_new_folder') }}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-info" v-on:click="createFolder">{{ __('facilitador::media.create_new_folder') }}
                     </button>
                 </div>
             </div>
@@ -269,22 +269,22 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="voyager-warning"></i> {{ __('voyager::generic.are_you_sure') }}</h4>
+                    <h4 class="modal-title"><i class="facilitador-warning"></i> {{ __('facilitador::generic.are_you_sure') }}</h4>
                 </div>
 
                 <div class="modal-body">
-                    <h4>{{ __('voyager::media.delete_question') }}</h4>
+                    <h4>{{ __('facilitador::media.delete_question') }}</h4>
                     <ul>
                         <li v-for="file in selected_files">@{{ file.name }}</li>
                     </ul>
                     <h5 class="folder_warning">
-                        <i class="voyager-warning"></i> {{ __('voyager::media.delete_folder_question') }}
+                        <i class="facilitador-warning"></i> {{ __('facilitador::media.delete_folder_question') }}
                     </h5>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-                    <button type="button" class="btn btn-danger" v-on:click="deleteFiles">{{ __('voyager::generic.delete_confirm') }}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-danger" v-on:click="deleteFiles">{{ __('facilitador::generic.delete_confirm') }}
                     </button>
                 </div>
             </div>
@@ -299,21 +299,21 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"
                             aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="voyager-move"></i> {{ __('voyager::media.move_file_folder') }}</h4>
+                    <h4 class="modal-title"><i class="facilitador-move"></i> {{ __('facilitador::media.move_file_folder') }}</h4>
                 </div>
 
                 <div class="modal-body">
-                    <h4>{{ __('voyager::media.destination_folder') }}</h4>
+                    <h4>{{ __('facilitador::media.destination_folder') }}</h4>
                     <select class="form-control" v-model="modals.move_files.destination">
-                        <option value="" disabled>{{ __('voyager::media.destination_folder') }}</option>
+                        <option value="" disabled>{{ __('facilitador::media.destination_folder') }}</option>
                         <option v-if="current_folder != basePath && showFolders" value="/../">../</option>
                         <option v-for="file in files" v-if="file.type == 'folder' && !selected_files.includes(file)" :value="current_folder+'/'+file.name">@{{ file.name }}</option>
                     </select>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-                    <button type="button" class="btn btn-warning" v-on:click="moveFiles">{{ __('voyager::generic.move') }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-warning" v-on:click="moveFiles">{{ __('facilitador::generic.move') }}</button>
                 </div>
             </div>
         </div>
@@ -327,7 +327,7 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="voyager-warning"></i> {{ __('voyager::media.crop_image') }}</h4>
+                    <h4 class="modal-title"><i class="facilitador-warning"></i> {{ __('facilitador::media.crop_image') }}</h4>
                 </div>
 
                 <div class="modal-body">
@@ -335,14 +335,14 @@
                         <img :id="'cropping-image_'+this._uid" v-if="selected_files.length == 1 && fileIs(selected_file, 'image')" class="img img-responsive" :src="selected_file.path + '?' + selected_file.last_modified" />
                     </div>
                     <div class="new-image-info">
-                        {{ __('voyager::media.width') }} <span :id="'new-image-width_'+this._uid"></span>, {{ __('voyager::media.height') }}<span :id="'new-image-height_'+this._uid"></span>
+                        {{ __('facilitador::media.width') }} <span :id="'new-image-width_'+this._uid"></span>, {{ __('facilitador::media.height') }}<span :id="'new-image-height_'+this._uid"></span>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-                    <button type="button" class="btn btn-warning" v-on:click="crop(false)">{{ __('voyager::media.crop') }}</button>
-                    <button type="button" class="btn btn-warning" v-on:click="crop(true)">{{ __('voyager::media.crop_and_create') }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-warning" v-on:click="crop(false)">{{ __('facilitador::media.crop') }}</button>
+                    <button type="button" class="btn btn-warning" v-on:click="crop(true)">{{ __('facilitador::media.crop_and_create') }}</button>
                 </div>
             </div>
         </div>
@@ -455,7 +455,7 @@
             getFiles: function() {
                 var vm = this;
                 vm.is_loading = true;
-                $.post('{{ route('voyager.media.files') }}', { folder: vm.current_folder, _token: '{{ csrf_token() }}', details: vm.details }, function(data) {
+                $.post('{{ route('facilitador.media.files') }}', { folder: vm.current_folder, _token: '{{ csrf_token() }}', details: vm.details }, function(data) {
                     vm.files = [];
                     for (var i = 0, file; file = data[i]; i++) {
                         if (vm.filter(file)) {
@@ -595,8 +595,8 @@
                             return;
                         }
                         if (content.length >= this.maxSelectedFiles && this.maxSelectedFiles > 0) {
-                            var msg_sing = "{{ trans_choice('voyager::media.max_files_select', 1) }}";
-                            var msg_plur = "{{ trans_choice('voyager::media.max_files_select', 2) }}";
+                            var msg_sing = "{{ trans_choice('facilitador::media.max_files_select', 1) }}";
+                            var msg_plur = "{{ trans_choice('facilitador::media.max_files_select', 2) }}";
                             if (this.maxSelectedFiles == 1) {
                                 toastr.error(msg_sing);
                             } else {
@@ -639,17 +639,17 @@
                 if (!this.allowRename || vm.selected_file.name == object.target.value) {
                     return;
                 }
-                $.post('{{ route('voyager.media.rename') }}', {
+                $.post('{{ route('facilitador.media.rename') }}', {
                     folder_location: vm.current_folder,
                     filename: vm.selected_file.name,
                     new_filename: object.target.value,
                     _token: '{{ csrf_token() }}'
                 }, function(data){
 					if (data.success == true) {
-						toastr.success('{{ __('voyager::media.success_renamed') }}', "{{ __('voyager::generic.sweet_success') }}");
+						toastr.success('{{ __('facilitador::media.success_renamed') }}', "{{ __('facilitador::generic.sweet_success') }}");
 						vm.getFiles();
 					} else {
-						toastr.error(data.error, "{{ __('voyager::generic.whoopsie') }}");
+						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
 					}
 				});
             },
@@ -659,12 +659,12 @@
                 }
                 var vm = this;
                 var name = this.modals.new_folder.name;
-                $.post('{{ route('voyager.media.new_folder') }}', { new_folder: vm.current_folder+'/'+name, _token: '{{ csrf_token() }}' }, function(data) {
+                $.post('{{ route('facilitador.media.new_folder') }}', { new_folder: vm.current_folder+'/'+name, _token: '{{ csrf_token() }}' }, function(data) {
 					if(data.success == true){
-						toastr.success('{{ __('voyager::generic.successfully_created') }} ' + name, "{{ __('voyager::generic.sweet_success') }}");
+						toastr.success('{{ __('facilitador::generic.successfully_created') }} ' + name, "{{ __('facilitador::generic.sweet_success') }}");
 						vm.getFiles();
 					} else {
-						toastr.error(data.error, "{{ __('voyager::generic.whoopsie') }}");
+						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
 					}
                     vm.modals.new_folder.name = '';
 					$('#create_dir_modal_'+vm._uid).modal('hide');
@@ -675,17 +675,17 @@
                     return;
                 }
                 var vm = this;
-                $.post('{{ route('voyager.media.delete') }}', {
+                $.post('{{ route('facilitador.media.delete') }}', {
                     path: vm.current_folder,
                     files: vm.selected_files,
                     _token: '{{ csrf_token() }}'
                 }, function(data){
 					if(data.success == true){
-						toastr.success('', "{{ __('voyager::generic.sweet_success') }}");
+						toastr.success('', "{{ __('facilitador::generic.sweet_success') }}");
 						vm.getFiles();
 						$('#confirm_delete_modal_'+vm._uid).modal('hide');
 					} else {
-						toastr.error(data.error, "{{ __('voyager::generic.whoopsie') }}");
+						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
                         vm.getFiles();
 						$('#confirm_delete_modal_'+vm._uid).modal('hide');
 					}
@@ -701,17 +701,17 @@
                     return;
                 }
                 $('#move_files_modal_'+vm._uid).modal('hide');
-				$.post('{{ route('voyager.media.move') }}', {
+				$.post('{{ route('facilitador.media.move') }}', {
                     path: vm.current_folder,
                     files: vm.selected_files,
                     destination: destination,
                     _token: '{{ csrf_token() }}'
                 }, function(data){
 					if(data.success == true){
-						toastr.success('{{ __('voyager::media.success_moved') }}', "{{ __('voyager::generic.sweet_success') }}");
+						toastr.success('{{ __('facilitador::media.success_moved') }}', "{{ __('facilitador::generic.sweet_success') }}");
 						vm.getFiles();
 					} else {
-						toastr.error(data.error, "{{ __('voyager::generic.whoopsie') }}");
+						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
 					}
 
                     vm.modals.move_files.destination = '';
@@ -722,7 +722,7 @@
                     return;
                 }
                 if (!mode) {
-                    if (!window.confirm('{{ __('voyager::media.crop_override_confirm') }}')) {
+                    if (!window.confirm('{{ __('facilitador::media.crop_override_confirm') }}')) {
 						return;
 					}
                 }
@@ -733,13 +733,13 @@
 
                 var vm = this;
                 var postData = Object.assign(croppedData, { _token: '{{ csrf_token() }}' });
-				$.post('{{ route('voyager.media.crop') }}', postData, function(data) {
+				$.post('{{ route('facilitador.media.crop') }}', postData, function(data) {
 					if (data.success) {
 						toastr.success(data.message);
 						vm.getFiles();
 						$('#crop_modal_'+vm._uid).modal('hide');
 					} else {
-						toastr.error(data.error, "{{ __('voyager::generic.whoopsie') }}");
+						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
 					}
 				});
             },
@@ -831,7 +831,7 @@
             if (this.allowUpload && !dropzone.hasClass('dz-clickable')) {
                 dropzone.dropzone({
                     timeout: 180000,
-                    url: '{{ route('voyager.media.upload') }}',
+                    url: '{{ route('facilitador.media.upload') }}',
                     previewsContainer: "#uploadPreview",
                     totaluploadprogress: function(uploadProgress, totalBytes, totalBytesSent) {
                         progress_bar.css('width', uploadProgress + '%');
@@ -852,13 +852,13 @@
                     },
                     success: function(e, res) {
                         if (res.success) {
-                            toastr.success(res.message, "{{ __('voyager::generic.sweet_success') }}");
+                            toastr.success(res.message, "{{ __('facilitador::generic.sweet_success') }}");
                         } else {
-                            toastr.error(res.message, "{{ __('voyager::generic.whoopsie') }}");
+                            toastr.error(res.message, "{{ __('facilitador::generic.whoopsie') }}");
                         }
                     },
                     error: function(e, res, xhr) {
-                        toastr.error(res, "{{ __('voyager::generic.whoopsie') }}");
+                        toastr.error(res, "{{ __('facilitador::generic.whoopsie') }}");
                     },
                     queuecomplete: function() {
                         vm.getFiles();
@@ -896,8 +896,8 @@
                             var content = JSON.parse(vm.hidden_element.value);
                             if (content.length < vm.minSelectedFiles) {
                                 e.preventDefault();
-                                var msg_sing = "{{ trans_choice('voyager::media.min_files_select', 1) }}";
-                                var msg_plur = "{{ trans_choice('voyager::media.min_files_select', 2) }}";
+                                var msg_sing = "{{ trans_choice('facilitador::media.min_files_select', 1) }}";
+                                var msg_plur = "{{ trans_choice('facilitador::media.min_files_select', 2) }}";
                                 if (vm.minSelectedFiles == 1) {
                                     toastr.error(msg_sing);
                                 } else {
@@ -907,7 +907,7 @@
                         } else {
                             if (vm.minSelectedFiles > 0 && vm.hidden_element.value == '') {
                                 e.preventDefault();
-                                toastr.error("{{ trans_choice('voyager::media.min_files_select', 1) }}");
+                                toastr.error("{{ trans_choice('facilitador::media.min_files_select', 1) }}");
                             }
                         }
                     }

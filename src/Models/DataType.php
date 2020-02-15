@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
 use Facilitador\Facades\Facilitador;
 use TCG\Voyager\Traits\Translatable;
+use Facilitador\Services\ModelService;
 
 class DataType extends Model
 {
@@ -36,6 +37,8 @@ class DataType extends Model
         'scope',
         'details',
     ];
+
+    protected $modelService = false;
 
     public function rows()
     {
@@ -326,5 +329,13 @@ class DataType extends Model
     public function getPrimaryKey()
     {
         return $this->key_name;
+    }
+
+    public function getModelService()
+    {
+        if (!$this->modelService) {
+            $this->modelService = new ModelService($this->model_name);
+        }
+        return $this->modelService;
     }
 }
