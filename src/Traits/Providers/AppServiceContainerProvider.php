@@ -129,11 +129,19 @@ trait AppServiceContainerProvider
          * @todo Ta passando duas vezes por aqui
          */
         Route::bind('modelClass', function ($value) {
-            Log::info('Route Bind ModelClass - '.Crypto::decrypt($value));
+            Log::info('Route Bind ModelClass - '.Crypto::decrypt($value).' - '.$value);
+            throw new Exception(
+                "Essa classe deveria ser uma string: ".print_r($modelClass, true),
+                400
+            );
             return new ModelService(Crypto::decrypt($value));
         });
         Route::bind('identify', function ($value) {
-            Log::info('Route Bind Identify - '.Crypto::decrypt($value));
+            Log::info('Route Bind Identify - '.Crypto::decrypt($value).' - '.$value);
+            throw new Exception(
+                "Essa classe deveria ser uma string: ".print_r($modelClass, true),
+                400
+            );
             return new RegisterService(Crypto::decrypt($value));
         });
     }
@@ -141,37 +149,49 @@ trait AppServiceContainerProvider
     protected function loadServiceContainerBinds()
     {
 
+        // /**
+        //  * Cryptos
+        //  * @todo Verificar pq isso ta aqui
+        //  */
+        // $this->app->bind('CryptoService', function ($app) {
+        //     return new CryptoService();
+        // });
+
+
+
+        // Arrumar um jeito de fazer o Base do facilitador passar por cima do support
+        // use Support\Models\Base;
+        // @todo
+
         $this->app->bind(ModelService::class, function($app)
         {
             $modelClass = false;
             if (isset($app['router']->current()->parameters['modelClass'])) {
                 $modelClass = Crypto::decrypt($app['router']->current()->parameters['modelClass']);
+
+                if (empty($modelClass)) {
+                    $modelClass = $app['router']->current()->parameters['modelClass'];
+                }
             }
-            
+
+            // dd('@todo', 
+            //     $modelClass, $app['router']->current()->parameters['modelClass'], Crypto::decrypt($app['router']->current()->parameters['modelClass']),
+            //     auth()->id()
+            // );
+            // @todo Ver Como resolver isso aqui
+
             Log::info('Bind Model Service - '.$modelClass);
 
             return new ModelService($modelClass);
-
-            /**
-             * Cryptos
-             * @todo Verificar pq isso ta aqui
-             */
-            $this->app->bind('CryptoService', function ($app) {
-                return new CryptoService();
-            });
-
-
-
-            // Arrumar um jeito de fazer o Base do facilitador passar por cima do support
-            // use Support\Models\Base;
-            // @todo
         });
+
         $this->app->bind(RepositoryService::class, function($app)
         {
             Log::info('Bind Repository Service');
             $modelService = $app->make(ModelService::class);
             return new RepositoryService($modelService);
         });
+
         $this->app->bind(RegisterService::class, function($app)
         {
             $identify = '';

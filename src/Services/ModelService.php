@@ -153,6 +153,10 @@ class ModelService
     }
     public function getModelClass()
     {
+        if (Crypto::isCrypto($this->modelClass)) {
+            $this->modelClass = Crypto::decrypt($this->modelClass);
+        }
+
         if (empty($this->modelClass)) {
             Artisan::call('cache:clear');
             Artisan::call('view:clear');
