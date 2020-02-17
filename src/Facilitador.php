@@ -207,8 +207,8 @@ class Facilitador
      */
     public function dimmers()
     {
-        $widgetClasses = config('voyager.dashboard.widgets');
-        $dimmers = Widget::group('voyager::dimmers');
+        $widgetClasses = config('facilitador.dashboard.widgets');
+        $dimmers = Widget::group('facilitador::dimmers');
 
         foreach ($widgetClasses as $widgetClass) {
             $widget = app($widgetClass);
@@ -223,7 +223,7 @@ class Facilitador
 
     public function setting($key, $default = null)
     {
-        $globalCache = config('voyager.settings.cache', false);
+        $globalCache = config('facilitador.settings.cache', false);
 
         if ($globalCache && Cache::tags('settings')->has($key)) {
             return Cache::tags('settings')->get($key);
@@ -259,7 +259,7 @@ class Facilitador
     public function image($file, $default = '')
     {
         if (!empty($file)) {
-            return str_replace('\\', '/', Storage::disk(config('voyager.storage.disk'))->url($file));
+            return str_replace('\\', '/', Storage::disk(config('facilitador.storage.disk'))->url($file));
         }
 
         return $default;
@@ -298,9 +298,9 @@ class Facilitador
                 $this->filesystem->get(base_path('composer.lock'))
             );
 
-            // Loop through all the packages and get the version of voyager
+            // Loop through all the packages and get the version of facilitador
             foreach ($file->packages as $package) {
-                if ($package->name == 'tcg/voyager') {
+                if ($package->name == 'tcg/facilitador') {
                     $this->version = $package->version;
                     break;
                 }
@@ -315,7 +315,7 @@ class Facilitador
      */
     public function translatable($model)
     {
-        if (!config('voyager.multilingual.enabled')) {
+        if (!config('facilitador.multilingual.enabled')) {
             return false;
         }
 

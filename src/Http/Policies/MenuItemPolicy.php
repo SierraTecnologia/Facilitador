@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Policies;
 
 use TCG\Voyager\Contracts\User;
-use TCG\Voyager\Facades\Voyager;
+use Facilitador\Facades\Facilitador;
 
 class MenuItemPolicy extends BasePolicy
 {
@@ -22,14 +22,14 @@ class MenuItemPolicy extends BasePolicy
     protected function checkPermission(User $user, $model, $action)
     {
         if (self::$permissions == null) {
-            self::$permissions = Voyager::model('Permission')->all();
+            self::$permissions = Facilitador::model('Permission')->all();
         }
 
         if (self::$datatypes == null) {
-            self::$datatypes = Voyager::model('DataType')::all()->keyBy('slug');
+            self::$datatypes = Facilitador::model('DataType')::all()->keyBy('slug');
         }
 
-        $regex = str_replace('/', '\/', preg_quote(route('voyager.dashboard')));
+        $regex = str_replace('/', '\/', preg_quote(route('facilitador.dashboard')));
         $slug = preg_replace('/'.$regex.'/', '', $model->link(true));
         $slug = str_replace('/', '', $slug);
 
@@ -39,7 +39,7 @@ class MenuItemPolicy extends BasePolicy
 
         if ($slug == '') {
             $slug = 'admin';
-        } elseif ($slug == 'compass' && !\App::environment('local') && !config('voyager.compass_in_production', false)) {
+        } elseif ($slug == 'compass' && !\App::environment('local') && !config('facilitador.compass_in_production', false)) {
             return false;
         }
 
