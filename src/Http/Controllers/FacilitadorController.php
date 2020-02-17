@@ -77,7 +77,7 @@ class FacilitadorController extends Controller
     public function assets(Request $request)
     {
         try {
-            $path = dirname(__DIR__, 3).'/publishable/assets/'.Util::normalizeRelativePath(urldecode($request->path));
+            $path = dirname(__DIR__, 3).'/publishes/assets/'.Util::normalizeRelativePath(urldecode($request->path));
         } catch (\LogicException $e) {
             abort(404);
         }

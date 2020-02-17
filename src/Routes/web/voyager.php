@@ -7,9 +7,9 @@ use TCG\Voyager\Events\RoutingAdminAfter;
 use TCG\Voyager\Events\RoutingAfter;
 use Facilitador\Facades\Facilitador;
 
-Route::group(['prefix' => 'voyager'], function () {
-    Voyager::routes();
-});
+// Route::group(['prefix' => 'voyager'], function () {
+//     Voyager::routes();
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -45,14 +45,15 @@ Route::group(['as' => 'facilitador.'], function () {
                 $breadController = $dataType->controller
                                  ? Str::start($dataType->controller, '\\')
                                  : $namespacePrefix.'FacilitadorBaseController';
+                $routeName = Crypto::encrypt($dataType->slug);
 
-                Route::get($dataType->slug.'/order', $breadController.'@order')->name($dataType->slug.'.order');
-                Route::post($dataType->slug.'/action', $breadController.'@action')->name($dataType->slug.'.action');
-                Route::post($dataType->slug.'/order', $breadController.'@update_order')->name($dataType->slug.'.order');
-                Route::get($dataType->slug.'/{id}/restore', $breadController.'@restore')->name($dataType->slug.'.restore');
-                Route::get($dataType->slug.'/relation', $breadController.'@relation')->name($dataType->slug.'.relation');
-                Route::post($dataType->slug.'/remove', $breadController.'@remove_media')->name($dataType->slug.'.media.remove');
-                Route::resource($dataType->slug, $breadController, ['parameters' => [$dataType->slug => 'id']]);
+                Route::get($routeName.'/order', $breadController.'@order')->name($routeName.'.order');
+                Route::post($routeName.'/action', $breadController.'@action')->name($routeName.'.action');
+                Route::post($routeName.'/order', $breadController.'@update_order')->name($routeName.'.order');
+                Route::get($routeName.'/{id}/restore', $breadController.'@restore')->name($routeName.'.restore');
+                Route::get($routeName.'/relation', $breadController.'@relation')->name($routeName.'.relation');
+                Route::post($routeName.'/remove', $breadController.'@remove_media')->name($routeName.'.media.remove');
+                Route::resource($routeName, $breadController, ['parameters' => [$routeName => 'id']]);
             }
         } catch (\InvalidArgumentException $e) {
             throw new \InvalidArgumentException("Custom routes hasn't been configured because: ".$e->getMessage(), 1);
