@@ -62,11 +62,11 @@ class ModelService
                     return false;
                 }
                 $managerArray = $managerArray['modelManager'];
-                // dd(
-                //     $eloquentService,
-                //     $eloquentService->toArray(),
-                //     $managerArray
-                // );
+                dd(
+                    $eloquentService,
+                    $eloquentService->toArray(),
+                    $managerArray
+                );
                 // Name e Slug sao unicos
                 $this->modelDataType->fill([
                     'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),

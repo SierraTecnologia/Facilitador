@@ -130,10 +130,6 @@ trait AppServiceContainerProvider
          */
         Route::bind('modelClass', function ($value) {
             Log::info('Route Bind ModelClass - '.Crypto::shareableDecrypt($value).' - '.$value);
-            throw new Exception(
-                "Essa classe deveria ser uma string: ".print_r($modelClass, true),
-                400
-            );
             return new ModelService(Crypto::shareableDecrypt($value));
         });
         Route::bind('identify', function ($value) {

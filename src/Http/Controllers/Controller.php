@@ -39,6 +39,8 @@ class Controller extends BaseController
      */
     public function __construct(FacilitadorService $facilitadorService)
     {
+        $model = new \Facilitador\Services\ModelService(\Population\Models\Identity\Actors\Person::class);
+        // $model = new \Facilitador\Services\ModelService('OTQ4ODUzYThiZDY2MTcyNGFhdUhXZnJheUl6VUt6SUtkU1NCdUhFaW54aldLZHh0ZEZJMnVyOGJJL2c9');
         $this->facilitadorService = $facilitadorService;
     }
 
