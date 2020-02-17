@@ -1,17 +1,17 @@
 <?php
 
 return [
-    'welcome'                => 'Voyagerコンパスへようこそ。 すべての素晴らしいアプリケーションには正しい方向を示すコンパスが必要です。
+    'welcome'                => 'Facilitadorコンパスへようこそ。 すべての素晴らしいアプリケーションには正しい方向を示すコンパスが必要です。
         このセクションでは、アプリケーションを構築する際に役立つ多くのリソースと管理タスクを紹介します。',
     'links'         => [
         'title'                 => 'リンク',
         'documentation'         => 'ドキュメント(英語サイト)',
-        'voyager_homepage'      => 'Voyager ホームページ (英語サイト)',
-        'voyager_hooks'         => 'Voyager フック (英語サイト)',
+        'facilitador_homepage'      => 'Facilitador ホームページ (英語サイト)',
+        'facilitador_hooks'         => 'Facilitador フック (英語サイト)',
     ],
     'commands'      => [
         'title'                 => 'コマンド',
-        'text'                  => 'VoyagerからArtisanコマンドを実行します。',
+        'text'                  => 'FacilitadorからArtisanコマンドを実行します。',
         'clear_output'          => '出力をクリア',
         'command_output'        => 'Artisanコマンドのアウトプット',
         'additional_args'       => '引数を追加しますか？',
@@ -19,7 +19,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'リソース',
-        'text'                  => 'Voyagerリソースはより素早く探しものをする手助けとなります。',
+        'text'                  => 'Facilitadorリソースはより素早く探しものをする手助けとなります。',
 
     ],
     'logs'          => [
@@ -39,7 +39,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'フォント',
-        'font_class'            => 'Voyager Fonts Class マッピング',
-        'font_character'        => 'Voyager Fonts Character マッピング',
+        'font_class'            => 'Facilitador Fonts Class マッピング',
+        'font_character'        => 'Facilitador Fonts Character マッピング',
     ],
 ];

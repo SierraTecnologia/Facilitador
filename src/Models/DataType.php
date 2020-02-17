@@ -7,7 +7,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
 use Facilitador\Facades\Facilitador;
-use TCG\Voyager\Traits\Translatable;
+use TCG\Facilitador\Traits\Translatable;
 use Facilitador\Services\ModelService;
 
 class DataType extends Model
@@ -125,7 +125,7 @@ class DataType extends Model
                         : [];
 
                     if (!$dataRow->save()) {
-                        throw new \Exception(__('voyager::database.field_safe_failed', ['field' => $field]));
+                        throw new \Exception(__('facilitador::database.field_safe_failed', ['field' => $field]));
                     }
 
                     // Save translations if applied
@@ -309,7 +309,7 @@ class DataType extends Model
 
 
     /**
-     * Eu que criei. Nao tava no voyager
+     * Eu que criei. Nao tava no facilitador
      */
     public function getName($plural = false)
     {

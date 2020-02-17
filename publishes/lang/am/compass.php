@@ -1,17 +1,17 @@
 <?php
 
 return [
-    'welcome'                => 'Բարի գալուստ Voyager կողմնացույց. Յուրաքանչյուր լավ հավելվածի պետք է կողմնացույց, որը կմատնանշի նրանց ճիշտ ուղղությամբ։
+    'welcome'                => 'Բարի գալուստ Facilitador կողմնացույց. Յուրաքանչյուր լավ հավելվածի պետք է կողմնացույց, որը կմատնանշի նրանց ճիշտ ուղղությամբ։
     Այս բաժնում Դուք կգտնեք բազմաթիվ ռեսուրսներ եւ վարչական խնդիրներ, որոնք կօգնեն Ձեզ ստեղծել Ձեր հավելվածը։',
     'links'         => [
         'title'                 => 'Հղումներ',
         'documentation'         => 'Փաստաթղթեր',
-        'voyager_homepage'      => 'Voyager Գլխավոր էջ',
-        'voyager_hooks'         => 'Voyager Hooks',
+        'facilitador_homepage'      => 'Facilitador Գլխավոր էջ',
+        'facilitador_hooks'         => 'Facilitador Hooks',
     ],
     'commands'      => [
         'title'                 => 'Հրամաններ',
-        'text'                  => 'Աշխատեցնել Artisan հրամանները Voyager-ից։',
+        'text'                  => 'Աշխատեցնել Artisan հրամանները Facilitador-ից։',
         'clear_output'          => 'հստակ արդյունք',
         'command_output'        => 'Artisan-ի հրամանի արդյունքը',
         'additional_args'       => 'Լարացուցիչ արգումենտնե՞ր',
@@ -19,7 +19,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Ռեսուրսներ',
-        'text'                  => 'Voyager-ի ռեսուրսները օգնում են Ձեզ գտնել ավելի արագ',
+        'text'                  => 'Facilitador-ի ռեսուրսները օգնում են Ձեզ գտնել ավելի արագ',
 
     ],
     'logs'          => [
@@ -39,7 +39,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Տառատեսակներ',
-        'font_class'            => 'Voyager-ի տառատեսակների դասերի քարտեզագրում',
-        'font_character'        => 'Voyager-ի տառատեսակների նիշերի քարտեզագրում',
+        'font_class'            => 'Facilitador-ի տառատեսակների դասերի քարտեզագրում',
+        'font_character'        => 'Facilitador-ի տառատեսակների նիշերի քարտեզագրում',
     ],
 ];

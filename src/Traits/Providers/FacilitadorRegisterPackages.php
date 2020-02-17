@@ -62,9 +62,9 @@ trait FacilitadorRegisterPackages
 
         \Laravel\Tinker\TinkerProvider::class,
         /**
-         * Voyager
+         * Facilitador
          **/
-        \TCG\Voyager\VoyagerServiceProvider::class,
+        \TCG\Facilitador\FacilitadorServiceProvider::class,
 
         /**
          * VEio pelo Decoy

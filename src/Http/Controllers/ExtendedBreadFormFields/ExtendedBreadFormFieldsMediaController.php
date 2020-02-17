@@ -5,7 +5,7 @@ namespace Facilitador\Http\Controllers\ExtendedBreadFormFields;
 use Exception;
 use Illuminate\Http\Request;
 use Facilitador\Facades\Facilitador;
-use TCG\Voyager\Http\Controllers\FacilitadorMediaController;
+use TCG\Facilitador\Http\Controllers\FacilitadorMediaController;
 
 class ExtendedBreadFormFieldsMediaController extends FacilitadorMediaController
 {

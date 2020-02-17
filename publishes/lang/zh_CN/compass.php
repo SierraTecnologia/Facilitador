@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'welcome'                => '欢迎来到Voyager指南针。每一个好的应用程序都需要一个指南针来指向正确的方向。在本节中，您将找到许多资源和管理任务来帮助您构建应用程序。',
+    'welcome'                => '欢迎来到Facilitador指南针。每一个好的应用程序都需要一个指南针来指向正确的方向。在本节中，您将找到许多资源和管理任务来帮助您构建应用程序。',
     'links'                  => [
         'title'                 => '链接',
         'documentation'         => '文档',
-        'voyager_homepage'      => '官网',
-        'voyager_hooks'         => 'Hooks',
+        'facilitador_homepage'      => '官网',
+        'facilitador_hooks'         => 'Hooks',
     ],
     'commands'      => [
         'title'                 => '命令',
-        'text'                  => 'Voyager的Artisan命令.',
+        'text'                  => 'Facilitador的Artisan命令.',
         'clear_output'          => '清除输出',
         'command_output'        => 'Artisan命令输出',
         'additional_args'       => '附加参数?',
@@ -18,7 +18,7 @@ return [
     ],
     'resources'     => [
         'title'                 => '资源',
-        'text'                  => 'Voyager资源，帮助你更快地找到东西。',
+        'text'                  => 'Facilitador资源，帮助你更快地找到东西。',
 
     ],
     'logs'          => [
@@ -38,7 +38,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => '字体',
-        'font_class'            => 'Voyager字体类映射',
-        'font_character'        => 'Voyager字体字符映射',
+        'font_class'            => 'Facilitador字体类映射',
+        'font_character'        => 'Facilitador字体字符映射',
     ],
 ];

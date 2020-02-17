@@ -1,18 +1,18 @@
 <?php
 
 return [
-    'welcome'                => 'Добре дошли във Voyager Compass. Всяка хубава апликация има нужда от компас да насочва потребителите към правилната посока.
+    'welcome'                => 'Добре дошли във Facilitador Compass. Всяка хубава апликация има нужда от компас да насочва потребителите към правилната посока.
 
     В тази секция ще намерите много ресурси и административки задачи, които ще ви помогнат да създадете вашата апликация.',
     'links'         => [
         'title'                 => 'Линкове',
         'documentation'         => 'Документация',
-        'voyager_homepage'      => 'Начална страница на Voyager',
-        'voyager_hooks'         => 'Voyager Hooks',
+        'facilitador_homepage'      => 'Начална страница на Facilitador',
+        'facilitador_hooks'         => 'Facilitador Hooks',
     ],
     'commands'      => [
         'title'                 => 'Команди',
-        'text'                  => 'Run Artisan команди от Voyager.',
+        'text'                  => 'Run Artisan команди от Facilitador.',
         'clear_output'          => 'изчистване на информация ',
         'command_output'        => 'Artisan Command Output',
         'additional_args'       => 'Допълнителни аргументи?',
@@ -20,7 +20,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Ресурси',
-        'text'                  => 'Voyager ресурси, които ще ви помогнат да намерите всичко по-бързо.',
+        'text'                  => 'Facilitador ресурси, които ще ви помогнат да намерите всичко по-бързо.',
 
     ],
     'logs'          => [
@@ -40,7 +40,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Фонтове',
-        'font_class'            => 'Voyager Fonts Class Mapping',
-        'font_character'        => 'Voyager Fonts Character Mapping',
+        'font_class'            => 'Facilitador Fonts Class Mapping',
+        'font_character'        => 'Facilitador Fonts Character Mapping',
     ],
 ];

@@ -3,15 +3,15 @@
 namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Facades\Voyager;
+use TCG\Facilitador\Facades\Facilitador;
 
-class Role extends \TCG\Voyager\Models\Role
+class Role extends \TCG\Facilitador\Models\Role
 {
     protected $guarded = [];
 
     public function users()
     {
-        $userModel = Voyager::modelClass('User');
+        $userModel = Facilitador::modelClass('User');
 
         return $this->belongsToMany($userModel, 'user_roles')
                     ->select(app($userModel)->getTable().'.*')
@@ -20,6 +20,6 @@ class Role extends \TCG\Voyager\Models\Role
 
     public function permissions()
     {
-        return $this->belongsToMany(Voyager::modelClass('Permission'));
+        return $this->belongsToMany(Facilitador::modelClass('Permission'));
     }
 }

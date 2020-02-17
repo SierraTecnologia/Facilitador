@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Policies;
 
-use TCG\Voyager\Contracts\User;
+use TCG\Facilitador\Contracts\User;
 use Facilitador\Facades\Facilitador;
 
 class MenuItemPolicy extends BasePolicy

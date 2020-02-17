@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Str;
-use TCG\Voyager\Events\Routing;
-use TCG\Voyager\Events\RoutingAdmin;
-use TCG\Voyager\Events\RoutingAdminAfter;
-use TCG\Voyager\Events\RoutingAfter;
+use TCG\Facilitador\Events\Routing;
+use TCG\Facilitador\Events\RoutingAdmin;
+use TCG\Facilitador\Events\RoutingAdminAfter;
+use TCG\Facilitador\Events\RoutingAfter;
 use Facilitador\Facades\Facilitador;
 
-// Route::group(['prefix' => 'voyager'], function () {
-//     Voyager::routes();
+// Route::group(['prefix' => 'facilitador'], function () {
+//     Facilitador::routes();
 // });
 
 /*

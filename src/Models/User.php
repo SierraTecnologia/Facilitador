@@ -22,8 +22,8 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Illuminate\Database\Eloquent\Builder;
 
 use Carbon\Carbon;
-use TCG\Voyager\Contracts\User as UserContract;
-use TCG\Voyager\Traits\VoyagerUser;
+use TCG\Facilitador\Contracts\User as UserContract;
+use TCG\Facilitador\Traits\FacilitadorUser;
 
 use Illuminate\Notifications\Notifiable;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -731,11 +731,11 @@ class User extends Base implements
 
 
     /**
-     * From Voyager
+     * From Facilitador
      */
     public function getAvatarAttribute($value)
     {
-        return $value ?? config('voyager.user.default_avatar', 'users/default.png');
+        return $value ?? config('facilitador.user.default_avatar', 'users/default.png');
     }
 
     /**
@@ -771,7 +771,7 @@ class User extends Base implements
     }
 
     /**
-     * From Voyager
+     * From Facilitador
      */
 
     /**

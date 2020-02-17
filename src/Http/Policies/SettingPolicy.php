@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Policies;
 
-use TCG\Voyager\Contracts\User;
+use TCG\Facilitador\Contracts\User;
 
 class SettingPolicy extends BasePolicy
 {
@@ -16,7 +16,7 @@ class SettingPolicy extends BasePolicy
     /**
      * Determine if the given user can browse the model.
      *
-     * @param \TCG\Voyager\Contracts\User $user
+     * @param \TCG\Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool
@@ -29,7 +29,7 @@ class SettingPolicy extends BasePolicy
     /**
      * Determine if the given model can be viewed by the user.
      *
-     * @param \TCG\Voyager\Contracts\User $user
+     * @param \TCG\Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool
@@ -42,7 +42,7 @@ class SettingPolicy extends BasePolicy
     /**
      * Determine if the given model can be edited by the user.
      *
-     * @param \TCG\Voyager\Contracts\User $user
+     * @param \TCG\Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool
@@ -55,7 +55,7 @@ class SettingPolicy extends BasePolicy
     /**
      * Determine if the given user can create the model.
      *
-     * @param \TCG\Voyager\Contracts\User $user
+     * @param \TCG\Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool
@@ -68,7 +68,7 @@ class SettingPolicy extends BasePolicy
     /**
      * Determine if the given model can be deleted by the user.
      *
-     * @param \TCG\Voyager\Contracts\User $user
+     * @param \TCG\Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\Role;
+use TCG\Facilitador\Models\Role;
 
 class RolesTableSeeder extends Seeder
 {
@@ -13,14 +13,14 @@ class RolesTableSeeder extends Seeder
         $role = Role::firstOrNew(['name' => 'admin']);
         if (!$role->exists) {
             $role->fill([
-                    'display_name' => __('voyager::seeders.roles.admin'),
+                    'display_name' => __('facilitador::seeders.roles.admin'),
                 ])->save();
         }
 
         $role = Role::firstOrNew(['name' => 'user']);
         if (!$role->exists) {
             $role->fill([
-                    'display_name' => __('voyager::seeders.roles.user'),
+                    'display_name' => __('facilitador::seeders.roles.user'),
                 ])->save();
         }
     }

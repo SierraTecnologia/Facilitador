@@ -61,10 +61,10 @@ class FacilitadorProvider extends ServiceProvider
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
             ],
-            'Voyager' => [
+            'Facilitador' => [
                 [
                     'text'        => 'Tools',
-                    'url'         => 'voyager/hooks',
+                    'url'         => 'facilitador/hooks',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -72,7 +72,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'hooks',
-                    'url'         => 'voyager/hooks',
+                    'url'         => 'facilitador/hooks',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -80,7 +80,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'bread',
-                    'url'         => 'voyager/bread',
+                    'url'         => 'facilitador/bread',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -88,7 +88,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'Database',
-                    'url'         => 'voyager/database',
+                    'url'         => 'facilitador/database',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -96,7 +96,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'settings',
-                    'url'         => 'voyager/settings',
+                    'url'         => 'facilitador/settings',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',

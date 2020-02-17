@@ -2,17 +2,17 @@
 
 return [
     'welcome'                => '
-    به قطب نمای voyager خوش آمدید! هر اپلیکیشن خوب باید یک قطب نما داشته باشد که کاربران را به جهات صحیح هدایت کند!.
+    به قطب نمای facilitador خوش آمدید! هر اپلیکیشن خوب باید یک قطب نما داشته باشد که کاربران را به جهات صحیح هدایت کند!.
     در این بخش می توانید منابعی را بیابید که به شما در انجام امور مدیریتی کمک می کند، تا بتوانید اپلیکیشنتان را بسازید.',
     'links'         => [
         'title'                 => 'لینک ها',
         'documentation'         => 'راهنمای استفاده',
-        'voyager_homepage'      => 'صفحه اصلی voyager',
-        'voyager_hooks'         => 'هوک های voyager',
+        'facilitador_homepage'      => 'صفحه اصلی facilitador',
+        'facilitador_hooks'         => 'هوک های facilitador',
     ],
     'commands'      => [
         'title'                 => 'دستورات',
-        'text'                  => 'اجرای دستورات Artisan از voyager',
+        'text'                  => 'اجرای دستورات Artisan از facilitador',
         'clear_output'          => 'پاکسازی خروجی',
         'command_output'        => 'خروجی دستور Artisan',
         'additional_args'       => 'آرگومان های بیشتر؟',
@@ -20,7 +20,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'منابع',
-        'text'                  => 'منابع Voyager برای کمک به شما جهت یافتن سریع تر آنچه به دنبالش هستید',
+        'text'                  => 'منابع Facilitador برای کمک به شما جهت یافتن سریع تر آنچه به دنبالش هستید',
 
     ],
     'logs'          => [
@@ -40,7 +40,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'فونت ها',
-        'font_class'            => 'نقشه کلاس های فونت Voyager',
-        'font_character'        => 'نقشه کاراکترهای فونت Voyager',
+        'font_class'            => 'نقشه کلاس های فونت Facilitador',
+        'font_character'        => 'نقشه کاراکترهای فونت Facilitador',
     ],
 ];

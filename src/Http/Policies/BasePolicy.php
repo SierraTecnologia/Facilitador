@@ -3,8 +3,8 @@
 namespace Facilitador\Http\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use TCG\Voyager\Contracts\User;
-use TCG\Voyager\Facades\Voyager;
+use TCG\Facilitador\Contracts\User;
+use TCG\Facilitador\Facades\Facilitador;
 
 class BasePolicy
 {
@@ -33,7 +33,7 @@ class BasePolicy
         if (count($arguments) < 2) {
             throw new \InvalidArgumentException('not enough arguments');
         }
-        /** @var \TCG\Voyager\Contracts\User $user */
+        /** @var \TCG\Facilitador\Contracts\User $user */
         $user = $arguments[0];
 
         /** @var $model */
@@ -45,7 +45,7 @@ class BasePolicy
     /**
      * Check if user has an associated permission.
      *
-     * @param \TCG\Voyager\Contracts\User $user
+     * @param \TCG\Facilitador\Contracts\User $user
      * @param object                      $model
      * @param string                      $action
      *
@@ -54,7 +54,7 @@ class BasePolicy
     protected function checkPermission(User $user, $model, $action)
     {
         if (!isset(self::$datatypes[get_class($model)])) {
-            $dataType = Voyager::model('DataType');
+            $dataType = Facilitador::model('DataType');
             self::$datatypes[get_class($model)] = $dataType->where('model_name', get_class($model))->first();
         }
 

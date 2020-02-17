@@ -1,6 +1,6 @@
-# Extended FormFields hook interface to Voyager BREAD
+# Extended FormFields hook interface to Facilitador BREAD
 
-This interface extends `VoyagerBaseController::getContentBasedOnType()`, which makes it easy to add data handlers for your own FormFields.
+This interface extends `FacilitadorBaseController::getContentBasedOnType()`, which makes it easy to add data handlers for your own FormFields.
 
 The package includes several additional FormFields:
 
@@ -20,7 +20,7 @@ php artisan hook:install extended-bread-form-fields
 ### Required
 ```bash
 "laravel/framework": "5.7.*"
-"tcg/voyager": "^1.1"
+"tcg/facilitador": "^1.1"
 ```
 
 ## Key-Value to JSON

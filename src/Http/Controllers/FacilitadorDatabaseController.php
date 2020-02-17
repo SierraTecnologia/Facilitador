@@ -13,9 +13,9 @@ use Support\Coder\Discovers\Database\Schema\Identifier;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
 use Support\Coder\Discovers\Database\Schema\Table;
 use Support\Coder\Discovers\Database\Types\Type;
-use TCG\Voyager\Events\TableAdded;
-use TCG\Voyager\Events\TableDeleted;
-use TCG\Voyager\Events\TableUpdated;
+use TCG\Facilitador\Events\TableAdded;
+use TCG\Facilitador\Events\TableDeleted;
+use TCG\Facilitador\Events\TableUpdated;
 use Facilitador\Facades\Facilitador;
 
 class FacilitadorDatabaseController extends Controller

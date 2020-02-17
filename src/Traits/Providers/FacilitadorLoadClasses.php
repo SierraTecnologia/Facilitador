@@ -88,7 +88,7 @@ trait FacilitadorLoadClasses
         $this->mergeConfigFrom($this->getPublishesPath('config/form-maker.php'), 'form-maker');
         $this->mergeConfigFrom($this->getPublishesPath('config/gravatar.php'), 'gravatar');
         $this->mergeConfigFrom($this->getPublishesPath('config/tinker.php'), 'tinker');
-        $this->mergeConfigFrom($this->getPublishesPath('config/voyager-hooks.php'), 'voyager-hooks');
-        $this->mergeConfigFrom($this->getPublishesPath('config/voyager.php'), 'voyager');
+        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador-hooks.php'), 'facilitador-hooks');
+        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador.php'), 'facilitador');
     }
 }

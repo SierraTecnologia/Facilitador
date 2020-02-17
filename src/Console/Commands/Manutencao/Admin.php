@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
-use TCG\Voyager\Facades\Voyager;
+use TCG\Facilitador\Facades\Facilitador;
 use Facilitador\Models\Admin as BkwldAdmin;
 use Log;
 
@@ -62,7 +62,7 @@ class Admin extends Command
         // Get or create role
         $role = $this->getAdministratorRole();
         // Get all permissions
-        $permissions = Voyager::model('Permission')->all();
+        $permissions = Facilitador::model('Permission')->all();
         // Assign all permissions to the admin role
         $role->permissions()->sync(
             $permissions->pluck('id')->all()
@@ -91,7 +91,7 @@ class Admin extends Command
      */
     protected function getAdministratorRole()
     {
-        $role = Voyager::model('Role')->firstOrNew([
+        $role = Facilitador::model('Role')->firstOrNew([
             'name' => 'admin',
         ]);
         if (!$role->exists) {
@@ -112,7 +112,7 @@ class Admin extends Command
     {
         $email = $this->argument('email');
 
-        $model = Auth::guard(app('VoyagerGuard'))->getProvider()->getModel();
+        $model = Auth::guard(app('FacilitadorGuard'))->getProvider()->getModel();
         $model = Str::start($model, '\\');
 
         // Ask for email if there wasnt set one

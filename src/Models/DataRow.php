@@ -3,7 +3,7 @@
 namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Traits\Translatable;
+use TCG\Facilitador\Traits\Translatable;
 
 class DataRow extends Model
 {
@@ -72,7 +72,7 @@ class DataRow extends Model
     }
 
     /**
-     * Eu que criei. Nao tava no voyager
+     * Eu que criei. Nao tava no facilitador
      */
 
     public function getName()

@@ -2,7 +2,7 @@
 
 namespace Facilitador\Providers;
 
-use TCG\Voyager\Facades\Voyager;
+use TCG\Facilitador\Facades\Facilitador;
 use Illuminate\Support\ServiceProvider;
 use Support\Elements\FormFields\MultipleImagesWithAttrsFormField;
 use Support\Elements\FormFields\KeyValueJsonFormField;
@@ -26,16 +26,16 @@ class ExtendedBreadFormFieldsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Voyager::addFormField(KeyValueJsonFormField::class);
-        Voyager::addFormField(MultipleImagesWithAttrsFormField::class);
+        Facilitador::addFormField(KeyValueJsonFormField::class);
+        Facilitador::addFormField(MultipleImagesWithAttrsFormField::class);
 
         $this->app->bind(
-            'TCG\Voyager\Http\Controllers\VoyagerBaseController',
+            'TCG\Facilitador\Http\Controllers\FacilitadorBaseController',
             'ExtendedBreadFormFields\Controllers\ExtendedBreadFormFieldsController'
         );
 
         $this->app->bind(
-            'TCG\Voyager\Http\Controllers\VoyagerMediaController',
+            'TCG\Facilitador\Http\Controllers\FacilitadorMediaController',
             'ExtendedBreadFormFields\Controllers\ExtendedBreadFormFieldsMediaController'
         );
     }

@@ -46,8 +46,8 @@ trait FacilitadorRegisterPublishes
             $this->getPublishesPath('config/form-maker.php') => config_path('form-maker.php'),
             $this->getPublishesPath('config/gravatar.php') => config_path('gravatar.php'),
             $this->getPublishesPath('config/tinker.php') => config_path('tinker.php'),
-            $this->getPublishesPath('config/voyager-hooks.php') => config_path('voyager-hooks.php'),
-            $this->getPublishesPath('config/voyager.php') => config_path('voyager.php')
+            $this->getPublishesPath('config/facilitador-hooks.php') => config_path('facilitador-hooks.php'),
+            $this->getPublishesPath('config/facilitador.php') => config_path('facilitador.php')
         ], ['config',  'sitec', 'sitec-config']);
 
     }

@@ -1,17 +1,17 @@
 <?php
 
 return [
-    'welcome'                => 'Benvido a Voyager Compass. Toda boa aplicación precisa un compás para sinalarnos a dirección correcta.
+    'welcome'                => 'Benvido a Facilitador Compass. Toda boa aplicación precisa un compás para sinalarnos a dirección correcta.
     Nesta sección atoparás moitos recursos e tarefas administrativas para axudarche a medida que compilas a túa aplicación.',
     'links'         => [
         'title'                 => 'Enlaces',
         'documentation'         => 'Documentación',
-        'voyager_homepage'      => 'Voyager Homepage',
-        'voyager_hooks'         => 'Voyager Hooks',
+        'facilitador_homepage'      => 'Facilitador Homepage',
+        'facilitador_hooks'         => 'Facilitador Hooks',
     ],
     'commands'      => [
         'title'                 => 'Comandos',
-        'text'                  => 'Executar comandos de Artisan dende Voyager.',
+        'text'                  => 'Executar comandos de Artisan dende Facilitador.',
         'clear_output'          => 'limpar saída',
         'command_output'        => 'Saída de comandos de Artisan',
         'additional_args'       => 'Argumentos adicionais?',
@@ -19,7 +19,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Recursos',
-        'text'                  => 'Recursos de Voyager para axudarche a atopar as cousas máis rápido.',
+        'text'                  => 'Recursos de Facilitador para axudarche a atopar as cousas máis rápido.',
 
     ],
     'logs'          => [
@@ -39,7 +39,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Fonts',
-        'font_class'            => 'Voyager Fonts Class Mapping',
-        'font_character'        => 'Voyager Fonts Character Mapping',
+        'font_class'            => 'Facilitador Fonts Class Mapping',
+        'font_character'        => 'Facilitador Fonts Character Mapping',
     ],
 ];

@@ -100,9 +100,9 @@ class FacilitadorInstallCommand extends Command
         // Install Passport
         $this->info('Install passport');
         $this->call('passport:install');
-        // Install voyager
-        $this->info('Install voyager');
-        $this->call('voyager:install');
+        // Install facilitador
+        $this->info('Install facilitador');
+        $this->call('facilitador:install');
 
         // $this->info('Seeding data into the database');
         // $this->seed('FacilitadorDatabaseSeeder');
@@ -118,7 +118,7 @@ class FacilitadorInstallCommand extends Command
         //     $this->info('Seeding dummy data');
         //     $this->seed('FacilitadorDummyDatabaseSeeder');
         // } else {
-        //     $this->call('vendor:publish', ['--provider' => FacilitadorServiceProvider::class, '--tag' => ['config', 'voyager_avatar']]);
+        //     $this->call('vendor:publish', ['--provider' => FacilitadorServiceProvider::class, '--tag' => ['config', 'facilitador_avatar']]);
         // }
 
         $this->info('Setting up the hooks');

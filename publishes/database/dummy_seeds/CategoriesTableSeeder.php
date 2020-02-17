@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\Category;
-use TCG\Voyager\Models\DataRow;
-use TCG\Voyager\Models\DataType;
-use TCG\Voyager\Models\Menu;
-use TCG\Voyager\Models\MenuItem;
-use TCG\Voyager\Models\Permission;
+use TCG\Facilitador\Models\Category;
+use TCG\Facilitador\Models\DataRow;
+use TCG\Facilitador\Models\DataType;
+use TCG\Facilitador\Models\Menu;
+use TCG\Facilitador\Models\MenuItem;
+use TCG\Facilitador\Models\Permission;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -22,10 +22,10 @@ class CategoriesTableSeeder extends Seeder
         if (!$dataType->exists) {
             $dataType->fill([
                 'slug'                  => 'categories',
-                'display_name_singular' => __('voyager::seeders.data_types.category.singular'),
-                'display_name_plural'   => __('voyager::seeders.data_types.category.plural'),
-                'icon'                  => 'voyager-categories',
-                'model_name'            => 'TCG\\Voyager\\Models\\Category',
+                'display_name_singular' => __('facilitador::seeders.data_types.category.singular'),
+                'display_name_plural'   => __('facilitador::seeders.data_types.category.plural'),
+                'icon'                  => 'facilitador-categories',
+                'model_name'            => 'TCG\\Facilitador\\Models\\Category',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
@@ -37,7 +37,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
+                'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
                 'browse'       => 0,
                 'read'         => 0,
@@ -52,7 +52,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'select_dropdown',
-                'display_name' => __('voyager::seeders.data_rows.parent'),
+                'display_name' => __('facilitador::seeders.data_rows.parent'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 1,
@@ -78,7 +78,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.order'),
+                'display_name' => __('facilitador::seeders.data_rows.order'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -96,7 +96,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
+                'display_name' => __('facilitador::seeders.data_rows.name'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -111,7 +111,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.slug'),
+                'display_name' => __('facilitador::seeders.data_rows.slug'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -131,7 +131,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 1,
@@ -146,7 +146,7 @@ class CategoriesTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -161,14 +161,14 @@ class CategoriesTableSeeder extends Seeder
         $menu = Menu::where('name', 'admin')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.categories'),
+            'title'   => __('facilitador::seeders.menu_items.categories'),
             'url'     => '',
-            'route'   => 'voyager.categories.index',
+            'route'   => 'facilitador.categories.index',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'voyager-categories',
+                'icon_class' => 'facilitador-categories',
                 'color'      => null,
                 'parent_id'  => null,
                 'order'      => 8,

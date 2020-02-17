@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\DataRow;
-use TCG\Voyager\Models\DataType;
+use TCG\Facilitador\Models\DataRow;
+use TCG\Facilitador\Models\DataType;
 
 class DataRowsTableSeeder extends Seeder
 {
@@ -19,7 +19,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
+                'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
                 'browse'       => 0,
                 'read'         => 0,
@@ -34,7 +34,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
+                'display_name' => __('facilitador::seeders.data_rows.name'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -49,7 +49,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.email'),
+                'display_name' => __('facilitador::seeders.data_rows.email'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -64,7 +64,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'password',
-                'display_name' => __('voyager::seeders.data_rows.password'),
+                'display_name' => __('facilitador::seeders.data_rows.password'),
                 'required'     => 1,
                 'browse'       => 0,
                 'read'         => 0,
@@ -79,7 +79,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.remember_token'),
+                'display_name' => __('facilitador::seeders.data_rows.remember_token'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -94,7 +94,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
@@ -109,7 +109,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -124,7 +124,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'image',
-                'display_name' => __('voyager::seeders.data_rows.avatar'),
+                'display_name' => __('facilitador::seeders.data_rows.avatar'),
                 'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
@@ -139,7 +139,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'relationship',
-                'display_name' => __('voyager::seeders.data_rows.role'),
+                'display_name' => __('facilitador::seeders.data_rows.role'),
                 'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
@@ -147,7 +147,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
-                    'model'       => 'TCG\\Voyager\\Models\\Role',
+                    'model'       => 'TCG\\Facilitador\\Models\\Role',
                     'table'       => 'roles',
                     'type'        => 'belongsTo',
                     'column'      => 'role_id',
@@ -172,7 +172,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
-                    'model'       => 'TCG\\Voyager\\Models\\Role',
+                    'model'       => 'TCG\\Facilitador\\Models\\Role',
                     'table'       => 'roles',
                     'type'        => 'belongsToMany',
                     'column'      => 'id',
@@ -205,7 +205,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
+                'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
                 'browse'       => 0,
                 'read'         => 0,
@@ -220,7 +220,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
+                'display_name' => __('facilitador::seeders.data_rows.name'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -235,7 +235,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -250,7 +250,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -265,7 +265,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
+                'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
                 'browse'       => 0,
                 'read'         => 0,
@@ -280,7 +280,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
+                'display_name' => __('facilitador::seeders.data_rows.name'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -295,7 +295,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -310,7 +310,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -325,7 +325,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.display_name'),
+                'display_name' => __('facilitador::seeders.data_rows.display_name'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -340,7 +340,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.role'),
+                'display_name' => __('facilitador::seeders.data_rows.role'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,

@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
-use TCG\Voyager\Events\BreadDataAdded;
-use TCG\Voyager\Events\BreadDataDeleted;
-use TCG\Voyager\Events\BreadDataRestored;
-use TCG\Voyager\Events\BreadDataUpdated;
-use TCG\Voyager\Events\BreadImagesDeleted;
+use TCG\Facilitador\Events\BreadDataAdded;
+use TCG\Facilitador\Events\BreadDataDeleted;
+use TCG\Facilitador\Events\BreadDataRestored;
+use TCG\Facilitador\Events\BreadDataUpdated;
+use TCG\Facilitador\Events\BreadImagesDeleted;
 use Facilitador\Facades\Facilitador;
 use Facilitador\Http\Controllers\Traits\BreadRelationshipParser;
 

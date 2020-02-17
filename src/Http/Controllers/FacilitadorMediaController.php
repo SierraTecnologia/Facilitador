@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use League\Flysystem\Plugin\ListWith;
-use TCG\Voyager\Events\MediaFileAdded;
+use TCG\Facilitador\Events\MediaFileAdded;
 use Facilitador\Facades\Facilitador;
 
 class FacilitadorMediaController extends Controller

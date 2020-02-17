@@ -6,7 +6,7 @@ return [
     | User config
     |--------------------------------------------------------------------------
     |
-    | Here you can specify voyager user configs
+    | Here you can specify facilitador user configs
     |
     */
 
@@ -22,12 +22,12 @@ return [
     | Controllers config
     |--------------------------------------------------------------------------
     |
-    | Here you can specify voyager controller settings
+    | Here you can specify facilitador controller settings
     |
     */
 
     'controllers' => [
-        'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+        'namespace' => 'TCG\\Facilitador\\Http\\Controllers',
     ],
 
     /*
@@ -74,7 +74,7 @@ return [
     | Database Config
     |--------------------------------------------------------------------------
     |
-    | Here you can specify voyager database settings
+    | Here you can specify facilitador database settings
     |
     */
 
@@ -90,7 +90,7 @@ return [
     | Multilingual configuration
     |--------------------------------------------------------------------------
     |
-    | Here you can specify if you want Voyager to ship with support for
+    | Here you can specify if you want Facilitador to ship with support for
     | multilingual and what locales are enabled.
     |
     */
@@ -127,26 +127,26 @@ return [
     'dashboard' => [
         // Add custom list items to navbar's dropdown
         'navbar_items' => [
-            'voyager::generic.profile' => [
-                'route'      => 'voyager.profile',
+            'facilitador::generic.profile' => [
+                'route'      => 'facilitador.profile',
                 'classes'    => 'class-full-of-rum',
-                'icon_class' => 'voyager-person',
+                'icon_class' => 'facilitador-person',
             ],
-            'voyager::generic.home' => [
+            'facilitador::generic.home' => [
                 'route'        => '/',
-                'icon_class'   => 'voyager-home',
+                'icon_class'   => 'facilitador-home',
                 'target_blank' => true,
             ],
-            'voyager::generic.logout' => [
-                'route'      => 'voyager.logout',
-                'icon_class' => 'voyager-power',
+            'facilitador::generic.logout' => [
+                'route'      => 'facilitador.logout',
+                'icon_class' => 'facilitador-power',
             ],
         ],
 
         'widgets' => [
-            'TCG\\Voyager\\Widgets\\UserDimmer',
-            'TCG\\Voyager\\Widgets\\PostDimmer',
-            'TCG\\Voyager\\Widgets\\PageDimmer',
+            'TCG\\Facilitador\\Widgets\\UserDimmer',
+            'TCG\\Facilitador\\Widgets\\PostDimmer',
+            'TCG\\Facilitador\\Widgets\\PageDimmer',
         ],
 
     ],
@@ -156,7 +156,7 @@ return [
     | Automatic Procedures
     |--------------------------------------------------------------------------
     |
-    | When a change happens on Voyager, we can automate some routines.
+    | When a change happens on Facilitador, we can automate some routines.
     |
     */
 
@@ -179,7 +179,7 @@ return [
     | UI Generic Config
     |--------------------------------------------------------------------------
     |
-    | Here you change some of the Voyager UI settings.
+    | Here you change some of the Facilitador UI settings.
     |
     */
 
