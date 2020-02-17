@@ -162,7 +162,7 @@ class UrlGenerator
     }
 
     /**
-     * 
+     * Troquei de encrypt para shareable pq o usuario ainda nao foi carregado aqui
      */
     public static function managerRoute($slug, $page = '', $data = false)
     {
@@ -170,8 +170,8 @@ class UrlGenerator
             $page = '/'.$page;
         }
         if ($data) {
-            $page = '/'.Crypto::encrypt($data).$page;
+            $page = '/'.Crypto::shareable($data).$page;
         }
-        return url('manager/'.Crypto::encrypt($slug).$page);
+        return url('manager/'.Crypto::shareable($slug).$page);
     }
 }

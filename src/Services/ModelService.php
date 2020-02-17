@@ -144,7 +144,7 @@ class ModelService
 
     public function getCryptName()
     {
-        return Crypto::encrypt($this->modelClass);
+        return Crypto::shareableEncrypt($this->modelClass);
     }
 
     public function getName($plural = false)
@@ -153,10 +153,14 @@ class ModelService
     }
     public function getModelClass()
     {
+        // dd(
+        //     $this->modelClass, Crypto::isCrypto($this->modelClass),
+        //     Crypto::decrypt($this->modelClass),
+        //     \Auth::user()
+        // );
         if (Crypto::isCrypto($this->modelClass)) {
-            $this->modelClass = Crypto::decrypt($this->modelClass);
+            $this->modelClass = Crypto::shareableDecrypt($this->modelClass);
         }
-
         if (empty($this->modelClass)) {
             Artisan::call('cache:clear');
             Artisan::call('view:clear');

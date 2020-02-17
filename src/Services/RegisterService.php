@@ -73,7 +73,7 @@ class RegisterService
      */
     public function getCryptName()
     {
-        return Crypto::encrypt($this->getId());
+        return Crypto::shareable($this->getId());
     }
 
     // /**

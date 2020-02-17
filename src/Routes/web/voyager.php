@@ -45,7 +45,7 @@ Route::group(['as' => 'facilitador.'], function () {
                 $breadController = $dataType->controller
                                  ? Str::start($dataType->controller, '\\')
                                  : $namespacePrefix.'FacilitadorBaseController';
-                $routeName = Crypto::encrypt($dataType->slug);
+                $routeName = Crypto::shareable($dataType->slug);
 
                 Route::get($routeName.'/order', $breadController.'@order')->name($routeName.'.order');
                 Route::post($routeName.'/action', $breadController.'@action')->name($routeName.'.action');
