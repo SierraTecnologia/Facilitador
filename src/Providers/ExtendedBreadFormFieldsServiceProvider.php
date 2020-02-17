@@ -2,7 +2,7 @@
 
 namespace Facilitador\Providers;
 
-use TCG\Facilitador\Facades\Facilitador;
+use Facilitador\Facades\Facilitador;
 use Illuminate\Support\ServiceProvider;
 use Support\Elements\FormFields\MultipleImagesWithAttrsFormField;
 use Support\Elements\FormFields\KeyValueJsonFormField;
@@ -30,12 +30,12 @@ class ExtendedBreadFormFieldsServiceProvider extends ServiceProvider
         Facilitador::addFormField(MultipleImagesWithAttrsFormField::class);
 
         $this->app->bind(
-            'TCG\Facilitador\Http\Controllers\FacilitadorBaseController',
+            'Facilitador\Http\Controllers\FacilitadorBaseController',
             'ExtendedBreadFormFields\Controllers\ExtendedBreadFormFieldsController'
         );
 
         $this->app->bind(
-            'TCG\Facilitador\Http\Controllers\FacilitadorMediaController',
+            'Facilitador\Http\Controllers\FacilitadorMediaController',
             'ExtendedBreadFormFields\Controllers\ExtendedBreadFormFieldsMediaController'
         );
     }

@@ -6,16 +6,22 @@ use App\Models\Model;
 use App\Models\User;
 use App\Models\Negocio;
 use RicardoSierra\Translation\Models\Language;
-use App\Models\Traits\EloquentGetTableNameTrait;
 
 class Setting extends Model
 {
-    use EloquentGetTableNameTrait;
     
 	// const CREATED_AT = 'data';
     // const UPDATED_AT = 'dataModificacao';
 
     protected $table = 'settings';
+
+    protected $guarded = [];
+
+    public $timestamps = false;
+
+    protected $dispatchesEvents = [
+        'updating' => SettingUpdated::class,
+    ];
 
     protected static $organizationPerspective = true;
 

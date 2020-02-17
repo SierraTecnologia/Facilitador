@@ -3,9 +3,9 @@
 namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use TCG\Facilitador\Facades\Facilitador;
+use Facilitador\Facades\Facilitador;
 
-class Role extends \TCG\Facilitador\Models\Role
+class Role extends Model
 {
     protected $guarded = [];
 

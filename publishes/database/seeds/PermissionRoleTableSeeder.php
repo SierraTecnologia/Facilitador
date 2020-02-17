@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\Permission;
-use TCG\Facilitador\Models\Role;
+use Facilitador\Models\Permission;
+use Facilitador\Models\Role;
 
 class PermissionRoleTableSeeder extends Seeder
 {

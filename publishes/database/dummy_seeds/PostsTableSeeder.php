@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\DataRow;
-use TCG\Facilitador\Models\DataType;
-use TCG\Facilitador\Models\Menu;
-use TCG\Facilitador\Models\MenuItem;
-use TCG\Facilitador\Models\Permission;
-use TCG\Facilitador\Models\Post;
+use Facilitador\Models\DataRow;
+use Facilitador\Models\DataType;
+use Facilitador\Models\Menu;
+use Facilitador\Models\MenuItem;
+use Facilitador\Models\Permission;
+use Facilitador\Models\Post;
 
 class PostsTableSeeder extends Seeder
 {
@@ -23,8 +23,8 @@ class PostsTableSeeder extends Seeder
                 'display_name_singular' => __('facilitador::seeders.data_types.post.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.post.plural'),
                 'icon'                  => 'facilitador-news',
-                'model_name'            => 'TCG\\Facilitador\\Models\\Post',
-                'policy_name'           => 'TCG\\Facilitador\\Policies\\PostPolicy',
+                'model_name'            => 'Facilitador\\Models\\Post',
+                'policy_name'           => 'Facilitador\\Policies\\PostPolicy',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',

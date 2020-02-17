@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Traits\Seedable;
+use Facilitador\Traits\Seedable;
 
 class FacilitadorDatabaseSeeder extends Seeder
 {

@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\DataRow;
-use TCG\Facilitador\Models\DataType;
-use TCG\Facilitador\Models\Menu;
-use TCG\Facilitador\Models\MenuItem;
-use TCG\Facilitador\Models\Page;
-use TCG\Facilitador\Models\Permission;
+use Facilitador\Models\DataRow;
+use Facilitador\Models\DataType;
+use Facilitador\Models\Menu;
+use Facilitador\Models\MenuItem;
+use Facilitador\Models\Page;
+use Facilitador\Models\Permission;
 
 class PagesTableSeeder extends Seeder
 {
@@ -25,7 +25,7 @@ class PagesTableSeeder extends Seeder
                 'display_name_singular' => __('facilitador::seeders.data_types.page.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.page.plural'),
                 'icon'                  => 'facilitador-file-text',
-                'model_name'            => 'TCG\\Facilitador\\Models\\Page',
+                'model_name'            => 'Facilitador\\Models\\Page',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',

@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Policies;
 
-use TCG\Facilitador\Contracts\User;
+use Facilitador\Contracts\User;
 
 class UserPolicy extends BasePolicy
 {
@@ -16,7 +16,7 @@ class UserPolicy extends BasePolicy
     /**
      * Determine if the given model can be viewed by the user.
      *
-     * @param \TCG\Facilitador\Contracts\User $user
+     * @param \Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool
@@ -32,7 +32,7 @@ class UserPolicy extends BasePolicy
     /**
      * Determine if the given model can be edited by the user.
      *
-     * @param \TCG\Facilitador\Contracts\User $user
+     * @param \Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool
@@ -48,7 +48,7 @@ class UserPolicy extends BasePolicy
     /**
      * Determine if the given user can change a user a role.
      *
-     * @param \TCG\Facilitador\Contracts\User $user
+     * @param \Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool

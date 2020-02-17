@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\Menu;
+use Facilitador\Models\Menu;
 
 class MenusTableSeeder extends Seeder
 {

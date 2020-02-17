@@ -9,9 +9,9 @@ use ReflectionClass;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
 use Support\Coder\Discovers\Database\Schema\Table;
 use Support\Coder\Discovers\Database\Types\Type;
-use TCG\Facilitador\Events\BreadAdded;
-use TCG\Facilitador\Events\BreadDeleted;
-use TCG\Facilitador\Events\BreadUpdated;
+use Facilitador\Events\BreadAdded;
+use Facilitador\Events\BreadDeleted;
+use Facilitador\Events\BreadUpdated;
 use Facilitador\Facades\Facilitador;
 
 class FacilitadorBreadController extends Controller
@@ -149,7 +149,7 @@ class FacilitadorBreadController extends Controller
     {
         $this->authorize('browse_bread');
 
-        /* @var \TCG\Facilitador\Models\DataType $dataType */
+        /* @var \Facilitador\Models\DataType $dataType */
         try {
             $dataType = Facilitador::model('DataType')->find($id);
 
@@ -186,7 +186,7 @@ class FacilitadorBreadController extends Controller
     {
         $this->authorize('browse_bread');
 
-        /* @var \TCG\Facilitador\Models\DataType $dataType */
+        /* @var \Facilitador\Models\DataType $dataType */
         $dataType = Facilitador::model('DataType')->find($id);
 
         // Delete Translations, if present

@@ -3,8 +3,8 @@
 namespace Facilitador\Http\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use TCG\Facilitador\Contracts\User;
-use TCG\Facilitador\Facades\Facilitador;
+use Facilitador\Contracts\User;
+use Facilitador\Facades\Facilitador;
 
 class BasePolicy
 {
@@ -33,7 +33,7 @@ class BasePolicy
         if (count($arguments) < 2) {
             throw new \InvalidArgumentException('not enough arguments');
         }
-        /** @var \TCG\Facilitador\Contracts\User $user */
+        /** @var \Facilitador\Contracts\User $user */
         $user = $arguments[0];
 
         /** @var $model */
@@ -45,7 +45,7 @@ class BasePolicy
     /**
      * Check if user has an associated permission.
      *
-     * @param \TCG\Facilitador\Contracts\User $user
+     * @param \Facilitador\Contracts\User $user
      * @param object                      $model
      * @param string                      $action
      *

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\Setting;
+use Facilitador\Models\Setting;
 
 class SettingsTableSeeder extends Seeder
 {

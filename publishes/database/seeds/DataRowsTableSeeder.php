@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\DataRow;
-use TCG\Facilitador\Models\DataType;
+use Facilitador\Models\DataRow;
+use Facilitador\Models\DataType;
 
 class DataRowsTableSeeder extends Seeder
 {
@@ -147,7 +147,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
-                    'model'       => 'TCG\\Facilitador\\Models\\Role',
+                    'model'       => 'Facilitador\\Models\\Role',
                     'table'       => 'roles',
                     'type'        => 'belongsTo',
                     'column'      => 'role_id',
@@ -172,7 +172,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
-                    'model'       => 'TCG\\Facilitador\\Models\\Role',
+                    'model'       => 'Facilitador\\Models\\Role',
                     'table'       => 'roles',
                     'type'        => 'belongsToMany',
                     'column'      => 'id',

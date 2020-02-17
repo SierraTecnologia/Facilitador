@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\DataType;
+use Facilitador\Models\DataType;
 
 class DataTypesTableSeeder extends Seeder
 {
@@ -17,9 +17,9 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => __('facilitador::seeders.data_types.user.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.user.plural'),
                 'icon'                  => 'facilitador-person',
-                'model_name'            => 'TCG\\Facilitador\\Models\\User',
-                'policy_name'           => 'TCG\\Facilitador\\Policies\\UserPolicy',
-                'controller'            => 'TCG\\Facilitador\\Http\\Controllers\\FacilitadorUserController',
+                'model_name'            => 'Facilitador\\Models\\User',
+                'policy_name'           => 'Facilitador\\Policies\\UserPolicy',
+                'controller'            => 'Facilitador\\Http\\Controllers\\FacilitadorUserController',
                 'generate_permissions'  => 1,
                 'description'           => '',
             ])->save();
@@ -32,7 +32,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => __('facilitador::seeders.data_types.menu.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.menu.plural'),
                 'icon'                  => 'facilitador-list',
-                'model_name'            => 'TCG\\Facilitador\\Models\\Menu',
+                'model_name'            => 'Facilitador\\Models\\Menu',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
@@ -46,7 +46,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => __('facilitador::seeders.data_types.role.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.role.plural'),
                 'icon'                  => 'facilitador-lock',
-                'model_name'            => 'TCG\\Facilitador\\Models\\Role',
+                'model_name'            => 'Facilitador\\Models\\Role',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',

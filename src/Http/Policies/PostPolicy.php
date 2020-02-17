@@ -2,14 +2,14 @@
 
 namespace Facilitador\Http\Policies;
 
-use TCG\Facilitador\Contracts\User;
+use Facilitador\Contracts\User;
 
 class PostPolicy extends BasePolicy
 {
     /**
      * Determine if the given model can be viewed by the user.
      *
-     * @param \TCG\Facilitador\Contracts\User $user
+     * @param \Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool
@@ -25,7 +25,7 @@ class PostPolicy extends BasePolicy
     /**
      * Determine if the given model can be edited by the user.
      *
-     * @param \TCG\Facilitador\Contracts\User $user
+     * @param \Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool
@@ -41,7 +41,7 @@ class PostPolicy extends BasePolicy
     /**
      * Determine if the given model can be deleted by the user.
      *
-     * @param \TCG\Facilitador\Contracts\User $user
+     * @param \Facilitador\Contracts\User $user
      * @param  $model
      *
      * @return bool

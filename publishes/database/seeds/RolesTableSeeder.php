@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\Role;
+use Facilitador\Models\Role;
 
 class RolesTableSeeder extends Seeder
 {

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\Menu;
-use TCG\Facilitador\Models\MenuItem;
+use Facilitador\Models\Menu;
+use Facilitador\Models\MenuItem;
 
 class MenuItemsTableSeeder extends Seeder
 {

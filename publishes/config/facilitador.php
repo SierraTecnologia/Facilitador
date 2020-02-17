@@ -27,7 +27,7 @@ return [
     */
 
     'controllers' => [
-        'namespace' => 'TCG\\Facilitador\\Http\\Controllers',
+        'namespace' => 'Facilitador\\Http\\Controllers',
     ],
 
     /*
@@ -144,9 +144,9 @@ return [
         ],
 
         'widgets' => [
-            'TCG\\Facilitador\\Widgets\\UserDimmer',
-            'TCG\\Facilitador\\Widgets\\PostDimmer',
-            'TCG\\Facilitador\\Widgets\\PageDimmer',
+            'Facilitador\\Widgets\\UserDimmer',
+            'Facilitador\\Widgets\\PostDimmer',
+            'Facilitador\\Widgets\\PageDimmer',
         ],
 
     ],

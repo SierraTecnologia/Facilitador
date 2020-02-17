@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
-use TCG\Facilitador\Models\Role;
-use TCG\Facilitador\Models\User;
+use Facilitador\Models\Role;
+use Facilitador\Models\User;
 
 class UsersTableSeeder extends Seeder
 {

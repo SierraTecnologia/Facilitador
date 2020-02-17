@@ -3,8 +3,8 @@
 namespace Facilitador\Http\Controllers\ExtendedBreadFormFields;
 
 use Illuminate\Http\Request;
-use TCG\Facilitador\Http\Controllers\FacilitadorBaseController;
-use TCG\Facilitador\Http\Controllers\Controller;
+use Facilitador\Http\Controllers\FacilitadorBaseController;
+use Facilitador\Http\Controllers\Controller;
 use Facilitador\Facades\Facilitador;
 
 use Support\Elements\ContentTypes\MultipleImagesWithAttrsContentType;

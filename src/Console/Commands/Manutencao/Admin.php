@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
-use TCG\Facilitador\Facades\Facilitador;
+use Facilitador\Facades\Facilitador;
 use Facilitador\Models\Admin as BkwldAdmin;
 use Log;
 

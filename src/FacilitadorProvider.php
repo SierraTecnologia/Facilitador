@@ -13,9 +13,25 @@ use Facilitador\Traits\Providers\FacilitadorLoadClasses;
 use Facilitador\Traits\Providers\AppServiceContainerProvider;
 use Facilitador\Traits\Providers\FacilitadorRegisterPackages;
 use Facilitador\Traits\Providers\FacilitadorRegisterPublishes;
+use Facilitador\Traits\Providers\VoyagerProviderTrait;
+use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Schema;
+use Facilitador\Facades\Facilitador as FacilitadorFacade;
 
-use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
+use Facilitador\Models\MenuItem;
+use Facilitador\Models\Setting;
+use Facilitador\Policies\BasePolicy;
+use Facilitador\Policies\MenuItemPolicy;
+use Facilitador\Policies\SettingPolicy;
+/**
+ * POr causa do voyager estamos usando o segundo (registerPolicy)
+ */
+// use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 /**
  * Verificar se ta usando
  */
@@ -27,8 +43,26 @@ use Config;
 class FacilitadorProvider extends ServiceProvider
 {
 
-    use AppEventsProvider, AppMiddlewaresProvider, AppServiceContainerProvider, FacilitadorLoadClasses, FacilitadorRegisterPackages, FacilitadorRegisterPublishes;
+    use AppEventsProvider, AppMiddlewaresProvider, AppServiceContainerProvider, FacilitadorLoadClasses, FacilitadorRegisterPackages, FacilitadorRegisterPublishes, VoyagerProviderTrait;
 
+    /**
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
+    protected $policies = [
+        Setting::class  => SettingPolicy::class,
+        MenuItem::class => MenuItemPolicy::class,
+    ];
+
+    protected $gates = [
+        'browse_admin',
+        'browse_bread',
+        'browse_database',
+        'browse_media',
+        'browse_compass',
+        'browse_hooks',
+    ];
 
     /**
      * Rotas do Menu
@@ -111,7 +145,7 @@ class FacilitadorProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Dispatcher $events)
+    public function boot(Router $router, Dispatcher $events)
     {
         
         // Register configs, migrations, etc
@@ -136,6 +170,8 @@ class FacilitadorProvider extends ServiceProvider
         }
 
         $this->bootEvents($events);
+
+        $this->voyagerBoot($router, $events);
 
     }
 
@@ -165,7 +201,47 @@ class FacilitadorProvider extends ServiceProvider
 
         $this->loadCommands();
 
+        $this->voyagerRegister();
+
     }
 
+    /**
+     * Veio do Voyager
+     */
+    public function loadAuth()
+    {
+        // DataType Policies
+
+        // This try catch is necessary for the Package Auto-discovery
+        // otherwise it will throw an error because no database
+        // connection has been made yet.
+        try {
+            if (Schema::hasTable(FacilitadorFacade::model('DataType')->getTable())) {
+                $dataType = FacilitadorFacade::model('DataType');
+                $dataTypes = $dataType->select('policy_name', 'model_name')->get();
+
+                foreach ($dataTypes as $dataType) {
+                    $policyClass = BasePolicy::class;
+                    if (isset($dataType->policy_name) && $dataType->policy_name !== ''
+                        && class_exists($dataType->policy_name)) {
+                        $policyClass = $dataType->policy_name;
+                    }
+
+                    $this->policies[$dataType->model_name] = $policyClass;
+                }
+
+                $this->registerPolicies();
+            }
+        } catch (\PDOException $e) {
+            Log::error('No Database connection yet in FacilitadorServiceProvider loadAuth()');
+        }
+
+        // Gates
+        foreach ($this->gates as $gate) {
+            Gate::define($gate, function ($user) use ($gate) {
+                return $user->hasPermission($gate);
+            });
+        }
+    }
 
 }

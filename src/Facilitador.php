@@ -14,22 +14,22 @@ use Support\Interactions\Actions\DeleteAction;
 use Support\Interactions\Actions\EditAction;
 use Support\Interactions\Actions\RestoreAction;
 use Support\Interactions\Actions\ViewAction;
-use Support\Events\AlertsCollection;
+use Facilitador\Events\AlertsCollection;
 use Support\Elements\FormFields\After\HandlerInterface as AfterHandlerInterface;
 use Support\Elements\FormFields\HandlerInterface;
-use TCG\Facilitador\Models\Category;
+use Facilitador\Models\Category;
 use Facilitador\Models\DataRow;
 use Facilitador\Models\DataType;
-use TCG\Facilitador\Models\Menu;
-use TCG\Facilitador\Models\MenuItem;
-use TCG\Facilitador\Models\Page;
-use TCG\Facilitador\Models\Permission;
-use TCG\Facilitador\Models\Post;
-use TCG\Facilitador\Models\Role;
-use TCG\Facilitador\Models\Setting;
-use TCG\Facilitador\Models\Translation;
+use Facilitador\Models\Menu;
+use Facilitador\Models\MenuItem;
+use Facilitador\Models\Page;
+use Facilitador\Models\Permission;
+use Facilitador\Models\Post;
+use Facilitador\Models\Role;
+use Facilitador\Models\Setting;
+use Facilitador\Models\Translation;
 use App\Models\User;
-use TCG\Facilitador\Traits\Translatable;
+use Facilitador\Traits\Translatable;
 use View;
 use Config;
 use Request;
@@ -338,7 +338,7 @@ class Facilitador
 
     public function getLocales()
     {
-        return array_diff(scandir(realpath(__DIR__.'/../publishable/lang')), ['..', '.']);
+        return array_diff(scandir(realpath(__DIR__.'/../publishes/lang')), ['..', '.']);
     }
 
 

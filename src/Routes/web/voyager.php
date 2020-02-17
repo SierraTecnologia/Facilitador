@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Str;
-use TCG\Facilitador\Events\Routing;
-use TCG\Facilitador\Events\RoutingAdmin;
-use TCG\Facilitador\Events\RoutingAdminAfter;
-use TCG\Facilitador\Events\RoutingAfter;
+use Facilitador\Events\Routing;
+use Facilitador\Events\RoutingAdmin;
+use Facilitador\Events\RoutingAdminAfter;
+use Facilitador\Events\RoutingAfter;
 use Facilitador\Facades\Facilitador;
 
 // Route::group(['prefix' => 'facilitador'], function () {
@@ -137,6 +137,48 @@ Route::group(['as' => 'facilitador.'], function () {
             Route::get('/', ['uses' => $namespacePrefix.'FacilitadorCompassController@index',  'as' => 'index']);
             Route::post('/', ['uses' => $namespacePrefix.'FacilitadorCompassController@index',  'as' => 'post']);
         });
+
+
+
+        /**
+         * Para Corrigir Bugs
+         */
+
+        $breadController = $namespacePrefix.'FacilitadorUserController';
+        $modelRouterPrefix = 'users';
+        Route::get($modelRouterPrefix.'/order', $breadController.'@order')->name($modelRouterPrefix.'.order');
+        Route::post($modelRouterPrefix.'/action', $breadController.'@action')->name($modelRouterPrefix.'.action');
+        Route::post($modelRouterPrefix.'/order', $breadController.'@update_order')->name($modelRouterPrefix.'.order');
+        Route::get($modelRouterPrefix.'/{id}/restore', $breadController.'@restore')->name($modelRouterPrefix.'.restore');
+        Route::get($modelRouterPrefix.'/relation', $breadController.'@relation')->name($modelRouterPrefix.'.relation');
+        Route::post($modelRouterPrefix.'/remove', $breadController.'@remove_media')->name($modelRouterPrefix.'.media.remove');
+        Route::resource($modelRouterPrefix, $breadController);
+
+
+        $breadController = $namespacePrefix.'FacilitadorBaseController';
+        $modelRouterPrefix = 'posts';
+        Route::get($modelRouterPrefix.'/order', $breadController.'@order')->name($modelRouterPrefix.'.order');
+        Route::post($modelRouterPrefix.'/action', $breadController.'@action')->name($modelRouterPrefix.'.action');
+        Route::post($modelRouterPrefix.'/order', $breadController.'@update_order')->name($modelRouterPrefix.'.order');
+        Route::get($modelRouterPrefix.'/{id}/restore', $breadController.'@restore')->name($modelRouterPrefix.'.restore');
+        Route::get($modelRouterPrefix.'/relation', $breadController.'@relation')->name($modelRouterPrefix.'.relation');
+        Route::post($modelRouterPrefix.'/remove', $breadController.'@remove_media')->name($modelRouterPrefix.'.media.remove');
+        Route::resource($modelRouterPrefix, $breadController);
+
+
+        $breadController = $namespacePrefix.'FacilitadorBaseController';
+        $modelRouterPrefix = 'pages';
+        Route::get($modelRouterPrefix.'/order', $breadController.'@order')->name($modelRouterPrefix.'.order');
+        Route::post($modelRouterPrefix.'/action', $breadController.'@action')->name($modelRouterPrefix.'.action');
+        Route::post($modelRouterPrefix.'/order', $breadController.'@update_order')->name($modelRouterPrefix.'.order');
+        Route::get($modelRouterPrefix.'/{id}/restore', $breadController.'@restore')->name($modelRouterPrefix.'.restore');
+        Route::get($modelRouterPrefix.'/relation', $breadController.'@relation')->name($modelRouterPrefix.'.relation');
+        Route::post($modelRouterPrefix.'/remove', $breadController.'@remove_media')->name($modelRouterPrefix.'.media.remove');
+        Route::resource($modelRouterPrefix, $breadController);
+
+         /**
+          * Fim do Para Corrigir Bugs
+          */
 
         event(new RoutingAdminAfter());
     });

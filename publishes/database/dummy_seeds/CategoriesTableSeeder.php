@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\Category;
-use TCG\Facilitador\Models\DataRow;
-use TCG\Facilitador\Models\DataType;
-use TCG\Facilitador\Models\Menu;
-use TCG\Facilitador\Models\MenuItem;
-use TCG\Facilitador\Models\Permission;
+use Facilitador\Models\Category;
+use Facilitador\Models\DataRow;
+use Facilitador\Models\DataType;
+use Facilitador\Models\Menu;
+use Facilitador\Models\MenuItem;
+use Facilitador\Models\Permission;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -25,7 +25,7 @@ class CategoriesTableSeeder extends Seeder
                 'display_name_singular' => __('facilitador::seeders.data_types.category.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.category.plural'),
                 'icon'                  => 'facilitador-categories',
-                'model_name'            => 'TCG\\Facilitador\\Models\\Category',
+                'model_name'            => 'Facilitador\\Models\\Category',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',

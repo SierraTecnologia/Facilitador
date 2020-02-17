@@ -3,7 +3,7 @@
 namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use TCG\Facilitador\Traits\Translatable;
+use Facilitador\Traits\Translatable;
 
 class DataRow extends Model
 {

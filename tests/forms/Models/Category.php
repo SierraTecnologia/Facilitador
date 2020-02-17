@@ -4,7 +4,7 @@ namespace Facilitador\Test\Forms\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use TCG\Facilitador\Models\Post;
+use Facilitador\Models\Post;
 
 class Category extends Model
 {

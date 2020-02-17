@@ -3,7 +3,7 @@
 namespace Facilitador\Test\Forms\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use TCG\Facilitador\Models\Post;
+use Facilitador\Models\Post;
 
 class Tag extends Model
 {

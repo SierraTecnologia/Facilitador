@@ -64,7 +64,7 @@ trait FacilitadorRegisterPackages
         /**
          * Facilitador
          **/
-        \TCG\Facilitador\FacilitadorServiceProvider::class,
+        \Facilitador\FacilitadorServiceProvider::class,
 
         /**
          * VEio pelo Decoy

@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Facilitador\Models\Category;
-use TCG\Facilitador\Models\DataType;
-use TCG\Facilitador\Models\MenuItem;
-use TCG\Facilitador\Models\Page;
-use TCG\Facilitador\Models\Translation;
+use Facilitador\Models\Category;
+use Facilitador\Models\DataType;
+use Facilitador\Models\MenuItem;
+use Facilitador\Models\Page;
+use Facilitador\Models\Translation;
 
 class TranslationsTableSeeder extends Seeder
 {

@@ -7,7 +7,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
 use Facilitador\Facades\Facilitador;
-use TCG\Facilitador\Traits\Translatable;
+use Facilitador\Traits\Translatable;
 use Facilitador\Services\ModelService;
 
 class DataType extends Model

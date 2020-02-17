@@ -22,8 +22,8 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Illuminate\Database\Eloquent\Builder;
 
 use Carbon\Carbon;
-use TCG\Facilitador\Contracts\User as UserContract;
-use TCG\Facilitador\Traits\FacilitadorUser;
+use Facilitador\Contracts\User as UserContract;
+use Facilitador\Traits\FacilitadorUser;
 
 use Illuminate\Notifications\Notifiable;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
