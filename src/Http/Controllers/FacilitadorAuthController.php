@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Http\Controllers\Auth;
+namespace Facilitador\Http\Controllers;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;

@@ -4,10 +4,10 @@ namespace Facilitador\Http\Controllers\ExtendedBreadFormFields;
 
 use Exception;
 use Illuminate\Http\Request;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Http\Controllers\VoyagerMediaController;
+use Facilitador\Facades\Facilitador;
+use TCG\Voyager\Http\Controllers\FacilitadorMediaController;
 
-class ExtendedBreadFormFieldsMediaController extends VoyagerMediaController
+class ExtendedBreadFormFieldsMediaController extends FacilitadorMediaController
 {
     
     public function remove(Request $request)
@@ -27,10 +27,10 @@ class ExtendedBreadFormFieldsMediaController extends VoyagerMediaController
                 $field = $request->get('field');
     
                 // GET THE DataType based on the slug
-                $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+                $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
     
                 // Check permission
-                Voyager::canOrFail('delete_'.$dataType->name);
+                Facilitador::canOrFail('delete_'.$dataType->name);
     
                 // Load model and find record
                 $model = app($dataType->model_name);
@@ -38,12 +38,12 @@ class ExtendedBreadFormFieldsMediaController extends VoyagerMediaController
     
                 // Check if field exists
                 if (!isset($data->{$field})) {
-                    throw new Exception(__('voyager::generic.field_does_not_exist'), 400);
+                    throw new Exception(__('facilitador::generic.field_does_not_exist'), 400);
                 }
     
                 // Check if valid json
                 if (is_null(@json_decode($data->{$field}))) {
-                    throw new Exception(__('voyager::json.invalid'), 500);
+                    throw new Exception(__('facilitador::json.invalid'), 500);
                 }
                 
                 // Decode field value
@@ -54,7 +54,7 @@ class ExtendedBreadFormFieldsMediaController extends VoyagerMediaController
                         $founded = $i;
                 }
                 if(!isset($founded))
-                    throw new Exception(__('voyager::media.image_does_not_exist'), 400);
+                    throw new Exception(__('facilitador::media.image_does_not_exist'), 400);
                 
                 // Remove image from array
                 unset($fieldData[$founded]);
@@ -66,12 +66,12 @@ class ExtendedBreadFormFieldsMediaController extends VoyagerMediaController
                 return response()->json([
                    'data' => [
                        'status'  => 200,
-                       'message' => __('voyager::media.image_removed'),
+                       'message' => __('facilitador::media.image_removed'),
                    ],
                 ]);
             } catch (Exception $e) {
                 $code = 500;
-                $message = __('voyager::generic.internal_error');
+                $message = __('facilitador::generic.internal_error');
     
                 if ($e->getCode()) {
                     $code = $e->getCode();
@@ -89,7 +89,7 @@ class ExtendedBreadFormFieldsMediaController extends VoyagerMediaController
                 ], $code);
             }
         } else{
-            VoyagerMediaController::remove($request);
+            FacilitadorMediaController::remove($request);
         }
     }
 

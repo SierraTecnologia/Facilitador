@@ -161,10 +161,10 @@ class Controller extends BaseController
                 $data->{$row->field} = str_replace($uuid, $data->getKey(), $data->{$row->field});
             });
             $data->save();
-            if ($old_path != $new_path && !Storage::disk(config('voyager.storage.disk'))->exists($new_path)) {
+            if ($old_path != $new_path && !Storage::disk(config('facilitador.storage.disk'))->exists($new_path)) {
                 $request->session()->forget([$slug.'_path', $slug.'_uuid']);
-                Storage::disk(config('voyager.storage.disk'))->move($old_path, $new_path);
-                Storage::disk(config('voyager.storage.disk'))->deleteDirectory($folder_path);
+                Storage::disk(config('facilitador.storage.disk'))->move($old_path, $new_path);
+                Storage::disk(config('facilitador.storage.disk'))->deleteDirectory($folder_path);
             }
         }
 
@@ -270,8 +270,8 @@ class Controller extends BaseController
 
     public function deleteFileIfExists($path)
     {
-        if (Storage::disk(config('voyager.storage.disk'))->exists($path)) {
-            Storage::disk(config('voyager.storage.disk'))->delete($path);
+        if (Storage::disk(config('facilitador.storage.disk'))->exists($path)) {
+            Storage::disk(config('facilitador.storage.disk'))->delete($path);
             event(new FileDeleted($path));
         }
     }

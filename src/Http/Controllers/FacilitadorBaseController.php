@@ -13,8 +13,8 @@ use TCG\Voyager\Events\BreadDataDeleted;
 use TCG\Voyager\Events\BreadDataRestored;
 use TCG\Voyager\Events\BreadDataUpdated;
 use TCG\Voyager\Events\BreadImagesDeleted;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
+use Facilitador\Facades\Facilitador;
+use Facilitador\Http\Controllers\Traits\BreadRelationshipParser;
 
 class FacilitadorBaseController extends Controller
 {
@@ -38,7 +38,7 @@ class FacilitadorBaseController extends Controller
         $slug = $this->getSlug($request);
 
         // GET THE DataType based on the slug
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('browse', app($dataType->model_name));
@@ -50,7 +50,7 @@ class FacilitadorBaseController extends Controller
         $searchNames = [];
         if ($dataType->server_side) {
             $searchable = SchemaManager::describeTable(app($dataType->model_name)->getTable())->pluck('name')->toArray();
-            $dataRow = Voyager::model('DataRow')->whereDataTypeId($dataType->id)->get();
+            $dataRow = Facilitador::model('DataRow')->whereDataTypeId($dataType->id)->get();
             foreach ($searchable as $key => $value) {
                 $displayName = $dataRow->where('field', $value)->first()->getTranslatedAttribute('display_name');
                 $searchNames[$value] = $displayName ?: ucwords(str_replace('_', ' ', $value));
@@ -125,7 +125,7 @@ class FacilitadorBaseController extends Controller
         // Actions
         $actions = [];
         if (!empty($dataTypeContent->first())) {
-            foreach (Voyager::actions() as $action) {
+            foreach (Facilitador::actions() as $action) {
                 $action = new $action($dataType, $dataTypeContent->first());
 
                 if ($action->shouldActionDisplayOnDataType()) {
@@ -159,13 +159,13 @@ class FacilitadorBaseController extends Controller
             }
         }
 
-        $view = 'voyager::bread.browse';
+        $view = 'facilitador::bread.browse';
 
-        if (view()->exists("voyager::$slug.browse")) {
-            $view = "voyager::$slug.browse";
+        if (view()->exists("facilitador::$slug.browse")) {
+            $view = "facilitador::$slug.browse";
         }
 
-        return Voyager::view($view, compact(
+        return Facilitador::view($view, compact(
             'actions',
             'dataType',
             'dataTypeContent',
@@ -199,7 +199,7 @@ class FacilitadorBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         $isSoftDeleted = false;
 
@@ -234,13 +234,13 @@ class FacilitadorBaseController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.read';
+        $view = 'facilitador::bread.read';
 
-        if (view()->exists("voyager::$slug.read")) {
-            $view = "voyager::$slug.read";
+        if (view()->exists("facilitador::$slug.read")) {
+            $view = "facilitador::$slug.read";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
+        return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
     }
 
     //***************************************
@@ -259,7 +259,7 @@ class FacilitadorBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
@@ -290,13 +290,13 @@ class FacilitadorBaseController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.edit-add';
+        $view = 'facilitador::bread.edit-add';
 
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
+        if (view()->exists("facilitador::$slug.edit-add")) {
+            $view = "facilitador::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     // POST BR(E)AD
@@ -304,7 +304,7 @@ class FacilitadorBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Compatibility with Model binding.
         $id = $id instanceof \Illuminate\Database\Eloquent\Model ? $id->{$id->getKeyName()} : $id;
@@ -329,13 +329,13 @@ class FacilitadorBaseController extends Controller
         event(new BreadDataUpdated($dataType, $data));
 
         if (auth()->user()->can('browse', $model)) {
-            $redirect = redirect()->route("voyager.{$dataType->slug}.index");
+            $redirect = redirect()->route("facilitador.{$dataType->slug}.index");
         } else {
             $redirect = redirect()->back();
         }
 
         return $redirect->with([
-            'message'    => __('voyager::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+            'message'    => __('facilitador::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
             'alert-type' => 'success',
         ]);
     }
@@ -357,7 +357,7 @@ class FacilitadorBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
@@ -376,13 +376,13 @@ class FacilitadorBaseController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.edit-add';
+        $view = 'facilitador::bread.edit-add';
 
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
+        if (view()->exists("facilitador::$slug.edit-add")) {
+            $view = "facilitador::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     /**
@@ -396,7 +396,7 @@ class FacilitadorBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
@@ -409,13 +409,13 @@ class FacilitadorBaseController extends Controller
 
         if (!$request->has('_tagging')) {
             if (auth()->user()->can('browse', $data)) {
-                $redirect = redirect()->route("voyager.{$dataType->slug}.index");
+                $redirect = redirect()->route("facilitador.{$dataType->slug}.index");
             } else {
                 $redirect = redirect()->back();
             }
 
             return $redirect->with([
-                    'message'    => __('voyager::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+                    'message'    => __('facilitador::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                     'alert-type' => 'success',
                 ]);
         } else {
@@ -439,7 +439,7 @@ class FacilitadorBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('delete', app($dataType->model_name));
@@ -467,11 +467,11 @@ class FacilitadorBaseController extends Controller
         $res = $data->destroy($ids);
         $data = $res
             ? [
-                'message'    => __('voyager::generic.successfully_deleted')." {$displayName}",
+                'message'    => __('facilitador::generic.successfully_deleted')." {$displayName}",
                 'alert-type' => 'success',
             ]
             : [
-                'message'    => __('voyager::generic.error_deleting')." {$displayName}",
+                'message'    => __('facilitador::generic.error_deleting')." {$displayName}",
                 'alert-type' => 'error',
             ];
 
@@ -479,14 +479,14 @@ class FacilitadorBaseController extends Controller
             event(new BreadDataDeleted($dataType, $data));
         }
 
-        return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+        return redirect()->route("facilitador.{$dataType->slug}.index")->with($data);
     }
 
     public function restore(Request $request, $id)
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('delete', app($dataType->model_name));
@@ -503,11 +503,11 @@ class FacilitadorBaseController extends Controller
         $res = $data->restore($id);
         $data = $res
             ? [
-                'message'    => __('voyager::generic.successfully_restored')." {$displayName}",
+                'message'    => __('facilitador::generic.successfully_restored')." {$displayName}",
                 'alert-type' => 'success',
             ]
             : [
-                'message'    => __('voyager::generic.error_restoring')." {$displayName}",
+                'message'    => __('facilitador::generic.error_restoring')." {$displayName}",
                 'alert-type' => 'error',
             ];
 
@@ -515,7 +515,7 @@ class FacilitadorBaseController extends Controller
             event(new BreadDataRestored($dataType, $data));
         }
 
-        return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+        return redirect()->route("facilitador.{$dataType->slug}.index")->with($data);
     }
 
     //***************************************
@@ -542,7 +542,7 @@ class FacilitadorBaseController extends Controller
             // GET multi value
             $multi = $request->get('multi');
 
-            $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+            $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
             // Load model and find record
             $model = app($dataType->model_name);
@@ -550,7 +550,7 @@ class FacilitadorBaseController extends Controller
 
             // Check if field exists
             if (!isset($data->{$field})) {
-                throw new Exception(__('voyager::generic.field_does_not_exist'), 400);
+                throw new Exception(__('facilitador::generic.field_does_not_exist'), 400);
             }
 
             // Check permission
@@ -559,7 +559,7 @@ class FacilitadorBaseController extends Controller
             if (@json_decode($multi)) {
                 // Check if valid json
                 if (is_null(@json_decode($data->{$field}))) {
-                    throw new Exception(__('voyager::json.invalid'), 500);
+                    throw new Exception(__('facilitador::json.invalid'), 500);
                 }
 
                 // Decode field value
@@ -581,7 +581,7 @@ class FacilitadorBaseController extends Controller
 
                 // Check if file was found in array
                 if (is_null($key) || $key === false) {
-                    throw new Exception(__('voyager::media.file_does_not_exist'), 400);
+                    throw new Exception(__('facilitador::media.file_does_not_exist'), 400);
                 }
 
                 $fileToRemove = $fieldData[$key];
@@ -597,12 +597,12 @@ class FacilitadorBaseController extends Controller
 
                     $data->{$field} = null;
                 } else {
-                    throw new Exception(__('voyager::media.file_does_not_exist'), 400);
+                    throw new Exception(__('facilitador::media.file_does_not_exist'), 400);
                 }
             }
 
             // Remove file from filesystem
-            if ($fileToRemove != config('voyager.user.default_avatar')) {
+            if ($fileToRemove != config('facilitador.user.default_avatar')) {
                 $this->deleteFileIfExists($fileToRemove);
             }
 
@@ -626,12 +626,12 @@ class FacilitadorBaseController extends Controller
             return response()->json([
                'data' => [
                    'status'  => 200,
-                   'message' => __('voyager::media.file_removed'),
+                   'message' => __('facilitador::media.file_removed'),
                ],
             ]);
         } catch (Exception $e) {
             $code = 500;
-            $message = __('voyager::generic.internal_error');
+            $message = __('facilitador::generic.internal_error');
 
             if ($e->getCode()) {
                 $code = $e->getCode();
@@ -706,7 +706,7 @@ class FacilitadorBaseController extends Controller
     public function deleteBreadImages($data, $rows)
     {
         foreach ($rows as $row) {
-            if ($data->{$row->field} != config('voyager.user.default_avatar')) {
+            if ($data->{$row->field} != config('facilitador.user.default_avatar')) {
                 $this->deleteFileIfExists($data->{$row->field});
             }
 
@@ -740,16 +740,16 @@ class FacilitadorBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('edit', app($dataType->model_name));
 
         if (!isset($dataType->order_column) || !isset($dataType->order_display_column)) {
             return redirect()
-            ->route("voyager.{$dataType->slug}.index")
+            ->route("facilitador.{$dataType->slug}.index")
             ->with([
-                'message'    => __('voyager::bread.ordering_not_set'),
+                'message'    => __('facilitador::bread.ordering_not_set'),
                 'alert-type' => 'error',
             ]);
         }
@@ -762,15 +762,15 @@ class FacilitadorBaseController extends Controller
 
         $display_column = $dataType->order_display_column;
 
-        $dataRow = Voyager::model('DataRow')->whereDataTypeId($dataType->id)->whereField($display_column)->first();
+        $dataRow = Facilitador::model('DataRow')->whereDataTypeId($dataType->id)->whereField($display_column)->first();
 
-        $view = 'voyager::bread.order';
+        $view = 'facilitador::bread.order';
 
-        if (view()->exists("voyager::$slug.order")) {
-            $view = "voyager::$slug.order";
+        if (view()->exists("facilitador::$slug.order")) {
+            $view = "facilitador::$slug.order";
         }
 
-        return Voyager::view($view, compact(
+        return Facilitador::view($view, compact(
             'dataType',
             'display_column',
             'dataRow',
@@ -782,7 +782,7 @@ class FacilitadorBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('edit', app($dataType->model_name));
@@ -805,7 +805,7 @@ class FacilitadorBaseController extends Controller
     public function action(Request $request)
     {
         $slug = $this->getSlug($request);
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         $action = new $request->action($dataType, null);
 
@@ -825,7 +825,7 @@ class FacilitadorBaseController extends Controller
         $page = $request->input('page');
         $on_page = 50;
         $search = $request->input('search', false);
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         $rows = $request->input('method', 'add') == 'add' ? $dataType->addRows : $dataType->editRows;
         foreach ($rows as $key => $row) {
@@ -849,7 +849,7 @@ class FacilitadorBaseController extends Controller
                 if (!$row->required && !$search) {
                     $results[] = [
                         'id'   => '',
-                        'text' => __('voyager::generic.none'),
+                        'text' => __('facilitador::generic.none'),
                     ];
                 }
 

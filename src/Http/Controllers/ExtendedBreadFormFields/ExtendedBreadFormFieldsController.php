@@ -3,14 +3,14 @@
 namespace Facilitador\Http\Controllers\ExtendedBreadFormFields;
 
 use Illuminate\Http\Request;
-use TCG\Voyager\Http\Controllers\VoyagerBaseController;
+use TCG\Voyager\Http\Controllers\FacilitadorBaseController;
 use TCG\Voyager\Http\Controllers\Controller;
-use TCG\Voyager\Facades\Voyager;
+use Facilitador\Facades\Facilitador;
 
 use Support\Elements\ContentTypes\MultipleImagesWithAttrsContentType;
 use Support\Elements\ContentTypes\KeyValueJsonContentType;
 
-class ExtendedBreadFormFieldsController extends VoyagerBaseController
+class ExtendedBreadFormFieldsController extends FacilitadorBaseController
 {
 
     public function getContentBasedOnType(Request $request, $slug, $row, $options = null)
@@ -37,7 +37,7 @@ class ExtendedBreadFormFieldsController extends VoyagerBaseController
             }
         }
 
-        $new_data = VoyagerBaseController::insertUpdateData($request, $slug, $rows, $data);
+        $new_data = FacilitadorBaseController::insertUpdateData($request, $slug, $rows, $data);
         
         if(isset($is_multiple_image_attrs)){
             foreach ($rows as $row) {

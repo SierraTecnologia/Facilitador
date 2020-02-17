@@ -25,6 +25,7 @@ Route::group(['as' => 'facilitador.'], function () {
     event(new Routing());
 
     $namespacePrefix = '\\'.config('facilitador.controllers.namespace').'\\';
+    $namespacePrefix = '';
 
     Route::get('login', ['uses' => $namespacePrefix.'FacilitadorAuthController@login',     'as' => 'login']);
     Route::post('login', ['uses' => $namespacePrefix.'FacilitadorAuthController@postLogin', 'as' => 'postlogin']);
