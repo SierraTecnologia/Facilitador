@@ -22,7 +22,7 @@
                 <div class="panel panel-bordered">
                     <!-- form start -->
                     <form class="form-edit-add" role="form"
-                          action="@if(isset($dataTypeContent->id)){{ route('facilitador.'.$dataType->slug.'.update', $dataTypeContent->id) }}@else{{ route('facilitador.'.$dataType->slug.'.store') }}@endif"
+                          action="@if(isset($dataTypeContent->id)){{ \Facilitador\Routing\UrlGenerator($dataType->slug, 'update', $dataTypeContent->id) }}@else{{ \Facilitador\Routing\UrlGenerator($dataType->slug, 'store') }}@endif"
                           method="POST" enctype="multipart/form-data">
 
                         <!-- PUT Method if we are editing -->

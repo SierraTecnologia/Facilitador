@@ -28,7 +28,7 @@
                     <!-- form start -->
                     <form role="form"
                             class="form-edit-add"
-                            action="{{ $edit ? route('facilitador.'.$dataType->slug.'.update', $dataTypeContent->getKey()) : route('facilitador.'.$dataType->slug.'.store') }}"
+                            action="{{ $edit ? \Facilitador\Routing\UrlGenerator($dataType->slug, 'update', $dataTypeContent->getKey()) : \Facilitador\Routing\UrlGenerator($dataType->slug, 'store') }}"
                             method="POST" enctype="multipart/form-data">
                         <!-- PUT Method if we are editing -->
                         @if($edit)
@@ -193,7 +193,7 @@
             $('.form-group').on('click', '.remove-single-file', deleteHandler('a', false));
 
             $('#confirm_delete').on('click', function(){
-                $.post('{{ route('facilitador.'.$dataType->slug.'.media.remove') }}', params, function (response) {
+                $.post('{{ \Facilitador\Routing\UrlGenerator($dataType->slug, 'media.remove') }}', params, function (response) {
                     if ( response
                         && response.data
                         && response.data.status

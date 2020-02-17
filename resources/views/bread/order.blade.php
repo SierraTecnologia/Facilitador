@@ -57,7 +57,7 @@ $(document).ready(function () {
     * Reorder items
     */
     $('.dd').on('change', function (e) {
-        $.post('{{ route('facilitador.'.$dataType->slug.'.order') }}', {
+        $.post('{{ \Facilitador\Routing\UrlGenerator($dataType->slug, 'order') }}', {
             order: JSON.stringify($('.dd').nestable('serialize')),
             _token: '{{ csrf_token() }}'
         }, function (data) {
