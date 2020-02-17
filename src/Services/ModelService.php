@@ -155,7 +155,7 @@ class ModelService
     {
         // dd(
         //     $this->modelClass, Crypto::isCrypto($this->modelClass),
-        //     Crypto::decrypt($this->modelClass),
+        //     Crypto::shareableDecrypt($this->modelClass),
         //     \Auth::user()
         // );
         if (Crypto::isCrypto($this->modelClass)) {

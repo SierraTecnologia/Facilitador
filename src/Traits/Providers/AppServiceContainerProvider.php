@@ -129,20 +129,20 @@ trait AppServiceContainerProvider
          * @todo Ta passando duas vezes por aqui
          */
         Route::bind('modelClass', function ($value) {
-            Log::info('Route Bind ModelClass - '.Crypto::decrypt($value).' - '.$value);
+            Log::info('Route Bind ModelClass - '.Crypto::shareableDecrypt($value).' - '.$value);
             throw new Exception(
                 "Essa classe deveria ser uma string: ".print_r($modelClass, true),
                 400
             );
-            return new ModelService(Crypto::decrypt($value));
+            return new ModelService(Crypto::shareableDecrypt($value));
         });
         Route::bind('identify', function ($value) {
-            Log::info('Route Bind Identify - '.Crypto::decrypt($value).' - '.$value);
+            Log::info('Route Bind Identify - '.Crypto::shareableDecrypt($value).' - '.$value);
             throw new Exception(
                 "Essa classe deveria ser uma string: ".print_r($modelClass, true),
                 400
             );
-            return new RegisterService(Crypto::decrypt($value));
+            return new RegisterService(Crypto::shareableDecrypt($value));
         });
     }
 
@@ -167,7 +167,7 @@ trait AppServiceContainerProvider
         {
             $modelClass = false;
             if (isset($app['router']->current()->parameters['modelClass'])) {
-                $modelClass = Crypto::decrypt($app['router']->current()->parameters['modelClass']);
+                $modelClass = Crypto::shareableDecrypt($app['router']->current()->parameters['modelClass']);
 
                 if (empty($modelClass)) {
                     $modelClass = $app['router']->current()->parameters['modelClass'];
@@ -175,7 +175,7 @@ trait AppServiceContainerProvider
             }
 
             // dd('@todo', 
-            //     $modelClass, $app['router']->current()->parameters['modelClass'], Crypto::decrypt($app['router']->current()->parameters['modelClass']),
+            //     $modelClass, $app['router']->current()->parameters['modelClass'], Crypto::shareableDecrypt($app['router']->current()->parameters['modelClass']),
             //     auth()->id()
             // );
             // @todo Ver Como resolver isso aqui
@@ -196,7 +196,7 @@ trait AppServiceContainerProvider
         {
             $identify = '';
             if (isset($app['router']->current()->parameters['identify'])) {
-                $identify = Crypto::decrypt($app['router']->current()->parameters['identify']);
+                $identify = Crypto::shareableDecrypt($app['router']->current()->parameters['identify']);
             }
 
             Log::info('Bind Register Service - '.$identify);

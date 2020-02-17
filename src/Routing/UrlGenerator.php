@@ -170,8 +170,8 @@ class UrlGenerator
             $page = '/'.$page;
         }
         if ($data) {
-            $page = '/'.Crypto::shareable($data).$page;
+            $page = '/'.Crypto::shareableEncrypt($data).$page;
         }
-        return url('manager/'.Crypto::shareable($slug).$page);
+        return url('manager/'.Crypto::shareableEncrypt($slug).$page);
     }
 }

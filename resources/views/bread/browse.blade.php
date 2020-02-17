@@ -360,7 +360,7 @@
             @php
                 $params = [
                     'modelClass' => $dataType->getModelService()->getCryptName(),
-                    'identify' => Crypto::shareable($dataType->{$dataType->getPrimaryKey()}),
+                    'identify' => Crypto::shareableEncrypt($dataType->{$dataType->getPrimaryKey()}),
                     's' => $search->value,
                     'filter' => $search->filter,
                     'key' => $search->key,
