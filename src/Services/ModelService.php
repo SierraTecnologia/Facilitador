@@ -18,7 +18,7 @@ use Support\Coder\Discovers\Eloquent\EloquentColumn;
 use ReflectionClass;
 use Support\Coder\Discovers\Database\Schema\SchemaManager;
 use Support\Services\EloquentService;
-
+use Facilitador\Routing\UrlGenerator;
 use Facilitador\Models\DataRow;
 use Facilitador\Models\DataType;
 
@@ -61,11 +61,12 @@ class ModelService
                 if (!$managerArray = $eloquentService->managerToArray()) {
                     return false;
                 }
+                $managerArray = $managerArray['modelManager'];
                 // dd(
                 //     $eloquentService,
-                //     $eloquentService->toArray()
+                //     $eloquentService->toArray(),
+                //     $managerArray
                 // );
-                $managerArray = $managerArray['modelManager'];
                 // Name e Slug sao unicos
                 $this->modelDataType->fill([
                     'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
@@ -137,10 +138,7 @@ class ModelService
      */
     public function getUrl($page = '')
     {
-        if (!empty($page)) {
-            $page = '/'.$page;
-        }
-        return url('manager/'.$this->getCryptName().$page);
+        return UrlGenerator::managerRoute($this->modelClass, $page);
     }
 
 

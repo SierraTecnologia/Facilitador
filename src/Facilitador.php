@@ -741,8 +741,6 @@ class Facilitador
     }
 
 
-
-
     /**
      * Set Influencia
      */

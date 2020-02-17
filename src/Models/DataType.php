@@ -36,6 +36,13 @@ class DataType extends Model
         'default_search_key',
         'scope',
         'details',
+
+        // Adicionei
+
+        'table_name',
+        'key_name',
+        'key_type',
+        'foreign_key',
     ];
 
     protected $modelService = false;

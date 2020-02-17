@@ -4,6 +4,7 @@ namespace Facilitador\Routing;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use SierraTecnologia\Crypto\Services\Crypto;
 
 /**
  * This class exists to help make links between pages in Decoy, which is
@@ -158,5 +159,19 @@ class UrlGenerator
 
         // Done
         return $controller;
+    }
+
+    /**
+     * 
+     */
+    public static function managerRoute($slug, $page = '', $data = false)
+    {
+        if (!empty($page)) {
+            $page = '/'.$page;
+        }
+        if ($data) {
+            $page = '/'.Crypto::encrypt($data).$page;
+        }
+        return url('manager/'.Crypto::encrypt($slug).$page);
     }
 }
