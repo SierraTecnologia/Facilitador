@@ -76,7 +76,12 @@
         },
         "files": [
             "src/Helpers/form_maker.php",
-            "src/Helpers/input_maker.php"
+            "src/Helpers/helpers.php",
+            "src/Helpers/helpersi18n.php",
+            "src/Helpers/helperSlugify.php",
+            "src/Helpers/helperTranslations.php",
+            "src/Helpers/input_maker.php",
+            "src/Helpers/Reflection.php"
         ]
     },
     "autoload-dev": {

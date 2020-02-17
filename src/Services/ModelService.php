@@ -58,11 +58,14 @@ class ModelService
             $this->modelDataType = $this->dataType('model_name', $this->getModelClass());
             if (!$this->modelDataType->exists) {
                 $eloquentService = new EloquentService($this->getModelClass());
+                if (!$managerArray = $eloquentService->managerToArray()) {
+                    return false;
+                }
                 // dd(
                 //     $eloquentService,
                 //     $eloquentService->toArray()
                 // );
-                $managerArray = $eloquentService->managerToArray()['modelManager'];
+                $managerArray = $managerArray['modelManager'];
                 // Name e Slug sao unicos
                 $this->modelDataType->fill([
                     'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),

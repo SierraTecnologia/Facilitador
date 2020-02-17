@@ -73,14 +73,15 @@ class RepositoryController extends Controller
             }
 
             // Use withTrashed() if model uses SoftDeletes and if toggle is selected
-            if ($model && in_array(SoftDeletes::class, class_uses($model)) && Auth::user()->can('delete', app($dataType->model_name))) {
+            // @todo retirar comentario e so funcionar com usuario ativado 
+            // if ($model && in_array(SoftDeletes::class, class_uses($model)) && Auth::user()->can('delete', app($dataType->model_name))) {
                 $usesSoftDeletes = true;
 
                 if ($request->get('showSoftDeleted')) {
                     $showSoftDeleted = true;
                     $query = $query->withTrashed();
                 }
-            }
+            // }
 
             // If a column has a relationship associated with it, we do not want to show that field
             $this->removeRelationshipField($dataType, 'browse');
@@ -136,15 +137,16 @@ class RepositoryController extends Controller
 
         // Define showCheckboxColumn
         $showCheckboxColumn = false;
-        if (Auth::user()->can('delete', app($dataType->model_name))) {
+        // @todo retirar comentario e so funcionar com usuario ativado 
+        // if (Auth::user()->can('delete', app($dataType->model_name))) {
             $showCheckboxColumn = true;
-        } else {
-            foreach ($actions as $action) {
-                if (method_exists($action, 'massAction')) {
-                    $showCheckboxColumn = true;
-                }
-            }
-        }
+        // } else {
+        //     foreach ($actions as $action) {
+        //         if (method_exists($action, 'massAction')) {
+        //             $showCheckboxColumn = true;
+        //         }
+        //     }
+        // }
 
         // Define orderColumn
         $orderColumn = [];
