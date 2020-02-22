@@ -39,7 +39,7 @@ trait AppEventsProvider
     protected function bootEvents(Dispatcher $events)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            (new \Support\Mounters\SystemMount())->loadMenuForAdminlte($event);
+            (new \Support\Template\Mounters\SystemMount())->loadMenuForAdminlte($event);
         });
 
 
