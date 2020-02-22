@@ -116,7 +116,15 @@ trait AppServiceContainerProvider
         $this->app->singleton(FacilitadorService::class, function($app)
         {
             Log::info('Singleton Facilitador');
+            // try {
+            //     throw new \Exception();
+            // } catch (\Exception $e) {
+            //     dd($e);
+            // }
             return new FacilitadorService(config('sitec.facilitador.models'));
+        });
+        $this->app->singleton(\Support\Services\DatabaseService::class, function () {
+            return new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new \Support\Coder\Parser\ComposerParser);
         });
 
     }

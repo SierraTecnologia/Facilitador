@@ -24,13 +24,17 @@ class FacilitadorService
         }
     }
 
+    public function getDatabaseService()
+    {
+        return resolve(\Support\Services\DatabaseService::class);
+    }
+
     public function getModelServicesToArray($onlyConfig = true)
     {
-
-// dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new ComposerParser))->getAllModels());
         $models = $this->getModelServices(); 
+        dd($models);
         if (!$onlyConfig) {
-            $allModels = collect((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new ComposerParser))->getAllModels())->map(function($file, $class) {
+            $allModels = collect($this->getDatabaseService()->getAllModels())->map(function($file, $class) {
                 return new ModelService($class);
             })->values()->all();
             $models = array_merge(
@@ -52,12 +56,13 @@ class FacilitadorService
                     'name' => $model->getName(),
                 ];
             } catch(\Symfony\Component\Debug\Exception\FatalThrowableError $e) {
-                // dd($e);
+                dd($e);
                 //@todo fazer aqui
             } catch(\Exception $e) {
+                dd($e);
                 // @todo Tratar aqui
             } catch(\Throwable $e) {
-                // dd($e);
+                dd($e);
                 // @todo Tratar aqui
             }
         }

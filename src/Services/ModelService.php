@@ -21,6 +21,7 @@ use Support\Services\EloquentService;
 use Facilitador\Routing\UrlGenerator;
 use Facilitador\Models\DataRow;
 use Facilitador\Models\DataType;
+use Support\Services\DatabaseService;
 
 /**
  * ModelService helper to make table and object form mapping easy.
@@ -44,6 +45,11 @@ class ModelService
         }
     }
 
+    public function getDatabaseService()
+    {
+        return resolve(\Support\Services\DatabaseService::class);
+    }
+
     public function getRepository()
     {
         if (!$this->repository) {
@@ -57,16 +63,7 @@ class ModelService
 
             $this->modelDataType = $this->dataType('model_name', $this->getModelClass());
             if (!$this->modelDataType->exists) {
-                $eloquentService = new EloquentService($this->getModelClass());
-                if (!$managerArray = $eloquentService->managerToArray()) {
-                    return false;
-                }
-                $managerArray = $managerArray['modelManager'];
-                dd(
-                    $eloquentService,
-                    $eloquentService->toArray(),
-                    $managerArray
-                );
+                $eloquentService = $this->getDatabaseService()->getEloquentService($this->getModelClass());
                 // Name e Slug sao unicos
                 $this->modelDataType->fill([
                     'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
@@ -78,10 +75,10 @@ class ModelService
                     'controller'            => '',
                     'generate_permissions'  => 1,
                     'description'           => '',
-                    'table_name'              => $managerArray['table'],
-                    'key_name'                => $managerArray['getKeyName'],
-                    'key_type'                => $managerArray['getKeyType'],
-                    'foreign_key'             => $managerArray['getForeignKey'],
+                    'table_name'              => $eloquentService->getData('table'),
+                    'key_name'                => $eloquentService->getData('getKeyName'),
+                    'key_type'                => $eloquentService->getData('getKeyType'),
+                    'foreign_key'             => $eloquentService->getData('getForeignKey'),
                 ])->save();
 
                 $order = 1;
