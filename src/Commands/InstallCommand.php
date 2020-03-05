@@ -98,18 +98,19 @@ class InstallCommand extends Command
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->run();
 
-        $this->info('Adding Facilitador routes to routes/web.php');
-        $routes_contents = $filesystem->get(base_path('routes/web.php'));
-        if (false === strpos($routes_contents, 'Facilitador::routes()')) {
-            $filesystem->append(
-                base_path('routes/web.php'),
-                "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Facilitador::routes();\n});\n"
-            );
-        }
+        // @todo Ver oq fazer aqui, ja estamos com as rotas la
+        // $this->info('Adding Facilitador routes to routes/web.php');
+        // $routes_contents = $filesystem->get(base_path('routes/web.php'));
+        // if (false === strpos($routes_contents, 'Facilitador::routes()')) {
+        //     $filesystem->append(
+        //         base_path('routes/web.php'),
+        //         "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Facilitador::routes();\n});\n"
+        //     );
+        // }
 
-        \Route::group(['prefix' => 'admin'], function () {
-            \Facilitador::routes();
-        });
+        // \Route::group(['prefix' => 'admin'], function () {
+        //     \Facilitador::routes();
+        // });
 
         $this->info('Seeding data into the database');
         $this->seed('FacilitadorDatabaseSeeder');
