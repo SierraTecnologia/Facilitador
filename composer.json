@@ -14,7 +14,7 @@
         "larapack/doctrine-support": "~0.1.4",
         "arrilot/laravel-widgets": "^3.7",
         "league/flysystem": "~1.0.41",
-        "sierratecnologia/facilitador-hooks": "~1.2.5",
+        "sierratecnologia/facilitador-hooks": "dev-master",
         "ext-json": "*",
         "doctrine/dbal": ">=2.5",
         "illuminate/config": "^5.8",
