@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4e3b08a5f77024a115cd49936590c94",
+    "content-hash": "3f4abb13067251abf9e81ccc671ca00f",
     "packages": [
         {
             "name": "anahkiasen/html-object",
@@ -4113,58 +4113,6 @@
             "time": "2020-03-04T21:09:32+00:00"
         },
         {
-            "name": "larapack/voyager-hooks",
-            "version": "v1.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/larapack/voyager-hooks.git",
-                "reference": "1a54df95b4179a9d26e9aacbd8676c8ccd78be0e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/larapack/voyager-hooks/zipball/1a54df95b4179a9d26e9aacbd8676c8ccd78be0e",
-                "reference": "1a54df95b4179a9d26e9aacbd8676c8ccd78be0e",
-                "shasum": ""
-            },
-            "require": {
-                "larapack/hooks": "~1.0.2"
-            },
-            "require-dev": {
-                "orchestra/testbench": ">=3.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Larapack\\VoyagerHooks\\VoyagerHooksServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Larapack\\VoyagerHooks\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Topper",
-                    "email": "mark@ulties.com"
-                }
-            ],
-            "description": "Hooks integrated in Voyager",
-            "homepage": "https://larapack.io/",
-            "keywords": [
-                "hooks",
-                "laravel",
-                "voyager"
-            ],
-            "time": "2020-03-04T21:35:18+00:00"
-        },
-        {
             "name": "laravel/envoy",
             "version": "v1.6.5",
             "source": {
@@ -6176,35 +6124,35 @@
         },
         {
             "name": "ocramius/package-versions",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "1d32342b8c1eb27353c8887c366147b4c2da673c"
+                "reference": "e511a3fd8a8796c92ea78dd7c447423463966298"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/1d32342b8c1eb27353c8887c366147b4c2da673c",
-                "reference": "1d32342b8c1eb27353c8887c366147b4c2da673c",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/e511a3fd8a8796c92ea78dd7c447423463966298",
+                "reference": "e511a3fd8a8796c92ea78dd7c447423463966298",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0.0",
-                "php": "^7.3.0"
+                "composer-plugin-api": "^1.1.0",
+                "php": "^7.4.0"
             },
             "require-dev": {
-                "composer/composer": "^1.8.6",
-                "doctrine/coding-standard": "^6.0.0",
-                "ext-zip": "*",
-                "infection/infection": "^0.13.4",
-                "phpunit/phpunit": "^8.2.5",
-                "vimeo/psalm": "^3.4.9"
+                "composer/composer": "^1.9.3",
+                "doctrine/coding-standard": "^7.0.2",
+                "ext-zip": "^1.15.0",
+                "infection/infection": "^0.15.3",
+                "phpunit/phpunit": "^9.0.1",
+                "vimeo/psalm": "^3.9.3"
             },
             "type": "composer-plugin",
             "extra": {
                 "class": "PackageVersions\\Installer",
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "1.99.x-dev"
                 }
             },
             "autoload": {
@@ -6223,7 +6171,7 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2019-07-17T15:49:50+00:00"
+            "time": "2020-03-05T11:23:05+00:00"
         },
         {
             "name": "opis/closure",
@@ -7584,20 +7532,20 @@
         },
         {
             "name": "rap2hpoutre/laravel-log-viewer",
-            "version": "v1.3.3",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rap2hpoutre/laravel-log-viewer.git",
-                "reference": "031ed45cd09814f5ab3c03a235b4511994911683"
+                "reference": "3506baaddbe5661fc4482b048db2ec5cfc5f9025"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/031ed45cd09814f5ab3c03a235b4511994911683",
-                "reference": "031ed45cd09814f5ab3c03a235b4511994911683",
+                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/3506baaddbe5661fc4482b048db2ec5cfc5f9025",
+                "reference": "3506baaddbe5661fc4482b048db2ec5cfc5f9025",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.2.*|5.*|^6.0",
+                "illuminate/support": "4.2.*|5.*|^6.0|^7.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -7639,7 +7587,7 @@
                 "logging",
                 "lumen"
             ],
-            "time": "2019-12-03T22:00:29+00:00"
+            "time": "2020-03-05T20:25:07+00:00"
         },
         {
             "name": "react/promise",
@@ -8412,6 +8360,62 @@
             "time": "2020-02-17T08:28:11+00:00"
         },
         {
+            "name": "sierratecnologia/facilitador-hooks",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../FacilitadorHooks",
+                "reference": "0cf716de469d4bd27fe04789a717daf7f41b5d34"
+            },
+            "require": {
+                "sierratecnologia/hooks": "dev-master"
+            },
+            "require-dev": {
+                "orchestra/testbench": ">=3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "FacilitadorHooks\\FacilitadorHooksServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FacilitadorHooks\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "FacilitadorHooks\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Topper",
+                    "email": "mark@ulties.com"
+                }
+            ],
+            "description": "Hooks integrated in Facilitador",
+            "homepage": "https://sierratecnologia.io/",
+            "keywords": [
+                "facilitador",
+                "hooks",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/sierratecnologia/facilitador-hooks/issues",
+                "source": "https://github.com/sierratecnologia/facilitador-hooks"
+            },
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "sierratecnologia/former",
             "version": "5.0.2",
             "source": {
@@ -8535,6 +8539,55 @@
             "time": "2019-09-12T05:02:04+00:00"
         },
         {
+            "name": "sierratecnologia/hooks",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../hooks",
+                "reference": "db41a132e8ac62e28428661da3ff4191cac7d242"
+            },
+            "require": {
+                "composer/composer": ">=1.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": ">=3.0",
+                "phpunit/phpunit": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hooks\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Hooks\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Topper",
+                    "email": "mark@ulties.com"
+                }
+            ],
+            "description": "A Laravel Hook system",
+            "homepage": "https://sierratecnologia.io/",
+            "keywords": [
+                "hooks",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/sierratecnologia/hooks/issues",
+                "source": "https://github.com/sierratecnologia/hooks"
+            },
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "sierratecnologia/informate",
             "version": "dev-master",
             "dist": {
@@ -8582,10 +8635,16 @@
         {
             "name": "sierratecnologia/laravel-support",
             "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "../LaravelSupport",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SierraTecnologia/laravel-support.git",
                 "reference": "b6e3b166841bff5ad3ae3e66ff12fa475e28793e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SierraTecnologia/laravel-support/zipball/b6e3b166841bff5ad3ae3e66ff12fa475e28793e",
+                "reference": "b6e3b166841bff5ad3ae3e66ff12fa475e28793e",
+                "shasum": ""
             },
             "require": {
                 "barryvdh/laravel-debugbar": "*",
@@ -8634,29 +8693,20 @@
                     "utils/funcs/helpers.php"
                 ]
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Support\\Tests\\": "tests"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "SierraTecnologia LLC",
-                    "homepage": "https://sierratecnologia.com",
-                    "email": "help@sierratecnologia.com"
+                    "email": "help@sierratecnologia.com",
+                    "homepage": "https://sierratecnologia.com"
                 },
                 {
                     "name": "Abdelrahman Omran",
-                    "homepage": "https://omranic.com",
                     "email": "me@omranic.com",
+                    "homepage": "https://omranic.com",
                     "role": "Project Lead"
                 },
                 {
@@ -8667,25 +8717,17 @@
             "description": "SierraTecnologia common support helpers, contracts, and traits required by various SierraTecnologia packages. Validator functionality, and basic controller included out-of-the-box.",
             "homepage": "https://sierratecnologia.com/marketplace/sierratecnologia-support/",
             "keywords": [
+                "SierraTecnologia",
                 "contract",
                 "helper",
                 "laravel",
                 "mimetype",
-                "sierratecnologia",
                 "support",
                 "timezones",
                 "trait",
                 "validator"
             ],
-            "support": {
-                "email": "help@sierratecnologia.com",
-                "issues": "https://github.com/sierratecnologia/laravel-support/issues",
-                "source": "https://github.com/sierratecnologia/laravel-support",
-                "docs": "https://github.com/sierratecnologia/laravel-support/blob/master/README.md"
-            },
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2020-03-05T04:52:31+00:00"
         },
         {
             "name": "sierratecnologia/locaravel",
@@ -8693,7 +8735,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Locaravel",
-                "reference": "5c515f4f7c94719bf8b3771a511966b151c60bcb"
+                "reference": "72842567931a06a635a9063d0208244c71f9454b"
             },
             "require": {
                 "doctrine/dbal": ">=2.5",
@@ -13852,16 +13894,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9"
+                "reference": "451c3cd1418cf640de218914901e51b064abb093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
+                "reference": "451c3cd1418cf640de218914901e51b064abb093",
                 "shasum": ""
             },
             "require": {
@@ -13911,7 +13953,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-01-20T15:57:02+00:00"
+            "time": "2020-03-05T15:02:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -15495,6 +15537,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "sierratecnologia/facilitador-hooks": 20,
         "socialiteproviders/github": 20,
         "sierratecnologia/crudmaker": 20,
         "sierratecnologia/crypto": 20,
