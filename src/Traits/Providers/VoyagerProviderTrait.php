@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageServiceProvider;
 use Larapack\DoctrineSupport\DoctrineSupportServiceProvider;
-use Larapack\VoyagerHooks\VoyagerHooksServiceProvider;
+use FacilitadorHooks\FacilitadorHooksServiceProvider;
 use Facilitador\Events\FormFieldsRegistered;
 use Facilitador\Facades\Facilitador as FacilitadorFacade;
 use Facilitador\FormFields\After\DescriptionHandler;
@@ -41,7 +41,7 @@ trait VoyagerProviderTrait
         $this->app->register(FacilitadorEventServiceProvider::class);
         $this->app->register(ImageServiceProvider::class);
         $this->app->register(FacilitadorDummyServiceProvider::class);
-        $this->app->register(VoyagerHooksServiceProvider::class);
+        $this->app->register(FacilitadorHooksServiceProvider::class);
         $this->app->register(DoctrineSupportServiceProvider::class);
 
         $loader = AliasLoader::getInstance();

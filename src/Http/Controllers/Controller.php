@@ -39,6 +39,13 @@ class Controller extends BaseController
      */
     public function __construct(FacilitadorService $facilitadorService)
     {
+<<<<<<< HEAD
+=======
+        // @debug
+
+// dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new \Support\Coder\Parser\ComposerParser))->getAllModels());
+        // $database = new \Support\Coder\Mount\DatabaseMount();
+>>>>>>> 5a6d5763d7be93cc39de4544419aafff2224ee89
         // $model = new \Facilitador\Services\ModelService(\Population\Models\Identity\Actors\Person::class);
         // $model = new \Facilitador\Services\ModelService('OTQ4ODUzYThiZDY2MTcyNGFhdUhXZnJheUl6VUt6SUtkU1NCdUhFaW54aldLZHh0ZEZJMnVyOGJJL2c9');
         $this->facilitadorService = $facilitadorService;

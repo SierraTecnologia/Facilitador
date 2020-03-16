@@ -29,8 +29,12 @@ class FacilitadorService
         return resolve(\Support\Services\DatabaseService::class);
     }
 
+<<<<<<< HEAD
     public function getModelServicesToArray($onlyConfig = true)
     {
+=======
+dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new ComposerParser))->getAllModels());
+>>>>>>> 5a6d5763d7be93cc39de4544419aafff2224ee89
         $models = $this->getModelServices(); 
         dd($models);
         if (!$onlyConfig) {
