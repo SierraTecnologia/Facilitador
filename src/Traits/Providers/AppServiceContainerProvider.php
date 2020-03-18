@@ -124,7 +124,7 @@ trait AppServiceContainerProvider
             return new FacilitadorService(config('sitec.facilitador.models'));
         });
         $this->app->singleton(\Support\Services\DatabaseService::class, function () {
-            return new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new \Support\Coder\Parser\ComposerParser);
+            return new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new \Support\Parser\ComposerParser);
         });
 
     }

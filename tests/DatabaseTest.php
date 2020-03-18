@@ -4,9 +4,9 @@ namespace Facilitador\Tests;
 
 use Doctrine\DBAL\Schema\SchemaException;
 use Illuminate\Support\Facades\Auth;
-use Support\Coder\Discovers\Database\Schema\SchemaManager;
-use Support\Coder\Discovers\Database\Schema\Table;
-use Support\Coder\Discovers\Database\Types\Type;
+use Support\Discovers\Database\Schema\SchemaManager;
+use Support\Discovers\Database\Schema\Table;
+use Support\Discovers\Database\Types\Type;
 use Facilitador\Traits\AlertsMessages;
 
 class DatabaseTest extends TestCase

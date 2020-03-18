@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Support\Coder\Discovers\Database\Schema\SchemaManager;
+use Support\Discovers\Database\Schema\SchemaManager;
 use Facilitador\Events\BreadDataAdded;
 use Facilitador\Events\BreadDataDeleted;
 use Facilitador\Events\BreadDataRestored;

@@ -3,7 +3,7 @@
 namespace Facilitador\Events;
 
 use Illuminate\Queue\SerializesModels;
-use Support\Coder\Discovers\Database\Schema\Table;
+use Support\Discovers\Database\Schema\Table;
 
 class TableAdded
 {
