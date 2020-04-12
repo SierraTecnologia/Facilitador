@@ -90,19 +90,7 @@ trait VoyagerProviderTrait
             });
         }
 
-        $this->loadViewsFrom(__DIR__.'/../../../resources/views', 'facilitador');
-
         $router->aliasMiddleware('admin.user', FacilitadorAdminMiddleware::class);
-
-        $this->loadTranslationsFrom(realpath(__DIR__.'/../../../publishes/lang'), 'facilitador');
-
-        if (config('facilitador.database.autoload_migrations', true)) {
-            if (config('app.env') == 'testing') {
-                $this->loadMigrationsFrom(realpath(__DIR__.'/migrations'));
-            }
-
-            $this->loadMigrationsFrom(realpath(__DIR__.'/../../../migrations'));
-        }
 
         $this->loadAuth();
 
