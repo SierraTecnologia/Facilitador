@@ -142,10 +142,10 @@ trait AppServiceContainerProvider
         });
         Route::bind('identify', function ($value) {
             Log::info('Route Bind Identify - '.Crypto::shareableDecrypt($value).' - '.$value);
-            throw new Exception(
-                "Essa classe deveria ser uma string: ".print_r($modelClass, true),
-                400
-            );
+            // throw new Exception(
+            //     "Essa classe deveria ser uma string: ".print_r($modelClass, true),
+            //     400
+            // );
             return new RegisterService(Crypto::shareableDecrypt($value));
         });
     }

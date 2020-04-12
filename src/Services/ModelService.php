@@ -63,7 +63,10 @@ class ModelService
 
             $this->modelDataType = $this->dataType('model_name', $this->getModelClass());
             if (!$this->modelDataType->exists) {
-                $eloquentService = $this->getDatabaseService()->getEloquentService($this->getModelClass());
+                if (!$eloquentService = $this->getDatabaseService()->getEloquentService($this->getModelClass())) {
+                    // @todo tratar erro
+                    return false;
+                }
                 // Name e Slug sao unicos
                 $this->modelDataType->fill([
                     'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
@@ -75,7 +78,7 @@ class ModelService
                     'controller'            => '',
                     'generate_permissions'  => 1,
                     'description'           => '',
-                    'table_name'              => $eloquentService->getData('table'),
+                    'table_name'              => $eloquentService->getName(),
                     'key_name'                => $eloquentService->getData('getKeyName'),
                     'key_type'                => $eloquentService->getData('getKeyType'),
                     'foreign_key'             => $eloquentService->getData('getForeignKey'),

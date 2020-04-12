@@ -32,9 +32,9 @@ class FacilitadorService
 
     public function getModelServicesToArray($onlyConfig = true)
     {
-dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new ComposerParser))->getAllModels());
+// dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new ComposerParser))->getAllModels());
         $models = $this->getModelServices(); 
-        dd('Modelos', $models);
+        // dd('Modelos', $models);
         if (!$onlyConfig) {
             $allModels = collect($this->getDatabaseService()->getAllModels())->map(function($file, $class) {
                 return new ModelService($class);
@@ -54,17 +54,18 @@ dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'),
                     'model' => $model,
                     'url' => $model->getUrl(),
                     'count' => $model->getRepository()->count(),
+                    // @todo Remover Daqui
                     'icon' => \Support\Template\Layout\Icons::getForNameAndCache($model->getName()),
                     'name' => $model->getName(),
                 ];
             } catch(\Symfony\Component\Debug\Exception\FatalThrowableError $e) {
-                dd($e);
+                // dd($e);
                 //@todo fazer aqui
             } catch(\Exception $e) {
-                dd($e);
+                // dd($e);
                 // @todo Tratar aqui
             } catch(\Throwable $e) {
-                dd($e);
+                // dd($e);
                 // @todo Tratar aqui
             }
         }
