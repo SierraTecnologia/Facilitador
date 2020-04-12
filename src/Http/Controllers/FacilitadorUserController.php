@@ -17,7 +17,7 @@ class FacilitadorUserController extends FacilitadorBaseController
             $route = route('facilitador.users.edit', Auth::user()->getKey());
         } elseif ($dataType) {
             $route = UrlGenerator::managerRoute($dataType->slug, 'edit', Auth::user()->getKey());
-            // $route = \Facilitador\Routing\UrlGenerator($dataType->slug, 'edit', Auth::user()->getKey());
+            // $route = \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', Auth::user()->getKey());
         }
 
         return Facilitador::view('facilitador::profile', compact('route'));

@@ -12,7 +12,7 @@ class FacilitadorSettingsController extends Controller
     public function index()
     {
         // Check permission
-        $this->authorize('browse', Facilitador::model('Setting'));
+        // $this->authorize('browse', Facilitador::model('Setting'));
 
         $data = Facilitador::model('Setting')->orderBy('order', 'ASC')->get();
 
@@ -45,7 +45,7 @@ class FacilitadorSettingsController extends Controller
     public function store(Request $request)
     {
         // Check permission
-        $this->authorize('add', Facilitador::model('Setting'));
+        // $this->authorize('add', Facilitador::model('Setting'));
 
         $key = implode('.', [Str::slug($request->input('group')), $request->input('key')]);
         $key_check = Facilitador::model('Setting')->where('key', $key)->get()->count();
@@ -82,7 +82,7 @@ class FacilitadorSettingsController extends Controller
     public function update(Request $request)
     {
         // Check permission
-        $this->authorize('edit', Facilitador::model('Setting'));
+        // $this->authorize('edit', Facilitador::model('Setting'));
 
         $settings = Facilitador::model('Setting')->all();
 
@@ -120,7 +120,7 @@ class FacilitadorSettingsController extends Controller
     public function delete($id)
     {
         // Check permission
-        $this->authorize('delete', Facilitador::model('Setting'));
+        // $this->authorize('delete', Facilitador::model('Setting'));
 
         $setting = Facilitador::model('Setting')->find($id);
 
@@ -137,12 +137,12 @@ class FacilitadorSettingsController extends Controller
     public function move_up($id)
     {
         // Check permission
-        $this->authorize('edit', Facilitador::model('Setting'));
+        // $this->authorize('edit', Facilitador::model('Setting'));
 
         $setting = Facilitador::model('Setting')->find($id);
 
         // Check permission
-        $this->authorize('browse', $setting);
+        // $this->authorize('browse', $setting);
 
         $swapOrder = $setting->order;
         $previousSetting = Facilitador::model('Setting')
@@ -176,7 +176,7 @@ class FacilitadorSettingsController extends Controller
         $setting = Facilitador::model('Setting')->find($id);
 
         // Check permission
-        $this->authorize('delete', $setting);
+        // $this->authorize('delete', $setting);
 
         if (isset($setting->id)) {
             // If the type is an image... Then delete it
@@ -200,12 +200,12 @@ class FacilitadorSettingsController extends Controller
     public function move_down($id)
     {
         // Check permission
-        $this->authorize('edit', Facilitador::model('Setting'));
+        // $this->authorize('edit', Facilitador::model('Setting'));
 
         $setting = Facilitador::model('Setting')->find($id);
 
         // Check permission
-        $this->authorize('browse', $setting);
+        // $this->authorize('browse', $setting);
 
         $swapOrder = $setting->order;
 

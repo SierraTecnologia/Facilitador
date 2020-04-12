@@ -36,9 +36,8 @@ class RegisterController extends Controller
     public function index(Request $request)
     {
         $slug = $this->repositoryService->getSlug();
-
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
-
+        $id = $this->registerService->getId();
         $isSoftDeleted = false;
 
         if (strlen($dataType->model_name) != 0) {
@@ -57,7 +56,7 @@ class RegisterController extends Controller
             }
         } else {
             // If Model doest exist, get data from table name
-            $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
+            $dataTypeContent = DB::table($dataType->name)->where($this->registerService->getPrimaryKey(), $id)->first();
         }
 
         // Replace relationships' keys for labels and create READ links if a slug is provided.
@@ -67,7 +66,7 @@ class RegisterController extends Controller
         $this->removeRelationshipField($dataType, 'read');
 
         // Check permission
-        $this->authorize('read', $dataTypeContent);
+        // $this->authorize('read', $dataTypeContent);
 
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
@@ -96,9 +95,10 @@ class RegisterController extends Controller
     public function edit(Request $request)
     {
         $slug = $this->repositoryService->getSlug();
-
+        $id = $this->registerService->getId();
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
+        // dd($dataType, $slug, $id);
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
 
@@ -112,7 +112,7 @@ class RegisterController extends Controller
             $dataTypeContent = call_user_func([$model, 'findOrFail'], $id);
         } else {
             // If Model doest exist, get data from table name
-            $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
+            $dataTypeContent = DB::table($dataType->name)->where($this->registerService->getPrimaryKey(), $id)->first();
         }
 
         foreach ($dataType->editRows as $key => $row) {
@@ -123,7 +123,7 @@ class RegisterController extends Controller
         $this->removeRelationshipField($dataType, 'edit');
 
         // Check permission
-        $this->authorize('edit', $dataTypeContent);
+        // $this->authorize('edit', $dataTypeContent);
 
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
@@ -141,8 +141,8 @@ class RegisterController extends Controller
     public function update(Request $request)
     {
         $slug = $this->repositoryService->getSlug();
-
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
+        $id = $this->registerService->getId();
 
         // Compatibility with Model binding.
         $id = $id instanceof \Illuminate\Database\Eloquent\Model ? $id->{$id->getKeyName()} : $id;
@@ -158,7 +158,7 @@ class RegisterController extends Controller
         }
 
         // Check permission
-        $this->authorize('edit', $data);
+        // $this->authorize('edit', $data);
 
         // Validate fields with ajax
         $val = $this->validateBread($request->all(), $dataType->editRows, $dataType->name, $id)->validate();
@@ -197,7 +197,7 @@ class RegisterController extends Controller
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
-        $this->authorize('delete', app($dataType->model_name));
+        // $this->authorize('delete', app($dataType->model_name));
 
         // Init array of IDs
         $ids = [];
@@ -240,11 +240,11 @@ class RegisterController extends Controller
     public function restore(Request $request)
     {
         $slug = $this->repositoryService->getSlug();
-
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
+        $id = $this->registerService->getId();
 
         // Check permission
-        $this->authorize('delete', app($dataType->model_name));
+        // $this->authorize('delete', app($dataType->model_name));
 
         // Get record
         $model = call_user_func([$dataType->model_name, 'withTrashed']);
@@ -289,7 +289,7 @@ class RegisterController extends Controller
             $filename = $request->get('filename');
 
             // GET record id
-            $id = $request->get('id');
+            $id = $request->get($this->registerService->getPrimaryKey());
 
             // GET field name
             $field = $request->get('field');
@@ -309,7 +309,7 @@ class RegisterController extends Controller
             }
 
             // Check permission
-            $this->authorize('edit', $data);
+            // $this->authorize('edit', $data);
 
             if (@json_decode($multi)) {
                 // Check if valid json

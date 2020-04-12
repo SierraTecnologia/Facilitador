@@ -15,7 +15,7 @@ class FacilitadorRoleController extends FacilitadorBaseController
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
-        $this->authorize('edit', app($dataType->model_name));
+        // $this->authorize('edit', app($dataType->model_name));
 
         //Validate fields
         $val = $this->validateBread($request->all(), $dataType->editRows, $dataType->name, $id)->validate();
@@ -41,7 +41,7 @@ class FacilitadorRoleController extends FacilitadorBaseController
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
-        $this->authorize('add', app($dataType->model_name));
+        // $this->authorize('add', app($dataType->model_name));
 
         //Validate fields
         $val = $this->validateBread($request->all(), $dataType->addRows)->validate();

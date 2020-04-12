@@ -12,7 +12,7 @@ class FacilitadorMenuController extends Controller
     {
         $menu = Facilitador::model('Menu')->findOrFail($id);
 
-        $this->authorize('edit', $menu);
+        // $this->authorize('edit', $menu);
 
         $isModelTranslatable = is_bread_translatable(Facilitador::model('MenuItem'));
 
@@ -23,7 +23,7 @@ class FacilitadorMenuController extends Controller
     {
         $item = Facilitador::model('MenuItem')->findOrFail($id);
 
-        $this->authorize('delete', $item);
+        // $this->authorize('delete', $item);
 
         $item->deleteAttributeTranslation('title');
 
@@ -41,7 +41,7 @@ class FacilitadorMenuController extends Controller
     {
         $menu = Facilitador::model('Menu');
 
-        $this->authorize('add', $menu);
+        // $this->authorize('add', $menu);
 
         $data = $this->prepareParameters(
             $request->all()
@@ -81,7 +81,7 @@ class FacilitadorMenuController extends Controller
 
         $menuItem = Facilitador::model('MenuItem')->findOrFail($id);
 
-        $this->authorize('edit', $menuItem->menu);
+        // $this->authorize('edit', $menuItem->menu);
 
         if (is_bread_translatable($menuItem)) {
             $trans = $this->prepareMenuTranslations($data);

@@ -21,7 +21,7 @@ class FacilitadorCompassController extends Controller
     public function index(Request $request)
     {
         // Check permission
-        $this->authorize('browse_compass');
+        // $this->authorize('browse_compass');
         //Check if app is not local
         if (!\App::environment('local') && !config('facilitador.compass_in_production', false)) {
             throw new AccessDeniedHttpException();

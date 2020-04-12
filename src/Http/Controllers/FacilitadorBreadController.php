@@ -18,7 +18,7 @@ class FacilitadorBreadController extends Controller
 {
     public function index()
     {
-        $this->authorize('browse_bread');
+        // $this->authorize('browse_bread');
 
         $dataTypes = Facilitador::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
 
@@ -48,7 +48,7 @@ class FacilitadorBreadController extends Controller
      */
     public function create(Request $request, $table)
     {
-        $this->authorize('browse_bread');
+        // $this->authorize('browse_bread');
 
         $dataType = Facilitador::model('DataType')->whereName($table)->first();
 
@@ -90,7 +90,7 @@ class FacilitadorBreadController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('browse_bread');
+        // $this->authorize('browse_bread');
 
         try {
             $dataType = Facilitador::model('DataType');
@@ -117,7 +117,7 @@ class FacilitadorBreadController extends Controller
      */
     public function edit($table)
     {
-        $this->authorize('browse_bread');
+        // $this->authorize('browse_bread');
 
         $dataType = Facilitador::model('DataType')->whereName($table)->first();
 
@@ -147,7 +147,7 @@ class FacilitadorBreadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('browse_bread');
+        // $this->authorize('browse_bread');
 
         /* @var \Facilitador\Models\DataType $dataType */
         try {
@@ -184,7 +184,7 @@ class FacilitadorBreadController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('browse_bread');
+        // $this->authorize('browse_bread');
 
         /* @var \Facilitador\Models\DataType $dataType */
         $dataType = Facilitador::model('DataType')->find($id);

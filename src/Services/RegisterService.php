@@ -50,6 +50,11 @@ class RegisterService
         return $this->repositoryService->getModelService();
     }
 
+    public function getPrimaryKey()
+    {
+        return $this->getModelService()->getPrimaryKey();
+    }
+
     public function getDiscoverService()
     {
         return $this->getModelService()->getDiscoverService();
@@ -63,7 +68,7 @@ class RegisterService
     public function getId()
     {
         $register = $this->getInstance();
-        return $register->{$this->getModelService()->getPrimaryKey()};
+        return $register->{$this->getPrimaryKey()};
     }
 
     /**

@@ -203,7 +203,7 @@ class RepositoryController extends Controller
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
-        $this->authorize('add', app($dataType->model_name));
+        // $this->authorize('add', app($dataType->model_name));
 
         $dataTypeContent = (strlen($dataType->model_name) != 0)
                             ? new $dataType->model_name()
@@ -242,7 +242,7 @@ class RepositoryController extends Controller
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
-        $this->authorize('add', app($dataType->model_name));
+        // $this->authorize('add', app($dataType->model_name));
 
         // Validate fields with ajax
         $val = $this->validateBread($request->all(), $dataType->addRows)->validate();
@@ -359,7 +359,7 @@ class RepositoryController extends Controller
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
-        $this->authorize('edit', app($dataType->model_name));
+        // $this->authorize('edit', app($dataType->model_name));
 
         if (!isset($dataType->order_column) || !isset($dataType->order_display_column)) {
             return redirect()
@@ -401,7 +401,7 @@ class RepositoryController extends Controller
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
-        $this->authorize('edit', app($dataType->model_name));
+        // $this->authorize('edit', app($dataType->model_name));
 
         $model = app($dataType->model_name);
 
