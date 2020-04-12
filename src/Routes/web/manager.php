@@ -33,6 +33,7 @@ Route::group(['middleware' => 'admin.user'], function () {
                      */
                     Route::prefix('{identify}')->group(function () {
                         Route::get('/', 'RegisterController@index')->name('show');
+                        Route::get('/show', 'RegisterController@index')->name('show');
                         Route::get('/edit', 'RegisterController@edit')->name('edit');
                         Route::put('/', 'RegisterController@update')->name('update');
                         Route::delete('/', 'RegisterController@destroy')->name('destroy');

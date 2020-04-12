@@ -60,8 +60,6 @@ trait VoyagerProviderTrait
         $this->registerAlertComponents();
         $this->registerFormFields();
 
-        $this->registerConfigs();
-
         if ($this->app->runningInConsole()) {
             $this->registerPublishableResources();
             $this->registerConsoleCommands();
@@ -212,7 +210,7 @@ trait VoyagerProviderTrait
      */
     private function registerPublishableResources()
     {
-        $publishesPath = dirname(__DIR__).'/../../publishes';
+        $publishesPath = dirname(__DIR__).'/../../../publishes';
 
         $publishes = [
             'facilitador_avatar' => [
@@ -221,22 +219,12 @@ trait VoyagerProviderTrait
             'seeds' => [
                 "{$publishesPath}/database/seeds/" => database_path('seeds'),
             ],
-            'config' => [
-                "{$publishesPath}/config/facilitador.php" => config_path('facilitador.php'),
-            ],
 
         ];
 
         foreach ($publishes as $group => $paths) {
             $this->publishes($paths, $group);
         }
-    }
-
-    public function registerConfigs()
-    {
-        $this->mergeConfigFrom(
-            dirname(__DIR__).'/../../publishes/config/facilitador.php', 'facilitador'
-        );
     }
 
     protected function registerFormFields()

@@ -71,10 +71,10 @@ class RegisterController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'facilitador::bread.read';
+        $view = 'facilitador::cruds.bread.read';
 
-        if (view()->exists("facilitador::$slug.read")) {
-            $view = "facilitador::$slug.read";
+        if (view()->exists("facilitador::cruds.$slug.read")) {
+            $view = "facilitador::cruds.$slug.read";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
@@ -128,10 +128,10 @@ class RegisterController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'facilitador::bread.edit-add';
+        $view = 'facilitador::cruds.bread.edit-add';
 
-        if (view()->exists("facilitador::$slug.edit-add")) {
-            $view = "facilitador::$slug.edit-add";
+        if (view()->exists("facilitador::cruds.$slug.edit-add")) {
+            $view = "facilitador::cruds.$slug.edit-add";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));

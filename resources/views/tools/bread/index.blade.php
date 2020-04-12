@@ -19,7 +19,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('facilitador::database.table_name') }}</th>
-                            <th style="text-align:right">{{ __('facilitador::bread.bread_crud_actions') }}</th>
+                            <th style="text-align:right">{{ __('facilitador::cruds.bread.bread_crud_actions') }}</th>
                         </tr>
                     </thead>
 
@@ -54,7 +54,7 @@
                             @else
                                 <a href="{{ route('facilitador.bread.create', $table->name) }}"
                                    class="_btn btn-default btn-sm pull-right">
-                                    <i class="facilitador-plus"></i> {{ __('facilitador::bread.add_bread') }}
+                                    <i class="facilitador-plus"></i> {{ __('facilitador::cruds.bread.add_bread') }}
                                 </a>
                             @endif
                         </td>
@@ -71,13 +71,13 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('facilitador::generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('facilitador::bread.delete_bread_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
+                    <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('facilitador::cruds.bread.delete_bread_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="#" id="delete_builder_form" method="POST">
                         {{ method_field('DELETE') }}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-danger" value="{{ __('facilitador::bread.delete_bread_conf') }}">
+                        <input type="submit" class="btn btn-danger" value="{{ __('facilitador::cruds.bread.delete_bread_conf') }}">
                     </form>
                     <button type="button" class="btn btn-outline pull-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
                 </div>

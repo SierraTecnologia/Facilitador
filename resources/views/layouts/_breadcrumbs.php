@@ -13,14 +13,14 @@ $breadcrumb_count = count($breadcrumbs);
 		<?php if ($back && !Route::is('facilitador::account@forgot', 'facilitador::account@reset')): ?>
 			<a href="<?=$back?>" class="back">
 				<span class="glyphicon glyphicon-arrow-left"></span>
-				<?php echo __('facilitador::breadcrumbs.back_to_listing'); ?>
+				<?php echo __('facilitador::cruds.breadcrumbs.back_to_listing'); ?>
 			</a>
 		<?php endif?>
 
 		<?php // The breadcrumbs ?>
 		<a href="/admin"><span class="glyphicon glyphicon-home"></span></a>
 		<?php foreach($breadcrumbs as $url => $name): ?>
-			<a href="<?=$url?>"><?=$name?></a>
+			<a href="<?=$url?>"><?=(Crypto::isCrypto($name)?Crypto::shareableDecrypt($name):$name)?></a>
 			<?php if ($breadcrumb_count-- !== 1): ?>
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			<?php endif ?>

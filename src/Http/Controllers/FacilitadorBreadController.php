@@ -96,8 +96,8 @@ class FacilitadorBreadController extends Controller
             $dataType = Facilitador::model('DataType');
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
-                ? $this->alertSuccess(__('facilitador::bread.success_created_bread'))
-                : $this->alertError(__('facilitador::bread.error_creating_bread'));
+                ? $this->alertSuccess(__('facilitador::cruds.bread.success_created_bread'))
+                : $this->alertError(__('facilitador::cruds.bread.error_creating_bread'));
             if ($res) {
                 event(new BreadAdded($dataType, $data));
             }
@@ -160,8 +160,8 @@ class FacilitadorBreadController extends Controller
 
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
-                ? $this->alertSuccess(__('facilitador::bread.success_update_bread', ['datatype' => $dataType->name]))
-                : $this->alertError(__('facilitador::bread.error_updating_bread'));
+                ? $this->alertSuccess(__('facilitador::cruds.bread.success_update_bread', ['datatype' => $dataType->name]))
+                : $this->alertError(__('facilitador::cruds.bread.error_updating_bread'));
             if ($res) {
                 event(new BreadUpdated($dataType, $data));
             }
@@ -196,8 +196,8 @@ class FacilitadorBreadController extends Controller
 
         $res = Facilitador::model('DataType')->destroy($id);
         $data = $res
-            ? $this->alertSuccess(__('facilitador::bread.success_remove_bread', ['datatype' => $dataType->name]))
-            : $this->alertError(__('facilitador::bread.error_updating_bread'));
+            ? $this->alertSuccess(__('facilitador::cruds.bread.success_remove_bread', ['datatype' => $dataType->name]))
+            : $this->alertError(__('facilitador::cruds.bread.error_updating_bread'));
         if ($res) {
             event(new BreadDeleted($dataType, $data));
         }

@@ -159,10 +159,10 @@ class RepositoryController extends Controller
             }
         }
 
-        $view = 'facilitador::bread.browse';
+        $view = 'facilitador::cruds.bread.browse';
 
-        if (view()->exists("facilitador::$slug.browse")) {
-            $view = "facilitador::$slug.browse";
+        if (view()->exists("facilitador::cruds.$slug.browse")) {
+            $view = "facilitador::cruds.$slug.browse";
         }
 
         return Facilitador::view($view, compact(
@@ -219,10 +219,10 @@ class RepositoryController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'facilitador::bread.edit-add';
+        $view = 'facilitador::cruds.bread.edit-add';
 
-        if (view()->exists("facilitador::$slug.edit-add")) {
-            $view = "facilitador::$slug.edit-add";
+        if (view()->exists("facilitador::cruds.$slug.edit-add")) {
+            $view = "facilitador::cruds.$slug.edit-add";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
@@ -365,7 +365,7 @@ class RepositoryController extends Controller
             return redirect()
             ->route("facilitador.{$dataType->slug}.index")
             ->with([
-                'message'    => __('facilitador::bread.ordering_not_set'),
+                'message'    => __('facilitador::cruds.bread.ordering_not_set'),
                 'alert-type' => 'error',
             ]);
         }
@@ -380,10 +380,10 @@ class RepositoryController extends Controller
 
         $dataRow = Facilitador::model('DataRow')->whereDataTypeId($dataType->id)->whereField($display_column)->first();
 
-        $view = 'facilitador::bread.order';
+        $view = 'facilitador::cruds.bread.order';
 
-        if (view()->exists("facilitador::$slug.order")) {
-            $view = "facilitador::$slug.order";
+        if (view()->exists("facilitador::cruds.$slug.order")) {
+            $view = "facilitador::cruds.$slug.order";
         }
 
         return Facilitador::view($view, compact(
