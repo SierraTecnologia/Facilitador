@@ -45,6 +45,10 @@ trait FacilitadorRegisterPackages
          * Internos
          */
         \Tracking\TrackingProvider::class,
+        /**
+         * Support
+         **/
+        \Support\SupportServiceProvider::class,
         
         /**
          * Externos
@@ -59,12 +63,6 @@ trait FacilitadorRegisterPackages
          * Base
          */
         \RicardoSierra\Translation\TranslationServiceProvider::class,
-
-        \Laravel\Tinker\TinkerProvider::class,
-        /**
-         * Facilitador
-         **/
-        \Facilitador\FacilitadorServiceProvider::class,
 
         /**
          * VEio pelo Decoy
@@ -86,7 +84,7 @@ trait FacilitadorRegisterPackages
         \Bkwld\Cloner\ServiceProvider::class,
 
         /**
-         * Outros meus
+         * Outros
          */
         \Laravel\Tinker\TinkerServiceProvider::class,
 
