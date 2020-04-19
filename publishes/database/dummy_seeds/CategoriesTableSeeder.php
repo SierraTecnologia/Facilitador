@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Facilitador\Models\Category;
-use Facilitador\Models\DataRow;
-use Facilitador\Models\DataType;
+use Support\Models\DataRow;
+use Support\Models\DataType;
 use Facilitador\Models\Menu;
 use Facilitador\Models\MenuItem;
 use Facilitador\Models\Permission;

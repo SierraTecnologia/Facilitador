@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Facilitador\Models\Category;
-use Facilitador\Models\DataType;
+use Support\Models\DataType;
 use Facilitador\Models\MenuItem;
 use Facilitador\Models\Page;
 use Facilitador\Models\Translation;

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Facilitador\Models\Category;
-use Facilitador\Models\DataType;
+use Support\Models\DataType;
 use Facilitador\Models\Permission;
 
 class FormfieldsTest extends TestCase

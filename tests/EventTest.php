@@ -19,7 +19,7 @@ use Facilitador\Events\MediaFileAdded;
 use Facilitador\Events\TableAdded;
 use Facilitador\Events\TableDeleted;
 use Facilitador\Events\TableUpdated;
-use Facilitador\Models\DataType;
+use Support\Models\DataType;
 use Facilitador\Models\Page;
 
 class EventTest extends TestCase

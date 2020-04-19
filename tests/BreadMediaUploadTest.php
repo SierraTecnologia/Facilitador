@@ -5,8 +5,8 @@ namespace Facilitador\Tests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Facilitador\Models\DataRow;
-use Facilitador\Models\DataType;
+use Support\Models\DataRow;
+use Support\Models\DataType;
 use Facilitador\Models\Page;
 
 class BreadMediaUploadTest extends TestCase

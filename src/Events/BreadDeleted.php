@@ -3,7 +3,7 @@
 namespace Facilitador\Events;
 
 use Illuminate\Queue\SerializesModels;
-use Facilitador\Models\DataType;
+use Support\Models\DataType;
 
 class BreadDeleted
 {

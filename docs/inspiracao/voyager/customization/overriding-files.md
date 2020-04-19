@@ -101,7 +101,7 @@ The next step is to create your model and make it extend the original model. In 
 
 namespace App;
 
-class DataRow extends \Facilitador\Models\DataRow
+class DataRow extends \Support\Models\DataRow
 {
     // ...
 }

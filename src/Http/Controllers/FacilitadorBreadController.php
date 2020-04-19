@@ -149,7 +149,7 @@ class FacilitadorBreadController extends Controller
     {
         // $this->authorize('browse_bread');
 
-        /* @var \Facilitador\Models\DataType $dataType */
+        /* @var \Support\Models\DataType $dataType */
         try {
             $dataType = Facilitador::model('DataType')->find($id);
 
@@ -186,7 +186,7 @@ class FacilitadorBreadController extends Controller
     {
         // $this->authorize('browse_bread');
 
-        /* @var \Facilitador\Models\DataType $dataType */
+        /* @var \Support\Models\DataType $dataType */
         $dataType = Facilitador::model('DataType')->find($id);
 
         // Delete Translations, if present

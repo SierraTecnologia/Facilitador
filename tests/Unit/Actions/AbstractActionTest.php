@@ -12,7 +12,7 @@ class AbstractActionTest extends TestCase
     /**
      * The users DataType instance.
      *
-     * @var \Facilitador\Models\DataType
+     * @var \Support\Models\DataType
      */
     protected $userDataType;
 

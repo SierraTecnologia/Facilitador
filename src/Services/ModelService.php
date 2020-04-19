@@ -19,8 +19,8 @@ use ReflectionClass;
 use Support\Discovers\Database\Schema\SchemaManager;
 use Support\Services\EloquentService;
 use Facilitador\Routing\UrlGenerator;
-use Facilitador\Models\DataRow;
-use Facilitador\Models\DataType;
+use Support\Models\DataRow;
+use Support\Models\DataType;
 use Support\Services\DatabaseService;
 
 /**

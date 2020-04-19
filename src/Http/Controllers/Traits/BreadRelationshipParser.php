@@ -4,7 +4,7 @@ namespace Facilitador\Http\Controllers\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Facilitador\Models\DataType;
+use Support\Models\DataType;
 
 trait BreadRelationshipParser
 {
