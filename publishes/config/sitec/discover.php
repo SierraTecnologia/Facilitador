@@ -24,6 +24,7 @@ return [
         'Finder\Models',
         'Trainner\Models',
         'Siravel\Models',
+        'Support\Models',
     ],
 
 ];
