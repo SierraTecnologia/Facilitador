@@ -1,10 +1,55 @@
 @if(isset($options->model) && isset($options->type))
 
-    @if(class_exists($options->model))
+    @if(class_exists($options->model) || $options->type == 'morphTo')
 
         @php $relationshipField = $row->field; @endphp
 
-        @if($options->type == 'belongsTo')
+        @if($options->type == 'morphTo')
+
+            @if(isset($view) && ($view == 'browse' || $view == 'read'))
+
+                @php
+                    $relationshipData = (isset($data)) ? $data : $dataTypeContent;
+                    $model = app($relationshipData->{$options->model});
+                    $query = $model::where($model->getKeyName(),$relationshipData->{$options->column})->first();
+                @endphp
+
+                @if(isset($query))
+                    <p>
+                        <a href="{{\Facilitador\Routing\UrlGenerator::managerRoute($relationshipData->{$options->model}, 'show', $relationshipData->{$options->column})}}">
+                        {{ $query->{$model->getApresentationNameKey()} }}
+                        </a>
+                    </p>
+                @else
+                    <p>{{ __('facilitador::generic.no_results') }}</p>
+                @endif
+
+            @else
+
+                <select
+                    class="form-control select2-ajax" name="{{ $options->column }}"
+                    data-get-items-route="{{route('facilitador.' . $dataType->slug.'.relation')}}"
+                    data-get-items-field="{{$row->field}}"
+                    @if(!is_null($dataTypeContent->getKey())) data-id="{{$dataTypeContent->getKey()}}" @endif
+                    data-method="{{ !is_null($dataTypeContent->getKey()) ? 'edit' : 'add' }}"
+                >
+                    @php
+                        $model = app($options->model);
+                        $query = $model::where($options->key, old($options->column, $dataTypeContent->{$options->column}))->get();
+                    @endphp
+
+                    @if(!$row->required)
+                        <option value="">{{__('facilitador::generic.none')}}</option>
+                    @endif
+
+                    @foreach($query as $relationshipData)
+                        <option value="{{ $relationshipData->{$options->key} }}" @if($dataTypeContent->{$options->column} == $relationshipData->{$options->key}) selected="selected" @endif>{{ $relationshipData->{$options->label} }}</option>
+                    @endforeach
+                </select>
+
+            @endif
+
+        @elseif($options->type == 'belongsTo')
 
             @if(isset($view) && ($view == 'browse' || $view == 'read'))
 

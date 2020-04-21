@@ -83,7 +83,7 @@ class Elements extends Base
         ]);
 
         // Render the view
-        return $this->populateView('facilitador::elements.index', [
+        return $this->populateView('facilitador::components.elements.index', [
             'elements' => $elements,
             'locale' => $locale,
             'tab' => $tab,

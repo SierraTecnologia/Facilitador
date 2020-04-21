@@ -23,6 +23,8 @@ use Support\Models\DataRow;
 use Support\Models\DataType;
 use Support\Services\DatabaseService;
 
+use Support\Models\Code\Classes;
+
 /**
  * ModelService helper to make table and object form mapping easy.
  */
@@ -167,7 +169,8 @@ class ModelService
             // return redirect()->route('facilitador.dash');
             throw new Exception('Criptografia inválida ' . $this->modelClass);
         }
-        return $this->modelClass;
+
+        return Classes::getFinalClass($this->modelClass);
     }
 
     /**

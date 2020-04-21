@@ -48,7 +48,7 @@ trait FacilitadorRegisterPackages
         // /**
         //  * Support
         //  **/
-        // \Support\SupportServiceProvider::class,
+        \Support\SupportServiceProvider::class,
         
         /**
          * Externos

@@ -36,6 +36,7 @@ class RegisterController extends Controller
     public function index(Request $request)
     {
         $slug = $this->repositoryService->getSlug();
+        
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
         $id = $this->registerService->getId();
         $isSoftDeleted = false;

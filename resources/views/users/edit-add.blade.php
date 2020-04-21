@@ -69,7 +69,7 @@
                                         $row     = $dataTypeRows->where('field', 'user_belongsto_role_relationship')->first();
                                         $options = $row->details;
                                     @endphp
-                                    @include('facilitador::formfields.relationship')
+                                    @include('facilitador::components.formfields.relationship')
                                 </div>
                                 <div class="form-group">
                                     <label for="additional_roles">{{ __('facilitador::profile.roles_additional') }}</label>
@@ -77,7 +77,7 @@
                                         $row     = $dataTypeRows->where('field', 'user_belongstomany_role_relationship')->first();
                                         $options = $row->details;
                                     @endphp
-                                    @include('facilitador::formfields.relationship')
+                                    @include('facilitador::components.formfields.relationship')
                                 </div>
                             @endcan
                             @php
