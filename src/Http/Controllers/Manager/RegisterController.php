@@ -77,6 +77,13 @@ class RegisterController extends Controller
             $view = "facilitador::cruds.$slug.read";
         }
 
+        // dd(
+        //     $dataType,
+        //     $dataTypeContent,
+        //     $isModelTranslatable,
+        //     $isSoftDeleted,
+        // );
+
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
     }
 

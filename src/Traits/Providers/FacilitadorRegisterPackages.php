@@ -45,10 +45,10 @@ trait FacilitadorRegisterPackages
          * Internos
          */
         \Tracking\TrackingProvider::class,
-        /**
-         * Support
-         **/
-        \Support\SupportServiceProvider::class,
+        // /**
+        //  * Support
+        //  **/
+        // \Support\SupportServiceProvider::class,
         
         /**
          * Externos
