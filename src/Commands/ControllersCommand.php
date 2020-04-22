@@ -63,7 +63,7 @@ class ControllersCommand extends Command
     {
         $stub = $this->getStub();
         $files = $this->filesystem->files(base_path('vendor/tcg/facilitador/src/Http/Controllers'));
-        $namespace = config('facilitador.controllers.namespace', 'Facilitador\\Http\\Controllers');
+        $namespace = config('sitec.facilitador.controllers.namespace', 'Facilitador\\Http\\Controllers');
 
         $appNamespace = app()->getNamespace();
 
@@ -117,7 +117,7 @@ class ControllersCommand extends Command
      */
     protected function generateContent($stub, $class)
     {
-        $namespace = config('facilitador.controllers.namespace', 'Facilitador\\Http\\Controllers');
+        $namespace = config('sitec.facilitador.controllers.namespace', 'Facilitador\\Http\\Controllers');
 
         $content = str_replace(
             'DummyNamespace',

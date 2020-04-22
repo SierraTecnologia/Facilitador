@@ -1,4 +1,4 @@
-@if(config('facilitador.show_dev_tips'))
+@if(config('sitec.facilitador.show_dev_tips'))
     <div class="container-fluid">
         <div class="alert alert-info">
             <strong>{{ __('facilitador::generic.how_to_use') }}:</strong>

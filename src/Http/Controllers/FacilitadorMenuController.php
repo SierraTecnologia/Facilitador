@@ -152,7 +152,7 @@ class FacilitadorMenuController extends Controller
         $trans = json_decode($data['title_i18n'], true);
 
         // Set field value with the default locale
-        $data['title'] = $trans[config('facilitador.multilingual.default', 'en')];
+        $data['title'] = $trans[config('sitec.facilitador.multilingual.default', 'en')];
 
         unset($data['title_i18n']);     // Remove hidden input holding translations
         unset($data['i18n_selector']);  // Remove language selector input radio

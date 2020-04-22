@@ -39,7 +39,7 @@ class MenuItemPolicy extends BasePolicy
 
         if ($slug == '') {
             $slug = 'admin';
-        } elseif ($slug == 'compass' && !\App::environment('local') && !config('facilitador.compass_in_production', false)) {
+        } elseif ($slug == 'compass' && !\App::environment('local') && !config('sitec.facilitador.compass_in_production', false)) {
             return false;
         }
 

@@ -63,7 +63,7 @@ class MultipleImage extends BaseType
                 }
             )->encode($file->getClientOriginalExtension(), $resize_quality);
 
-            Storage::disk(config('facilitador.storage.disk'))->put($filePath, (string) $image, 'public');
+            Storage::disk(config('sitec.facilitador.storage.disk'))->put($filePath, (string) $image, 'public');
 
             if (isset($this->options->thumbnails)) {
                 foreach ($this->options->thumbnails as $thumbnails) {
@@ -98,7 +98,7 @@ class MultipleImage extends BaseType
                             ->encode($file->getClientOriginalExtension(), $resize_quality);
                     }
 
-                    Storage::disk(config('facilitador.storage.disk'))->put(
+                    Storage::disk(config('sitec.facilitador.storage.disk'))->put(
                         $path.$filename.'-'.$thumbnails->name.'.'.$file->getClientOriginalExtension(),
                         (string) $image,
                         'public'

@@ -34,7 +34,7 @@ trait Translatable
     {
         return $this->hasMany(Facilitador::model('Translation'), 'foreign_key', $this->getKeyName())
             ->where('table_name', $this->getTable())
-            ->whereIn('locale', config('facilitador.multilingual.locales', []));
+            ->whereIn('locale', config('sitec.facilitador.multilingual.locales', []));
     }
 
     /**
@@ -132,7 +132,7 @@ trait Translatable
     public function getTranslatedAttribute($attribute, $language = null, $fallback = true)
     {
         // If multilingual is not enabled don't check for translations
-        if (!config('facilitador.multilingual.enabled')) {
+        if (!config('sitec.facilitador.multilingual.enabled')) {
             return $this->getAttributeValue($attribute);
         }
 
@@ -144,7 +144,7 @@ trait Translatable
     public function getTranslationsOf($attribute, array $languages = null, $fallback = true)
     {
         if (is_null($languages)) {
-            $languages = config('facilitador.multilingual.locales', [config('facilitador.multilingual.default')]);
+            $languages = config('sitec.facilitador.multilingual.locales', [config('sitec.facilitador.multilingual.default')]);
         }
 
         $response = [];
@@ -160,7 +160,7 @@ trait Translatable
         // Attribute is translatable
         //
         if (!in_array($attribute, $this->getTranslatableAttributes())) {
-            return [$this->getAttribute($attribute), config('facilitador.multilingual.default'), false];
+            return [$this->getAttribute($attribute), config('sitec.facilitador.multilingual.default'), false];
         }
 
         if (!$this->relationLoaded('translations')) {
@@ -175,7 +175,7 @@ trait Translatable
             $fallback = config('app.fallback_locale', 'en');
         }
 
-        $default = config('facilitador.multilingual.default');
+        $default = config('sitec.facilitador.multilingual.default');
 
         $translations = $this->getRelation('translations')
             ->where('column_name', $attribute);
@@ -225,8 +225,8 @@ trait Translatable
             $this->load('translations');
         }
 
-        $default = config('facilitador.multilingual.default', 'en');
-        $locales = config('facilitador.multilingual.locales', [$default]);
+        $default = config('sitec.facilitador.multilingual.default', 'en');
+        $locales = config('sitec.facilitador.multilingual.locales', [$default]);
 
         foreach ($locales as $locale) {
             if (empty($translations[$locale])) {
@@ -354,7 +354,7 @@ trait Translatable
             $trans = json_decode($request->input($field.'_i18n'), true);
 
             // Set the default local value
-            $request->merge([$field => $trans[config('facilitador.multilingual.default', 'en')]]);
+            $request->merge([$field => $trans[config('sitec.facilitador.multilingual.default', 'en')]]);
 
             $translations[$field] = $this->setAttributeTranslations(
                 $field,
@@ -391,7 +391,7 @@ trait Translatable
         $trans = json_decode($requestData[$field.'_i18n'], true);
 
         // Set the default local value
-        $requestData['display_name'] = $trans[config('facilitador.multilingual.default', 'en')];
+        $requestData['display_name'] = $trans[config('sitec.facilitador.multilingual.default', 'en')];
 
         $translations['display_name'] = $this->setAttributeTranslations(
             'display_name',

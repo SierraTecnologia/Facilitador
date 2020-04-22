@@ -40,7 +40,7 @@ class FacilitadorController extends Controller
         $filename_counter = 1;
 
         // Make sure the filename does not exist, if it does make sure to add a number to the end 1, 2, 3, etc...
-        while (Storage::disk(config('facilitador.storage.disk'))->exists($path.$filename.'.'.$file->getClientOriginalExtension())) {
+        while (Storage::disk(config('sitec.facilitador.storage.disk'))->exists($path.$filename.'.'.$file->getClientOriginalExtension())) {
             $filename = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension()).(string) ($filename_counter++);
         }
 
@@ -60,7 +60,7 @@ class FacilitadorController extends Controller
             $image->encode($file->getClientOriginalExtension(), 75);
 
             // move uploaded file from temp to uploads directory
-            if (Storage::disk(config('facilitador.storage.disk'))->put($fullPath, (string) $image, 'public')) {
+            if (Storage::disk(config('sitec.facilitador.storage.disk'))->put($fullPath, (string) $image, 'public')) {
                 $status = __('facilitador::media.success_uploading');
                 $fullFilename = $fullPath;
             } else {

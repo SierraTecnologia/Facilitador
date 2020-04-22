@@ -42,11 +42,12 @@ class Router
      */
     public function registerAll()
     {
+        $namespacePrefix = '\\'.config('sitec.facilitador.controllers.namespace');
         /**
          * Facilitador Routes
          */
         Route::group([
-            'namespace' => '\Facilitador\Http\Controllers',
+            'namespace' => $namespacePrefix, //'\Facilitador\Http\Controllers',
         ], function (/**$router**/) {
             require __DIR__.'/../Routes/web.php';
         });

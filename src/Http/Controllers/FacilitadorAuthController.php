@@ -52,7 +52,7 @@ class FacilitadorAuthController extends Controller
      */
     public function redirectTo()
     {
-        return config('facilitador.user.redirect', route('facilitador.dashboard'));
+        return config('sitec.facilitador.user.redirect', route('facilitador.dashboard'));
     }
 
     /**

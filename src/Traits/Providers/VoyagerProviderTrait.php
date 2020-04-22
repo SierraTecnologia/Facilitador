@@ -77,12 +77,12 @@ trait VoyagerProviderTrait
      */
     public function voyagerBoot(Router $router, Dispatcher $event)
     {
-        if (config('facilitador.user.add_default_role_on_register')) {
+        if (config('sitec.facilitador.user.add_default_role_on_register')) {
             $model = Auth::guard(app('FacilitadorGuard'))->getProvider()->getModel();
             call_user_func($model.'::created', function ($user) use ($model) {
                 if (is_null($user->role_id)) {
                     call_user_func($model.'::findOrFail', $user->id)
-                        ->setRole(config('facilitador.user.default_role'))
+                        ->setRole(config('sitec.facilitador.user.default_role'))
                         ->save();
                 }
             });
@@ -138,7 +138,7 @@ trait VoyagerProviderTrait
             return;
         }
 
-        $storage_disk = (!empty(config('facilitador.storage.disk'))) ? config('facilitador.storage.disk') : 'public';
+        $storage_disk = (!empty(config('sitec.facilitador.storage.disk'))) ? config('sitec.facilitador.storage.disk') : 'public';
 
         if (request()->has('fix-missing-storage-symlink')) {
             if (file_exists(public_path('storage'))) {

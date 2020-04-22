@@ -18,19 +18,19 @@
             background-color: {{ Facilitador::setting("admin.bg_color", "#FFFFFF" ) }};
         }
         body.login .login-sidebar {
-            border-top:5px solid {{ config('facilitador.primary_color','#22A7F0') }};
+            border-top:5px solid {{ config('sitec.facilitador.primary_color','#22A7F0') }};
         }
         @media (max-width: 767px) {
             body.login .login-sidebar {
                 border-top:0px !important;
-                border-left:5px solid {{ config('facilitador.primary_color','#22A7F0') }};
+                border-left:5px solid {{ config('sitec.facilitador.primary_color','#22A7F0') }};
             }
         }
         body.login .form-group-default.focused{
-            border-color:{{ config('facilitador.primary_color','#22A7F0') }};
+            border-color:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
         }
         .login-button, .bar:before, .bar:after{
-            background:{{ config('facilitador.primary_color','#22A7F0') }};
+            background:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
         }
         .remember-me-text{
             padding:0 5px;

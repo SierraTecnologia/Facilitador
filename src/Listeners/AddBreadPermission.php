@@ -26,11 +26,11 @@ class AddBreadPermission
      */
     public function handle(BreadAdded $bread)
     {
-        if (config('facilitador.bread.add_permission') && file_exists(base_path('routes/web.php'))) {
+        if (config('sitec.facilitador.bread.add_permission') && file_exists(base_path('routes/web.php'))) {
             // Create permission
             //
             // Permission::generateFor(Str::snake($bread->dataType->slug));
-            $role = Facilitador::model('Role')->where('name', config('facilitador.bread.default_role'))->firstOrFail();
+            $role = Facilitador::model('Role')->where('name', config('sitec.facilitador.bread.default_role'))->firstOrFail();
 
             // Get permission for added table
             $permissions = Facilitador::model('Permission')->where(['table_name' => $bread->dataType->name])->get()->pluck('id')->all();

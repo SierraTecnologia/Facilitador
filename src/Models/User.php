@@ -735,7 +735,7 @@ class User extends Base implements
      */
     public function getAvatarAttribute($value)
     {
-        return $value ?? config('facilitador.user.default_avatar', 'users/default.png');
+        return $value ?? config('sitec.facilitador.user.default_avatar', 'users/default.png');
     }
 
     /**
@@ -762,12 +762,17 @@ class User extends Base implements
 
     public function setLocaleAttribute($value)
     {
-        $this->settings = $this->settings->merge(['locale' => $value]);
+        if ($this->settings) {
+            $this->settings = $this->settings->merge(['locale' => $value]);
+        }
     }
 
     public function getLocaleAttribute()
     {
-        return $this->settings->get('locale');
+        if ($this->settings) {
+            return $this->settings->get('locale');
+        }
+        return Facilitador::defaultLocale();
     }
 
     /**

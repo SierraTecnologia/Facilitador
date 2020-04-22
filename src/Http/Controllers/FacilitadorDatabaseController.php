@@ -81,7 +81,7 @@ class FacilitadorDatabaseController extends Controller
             SchemaManager::createTable($table);
 
             if (isset($request->create_model) && $request->create_model == 'on') {
-                $modelNamespace = config('facilitador.models.namespace', app()->getNamespace());
+                $modelNamespace = config('sitec.facilitador.models.namespace', app()->getNamespace());
                 $params = [
                     'name' => $modelNamespace.Str::studly(Str::singular($table->name)),
                 ];

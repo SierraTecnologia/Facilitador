@@ -31,22 +31,22 @@
     <!-- Few Dynamic Styles -->
     <style type="text/css">
         .facilitador .side-menu .navbar-header {
-            background:{{ config('facilitador.primary_color','#22A7F0') }};
-            border-color:{{ config('facilitador.primary_color','#22A7F0') }};
+            background:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
+            border-color:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
         }
         .widget .btn-primary{
-            border-color:{{ config('facilitador.primary_color','#22A7F0') }};
+            border-color:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
         }
         .widget .btn-primary:focus, .widget .btn-primary:hover, .widget .btn-primary:active, .widget .btn-primary.active, .widget .btn-primary:active:focus{
-            background:{{ config('facilitador.primary_color','#22A7F0') }};
+            background:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
         }
         .facilitador .breadcrumb a{
-            color:{{ config('facilitador.primary_color','#22A7F0') }};
+            color:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
         }
     </style>
 
-    @if(!empty(config('facilitador.additional_css')))<!-- Additional CSS -->
-        @foreach(config('facilitador.additional_css') as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
+    @if(!empty(config('sitec.facilitador.additional_css')))<!-- Additional CSS -->
+        @foreach(config('sitec.facilitador.additional_css') as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
     @endif
 
     @yield('head')
@@ -142,8 +142,8 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
 @include('facilitador::media.manager')
 @yield('javascript')
 @stack('javascript')
-@if(!empty(config('facilitador.additional_js')))<!-- Additional Javascript -->
-    @foreach(config('facilitador.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
+@if(!empty(config('sitec.facilitador.additional_js')))<!-- Additional Javascript -->
+    @foreach(config('sitec.facilitador.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
 @endif
 
 </body>

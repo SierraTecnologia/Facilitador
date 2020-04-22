@@ -172,6 +172,6 @@ class UrlGenerator
         if ($data) {
             $page = '/'.Crypto::shareableEncrypt($data).$page;
         }
-        return url('manager/'.Crypto::shareableEncrypt($slug).$page);
+        return url(config('sitec.core.dir', 'admin').'/manager/'.Crypto::shareableEncrypt($slug).$page);
     }
 }

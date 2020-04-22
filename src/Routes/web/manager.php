@@ -6,7 +6,7 @@ Route::group(['middleware' => 'admin.user'], function () {
 
             
             // ADmin Router
-            Route::get('/', 'AdminController@index')->name('dash');
+            Route::get('/', 'AdminController@index')->name('dashboard');
             Route::get('/search', 'AdminController@search')->name('globalsearch');
 
             /**

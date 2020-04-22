@@ -14,15 +14,15 @@
                 <div class="clear"></div>
                 <div id="filemanager">
                     <media-manager
-                        base-path="{{ config('facilitador.media.path', '/') }}"
-                        :show-folders="{{ config('facilitador.media.show_folders', true) ? 'true' : 'false' }}"
-                        :allow-upload="{{ config('facilitador.media.allow_upload', true) ? 'true' : 'false' }}"
-                        :allow-move="{{ config('facilitador.media.allow_move', true) ? 'true' : 'false' }}"
-                        :allow-delete="{{ config('facilitador.media.allow_delete', true) ? 'true' : 'false' }}"
-                        :allow-create-folder="{{ config('facilitador.media.allow_create_folder', true) ? 'true' : 'false' }}"
-                        :allow-rename="{{ config('facilitador.media.allow_rename', true) ? 'true' : 'false' }}"
-                        :allow-crop="{{ config('facilitador.media.allow_crop', true) ? 'true' : 'false' }}"
-                        :details="{{ json_encode(['thumbnails' => config('facilitador.media.thumbnails', []), 'watermark' => config('facilitador.media.watermark', (object)[])]) }}"
+                        base-path="{{ config('sitec.facilitador.media.path', '/') }}"
+                        :show-folders="{{ config('sitec.facilitador.media.show_folders', true) ? 'true' : 'false' }}"
+                        :allow-upload="{{ config('sitec.facilitador.media.allow_upload', true) ? 'true' : 'false' }}"
+                        :allow-move="{{ config('sitec.facilitador.media.allow_move', true) ? 'true' : 'false' }}"
+                        :allow-delete="{{ config('sitec.facilitador.media.allow_delete', true) ? 'true' : 'false' }}"
+                        :allow-create-folder="{{ config('sitec.facilitador.media.allow_create_folder', true) ? 'true' : 'false' }}"
+                        :allow-rename="{{ config('sitec.facilitador.media.allow_rename', true) ? 'true' : 'false' }}"
+                        :allow-crop="{{ config('sitec.facilitador.media.allow_crop', true) ? 'true' : 'false' }}"
+                        :details="{{ json_encode(['thumbnails' => config('sitec.facilitador.media.thumbnails', []), 'watermark' => config('sitec.facilitador.media.watermark', (object)[])]) }}"
                         ></media-manager>
                 </div>
             </div><!-- .row -->

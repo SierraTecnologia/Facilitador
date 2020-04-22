@@ -23,7 +23,7 @@ class FacilitadorCompassController extends Controller
         // Check permission
         // $this->authorize('browse_compass');
         //Check if app is not local
-        if (!\App::environment('local') && !config('facilitador.compass_in_production', false)) {
+        if (!\App::environment('local') && !config('sitec.facilitador.compass_in_production', false)) {
             throw new AccessDeniedHttpException();
         }
 

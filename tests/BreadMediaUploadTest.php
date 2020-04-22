@@ -24,7 +24,7 @@ class BreadMediaUploadTest extends TestCase
 
         Auth::loginUsingId(1);
 
-        $this->storage = Storage::disk(config('facilitador.storage.disk'));
+        $this->storage = Storage::disk(config('sitec.facilitador.storage.disk'));
     }
 
     public function testMultipleImagesUpload()
