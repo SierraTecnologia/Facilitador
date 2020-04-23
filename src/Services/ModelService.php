@@ -75,15 +75,16 @@ class ModelService
                     'slug'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
                     'display_name_singular' => $eloquentService->getName(false),
                     'display_name_plural'   => $eloquentService->getName(true),
-                    'icon'                  => \Support\Template\Layout\Icons::getForNameAndCache($eloquentService->getName(), false),
+                    'icon'                  => $eloquentService->getIcon(),
                     'model_name'            => $eloquentService->getModelClass(),
                     'controller'            => '',
                     'generate_permissions'  => 1,
                     'description'           => '',
-                    'table_name'              => $eloquentService->getName(),
+                    'table_name'              => $eloquentService->getTablename(),
                     'key_name'                => $eloquentService->getData('getKeyName'),
                     'key_type'                => $eloquentService->getData('getKeyType'),
                     'foreign_key'             => $eloquentService->getData('getForeignKey'),
+                    'group'             => $eloquentService->getGroup(),
                 ])->save();
 
                 $order = 1;

@@ -111,7 +111,7 @@ class RegisterService
     public function getRelationsResults($returnEmptys = false)
     {
         $results = new Collection;
-        // dd($this->getDiscoverService()->getRelations());
+        dd($this->getDiscoverService()->dataRelactionships);
         $this->getDiscoverService()->getRelations()->map(function ($value) use ($results, $returnEmptys) {
             $tmpRelationResults = $this->getInstance()->{$value->name}()->get();
             

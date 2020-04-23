@@ -17,14 +17,15 @@ return [
         'App\Models',
         'Informate\Models',
         'Population\Models',
-        // 'Audit\Models',
-        // 'Tracking\Models',
         'Gamer\Models',
         'Casa\Models',
         'Finder\Models',
         'Trainner\Models',
         'Siravel\Models',
-        'Support\Models',
+        // 'Audit\Models',
+        // 'Tracking\Models',
+        // 'Facilitador\Models',
+        // 'Support\Models',
     ],
 
 ];

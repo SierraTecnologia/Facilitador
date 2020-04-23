@@ -36,6 +36,8 @@ class RegisterController extends Controller
     public function index(Request $request)
     {
         $slug = $this->repositoryService->getSlug();
+        $service = $this->registerService;
+        $modelRelationsResults = $service->getRelationsResults();
         
         $dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first();
         $id = $this->registerService->getId();
