@@ -22,7 +22,7 @@ use Facilitador\Routing\UrlGenerator;
 use Support\Models\DataRow;
 use Support\Models\DataType;
 use Support\Services\DatabaseService;
-
+use Support\Elements\Entities\EloquentEntity;
 use Support\Models\Code\Classes;
 
 /**
@@ -34,38 +34,39 @@ class ModelService
     protected $modelDataType = false;
     protected $modelClass;
 
+    protected $eloquentEntity = false;
+    protected $isInitFromClassString = true;
+
     public function __construct($modelClass = false)
     {
         if ($this->modelClass = $modelClass) {
-            if (!is_string($modelClass)) {
+            if (!is_string($modelClass) && !is_a($modelClass, EloquentEntity::class)) {
                 throw new Exception(
-                    "Essa classe deveria ser uma string: ".print_r($modelClass, true),
+                    "Essa classe deveria ser uma string ou uma instancia eloquentEntity: ".print_r($modelClass, true),
                     400
                 );
+            }
+            if (empty($modelClass)) {
+                throw new Exception(
+                    "ModelService, nao deveria vir vazia a classeModel: ".print_r($modelClass, true),
+                    400
+                );
+            }
+
+            if (is_a($modelClass, EloquentEntity::class)) {
+                $this->setEloquentEntity($modelClass);
             }
             $this->getDiscoverService();
         }
     }
 
-    public function getDatabaseService()
-    {
-        return resolve(\Support\Services\DatabaseService::class);
-    }
-
-    public function getRepository()
-    {
-        if (!$this->repository) {
-            $this->repository = new RepositoryService($this);
-        }
-        return $this->repository;
-    }
     public function getDiscoverService()
     {
         if (!$this->modelDataType) {
 
             $this->modelDataType = $this->dataType('model_name', $this->getModelClass());
             if (!$this->modelDataType->exists) {
-                if (!$eloquentService = $this->getDatabaseService()->getEloquentService($this->getModelClass())) {
+                if (!$eloquentService = $this->getEloquentEntity()) {
                     // @todo tratar erro
                     return false;
                 }
@@ -156,18 +157,24 @@ class ModelService
     }
     public function getModelClass()
     {
+        if (empty($this->modelClass)) {
+            return false;
+        }
+
         // dd(
         //     $this->modelClass, Crypto::isCrypto($this->modelClass),
         //     Crypto::shareableDecrypt($this->modelClass),
         //     \Auth::user()
         // );
         if (Crypto::isCrypto($this->modelClass)) {
+            dd($this->isInitFromClassString, $this->modelClass, $this);
             $this->modelClass = Crypto::shareableDecrypt($this->modelClass);
         }
         if (empty($this->modelClass)) {
             Artisan::call('cache:clear');
             Artisan::call('view:clear');
             // return redirect()->route('facilitador.dash');
+
             throw new Exception('Criptografia inválida ' . $this->modelClass);
         }
 
@@ -325,5 +332,38 @@ class ModelService
     protected function dataType($field, $for)
     {
         return DataType::firstOrNew([$field => $for]);
+    }
+    
+
+    /**
+     * Helpers
+     */
+
+    public function setEloquentEntity($class)
+    {
+        $this->eloquentEntity = $class;
+        $this->modelClass = $class->getModelClass();
+        $this->isInitFromClassString = false;
+    }
+
+    public function getEloquentEntity()
+    {
+        if ($this->eloquentEntity) {
+            return $this->eloquentEntity;
+        }
+        return $this->eloquentEntity = $this->getDatabaseService()->getEloquentService($this->getModelClass());
+    }
+
+    public function getDatabaseService()
+    {
+        return resolve(\Support\Services\DatabaseService::class);
+    }
+
+    public function getRepository()
+    {
+        if (!$this->repository) {
+            $this->repository = new RepositoryService($this);
+        }
+        return $this->repository;
     }
 }

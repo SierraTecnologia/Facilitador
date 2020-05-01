@@ -6,12 +6,14 @@
 namespace Facilitador\Services;
 
 use Support\Parser\ComposerParser;
+use Support\ClassesHelpers\Development\HasErrors;
 
 /**
  * 
  */
 class FacilitadorService
 {
+    use HasErrors;
 
     protected $config;
 
@@ -20,9 +22,9 @@ class FacilitadorService
     public function __construct($config = false)
     {
         if (!$this->config = $config) {
-            $this->config = config('sitec.discover.models_alias');
+            $this->config = config('sitec.discover.models', []);
         }
-        $this->getModelServicesToArray();
+        $this->getModelServicesToArray(false);
     }
 
     public function getDatabaseService()
@@ -32,11 +34,15 @@ class FacilitadorService
 
     public function getModelServicesToArray($onlyConfig = true)
     {
-// dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new ComposerParser))->getAllModels());
         $models = $this->getModelServices(); 
-        // dd('Modelos', $models);
+
         if (!$onlyConfig) {
-            $allModels = collect($this->getDatabaseService()->getAllModels())->map(function($file, $class) {
+
+            // INvez de usar pela classe ta usando direto o eloquentENtity
+            // $allModels = collect($this->getDatabaseService()->getAllModels())->map(function($file, $class) {
+            $allModels = collect($this->getDatabaseService()->getAllEloquentsEntitys())->reject(function ($class) {
+                return empty($class);
+            })->map(function($class) {
                 return new ModelService($class);
             })->values()->all();
             $models = array_merge(
@@ -59,16 +65,17 @@ class FacilitadorService
                     'name' => $model->getName(),
                 ];
             } catch(\Symfony\Component\Debug\Exception\FatalThrowableError $e) {
-                // dd($e);
-                //@todo fazer aqui
+                dd($e); 
+                $this->setErrors($e);
             } catch(\Exception $e) {
-                // dd($e);
-                // @todo Tratar aqui
+                dd($e); 
+                $this->setErrors($e);
             } catch(\Throwable $e) {
-                // dd($e);
-                // @todo Tratar aqui
+                dd($e); 
+                $this->setErrors($e);
             }
         }
+        // dd('Modelos', $array);
         return collect($array);
     }
 

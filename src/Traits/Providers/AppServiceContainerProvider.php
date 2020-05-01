@@ -121,7 +121,7 @@ trait AppServiceContainerProvider
             // } catch (\Exception $e) {
             //     dd($e);
             // }
-            return new FacilitadorService(config('sitec.facilitador.models'));
+            return new FacilitadorService(config('sitec.discover.models'));
         });
 
     }

@@ -114,7 +114,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'bread',
-                    'route'       => 'facilitador.bread',
+                    'route'       => 'facilitador.bread.index',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -122,7 +122,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'Database',
-                    'route'       => 'facilitador.database',
+                    'route'       => 'facilitador.database.index',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -130,7 +130,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'settings',
-                    'route'       => 'facilitador.settings',
+                    'route'       => 'facilitador.settings.index',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',

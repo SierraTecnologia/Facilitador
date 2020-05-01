@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'admin.user'], function () {
+// Route::group(['middleware' => 'admin.user'], function () {
     Route::name('facilitador.')->group(function () {
         Route::prefix('manager')->group(function () {
 
@@ -63,4 +63,4 @@ Route::group(['middleware' => 'admin.user'], function () {
             });
         });
     });
-});
+// });
