@@ -18,7 +18,7 @@ use Larapack\DoctrineSupport\DoctrineSupportServiceProvider;
 use FacilitadorHooks\FacilitadorHooksServiceProvider;
 use Facilitador\Events\FormFieldsRegistered;
 use Facilitador\Facades\Facilitador as FacilitadorFacade;
-use Facilitador\FormFields\After\DescriptionHandler;
+use Support\Elements\FormFields\After\DescriptionHandler;
 use Facilitador\Http\Middleware\FacilitadorAdminMiddleware;
 use Facilitador\Models\MenuItem;
 use Facilitador\Models\Setting;
@@ -186,7 +186,7 @@ trait VoyagerProviderTrait
         $components = ['title', 'text', 'button'];
 
         foreach ($components as $component) {
-            $class = 'Facilitador\\Alert\\Components\\'.ucfirst(Str::camel($component)).'Component';
+            $class = 'Support\\Elements\\Alert\\'.ucfirst(Str::camel($component)).'Component';
 
             $this->app->bind("facilitador.alert.components.{$component}", $class);
         }
@@ -257,7 +257,7 @@ trait VoyagerProviderTrait
         foreach ($formFields as $formField) {
             $class = Str::studly("{$formField}_handler");
 
-            FacilitadorFacade::addFormField("Facilitador\\FormFields\\{$class}");
+            FacilitadorFacade::addFormField("Support\\Elements\\FormFields\\{$class}");
         }
 
         FacilitadorFacade::addAfterFormField(DescriptionHandler::class);

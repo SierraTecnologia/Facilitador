@@ -2,7 +2,7 @@
 
 namespace Facilitador;
 
-use Facilitador\Alert\Components\ComponentInterface;
+use Support\Elements\Alert\ComponentInterface;
 
 class Alert
 {

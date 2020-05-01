@@ -96,17 +96,17 @@ class FacilitadorProvider extends ServiceProvider
                 ],
             ],
             'Facilitador' => [
-                [
-                    'text'        => 'Tools',
-                    'url'         => 'facilitador/hooks',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
+                // [
+                //     'text'        => 'Tools',
+                //     'route'       => 'facilitador.hooks',
+                //     'icon'        => 'fas fa-fw fa-industry',
+                //     'icon_color'  => 'blue',
+                //     'label_color' => 'success',
+                //     // 'access' => \App\Models\Role::$ADMIN
+                // ],
                 [
                     'text'        => 'hooks',
-                    'url'         => 'facilitador/hooks',
+                    'route'       => 'facilitador.hooks',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -114,7 +114,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'bread',
-                    'url'         => 'facilitador/bread',
+                    'route'       => 'facilitador.bread',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -122,7 +122,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'Database',
-                    'url'         => 'facilitador/database',
+                    'route'       => 'facilitador.database',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -130,7 +130,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'settings',
-                    'url'         => 'facilitador/settings',
+                    'route'       => 'facilitador.settings',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
