@@ -10,7 +10,7 @@ use Config;
 
 
 
-
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Barryvdh\Debugbar\ServiceProvider as DebugService;
 use Laravel\Dusk\DuskServiceProvider;
 use Support\ClassesHelpers\Traits\Models\ConsoleTools;
@@ -131,6 +131,7 @@ trait FacilitadorRegisterPackages
         }
         if ($this->app->environment('local')) {
             $this->app->register(DebugService::class);
+            // $this->app->register(IdeHelperServiceProvider::class);
         }
     }
 

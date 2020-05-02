@@ -8,6 +8,17 @@ namespace Facilitador\Services;
 use Support\Parser\ComposerParser;
 use Support\ClassesHelpers\Development\HasErrors;
 
+
+use Symfony\Component\Debug\Exception\FatalThrowableError;
+use Symfony\Component\Debug\Exception\FatalErrorException;
+use Exception;
+use ErrorException;
+use LogicException;
+use OutOfBoundsException;
+use RuntimeException;
+use TypeError;
+use Throwable;
+use Watson\Validating\ValidationException;
 /**
  * 
  */
@@ -55,24 +66,26 @@ class FacilitadorService
         $array = [];
 
         foreach ($models as $model) {
-            try {
-                $array[] = [
-                    'model' => $model,
-                    'url' => $model->getUrl(),
-                    'count' => $model->getRepository()->count(),
-                    // @todo Remover Daqui
-                    'icon' => \Support\Template\Layout\Icons::getForNameAndCache($model->getName()),
-                    'name' => $model->getName(),
-                ];
-            } catch(\Symfony\Component\Debug\Exception\FatalThrowableError $e) {
-                dd($e); 
-                $this->setErrors($e);
-            } catch(\Exception $e) {
-                dd($e); 
-                $this->setErrors($e);
-            } catch(\Throwable $e) {
-                dd($e); 
-                $this->setErrors($e);
+
+            if (!$model->getEloquentEntity()) {
+                $this->setErrors(
+                    'Entity retornando falso para modelo: '.$model->getModelClass()
+                );
+            } else {
+                try {
+                    $array[] = [
+                        'model' => $model,
+                        'url' => $model->getUrl(),
+                        'count' => $model->getRepository()->count(),
+                        'icon' => $model->getIcon(),
+                        'name' => $model->getName(),
+                        'group' => $model->getGroup(),
+                    ];
+
+                } catch(LogicException|ErrorException|RuntimeException|OutOfBoundsException|TypeError|ValidationException|FatalThrowableError|FatalErrorException|Exception|Throwable  $e) {
+                    $this->setErrors($e);
+                    dd($e);
+                } 
             }
         }
         // dd('Modelos', $array);

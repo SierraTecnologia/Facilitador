@@ -1,7 +1,10 @@
+@foreach ($models as $groupName=>$realModels)
+<h2 class="page-header">{!! $groupName !!}</h2>
+
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="info-box">
-            @foreach ($models as $model)
+            @foreach ($realModels as $model)
                 @if (is_array($model))
                     <a class="btn btn-app" href="{{$model['url']}}">
                         <span class="badge bg-yellow">{{$model['count']}}</span>
@@ -18,3 +21,4 @@
         <!-- /.info-box -->
     </div>
 </div>
+@endforeach

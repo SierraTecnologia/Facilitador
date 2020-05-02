@@ -63,13 +63,13 @@ class ModelService
     public function getDiscoverService()
     {
         if (!$this->modelDataType) {
+            if (!$eloquentService = $this->getEloquentEntity()) {
+                // @todo tratar erro
+                return false;
+            }
 
             $this->modelDataType = $this->dataType('model_name', $this->getModelClass());
             if (!$this->modelDataType->exists) {
-                if (!$eloquentService = $this->getEloquentEntity()) {
-                    // @todo tratar erro
-                    return false;
-                }
                 // Name e Slug sao unicos
                 $this->modelDataType->fill([
                     'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
@@ -151,10 +151,6 @@ class ModelService
         return Crypto::shareableEncrypt($this->modelClass);
     }
 
-    public function getName($plural = false)
-    {
-        return $this->getDiscoverService()->getName($plural);
-    }
     public function getModelClass()
     {
         if (empty($this->modelClass)) {
@@ -365,5 +361,30 @@ class ModelService
             $this->repository = new RepositoryService($this);
         }
         return $this->repository;
+    }
+
+    /**
+     * Getter and Setters
+     */
+    public function getName($plural = false)
+    {
+        if (!$this->getDiscoverService()) {
+            return '';
+        }
+        return $this->getDiscoverService()->getName($plural);
+    }
+    public function getIcon()
+    {
+        if (!$this->getDiscoverService()) {
+            return '';
+        }
+        return $this->getDiscoverService()->getIcon();
+    }
+    public function getGroup()
+    {
+        if (!$this->getDiscoverService()) {
+            return '';
+        }
+        return $this->getDiscoverService()->getGroup();
     }
 }
