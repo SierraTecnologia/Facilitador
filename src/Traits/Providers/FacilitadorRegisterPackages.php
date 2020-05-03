@@ -50,6 +50,26 @@ trait FacilitadorRegisterPackages
         //  **/
         \Support\SupportServiceProvider::class,
         
+
+        /**
+         * Base
+         */
+        \RicardoSierra\Translation\TranslationServiceProvider::class,
+        
+        
+        /*
+         * Dependencias
+         */
+        \Locaravel\LocaravelProvider::class,
+        /**
+         * Layoults
+         */
+        \JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        \RicardoSierra\Minify\MinifyServiceProvider::class,
+        \Collective\Html\HtmlServiceProvider::class,
+        \Laracasts\Flash\FlashServiceProvider::class,
+
+
         /**
          * Externos
          */
@@ -57,12 +77,6 @@ trait FacilitadorRegisterPackages
         // \Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class,
         // \Facilitador\Providers\FieldServiceProvider::class,
         \Facilitador\Providers\GravatarServiceProvider::class,
-        
-
-        /**
-         * Base
-         */
-        \RicardoSierra\Translation\TranslationServiceProvider::class,
 
         /**
          * VEio pelo Decoy
@@ -92,18 +106,6 @@ trait FacilitadorRegisterPackages
          * Services Providers
          */
         \Yajra\DataTables\DataTablesServiceProvider::class,
-        
-        /*
-         * Dependencias
-         */
-        \Locaravel\LocaravelProvider::class,
-        /**
-         * Layoults
-         */
-        \JeroenNoten\LaravelAdminLte\ServiceProvider::class,
-        \RicardoSierra\Minify\MinifyServiceProvider::class,
-        \Collective\Html\HtmlServiceProvider::class,
-        \Laracasts\Flash\FlashServiceProvider::class,
     ];
 
     /****************************************************************************************************
