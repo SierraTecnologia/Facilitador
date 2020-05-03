@@ -65,6 +65,11 @@ class ModelService
         if (!$this->modelDataType) {
             if (!$eloquentService = $this->getEloquentEntity()) {
                 // @todo tratar erro
+                // dd(
+                //     'IhhNaoTem',
+                //     $this->modelClass,
+                //     debug_backtrace()
+                // );
                 return false;
             }
 
@@ -163,7 +168,6 @@ class ModelService
         //     \Auth::user()
         // );
         if (Crypto::isCrypto($this->modelClass)) {
-            dd($this->isInitFromClassString, $this->modelClass, $this);
             $this->modelClass = Crypto::shareableDecrypt($this->modelClass);
         }
         if (empty($this->modelClass)) {

@@ -72,7 +72,7 @@ trait AppServiceContainerProvider
         // Return the active user account
         $this->app->singleton('facilitador.user', function ($app) {
             $guard = config('sitec.core.guard');
-            return \App\Models\User::first(); //$app['auth']->guard($guard)->user();
+            return $app['auth']->guard($guard)->user(); // tinha isso aqui tirei \App\Models\User::first(); //
         });
 
         // Return a redirect response with extra stuff
@@ -115,7 +115,7 @@ trait AppServiceContainerProvider
          */
         $this->app->singleton(FacilitadorService::class, function($app)
         {
-            Log::channel('sitec-providers')->info('Singleton Facilitador');
+            Log::channel('sitec-providers')->debug('Singleton Facilitador');
             // try {
             //     throw new \Exception();
             // } catch (\Exception $e) {
@@ -134,11 +134,11 @@ trait AppServiceContainerProvider
          * @todo Ta passando duas vezes por aqui
          */
         Route::bind('modelClass', function ($value) {
-            Log::channel('sitec-providers')->info('Route Bind ModelClass - '.Crypto::shareableDecrypt($value).' - '.$value);
+            Log::channel('sitec-providers')->debug('Route Bind ModelClass - '.Crypto::shareableDecrypt($value).' - '.$value);
             return new ModelService(Crypto::shareableDecrypt($value));
         });
         Route::bind('identify', function ($value) {
-            Log::channel('sitec-providers')->info('Route Bind Identify - '.Crypto::shareableDecrypt($value).' - '.$value);
+            Log::channel('sitec-providers')->debug('Route Bind Identify - '.Crypto::shareableDecrypt($value).' - '.$value);
             // throw new Exception(
             //     "Essa classe deveria ser uma string: ".print_r($modelClass, true),
             //     400
@@ -181,14 +181,14 @@ trait AppServiceContainerProvider
             // );
             // @todo Ver Como resolver isso aqui
 
-            Log::channel('sitec-providers')->info('Bind Model Service - '.$modelClass);
+            Log::channel('sitec-providers')->debug('Bind Model Service - '.$modelClass);
 
             return new ModelService($modelClass);
         });
 
         $this->app->bind(RepositoryService::class, function($app)
         {
-            Log::channel('sitec-providers')->info('Bind Repository Service');
+            Log::channel('sitec-providers')->debug('Bind Repository Service');
             $modelService = $app->make(ModelService::class);
             return new RepositoryService($modelService);
         });
@@ -200,7 +200,7 @@ trait AppServiceContainerProvider
                 $identify = Crypto::shareableDecrypt($app['router']->current()->parameters['identify']);
             }
 
-            Log::channel('sitec-providers')->info('Bind Register Service - '.$identify);
+            Log::channel('sitec-providers')->debug('Bind Register Service - '.$identify);
             return new RegisterService($identify);
         });
     }

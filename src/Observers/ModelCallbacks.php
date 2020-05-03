@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Facilitador;
 use Population\Models\Identity\Digital\Email;
 
+use Support\Models\Base;
+
 /**
  * Call no-op classes on models for all event types.  This just simplifies
  * the handling of model events for models.
@@ -90,12 +92,18 @@ class ModelCallbacks
         }
     }
 
+    /**
+     * @todo
+     */
     private function runInCreating($model)
     {
         // Faz porra nenhuma!
         return $model;
     }
 
+    /**
+     * @todo melhorar isso aqui refatorar
+     */
     private function runInCreated($model)
     {
         $executeTo = [
@@ -118,17 +126,14 @@ class ModelCallbacks
         if (!$influencia = Facilitador::getInfluencia()) {
             return false;
         }
-        $method = Str::plural(Str::lower(class_basename($model)));
 
-        
-        if (method_exists($influencia, $method)) {
-            return call_user_func_array([$influencia, $method], [])->save($model);
-        }
-        // @todo Resolver isso, o log faz o calbback ficar em looping infinito
-        //Log::warning('Facilitador Influencia não encontrou o metodo '.$method.' na classe '.class_basename($influencia));
-        return false;
+        return Base::associate($influencia, $model);
     }
 
+
+    /**
+     * @todo Extrair isso aqui daqui
+     */
     protected function getDontLog()
     {
         return config('sitec.audit.dontLog');
