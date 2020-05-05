@@ -13,7 +13,7 @@ use Config;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Barryvdh\Debugbar\ServiceProvider as DebugService;
 use Laravel\Dusk\DuskServiceProvider;
-use Support\ClassesHelpers\Traits\Models\ConsoleTools;
+use Support\Helpers\Traits\Models\ConsoleTools;
 
 
 

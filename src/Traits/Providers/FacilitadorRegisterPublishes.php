@@ -2,7 +2,7 @@
 
 namespace Facilitador\Traits\Providers;
 
-use Support\ClassesHelpers\Traits\Models\ConsoleTools;
+use Support\Helpers\Traits\Models\ConsoleTools;
 
 trait FacilitadorRegisterPublishes
 {

@@ -13,9 +13,9 @@ use Spatie\EloquentSortable\Sortable;
 // // @Arquivo no existe
 use Support\Recursos\Cacheable\CacheableEloquent;
 // @Arquivo no existe
-use Support\ClassesHelpers\Traits\Models\HasTranslations;
+use Support\Helpers\Traits\Models\HasTranslations;
 // @Arquivo no existe
-use Support\ClassesHelpers\Traits\Models\ValidatingTrait;
+use Support\Helpers\Traits\Models\ValidatingTrait;
 // @todo Add Essa lib Trait 'Spatie\EloquentSortable\SortableTrait' not found
 use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Relations\HasMany;
