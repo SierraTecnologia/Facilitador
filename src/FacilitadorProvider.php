@@ -4,7 +4,7 @@ namespace Facilitador;
 
 
 
-use Support\Helpers\Traits\Models\ConsoleTools;
+use Support\Traits\Providers\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
 
 use Facilitador\Traits\Providers\AppEventsProvider;

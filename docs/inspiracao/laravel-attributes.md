@@ -106,7 +106,7 @@ Loading values as relationships will let us load only those values we may requir
 
 ### More technical details
 
-#### `Support\Helpers\Traits\Models\Attributable`
+#### `Support\Traits\Models\Attributable`
 
 This trait is the most important and let the other classes play together.
 
@@ -140,7 +140,7 @@ getRelationValue()
 
 #### `Support\Support\RelationBuilder`
 
-This class creates the Eloquent relations to the attribute values based on their type. If they are multi-valued, it will provide a `hasMany` relation, otherwise just a `hasOne`. This class creates closures that return this kind of relations and may be called straight from the entity model. These closures are stored in `$entityAttributeRelations` property in the `\Support\Helpers\Traits\Models\Attributable` trait.
+This class creates the Eloquent relations to the attribute values based on their type. If they are multi-valued, it will provide a `hasMany` relation, otherwise just a `hasOne`. This class creates closures that return this kind of relations and may be called straight from the entity model. These closures are stored in `$entityAttributeRelations` property in the `\Support\Traits\Models\Attributable` trait.
 
 
 ## Installation
@@ -167,12 +167,12 @@ This class creates the Eloquent relations to the attribute values based on their
 
 ### Add EAV to eloquent model
 
-**Facilitador Attributes** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add EAV functionality to your Eloquent model just use the `\Support\Helpers\Traits\Models\Attributable` trait like this:
+**Facilitador Attributes** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add EAV functionality to your Eloquent model just use the `\Support\Traits\Models\Attributable` trait like this:
 
 ```php
 class Company extends Model
 {
-    use \Support\Helpers\Traits\Models\Attributable;
+    use \Support\Traits\Models\Attributable;
 }
 ```
 
@@ -349,7 +349,7 @@ Eloquent ships with a `$with` which accepts an array of relationships that shoul
 ```php
 namespace App\Models;
 
-use Support\Helpers\Traits\Models\Attributable;
+use Support\Traits\Models\Attributable;
 
 class Company extends Model
 {

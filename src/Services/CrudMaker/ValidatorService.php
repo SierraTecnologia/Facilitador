@@ -3,7 +3,7 @@
 namespace Facilitador\Services\CrudMaker;
 
 use Exception;
-use Support\Helpers\Traits\Models\SchemaTrait;
+use Support\Traits\Models\SchemaTrait;
 
 /**
  * CRUD Validator.
