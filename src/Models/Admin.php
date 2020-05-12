@@ -30,7 +30,7 @@ class Admin extends \Facilitador\Models\User
 {
 //     // Note, not using the Authorizable trait because I've defined my own versions
 //     // for backwards compatability with Decoy 4 and also to have a tigher syntax.
-//     use Authenticatable, CanResetPassword, Traits\HasImages, Notifiable;
+//     use Authenticatable, CanResetPassword, \Support\Traits\Models\HasImages, Notifiable;
 
 //     /**
 //      * The table associated with the model.  Explicitly declaring so that sub

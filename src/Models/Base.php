@@ -33,8 +33,8 @@ abstract class Base extends \Support\Models\Base
         Sluggable,
         SluggableScopeHelpers,
         SupportsUploads,
-        Traits\CanSerializeTransform,
-        Traits\Exportable,
+        \Support\Traits\Models\CanSerializeTransform,
+        \Support\Traits\Models\Exportable,
         Loggable
     ;
 

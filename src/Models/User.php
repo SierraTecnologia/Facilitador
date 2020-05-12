@@ -49,7 +49,7 @@ class User extends Base implements
     CanResetPasswordContract,
     UserContract # Comentei pq deu erro
 {
-    use Authenticatable, CanResetPassword, Traits\HasImages;
+    use Authenticatable, CanResetPassword, \Support\Traits\Models\HasImages;
     use HasApiTokens, Notifiable;
     // use CanResetPassword;
 

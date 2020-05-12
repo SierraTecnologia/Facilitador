@@ -3,8 +3,8 @@
 namespace Facilitador\Models;
 
 // Dependencies
-use Facilitador\Models\Traits\Encodable;
-use Facilitador\Models\Traits\HasImages;
+use Support\Traits\Models\Encodable;
+use Support\Traits\Models\HasImages;
 use Bkwld\Library\Utils\File;
 use Config;
 use DB;

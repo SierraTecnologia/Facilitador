@@ -5,7 +5,7 @@ namespace Facilitador\Http\Controllers\User;
 use App\Services\Traits\ActivationTrait;
 use App\Models\Activation;
 
-class ActivateController extends SitecController
+class ActivateController extends Controller
 {
 
     use ActivationTrait;

@@ -4,7 +4,7 @@ namespace Facilitador\Models;
 
 use App\Models\Model;
 use SierraTecnologia\Cashier\Billable;
-// use App\Models\Traits\BusinessTrait;
+// use Support\Traits\Models\BusinessTrait;
 
 class UserMeta extends Model
 {

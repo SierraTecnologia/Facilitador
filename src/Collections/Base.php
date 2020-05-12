@@ -3,8 +3,8 @@
 namespace Facilitador\Collections;
 
 use Illuminate\Database\Eloquent\Collection;
-use Facilitador\Models\Traits\SerializeWithImages;
-use Facilitador\Models\Traits\CanSerializeTransform;
+use Support\Traits\Models\SerializeWithImages;
+use Support\Traits\Models\CanSerializeTransform;
 
 /**
  * The collection that is returned from queries on models that extend from

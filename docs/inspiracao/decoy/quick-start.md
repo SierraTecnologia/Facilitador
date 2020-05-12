@@ -46,7 +46,7 @@ You'll notice that the generated model has a bunch of commented out code by defa
 
 namespace App;
 use Facilitador\Models\Base;
-use Facilitador\Models\Traits\HasImages;
+use Support\Traits\Models\HasImages;
 
 class Article extends Base {
   use HasImages;

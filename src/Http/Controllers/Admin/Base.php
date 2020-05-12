@@ -34,7 +34,7 @@ use Bkwld\Library\Laravel\Validator as BkwldLibraryValidator;
  */
 class Base extends Controller
 {
-    use Traits\Exportable;
+    use \Support\Traits\Controllers\Exportable;
 
     //---------------------------------------------------------------------------
     // Default settings

@@ -5,7 +5,6 @@ namespace Facilitador\Http\Controllers\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Log;
-use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\BillingRequest;
 

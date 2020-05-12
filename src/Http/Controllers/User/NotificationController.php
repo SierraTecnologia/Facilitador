@@ -4,7 +4,6 @@ namespace Facilitador\Http\Controllers\User;
 
 use Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Services\NotificationService;
 use App\Http\Requests\NotificationRequest;
 

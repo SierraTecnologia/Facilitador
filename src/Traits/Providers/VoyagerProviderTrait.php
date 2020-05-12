@@ -60,13 +60,9 @@ trait VoyagerProviderTrait
         $this->registerAlertComponents();
         $this->registerFormFields();
 
-        if ($this->app->runningInConsole()) {
-            $this->registerPublishableResources();
-            $this->registerConsoleCommands();
-        }
-
         if (!$this->app->runningInConsole() || config('app.env') == 'testing') {
-            $this->registerAppCommands();
+
+            $this->registerPublishableResources();
         }
     }
 
@@ -265,21 +261,4 @@ trait VoyagerProviderTrait
         event(new FormFieldsRegistered($formFields));
     }
 
-    /**
-     * Register the commands accessible from the Console.
-     */
-    private function registerConsoleCommands()
-    {
-        $this->commands(\Facilitador\Commands\InstallCommand::class);
-        $this->commands(\Facilitador\Commands\ControllersCommand::class);
-        $this->commands(\Facilitador\Commands\AdminCommand::class);
-    }
-
-    /**
-     * Register the commands accessible from the App.
-     */
-    private function registerAppCommands()
-    {
-        $this->commands(\Facilitador\Commands\MakeModelCommand::class);
-    }
 }
