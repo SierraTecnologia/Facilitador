@@ -1,56 +1,52 @@
 <?php
 
-Route::post('pusher/auth', function() {
-  return auth()->user();
-});
+use Illuminate\Support\Str;
+use Facilitador\Events\Routing;
+use Facilitador\Events\RoutingAdmin;
+use Facilitador\Events\RoutingAdminAfter;
+use Facilitador\Events\RoutingAfter;
+use Facilitador\Facades\Facilitador;
 
-
-Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function()
-{
-    $a = 'user.';
-    Route::get('/', ['as' => $a . 'home', 'uses' => 'UserController@getHome']);
-
-    Route::group(['middleware' => 'activated'], function ()
-    {
-        $m = 'activated.';
-        Route::get('protected', ['as' => $m . 'protected', 'uses' => 'UserController@getProtected']);
-    });
-
-});
-
-Route::group(['middleware' => 'auth:all'], function()
-{
-    $a = 'authenticated.';
-    Route::get('/logout', ['as' => $a . 'logout', 'uses' => 'Auth\LoginController@logout']);
-    Route::get('/activate/{token}', ['as' => $a . 'activate', 'uses' => 'User\ActivateController@activate']);
-    Route::get('/activate', ['as' => $a . 'activation-resend', 'uses' => 'User\ActivateController@resend']);
-    Route::get('not-activated', ['as' => 'not-activated', 'uses' => function () {
-        return view('errors.not-activated');
-    }]);
-});
-
-
-Auth::routes(['login' => 'auth.login']);
-
+// Route::group(['prefix' => 'facilitador'], function () {
+//     Facilitador::routes();
+// });
 
 /*
 |--------------------------------------------------------------------------
-| User Routes
+| Facilitador Routes
 |--------------------------------------------------------------------------
+|
+| This file is where you may override any of the routes that are included
+| with Facilitador.
+|
 */
-Route::group(['middleware' => 'user', 'prefix' => 'user', 'as'=>'user.', 'namespace' => 'User'], function () {
- 
-    Route::group(['prefix' => 'notifications'], function () {
-        Route::get('/', 'NotificationController@index');
-        Route::get('{uuid}/read', 'NotificationController@read');
-        Route::delete('{uuid}/delete', 'NotificationController@delete');
-        Route::get('search', 'NotificationController@search');
+            
+
+Route::group(['as' => 'facilitador.'], function () {
+    event(new Routing());
+
+    Route::namespace('Auth')->group(function () {
+        Route::get('login', ['uses' => 'FacilitadorAuthController@login',     'as' => 'login']);
+        Route::post('login', ['uses' => 'FacilitadorAuthController@postLogin', 'as' => 'postlogin']);
     });
-    
-    Route::get('settings', 'SettingsController@settings');
-    Route::post('settings', 'SettingsController@update');
-    Route::get('password', 'PasswordController@password');
-    Route::post('password', 'PasswordController@update');
+
+    Route::namespace('User')->group(function () {
+        Route::group(['middleware' => 'admin.user'], function () {
+            event(new RoutingAdmin());
+
+            // Main Admin and Logout Route
+            Route::get('/', ['uses' => 'FacilitadorController@index',   'as' => 'dashboard']);
+            Route::post('logout', ['uses' => 'FacilitadorController@logout',  'as' => 'logout']);
+            Route::post('upload', ['uses' => 'FacilitadorController@upload',  'as' => 'upload']);
+
+            Route::get('profile', ['uses' => 'FacilitadorUserController@profile', 'as' => 'profile']);
+
+            event(new RoutingAdminAfter());
+        });
+
+        //Asset Routes
+        Route::get('facilitador-assets', ['uses' => 'FacilitadorController@assets', 'as' => 'facilitador_assets']);
+
+        event(new RoutingAfter());
+    });
 });
-
-

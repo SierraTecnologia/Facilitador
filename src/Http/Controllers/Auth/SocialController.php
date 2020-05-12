@@ -11,7 +11,7 @@ use App\Models\Social;
 use App\Models\User;
 use App\Models\Role;
 
-class SocialController extends SitecController
+class SocialController extends Controller
 {
 
     use ActivationTrait;

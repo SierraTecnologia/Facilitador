@@ -15,6 +15,11 @@ class AddUserSettings extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('settings')->nullable()->default(null)->after('remember_token');
+
+            // @todo verificar isso, add pra parar de dar erro
+
+            $table->string('locale')->nullable()->default('pt');
+            $table->string('locale_group')->nullable();
         });
     }
 
@@ -26,6 +31,8 @@ class AddUserSettings extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('locale_group');
+            $table->dropColumn('locale');
             $table->dropColumn('settings');
         });
     }

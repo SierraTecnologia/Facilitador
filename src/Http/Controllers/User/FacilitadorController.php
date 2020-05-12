@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Http\Controllers;
+namespace Facilitador\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

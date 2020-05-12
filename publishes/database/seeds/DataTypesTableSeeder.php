@@ -19,7 +19,7 @@ class DataTypesTableSeeder extends Seeder
                 'icon'                  => 'facilitador-person',
                 'model_name'            => 'Facilitador\\Models\\User',
                 'policy_name'           => 'Facilitador\\Policies\\UserPolicy',
-                'controller'            => 'Facilitador\\Http\\Controllers\\FacilitadorUserController',
+                'controller'            => 'Facilitador\\Http\\Controllers\\User\\FacilitadorUserController',
                 'generate_permissions'  => 1,
                 'description'           => '',
             ])->save();
