@@ -1,6 +1,6 @@
 <?php
 
-use Support\Discovers\Reliese\Meta\Blueprint;
+use Support\Components\Database\Meta\Blueprint;
 
 /**
  * Created by Cristian.
