@@ -74,7 +74,7 @@ class Router
         // Protected, admin routes
         Route::group([
             'prefix' => $this->dir,
-            // 'middleware' => 'facilitador.protected', //@todo voltar aqui
+            'middleware' => 'facilitador.protected', //@todo voltar aqui
         ], function () {
             $this->registerAdmins();
             $this->registerCommands();

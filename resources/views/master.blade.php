@@ -64,7 +64,9 @@
 </div>
 
 <?php
-if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'https://')) {
+if (!is_object(Auth::user())) {
+    $user_avatar = '';
+} else if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'https://')) {
     $user_avatar = Auth::user()->avatar;
 } else {
     $user_avatar = Facilitador::image(Auth::user()->avatar);

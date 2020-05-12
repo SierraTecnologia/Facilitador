@@ -5,6 +5,7 @@ namespace Facilitador\Routing;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use SierraTecnologia\Crypto\Services\Crypto;
+use Illuminate\Support\Facades\Route;
 
 /**
  * This class exists to help make links between pages in Decoy, which is
@@ -173,5 +174,28 @@ class UrlGenerator
             $page = '/'.Crypto::shareableEncrypt($data).$page;
         }
         return url(config('sitec.core.dir', 'admin').'/manager/'.Crypto::shareableEncrypt($slug).$page);
+    }
+
+    public static function routeForSlug($slug, $page = 'index', $data = false)
+    {
+        $route = 'facilitador.'.$slug.'.'.$page.'';
+        if (!Route::has($route)) {
+            return static::managerRoute($slug, $page, $data);
+            // return dd(
+            //     'Gerando UrlGenerator',
+            //     $route,
+            //     $data
+            // );
+        }
+
+        return route($route, $data);
+    }
+
+    public static function displayStringName($name)
+    {
+        if (Crypto::isCrypto($name)) {
+            $name = Crypto::shareableDecrypt($name);
+        }
+        return ucfirst(urldecode(\Support\Components\Coders\Parser\ParseClass::getClassName($name)));
     }
 }

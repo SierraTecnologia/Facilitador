@@ -74,6 +74,7 @@ return [
      */
     'locales' => [
         'en' => 'English',
+        'pt' => 'Português',
         // 'es' => 'Spanish',
         // 'fr' => 'French',
     ],
