@@ -179,7 +179,9 @@ class ModelService
             throw new Exception('Criptografia inválida ' . $this->modelClass);
         }
 
-        return Classes::getFinalClass($this->modelClass);
+        // return Classes::getFinalClass($this->modelClass);
+        // return Classes::getClassWithProcuracao($this->modelClass);
+        return $this->modelClass;
     }
 
     /**
