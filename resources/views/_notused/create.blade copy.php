@@ -19,7 +19,7 @@
                 <div class="row">
                     {!! Form::open(['route' => 'team.coberturas.store']) !!}
 
-                        @include('facilitador::repositories.fields')
+                        @include('facilitador::components.repositories.fields')
 
                     {!! Form::close() !!}
                 </div>

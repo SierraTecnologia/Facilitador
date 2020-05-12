@@ -46,7 +46,8 @@
                         </div>
                     </li>
                     <li class="divider"></li>
-                    <?php $nav_items = config('sitec.facilitador.dashboard.navbar_items'); ?>
+                    <?php $nav_items = (new \Support\Template\Mounters\SystemMount())->loadMenuForArray(); ?>
+                    <?php dd((new \Support\Template\Mounters\SystemMount())->loadMenuForArray()); ?>
                     @if(is_array($nav_items) && !empty($nav_items))
                     @foreach($nav_items as $name => $item)
                     <li {!! isset($item['classes']) && !empty($item['classes']) ? 'class="'.$item['classes'].'"' : '' !!}>

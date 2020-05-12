@@ -1,8 +1,8 @@
-@extends('facilitador::master')
+@extends('facilitador::layoult.voyager.master')
 
 @section('css')
 
-    @include('facilitador::compass.includes.styles')
+    @include('facilitador::tools.compass.includes.styles')
 
 @stop
 
@@ -70,7 +70,7 @@
 
                 <div class="collapse-content collapse in" id="fonts">
 
-                    @include('facilitador::compass.includes.fonts')
+                    @include('facilitador::tools.compass.includes.fonts')
 
                 </div>
 
@@ -80,14 +80,14 @@
           <div id="commands" class="tab-pane fade in @if($active_tab == 'commands'){!! 'active' !!}@endif">
             <h3><i class="facilitador-terminal"></i> {{ __('facilitador::compass.commands.title') }} <small>{{ __('facilitador::compass.commands.text') }}</small></h3>
             <div id="command_lists">
-                @include('facilitador::compass.includes.commands')
+                @include('facilitador::tools.compass.includes.commands')
             </div>
 
           </div>
           <div id="logs" class="tab-pane fade in @if($active_tab == 'logs'){!! 'active' !!}@endif">
             <div class="row">
 
-                @include('facilitador::compass.includes.logs')
+                @include('facilitador::tools.compass.includes.logs')
 
             </div>
           </div>

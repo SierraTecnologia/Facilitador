@@ -21,7 +21,7 @@
 
                    {!! Form::model($service->getModelService()->getModelClass(), ['url' => route('facilitador.index', [ $service->getModelService()->getCryptName(), $service->getCryptName()]), 'method' => 'patch']) !!}
 
-                        @include('facilitador::registers.fields')
+                        @include('facilitador::components.registers.fields')
 
                    {!! Form::close() !!}
                </div>

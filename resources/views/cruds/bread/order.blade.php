@@ -1,4 +1,4 @@
-@extends('facilitador::master')
+@extends('facilitador::layoult.voyager.master')
 
 @section('page_title', $dataType->getTranslatedAttribute('display_name_plural') . ' ' . __('facilitador::cruds.bread.order'))
 

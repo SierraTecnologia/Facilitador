@@ -79,7 +79,7 @@ class Elements extends Base
 
         // Set the breadcrumbs NOT include the locale/tab
         app('facilitador.breadcrumbs')->set([
-            route('facilitador::elements') => $this->title,
+            route('facilitador.elements') => $this->title,
         ]);
 
         // Render the view
@@ -272,7 +272,7 @@ class Elements extends Base
 
         // Redirect back to index
         return Redirect::to(URL::current())->with('success',
-            __('facilitador::elements.successfully_saved'));
+            __('facilitador::components.elements.successfully_saved'));
     }
 
     /**
@@ -329,7 +329,7 @@ class Elements extends Base
     public function field($key)
     {
         return View::make('facilitador::layouts.blank')
-            ->nest('content', 'facilitador::elements.field', [
+            ->nest('content', 'facilitador::components.elements.field', [
                 'element' => app('facilitador.elements')
                     ->localize(Facilitador::locale())
                     ->hydrate(true)
@@ -402,8 +402,8 @@ class Elements extends Base
      */
     public function __construct()
     {
-        $this->title = __('facilitador::elements.controller.title');
-        $this->description = __('facilitador::elements.controller.description');
+        $this->title = __('facilitador::components.elements.controller.title');
+        $this->description = __('facilitador::components.elements.controller.description');
 
         parent::__construct();
     }

@@ -96,7 +96,7 @@ class FacilitadorCompassController extends Controller
         // get the full list of artisan commands and store the output
         $commands = $this->getArtisanCommands();
 
-        return view('facilitador::compass.index', compact('logs', 'files', 'current_file', 'active_tab', 'commands', 'artisan_output'))->with($message);
+        return view('facilitador::tools.compass.index', compact('logs', 'files', 'current_file', 'active_tab', 'commands', 'artisan_output'))->with($message);
     }
 
     private function getArtisanCommands()

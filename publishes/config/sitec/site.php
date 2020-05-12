@@ -7,7 +7,7 @@ return [
      *
      * @var string
      */
-    'name' => config('app.name', 'Admin'),
+    'name' => config('app.name', 'SiravelAdmin'),
 
     /**
      * This generates the nav sidebar.  It is key-value pairs.  The key is always the
@@ -23,10 +23,10 @@ return [
      */
     'nav' => [
         // 'Content,book' => [
-        // 	'Articles' => '/admin/articles'
+        // 	'Articles' => '/siravel/articles'
         // ],
-        'Elements,leaf' => '/admin/elements',
-        'Redirects,new-window' => '/admin/redirect-rules',
+        'Elements,leaf' => '/siravel/elements',
+        'Redirects,new-window' => '/siravel/redirect-rules',
     ],
 
     /**
@@ -35,7 +35,7 @@ return [
      *
      * @var callable|string|null
      */
-    // 'post_login_redirect' => '/admin/admins',
+    // 'post_login_redirect' => '/siravel/admins',
 
     /**
      * Roles that super admins can assign other admins to on the admin edit page.

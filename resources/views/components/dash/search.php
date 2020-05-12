@@ -19,11 +19,11 @@
         <div class="box box-primary">
             <div class="btn-group">
                 <h1 class="pull-right">
-                    <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('facilitador.create', [$service->getModelService()->getCryptName()]) !!}">{!! trans('words.addNew') !!}</a>
+                    <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('facilitador.create') !!}">{!! trans('words.addNew') !!}</a>
                 </h1>
             </div>
             <div class="box-body">
-                    @include('facilitador::repositories.table', ['registros' => $registros, 'service' => $service] )
+                    @include('facilitador::components.repositories.table')
             </div>
         </div>
     </div>

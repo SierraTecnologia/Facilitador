@@ -30,7 +30,7 @@ class FacilitadorMediaController extends Controller
         // Check permission
         // $this->authorize('browse_media');
 
-        return Facilitador::view('facilitador::media.index');
+        return Facilitador::view('facilitador::tools.media.index');
     }
 
     public function files(Request $request)

@@ -25,11 +25,6 @@ use Facilitador\Facades\Facilitador;
 Route::group(['as' => 'facilitador.'], function () {
     event(new Routing());
 
-    Route::namespace('Auth')->group(function () {
-        Route::get('login', ['uses' => 'FacilitadorAuthController@login',     'as' => 'login']);
-        Route::post('login', ['uses' => 'FacilitadorAuthController@postLogin', 'as' => 'postlogin']);
-    });
-
     Route::namespace('User')->group(function () {
         Route::group(['middleware' => 'admin.user'], function () {
             event(new RoutingAdmin());

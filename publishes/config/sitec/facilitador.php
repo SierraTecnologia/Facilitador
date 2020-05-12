@@ -141,23 +141,7 @@ return [
     */
 
     'dashboard' => [
-        // Add custom list items to navbar's dropdown
-        'navbar_items' => [
-            'facilitador::generic.profile' => [
-                'route'      => 'facilitador.profile',
-                'classes'    => 'class-full-of-rum',
-                'icon_class' => 'facilitador-person',
-            ],
-            'facilitador::generic.home' => [
-                'route'        => '/',
-                'icon_class'   => 'facilitador-home',
-                'target_blank' => true,
-            ],
-            'facilitador::generic.logout' => [
-                'route'      => 'facilitador.logout',
-                'icon_class' => 'facilitador-power',
-            ],
-        ],
+
 
         'widgets' => [
             'Facilitador\\Widgets\\UserDimmer',

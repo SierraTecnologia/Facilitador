@@ -38,7 +38,7 @@ class AdminController extends Controller
         $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
         // dd($models, 'Debug AdminController');
         return view(
-            'facilitador::dash.home',
+            'facilitador::components.dash.home',
             compact('models', 'htmlGenerator')
         );
     }
@@ -54,7 +54,7 @@ class AdminController extends Controller
         $registros = $this->facilitadorService->search($request->user()->id, $request->search);
 
         return view(
-            'facilitador::dash.search',
+            'facilitador::components.dash.search',
             compact('registros')
         );
     }

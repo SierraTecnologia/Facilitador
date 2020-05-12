@@ -18,7 +18,7 @@
 	-if(($locales = Config::get('sitec.site.locales')) && count($locales) > 1)
 		%fieldset.locale
 			.legend
-				!= __('facilitador::elements.legend.locale')
+				!= __('facilitador::components.elements.legend.locale')
 				.btn-group.pull-right
 					%button.btn.btn-sm.outline.dropdown-toggle(type="button" data-toggle="dropdown" aria-expanded="false")
 						=Config::get('sitec.site.locales')[$locale]
@@ -26,7 +26,7 @@
 					%ul.dropdown-menu(role="menu")
 						-foreach($locales as $slug => $label)
 							%li(class=$slug==$locale?'disabled':null)
-								%a(href=route('facilitador::elements', $slug))
+								%a(href=route('facilitador.elements', $slug))
 									-if($slug==$locale)
 										%span.glyphicon.glyphicon-ok
 									=$label
@@ -68,6 +68,6 @@
 .controls.form-actions
 	%button.btn.btn-success.save(type="submit")
 		%span.glyphicon.glyphicon-file
-		!= __('facilitador::elements.footer.save')
+		!= __('facilitador::components.elements.footer.save')
 
 !=Former::close()

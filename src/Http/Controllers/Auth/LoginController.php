@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,7 @@ class LoginController extends Controller
 
     // use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, ValidatesRequests;
 
     /**
      * Create a new authentication controller instance.
@@ -36,7 +37,8 @@ class LoginController extends Controller
     public function __construct()
     {
         // $this->middleware('guest', ['except' => 'getLogout']);
-        $this->middleware('guest', ['except' => 'logout']);
+        // $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('facilitador.guest', ['except' => 'logout']);
     }
 
     /**
@@ -104,5 +106,60 @@ class LoginController extends Controller
             ->withInput();
     
 
+    }
+
+
+    /**
+     * Abaixo peguei do Decoy
+     */
+    /**
+     * Show the application login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        // Pass validation rules
+        Former::withRules(array(
+            'email'    => 'required|email',
+            'password' => 'required',
+        ));
+
+        // Show the login homepage
+        return view('facilitador::layouts.blank', [
+            'content' => view('facilitador::account.login'),
+        ]);
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        // Logout the session
+        Auth::logout();
+
+        // Redirect back to previous page so that switching users takes you back to
+        // your previous page.
+        $previous = url()->previous();
+        if ($previous == url('/')) {
+            return redirect(route('facilitador.account@login'));
+        }
+
+        return redirect($previous);
+    }
+
+    /**
+     * Get the post register / login redirect path. This is set to the login route
+     * so that the guest middleware can pick it up and redirect to the proper
+     * start page.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        return route('facilitador.account@login');
     }
 }

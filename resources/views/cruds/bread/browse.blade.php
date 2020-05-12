@@ -1,4 +1,4 @@
-@extends('facilitador::master')
+@extends('facilitador::layoult.voyager.master')
 
 @section('page_title', __('facilitador::generic.viewing').' '.$dataType->getTranslatedAttribute('display_name_plural'))
 
@@ -236,7 +236,7 @@
                                                             {{ __('facilitador::media.files_more', ['count' => (count($files) - 3)]) }}
                                                         @endif
                                                     @elseif (is_array($files) && count($files) == 0)
-                                                        {{ trans_choice('facilitador::media.files', 0) }}
+                                                        {{ trans_choice('facilitador::tools.media.files', 0) }}
                                                     @elseif ($data->{$row->field} != '')
                                                         @if (property_exists($row->details, 'show_as_images') && $row->details->show_as_images)
                                                             <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Facilitador::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:50px">
@@ -244,7 +244,7 @@
                                                             {{ $data->{$row->field} }}
                                                         @endif
                                                     @else
-                                                        {{ trans_choice('facilitador::media.files', 0) }}
+                                                        {{ trans_choice('facilitador::tools.media.files', 0) }}
                                                     @endif
                                                 @else
                                                     @include('facilitador::multilingual.input-hidden-bread-browse')

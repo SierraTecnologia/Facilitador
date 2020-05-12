@@ -1,4 +1,4 @@
-@extends('facilitador::master')
+@extends('facilitador::layoult.voyager.master')
 
 @section('page_title', __('facilitador::generic.viewing').' '.__('facilitador::generic.database'))
 

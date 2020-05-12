@@ -595,8 +595,8 @@
                             return;
                         }
                         if (content.length >= this.maxSelectedFiles && this.maxSelectedFiles > 0) {
-                            var msg_sing = "{{ trans_choice('facilitador::media.max_files_select', 1) }}";
-                            var msg_plur = "{{ trans_choice('facilitador::media.max_files_select', 2) }}";
+                            var msg_sing = "{{ trans_choice('facilitador::tools.media.max_files_select', 1) }}";
+                            var msg_plur = "{{ trans_choice('facilitador::tools.media.max_files_select', 2) }}";
                             if (this.maxSelectedFiles == 1) {
                                 toastr.error(msg_sing);
                             } else {
@@ -896,8 +896,8 @@
                             var content = JSON.parse(vm.hidden_element.value);
                             if (content.length < vm.minSelectedFiles) {
                                 e.preventDefault();
-                                var msg_sing = "{{ trans_choice('facilitador::media.min_files_select', 1) }}";
-                                var msg_plur = "{{ trans_choice('facilitador::media.min_files_select', 2) }}";
+                                var msg_sing = "{{ trans_choice('facilitador::tools.media.min_files_select', 1) }}";
+                                var msg_plur = "{{ trans_choice('facilitador::tools.media.min_files_select', 2) }}";
                                 if (vm.minSelectedFiles == 1) {
                                     toastr.error(msg_sing);
                                 } else {
@@ -907,7 +907,7 @@
                         } else {
                             if (vm.minSelectedFiles > 0 && vm.hidden_element.value == '') {
                                 e.preventDefault();
-                                toastr.error("{{ trans_choice('facilitador::media.min_files_select', 1) }}");
+                                toastr.error("{{ trans_choice('facilitador::tools.media.min_files_select', 1) }}");
                             }
                         }
                     }

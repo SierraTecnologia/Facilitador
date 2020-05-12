@@ -7,7 +7,7 @@
 					<?php foreach($subcommands as $name => $command): ?>
 						<tr data-js-view="task-method">
 							<td>
-								<a data-action="<?=route('facilitador::commands@execute', $command->getName())?>"
+								<a data-action="<?=route('facilitador.commands@execute', $command->getName())?>"
                                    class="btn btn-default"><?=__('facilitador::commands.execute')?></a>
 							</td>
 							<td>

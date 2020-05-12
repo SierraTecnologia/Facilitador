@@ -30,11 +30,11 @@
 
     </div>
 
-    @include('facilitador::dash.topbar', [
+    @include('facilitador::components.dash.topbar', [
     
     ])
 
-    @include('facilitador::dash.numbers', [
+    @include('facilitador::components.dash.numbers', [
         'models' => $models,
     ])
 

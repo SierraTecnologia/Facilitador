@@ -1,4 +1,4 @@
-@extends('facilitador::master')
+@extends('facilitador::layoult.voyager.master')
 
 @section('page_title', __('facilitador::generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->getTranslatedAttribute('display_name_singular'))
 

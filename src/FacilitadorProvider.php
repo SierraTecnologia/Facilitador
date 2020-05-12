@@ -68,6 +68,40 @@ class FacilitadorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
+        'Painel' => [
+            [
+                'text' => 'User',
+                'icon' => 'fas fa-fw fa-bomb',
+                'icon_color' => "blue",
+                'label_color' => "success",
+            ],
+            'User' => [
+                [
+                    'text'        => 'Home',
+                    'url'       => '/',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Profile',
+                    'route'       => 'facilitador.profile',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Logout',
+                    'route'       => 'facilitador.logout',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+            ],
+        ],
         'Admin' => [
             [
                 'text' => 'Site',
@@ -88,6 +122,14 @@ class FacilitadorProvider extends ServiceProvider
                 'label_color' => "success",
             ],
             'Site' => [
+                [
+                    'text'        => 'elements',
+                    'route'       => 'facilitador.elements',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
                 [
                     'text'        => 'settings',
                     'route'       => 'facilitador.settings.index',
@@ -124,8 +166,32 @@ class FacilitadorProvider extends ServiceProvider
                 //     'label_color' => 'success',
                 //     // 'access' => \App\Models\Role::$ADMIN
                 // ],
+                // [
+                //     'text'        => 'encode',
+                //     'route'       => 'facilitador.encode',
+                //     'icon'        => 'fas fa-fw fa-industry',
+                //     'icon_color'  => 'blue',
+                //     'label_color' => 'success',
+                //     // 'access' => \App\Models\Role::$ADMIN
+                // ],
                 [
-                    'text'        => 'hooks',
+                    'text'        => 'Workers',
+                    'route'       => 'facilitador.workers',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Commands',
+                    'route'       => 'facilitador.commands',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Hooks',
                     'route'       => 'facilitador.hooks',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
@@ -133,7 +199,7 @@ class FacilitadorProvider extends ServiceProvider
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
-                    'text'        => 'bread',
+                    'text'        => 'Bread',
                     'route'       => 'facilitador.bread.index',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
