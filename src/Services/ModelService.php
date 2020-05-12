@@ -72,8 +72,9 @@ class ModelService
                 // );
                 return false;
             }
+            $name = 
 
-            $this->modelDataType = $this->dataType('model_name', $this->getModelClass());
+            $this->modelDataType = $this->dataTypeForCode($eloquentService->getModelClass());
             if (!$this->modelDataType->exists) {
                 // Name e Slug sao unicos
                 $this->modelDataType->fill([
@@ -332,6 +333,17 @@ class ModelService
     protected function dataType($field, $for)
     {
         return DataType::firstOrNew([$field => $for]);
+    }
+    protected function dataTypeForCode($code)
+    {
+        if ($return = DataType::where('name', $code)->first()) {
+            return $return;
+        }
+        if ($return = DataType::where('slug', $code)->first()) {
+            return $return;
+        }
+
+        return $this->dataType('model_name', $code);
     }
     
 
