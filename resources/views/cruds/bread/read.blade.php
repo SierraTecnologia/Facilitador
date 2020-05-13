@@ -1,4 +1,4 @@
-@extends('facilitador::layoult.voyager.master')
+@extends('facilitador::layouts.voyager.master')
 
 @section('page_title', __('facilitador::generic.view').' '.$dataType->getTranslatedAttribute('display_name_singular'))
 

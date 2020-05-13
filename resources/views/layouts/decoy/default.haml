@@ -26,12 +26,12 @@
 	%body(class=Facilitador::bodyClass())
 
 		-# Sidebar
-		!= view('facilitador::layouts.sidebar._sidebar')
+		!= view('facilitador::layouts.decoy.sidebar._sidebar')
 
 		-# Header
-		!= view('facilitador::layouts._header', $__data)
-		!= view('facilitador::layouts._breadcrumbs', $__data)
-		!= view('facilitador::layouts._notifications', $__data)
+		!= view('facilitador::layouts.decoy._header', $__data)
+		!= view('facilitador::layouts.decoy._breadcrumbs', $__data)
+		!= view('facilitador::layouts.decoy._notifications', $__data)
 
 		-# The main page content
 		#main!= $content

@@ -3,6 +3,30 @@
 namespace Facilitador\Http\Controllers;
 
 use App\Http\Controllers\Controller as BaseController;
+use App;
+use URL;
+use View;
+use Facilitador;
+use Event;
+use Former;
+use Request;
+use FacilitadorURL;
+use Redirect;
+use Response;
+use stdClass;
+use Validator;
+use Illuminate\Support\Str;
+use Support\Interactions\Input\Search;
+use Bkwld\Library\Utils\File;
+use Facilitador\Input\Sidebar;
+use Support\Elements\Fields\Listing;
+use Support\Interactions\Input\Localize;
+use Facilitador\Input\Position;
+use Facilitador\Input\NestedModels;
+use Facilitador\Input\ModelValidator;
+use Facilitador\Models\Base as BaseModel;
+use Facilitador\Exceptions\ValidationFail;
+use Bkwld\Library\Laravel\Validator as BkwldLibraryValidator;
 
 class Controller extends BaseController
 {
@@ -92,5 +116,55 @@ class Controller extends BaseController
 
         // Return the layout View
         return $this->layout;
+    }
+
+    //---------------------------------------------------------------------------
+    // Getter/setter
+    //---------------------------------------------------------------------------
+
+    /**
+     * Get the controller name only, without the namespace (like Admin\) or
+     * suffix (like Controller).
+     *
+     * @param  string $class ex: App\Http\Controllers\Admin\News
+     * @return string ex: News
+     */
+    public function controllerName($class = null)
+    {
+        $name = $class ? $class : get_class($this);
+        $name = preg_replace('#^('.preg_quote('Facilitador\Http\Controllers\Admin\\')
+            .'|'.preg_quote('App\Http\Controllers\Admin\\').')#', '', $name);
+
+        return $name;
+    }
+
+    /**
+     * Get the title for the controller based on the controller name.  Basically,
+     * it's a de-studdly-er
+     *
+     * @param  string $controller_name ex: 'Admins' or 'CarLovers'
+     * @return string ex: 'Admins' or 'Car Lovers'
+     */
+    public function title($controller_name = null)
+    {
+         // For when this is invoked as a getter for $this->title
+        if (!$controller_name) {
+            return $this->title;
+        }
+
+        // Do the de-studlying
+        preg_match_all('#[a-z]+|[A-Z][a-z]*#', $controller_name, $matches);
+
+        return implode(" ", $matches[0]);
+    }
+
+    /**
+     * Get the description for a controller
+     *
+     * @return string
+     */
+    public function description()
+    {
+        return $this->description;
     }
 }

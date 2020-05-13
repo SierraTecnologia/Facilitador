@@ -10,26 +10,6 @@ return [
     'name' => config('app.name', 'SiravelAdmin'),
 
     /**
-     * This generates the nav sidebar.  It is key-value pairs.  The key is always the
-     * label for the nav item.  The value may be either an array of label-url pairs or
-     * a string URL.  The URL to an index view will use slugs that are the plural of
-     * the model name.  For instance, the Article model can be found at /admin/articles
-     *
-     * In addition, you may append an icon name after a label, delimited by
-     * a comma.  The icon name should be the suffix of a Bootstrap Glyphicon.  For example,
-     * to show the `glyphicon-book` icon, just append `,book` to the end of the label.
-     *
-     * @var callable|array
-     */
-    'nav' => [
-        // 'Content,book' => [
-        // 	'Articles' => '/siravel/articles'
-        // ],
-        'Elements,leaf' => '/siravel/elements',
-        'Redirects,new-window' => '/siravel/redirect-rules',
-    ],
-
-    /**
      * After a succesful login, this is the absolute path or url that should be
      * redirected to.  Make falsey to redirect to the first page in the nav
      *

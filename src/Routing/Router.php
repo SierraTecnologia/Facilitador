@@ -113,11 +113,11 @@ class Router
          */
         Route::get('login', [
             'uses' => '\Facilitador\Http\Controllers\Auth\FacilitadorAuthController@login',
-            'as' => 'login'
+            'as' => 'facilitador.login'
         ]);
         Route::post('login', [
             'uses' => '\Facilitador\Http\Controllers\Auth\FacilitadorAuthController@postLogin',
-            'as' => 'postlogin'
+            'as' => 'facilitador.postlogin'
         ]);
     }
 

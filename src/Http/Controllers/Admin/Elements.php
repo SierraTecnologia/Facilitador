@@ -272,7 +272,7 @@ class Elements extends Base
 
         // Redirect back to index
         return Redirect::to(URL::current())->with('success',
-            __('facilitador::components.elements.successfully_saved'));
+            __('facilitador::elements.successfully_saved'));
     }
 
     /**
@@ -402,8 +402,8 @@ class Elements extends Base
      */
     public function __construct()
     {
-        $this->title = __('facilitador::components.elements.controller.title');
-        $this->description = __('facilitador::components.elements.controller.description');
+        $this->title = __('facilitador::elements.controller.title');
+        $this->description = __('facilitador::elements.controller.description');
 
         parent::__construct();
     }

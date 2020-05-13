@@ -3,7 +3,7 @@
     $add  = is_null($dataTypeContent->getKey());
 @endphp
 
-@extends('facilitador::layoult.voyager.master')
+@extends('facilitador::layouts.voyager.master')
 
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -32,7 +32,7 @@ class Auth
 
         // Determine the action and controller differently depending on how the
         // request is routed.
-        if (Route::is('facilitador::wildcard')) {
+        if (Route::is('facilitador.wildcard')) {
             list($action, $controller) = $this->dectectFromWildcardRouter();
         } else {
             list($action, $controller) = $this->dectectFromExplicitRoute();

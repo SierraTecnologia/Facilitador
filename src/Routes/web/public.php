@@ -23,19 +23,11 @@ use Facilitador\Facades\Facilitador;
             
 
 Route::group(['as' => 'facilitador.'], function () {
+    Route::namespace('NoRestrict')->group(function () {
+        // Route::group(['middleware' => 'admin.user'], function () {
 
-    Route::namespace('User')->group(function () {
-        Route::group(['middleware' => 'admin.user'], function () {
-            event(new RoutingAdmin());
+        //Asset Routes
+        Route::get('facilitador-assets', ['uses' => 'SitecFeatureController@assets', 'as' => 'facilitador_assets']);
 
-            // Main Admin and Logout Route
-            Route::get('/', ['uses' => 'FacilitadorController@index',   'as' => 'dashboard']);
-            Route::post('logout', ['uses' => 'FacilitadorController@logout',  'as' => 'logout']);
-            Route::post('upload', ['uses' => 'FacilitadorController@upload',  'as' => 'upload']);
-
-            Route::get('profile', ['uses' => 'FacilitadorUserController@profile', 'as' => 'profile']);
-
-            event(new RoutingAdminAfter());
-        });
     });
 });

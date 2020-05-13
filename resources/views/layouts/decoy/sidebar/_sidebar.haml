@@ -1,7 +1,7 @@
 -if(!app('facilitador.user')) return;
 
 .sidebar
-	!= View::make('facilitador::layouts.sidebar._account')->render()
-	!= View::make('facilitador::layouts.sidebar._nav')->render()
+	!= View::make('facilitador::layouts.decoy.sidebar._account')->render()
+	!= View::make('facilitador::layouts.decoy.sidebar._nav')->render()
 
-!= View::make('facilitador::layouts.sidebar._bottom')->render()
+!= View::make('facilitador::layouts.decoy.sidebar._bottom')->render()

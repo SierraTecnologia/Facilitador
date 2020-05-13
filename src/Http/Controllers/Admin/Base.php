@@ -168,51 +168,6 @@ class Base extends BaseController
     // Getter/setter
     //---------------------------------------------------------------------------
 
-    /**
-     * Get the controller name only, without the namespace (like Admin\) or
-     * suffix (like Controller).
-     *
-     * @param  string $class ex: App\Http\Controllers\Admin\News
-     * @return string ex: News
-     */
-    public function controllerName($class = null)
-    {
-        $name = $class ? $class : get_class($this);
-        $name = preg_replace('#^('.preg_quote('Facilitador\Http\Controllers\Admin\\')
-            .'|'.preg_quote('App\Http\Controllers\Admin\\').')#', '', $name);
-
-        return $name;
-    }
-
-    /**
-     * Get the title for the controller based on the controller name.  Basically,
-     * it's a de-studdly-er
-     *
-     * @param  string $controller_name ex: 'Admins' or 'CarLovers'
-     * @return string ex: 'Admins' or 'Car Lovers'
-     */
-    public function title($controller_name = null)
-    {
-         // For when this is invoked as a getter for $this->title
-        if (!$controller_name) {
-            return $this->title;
-        }
-
-        // Do the de-studlying
-        preg_match_all('#[a-z]+|[A-Z][a-z]*#', $controller_name, $matches);
-
-        return implode(" ", $matches[0]);
-    }
-
-    /**
-     * Get the description for a controller
-     *
-     * @return string
-     */
-    public function description()
-    {
-        return $this->description;
-    }
 
     /**
      * Get the columns for a controller
@@ -455,7 +410,7 @@ class Base extends BaseController
         $item->fill($input);
 
         // Validate and save.
-        $this->validate($item);
+        $this->validateEloquentData($item);
         if ($this->parent) {
             $this->parent->{$this->parent_to_self}()->save($item);
         } else {
@@ -545,7 +500,7 @@ class Base extends BaseController
         }
 
         // Save the record
-        $this->validate($item);
+        $this->validateEloquentData($item);
         $item->save();
 
         // Redirect to the edit view
@@ -837,7 +792,7 @@ class Base extends BaseController
      *
      * @throws ValidationFail
      */
-    protected function validate($data, $rules = null, $messages = [])
+    public function validateEloquentData($data, $rules = null, $messages = [])
     {
         // A request may be passed in when using Laravel traits, like how resetting
         // passwords work.  Get the input from it
@@ -868,7 +823,7 @@ class Base extends BaseController
 
         // Build the validation instance and fire the intiating event.
         if ($model) {
-            (new ModelValidator)->validate($model, $rules, $messages);
+            (new ModelValidator)->validateEloquentData($model, $rules, $messages);
         } else {
             $messages = array_merge(BkwldLibraryValidator::$messages, $messages);
             $validation = Validator::make($data, $rules, $messages);

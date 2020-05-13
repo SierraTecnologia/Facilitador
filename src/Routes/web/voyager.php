@@ -24,7 +24,6 @@ use Facilitador\Facades\Facilitador;
 Route::namespace('System')->group(function () {
 
     Route::group(['as' => 'facilitador.'], function () {
-        event(new Routing());
 
         Route::group(['middleware' => 'admin.user'], function () {
             event(new RoutingAdmin());
@@ -161,6 +160,5 @@ Route::namespace('System')->group(function () {
             event(new RoutingAdminAfter());
         });
 
-        event(new RoutingAfter());
     });
 });

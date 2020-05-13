@@ -131,6 +131,14 @@ class FacilitadorProvider extends ServiceProvider
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
+                    'text'        => 'Redirects',
+                    'url'       => '/siravel/redirect-rules',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
                     'text'        => 'settings',
                     'route'       => 'facilitador.settings.index',
                     'icon'        => 'fas fa-fw fa-industry',

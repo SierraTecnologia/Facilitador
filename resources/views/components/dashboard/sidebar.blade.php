@@ -19,12 +19,14 @@
                  style="background-image:url({{ Facilitador::image( Facilitador::setting('admin.bg_image'), facilitador_asset('images/bg.jpg') ) }}); background-size: cover; background-position: 0px;">
                 <div class="dimmer"></div>
                 <div class="panel-content">
-                    <img src="{{ $user_avatar }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
-                    <h4>{{ ucwords(Auth::user()->name) }}</h4>
-                    <p>{{ Auth::user()->email }}</p>
+                    @if(Auth::user())
+                        <img src="{{ $user_avatar }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
+                        <h4>{{ ucwords(Auth::user()->name) }}</h4>
+                        <p>{{ Auth::user()->email }}</p>
 
-                    <a href="{{ route('facilitador.profile') }}" class="btn btn-primary">{{ __('facilitador::generic.profile') }}</a>
-                    <div style="clear:both"></div>
+                        <a href="{{ route('facilitador.profile') }}" class="btn btn-primary">{{ __('facilitador::generic.profile') }}</a>
+                        <div style="clear:both"></div>
+                    @endif
                 </div>
             </div>
 

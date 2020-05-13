@@ -1,4 +1,4 @@
-@extends('facilitador::layoult.voyager.master')
+@extends('facilitador::layouts.voyager.master')
 
 @section('css')
 
