@@ -110,13 +110,7 @@ class FacilitadorProvider extends ServiceProvider
                 'label_color' => "success",
             ],
             [
-                'text' => 'Siravel',
-                'icon' => 'fas fa-fw fa-bomb',
-                'icon_color' => "blue",
-                'label_color' => "success",
-            ],
-            [
-                'text' => 'System',
+                'text' => 'Tools',
                 'icon' => 'fas fa-fw fa-bomb',
                 'icon_color' => "blue",
                 'label_color' => "success",
@@ -147,25 +141,7 @@ class FacilitadorProvider extends ServiceProvider
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
             ],
-            'Siravel' => [
-                [
-                    'text'        => 'Decoy',
-                    'url'         => 'admin',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'Manager',
-                    'route'       => 'facilitador.dash',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-            ],
-            'System' => [
+            'Tools' => [
                 // [
                 //     'text'        => 'Tools',
                 //     'route'       => 'facilitador.hooks',
@@ -201,6 +177,48 @@ class FacilitadorProvider extends ServiceProvider
                 [
                     'text'        => 'Hooks',
                     'route'       => 'facilitador.hooks',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+            ],
+        ],
+        'System' => [
+            [
+                'text' => 'Information',
+                'icon' => 'fas fa-fw fa-bomb',
+                'icon_color' => "blue",
+                'label_color' => "success",
+            ],
+            [
+                'text' => 'Manager',
+                'icon' => 'fas fa-fw fa-bomb',
+                'icon_color' => "blue",
+                'label_color' => "success",
+            ],
+            'Information' => [
+                [
+                    'text'        => 'Decoy',
+                    'url'         => 'admin',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Manager',
+                    'route'       => 'facilitador.dash',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+            ],
+            'Manager' => [
+                [
+                    'text'        => 'Manager Errors',
+                    'route'       => 'facilitador.dash',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
