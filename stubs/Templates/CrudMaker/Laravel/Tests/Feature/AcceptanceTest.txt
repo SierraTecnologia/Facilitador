@@ -19,7 +19,7 @@ class _camel_case_AcceptanceTest extends TestCase
         $this->_camel_case_Edited = factory(_namespace_model_\_camel_case_::class)->make([
             // _camel_case_ table data
         ]);
-        $user = factory(_app_namespace_Models\config('sitec.core.models.user', \App\Models\User::class))->make();
+        $user = factory(_app_namespace_Models\\Illuminate\Support\Facades\Config::get('sitec.core.models.user', \App\Models\User::class))->make();
         $this->actor = $this->actingAs($user);
     }
 

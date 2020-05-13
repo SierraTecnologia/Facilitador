@@ -33,7 +33,7 @@ class FacilitadorService
     public function __construct($config = false)
     {
         if (!$this->config = $config) {
-            $this->config = config('sitec.discover.models', []);
+            $this->config = \Illuminate\Support\Facades\Config::get('sitec.discover.models', []);
         }
         $this->getModelServicesToArray(false);
     }

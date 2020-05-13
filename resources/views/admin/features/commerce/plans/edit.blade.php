@@ -28,21 +28,21 @@
                 </div>
             </div>
             <div class="col-md-6">
-                {!! Form::model($plan, ['route' => [config('cms.backend-route-prefix', 'cms').'.plans.update', $plan->id], 'method' => 'patch']) !!}
+                {!! Form::model($plan, ['route' => [\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.plans.update', $plan->id], 'method' => 'patch']) !!}
 
-                {!! FormMaker::setColumns(2)->fromObject($plan, config('commerce.forms.plans-edit')) !!}
+                {!! FormMaker::setColumns(2)->fromObject($plan, \Illuminate\Support\Facades\Config::get('commerce.forms.plans-edit')) !!}
 
                 {!! Form::submit('Update', ['class' => 'btn btn-primary pull-right']) !!}
 
                 {!! Form::close() !!}
 
                 @if ($plan->enabled)
-                    <a href="{{ url(config('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/disable') }}" class="btn btn-warning pull-right raw-margin-right-16">Disable</a>
+                    <a href="{{ url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/disable') }}" class="btn btn-warning pull-right raw-margin-right-16">Disable</a>
                 @else
-                    <a href="{{ url(config('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/enable') }}" class="btn btn-outline-success pull-right raw-margin-right-16">Enable</a>
+                    <a href="{{ url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/enable') }}" class="btn btn-outline-success pull-right raw-margin-right-16">Enable</a>
                 @endif
 
-                <form id="deletePlanForm" method="post" action="{!! url(config('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id) !!}">
+                <form id="deletePlanForm" method="post" action="{!! url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id) !!}">
                     {!! csrf_field() !!}
                     {!! method_field('DELETE') !!}
                     <button class="btn delete-plan-btn btn-danger pull-left" type="submit"><i class="fa fa-trash"></i> Delete</button>

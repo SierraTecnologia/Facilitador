@@ -178,8 +178,8 @@ class Facilitador
 
     public function formFields()
     {
-        $connection = config('database.default');
-        $driver = config("database.connections.{$connection}.driver", 'mysql');
+        $connection = \Illuminate\Support\Facades\Config::get('database.default');
+        $driver = \Illuminate\Support\Facades\Config::get("database.connections.{$connection}.driver", 'mysql');
 
         return collect($this->formFields)->filter(function ($after) use ($driver) {
             return $after->supports($driver);
@@ -209,7 +209,7 @@ class Facilitador
      */
     public function dimmers()
     {
-        $widgetClasses = config('sitec.facilitador.dashboard.widgets');
+        $widgetClasses = \Illuminate\Support\Facades\Config::get('sitec.facilitador.dashboard.widgets');
         $dimmers = Widget::group('facilitador::dimmers');
 
         foreach ($widgetClasses as $widgetClass) {
@@ -225,7 +225,7 @@ class Facilitador
 
     public function setting($key, $default = null)
     {
-        $globalCache = config('sitec.facilitador.settings.cache', false);
+        $globalCache = \Illuminate\Support\Facades\Config::get('sitec.facilitador.settings.cache', false);
 
         if ($globalCache && Cache::tags('settings')->has($key)) {
             return Cache::tags('settings')->get($key);
@@ -261,7 +261,7 @@ class Facilitador
     public function image($file, $default = '')
     {
         if (!empty($file)) {
-            return str_replace('\\', '/', Storage::disk(config('sitec.facilitador.storage.disk'))->url($file));
+            return str_replace('\\', '/', Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->url($file));
         }
 
         return $default;
@@ -317,7 +317,7 @@ class Facilitador
      */
     public function translatable($model)
     {
-        if (!config('sitec.facilitador.multilingual.enabled')) {
+        if (!\Illuminate\Support\Facades\Config::get('sitec.facilitador.multilingual.enabled')) {
             return false;
         }
 

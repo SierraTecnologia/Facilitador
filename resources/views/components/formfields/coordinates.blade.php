@@ -16,11 +16,11 @@
     <coordinates
         inline-template
         ref="coordinates"
-        api-key="{{ config('sitec.facilitador.googlemaps.key') }}"
-        :points='@json($dataTypeContent->getCoordinates() && count($dataTypeContent->getCoordinates()) ? $dataTypeContent->getCoordinates() : [[ 'lat' => config('sitec.facilitador.googlemaps.center.lat'), 'lng' => config('sitec.facilitador.googlemaps.center.lng') ]])'
+        api-key="{{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.googlemaps.key') }}"
+        :points='@json($dataTypeContent->getCoordinates() && count($dataTypeContent->getCoordinates()) ? $dataTypeContent->getCoordinates() : [[ 'lat' => \Illuminate\Support\Facades\Config::get('sitec.facilitador.googlemaps.center.lat'), 'lng' => \Illuminate\Support\Facades\Config::get('sitec.facilitador.googlemaps.center.lng') ]])'
         :show-autocomplete="{{ $showAutocomplete }}"
         :show-lat-lng="{{ $showLatLng }}"
-        :zoom={{ config('sitec.facilitador.googlemaps.zoom') }}
+        :zoom={{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.googlemaps.zoom') }}
     >
         <div>
             <div class="form-group">

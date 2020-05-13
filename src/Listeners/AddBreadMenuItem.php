@@ -26,8 +26,8 @@ class AddBreadMenuItem
      */
     public function handle(BreadAdded $bread)
     {
-        if (config('sitec.facilitador.bread.add_menu_item') && file_exists(base_path('routes/web.php'))) {
-            $menu = Facilitador::model('Menu')->where('name', config('sitec.facilitador.bread.default_menu'))->firstOrFail();
+        if (\Illuminate\Support\Facades\Config::get('sitec.facilitador.bread.add_menu_item') && file_exists(base_path('routes/web.php'))) {
+            $menu = Facilitador::model('Menu')->where('name', \Illuminate\Support\Facades\Config::get('sitec.facilitador.bread.default_menu'))->firstOrFail();
 
             $menuItem = Facilitador::model('MenuItem')->firstOrNew([
                 'menu_id' => $menu->id,

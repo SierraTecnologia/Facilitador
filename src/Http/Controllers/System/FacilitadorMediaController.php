@@ -22,7 +22,7 @@ class FacilitadorMediaController extends Controller
 
     public function __construct()
     {
-        $this->filesystem = config('sitec.facilitador.storage.disk');
+        $this->filesystem = \Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk');
     }
 
     public function index()
@@ -68,7 +68,7 @@ class FacilitadorMediaController extends Controller
                     'last_modified' => '',
                 ];
             } else {
-                if (empty(pathinfo($item['path'], PATHINFO_FILENAME)) && !config('sitec.facilitador.hidden_files')) {
+                if (empty(pathinfo($item['path'], PATHINFO_FILENAME)) && !\Illuminate\Support\Facades\Config::get('sitec.facilitador.hidden_files')) {
                     continue;
                 }
                 // Its a thumbnail and thumbnails should be hidden
@@ -222,7 +222,7 @@ class FacilitadorMediaController extends Controller
         try {
             $realPath = Storage::disk($this->filesystem)->getDriver()->getAdapter()->getPathPrefix();
 
-            $allowedMimeTypes = config('sitec.facilitador.media.allowed_mimetypes', '*');
+            $allowedMimeTypes = \Illuminate\Support\Facades\Config::get('sitec.facilitador.media.allowed_mimetypes', '*');
             if ($allowedMimeTypes != '*' && (is_array($allowedMimeTypes) && !in_array($request->file->getMimeType(), $allowedMimeTypes))) {
                 throw new Exception(__('facilitador::generic.mimetype_not_allowed'));
             }

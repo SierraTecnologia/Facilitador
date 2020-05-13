@@ -50,11 +50,11 @@ class ApiController extends SitecController
         }
 
         if (Schema::hasColumn(str_plural($this->modelName), 'published_at')) {
-            $query = $query->where('published_at', '<=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'));
+            $query = $query->where('published_at', '<=', Carbon::now(\Illuminate\Support\Facades\Config::get('app.timezone'))->format('Y-m-d H:i:s'));
         }
 
         if (Schema::hasColumn(str_plural($this->modelName), 'finished_at')) {
-            $query = $query->where('finished_at', '>=', Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s'));
+            $query = $query->where('finished_at', '>=', Carbon::now(\Illuminate\Support\Facades\Config::get('app.timezone'))->format('Y-m-d H:i:s'));
         }
 
         return $query

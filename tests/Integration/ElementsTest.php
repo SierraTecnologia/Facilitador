@@ -19,7 +19,7 @@ class ElementsTest extends TestCase
         $this->auth();
 
         // Disable localization for these tests
-        config()->set('facilitador.site.locales', [
+        \Illuminate\Support\Facades\Config::get()->set('facilitador.site.locales', [
             'en' => 'English',
         ]);
     }

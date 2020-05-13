@@ -42,12 +42,12 @@
         </div>
 
         <div class="row">
-            <div class="@if (config('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
+            <div class="@if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
                 {!! Form::model($blog, ['route' => ['admin.blog.update', $blog->id], 'method' => 'patch', 'class' => 'edit', 'files' => true]) !!}
 
                     <input type="hidden" name="lang" value="{{ request('lang') }}">
 
-                    {!! FormMaker::setColumns(3)->fromObject($blog->asObject(), config('cms.forms.blog.identity')) !!}
+                    {!! FormMaker::setColumns(3)->fromObject($blog->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.blog.identity')) !!}
 
                     <div class="form-group">
                         <label for="Template">Template</label>
@@ -64,7 +64,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            {!! FormMaker::setColumns(1)->fromObject($blog->asObject(), config('cms.forms.blog.content')) !!}
+                            {!! FormMaker::setColumns(1)->fromObject($blog->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.blog.content')) !!}
                         </div>
                         <div class="col-md-6">
                             @if ($blog->hero_image)
@@ -80,10 +80,10 @@
 
                     <div class="row">
                         <div class="col-md-12 mt-4">
-                            {!! FormMaker::setColumns(2)->fromObject($blog->asObject(), config('cms.forms.blog.seo')) !!}
+                            {!! FormMaker::setColumns(2)->fromObject($blog->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.blog.seo')) !!}
                         </div>
                     </div>
-                    {!! FormMaker::setColumns(2)->fromObject($blog->asObject(), config('cms.forms.blog.publish')) !!}
+                    {!! FormMaker::setColumns(2)->fromObject($blog->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.blog.publish')) !!}
 
                     @include('admin.features.blocks', ['item' => $blog->asObject()])
 
@@ -94,7 +94,7 @@
 
                 {!! Form::close() !!}
             </div>
-            @if (config('cms.live-preview', false))
+            @if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false))
                 <div class="col-md-6 hidden-sm hidden-xs">
                     <div id="wrap">
                         @if (! cms()->isDefaultLanguage())

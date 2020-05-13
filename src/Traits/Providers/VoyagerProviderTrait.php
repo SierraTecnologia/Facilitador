@@ -52,7 +52,7 @@ trait VoyagerProviderTrait
         });
 
         $this->app->singleton('FacilitadorGuard', function () {
-            return config('auth.defaults.guard', 'web');
+            return \Illuminate\Support\Facades\Config::get('auth.defaults.guard', 'web');
         });
 
         $this->loadHelpers();
@@ -60,7 +60,7 @@ trait VoyagerProviderTrait
         $this->registerAlertComponents();
         $this->registerFormFields();
 
-        if (!$this->app->runningInConsole() || config('app.env') == 'testing') {
+        if (!$this->app->runningInConsole() || \Illuminate\Support\Facades\Config::get('app.env') == 'testing') {
 
             $this->registerPublishableResources();
         }
@@ -73,12 +73,12 @@ trait VoyagerProviderTrait
      */
     public function voyagerBoot(Router $router, Dispatcher $event)
     {
-        if (config('sitec.facilitador.user.add_default_role_on_register')) {
+        if (\Illuminate\Support\Facades\Config::get('sitec.facilitador.user.add_default_role_on_register')) {
             $model = Auth::guard(app('FacilitadorGuard'))->getProvider()->getModel();
             call_user_func($model.'::created', function ($user) use ($model) {
                 if (is_null($user->role_id)) {
                     call_user_func($model.'::findOrFail', $user->id)
-                        ->setRole(config('sitec.facilitador.user.default_role'))
+                        ->setRole(\Illuminate\Support\Facades\Config::get('sitec.facilitador.user.default_role'))
                         ->save();
                 }
             });
@@ -134,7 +134,7 @@ trait VoyagerProviderTrait
             return;
         }
 
-        $storage_disk = (!empty(config('sitec.facilitador.storage.disk'))) ? config('sitec.facilitador.storage.disk') : 'public';
+        $storage_disk = (!empty(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))) ? \Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk') : 'public';
 
         if (request()->has('fix-missing-storage-symlink')) {
             if (file_exists(public_path('storage'))) {

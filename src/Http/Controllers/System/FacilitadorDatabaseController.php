@@ -68,20 +68,20 @@ class FacilitadorDatabaseController extends Controller
         // $this->authorize('browse_database');
 
         try {
-            $conn = 'database.connections.'.config('database.default');
+            $conn = 'database.connections.'.\Illuminate\Support\Facades\Config::get('database.default');
             Type::registerCustomPlatformTypes();
 
             $table = $request->table;
             if (!is_array($request->table)) {
                 $table = json_decode($request->table, true);
             }
-            $table['options']['collate'] = config($conn.'.collation', 'utf8mb4_unicode_ci');
-            $table['options']['charset'] = config($conn.'.charset', 'utf8mb4');
+            $table['options']['collate'] = \Illuminate\Support\Facades\Config::get($conn.'.collation', 'utf8mb4_unicode_ci');
+            $table['options']['charset'] = \Illuminate\Support\Facades\Config::get($conn.'.charset', 'utf8mb4');
             $table = Table::make($table);
             SchemaManager::createTable($table);
 
             if (isset($request->create_model) && $request->create_model == 'on') {
-                $modelNamespace = config('sitec.facilitador.models.namespace', app()->getNamespace());
+                $modelNamespace = \Illuminate\Support\Facades\Config::get('sitec.facilitador.models.namespace', app()->getNamespace());
                 $params = [
                     'name' => $modelNamespace.Str::studly(Str::singular($table->name)),
                 ];

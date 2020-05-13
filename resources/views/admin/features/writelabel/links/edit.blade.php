@@ -23,7 +23,7 @@
 
             <input type="hidden" name="lang" value="{{ request('lang') }}">
 
-            {!! FormMaker::fromObject($links->asObject(), config('cms.forms.link')) !!}
+            {!! FormMaker::fromObject($links->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.link')) !!}
 
             <div class="form-group" style="display: none;">
                 <label for="Page_id">Page</label>

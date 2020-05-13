@@ -15,7 +15,7 @@
     <div class="col-md-12">
         {!! Form::model($files, ['route' => ['admin.files.update', $files->id], 'files' => true, 'method' => 'patch', 'class' => 'edit']) !!}
 
-            {!! FormMaker::setColumns(2)->fromObject($files, config('cms.forms.file-edit')) !!}
+            {!! FormMaker::setColumns(2)->fromObject($files, \Illuminate\Support\Facades\Config::get('cms.forms.file-edit')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! url('admin/'.'files') !!}" class="btn btn-secondary raw-left">Cancel</a>

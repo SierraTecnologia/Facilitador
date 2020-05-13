@@ -26,7 +26,7 @@ class ClearCachedSettingValue
      */
     public function handle(SettingUpdated $event)
     {
-        if (config('sitec.facilitador.settings.cache', false) === true) {
+        if (\Illuminate\Support\Facades\Config::get('sitec.facilitador.settings.cache', false) === true) {
             Cache::tags('settings')->forget($event->setting->key);
         }
     }

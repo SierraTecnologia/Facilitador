@@ -74,7 +74,7 @@ class InputMaker
         $defaultConfig = include __DIR__.'/../../../publishes/config/form-maker.php';
 
         if (is_null($class)) {
-            $class = config('form-maker.form.form-class', 'form-control');
+            $class = \Illuminate\Support\Facades\Config::get('form-maker.form.form-class', 'form-control');
         }
         
         $inputConfig = [
@@ -141,7 +141,7 @@ class InputMaker
         $method = $this->getGeneratorMethod($config['inputType']);
 
         if ($beforeAfterCondition) {
-            $inputString .= '<div class="'.config('form-maker.form.before_after_input_wrapper', 'input-group').'">';
+            $inputString .= '<div class="'.\Illuminate\Support\Facades\Config::get('form-maker.form.before_after_input_wrapper', 'input-group').'">';
         }
 
         $inputString .= $this->before($config);
@@ -152,8 +152,8 @@ class InputMaker
             $inputString .= '</div>';
         }
 
-        if (config('form-maker.form.orientation') == 'horizontal' && !in_array($method, $this->selectedMethods)) {
-            return '<div class="'.config('form-maker.form.input-column', '').'">'.$inputString.'</div>';
+        if (\Illuminate\Support\Facades\Config::get('form-maker.form.orientation') == 'horizontal' && !in_array($method, $this->selectedMethods)) {
+            return '<div class="'.\Illuminate\Support\Facades\Config::get('form-maker.form.input-column', '').'">'.$inputString.'</div>';
         }
 
         return $inputString;

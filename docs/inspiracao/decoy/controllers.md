@@ -103,10 +103,10 @@ class Articles extends Base {
     public function search() {
         return [
 
-            // Load configuration data from Laravel config()
+            // Load configuration data from Laravel \Illuminate\Support\Facades\Config::get()
             'affiliation' => [
                 'type' => 'select',
-                'options' => config('settings.affiliation'),
+                'options' => \Illuminate\Support\Facades\Config::get('settings.affiliation'),
             ],
 
             // Support a database "SET" type column in searches

@@ -102,10 +102,10 @@ class SitecFeatureController extends Controller
             $entity => $modelInstance,
         ];
 
-        if (config('app.locale') != config('cms.default-language', Cms::config('cms.default-language'))) {
-            if ($modelInstance->translation(config('app.locale'))) {
+        if (\Illuminate\Support\Facades\Config::get('app.locale') != \Illuminate\Support\Facades\Config::get('cms.default-language', Cms::\Illuminate\Support\Facades\Config::get('cms.default-language'))) {
+            if ($modelInstance->translation(\Illuminate\Support\Facades\Config::get('app.locale'))) {
                 $data = [
-                    $entity => $modelInstance->translation(config('app.locale'))->data,
+                    $entity => $modelInstance->translation(\Illuminate\Support\Facades\Config::get('app.locale'))->data,
                 ];
             }
         }

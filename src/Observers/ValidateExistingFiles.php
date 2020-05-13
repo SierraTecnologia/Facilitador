@@ -28,7 +28,7 @@ class ValidateExistingFiles
         list($model, $validation) = $payload;
 
         // Only act on locally hosted files
-        if (config('upchuck.disk.driver') != 'local') {
+        if (\Illuminate\Support\Facades\Config::get('upchuck.disk.driver') != 'local') {
             return;
         }
 
@@ -86,7 +86,7 @@ class ValidateExistingFiles
     public function makeFileFromPath($path)
     {
         $upchuck_path = app('upchuck')->path($path);
-        $absolute_path = config('upchuck.disk.path').'/'.$upchuck_path;
+        $absolute_path = \Illuminate\Support\Facades\Config::get('upchuck.disk.path').'/'.$upchuck_path;
         return new UploadedFile(
             $absolute_path, basename($absolute_path),
             null, null, // Default mime and error

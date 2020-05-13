@@ -18,7 +18,7 @@ Below we will take a deep dive into the configuration file and give a detailed d
     'add_default_role_on_register' => true,
     'default_role'                 => 'user',
     'admin_permission'             => 'browse_admin',
-    'namespace'                    => config('sitec.core.models.user', \App\Models\User::class),
+    'namespace'                    => \Illuminate\Support\Facades\Config::get('sitec.core.models.user', \App\Models\User::class),
     'redirect'                     => '/admin'
 ],
 ```

@@ -39,7 +39,7 @@ class Sms implements ShouldQueue
             \"sendSmsRequest\": {
             \"to\": \"". $this->number ."\",
             \"msg\": \"". $this->message ."\",
-            \"aggregateId\": \"".config('services.zenvia.aggregateId')."\"
+            \"aggregateId\": \"".\Illuminate\Support\Facades\Config::get('services.zenvia.aggregateId')."\"
             }
         }";
         curl_setopt($ch, CURLOPT_URL, "https://api-rest.zenvia.com/services/send-sms");
@@ -53,7 +53,7 @@ class Sms implements ShouldQueue
             "Content-Type: application/json",
             // "Authorization: Basic cG9wYXBwcy5hcGkyOmZtWjFaMXVt",
             // "Authorization: Basic cG9wYXBwcy5hcGk6b2RWZ0ZGTllLZg==",
-            "Authorization: Basic ".base64_encode(config('services.zenvia.conta').':'.config('services.zenvia.senha')),
+            "Authorization: Basic ".base64_encode(\Illuminate\Support\Facades\Config::get('services.zenvia.conta').':'.\Illuminate\Support\Facades\Config::get('services.zenvia.senha')),
             "Accept: application/json"
         ));
         

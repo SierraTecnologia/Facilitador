@@ -53,7 +53,7 @@ trait AppServiceContainerProvider
 
         // Registers explicit rotues and wildcarding routing
         $this->app->singleton('facilitador.router', function ($app) {
-            $dir = config('sitec.core.dir');
+            $dir = \Illuminate\Support\Facades\Config::get('sitec.core.dir');
 
             return new \Facilitador\Routing\Router($dir);
         });
@@ -63,7 +63,7 @@ trait AppServiceContainerProvider
             $request = $app['request'];
 
             return new \Facilitador\Routing\Wildcard(
-                config('sitec.core.dir'),
+                \Illuminate\Support\Facades\Config::get('sitec.core.dir'),
                 $request->getMethod(),
                 $request->path()
             );
@@ -71,7 +71,7 @@ trait AppServiceContainerProvider
 
         // Return the active user account
         $this->app->singleton('facilitador.user', function ($app) {
-            $guard = config('sitec.core.guard');
+            $guard = \Illuminate\Support\Facades\Config::get('sitec.core.guard');
             return $app['auth']->guard($guard)->user(); // tinha isso aqui tirei \App\Models\User::first(); //
         });
 
@@ -121,7 +121,7 @@ trait AppServiceContainerProvider
             // } catch (\Exception $e) {
             //     dd($e);
             // }
-            return new FacilitadorService(config('sitec.discover.models'));
+            return new FacilitadorService(\Illuminate\Support\Facades\Config::get('sitec.discover.models'));
         });
 
     }

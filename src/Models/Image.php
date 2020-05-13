@@ -601,7 +601,7 @@ class Image extends Base
             if ($this->isLocalFile()) {
                 $imagePath = storage_path('app/'.$this->location);
             } else {
-                $imagePath = Storage::disk(config('gpower.storage-location', 'local'))->url($this->location);
+                $imagePath = Storage::disk(\Illuminate\Support\Facades\Config::get('gpower.storage-location', 'local'))->url($this->location);
             }
 
             $image = InterventionImage::make($imagePath)->resize(800, null);

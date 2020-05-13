@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}" dir="{{ __('facilitador::generic.is_rtl') == 'true' ? 'rtl' : 'ltr' }}">
+<html lang="{{ \Illuminate\Support\Facades\Config::get('app.locale') }}" dir="{{ __('facilitador::generic.is_rtl') == 'true' ? 'rtl' : 'ltr' }}">
 <head>
     <title>@yield('page_title', setting('admin.title') . " - " . setting('admin.description'))</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,22 +31,22 @@
     <!-- Few Dynamic Styles -->
     <style type="text/css">
         .facilitador .side-menu .navbar-header {
-            background:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
-            border-color:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
+            background:{{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.primary_color','#22A7F0') }};
+            border-color:{{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.primary_color','#22A7F0') }};
         }
         .widget .btn-primary{
-            border-color:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
+            border-color:{{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.primary_color','#22A7F0') }};
         }
         .widget .btn-primary:focus, .widget .btn-primary:hover, .widget .btn-primary:active, .widget .btn-primary.active, .widget .btn-primary:active:focus{
-            background:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
+            background:{{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.primary_color','#22A7F0') }};
         }
         .facilitador .breadcrumb a{
-            color:{{ config('sitec.facilitador.primary_color','#22A7F0') }};
+            color:{{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.primary_color','#22A7F0') }};
         }
     </style>
 
-    @if(!empty(config('sitec.facilitador.additional_css')))<!-- Additional CSS -->
-        @foreach(config('sitec.facilitador.additional_css') as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
+    @if(!empty(\Illuminate\Support\Facades\Config::get('sitec.facilitador.additional_css')))<!-- Additional CSS -->
+        @foreach(\Illuminate\Support\Facades\Config::get('sitec.facilitador.additional_css') as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
     @endif
 
     @yield('head')
@@ -144,8 +144,8 @@ if (!is_object(Auth::user())) {
 @include('facilitador::tools.media.manager')
 @yield('javascript')
 @stack('javascript')
-@if(!empty(config('sitec.facilitador.additional_js')))<!-- Additional Javascript -->
-    @foreach(config('sitec.facilitador.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
+@if(!empty(\Illuminate\Support\Facades\Config::get('sitec.facilitador.additional_js')))<!-- Additional Javascript -->
+    @foreach(\Illuminate\Support\Facades\Config::get('sitec.facilitador.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
 @endif
 
 </body>

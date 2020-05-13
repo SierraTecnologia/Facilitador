@@ -9,6 +9,6 @@ $factory->define(Facilitador\Models\Attribute::class, function (Faker $faker) {
         'slug' => $faker->slug,
         'type' => $faker->randomElement(['boolean', 'datetime', 'integer', 'text', 'varchar']),
         'name' => $faker->name,
-        'entities' => $faker->randomElement(['App\Models\Company', 'App\Models\Product', config('sitec.core.models.user', \App\Models\User::class)]),
+        'entities' => $faker->randomElement(['App\Models\Company', 'App\Models\Product', \Illuminate\Support\Facades\Config::get('sitec.core.models.user', \App\Models\User::class)]),
     ];
 });

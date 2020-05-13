@@ -29,7 +29,7 @@
 
                         @foreach($products as $product)
                             <tr>
-                                <td><a href="{!! route(config('cms.backend-route-prefix', 'cms').'.products.edit', [$product->id]) !!}">{!! $product->name !!}</a></td>
+                                <td><a href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.products.edit', [$product->id]) !!}">{!! $product->name !!}</a></td>
                                 <td class="m-hidden">{!! $product->code !!}</td>
                                 <td class="m-hidden">${!! $product->price !!}</td>
                                 <td class="m-hidden">{!! $product->stock !!}</td>
@@ -52,8 +52,8 @@
                                 </td>
                                 <td class="text-right">
                                     <div class="btn-toolbar justify-content-between">
-                                        <a class="btn btn-sm btn-outline-primary mr-2" href="{!! route(config('cms.backend-route-prefix', 'cms').'.products.edit', [$product->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
-                                        <form method="post" action="{!! url(config('cms.backend-route-prefix', 'cms').'/products/'.$product->id) !!}">
+                                        <a class="btn btn-sm btn-outline-primary mr-2" href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.products.edit', [$product->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
+                                        <form method="post" action="{!! url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/products/'.$product->id) !!}">
                                             {!! csrf_field() !!}
                                             {!! method_field('DELETE') !!}
                                             <button class="delete-btn btn btn-sm btn-danger" type="submit"><i class="fa fa-trash"></i> Delete</button>

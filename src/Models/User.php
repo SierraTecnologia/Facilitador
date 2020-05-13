@@ -608,7 +608,7 @@ class User extends Base implements
             }
 
             return $title;
-        }, config('sitec.site.roles'));
+        }, \Illuminate\Support\Facades\Config::get('sitec.site.roles'));
     }
 
     /**
@@ -735,7 +735,7 @@ class User extends Base implements
      */
     public function getAvatarAttribute($value)
     {
-        return $value ?? config('sitec.facilitador.user.default_avatar', 'users/default.png');
+        return $value ?? \Illuminate\Support\Facades\Config::get('sitec.facilitador.user.default_avatar', 'users/default.png');
     }
 
     /**

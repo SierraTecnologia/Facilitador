@@ -602,7 +602,7 @@ class FacilitadorBaseController extends Controller
             }
 
             // Remove file from filesystem
-            if ($fileToRemove != config('sitec.facilitador.user.default_avatar')) {
+            if ($fileToRemove != \Illuminate\Support\Facades\Config::get('sitec.facilitador.user.default_avatar')) {
                 $this->deleteFileIfExists($fileToRemove);
             }
 
@@ -706,7 +706,7 @@ class FacilitadorBaseController extends Controller
     public function deleteBreadImages($data, $rows)
     {
         foreach ($rows as $row) {
-            if ($data->{$row->field} != config('sitec.facilitador.user.default_avatar')) {
+            if ($data->{$row->field} != \Illuminate\Support\Facades\Config::get('sitec.facilitador.user.default_avatar')) {
                 $this->deleteFileIfExists($data->{$row->field});
             }
 

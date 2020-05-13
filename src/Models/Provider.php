@@ -85,7 +85,7 @@ class Provider extends Model
 			return false;
 
 		// Check config
-		$config = config("services.{$this->slug}.client_id", config("services.{$this->slug}.client_secret"));
+		$config = \Illuminate\Support\Facades\Config::get("services.{$this->slug}.client_id", \Illuminate\Support\Facades\Config::get("services.{$this->slug}.client_secret"));
 
 		return ! empty($config);
 	}

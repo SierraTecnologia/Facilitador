@@ -15,7 +15,7 @@ class CreateAttributeDateTimeValuesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(config('sitec.attributes.tables.attribute_datetime_values'), function (Blueprint $table) {
+        Schema::create(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_datetime_values'), function (Blueprint $table) {
             // Columns
             $table->increments('id');
             $table->dateTime('content');
@@ -25,7 +25,7 @@ class CreateAttributeDateTimeValuesTable extends Migration
             $table->timestamps();
 
             // Indexes
-            $table->foreign('attribute_id')->references('id')->on(config('sitec.attributes.tables.attributes'))
+            $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'))
                   ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -37,6 +37,6 @@ class CreateAttributeDateTimeValuesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(config('sitec.attributes.tables.attribute_datetime_values'));
+        Schema::dropIfExists(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_datetime_values'));
     }
 }

@@ -36,7 +36,7 @@
                     @endif
                 </td>
                 <td class="text-right">
-                    <a class="btn btn-sm btn-secondary float-right" href="{!! route(config('cms.backend-route-prefix', 'cms').'.transactions.edit', [$transaction->id]) !!}"><i class="fa fa-eye"></i> View</a>
+                    <a class="btn btn-sm btn-secondary float-right" href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.transactions.edit', [$transaction->id]) !!}"><i class="fa fa-eye"></i> View</a>
                 </td>
             </tr>
         @endforeach

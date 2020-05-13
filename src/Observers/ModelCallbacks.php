@@ -136,11 +136,11 @@ class ModelCallbacks
      */
     protected function getDontLog()
     {
-        return config('sitec.audit.dontLog');
+        return \Illuminate\Support\Facades\Config::get('sitec.audit.dontLog');
     }
 
     protected function getDontLogAlias()
     {
-        return config('sitec.audit.dontLogAlias');
+        return \Illuminate\Support\Facades\Config::get('sitec.audit.dontLogAlias');
     }
 }

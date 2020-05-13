@@ -26,8 +26,8 @@ class RssController extends Controller
     {
         $module = $this->module;
 
-        $meta = config('cms.rss', [
-            'title' => config('app.name'),
+        $meta = \Illuminate\Support\Facades\Config::get('cms.rss', [
+            'title' => \Illuminate\Support\Facades\Config::get('app.name'),
             'link' => url('/'),
         ]);
 

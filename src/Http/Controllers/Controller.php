@@ -70,7 +70,7 @@ class Controller extends BaseController
     public function __construct()
     {
         // Set the layout from the Config file
-        $this->layout = View::make(config('sitec.core.layout'));
+        $this->layout = View::make(\Illuminate\Support\Facades\Config::get('sitec.core.layout'));
 
         // Store the controller class for routing
         $this->controller = get_class($this);

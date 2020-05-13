@@ -189,13 +189,13 @@
                                                     @include('facilitador::multilingual.input-hidden-bread-browse')
                                                     @if(json_decode($data->{$row->field}) !== null)
                                                         @foreach(json_decode($data->{$row->field}) as $file)
-                                                            <a href="{{ Storage::disk(config('sitec.facilitador.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank">
+                                                            <a href="{{ Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank">
                                                                 {{ $file->original_name ?: '' }}
                                                             </a>
                                                             <br/>
                                                         @endforeach
                                                     @else
-                                                        <a href="{{ Storage::disk(config('sitec.facilitador.storage.disk'))->url($data->{$row->field}) }}" target="_blank">
+                                                        <a href="{{ Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->url($data->{$row->field}) }}" target="_blank">
                                                             Download
                                                         </a>
                                                     @endif
@@ -312,14 +312,14 @@
 @stop
 
 @section('css')
-@if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
+@if(!$dataType->server_side && \Illuminate\Support\Facades\Config::get('dashboard.data_tables.responsive'))
     <link rel="stylesheet" href="{{ facilitador_asset('lib/css/responsive.dataTables.min.css') }}">
 @endif
 @stop
 
 @section('javascript')
     <!-- DataTables -->
-    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
+    @if(!$dataType->server_side && \Illuminate\Support\Facades\Config::get('dashboard.data_tables.responsive'))
         <script src="{{ facilitador_asset('lib/js/dataTables.responsive.min.js') }}"></script>
     @endif
     <script>
@@ -331,7 +331,7 @@
                         "language" => __('facilitador::datatable'),
                         "columnDefs" => [['targets' => -1, 'searchable' =>  false, 'orderable' => false]],
                     ],
-                    config('sitec.facilitador.dashboard.data_tables', []))
+                    \Illuminate\Support\Facades\Config::get('sitec.facilitador.dashboard.data_tables', []))
                 , true) !!});
             @else
                 $('#search-input select').select2({

@@ -173,7 +173,7 @@ class UrlGenerator
         if ($data) {
             $page = '/'.Crypto::shareableEncrypt($data).$page;
         }
-        return url(config('sitec.core.dir', 'admin').'/manager/'.Crypto::shareableEncrypt($slug).$page);
+        return url(\Illuminate\Support\Facades\Config::get('sitec.core.dir', 'admin').'/manager/'.Crypto::shareableEncrypt($slug).$page);
     }
 
     public static function routeForSlug($slug, $page = 'index', $data = false)

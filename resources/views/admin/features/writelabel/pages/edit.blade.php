@@ -42,12 +42,12 @@
         </div>
 
         <div class="row">
-            <div class="@if (config('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
+            <div class="@if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
                 {!! Form::model($page, ['route' => ['admin.pages.update', $page->id], 'method' => 'patch', 'class' => 'edit', 'files' => true]) !!}
 
                     <input type="hidden" name="lang" value="{{ request('lang') }}">
 
-                    {!! FormMaker::setColumns(2)->fromObject($page->asObject(), config('cms.forms.page.identity')) !!}
+                    {!! FormMaker::setColumns(2)->fromObject($page->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.page.identity')) !!}
 
                     <div class="form-group">
                         <label for="Template">Template</label>
@@ -64,7 +64,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            {!! FormMaker::setColumns(1)->fromObject($page->asObject(), config('cms.forms.page.content')) !!}
+                            {!! FormMaker::setColumns(1)->fromObject($page->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.page.content')) !!}
                         </div>
                         <div class="col-md-6">
                             @if ($page->hero_image)
@@ -80,11 +80,11 @@
 
                     <div class="row">
                         <div class="col-md-12 mt-4">
-                            {!! FormMaker::setColumns(2)->fromObject($page->asObject(), config('cms.forms.page.seo')) !!}
+                            {!! FormMaker::setColumns(2)->fromObject($page->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.page.seo')) !!}
                         </div>
                     </div>
 
-                    {!! FormMaker::setColumns(2)->fromObject($page->asObject(), config('cms.forms.page.publish')) !!}
+                    {!! FormMaker::setColumns(2)->fromObject($page->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.page.publish')) !!}
 
                     @include('admin.features.blocks', ['item' => $page->asObject()])
 
@@ -95,7 +95,7 @@
 
                 {!! Form::close() !!}
             </div>
-            @if (config('cms.live-preview', false))
+            @if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false))
                 <div class="col-md-6 hidden-sm hidden-xs">
                     <div id="wrap">
                         @if (! cms()->isDefaultLanguage())

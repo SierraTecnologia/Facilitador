@@ -45,7 +45,7 @@ class FormMaker
     {
         $this->inputMaker = new InputMaker();
         $this->inputCalibrator = new InputCalibrator();
-        $this->connection = config('database.default');
+        $this->connection = \Illuminate\Support\Facades\Config::get('database.default');
     }
 
     /**
@@ -97,7 +97,7 @@ class FormMaker
         $formBuild = [];
 
         if (is_null($class)) {
-            $class = config('form-maker.form.form-class', 'form-control');
+            $class = \Illuminate\Support\Facades\Config::get('form-maker.form.form-class', 'form-control');
         }
 
         $tableColumns = $this->getTableColumns($table, true);
@@ -124,7 +124,7 @@ class FormMaker
             $formBuild[] = $this->formBuilder($view, $errors, $columnConfig, $column, $input);
         }
 
-        return $this->buildUsingColumns($formBuild, config('form-maker.form.theme'));
+        return $this->buildUsingColumns($formBuild, \Illuminate\Support\Facades\Config::get('form-maker.form.theme'));
     }
 
     /**
@@ -152,7 +152,7 @@ class FormMaker
         $formBuild = [];
 
         if (is_null($class)) {
-            $class = config('form-maker.form.form-class', 'form-control');
+            $class = \Illuminate\Support\Facades\Config::get('form-maker.form.form-class', 'form-control');
         }
 
         $array = $this->cleanupIdAndTimeStamps($array, $timestamps, false);
@@ -174,7 +174,7 @@ class FormMaker
             $formBuild[] = $this->formBuilder($view, $errors, $columnConfig, $column, $input);
         }
 
-        return $this->buildUsingColumns($formBuild, config('form-maker.form.theme'));
+        return $this->buildUsingColumns($formBuild, \Illuminate\Support\Facades\Config::get('form-maker.form.theme'));
     }
 
     /**
@@ -206,7 +206,7 @@ class FormMaker
         }
 
         if (is_null($class)) {
-            $class = config('form-maker.form.form-class', 'form-control');
+            $class = \Illuminate\Support\Facades\Config::get('form-maker.form.form-class', 'form-control');
         }
 
         $columns = $this->cleanupIdAndTimeStamps($columns, $timestamps, false);
@@ -223,7 +223,7 @@ class FormMaker
             $formBuild[] = $this->formBuilder($view, $errors, $columnConfig, $column, $input);
         }
 
-        return $this->buildUsingColumns($formBuild, config('form-maker.form.theme'));
+        return $this->buildUsingColumns($formBuild, \Illuminate\Support\Facades\Config::get('form-maker.form.theme'));
     }
 
     /**
@@ -278,8 +278,8 @@ class FormMaker
      */
     private function formBuilder($view, $errors, $field, $column, $input)
     {
-        $formGroupClass = config('form-maker.form.group-class', 'form-group');
-        $formErrorClass = config('form-maker.form.error-class', 'has-error');
+        $formGroupClass = \Illuminate\Support\Facades\Config::get('form-maker.form.group-class', 'form-group');
+        $formErrorClass = \Illuminate\Support\Facades\Config::get('form-maker.form.error-class', 'has-error');
 
         $errorHighlight = '';
         $errorMessage = false;
@@ -321,11 +321,11 @@ class FormMaker
     {
         $labelColumn = $labelCheckableColumn = '';
         $singleLineCheckType = false;
-        $formLabelClass = config('form-maker.form.label-class', 'control-label');
+        $formLabelClass = \Illuminate\Support\Facades\Config::get('form-maker.form.label-class', 'control-label');
 
-        if (config('form-maker.form.orientation') == 'horizontal') {
-            $labelColumn = config('form-maker.form.label-column');
-            $labelCheckableColumn = config('form-maker.form.checkbox-column');
+        if (\Illuminate\Support\Facades\Config::get('form-maker.form.orientation') == 'horizontal') {
+            $labelColumn = \Illuminate\Support\Facades\Config::get('form-maker.form.label-column');
+            $labelCheckableColumn = \Illuminate\Support\Facades\Config::get('form-maker.form.checkbox-column');
             $singleLineCheckType = true;
         }
 

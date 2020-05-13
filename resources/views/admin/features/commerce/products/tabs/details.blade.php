@@ -1,11 +1,11 @@
-{!! Form::model($product, ['route' => [config('cms.backend-route-prefix', 'cms').'.products.update', $product->id], 'method' => 'patch', 'files' => true]) !!}
+{!! Form::model($product, ['route' => [\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.products.update', $product->id], 'method' => 'patch', 'files' => true]) !!}
 
-    {!! FormMaker::setColumns(2)->fromObject($product, config('commerce.forms.details.identity')) !!}
-    {!! FormMaker::setColumns(2)->fromObject($product, config('commerce.forms.details.price')) !!}
+    {!! FormMaker::setColumns(2)->fromObject($product, \Illuminate\Support\Facades\Config::get('commerce.forms.details.identity')) !!}
+    {!! FormMaker::setColumns(2)->fromObject($product, \Illuminate\Support\Facades\Config::get('commerce.forms.details.price')) !!}
 
     <div class="row">
         <div class="col-md-6">
-            {!! FormMaker::setColumns(1)->fromObject($product, config('commerce.forms.details.content')) !!}
+            {!! FormMaker::setColumns(1)->fromObject($product, \Illuminate\Support\Facades\Config::get('commerce.forms.details.content')) !!}
         </div>
         <div class="col-md-6 raw-margin-bottom-24">
             @if ($product->hero_image)
@@ -14,8 +14,8 @@
         </div>
     </div>
 
-    {!! FormMaker::setColumns(2)->fromObject($product, config('commerce.forms.details.seo')) !!}
-    {!! FormMaker::setColumns(2)->fromObject($product, config('commerce.forms.details.options')) !!}
+    {!! FormMaker::setColumns(2)->fromObject($product, \Illuminate\Support\Facades\Config::get('commerce.forms.details.seo')) !!}
+    {!! FormMaker::setColumns(2)->fromObject($product, \Illuminate\Support\Facades\Config::get('commerce.forms.details.options')) !!}
 
     <div class="form-group text-right">
         <a href="{!! URL::previous() !!}" class="btn btn-secondary float-left">Cancel</a>

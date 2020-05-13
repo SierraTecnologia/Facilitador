@@ -41,7 +41,7 @@ class Controller extends BaseController
     {
         // @debug
 
-// dd((new \Support\Services\DatabaseService(config('sitec.discover.models_alias'), new \Support\Components\Coders\Parser\ComposerParser))->getAllModels());
+// dd((new \Support\Services\DatabaseService(\Illuminate\Support\Facades\Config::get('sitec.discover.models_alias'), new \Support\Components\Coders\Parser\ComposerParser))->getAllModels());
         // $database = new \Support\Components\Database\Mount\DatabaseMount();
         // $model = new \Facilitador\Services\ModelService(\Population\Models\Identity\Actors\Person::class);
         // $model = new \Facilitador\Services\ModelService('OTQ4ODUzYThiZDY2MTcyNGFhdUhXZnJheUl6VUt6SUtkU1NCdUhFaW54aldLZHh0ZEZJMnVyOGJJL2c9');
@@ -167,10 +167,10 @@ class Controller extends BaseController
                 $data->{$row->field} = str_replace($uuid, $data->getKey(), $data->{$row->field});
             });
             $data->save();
-            if ($old_path != $new_path && !Storage::disk(config('sitec.facilitador.storage.disk'))->exists($new_path)) {
+            if ($old_path != $new_path && !Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->exists($new_path)) {
                 $request->session()->forget([$slug.'_path', $slug.'_uuid']);
-                Storage::disk(config('sitec.facilitador.storage.disk'))->move($old_path, $new_path);
-                Storage::disk(config('sitec.facilitador.storage.disk'))->deleteDirectory($folder_path);
+                Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->move($old_path, $new_path);
+                Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->deleteDirectory($folder_path);
             }
         }
 
@@ -276,8 +276,8 @@ class Controller extends BaseController
 
     public function deleteFileIfExists($path)
     {
-        if (Storage::disk(config('sitec.facilitador.storage.disk'))->exists($path)) {
-            Storage::disk(config('sitec.facilitador.storage.disk'))->delete($path);
+        if (Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->exists($path)) {
+            Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->delete($path);
             event(new FileDeleted($path));
         }
     }

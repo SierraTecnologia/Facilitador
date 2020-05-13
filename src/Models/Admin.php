@@ -382,7 +382,7 @@ class Admin extends \Facilitador\Models\User
 //             }
 
 //             return $title;
-//         }, config('sitec.site.roles'));
+//         }, \Illuminate\Support\Facades\Config::get('sitec.site.roles'));
 //     }
 
 //     /**

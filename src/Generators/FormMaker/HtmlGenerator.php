@@ -61,8 +61,8 @@ class HtmlGenerator
             $config['name'] = $config['name'].'[]';
         }
 
-        if (config('form-maker.form.orientation') === 'horizontal') {
-            $prefix = '<div class="'.config('form-maker.form.input-column').'">';
+        if (\Illuminate\Support\Facades\Config::get('form-maker.form.orientation') === 'horizontal') {
+            $prefix = '<div class="'.\Illuminate\Support\Facades\Config::get('form-maker.form.input-column').'">';
             $suffix = '</div>';
         }
 

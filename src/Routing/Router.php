@@ -42,7 +42,7 @@ class Router
      */
     public function registerAll()
     {
-        $namespacePrefix = '\\'.config('sitec.facilitador.controllers.namespace');
+        $namespacePrefix = '\\'.\Illuminate\Support\Facades\Config::get('sitec.facilitador.controllers.namespace');
         /**
          * Facilitador Routes
          */

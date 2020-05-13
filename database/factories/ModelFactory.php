@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(config('sitec.core.models.user', \App\Models\User::class), function (Faker\Generator $faker) {
+$factory->define(\Illuminate\Support\Facades\Config::get('sitec.core.models.user', \App\Models\User::class), function (Faker\Generator $faker) {
     static $password;
 
     return [

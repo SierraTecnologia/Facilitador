@@ -322,7 +322,7 @@ class RepositoryController extends Controller
     public function deleteBreadImages($data, $rows)
     {
         foreach ($rows as $row) {
-            if ($data->{$row->field} != config('sitec.facilitador.user.default_avatar')) {
+            if ($data->{$row->field} != \Illuminate\Support\Facades\Config::get('sitec.facilitador.user.default_avatar')) {
                 $this->deleteFileIfExists($data->{$row->field});
             }
 

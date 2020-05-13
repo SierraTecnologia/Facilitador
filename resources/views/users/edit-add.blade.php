@@ -84,7 +84,7 @@
                             if (isset($dataTypeContent->locale)) {
                                 $selected_locale = $dataTypeContent->locale;
                             } else {
-                                $selected_locale = config('app.locale', 'en');
+                                $selected_locale = \Illuminate\Support\Facades\Config::get('app.locale', 'en');
                             }
 
                             @endphp

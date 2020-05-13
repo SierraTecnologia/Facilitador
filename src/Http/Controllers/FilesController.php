@@ -210,7 +210,7 @@ class FilesController extends SitecController
         if (is_file(storage_path($files->location))) {
             Storage::delete($files->location);
         } else {
-            Storage::disk(config('cms.storage-location', 'local'))->delete($files->location);
+            Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->delete($files->location);
         }
 
         $files->delete();
@@ -227,7 +227,7 @@ class FilesController extends SitecController
      */
     public function apiList(Request $request)
     {
-        if (config('cms.api-key') != $request->header('cms')) {
+        if (\Illuminate\Support\Facades\Config::get('cms.api-key') != $request->header('cms')) {
             return $this->responseService->apiResponse('error', []);
         }
 

@@ -66,7 +66,7 @@ class MakeEloquentFilter extends Command
         }
         $this->makeDirectory($path);
 
-        $stubPath = config('eloquentfilter.generator.stub', __DIR__.'/../stubs/modelfilter.stub');
+        $stubPath = \Illuminate\Support\Facades\Config::get('eloquentfilter.generator.stub', __DIR__.'/../stubs/modelfilter.stub');
 
         if (! $this->files->exists($stubPath) || ! is_readable($stubPath)) {
             $this->error(sprintf('File "%s" does not exist or is unreadable.', $stubPath));
@@ -125,7 +125,7 @@ class MakeEloquentFilter extends Command
         $className = array_pop($parts);
         $ns = count($parts) > 0 ? implode('\\', $parts).'\\' : '';
 
-        $fqClass = config('eloquentfilter.namespace', 'App\\ModelFilters\\').$ns.$className;
+        $fqClass = \Illuminate\Support\Facades\Config::get('eloquentfilter.namespace', 'App\\ModelFilters\\').$ns.$className;
 
         if (substr($fqClass, -6, 6) !== 'Filter') {
             $fqClass .= 'Filter';

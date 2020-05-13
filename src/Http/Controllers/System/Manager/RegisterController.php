@@ -367,7 +367,7 @@ class RegisterController extends Controller
             }
 
             // Remove file from filesystem
-            if ($fileToRemove != config('sitec.facilitador.user.default_avatar')) {
+            if ($fileToRemove != \Illuminate\Support\Facades\Config::get('sitec.facilitador.user.default_avatar')) {
                 $this->deleteFileIfExists($fileToRemove);
             }
 

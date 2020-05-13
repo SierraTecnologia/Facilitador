@@ -105,7 +105,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'token' => str_random(64),
             'confirmation_token' => str_limit(md5($data['email'] . str_random()), 25, ''),
-            'activated' => !config('settings.activation')
+            'activated' => !\Illuminate\Support\Facades\Config::get('settings.activation')
         ]);
 
         if (isset($data['avatar'])) {

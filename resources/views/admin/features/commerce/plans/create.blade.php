@@ -29,7 +29,7 @@
         <div class="col-md-6 mt-4">
             {!! Form::open(['route' => cms()->route('plans.store')]) !!}
 
-            {!! FormMaker::setColumns(2)->fromTable("plans", config('commerce.forms.plans')) !!}
+            {!! FormMaker::setColumns(2)->fromTable("plans", \Illuminate\Support\Facades\Config::get('commerce.forms.plans')) !!}
 
             {!! Form::submit('Save', ['class' => 'btn btn-primary float-right']) !!}
 

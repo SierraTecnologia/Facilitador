@@ -7,7 +7,7 @@ return [
      *
      * @var string
      */
-    'name' => config('app.name', 'SiravelAdmin'),
+    'name' => \Illuminate\Support\Facades\Config::get('app.name', 'SiravelAdmin'),
 
     /**
      * After a succesful login, this is the absolute path or url that should be

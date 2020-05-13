@@ -50,7 +50,7 @@ if (!function_exists('is_bread_translatable')) {
      */
     function is_bread_translatable($model)
     {
-        return config('sitec.facilitador.multilingual.enabled')
+        return \Illuminate\Support\Facades\Config::get('sitec.facilitador.multilingual.enabled')
             && isset($model)
             && method_exists($model, 'translatable')
             && $model->translatable();

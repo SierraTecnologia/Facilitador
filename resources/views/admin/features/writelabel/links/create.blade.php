@@ -11,7 +11,7 @@
     <div class="col-md-12">
         {!! Form::open(['route' => 'admin.links.store', 'class' => 'add']) !!}
 
-            {!! FormMaker::fromTable('links', config('cms.forms.link')) !!}
+            {!! FormMaker::fromTable('links', \Illuminate\Support\Facades\Config::get('cms.forms.link')) !!}
 
             <div class="form-group" style="display: none;">
                 <label for="Page_id">Page</label>

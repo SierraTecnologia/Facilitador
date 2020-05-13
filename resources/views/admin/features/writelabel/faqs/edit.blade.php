@@ -42,7 +42,7 @@
 
                     <input type="hidden" name="lang" value="{{ request('lang') }}">
 
-                    {!! FormMaker::fromObject($faq->asObject(), config('cms.forms.faqs')) !!}
+                    {!! FormMaker::fromObject($faq->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.faqs')) !!}
 
                     <div class="form-group text-right">
                         <a href="{!! url('admin/'.'faqs') !!}" class="btn btn-secondary float-left">Cancel</a>

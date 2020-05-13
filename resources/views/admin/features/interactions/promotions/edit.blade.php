@@ -31,13 +31,13 @@
         </div>
 
         <div class="row">
-            <div class="@if (config('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
+            <div class="@if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
                 {!! Form::model($promotion, ['route' => ['admin.promotions.update', $promotion->id], 'method' => 'patch', 'class' => 'edit']) !!}
 
                     <input type="hidden" name="lang" value="{{ request('lang') }}">
 
-                    {!! FormMaker::setColumns(3)->fromObject($promotion->asObject(), config('cms.forms.promotion.identity')) !!}
-                    {!! FormMaker::setColumns(1)->fromObject($promotion->asObject(), config('cms.forms.promotion.content')) !!}
+                    {!! FormMaker::setColumns(3)->fromObject($promotion->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.promotion.identity')) !!}
+                    {!! FormMaker::setColumns(1)->fromObject($promotion->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.promotion.content')) !!}
 
                     <div class="form-group text-right">
                         <a href="{!! url('admin/'.'promotions') !!}" class="btn btn-secondary float-left">Cancel</a>
@@ -46,7 +46,7 @@
 
                 {!! Form::close() !!}
             </div>
-            @if (config('cms.live-preview', false))
+            @if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false))
                 <div class="col-md-6 hidden-sm hidden-xs">
                     <div id="wrap">
                         @if (! cms()->isDefaultLanguage())

@@ -7,15 +7,15 @@
     <div class="col-md-12 mt-2">
         @include('admin.features.commerce.products.breadcrumbs', ['location' => ['create']])
 
-        {!! Form::open(['route' => config('cms.backend-route-prefix', 'cms').'.products.store', 'files' => true]) !!}
+        {!! Form::open(['route' => \Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.products.store', 'files' => true]) !!}
 
-            {!! FormMaker::setColumns(2)->fromTable('products', config('commerce.forms.details.identity')) !!}
-            {!! FormMaker::setColumns(2)->fromTable('products', config('commerce.forms.details.price')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('products', \Illuminate\Support\Facades\Config::get('commerce.forms.details.identity')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('products', \Illuminate\Support\Facades\Config::get('commerce.forms.details.price')) !!}
 
-            {!! FormMaker::setColumns(2)->fromTable('products', config('commerce.forms.details.content')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('products', \Illuminate\Support\Facades\Config::get('commerce.forms.details.content')) !!}
 
-            {!! FormMaker::setColumns(2)->fromTable('products', config('commerce.forms.details.seo')) !!}
-            {!! FormMaker::setColumns(2)->fromTable('products', config('commerce.forms.details.options')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('products', \Illuminate\Support\Facades\Config::get('commerce.forms.details.seo')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('products', \Illuminate\Support\Facades\Config::get('commerce.forms.details.options')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! URL::previous() !!}" class="btn btn-secondary float-left">Cancel</a>

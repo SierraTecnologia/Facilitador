@@ -173,7 +173,7 @@ class EventTest extends TestCase
     {
         Event::fake();
         Auth::loginUsingId(1);
-        Storage::fake(config('filesystems.default'));
+        Storage::fake(\Illuminate\Support\Facades\Config::get('filesystems.default'));
 
         $image = UploadedFile::fake()->image('test.png');
 
@@ -199,7 +199,7 @@ class EventTest extends TestCase
     {
         Event::fake();
         Auth::loginUsingId(1);
-        Storage::fake(config('filesystems.default'));
+        Storage::fake(\Illuminate\Support\Facades\Config::get('filesystems.default'));
 
         $image = UploadedFile::fake()->image('test.png');
 
@@ -325,7 +325,7 @@ class EventTest extends TestCase
     {
         Event::fake();
         Auth::loginUsingId(1);
-        Storage::fake(config('filesystems.default'));
+        Storage::fake(\Illuminate\Support\Facades\Config::get('filesystems.default'));
 
         $image = UploadedFile::fake()->image('test.png');
 

@@ -1,6 +1,6 @@
-@extends( $bladeLayout ?: config('crud-forms.blade_layout'))
+@extends( $bladeLayout ?: \Illuminate\Support\Facades\Config::get('crud-forms.blade_layout'))
 
-@section(config('crud-forms.blade_section'))
+@section(\Illuminate\Support\Facades\Config::get('crud-forms.blade_section'))
 <div class="row">
     <div class="col-sm-12 col-lg-10 col-lg-offset-1">
         <div class="panel panel-primary">

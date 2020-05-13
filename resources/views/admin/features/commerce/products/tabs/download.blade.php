@@ -1,4 +1,4 @@
-{!! Form::model($product, ['url' => config('cms.backend-route-prefix', 'cms').'/products/download/'.$product->id, 'method' => 'post', 'files' => true]) !!}
+{!! Form::model($product, ['url' => \Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/products/download/'.$product->id, 'method' => 'post', 'files' => true]) !!}
 
     <div class="row">
         <div class="col-lg-6">

@@ -11,7 +11,7 @@
     <div class="col-md-12">
         {!! Form::open(['route' => 'admin.menus.store', 'class' => 'add']) !!}
 
-            {!! FormMaker::fromTable('menus', config('cms.forms.menu')) !!}
+            {!! FormMaker::fromTable('menus', \Illuminate\Support\Facades\Config::get('cms.forms.menu')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! url('admin/'.'menus') !!}" class="btn btn-secondary float-left">Cancel</a>

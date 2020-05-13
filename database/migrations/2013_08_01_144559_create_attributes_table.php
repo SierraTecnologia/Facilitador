@@ -15,7 +15,7 @@ class CreateAttributesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(config('sitec.attributes.tables.attributes'), function (Blueprint $table) {
+        Schema::create(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'), function (Blueprint $table) {
             // Columns
             $table->increments('id');
             $table->string('slug');
@@ -41,7 +41,7 @@ class CreateAttributesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(config('sitec.attributes.tables.attributes'));
+        Schema::dropIfExists(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'));
     }
 
     /**

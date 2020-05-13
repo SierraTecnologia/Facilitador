@@ -25,9 +25,9 @@
                         <tbody>
                         @foreach($orders as $order)
                             <tr>
-                                <td><a href="{!! route(config('cms.backend-route-prefix', 'cms').'.orders.edit', [$order->id]) !!}">Order #{!! $order->id !!}</a></td>
+                                <td><a href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.orders.edit', [$order->id]) !!}">Order #{!! $order->id !!}</a></td>
                                 @if (!empty($order->transaction))
-                                    <td class="m-hidden"><a href="{!! route(config('cms.backend-route-prefix', 'cms').'.transactions.edit', [$order->transaction->id]) !!}">Transaction #{!! $order->transaction->id !!}</a></td>
+                                    <td class="m-hidden"><a href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.transactions.edit', [$order->transaction->id]) !!}">Transaction #{!! $order->transaction->id !!}</a></td>
                                 @else
                                     <td class="m-hidden">Transaction not Found</td>
                                 @endif
@@ -42,7 +42,7 @@
                                 </td>
                                 <td class="m-hidden">{!! $order->tracking_number !!}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-sm btn-outline-primary float-right" href="{!! route(config('cms.backend-route-prefix', 'cms').'.orders.edit', [$order->id]) !!}"><i class="fa fa-edit"></i> Edit</a>
+                                    <a class="btn btn-sm btn-outline-primary float-right" href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.orders.edit', [$order->id]) !!}"><i class="fa fa-edit"></i> Edit</a>
                                 </td>
                             </tr>
                         @endforeach

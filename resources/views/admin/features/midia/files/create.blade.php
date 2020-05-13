@@ -16,7 +16,7 @@
     <div class="col-md-12">
         {!! Form::open(['route' => 'admin.files.store', 'files' => true, 'id' => 'fileDetailsForm', 'class' => 'add']); !!}
 
-            {!! FormMaker::setColumns(2)->fromTable('files', config('cms.forms.files')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('files', \Illuminate\Support\Facades\Config::get('cms.forms.files')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! url('admin/'.'files') !!}" class="btn btn-secondary raw-left">Cancel</a>

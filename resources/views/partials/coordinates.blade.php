@@ -10,10 +10,10 @@
         @forelse($dataTypeContent->getCoordinates() as $point)
             var center = {lat: {{ $point['lat'] }}, lng: {{ $point['lng'] }}};
         @empty
-            var center = {lat: {{ config('sitec.facilitador.googlemaps.center.lat') }}, lng: {{ config('sitec.facilitador.googlemaps.center.lng') }}};
+            var center = {lat: {{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.googlemaps.center.lat') }}, lng: {{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.googlemaps.center.lng') }}};
         @endforelse
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: {{ config('sitec.facilitador.googlemaps.zoom') }},
+            zoom: {{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.googlemaps.zoom') }},
             center: center
         });
         var markers = [];
@@ -27,4 +27,4 @@
     }
 </script>
 <div id="map"/>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('sitec.facilitador.googlemaps.key') }}&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ \Illuminate\Support\Facades\Config::get('sitec.facilitador.googlemaps.key') }}&callback=initMap"></script>

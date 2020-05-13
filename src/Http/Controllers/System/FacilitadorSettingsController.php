@@ -181,8 +181,8 @@ class FacilitadorSettingsController extends Controller
         if (isset($setting->id)) {
             // If the type is an image... Then delete it
             if ($setting->type == 'image') {
-                if (Storage::disk(config('sitec.facilitador.storage.disk'))->exists($setting->value)) {
-                    Storage::disk(config('sitec.facilitador.storage.disk'))->delete($setting->value);
+                if (Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->exists($setting->value)) {
+                    Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->delete($setting->value);
                 }
             }
             $setting->value = '';

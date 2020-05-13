@@ -30,7 +30,7 @@ trait AppMiddlewaresProvider
 
         Config::set('auth.providers.facilitador', [
             'driver' => 'eloquent',
-            'model'  => config('sitec.core.models.user', \App\Models\User::class),
+            'model'  => \Illuminate\Support\Facades\Config::get('sitec.core.models.user', \App\Models\User::class),
         ]);
 
         Config::set('auth.passwords.facilitador', [
@@ -41,7 +41,7 @@ trait AppMiddlewaresProvider
         ]);
 
         // Point to the Gate policy
-        $this->app[Gate::class]->define('facilitador.auth', config('sitec.core.policy'));
+        $this->app[Gate::class]->define('facilitador.auth', \Illuminate\Support\Facades\Config::get('sitec.core.policy'));
     }
 
     /**

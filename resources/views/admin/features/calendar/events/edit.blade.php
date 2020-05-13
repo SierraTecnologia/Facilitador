@@ -42,7 +42,7 @@
         </div>
 
         <div class="row">
-            <div class="@if (config('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
+            <div class="@if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
                 {!! Form::model($event, ['route' => ['admin.events.update', $event->id], 'method' => 'patch', 'class' => 'edit']) !!}
 
                     <div class="form-group">
@@ -60,10 +60,10 @@
 
                     <input type="hidden" name="lang" value="{{ request('lang') }}">
 
-                    {!! FormMaker::setColumns(3)->fromObject($event->asObject(), config('cms.forms.event.identity')) !!}
-                    {!! FormMaker::setColumns(1)->fromObject($event->asObject(), config('cms.forms.event.content')) !!}
-                    {!! FormMaker::setColumns(2)->fromObject($event->asObject(), config('cms.forms.event.seo')) !!}
-                    {!! FormMaker::setColumns(2)->fromObject($event->asObject(), config('cms.forms.event.publish')) !!}
+                    {!! FormMaker::setColumns(3)->fromObject($event->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.event.identity')) !!}
+                    {!! FormMaker::setColumns(1)->fromObject($event->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.event.content')) !!}
+                    {!! FormMaker::setColumns(2)->fromObject($event->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.event.seo')) !!}
+                    {!! FormMaker::setColumns(2)->fromObject($event->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.event.publish')) !!}
 
                     <div class="form-group text-right">
                         <a href="{!! url('admin/'.'events') !!}" class="btn btn-secondary float-left">Cancel</a>
@@ -72,7 +72,7 @@
 
                 {!! Form::close() !!}
             </div>
-            @if (config('cms.live-preview', false))
+            @if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false))
                 <div class="col-md-6 hidden-sm hidden-xs">
                     <div id="wrap">
                         @if (! cms()->isDefaultLanguage())

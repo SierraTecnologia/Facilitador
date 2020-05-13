@@ -163,7 +163,7 @@ $app->register(Facilitador\LumenServiceProvider::class);
 In `bootstrap/app.php`:
 
 ```php
-config(['eloquentfilter.namespace' => "App\\Models\\ModelFilters\\"]);
+\Illuminate\Support\Facades\Config::get(['eloquentfilter.namespace' => "App\\Models\\ModelFilters\\"]);
 ```
 
 #### Define The Default Model Filter (optional)

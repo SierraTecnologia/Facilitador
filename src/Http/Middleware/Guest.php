@@ -37,7 +37,7 @@ class Guest
     public function getHome()
     {
         // Vars
-        $config = config('sitec.site.post_login_redirect');
+        $config = \Illuminate\Support\Facades\Config::get('sitec.site.post_login_redirect');
         $auth = app('facilitador.user');
 
         // Make the config optional
@@ -77,7 +77,7 @@ class Guest
     {
         // If no nav passed, as it would be for a sub navs, get the configed nav
         if (empty($nav)) {
-            $nav = config('sitec.site.nav');
+            $nav = \Illuminate\Support\Facades\Config::get('sitec.site.nav');
         }
 
         // Allow for the nav to be acallable

@@ -16,7 +16,7 @@ class FileService
     public function get($file)
     {
         $filesystem = new Filesystem();
-        $templateSource = config('crudmaker.template_source');
+        $templateSource = \Illuminate\Support\Facades\Config::get('crudmaker.template_source');
         $orginalFileSource = __DIR__.'/../Templates/Laravel/';
 
         if (is_null($templateSource)) {

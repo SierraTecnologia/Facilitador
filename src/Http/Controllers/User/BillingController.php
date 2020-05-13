@@ -20,7 +20,7 @@ class BillingController extends Controller
         $user = $request->user();
         $invoice = $user->meta->upcomingInvoice();
 
-        if ($user->meta->subscribed(config('plans.subscription_name')) && ! is_null($invoice)) {
+        if ($user->meta->subscribed(\Illuminate\Support\Facades\Config::get('plans.subscription_name')) && ! is_null($invoice)) {
             return view('billing.details')
                 ->with('invoice', $invoice)
                 ->with('invoiceDate', Carbon::createFromTimestamp($invoice->date))
@@ -42,7 +42,7 @@ class BillingController extends Controller
         try {
             $payload = $request->all();
             $creditCardToken = $payload['sitecpaymentToken'];
-            auth()->user()->meta->newSubscription(config('plans.subscription_name'), config('plans.subscription'))->create($creditCardToken);
+            auth()->user()->meta->newSubscription(\Illuminate\Support\Facades\Config::get('plans.subscription_name'), \Illuminate\Support\Facades\Config::get('plans.subscription'))->create($creditCardToken);
             return redirect('user/billing/details')->with('message', 'You\'re now subscribed!');
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -130,7 +130,7 @@ class BillingController extends Controller
     public function getInvoices(Request $request)
     {
         $user = $request->user();
-        $invoices = $user->meta->invoices(config('plans.subscription_name'));
+        $invoices = $user->meta->invoices(\Illuminate\Support\Facades\Config::get('plans.subscription_name'));
 
         return view('billing.invoices')
             ->with('invoices', $invoices)
@@ -148,12 +148,12 @@ class BillingController extends Controller
         try {
             $user = $request->user();
             $response = $user->meta->downloadInvoice($id, [
-                'vendor'    => config("invoice.company"),
-                'street'    => config("invoice.street"),
-                'location'  => config("invoice.location"),
-                'phone'     => config("invoice.phone"),
-                'url'       => config("invoice.url"),
-                'product'   => config("invoice.product"),
+                'vendor'    => \Illuminate\Support\Facades\Config::get("invoice.company"),
+                'street'    => \Illuminate\Support\Facades\Config::get("invoice.street"),
+                'location'  => \Illuminate\Support\Facades\Config::get("invoice.location"),
+                'phone'     => \Illuminate\Support\Facades\Config::get("invoice.phone"),
+                'url'       => \Illuminate\Support\Facades\Config::get("invoice.url"),
+                'product'   => \Illuminate\Support\Facades\Config::get("invoice.product"),
                 'description'   => 'Subscription',
             ]);
         } catch (Exception $e) {
@@ -175,7 +175,7 @@ class BillingController extends Controller
             $user = $request->user();
             $invoice = $user->meta->upcomingInvoice();
             $date = Carbon::createFromTimestamp($invoice->date);
-            $user->meta->subscription(config('plans.subscription_name'))->cancel();
+            $user->meta->subscription(\Illuminate\Support\Facades\Config::get('plans.subscription_name'))->cancel();
             return redirect('user/billing/details')->with('message', 'Your subscription has been cancelled! It will be availale until '.$date);
         } catch (Exception $e) {
             Log::error($e->getMessage());

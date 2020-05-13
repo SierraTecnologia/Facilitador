@@ -29,7 +29,7 @@ class ValidationService
         if (is_array($form)) {
             $fields = $form;
         } else {
-            $conditions = Cms::config('validation.'.$form);
+            $conditions = Cms::\Illuminate\Support\Facades\Config::get('validation.'.$form);
             $fields = $conditions;
         }
 

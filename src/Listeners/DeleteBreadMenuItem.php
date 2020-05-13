@@ -26,7 +26,7 @@ class DeleteBreadMenuItem
      */
     public function handle(BreadDeleted $bread)
     {
-        if (config('sitec.facilitador.bread.add_menu_item')) {
+        if (\Illuminate\Support\Facades\Config::get('sitec.facilitador.bread.add_menu_item')) {
             $menuItem = Facilitador::model('MenuItem')->where('route', 'facilitador.'.$bread->dataType->slug.'.index');
 
             if ($menuItem->exists()) {

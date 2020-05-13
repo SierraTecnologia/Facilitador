@@ -17,10 +17,10 @@ class MultilingualTest extends TestCase
         parent::setUp();
 
         // Add another language
-        config()->set('facilitador.multilingual.locales', ['en', 'da']);
+        \Illuminate\Support\Facades\Config::get()->set('facilitador.multilingual.locales', ['en', 'da']);
 
         // Turn on multilingual
-        config()->set('facilitador.multilingual.enabled', true);
+        \Illuminate\Support\Facades\Config::get()->set('facilitador.multilingual.enabled', true);
     }
 
     public function testCheckingModelIsTranslatable()

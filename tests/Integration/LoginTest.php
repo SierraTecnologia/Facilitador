@@ -95,7 +95,7 @@ class LoginTest extends TestCase
     {
         $this->auth();
 
-        config()->set('facilitador.site.post_login_redirect', '/admin/something');
+        \Illuminate\Support\Facades\Config::get()->set('facilitador.site.post_login_redirect', '/admin/something');
 
         // Should redirect to the first route in the config
         $response = $this->get('admin');

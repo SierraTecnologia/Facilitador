@@ -64,7 +64,7 @@ class FacilitadorBreadController extends Controller
     private function prepopulateBreadInfo($table)
     {
         $displayName = Str::singular(implode(' ', explode('_', Str::title($table))));
-        $modelNamespace = config('sitec.facilitador.models.namespace', app()->getNamespace());
+        $modelNamespace = \Illuminate\Support\Facades\Config::get('sitec.facilitador.models.namespace', app()->getNamespace());
         if (empty($modelNamespace)) {
             $modelNamespace = app()->getNamespace();
         }

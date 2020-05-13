@@ -69,12 +69,12 @@ class AssetService
             return Cache::remember($encFileName.'_preview', 3600, function () use ($encFileName, $fileSystem) {
                 $fileName = Crypto::url_decode($encFileName);
 
-                if (config('cms.storage-location') === 'local' || config('cms.storage-location') === null) {
+                if (\Illuminate\Support\Facades\Config::get('cms.storage-location') === 'local' || \Illuminate\Support\Facades\Config::get('cms.storage-location') === null) {
                     $filePath = storage_path('app/'.$fileName);
                     $contentType = $fileSystem->mimeType($filePath);
                     $ext = strtoupper($fileSystem->extension($filePath));
                 } else {
-                    $filePath = Storage::disk(config('cms.storage-location', 'local'))->url($fileName);
+                    $filePath = Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->url($fileName);
                     $fileTool = new SplFileInfo($filePath);
                     $ext = $fileTool->getExtension();
                     $contentType = $this->getMimeType($ext);
@@ -210,7 +210,7 @@ class AssetService
         if (file_exists(storage_path('app/'.$fileName))) {
             $filePath = storage_path('app/'.$fileName);
         } else {
-            $filePath = Storage::disk(config('cms.storage-location', 'local'))->url($fileName);
+            $filePath = Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->url($fileName);
         }
 
         return $filePath;
@@ -227,18 +227,18 @@ class AssetService
      */
     public function getFileContent($fileName, $contentType, $ext)
     {
-        if (Storage::disk(config('cms.storage-location', 'local'))->exists($fileName)) {
-            $fileContent = Storage::disk(config('cms.storage-location', 'local'))->get($fileName);
-        } elseif (!is_null(config('filesystems.cloud.key'))) {
+        if (Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->exists($fileName)) {
+            $fileContent = Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->get($fileName);
+        } elseif (!is_null(\Illuminate\Support\Facades\Config::get('filesystems.cloud.key'))) {
             $fileContent = Storage::disk('cloud')->get($fileName);
         } else {
             $fileContent = file_get_contents($this->generateImage('File Not Found'));
         }
 
         if (stristr($fileName, 'image') || stristr($contentType, 'image')) {
-            if (! is_null(config('cms.preview-image-size'))) {
+            if (! is_null(\Illuminate\Support\Facades\Config::get('cms.preview-image-size'))) {
                 $img = Image::make($fileContent);
-                $img->resize(config('cms.preview-image-size', 800), null, function ($constraint) {
+                $img->resize(\Illuminate\Support\Facades\Config::get('cms.preview-image-size', 800), null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
 

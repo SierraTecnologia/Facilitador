@@ -75,7 +75,7 @@ class SocialController extends Controller
                 $newSocialUser->name              = $user->name;
                 $newSocialUser->password = bcrypt(str_random(16));
                 $newSocialUser->token = str_random(64);
-                $newSocialUser->activated = true; //!config('settings.activation');
+                $newSocialUser->activated = true; //!\Illuminate\Support\Facades\Config::get('settings.activation');
                 $newSocialUser->save();
 
                 $socialData = new Social;
