@@ -5,6 +5,7 @@ namespace Facilitador\Http\Controllers\Auth;
 use App\Models\User;
 use Validator;
 use Auth;
+use Former;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -82,20 +83,20 @@ class LoginController extends Controller
             'email'     => $email,
             'password'  => $password
         ], $remember == 1 ? true : false)) {
-            return redirect()->route('root.home');
+            return redirect()->route('facilitador.dashboard');
             if ( Auth::user()->hasRole('root')) {
 
-                return redirect()->route('root.home');
+                return redirect()->route('facilitador.dashboard');
 
             }
 
             if ( Auth::user()->hasRole('administrator')) {
 
-                return redirect()->route('admin.home');
+                return redirect()->route('facilitador.dashboard');
 
             }
 
-            return redirect()->route('user.home');
+            return redirect()->route('facilitador.dashboard');
 
         }
         
@@ -126,7 +127,7 @@ class LoginController extends Controller
         ));
 
         // Show the login homepage
-        return view('facilitador::layouts.blank', [
+        return view('facilitador::layouts.decoy.blank', [
             'content' => view('facilitador::account.login'),
         ]);
     }

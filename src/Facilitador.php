@@ -302,7 +302,7 @@ class Facilitador
 
             // Loop through all the packages and get the version of facilitador
             foreach ($file->packages as $package) {
-                if ($package->name == 'tcg/facilitador') {
+                if ($package->name == 'sierratecnologia/facilitador') {
                     $this->version = $package->version;
                     break;
                 }

@@ -17,7 +17,7 @@
 		%meta(name='csrf-token' content=csrf_token())
 
 		-# Stylesheets
-		%link(rel="stylesheet" href=\Illuminate\Support\Facades\Config::get('sitec.core.stylesheet') type="text/css")
+		%link(rel="stylesheet" href=config('sitec.core.stylesheet') type="text/css")
 
 		-# Passthrough javascript translations
 		- $localization = json_encode(__('facilitador::javascript'), JSON_HEX_APOS)
@@ -29,4 +29,4 @@
 		#main!= $content
 
 		-# JS
-		%script(src=\Illuminate\Support\Facades\Config::get('sitec.core.script') type="text/javascript")
+		%script(src=config('sitec.core.script') type="text/javascript")

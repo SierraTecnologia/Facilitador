@@ -208,7 +208,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'Manager',
-                    'route'       => 'facilitador.dash',
+                    'route'       => 'facilitador.dashboard',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -218,7 +218,7 @@ class FacilitadorProvider extends ServiceProvider
             'Manager' => [
                 [
                     'text'        => 'Manager Errors',
-                    'route'       => 'facilitador.dash',
+                    'route'       => 'facilitador.dashboard',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',

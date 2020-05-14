@@ -328,7 +328,7 @@ class Elements extends Base
      */
     public function field($key)
     {
-        return View::make('facilitador::layouts.blank')
+        return View::make('facilitador::layouts.decoy.blank')
             ->nest('content', 'facilitador::components.elements.field', [
                 'element' => app('facilitador.elements')
                     ->localize(Facilitador::locale())
@@ -368,7 +368,7 @@ class Elements extends Base
 
         // Return the layout with JUST a script variable with the element value
         // after saving.  Thus, post any saving callback operations.
-        return View::make('facilitador::layouts.blank', [
+        return View::make('facilitador::layouts.decoy.blank', [
             'content' => "<div id='response' data-key='{$key}'>{$el}</div>"
         ]);
     }
