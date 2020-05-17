@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use SierraTecnologia\Crypto\Services\Crypto;
 use Illuminate\Support\Facades\Route;
+use Support\Utils\Extratores\ClasserExtractor;
 
 /**
  * This class exists to help make links between pages in Decoy, which is
@@ -196,6 +197,6 @@ class UrlGenerator
         if (Crypto::isCrypto($name)) {
             $name = Crypto::shareableDecrypt($name);
         }
-        return ucfirst(urldecode(\Support\Components\Coders\Parser\ParseClass::getClassName($name)));
+        return ucfirst(urldecode(ClasserExtractor::getClassName($name)));
     }
 }
