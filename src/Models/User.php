@@ -47,7 +47,7 @@ class User extends Base implements
     AuthInterface,
     AuthenticatableContract,
     CanResetPasswordContract,
-    UserContract # Comentei pq deu erro
+    UserContract // Comentei pq deu erro
 {
     use Authenticatable, CanResetPassword, \Support\Traits\Models\HasImages;
     use HasApiTokens, Notifiable;
@@ -156,11 +156,15 @@ class User extends Base implements
     {
         parent::boot();
 
-        static::deleting(function (self $user) {
-            optional($user->photos)->each(function (Photo $photo) {
-                $photo->delete();
-            });
-        });
+        static::deleting(
+            function (self $user) {
+                optional($user->photos)->each(
+                    function (Photo $photo) {
+                        $photo->delete();
+                    }
+                );
+            }
+        );
     }
 
     /**
@@ -233,7 +237,7 @@ class User extends Base implements
      */
     public function getUserType()
     {
-        if ($this->isAdmin()){
+        if ($this->isAdmin()) {
             return 'Admin';
         }
         return 'Business';
@@ -407,10 +411,12 @@ class User extends Base implements
         ];
 
         // Send the email
-        Mail::send('facilitador::emails.create', $email, function ($m) use ($email) {
-            $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
-            $m->subject('Welcome to the '.Facilitador::site().' admin site');
-        });
+        Mail::send(
+            'facilitador::emails.create', $email, function ($m) use ($email) {
+                $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
+                $m->subject('Welcome to the '.Facilitador::site().' admin site');
+            }
+        );
     }
 
     /**
@@ -434,10 +440,12 @@ class User extends Base implements
         ];
 
         // Send the email
-        Mail::send('facilitador::emails.update', $email, function ($m) use ($email) {
-            $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
-            $m->subject('Your '.Facilitador::site().' admin account info has been updated');
-        });
+        Mail::send(
+            'facilitador::emails.update', $email, function ($m) use ($email) {
+                $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
+                $m->subject('Your '.Facilitador::site().' admin account info has been updated');
+            }
+        );
     }
 
     /**
@@ -489,7 +497,8 @@ class User extends Base implements
     {
         if ($action != 'deleted'
             && count($this->getDirty()) == 1
-            && $this->isDirty('remember_token')) {
+            && $this->isDirty('remember_token')
+        ) {
             return false;
         }
         return parent::shouldLogChange($action);
@@ -499,7 +508,7 @@ class User extends Base implements
      * Send the password reset notification. This overrides a method inheritted
      * from the CanResetPassword trait
      *
-     * @param  string  $token
+     * @param  string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -602,13 +611,15 @@ class User extends Base implements
      */
     public static function getRoleTitles()
     {
-        return array_map(function ($title) {
-            if (preg_match('#^<b>([^<]+)</b>#i', $title, $matches)) {
-                return $matches[1];
-            }
+        return array_map(
+            function ($title) {
+                if (preg_match('#^<b>([^<]+)</b>#i', $title, $matches)) {
+                    return $matches[1];
+                }
 
-            return $title;
-        }, \Illuminate\Support\Facades\Config::get('sitec.site.roles'));
+                return $title;
+            }, \Illuminate\Support\Facades\Config::get('sitec.site.roles')
+        );
     }
 
     /**
@@ -620,9 +631,11 @@ class User extends Base implements
     public static function getPermissionOptions($admin = null)
     {
         // Get all the app controllers
-        $controllers = array_map(function($path) {
-            return 'App\Http\Controllers\Admin\\'.basename($path, '.php');
-        }, glob(app_path('/Http/Controllers/Admin/*.php')));
+        $controllers = array_map(
+            function ($path) {
+                return 'App\Http\Controllers\Admin\\'.basename($path, '.php');
+            }, glob(app_path('/Http/Controllers/Admin/*.php'))
+        );
 
         // Add some Decoy controllers
         $controllers[] = 'Facilitador\Http\Controllers\Admin\Admins';
@@ -631,21 +644,24 @@ class User extends Base implements
         $controllers[] = 'Facilitador\Http\Controllers\Admin\RedirectRules';
 
         // Alphabetize the controller classes
-        usort($controllers, function ($a, $b) {
-            return substr($a, strrpos($a, '\\') + 1) > substr($b, strrpos($b, '\\') + 1);
-        });
+        usort(
+            $controllers, function ($a, $b) {
+                return substr($a, strrpos($a, '\\') + 1) > substr($b, strrpos($b, '\\') + 1);
+            }
+        );
 
         // Convert the list of controller classes into the shorthand strings used
         // by Decoy Auth as well as english name and desciption
-        return array_map(function ($class) use ($admin) {
-            $obj = new $class;
-            $permissions = $obj->getPermissionOptions();
-            if (!is_array($permissions)) {
-                $permissions = [];
-            }
+        return array_map(
+            function ($class) use ($admin) {
+                $obj = new $class;
+                $permissions = $obj->getPermissionOptions();
+                if (!is_array($permissions)) {
+                    $permissions = [];
+                }
 
-            // Build the controller-level node
-            return (object) [
+                // Build the controller-level node
+                return (object) [
 
                 // Add controller information
                 'slug' => FacilitadorURL::slugController($class),
@@ -653,10 +669,11 @@ class User extends Base implements
                 'description' => $obj->description(),
 
                 // Add permission options for the controller
-                'permissions' => array_map(function ($value, $action) use ($class, $admin) {
-                    $roles = array_keys(Config::get('sitec.site.roles'));
+                'permissions' => array_map(
+                    function ($value, $action) use ($class, $admin) {
+                        $roles = array_keys(Config::get('sitec.site.roles'));
 
-                    return (object) [
+                        return (object) [
                         'slug' => $action,
                         'title' => is_array($value) ? $value[0] : Text::titleFromKey($action),
                         'description' => is_array($value) ? $value[1] : $value,
@@ -669,14 +686,18 @@ class User extends Base implements
 
                         // Filter the list of roles to just the roles that allow the
                         // permission currently being iterated through
-                        'roles' => array_filter($roles, function ($role) use ($action, $class) {
-                            return with(new Admin(['role' => $role]))->can($action, $class);
-                        }),
+                        'roles' => array_filter(
+                            $roles, function ($role) use ($action, $class) {
+                                return with(new Admin(['role' => $role]))->can($action, $class);
+                            }
+                        ),
 
-                    ];
-                }, $permissions, array_keys($permissions)),
-            ];
-        }, $controllers);
+                        ];
+                    }, $permissions, array_keys($permissions)
+                ),
+                ];
+            }, $controllers
+        );
     }
 
     /**
@@ -847,8 +868,8 @@ class User extends Base implements
         $this->loadPermissionsRelations();
 
         $_permissions = $this->roles_all()
-                              ->pluck('permissions')->flatten()
-                              ->pluck('key')->unique()->toArray();
+            ->pluck('permissions')->flatten()
+            ->pluck('key')->unique()->toArray();
 
         return in_array($name, $_permissions);
     }

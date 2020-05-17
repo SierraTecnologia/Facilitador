@@ -72,17 +72,21 @@ class Elements extends Collection
     {
         $this->hydrate();
 
-        return new ModelCollection(array_map(function ($element, $key) {
+        return new ModelCollection(
+            array_map(
+                function ($element, $key) {
 
-            // Add the key as an attribute
-            return new $this->model(array_merge($element, ['key' => $key]));
-        }, $this->all(), array_keys($this->items)));
+                    // Add the key as an attribute
+                    return new $this->model(array_merge($element, ['key' => $key]));
+                }, $this->all(), array_keys($this->items)
+            )
+        );
     }
 
     /**
      * Get an element given it's key
      *
-     * @param  string  $key
+     * @param  string $key
      * @return Facilitador\Models\Element
      */
     public function get($key, $default = null)
@@ -124,37 +128,41 @@ class Elements extends Collection
         // Get all of the elements matching the prefix with dot-notated keys
         $dotted = $this
             ->hydrate()
-            ->filter(function($val, $key) use ($prefix) {
-                return starts_with($key, $prefix);
+            ->filter(
+                function ($val, $key) use ($prefix) {
+                    return starts_with($key, $prefix);
 
-            // Loop through all matching elements
-            })->map(function($val, $key) use ($prefix, $crops) {
+                    // Loop through all matching elements
+                }
+            )->map(
+                function ($val, $key) use ($prefix, $crops) {
 
-                // Resolve the key using the Element helper so that we get an
-                // actual Element model instance.
-                $el = $this->get($key);
-                $value = $el->value();
+                    // Resolve the key using the Element helper so that we get an
+                    // actual Element model instance.
+                    $el = $this->get($key);
+                    $value = $el->value();
 
-                // Check if the element key is in the $crops config.  If so,
-                // return the croopped image instructions.
-                $crop_key = substr($key, strlen($prefix) + 1);
-                if (isset($crops[$crop_key])) {
+                    // Check if the element key is in the $crops config.  If so,
+                    // return the croopped image instructions.
+                    $crop_key = substr($key, strlen($prefix) + 1);
+                    if (isset($crops[$crop_key])) {
 
-                    // Handle models returned from BelongsTo fields
-                    if (is_a($value, Base::class)) {
-                        $func = [$value, 'withDefaultImage'];
-                        return call_user_func_array($func, $crops[$crop_key]);
+                        // Handle models returned from BelongsTo fields
+                        if (is_a($value, Base::class)) {
+                            $func = [$value, 'withDefaultImage'];
+                            return call_user_func_array($func, $crops[$crop_key]);
+                        }
+
+                        // Otherwise, use the crop helper on the Element model
+                        return call_user_func_array([$el, 'crop'], $crops[$crop_key]);
                     }
 
-                    // Otherwise, use the crop helper on the Element model
-                    return call_user_func_array([$el, 'crop'], $crops[$crop_key]);
+                    // If no crops were defined, return the value
+                    return (string) $value;
+
+                    // Convert the collection to an array
                 }
-
-                // If no crops were defined, return the value
-                return (string) $value;
-
-            // Convert the collection to an array
-            })->all();
+            )->all();
 
         // Make a multidimensionsl array from the dots, stripping the prefix
         // from the  keys.  Then return it.
@@ -281,8 +289,8 @@ class Elements extends Collection
     {
         $assoc = $this->assocConfig();
 
-        return array_replace_recursive($assoc,
-
+        return array_replace_recursive(
+            $assoc,
             // Get only the databse records whose keys are present in the YAML.  This removes
             // entries that may be from older YAML configs.
             array_intersect_key($this->assocAdminChoices(), $assoc)
@@ -398,18 +406,20 @@ class Elements extends Collection
         }
 
         // Convert models to simple array
-        $elements = array_map(function (Element $element) {
+        $elements = array_map(
+            function (Element $element) {
 
-            // Don't need the key as an attribute because of the dictionary conversion
-            $ar = array_except($element->toArray(), ['key']);
+                // Don't need the key as an attribute because of the dictionary conversion
+                $ar = array_except($element->toArray(), ['key']);
 
-            // Restore relationships
-            $ar['images'] = $element->images;
+                // Restore relationships
+                $ar['images'] = $element->images;
 
-            return $ar;
+                return $ar;
 
-        // .. from a dictionary of ALL elements for the locale
-        }, $query->get()->getDictionary());
+                // .. from a dictionary of ALL elements for the locale
+            }, $query->get()->getDictionary()
+        );
 
         // Store the keys of all these elements so we can keep track of which
         // Elements "exist"
@@ -461,7 +471,8 @@ class Elements extends Collection
 
             // If an array found ...
             if (($config = Yaml::parse(file_get_contents($file)))
-                && is_array($config)) {
+                && is_array($config)
+            ) {
 
                 // Merge it in
                 $this->config = array_replace_recursive($this->config, $config);
@@ -472,7 +483,7 @@ class Elements extends Collection
     /**
      * Check if a key has been stored in the database
      *
-     * @param  string  $key The key of an element
+     * @param  string $key The key of an element
      * @return boolean
      */
     public function keyUpdated($key)
@@ -492,9 +503,11 @@ class Elements extends Collection
      */
     public function onlyPages($pages)
     {
-        $this->items = array_filter($this->items, function ($element) use ($pages) {
-            return in_array(Str::slug($element['page_label']), $pages);
-        });
+        $this->items = array_filter(
+            $this->items, function ($element) use ($pages) {
+                return in_array(Str::slug($element['page_label']), $pages);
+            }
+        );
 
         return $this;
     }
@@ -526,9 +539,13 @@ class Elements extends Collection
      */
     public function populate()
     {
-        return array_combine(array_map(function ($key) {
-            return str_replace('.', '|', $key);
-        }, $this->keys()->all()), $this->pluck('value')->all());
+        return array_combine(
+            array_map(
+                function ($key) {
+                    return str_replace('.', '|', $key);
+                }, $this->keys()->all()
+            ), $this->pluck('value')->all()
+        );
     }
 
     /**

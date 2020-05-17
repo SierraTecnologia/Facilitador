@@ -22,8 +22,10 @@ class SiteMapController extends Controller
 
         $contents = view('site-map', compact('items'));
 
-        return new Response($contents, 200, [
+        return new Response(
+            $contents, 200, [
             'Content-Type' => 'application/xml;charset=UTF-8',
-        ]);
+            ]
+        );
     }
 }

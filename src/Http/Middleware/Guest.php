@@ -11,12 +11,12 @@ use Closure;
 class Guest
 {
     /**
-    * Handle an incoming request.
-    *
-    * @param  \Illuminate\Http\Request $request
-    * @param  \Closure                 $next
-    * @return mixed
-    */
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
         // If logged in, redirect to user's home

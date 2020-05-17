@@ -16,11 +16,13 @@ class AlterPostNullableFieldsTable extends Migration
         $platform = \DB::getDoctrineSchemaManager()->getDatabasePlatform();
         $platform->registerDoctrineTypeMapping('enum', 'string');
 
-        Schema::table('posts', function (Blueprint $table) {
-            $table->text('excerpt')->nullable()->change();
-            $table->text('meta_description')->nullable()->change();
-            $table->text('meta_keywords')->nullable()->change();
-        });
+        Schema::table(
+            'posts', function (Blueprint $table) {
+                $table->text('excerpt')->nullable()->change();
+                $table->text('meta_description')->nullable()->change();
+                $table->text('meta_keywords')->nullable()->change();
+            }
+        );
     }
 
     /**
@@ -30,10 +32,12 @@ class AlterPostNullableFieldsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->text('excerpt')->change();
-            $table->text('meta_description')->change();
-            $table->text('meta_keywords')->change();
-        });
+        Schema::table(
+            'posts', function (Blueprint $table) {
+                $table->text('excerpt')->change();
+                $table->text('meta_description')->change();
+                $table->text('meta_keywords')->change();
+            }
+        );
     }
 }

@@ -9,7 +9,8 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Applicaion;
 
-class Subscription {
+class Subscription
+{
 
     /**
      * The Guard implementation.
@@ -28,27 +29,26 @@ class Subscription {
     /**
      * Create a new filter instance.
      *
-     * @param  Guard  $auth
-     * @param  ResponseFactory  $response
+     * @param  Guard           $auth
+     * @param  ResponseFactory $response
      * @return void
      */
     public function __construct(Guard $auth,
-                                ResponseFactory $response)
-    {
+        ResponseFactory $response
+    ) {
         $this->auth = $auth;
         $this->response = $response;
     }
     /**
-	 * Handle an incoming request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
-	 * @return mixed
-	 */
-	public function handle($request, Closure $next)
-	{
-        if ($this->auth->check())
-        {
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        if ($this->auth->check()) {
             if (!$userMeta = $this->auth->user()->userMeta()->first()) {
                 return $this->response->redirectTo('/subscription');
             }
@@ -56,6 +56,6 @@ class Subscription {
             return $next($request);
         }
         return $this->response->redirectTo('/');
-	}
+    }
 
 }

@@ -12,7 +12,9 @@ if (!app('facilitador.user')->can('publish', $controller)) {
 }
 
 // Render radios
-echo Former::radios('public', __('facilitador::display.visibility.label'))->inline()->radios(array(
+echo Former::radios('public', __('facilitador::display.visibility.label'))->inline()->radios(
+    array(
     __('facilitador::display.visibility.public') => array('value' => '1', 'checked' => empty($item) ? true : $item->public),
     __('facilitador::display.visibility.private') => array('value' => '0', 'checked' => empty($item) ? false : !$item->public),
-))->blockHelp($help);
+    )
+)->blockHelp($help);

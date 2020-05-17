@@ -28,7 +28,7 @@ class SubscriptionCreateAction
     /**
      * SubscriptionCreateAction constructor.
      *
-     * @param ResponseFactory $responseFactory
+     * @param ResponseFactory     $responseFactory
      * @param SubscriptionManager $subscriptionManager
      */
     public function __construct(ResponseFactory $responseFactory, SubscriptionManager $subscriptionManager)
@@ -38,13 +38,13 @@ class SubscriptionCreateAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {post} /v1/subscriptions Create
-     * @apiName Create
-     * @apiGroup Subscriptions
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-Type application/json
-     * @apiParamExample {json} Request-Body-Example:
+     * @apiVersion        1.0.0
+     * @api               {post} /v1/subscriptions Create
+     * @apiName           Create
+     * @apiGroup          Subscriptions
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-Type application/json
+     * @apiParamExample   {json} Request-Body-Example:
      * {
      *     "email": "username@domain.name"
      * }
@@ -59,7 +59,7 @@ class SubscriptionCreateAction
     /**
      * Create a subscription.
      *
-     * @param ReCaptchaRequest $request
+     * @param  ReCaptchaRequest $request
      * @return JsonResponse
      */
     public function __invoke(ReCaptchaRequest $request): JsonResponse

@@ -77,10 +77,10 @@ class RepositoryController extends Controller
             // if ($model && in_array(SoftDeletes::class, class_uses($model)) && Auth::user()->can('delete', app($dataType->model_name))) {
                 $usesSoftDeletes = true;
 
-                if ($request->get('showSoftDeleted')) {
-                    $showSoftDeleted = true;
-                    $query = $query->withTrashed();
-                }
+            if ($request->get('showSoftDeleted')) {
+                $showSoftDeleted = true;
+                $query = $query->withTrashed();
+            }
             // }
 
             // If a column has a relationship associated with it, we do not want to show that field
@@ -94,10 +94,12 @@ class RepositoryController extends Controller
 
             if ($orderBy && in_array($orderBy, $dataType->fields())) {
                 $querySortOrder = (!empty($sortOrder)) ? $sortOrder : 'desc';
-                $dataTypeContent = call_user_func([
+                $dataTypeContent = call_user_func(
+                    [
                     $query->orderBy($orderBy, $querySortOrder),
                     $getter,
-                ]);
+                    ]
+                );
             } elseif ($model->timestamps) {
                 $dataTypeContent = call_user_func([$query->latest($model::CREATED_AT), $getter]);
             } else {
@@ -167,22 +169,24 @@ class RepositoryController extends Controller
             $view = "facilitador::cruds.$slug.browse";
         }
 
-        return Facilitador::view($view, compact(
-            'actions',
-            'dataType',
-            'dataTypeContent',
-            'isModelTranslatable',
-            'search',
-            'orderBy',
-            'orderColumn',
-            'sortOrder',
-            'searchNames',
-            'isServerSide',
-            'defaultSearchKey',
-            'usesSoftDeletes',
-            'showSoftDeleted',
-            'showCheckboxColumn'
-        ));
+        return Facilitador::view(
+            $view, compact(
+                'actions',
+                'dataType',
+                'dataTypeContent',
+                'isModelTranslatable',
+                'search',
+                'orderBy',
+                'orderColumn',
+                'sortOrder',
+                'searchNames',
+                'isServerSide',
+                'defaultSearchKey',
+                'usesSoftDeletes',
+                'showSoftDeleted',
+                'showCheckboxColumn'
+            )
+        );
     }
 
     //***************************************
@@ -259,10 +263,12 @@ class RepositoryController extends Controller
                 $redirect = redirect()->back();
             }
 
-            return $redirect->with([
+            return $redirect->with(
+                [
                     'message'    => __('facilitador::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                     'alert-type' => 'success',
-                ]);
+                ]
+            );
         } else {
             return response()->json(['success' => true, 'data' => $data]);
         }
@@ -296,21 +302,23 @@ class RepositoryController extends Controller
         }
 
         // Delete media-picker files
-        $dataType->rows->where('type', 'media_picker')->where('details.delete_files', true)->each(function ($row) use ($data) {
-            $content = $data->{$row->field};
-            if (isset($content)) {
-                if (!is_array($content)) {
-                    $content = json_decode($content);
-                }
-                if (is_array($content)) {
-                    foreach ($content as $file) {
-                        $this->deleteFileIfExists($file);
+        $dataType->rows->where('type', 'media_picker')->where('details.delete_files', true)->each(
+            function ($row) use ($data) {
+                $content = $data->{$row->field};
+                if (isset($content)) {
+                    if (!is_array($content)) {
+                        $content = json_decode($content);
                     }
-                } else {
-                    $this->deleteFileIfExists($content);
+                    if (is_array($content)) {
+                        foreach ($content as $file) {
+                            $this->deleteFileIfExists($file);
+                        }
+                    } else {
+                        $this->deleteFileIfExists($content);
+                    }
                 }
             }
-        });
+        );
     }
 
     /**
@@ -365,11 +373,13 @@ class RepositoryController extends Controller
 
         if (!isset($dataType->order_column) || !isset($dataType->order_display_column)) {
             return redirect()
-            ->route("facilitador.{$dataType->slug}.index")
-            ->with([
-                'message'    => __('facilitador::cruds.bread.ordering_not_set'),
-                'alert-type' => 'error',
-            ]);
+                ->route("facilitador.{$dataType->slug}.index")
+                ->with(
+                    [
+                    'message'    => __('facilitador::cruds.bread.ordering_not_set'),
+                    'alert-type' => 'error',
+                    ]
+                );
         }
 
         $model = app($dataType->model_name);
@@ -388,12 +398,14 @@ class RepositoryController extends Controller
             $view = "facilitador::cruds.$slug.order";
         }
 
-        return Facilitador::view($view, compact(
-            'dataType',
-            'display_column',
-            'dataRow',
-            'results'
-        ));
+        return Facilitador::view(
+            $view, compact(
+                'dataType',
+                'display_column',
+                'dataRow',
+                'results'
+            )
+        );
     }
 
     public function update_order(Request $request)
@@ -478,12 +490,14 @@ class RepositoryController extends Controller
                     ];
                 }
 
-                return response()->json([
+                return response()->json(
+                    [
                     'results'    => $results,
                     'pagination' => [
                         'more' => ($total_count > ($skip + $on_page)),
                     ],
-                ]);
+                    ]
+                );
             }
         }
 

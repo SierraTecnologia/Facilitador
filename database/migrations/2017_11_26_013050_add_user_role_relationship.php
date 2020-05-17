@@ -13,12 +13,14 @@ class AddUserRoleRelationship extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('role_id')->unsigned()->change();
-            $table->foreign('role_id')->references('id')->on('roles');
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->bigInteger('role_id')->unsigned()->change();
+                $table->foreign('role_id')->references('id')->on('roles');
 
-            $table->softDeletes();
-        });
+                $table->softDeletes();
+            }
+        );
     }
 
     /**
@@ -28,12 +30,16 @@ class AddUserRoleRelationship extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['role_id']);
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->dropForeign(['role_id']);
+            }
+        );
 
-        Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('role_id')->change();
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->bigInteger('role_id')->change();
+            }
+        );
     }
 }

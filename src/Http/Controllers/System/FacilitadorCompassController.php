@@ -47,20 +47,24 @@ class FacilitadorCompassController extends Controller
             $active_tab = 'logs';
             app('files')->delete(LogViewer::pathToLogFile(base64_decode($this->request->input('del'))));
 
-            return $this->redirect($this->request->url().'?logs=true')->with([
+            return $this->redirect($this->request->url().'?logs=true')->with(
+                [
                 'message'    => __('facilitador::compass.logs.delete_success').' '.base64_decode($this->request->input('del')),
                 'alert-type' => 'success',
-                ]);
+                ]
+            );
         } elseif ($this->request->has('delall')) {
             $active_tab = 'logs';
             foreach (LogViewer::getFiles(true) as $file) {
                 app('files')->delete(LogViewer::pathToLogFile($file));
             }
 
-            return $this->redirect($this->request->url().'?logs=true')->with([
+            return $this->redirect($this->request->url().'?logs=true')->with(
+                [
                 'message'    => __('facilitador::compass.logs.delete_all_success'),
                 'alert-type' => 'success',
-                ]);
+                ]
+            );
         }
 
         $artisan_output = '';
@@ -163,9 +167,9 @@ class FacilitadorCompassController extends Controller
 }
 
 /***
-**** Credit for the LogViewer class
-**** https://github.com/rap2hpoutre/laravel-log-viewer
-***/
+ * *** Credit for the LogViewer class
+ * *** https://github.com/rap2hpoutre/laravel-log-viewer
+ ***/
 
 class LogViewer
 {

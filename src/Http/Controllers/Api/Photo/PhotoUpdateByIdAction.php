@@ -29,7 +29,7 @@ class PhotoUpdateByIdAction
      * PhotoUpdateByIdAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param PhotoManager $photoManager
+     * @param PhotoManager    $photoManager
      */
     public function __construct(ResponseFactory $responseFactory, PhotoManager $photoManager)
     {
@@ -38,16 +38,16 @@ class PhotoUpdateByIdAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {put} /v1/photos/:photo_id Update
-     * @apiName Update
-     * @apiGroup Photos
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-type multipart/form-data
-     * @apiParam {Integer{1..N}} :photo_id Unique resource ID.
-     * @apiParam {Object} location Photo location.
-     * @apiParam {Number{-90-90}} location.latitude Photo location latitude.
-     * @apiParam {Number{-180-180}} location.longitude Photo location longitude.
+     * @apiVersion        1.0.0
+     * @api               {put} /v1/photos/:photo_id Update
+     * @apiName           Update
+     * @apiGroup          Photos
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-type multipart/form-data
+     * @apiParam          {Integer{1..N}} :photo_id Unique resource ID.
+     * @apiParam          {Object} location Photo location.
+     * @apiParam          {Number{-90-90}} location.latitude Photo location latitude.
+     * @apiParam          {Number{-180-180}} location.longitude Photo location longitude.
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 200 OK
      * {
@@ -86,8 +86,8 @@ class PhotoUpdateByIdAction
     /**
      * Update a photo.
      *
-     * @param mixed $id
-     * @param Request $request
+     * @param  mixed   $id
+     * @param  Request $request
      * @return JsonResponse
      */
     public function __invoke($id, Request $request): JsonResponse

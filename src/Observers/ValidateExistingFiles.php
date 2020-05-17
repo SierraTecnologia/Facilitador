@@ -17,9 +17,11 @@ class ValidateExistingFiles
      * Massage validation handling
      *
      * @param  string $event
-     * @param  array $payload Contains:
-     *    - Facilitador\Models\Base
-     *    - Illuminate\Validation\Validator
+     * @param  array  $payload Contains:
+     *                         -
+     *                         Facilitador\Models\Base
+     *                         -
+     *                         Illuminate\Validation\Validator
      * @return void
      */
     public function onValidating($event, $payload)
@@ -34,13 +36,15 @@ class ValidateExistingFiles
 
         // Get all the file related rules
         // https://regex101.com/r/oP4kD2/1
-        $rules = array_filter($validation->getRules(), function ($rules) {
-            foreach ($rules as $rule) {
-                if (preg_match('#^(image|file|video|mimes|dimensions)#', $rule)) {
-                    return true;
+        $rules = array_filter(
+            $validation->getRules(), function ($rules) {
+                foreach ($rules as $rule) {
+                    if (preg_match('#^(image|file|video|mimes|dimensions)#', $rule)) {
+                        return true;
+                    }
                 }
             }
-        });
+        );
 
         // For each of the file rules, if the input has a value, make a file
         // instance for it if it's a local path.
@@ -54,18 +58,18 @@ class ValidateExistingFiles
             if (!array_has($data, $attribute)) {
                 continue;
 
-            // Skip if a file was uploaded for this attribtue
+                // Skip if a file was uploaded for this attribtue
             } else if (is_a($value, File::class)) {
                 continue;
 
-            // If the value is empty, because the user is deleting the file
-            // instance, set it to an empty string instead of the default
-            // (null).  Null requires `nullable` validation rules to be set
-            // and I don't want to require that.
+                // If the value is empty, because the user is deleting the file
+                // instance, set it to an empty string instead of the default
+                // (null).  Null requires `nullable` validation rules to be set
+                // and I don't want to require that.
             } else if (!$value) {
                 array_set($data, $attribute, '');
 
-            // Create the file instance and clear the data instance
+                // Create the file instance and clear the data instance
             } else {
                 array_set($data, $attribute, $this->makeFileFromPath($value));
             }
@@ -80,7 +84,7 @@ class ValidateExistingFiles
     /**
      * Make an UploadedFile instance using Upchuck from the string input value
      *
-     * @param string $path
+     * @param  string $path
      * @return UploadedFile
      */
     public function makeFileFromPath($path)
@@ -90,7 +94,8 @@ class ValidateExistingFiles
         return new UploadedFile(
             $absolute_path, basename($absolute_path),
             null, null, // Default mime and error
-            true); // Enable test mode so local file will be pass as uploaded
+            true
+        ); // Enable test mode so local file will be pass as uploaded
     }
 
 }

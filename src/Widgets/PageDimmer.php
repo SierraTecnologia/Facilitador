@@ -24,16 +24,20 @@ class PageDimmer extends BaseDimmer
         $count = Facilitador::model('Page')->count();
         $string = trans_choice('facilitador::dimmer.page', $count);
 
-        return view('facilitador::dimmer', array_merge($this->config, [
-            'icon'   => 'facilitador-file-text',
-            'title'  => "{$count} {$string}",
-            'text'   => __('facilitador::dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
-            'button' => [
+        return view(
+            'facilitador::dimmer', array_merge(
+                $this->config, [
+                'icon'   => 'facilitador-file-text',
+                'title'  => "{$count} {$string}",
+                'text'   => __('facilitador::dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
+                'button' => [
                 'text' => __('facilitador::dimmer.page_link_text'),
                 'link' => route('facilitador.pages.index'),
-            ],
-            'image' => facilitador_asset('images/widget-backgrounds/03.jpg'),
-        ]));
+                ],
+                'image' => facilitador_asset('images/widget-backgrounds/03.jpg'),
+                ]
+            )
+        );
     }
 
     /**

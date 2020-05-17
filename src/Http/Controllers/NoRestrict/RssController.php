@@ -26,17 +26,21 @@ class RssController extends Controller
     {
         $module = $this->module;
 
-        $meta = \Illuminate\Support\Facades\Config::get('cms.rss', [
+        $meta = \Illuminate\Support\Facades\Config::get(
+            'cms.rss', [
             'title' => \Illuminate\Support\Facades\Config::get('app.name'),
             'link' => url('/'),
-        ]);
+            ]
+        );
 
         $items = $this->repo->published();
 
         $contents = view('rss', compact('items', 'meta', 'module'));
 
-        return new Response($contents, 200, [
+        return new Response(
+            $contents, 200, [
             'Content-Type' => 'application/xml;charset=UTF-8',
-        ]);
+            ]
+        );
     }
 }

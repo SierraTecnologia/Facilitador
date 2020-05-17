@@ -113,13 +113,15 @@ class RegisterService
         $results = new Collection;
         // @todo
         dd($this->getDiscoverService()->dataRelactionships);
-        $this->getDiscoverService()->getRelations()->map(function ($value) use ($results, $returnEmptys) {
-            $tmpRelationResults = $this->getInstance()->{$value->name}()->get();
+        $this->getDiscoverService()->getRelations()->map(
+            function ($value) use ($results, $returnEmptys) {
+                $tmpRelationResults = $this->getInstance()->{$value->name}()->get();
             
-            if ($returnEmptys || count($tmpRelationResults)>0) {
-                $results[$value->name] = new RelationshipResult($value, $tmpRelationResults);
+                if ($returnEmptys || count($tmpRelationResults)>0) {
+                    $results[$value->name] = new RelationshipResult($value, $tmpRelationResults);
+                }
             }
-        });
+        );
 
         return $results;
     }

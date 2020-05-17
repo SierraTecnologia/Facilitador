@@ -26,12 +26,14 @@ class LoginTest extends TestCase
      */
     public function testInvalidLogin()
     {
-        $response = $this->post('admin', [
+        $response = $this->post(
+            'admin', [
             'email' => 'test@domain.com',
             'password' => 'pass',
-        ], [
+            ], [
             'HTTP_REFERER' => url('admin'), // So it redirects back to self
-        ]);
+            ]
+        );
 
         // Check that user is redirected back to login but there are errors
         $response->assertRedirect('admin');
@@ -45,21 +47,25 @@ class LoginTest extends TestCase
      */
     public function testValidLogin()
     {
-        Admin::create([
+        Admin::create(
+            [
             'first_name' => 'First',
             'last_name' => 'Last',
             'email' => 'test@domain.com',
             'password' => 'pass',
-        ]);
+            ]
+        );
 
         // Confirm not initially logged in
         $this->assertFalse(Auth::check());
 
         // Log in the user
-        $response = $this->post('admin', [
+        $response = $this->post(
+            'admin', [
             'email' => 'test@domain.com',
             'password' => 'pass',
-        ]);
+            ]
+        );
 
         // The response redirects back to the login page. A middleware will
         // then redirect to the first page of the admin

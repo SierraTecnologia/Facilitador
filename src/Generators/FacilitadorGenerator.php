@@ -39,6 +39,6 @@ class FacilitadorGenerator
         }
           $html .= '</ul>';
           $html .= '</div>';
-      return $html;
+        return $html;
     }
 }

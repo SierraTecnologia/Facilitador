@@ -14,14 +14,17 @@ class ElementsTest extends TestCase
      *
      * @return void
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         parent::setUp();
         $this->auth();
 
         // Disable localization for these tests
-        \Illuminate\Support\Facades\Config::get()->set('facilitador.site.locales', [
+        \Illuminate\Support\Facades\Config::get()->set(
+            'facilitador.site.locales', [
             'en' => 'English',
-        ]);
+            ]
+        );
     }
 
     /**
@@ -56,14 +59,16 @@ class ElementsTest extends TestCase
      */
     public function testTextFieldSave()
     {
-        $response = $this->post('admin/elements', [
+        $response = $this->post(
+            'admin/elements', [
             'homepage|marquee|title' => 'Test',
             'images' => [
                 '_xxxx' => [
                     'name' => 'homepage|marquee|image',
                 ],
             ],
-        ]);
+            ]
+        );
 
         $element = Facilitador::el('homepage.marquee.title');
         $response->assertStatus(302);
@@ -103,13 +108,15 @@ class ElementsTest extends TestCase
         $this->assertEquals($default_text, $default_element);
 
         // Make a post request without changing the title
-        $response = $this->post('admin/elements', [
+        $response = $this->post(
+            'admin/elements', [
             'images' => [
                 '_xxxx' => [
                     'name' => 'homepage|marquee|image',
                 ],
             ],
-        ]);
+            ]
+        );
         $response->assertStatus(302);
         $this->assertEmpty(Element::first());
         $this->assertEquals($default_text, $default_element);
@@ -122,14 +129,16 @@ class ElementsTest extends TestCase
      */
     public function testImageFieldUpload()
     {
-        $response = $this->call('POST', 'admin/elements', [
+        $response = $this->call(
+            'POST', 'admin/elements', [
             'images' => [
                 '_xxxx' => [
                     'name' => 'homepage|marquee|image',
                     'file' => $this->createUploadedFile(),
                 ],
             ],
-        ]);
+            ]
+        );
 
         $element = Facilitador::el('homepage.marquee.image');
         $response->assertStatus(302);
@@ -143,15 +152,17 @@ class ElementsTest extends TestCase
      */
     public function testFileFieldUpload()
     {
-        $response = $this->call('POST', 'admin/elements', [
+        $response = $this->call(
+            'POST', 'admin/elements', [
             'images' => [
                 '_xxxx' => [
                     'name' => 'homepage|marquee|image',
                 ],
             ],
-        ], [], [
+            ], [], [
             'homepage|marquee|file' => $this->createUploadedFile('file.jpg')
-        ]);
+            ]
+        );
 
         $element = Facilitador::el('homepage.marquee.file');
         $response->assertStatus(302);
@@ -168,34 +179,40 @@ class ElementsTest extends TestCase
 
         $this->createUploadedFile('test.jpg');
 
-        $element = factory(Element::class)->create([
+        $element = factory(Element::class)->create(
+            [
             'key' => 'homepage.marquee.image',
             'type' => 'image',
             'value' => '/uploads/test.jpg',
             'locale' => 'en',
-        ]);
-        $image = $element->images()->create([
+            ]
+        );
+        $image = $element->images()->create(
+            [
             'file' => '/uploads/test.jpg',
             'file_type' => 'image/jpeg',
             'file_size' => 10,
             'width' => 20,
             'height' => 20,
-        ]);
+            ]
+        );
 
-        $response = $this->call('POST', 'admin/elements', [
+        $response = $this->call(
+            'POST', 'admin/elements', [
             'images' => [
                 $image->id => [
                     'name' => 'homepage|marquee|image',
                     'file' => '',
                 ],
             ],
-        ], [], [
+            ], [], [
             'images' => [
                 $image->id => [
                     'file' => '',
                 ],
             ],
-        ]);
+            ]
+        );
 
         $response->assertStatus(302);
         $this->assertEmpty($element->fresh()->value);
@@ -211,21 +228,25 @@ class ElementsTest extends TestCase
     {
         $this->createVirtualFile('test.jpg');
 
-        $element = factory(Element::class)->create([
+        $element = factory(Element::class)->create(
+            [
             'key' => 'homepage.marquee.file',
             'type' => 'file',
             'value' => '/uploads/file.jpg',
             'locale' => 'en',
-        ]);
+            ]
+        );
 
-        $response = $this->call('POST', 'admin/elements', [
+        $response = $this->call(
+            'POST', 'admin/elements', [
             'homepage|marquee|file' => '',
             'images' => [
                 '_xxxx' => [
                     'name' => 'homepage|marquee|image',
                 ],
             ],
-        ]);
+            ]
+        );
 
         $response->assertStatus(302);
 
@@ -244,18 +265,22 @@ class ElementsTest extends TestCase
         $this->get('admin/elements');
 
         // Check that image was created in elements table
-        $this->assertDatabaseHas('elements', [
+        $this->assertDatabaseHas(
+            'elements', [
             'key' => 'homepage.bukwild.logo',
             'type' => 'image',
             'value' => '/uploads/elements/logo.jpg',
-        ]);
+            ]
+        );
 
         // Check that image was also created in images table
-        $this->assertDatabaseHas('images', [
+        $this->assertDatabaseHas(
+            'images', [
             'imageable_type' => 'Facilitador\Models\Element',
             'imageable_id' => 'homepage.bukwild.logo',
             'file' => '/uploads/elements/logo.jpg',
-        ]);
+            ]
+        );
 
         // Check that image exists on disk
         $path = app('upchuck')->path('/uploads/elements/logo.jpg');

@@ -23,19 +23,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Facilitador\Models\Attribute.
  *
- * @property int                                                                               $id
- * @property string                                                                            $slug
- * @property array                                                                             $name
- * @property array                                                                             $description
- * @property int                                                                               $sort_order
- * @property string                                                                            $group
- * @property string                                                                            $type
- * @property bool                                                                              $is_required
- * @property bool                                                                              $is_collection
- * @property string                                                                            $default
- * @property \Carbon\Carbon|null                                                               $created_at
- * @property \Carbon\Carbon|null                                                               $updated_at
- * @property array                                                                             $entities
+ * @property      int                                                                               $id
+ * @property      string                                                                            $slug
+ * @property      array                                                                             $name
+ * @property      array                                                                             $description
+ * @property      int                                                                               $sort_order
+ * @property      string                                                                            $group
+ * @property      string                                                                            $type
+ * @property      bool                                                                              $is_required
+ * @property      bool                                                                              $is_collection
+ * @property      string                                                                            $default
+ * @property      \Carbon\Carbon|null                                                               $created_at
+ * @property      \Carbon\Carbon|null                                                               $updated_at
+ * @property      array                                                                             $entities
  * @property-read \Facilitador\Support\ValueCollection|\Facilitador\Models\Value[] $values
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Models\Attribute ordered($direction = 'asc')
@@ -51,7 +51,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Models\Attribute whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Models\Attribute whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Models\Attribute whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @mixin  \Eloquent
  */
 class Attribute extends Model// implements Sortable
 {
@@ -145,7 +145,8 @@ class Attribute extends Model// implements Sortable
         parent::__construct($attributes);
 
         $this->setTable(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'));
-        $this->setRules([
+        $this->setRules(
+            [
             'name' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
             'slug' => 'required|alpha_dash|max:150|unique:'.\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes').',slug',
@@ -155,7 +156,8 @@ class Attribute extends Model// implements Sortable
             'is_required' => 'sometimes|boolean',
             'is_collection' => 'sometimes|boolean',
             'default' => 'nullable|string|max:10000',
-        ]);
+            ]
+        );
     }
 
     /**
@@ -233,12 +235,18 @@ class Attribute extends Model// implements Sortable
      */
     public function setEntitiesAttribute($entities): void
     {
-        static::saved(function ($model) use ($entities) {
-            $this->entities()->delete();
-            ! $entities || $this->entities()->createMany(array_map(function ($entity) {
-                return ['entity_type' => $entity];
-            }, $entities));
-        });
+        static::saved(
+            function ($model) use ($entities) {
+                $this->entities()->delete();
+                ! $entities || $this->entities()->createMany(
+                    array_map(
+                        function ($entity) {
+                            return ['entity_type' => $entity];
+                        }, $entities
+                    )
+                );
+            }
+        );
     }
 
     /**
@@ -249,10 +257,10 @@ class Attribute extends Model// implements Sortable
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-                          ->usingSeparator('_')
-                          ->doNotGenerateSlugsOnUpdate()
-                          ->generateSlugsFrom('name')
-                          ->saveSlugsTo('slug');
+            ->usingSeparator('_')
+            ->doNotGenerateSlugsOnUpdate()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 
     /**

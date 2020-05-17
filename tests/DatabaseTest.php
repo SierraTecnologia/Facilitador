@@ -28,22 +28,28 @@ class DatabaseTest extends TestCase
         // Prepare table
         $newTable = new Table('test_table_new');
 
-        $newTable->addColumn('id', 'integer', [
+        $newTable->addColumn(
+            'id', 'integer', [
             'autoincrement' => true,
-        ]);
+            ]
+        );
 
-        $newTable->addColumn('details', 'json', [
+        $newTable->addColumn(
+            'details', 'json', [
             'notnull' => true,
-        ]);
+            ]
+        );
 
         $newTable->setPrimaryKey(['id'], 'primary');
 
         $this->table = $newTable->toArray();
 
         // Create table
-        $this->post(route('facilitador.database.store'), [
+        $this->post(
+            route('facilitador.database.store'), [
             'table' => json_encode($this->table),
-        ]);
+            ]
+        );
     }
 
     public function test_table_created_successfully()
@@ -115,9 +121,11 @@ class DatabaseTest extends TestCase
     {
         $table = (new Table('i_dont_exist_please_create_me_first'))->toArray();
 
-        $this->put(route('facilitador.database.update', $table['oldName']), [
+        $this->put(
+            route('facilitador.database.update', $table['oldName']), [
             'table' => json_encode($table),
-        ]);
+            ]
+        );
 
         $this->assertSessionHasAll(
             $this->alertException(SchemaException::tableDoesNotExist($table['name']))
@@ -139,9 +147,11 @@ class DatabaseTest extends TestCase
         $dbTable = SchemaManager::listTableDetails($this->table['name']);
 
         $column = 'new_facilitador_column';
-        $dbTable->addColumn($column, 'text', [
+        $dbTable->addColumn(
+            $column, 'text', [
             'notnull' => false,
-        ]);
+            ]
+        );
 
         $dbTable = $this->update_table($dbTable->toArray());
 
@@ -228,9 +238,11 @@ class DatabaseTest extends TestCase
     protected function update_table(array $table)
     {
         // Update table
-        $this->put(route('facilitador.database.update', $table['oldName']), [
+        $this->put(
+            route('facilitador.database.update', $table['oldName']), [
             'table' => json_encode($table),
-        ]);
+            ]
+        );
 
         // Test correct response
         $this->assertSessionHasAll($this->alertSuccess(__('facilitador::database.success_create_table', ['table' => $table['name']])));

@@ -10,7 +10,7 @@ return [
     | Set paginate limit
     |
     */
-    'paginate_limit' => env('PAGINATION_LIMIT_DEFAULT',15),
+    'paginate_limit' => env('PAGINATION_LIMIT_DEFAULT', 15),
 
 
     /**
@@ -243,5 +243,5 @@ return [
                 'height'=> 500
            ],
        ]*/
-   ],
+    ],
 ];

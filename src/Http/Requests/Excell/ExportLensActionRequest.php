@@ -22,9 +22,11 @@ class ExportLensActionRequest extends LensActionRequest implements ExportActionR
      */
     public function toExportQuery()
     {
-        return $this->toQuery()->when(!$this->forAllMatchingResources(), function ($query) {
-            $query->whereKey(explode(',', $this->resources));
-        });
+        return $this->toQuery()->when(
+            !$this->forAllMatchingResources(), function ($query) {
+                $query->whereKey(explode(',', $this->resources));
+            }
+        );
     }
 
     /**

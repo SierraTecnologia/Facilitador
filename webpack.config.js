@@ -48,25 +48,25 @@ const config = {
             {
                 test:    /\.m?js$/,
                 loader:  "babel-loader"
-            },
+        },
             {
                 test:    /\.vue$/,
                 loader:  "vue-loader"
-            },
+        },
             {
                 test: /\.(sa|sc|c)ss$/i,
                 use:  [
                     {
                         loader:  MiniCssExtractPlugin.loader,
                         options: {sourceMap}
-                    },
+                },
                     {
                         loader:  "css-loader",
                         options: {
                             sourceMap,
                             importLoaders: 2
                         }
-                    },
+                },
                     {loader: "postcss-loader", options: {sourceMap}},
                     "resolve-url-loader",
                     {
@@ -80,32 +80,38 @@ const config = {
                                 includePaths: [path.resolve(__dirname, "resources/scss")],
                             },
                         }
-                    },]
-            }
+                },]
+        }
         ]
     },
     plugins:      [
         new webpack.ProgressPlugin(),
         new VueLoaderPlugin(),
         new CleanWebpackPlugin({cleanStaleWebpackAssets: !isWatch}),
-        new MiniCssExtractPlugin({
-            path:          outputPath + "/css",
-            filename:      "css/[name].css",
-            chunkFilename: "css/[name].css"
-        }),
-        new ManifestPlugin({
-            fileName: "mix-manifest.json"
-        })
+        new MiniCssExtractPlugin(
+            {
+                path:          outputPath + "/css",
+                filename:      "css/[name].css",
+                chunkFilename: "css/[name].css"
+            }
+        ),
+        new ManifestPlugin(
+            {
+                fileName: "mix-manifest.json"
+            }
+        )
     ]
 }
 
 if (production) {
     config.optimization.minimizer = [
         new OptimizeCSSAssetsPlugin(),
-        new TerserPlugin({
-            cache:    true,
-            parallel: true,
-        }),
+        new TerserPlugin(
+            {
+                cache:    true,
+                parallel: true,
+            }
+        ),
     ]
 }
 

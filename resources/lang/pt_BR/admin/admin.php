@@ -1,10 +1,10 @@
 <?php
 
 return [
-	'settings'         => 'Configurações',
-	'homepage'         => 'Página inicial',
-	'home'             => 'Home',
-	'welcome'          => 'Bem vindo',
+    'settings'         => 'Configurações',
+    'homepage'         => 'Página inicial',
+    'home'             => 'Home',
+    'welcome'          => 'Bem vindo',
     'action'           => 'Ações',
     'back'             => 'Voltar',
     'created_at'       => 'Criado em',
@@ -19,4 +19,4 @@ return [
     'video_albums'     => 'Álbuns de vídeos',
     'video_items'      => 'Vídeos',
     'users'            => 'Usuários',
-	];
+    ];

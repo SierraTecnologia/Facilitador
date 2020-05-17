@@ -23,7 +23,7 @@ class AuthCreateAction
      * AuthCreateAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param OAuthProxy $oAuthProxy
+     * @param OAuthProxy      $oAuthProxy
      */
     public function __construct(OAuthProxy $oAuthProxy)
     {
@@ -31,13 +31,13 @@ class AuthCreateAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {post} /v1/auth/token Create
-     * @apiName Create
-     * @apiGroup Auth
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-Type application/json
-     * @apiParamExample {json} Request-Body-Example:
+     * @apiVersion        1.0.0
+     * @api               {post} /v1/auth/token Create
+     * @apiName           Create
+     * @apiGroup          Auth
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-Type application/json
+     * @apiParamExample   {json} Request-Body-Example:
      * {
      *     "email": "username@domain.name",
      *     "password": "password"
@@ -49,7 +49,7 @@ class AuthCreateAction
     /**
      * Create an auth token.
      *
-     * @param CreateAuthRequest $request
+     * @param  CreateAuthRequest $request
      * @return Response
      */
     public function __invoke(CreateAuthRequest $request)

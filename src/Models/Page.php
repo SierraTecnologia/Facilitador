@@ -40,7 +40,7 @@ class Page extends Model
     /**
      * Scope a query to only include active pages.
      *
-     * @param  $query  \Illuminate\Database\Eloquent\Builder
+     * @param $query \Illuminate\Database\Eloquent\Builder
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

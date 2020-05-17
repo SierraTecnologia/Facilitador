@@ -9,7 +9,7 @@ trait FacilitadorConfig
     
 
     /****************************************************************************************************
-     ************************************************** NO BOOT *************************************
+     * ************************************************* NO BOOT *************************************
      ****************************************************************************************************/
 
     /**
@@ -26,8 +26,10 @@ trait FacilitadorConfig
         Config::set('former.TwitterBootstrap3.labelWidths', []);
 
         // Change Former's required field HTML
-        Config::set('former.required_text', ' <span class="glyphicon glyphicon-exclamation-sign js-tooltip required" title="' .
-            __('facilitador::login.form.required') . '"></span>');
+        Config::set(
+            'former.required_text', ' <span class="glyphicon glyphicon-exclamation-sign js-tooltip required" title="' .
+            __('facilitador::login.form.required') . '"></span>'
+        );
 
         // Make pushed checkboxes have an empty string as their value
         Config::set('former.unchecked_value', '');

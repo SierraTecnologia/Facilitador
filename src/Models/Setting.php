@@ -10,7 +10,7 @@ use RicardoSierra\Translation\Models\Language;
 class Setting extends Model
 {
     
-	// const CREATED_AT = 'data';
+    // const CREATED_AT = 'data';
     // const UPDATED_AT = 'dataModificacao';
 
     protected $table = 'settings';

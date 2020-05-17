@@ -33,8 +33,8 @@ class PostDeleteByIdAction
      * PostDeleteByIdAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param PostManager $postManager
-     * @param CacheManager $cacheManager
+     * @param PostManager     $postManager
+     * @param CacheManager    $cacheManager
      */
     public function __construct(ResponseFactory $responseFactory, PostManager $postManager, CacheManager $cacheManager)
     {
@@ -44,12 +44,12 @@ class PostDeleteByIdAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {delete} /v1/posts/:post_id Delete
-     * @apiName Delete
-     * @apiGroup Posts
-     * @apiHeader {String} Accept application/json
-     * @apiParam {Integer{1..N}} :post_id Unique resource ID.
+     * @apiVersion        1.0.0
+     * @api               {delete} /v1/posts/:post_id Delete
+     * @apiName           Delete
+     * @apiGroup          Posts
+     * @apiHeader         {String} Accept application/json
+     * @apiParam          {Integer{1..N}} :post_id Unique resource ID.
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 204 No Content
      */
@@ -57,7 +57,7 @@ class PostDeleteByIdAction
     /**
      * Delete a post.
      *
-     * @param mixed $id
+     * @param  mixed $id
      * @return JsonResponse
      */
     public function __invoke($id): JsonResponse

@@ -31,23 +31,27 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.bread.store'), [
+        $this->post(
+            route('facilitador.bread.store'), [
             'name'                  => 'Toast',
             'slug'                  => 'toast',
             'display_name_singular' => 'toast',
             'display_name_plural'   => 'toasts',
             'icon'                  => 'fa fa-toast',
             'description'           => 'This is a toast',
-        ]);
+            ]
+        );
 
-        Event::assertDispatched(BreadAdded::class, function ($event) {
-            return $event->dataType->name === 'Toast'
+        Event::assertDispatched(
+            BreadAdded::class, function ($event) {
+                return $event->dataType->name === 'Toast'
                 || $event->dataType->slug === 'toast'
                 || $event->dataType->display_name_singular === 'toast'
                 || $event->dataType->display_name_plural === 'toasts'
                 || $event->dataType->icon === 'fa fa-toast'
                 || $event->dataType->description === 'This is a toast';
-        });
+            }
+        );
     }
 
     public function testBreadUpdatedEvent()
@@ -55,35 +59,41 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.bread.store'), [
+        $this->post(
+            route('facilitador.bread.store'), [
             'name'                  => 'Toast',
             'slug'                  => 'toast',
             'display_name_singular' => 'toast',
             'display_name_plural'   => 'toasts',
             'icon'                  => 'fa fa-toast',
             'description'           => 'This is a toast',
-        ]);
+            ]
+        );
 
         Event::assertNotDispatched(BreadUpdated::class);
         $dataType = DataType::where('slug', 'toast')->firstOrFail();
 
-        $this->put(route('facilitador.bread.update', [$dataType->id]), [
+        $this->put(
+            route('facilitador.bread.update', [$dataType->id]), [
             'name'                  => 'Test',
             'slug'                  => 'test',
             'display_name_singular' => 'test',
             'display_name_plural'   => 'tests',
             'icon'                  => 'fa fa-test',
             'description'           => 'This is a test',
-        ]);
+            ]
+        );
 
-        Event::assertDispatched(BreadUpdated::class, function ($event) {
-            return $event->dataType->name === 'Test'
+        Event::assertDispatched(
+            BreadUpdated::class, function ($event) {
+                return $event->dataType->name === 'Test'
                 || $event->dataType->slug === 'test'
                 || $event->dataType->display_name_singular === 'test'
                 || $event->dataType->display_name_plural === 'tests'
                 || $event->dataType->icon === 'fa fa-test'
                 || $event->dataType->description === 'This is a test';
-        });
+            }
+        );
     }
 
     public function testBreadDeletedEvent()
@@ -91,14 +101,16 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.bread.store'), [
+        $this->post(
+            route('facilitador.bread.store'), [
             'name'                  => 'Toast',
             'slug'                  => 'toast',
             'display_name_singular' => 'toast',
             'display_name_plural'   => 'toasts',
             'icon'                  => 'fa fa-toast',
             'description'           => 'This is a toast',
-        ]);
+            ]
+        );
 
         Event::assertNotDispatched(BreadDeleted::class);
         $dataType = DataType::where('slug', 'toast')->firstOrFail();
@@ -113,12 +125,14 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.pages.store'), [
+        $this->post(
+            route('facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
             'status'    => 'ACTIVE',
-        ]);
+            ]
+        );
 
         Event::assertDispatched(BreadDataAdded::class);
     }
@@ -128,22 +142,26 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.pages.store'), [
+        $this->post(
+            route('facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
             'status'    => 'ACTIVE',
-       ]);
+            ]
+        );
 
         Event::assertNotDispatched(BreadDataUpdated::class);
 
         $page = Page::where('slug', 'toasts')->firstOrFail();
 
-        $this->put(route('facilitador.pages.update', [$page->id]), [
+        $this->put(
+            route('facilitador.pages.update', [$page->id]), [
             'title'  => 'Test',
             'slug'   => 'tests',
             'status' => 'INACTIVE',
-        ]);
+            ]
+        );
 
         Event::assertDispatched(BreadDataUpdated::class);
     }
@@ -153,12 +171,14 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.pages.store'), [
+        $this->post(
+            route('facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
             'status'    => 'ACTIVE',
-        ]);
+            ]
+        );
 
         Event::assertNotDispatched(BreadDataDeleted::class);
 
@@ -177,14 +197,16 @@ class EventTest extends TestCase
 
         $image = UploadedFile::fake()->image('test.png');
 
-        $this->call('POST', route('facilitador.pages.store'), [
+        $this->call(
+            'POST', route('facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
             'status'    => 'ACTIVE',
-        ], [], [
+            ], [], [
             'image' => $image,
-        ]);
+            ]
+        );
 
         Event::assertNotDispatched(BreadImagesDeleted::class);
 
@@ -203,14 +225,16 @@ class EventTest extends TestCase
 
         $image = UploadedFile::fake()->image('test.png');
 
-        $this->call('POST', route('facilitador.pages.store'), [
+        $this->call(
+            'POST', route('facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
             'status'    => 'ACTIVE',
-        ], [], [
+            ], [], [
             'image' => $image,
-        ]);
+            ]
+        );
 
         Event::assertNotDispatched(FileDeleted::class);
 
@@ -226,7 +250,8 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.database.store'), [
+        $this->post(
+            route('facilitador.database.store'), [
             'table' => [
                 'name'    => 'test',
                 'columns' => [
@@ -241,7 +266,8 @@ class EventTest extends TestCase
                 'foreignKeys' => [],
                 'options'     => [],
             ],
-        ]);
+            ]
+        );
 
         Event::assertDispatched(TableAdded::class);
     }
@@ -251,7 +277,8 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.database.store'), [
+        $this->post(
+            route('facilitador.database.store'), [
             'table' => [
                 'name'    => 'test',
                 'columns' => [
@@ -266,12 +293,15 @@ class EventTest extends TestCase
                 'foreignKeys' => [],
                 'options'     => [],
             ],
-        ]);
+            ]
+        );
 
         Event::assertNotDispatched(TableUpdated::class);
 
-        $this->put(route('facilitador.database.update', ['test']), [
-            'table' => json_encode([
+        $this->put(
+            route('facilitador.database.update', ['test']), [
+            'table' => json_encode(
+                [
                 'name'    => 'test',
                 'oldName' => 'test',
                 'columns' => [
@@ -286,8 +316,10 @@ class EventTest extends TestCase
                 'indexes'     => [],
                 'foreignKeys' => [],
                 'options'     => [],
-            ]),
-        ]);
+                ]
+            ),
+            ]
+        );
 
         Event::assertDispatched(TableUpdated::class);
     }
@@ -297,7 +329,8 @@ class EventTest extends TestCase
         Event::fake();
         Auth::loginUsingId(1);
 
-        $this->post(route('facilitador.database.store'), [
+        $this->post(
+            route('facilitador.database.store'), [
             'table' => [
                 'name'    => 'test',
                 'columns' => [
@@ -312,7 +345,8 @@ class EventTest extends TestCase
                 'foreignKeys' => [],
                 'options'     => [],
             ],
-        ]);
+            ]
+        );
 
         Event::assertNotDispatched(TableDeleted::class);
 

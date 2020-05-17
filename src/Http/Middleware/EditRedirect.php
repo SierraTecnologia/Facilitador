@@ -11,18 +11,19 @@ use Redirect;
 class EditRedirect
 {
     /**
-    * Run the request filter.
-    *
-    * @param  Illuminate\Http\Request  $request
-    * @param  Closure  $next
-    * @return mixed
-    */
+     * Run the request filter.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @param  Closure                 $next
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
         // If GET request ends in a number, redirect
         if ($request->method() == 'GET'
             && ($url = $request->url())
-            && preg_match('#/\d+$#', $url)) {
+            && preg_match('#/\d+$#', $url)
+        ) {
             return Redirect::to($url.'/edit');
         }
 

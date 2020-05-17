@@ -21,10 +21,12 @@ class AlertTest extends TestCase
 
     public function testComponentRenders()
     {
-        Facilitador::addAlert((new Alert('test', 'warning'))
-            ->title('Title')
-            ->text('Text')
-            ->button('Button', 'http://example.com', 'danger'));
+        Facilitador::addAlert(
+            (new Alert('test', 'warning'))
+                ->title('Title')
+                ->text('Text')
+                ->button('Button', 'http://example.com', 'danger')
+        );
 
         $alerts = Facilitador::alerts();
 
@@ -35,15 +37,19 @@ class AlertTest extends TestCase
 
     public function testAlertsRenders()
     {
-        Facilitador::addAlert((new Alert('test', 'warning'))
-            ->title('Title')
-            ->text('Text')
-            ->button('Button', 'http://example.com', 'danger'));
+        Facilitador::addAlert(
+            (new Alert('test', 'warning'))
+                ->title('Title')
+                ->text('Text')
+                ->button('Button', 'http://example.com', 'danger')
+        );
 
-        Facilitador::addAlert((new Alert('foo'))
-            ->title('Bar')
-            ->text('Foobar')
-            ->button('Link', 'http://example.org'));
+        Facilitador::addAlert(
+            (new Alert('foo'))
+                ->title('Bar')
+                ->text('Foobar')
+                ->button('Link', 'http://example.org')
+        );
 
         $this->assertXmlStringEqualsXmlFile(
             __DIR__.'/rendered_alerts.html',

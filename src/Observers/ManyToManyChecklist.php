@@ -21,8 +21,10 @@ class ManyToManyChecklist
      * on model saved.
      *
      * @param  string $event
-     * @param  array $payload Contains:
-     *    - Facilitador\Models\Base $model
+     * @param  array  $payload Contains:
+     *                         -
+     *                         Facilitador\Models\Base
+     *                         $model
      * @return void
      */
     public function handle($event, $payload)
@@ -55,9 +57,11 @@ class ManyToManyChecklist
         // Strip all the "0"s from the input.  These exist because push checkboxes
         // is globally set for all of Decoy;
         $ids = request(self::PREFIX.$relationship);
-        $ids = array_filter($ids, function ($id) {
-            return $id > 0;
-        });
+        $ids = array_filter(
+            $ids, function ($id) {
+                return $id > 0;
+            }
+        );
 
         // Allow a single listener to transform the list of ids to, for instance,
         // add pivot data.

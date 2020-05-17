@@ -36,8 +36,8 @@ class PostPaginateAction
      * PostPaginateAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param PostManager $postManager
-     * @param CacheManager $cacheManager
+     * @param PostManager     $postManager
+     * @param CacheManager    $cacheManager
      */
     public function __construct(ResponseFactory $responseFactory, PostManager $postManager, CacheManager $cacheManager)
     {
@@ -47,13 +47,13 @@ class PostPaginateAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {get} /v1/posts?page=:page&per_page=:per_page Paginate
-     * @apiName Paginate
-     * @apiGroup Posts
-     * @apiHeader {String} Accept application/json
-     * @apiParam {Integer{1..N}} [page=1]
-     * @apiParam {Integer{1..100}} [per_page=20]
+     * @apiVersion        1.0.0
+     * @api               {get} /v1/posts?page=:page&per_page=:per_page Paginate
+     * @apiName           Paginate
+     * @apiGroup          Posts
+     * @apiHeader         {String} Accept application/json
+     * @apiParam          {Integer{1..N}} [page=1]
+     * @apiParam          {Integer{1..100}} [per_page=20]
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 200 OK
      * {
@@ -114,7 +114,7 @@ class PostPaginateAction
     /**
      * Paginate over posts.
      *
-     * @param PaginatedRequest $request
+     * @param  PaginatedRequest $request
      * @return JsonResponse
      */
     public function __invoke(PaginatedRequest $request): JsonResponse

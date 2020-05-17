@@ -5,12 +5,14 @@ export default {
                 return '-';
             }
 
-            return this.field.value.toLocaleString(this.field.locale, {
-                style: 'currency',
-                currency: this.field.currency,
-                minimumFractionDigits: 2,
-                maximumFractionDigits: this.field.subUnits
-            });
+            return this.field.value.toLocaleString(
+                this.field.locale, {
+                    style: 'currency',
+                    currency: this.field.currency,
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: this.field.subUnits
+                }
+            );
         },
     }
 }

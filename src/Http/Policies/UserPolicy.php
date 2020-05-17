@@ -17,7 +17,7 @@ class UserPolicy extends BasePolicy
      * Determine if the given model can be viewed by the user.
      *
      * @param \Facilitador\Contracts\User $user
-     * @param  $model
+     * @param $model
      *
      * @return bool
      */
@@ -33,7 +33,7 @@ class UserPolicy extends BasePolicy
      * Determine if the given model can be edited by the user.
      *
      * @param \Facilitador\Contracts\User $user
-     * @param  $model
+     * @param $model
      *
      * @return bool
      */
@@ -49,7 +49,7 @@ class UserPolicy extends BasePolicy
      * Determine if the given user can change a user a role.
      *
      * @param \Facilitador\Contracts\User $user
-     * @param  $model
+     * @param $model
      *
      * @return bool
      */

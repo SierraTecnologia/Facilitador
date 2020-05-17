@@ -18,7 +18,8 @@ class PhotoResource extends PhotoPlainResource
      */
     public function toArray($request)
     {
-        return array_merge(parent::toArray($request), [
+        return array_merge(
+            parent::toArray($request), [
             'location' => to_object($this->resource->getLocation(), LocationPlainResource::class),
             'exif' => [
                 'manufacturer' => to_string(html_purify($this->resource->getMetadata()->getManufacturer())),
@@ -35,6 +36,7 @@ class PhotoResource extends PhotoPlainResource
                 'medium' => to_object($this->resource->getThumbnails()->offsetGet(0), ThumbnailPlainResource::class),
                 'large' => to_object($this->resource->getThumbnails()->offsetGet(1), ThumbnailPlainResource::class),
             ],
-        ]);
+            ]
+        );
     }
 }

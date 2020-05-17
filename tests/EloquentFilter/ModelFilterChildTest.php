@@ -108,25 +108,33 @@ class ModelFilterChildTest extends TestCase
         $connection->setSchemaGrammar(new \Illuminate\Database\Schema\Grammars\SQLiteGrammar);
         $connection->setQueryGrammar(new \Illuminate\Database\Query\Grammars\SQLiteGrammar);
         $this->schema = new SchemaBuilder($connection);
-        $this->schema->create('users', function (\Illuminate\Database\Schema\Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-        });
-        $this->schema->create('client_user', function (\Illuminate\Database\Schema\Blueprint $table) {
-            $table->integer('client_id');
-            $table->integer('user_id');
-        });
-        $this->schema->create('clients', function (\Illuminate\Database\Schema\Blueprint $table) {
-            $table->increments('id');
-            // This is for the HasManyThroughRelation
-            $table->integer('user_id')->nullable();
-            $table->string('name');
-        });
-        $this->schema->create('locations', function (\Illuminate\Database\Schema\Blueprint $table) {
-            $table->increments('id');
-            $table->integer('client_id');
-            $table->string('name');
-        });
+        $this->schema->create(
+            'users', function (\Illuminate\Database\Schema\Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+            }
+        );
+        $this->schema->create(
+            'client_user', function (\Illuminate\Database\Schema\Blueprint $table) {
+                $table->integer('client_id');
+                $table->integer('user_id');
+            }
+        );
+        $this->schema->create(
+            'clients', function (\Illuminate\Database\Schema\Blueprint $table) {
+                $table->increments('id');
+                // This is for the HasManyThroughRelation
+                $table->integer('user_id')->nullable();
+                $table->string('name');
+            }
+        );
+        $this->schema->create(
+            'locations', function (\Illuminate\Database\Schema\Blueprint $table) {
+                $table->increments('id');
+                $table->integer('client_id');
+                $table->string('name');
+            }
+        );
 
         $clients = [['name' => 'one'], ['name' => 'two'], ['name' => 'three'], ['name' => 'four']];
         foreach ($clients as $index => $data) {

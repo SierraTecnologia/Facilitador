@@ -15,13 +15,15 @@ class ListingTest extends TestCase
      *
      * @return void
      */
-    protected function setup() {
+    protected function setup()
+    {
         parent::setUp();
         $this->auth();
     }
 
     /**
      * Test that the model listing view works
+     *
      * @return void
      */
     public function testIndex()
@@ -32,6 +34,7 @@ class ListingTest extends TestCase
 
     /**
      * Test the listing ordering
+     *
      * @return void
      */
     public function testOrder()
@@ -40,17 +43,20 @@ class ListingTest extends TestCase
 
         list($first_article, $second_article) = $articles;
 
-        $response = $this->json('PUT', 'admin/articles/' . $first_article->id, [
+        $response = $this->json(
+            'PUT', 'admin/articles/' . $first_article->id, [
             'id' => $first_article->id,
             'position' => 2,
             'public' => true
-        ], $this->ajaxHeader());
+            ], $this->ajaxHeader()
+        );
 
         $this->assertEquals(2, $first_article->fresh()->position);
     }
 
     /**
      * Test deleting from the listing view
+     *
      * @return void
      */
     public function testListingDestroy()
@@ -64,36 +70,44 @@ class ListingTest extends TestCase
 
     /**
      * Test if making the listing item public is working
+     *
      * @return void
      */
     public function testListingPublic()
     {
-        $article = factory(Article::class)->create([
+        $article = factory(Article::class)->create(
+            [
             'public' => 0
-        ]);
+            ]
+        );
 
-        $response = $this->json('PUT', 'admin/articles/' . $article->id, [
+        $response = $this->json(
+            'PUT', 'admin/articles/' . $article->id, [
             'id' => 1,
             'position' => 1,
             'public' => true
-        ], $this->ajaxHeader());
+            ], $this->ajaxHeader()
+        );
 
         $this->assertEquals(1, $article->fresh()->public);
     }
 
     /**
      * Test if making the listing item private is working
+     *
      * @return void
      */
     public function testListingPrivate()
     {
         $article = factory(Article::class)->create();
 
-        $response = $this->json('PUT', 'admin/articles/' . $article->id, [
+        $response = $this->json(
+            'PUT', 'admin/articles/' . $article->id, [
             'id' => 1,
             'position' => 1,
             'public' => false
-        ], $this->ajaxHeader());
+            ], $this->ajaxHeader()
+        );
 
         $this->assertEquals(0, $article->fresh()->public);
     }

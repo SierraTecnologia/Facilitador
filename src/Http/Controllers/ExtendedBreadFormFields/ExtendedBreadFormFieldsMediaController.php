@@ -12,7 +12,7 @@ class ExtendedBreadFormFieldsMediaController extends FacilitadorMediaController
     
     public function remove(Request $request)
     {
-        if($request->get('multiple_ext')){
+        if($request->get('multiple_ext')) {
             try {
                 // GET THE SLUG, ex. 'posts', 'pages', etc.
                 $slug = $request->get('slug');
@@ -50,11 +50,13 @@ class ExtendedBreadFormFieldsMediaController extends FacilitadorMediaController
                 $fieldData = @json_decode($data->{$field}, true);
                 foreach ($fieldData as $i => $single) {
                     // Check if image exists in array
-                    if(in_array($image,array_values($single)))
+                    if(in_array($image, array_values($single))) {
                         $founded = $i;
+                    }
                 }
-                if(!isset($founded))
+                if(!isset($founded)) {
                     throw new Exception(__('facilitador::media.image_does_not_exist'), 400);
+                }
                 
                 // Remove image from array
                 unset($fieldData[$founded]);
@@ -63,12 +65,14 @@ class ExtendedBreadFormFieldsMediaController extends FacilitadorMediaController
                 $data->{$field} = json_encode($fieldData);
                 $data->save();
     
-                return response()->json([
-                   'data' => [
+                return response()->json(
+                    [
+                    'data' => [
                        'status'  => 200,
                        'message' => __('facilitador::media.image_removed'),
-                   ],
-                ]);
+                    ],
+                    ]
+                );
             } catch (Exception $e) {
                 $code = 500;
                 $message = __('facilitador::generic.internal_error');
@@ -81,12 +85,14 @@ class ExtendedBreadFormFieldsMediaController extends FacilitadorMediaController
                     $message = $e->getMessage();
                 }
     
-                return response()->json([
+                return response()->json(
+                    [
                     'data' => [
                         'status'  => $code,
                         'message' => $message,
                     ],
-                ], $code);
+                    ], $code
+                );
             }
         } else{
             FacilitadorMediaController::remove($request);

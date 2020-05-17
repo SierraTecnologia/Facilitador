@@ -18,62 +18,82 @@ class MenuTest extends TestCase
     {
         $menu = Menu::where('name', '=', 'admin')->first();
         $this->visitRoute('facilitador.menus.edit', $menu->id)
-             ->seeInField('name', $menu->name)
-             ->type('new_admin', 'name')
-             ->seeInElement('button', __('facilitador::generic.save'))
-             ->press(__('facilitador::generic.save'))
-             ->seePageIs(route('facilitador.menus.index'))
-             ->seeInDatabase('menus', [
+            ->seeInField('name', $menu->name)
+            ->type('new_admin', 'name')
+            ->seeInElement('button', __('facilitador::generic.save'))
+            ->press(__('facilitador::generic.save'))
+            ->seePageIs(route('facilitador.menus.index'))
+            ->seeInDatabase(
+                'menus', [
                 'id'   => $menu->id,
                 'name' => 'new_admin',
-             ]);
+                 ]
+            );
     }
 
     public function testCanDeleteMenuItem()
     {
         $menu = Menu::where('name', '=', 'admin')->first();
-        $this->delete(route('facilitador.menus.item.destroy', [
-            'menu' => $menu->id,
-            'id'   => $menu->items->first()->id,
-        ]))->notSeeInDatabase('menu_items', [
-            'id' => $menu->items->first()->id,
-        ]);
+        $this->delete(
+            route(
+                'facilitador.menus.item.destroy', [
+                'menu' => $menu->id,
+                'id'   => $menu->items->first()->id,
+                ]
+            )
+        )->notSeeInDatabase(
+            'menu_items', [
+                'id' => $menu->items->first()->id,
+                ]
+        );
     }
 
     public function testCanAddMenuItem()
     {
         $menu = Menu::where('name', '=', 'admin')->first();
-        $this->post(route('facilitador.menus.item.add', [
-            'menu'    => $menu->id,
-            'menu_id' => $menu->id,
-            'type'    => 'url',
-            'color'   => '#000000',
-            'title'   => 'Title',
-            'url'     => '#',
-            'target'  => '_self',
-        ]))->seeInDatabase('menu_items', [
-            'menu_id' => $menu->id,
-            'title'   => 'Title',
-        ]);
+        $this->post(
+            route(
+                'facilitador.menus.item.add', [
+                'menu'    => $menu->id,
+                'menu_id' => $menu->id,
+                'type'    => 'url',
+                'color'   => '#000000',
+                'title'   => 'Title',
+                'url'     => '#',
+                'target'  => '_self',
+                ]
+            )
+        )->seeInDatabase(
+            'menu_items', [
+                'menu_id' => $menu->id,
+                'title'   => 'Title',
+                ]
+        );
     }
 
     public function testCanUpdateMenuItem()
     {
         $menu = Menu::where('name', '=', 'admin')->first();
         $item = $menu->items->first();
-        $this->put(route('facilitador.menus.item.update', [
-            'id'      => $item->id,
-            'menu'    => $menu->id,
-            'type'    => 'url',
-            'color'   => '#000000',
-            'title'   => 'New Title',
-            'url'     => '#',
-            'target'  => '_self',
-        ]))->seeInDatabase('menu_items', [
-            'menu_id' => $menu->id,
-            'id'      => $item->id,
-            'title'   => 'New Title',
-        ]);
+        $this->put(
+            route(
+                'facilitador.menus.item.update', [
+                'id'      => $item->id,
+                'menu'    => $menu->id,
+                'type'    => 'url',
+                'color'   => '#000000',
+                'title'   => 'New Title',
+                'url'     => '#',
+                'target'  => '_self',
+                ]
+            )
+        )->seeInDatabase(
+            'menu_items', [
+                'menu_id' => $menu->id,
+                'id'      => $item->id,
+                'title'   => 'New Title',
+                ]
+        );
     }
 
     public function testCanOrderMenu()

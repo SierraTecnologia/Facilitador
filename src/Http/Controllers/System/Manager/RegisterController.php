@@ -182,10 +182,12 @@ class RegisterController extends Controller
             $redirect = redirect()->back();
         }
 
-        return $redirect->with([
+        return $redirect->with(
+            [
             'message'    => __('facilitador::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
             'alert-type' => 'success',
-        ]);
+            ]
+        );
     }
 
     //***************************************
@@ -388,12 +390,14 @@ class RegisterController extends Controller
 
             $data->save();
 
-            return response()->json([
-               'data' => [
+            return response()->json(
+                [
+                'data' => [
                    'status'  => 200,
                    'message' => __('facilitador::media.file_removed'),
-               ],
-            ]);
+                ],
+                ]
+            );
         } catch (Exception $e) {
             $code = 500;
             $message = __('facilitador::generic.internal_error');
@@ -406,12 +410,14 @@ class RegisterController extends Controller
                 $message = $e->getMessage();
             }
 
-            return response()->json([
+            return response()->json(
+                [
                 'data' => [
                     'status'  => $code,
                     'message' => $message,
                 ],
-            ], $code);
+                ], $code
+            );
         }
     }
 

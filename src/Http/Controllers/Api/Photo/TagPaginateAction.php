@@ -31,7 +31,7 @@ class TagPaginateAction
      * TagPaginateAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param TagManager $tagManager
+     * @param TagManager      $tagManager
      */
     public function __construct(ResponseFactory $responseFactory, TagManager $tagManager)
     {
@@ -40,13 +40,13 @@ class TagPaginateAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {get} /v1/tags?page=:page&per_page=:per_page Paginate
-     * @apiName Paginate
-     * @apiGroup Tags
-     * @apiHeader {String} Accept application/json
-     * @apiParam {Integer{1..N}} [page=1]
-     * @apiParam {Integer{1..100}} [per_page=20]
+     * @apiVersion        1.0.0
+     * @api               {get} /v1/tags?page=:page&per_page=:per_page Paginate
+     * @apiName           Paginate
+     * @apiGroup          Tags
+     * @apiHeader         {String} Accept application/json
+     * @apiParam          {Integer{1..N}} [page=1]
+     * @apiParam          {Integer{1..100}} [per_page=20]
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 200 OK
      * {
@@ -69,7 +69,7 @@ class TagPaginateAction
     /**
      * Paginate over tags.
      *
-     * @param PaginatedRequest $request
+     * @param  PaginatedRequest $request
      * @return JsonResponse
      */
     public function __invoke(PaginatedRequest $request): JsonResponse

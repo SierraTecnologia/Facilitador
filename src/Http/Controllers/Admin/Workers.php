@@ -21,9 +21,11 @@ class Workers extends Base
      */
     public function index()
     {
-        return $this->populateView('facilitador::tools.workers.index', [
+        return $this->populateView(
+            'facilitador::tools.workers.index', [
             'workers' => Model::all(),
-        ]);
+            ]
+        );
     }
 
     /**

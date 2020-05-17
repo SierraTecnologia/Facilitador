@@ -19,10 +19,12 @@ class PermissionsTableSeeder extends Seeder
         ];
 
         foreach ($keys as $key) {
-            Permission::firstOrCreate([
+            Permission::firstOrCreate(
+                [
                 'key'        => $key,
                 'table_name' => null,
-            ]);
+                ]
+            );
         }
 
         Permission::generateFor('menus');

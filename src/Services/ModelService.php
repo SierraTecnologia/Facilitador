@@ -77,7 +77,8 @@ class ModelService
             $this->modelDataType = $this->dataTypeForCode($eloquentService->getModelClass());
             if (!$this->modelDataType->exists) {
                 // Name e Slug sao unicos
-                $this->modelDataType->fill([
+                $this->modelDataType->fill(
+                    [
                     'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
                     'slug'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
                     'display_name_singular' => $eloquentService->getName(false),
@@ -95,7 +96,8 @@ class ModelService
                     'group_type'              => $eloquentService->getGroupType(),
                     'history_type'            => $eloquentService->getHistoryType(),
                     'register_type'           => $eloquentService->getRegisterType(),
-                ])->save();
+                    ]
+                )->save();
 
                 $order = 1;
                 foreach ($eloquentService->getColumns() as $column) {
@@ -107,7 +109,8 @@ class ModelService
 
                     $dataRow = $this->dataRow($this->modelDataType, $column->getColumnName());
                     if (!$dataRow->exists) {
-                        $dataRow->fill([
+                        $dataRow->fill(
+                            [
                             // 'type'         => 'select_dropdown',
                             'type'         => $column->getColumnType(),
                             'display_name' => $column->getName(),
@@ -119,7 +122,8 @@ class ModelService
                             'delete'     => $column->isDelete() ? 1 : 0,
                             'details'      => $column->getDetails(),
                             'order' => $order,
-                        ])->save();
+                            ]
+                        )->save();
                         ++$order;
                     }
                 }
@@ -136,7 +140,7 @@ class ModelService
     /**
      * Verificadores
      *
-     * @param [type] $modelClass
+     * @param  [type] $modelClass
      * @return boolean
      */
     public function isModelClass($modelClass)
@@ -321,10 +325,12 @@ class ModelService
      */
     protected function dataRow($type, $field)
     {
-        return DataRow::firstOrNew([
+        return DataRow::firstOrNew(
+            [
                 'data_type_id' => $type->id,
                 'field'        => $field,
-            ]);
+            ]
+        );
     }
 
     /**

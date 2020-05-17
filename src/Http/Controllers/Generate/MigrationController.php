@@ -19,10 +19,8 @@ class MigrationController extends Controller
         $response = null;
 
         $fileName = "inputFile";
-        if ($request->hasFile($fileName))
-        {
-            if ($request->file($fileName)->isValid())
-            {
+        if ($request->hasFile($fileName)) {
+            if ($request->file($fileName)->isValid()) {
                 $localFileName = self::generateRandomFileName(Auth::user()->id);
                 $request->file($fileName)->move(storage_path('uploads'), $localFileName);
                 $params["localFileName"] = $localFileName;
@@ -31,8 +29,7 @@ class MigrationController extends Controller
         }
 
 
-        if ($isSucceeded)
-        {
+        if ($isSucceeded) {
             $response = view('migrations.processing')->withSuccess("File has been uploaded successfully! Please wait while it is being processed!")->with($params);
         }
         else
@@ -74,32 +71,33 @@ class MigrationController extends Controller
             $this->clearTempDB();
 
             $mysqlTemp = env("TEMP_DB_CONNECTION", "mysql_temp");
-            DB::connection($mysqlTemp)->transaction(function($lines) use ($fileLines)
-            {
+            DB::connection($mysqlTemp)->transaction(
+                function ($lines) use ($fileLines) {
 
-                $tempQuery = '';
+                    $tempQuery = '';
 
-                // Loop through each line
-                foreach ($fileLines as $line)
-                {
-                    // Skip it if it's a comment
-                    if (substr($line, 0, 2) == '--' || $line == '')
-                        continue;
-
-                    // Add this line to the current segment
-                    $tempQuery .= $line;
-
-                    // If it has a semicolon at the end, it's the end of the query
-                    if (substr(trim($line), -1, 1) == ';')
+                    // Loop through each line
+                    foreach ($fileLines as $line)
                     {
-                        // Perform the query
-                        DB::connection(env("TEMP_DB_CONNECTION", "mysql_temp"))->statement($tempQuery);
+                        // Skip it if it's a comment
+                        if (substr($line, 0, 2) == '--' || $line == '') {
+                            continue;
+                        }
 
-                        // Reset temp variable to empty
-                        $tempQuery = '';
+                        // Add this line to the current segment
+                        $tempQuery .= $line;
+
+                        // If it has a semicolon at the end, it's the end of the query
+                        if (substr(trim($line), -1, 1) == ';') {
+                            // Perform the query
+                            DB::connection(env("TEMP_DB_CONNECTION", "mysql_temp"))->statement($tempQuery);
+
+                            // Reset temp variable to empty
+                            $tempQuery = '';
+                        }
                     }
                 }
-            });
+            );
 
             $isSucceeded = true;
         }
@@ -109,10 +107,8 @@ class MigrationController extends Controller
             $isSucceeded = false;
         }
 
-        if (!$isSucceeded)
-        {
-            if ($errorMsg == null)
-            {
+        if (!$isSucceeded) {
+            if ($errorMsg == null) {
                 $errorMsg = "Unable to process given dump file!";
             }
 
@@ -250,16 +246,17 @@ class MigrationController extends Controller
         $zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
 
         // Create recursive directory iterator
-        /** @var SplFileInfo[] $files */
+        /**
+ * @var SplFileInfo[] $files 
+*/
         $files = new \RecursiveIteratorIterator(
-                new \RecursiveDirectoryIterator($rootPath), \RecursiveIteratorIterator::LEAVES_ONLY
+            new \RecursiveDirectoryIterator($rootPath), \RecursiveIteratorIterator::LEAVES_ONLY
         );
 
         foreach ($files as $name => $file)
         {
             // Skip directories (they would be added automatically)
-            if (!$file->isDir())
-            {
+            if (!$file->isDir()) {
                 // Get real and relative path for current file
                 $filePath = $file->getRealPath();
                 $relativePath = substr($filePath, strlen($rootPath) + 1);

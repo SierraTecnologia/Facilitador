@@ -15,18 +15,20 @@ class CreateAttributeEntityTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_entity'), function (Blueprint $table) {
-            // Columns
-            $table->integer('attribute_id')->unsigned();
-            $table->string('entity_type');
-            $table->integer('entity_id')->unsigned()->nullable(); // TODO: Making this nullable for now as it breaks the basic features
-            $table->timestamps();
+        Schema::create(
+            \Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_entity'), function (Blueprint $table) {
+                // Columns
+                $table->integer('attribute_id')->unsigned();
+                $table->string('entity_type');
+                $table->integer('entity_id')->unsigned()->nullable(); // TODO: Making this nullable for now as it breaks the basic features
+                $table->timestamps();
 
-            // Indexes
-            $table->unique(['attribute_id', 'entity_type'], 'attributable_attribute_id_entity_type');
-            $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'))
-                  ->onDelete('cascade')->onUpdate('cascade');
-        });
+                // Indexes
+                $table->unique(['attribute_id', 'entity_type'], 'attributable_attribute_id_entity_type');
+                $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'))
+                    ->onDelete('cascade')->onUpdate('cascade');
+            }
+        );
     }
 
     /**

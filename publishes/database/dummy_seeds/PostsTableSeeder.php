@@ -18,7 +18,8 @@ class PostsTableSeeder extends Seeder
         //Data Type
         $dataType = $this->dataType('slug', 'posts');
         if (!$dataType->exists) {
-            $dataType->fill([
+            $dataType->fill(
+                [
                 'name'                  => 'posts',
                 'display_name_singular' => __('facilitador::seeders.data_types.post.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.post.plural'),
@@ -28,14 +29,16 @@ class PostsTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
-            ])->save();
+                ]
+            )->save();
         }
 
         //Data Rows
         $postDataType = DataType::where('slug', 'posts')->firstOrFail();
         $dataRow = $this->dataRow($postDataType, 'id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'number',
                 'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
@@ -45,12 +48,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 1,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'author_id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.author'),
                 'required'     => 1,
@@ -60,12 +65,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 1,
                 'order'        => 2,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'category_id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.category'),
                 'required'     => 1,
@@ -75,12 +82,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 3,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'title');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.title'),
                 'required'     => 1,
@@ -90,12 +99,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 4,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'excerpt');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text_area',
                 'display_name' => __('facilitador::seeders.data_rows.excerpt'),
                 'required'     => 1,
@@ -105,12 +116,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 5,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'body');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'rich_text_box',
                 'display_name' => __('facilitador::seeders.data_rows.body'),
                 'required'     => 1,
@@ -120,12 +133,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 6,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'image');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'image',
                 'display_name' => __('facilitador::seeders.data_rows.post_image'),
                 'required'     => 0,
@@ -160,12 +175,14 @@ class PostsTableSeeder extends Seeder
                     ],
                 ],
                 'order' => 7,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'slug');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.slug'),
                 'required'     => 1,
@@ -184,12 +201,14 @@ class PostsTableSeeder extends Seeder
                     ],
                 ],
                 'order' => 8,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'meta_description');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text_area',
                 'display_name' => __('facilitador::seeders.data_rows.meta_description'),
                 'required'     => 1,
@@ -199,12 +218,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 9,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'meta_keywords');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text_area',
                 'display_name' => __('facilitador::seeders.data_rows.meta_keywords'),
                 'required'     => 1,
@@ -214,12 +235,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 10,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'status');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'select_dropdown',
                 'display_name' => __('facilitador::seeders.data_rows.status'),
                 'required'     => 1,
@@ -237,12 +260,14 @@ class PostsTableSeeder extends Seeder
                     ],
                 ],
                 'order' => 11,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'created_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
@@ -252,12 +277,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 12,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'updated_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
@@ -267,12 +294,14 @@ class PostsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 13,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($postDataType, 'seo_title');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.seo_title'),
                 'required'     => 0,
@@ -282,11 +311,13 @@ class PostsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 14,
-            ])->save();
+                ]
+            )->save();
         }
         $dataRow = $this->dataRow($postDataType, 'featured');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'checkbox',
                 'display_name' => __('facilitador::seeders.data_rows.featured'),
                 'required'     => 1,
@@ -296,25 +327,30 @@ class PostsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 15,
-            ])->save();
+                ]
+            )->save();
         }
 
         //Menu Item
         $menu = Menu::where('name', 'admin')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
+        $menuItem = MenuItem::firstOrNew(
+            [
             'menu_id' => $menu->id,
             'title'   => __('facilitador::seeders.menu_items.posts'),
             'url'     => '',
             'route'   => 'facilitador.posts.index',
-        ]);
+            ]
+        );
         if (!$menuItem->exists) {
-            $menuItem->fill([
+            $menuItem->fill(
+                [
                 'target'     => '_self',
                 'icon_class' => 'facilitador-news',
                 'color'      => null,
                 'parent_id'  => null,
                 'order'      => 6,
-            ])->save();
+                ]
+            )->save();
         }
 
         //Permissions
@@ -323,7 +359,8 @@ class PostsTableSeeder extends Seeder
         //Content
         $post = $this->findPost('lorem-ipsum-post');
         if (!$post->exists) {
-            $post->fill([
+            $post->fill(
+                [
                 'title'            => 'Lorem Ipsum Post',
                 'author_id'        => 0,
                 'seo_title'        => null,
@@ -335,12 +372,14 @@ class PostsTableSeeder extends Seeder
                 'meta_keywords'    => 'keyword1, keyword2, keyword3',
                 'status'           => 'PUBLISHED',
                 'featured'         => 0,
-            ])->save();
+                ]
+            )->save();
         }
 
         $post = $this->findPost('my-sample-post');
         if (!$post->exists) {
-            $post->fill([
+            $post->fill(
+                [
                 'title'     => 'My Sample Post',
                 'author_id' => 0,
                 'seo_title' => null,
@@ -354,12 +393,14 @@ class PostsTableSeeder extends Seeder
                 'meta_keywords'    => 'keyword1, keyword2, keyword3',
                 'status'           => 'PUBLISHED',
                 'featured'         => 0,
-            ])->save();
+                ]
+            )->save();
         }
 
         $post = $this->findPost('latest-post');
         if (!$post->exists) {
-            $post->fill([
+            $post->fill(
+                [
                 'title'            => 'Latest Post',
                 'author_id'        => 0,
                 'seo_title'        => null,
@@ -371,12 +412,14 @@ class PostsTableSeeder extends Seeder
                 'meta_keywords'    => 'keyword1, keyword2, keyword3',
                 'status'           => 'PUBLISHED',
                 'featured'         => 0,
-            ])->save();
+                ]
+            )->save();
         }
 
         $post = $this->findPost('yarr-post');
         if (!$post->exists) {
-            $post->fill([
+            $post->fill(
+                [
                 'title'     => 'Yarr Post',
                 'author_id' => 0,
                 'seo_title' => null,
@@ -390,7 +433,8 @@ class PostsTableSeeder extends Seeder
                 'meta_keywords'    => 'keyword1, keyword2, keyword3',
                 'status'           => 'PUBLISHED',
                 'featured'         => 0,
-            ])->save();
+                ]
+            )->save();
         }
     }
 
@@ -416,10 +460,12 @@ class PostsTableSeeder extends Seeder
      */
     protected function dataRow($type, $field)
     {
-        return DataRow::firstOrNew([
+        return DataRow::firstOrNew(
+            [
                 'data_type_id' => $type->id,
                 'field'        => $field,
-            ]);
+            ]
+        );
     }
 
     /**

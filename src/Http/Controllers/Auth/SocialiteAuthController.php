@@ -65,20 +65,24 @@ class SocialiteAuthController extends Controller
     /**
      * Create a user
      *
-     * @param  array $data
+     * @param array $data
      *
      * @return User
      */
     public function createUser($data)
     {
-        return DB::transaction(function() use ($data) {
-            $user = User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-            ]);
+        return DB::transaction(
+            function () use ($data) {
+                $user = User::create(
+                    [
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    ]
+                );
 
-            return $this->service->create($user, $data['password']);
-        });
+                return $this->service->create($user, $data['password']);
+            }
+        );
     }
 }

@@ -55,10 +55,12 @@ class FormMakerTest extends TestCase
 
     public function testFromTableSimulated()
     {
-        $entry = app(Entry::class)->create([
+        $entry = app(Entry::class)->create(
+            [
             'name' => 'test entry',
             'details' => 'this entry is written in [markdown](http://markdown.com)',
-        ]);
+            ]
+        );
 
         $test = $this->formMaker->setConnection('testbench')->fromObject($entry, $this->formMaker->getTableColumns('entries'));
 

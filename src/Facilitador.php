@@ -149,9 +149,11 @@ class Facilitador
 
     public function afterFormFields($row, $dataType, $dataTypeContent)
     {
-        return collect($this->afterFormFields)->filter(function ($after) use ($row, $dataType, $dataTypeContent) {
-            return $after->visible($row, $dataType, $dataTypeContent, $row->details);
-        });
+        return collect($this->afterFormFields)->filter(
+            function ($after) use ($row, $dataType, $dataTypeContent) {
+                return $after->visible($row, $dataType, $dataTypeContent, $row->details);
+            }
+        );
     }
 
     public function addFormField($handler)
@@ -181,9 +183,11 @@ class Facilitador
         $connection = \Illuminate\Support\Facades\Config::get('database.default');
         $driver = \Illuminate\Support\Facades\Config::get("database.connections.{$connection}.driver", 'mysql');
 
-        return collect($this->formFields)->filter(function ($after) use ($driver) {
-            return $after->supports($driver);
-        });
+        return collect($this->formFields)->filter(
+            function ($after) use ($driver) {
+                return $after->supports($driver);
+            }
+        );
     }
 
     public function addAction($action)
@@ -485,37 +489,41 @@ class Facilitador
                 return $locales[$item->locale];
             }
 
-        // If the object has a method defined with the column value, use it
+            // If the object has a method defined with the column value, use it
         } elseif (method_exists($item, $column)) {
             return call_user_func([$item, $column]);
 
-        // Else if the column is a property, echo it
+            // Else if the column is a property, echo it
         } elseif (array_key_exists($column, $attributes)) {
 
             // Format date if appropriate
             if ($convert_dates && preg_match('/^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}:\d{2})?$/', $item->$column)) {
                 return date($date_formats[$convert_dates], strtotime($item->$column));
 
-            // If the column name has a plural form as a static array or method on the model, use the key
-            // against that array and pull the value.  This is designed to handle my convention
-            // of setting the source for pulldowns, radios, and checkboxes as static arrays
-            // on the model.
+                // If the column name has a plural form as a static array or method on the model, use the key
+                // against that array and pull the value.  This is designed to handle my convention
+                // of setting the source for pulldowns, radios, and checkboxes as static arrays
+                // on the model.
             } elseif (($plural = Str::plural($column))
                 && (isset($class::$$plural) && is_array($class::$$plural) && ($ar = $class::$$plural)
-                    || (method_exists($class, $plural) && ($ar = forward_static_call([$class, $plural])))
-                )) {
+                || (method_exists($class, $plural) && ($ar = forward_static_call([$class, $plural]))))
+            ) {
 
                 // Support comma delimited lists by splitting on commas before checking
                 // if the key exists in the array
-                return join(', ', array_map(function ($key) use ($ar, $class, $plural) {
-                    if (array_key_exists($key, $ar)) {
-                        return $ar[$key];
-                    }
+                return join(
+                    ', ', array_map(
+                        function ($key) use ($ar, $class, $plural) {
+                            if (array_key_exists($key, $ar)) {
+                                return $ar[$key];
+                            }
 
-                    return $key;
-                }, explode(',', $item->$column)));
+                            return $key;
+                        }, explode(',', $item->$column)
+                    )
+                );
 
-            // Just display the column value
+                // Just display the column value
             } else {
                 return $item->$column;
             }
@@ -578,7 +586,8 @@ class Facilitador
         if (!is_null($this->is_handling)) {
             return $this->is_handling;
         }
-        if (env('DECOY_TESTING')) return true;
+        if (env('DECOY_TESTING')) { return true;
+        }
         $this->is_handling = preg_match('#^'.Config::get('sitec.core.dir').'($|/)'.'#i', Request::path());
 
         return $this->is_handling;
@@ -608,7 +617,8 @@ class Facilitador
         if ($locale
             && ($locales = Config::get('sitec.site.locales'))
             && is_array($locales)
-            && isset($locales[$locale])) {
+            && isset($locales[$locale])
+        ) {
             return Session::put('locale', $locale);
         }
 
@@ -630,7 +640,8 @@ class Facilitador
     public function defaultLocale()
     {
         if (($locales = Config::get('sitec.site.locales'))
-            && is_array($locales)) {
+            && is_array($locales)
+        ) {
             reset($locales);
 
             return key($locales);
@@ -646,10 +657,12 @@ class Facilitador
     public function modelForController($controller)
     {
         // Swap out the namespace if facilitador
-        $model = str_replace('Facilitador\Http\Controllers\Admin',
+        $model = str_replace(
+            'Facilitador\Http\Controllers\Admin',
             'Facilitador\Models',
             $controller,
-            $is_facilitador);
+            $is_facilitador
+        );
 
         // Replace non-facilitador controller's with the standard model namespace
         if (!$is_facilitador) {
@@ -726,6 +739,7 @@ class Facilitador
 
     /**
      * Run array_filter recursively on an array
+     *
      * @link http://stackoverflow.com/a/6795671
      *
      * @param  array $array

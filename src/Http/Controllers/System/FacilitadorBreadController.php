@@ -22,18 +22,20 @@ class FacilitadorBreadController extends Controller
 
         $dataTypes = Facilitador::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
 
-        $tables = array_map(function ($table) use ($dataTypes) {
-            $table = Str::replaceFirst(DB::getTablePrefix(), '', $table);
+        $tables = array_map(
+            function ($table) use ($dataTypes) {
+                $table = Str::replaceFirst(DB::getTablePrefix(), '', $table);
 
-            $table = [
+                $table = [
                 'prefix'     => DB::getTablePrefix(),
                 'name'       => $table,
                 'slug'       => $dataTypes[$table]['slug'] ?? null,
                 'dataTypeId' => $dataTypes[$table]['id'] ?? null,
-            ];
+                ];
 
-            return (object) $table;
-        }, SchemaManager::listTableNames());
+                return (object) $table;
+            }, SchemaManager::listTableNames()
+        );
 
         return Facilitador::view('facilitador::tools.bread.index')->with(compact('dataTypes', 'tables'));
     }
@@ -53,7 +55,8 @@ class FacilitadorBreadController extends Controller
         $dataType = Facilitador::model('DataType')->whereName($table)->first();
 
         $data = $this->prepopulateBreadInfo($table);
-        $data['fieldOptions'] = SchemaManager::describeTable((isset($dataType) && strlen($dataType->model_name) != 0)
+        $data['fieldOptions'] = SchemaManager::describeTable(
+            (isset($dataType) && strlen($dataType->model_name) != 0)
             ? DB::getTablePrefix().app($dataType->model_name)->getTable()
             : DB::getTablePrefix().$table
         );
@@ -121,7 +124,8 @@ class FacilitadorBreadController extends Controller
 
         $dataType = Facilitador::model('DataType')->whereName($table)->first();
 
-        $fieldOptions = SchemaManager::describeTable((strlen($dataType->model_name) != 0)
+        $fieldOptions = SchemaManager::describeTable(
+            (strlen($dataType->model_name) != 0)
             ? DB::getTablePrefix().app($dataType->model_name)->getTable()
             : DB::getTablePrefix().$dataType->name
         );
@@ -213,11 +217,15 @@ class FacilitadorBreadController extends Controller
     {
         $reflection = new ReflectionClass($model_name);
 
-        return collect($reflection->getMethods())->filter(function ($method) {
-            return Str::startsWith($method->name, 'scope');
-        })->whereNotIn('name', ['scopeWithTranslations', 'scopeWithTranslation', 'scopeWhereTranslation'])->transform(function ($method) {
-            return lcfirst(Str::replaceFirst('scope', '', $method->name));
-        });
+        return collect($reflection->getMethods())->filter(
+            function ($method) {
+                return Str::startsWith($method->name, 'scope');
+            }
+        )->whereNotIn('name', ['scopeWithTranslations', 'scopeWithTranslation', 'scopeWhereTranslation'])->transform(
+            function ($method) {
+                return lcfirst(Str::replaceFirst('scope', '', $method->name));
+            }
+        );
     }
 
     // ************************************************************
@@ -241,10 +249,12 @@ class FacilitadorBreadController extends Controller
         $relationshipField = $this->getRelationshipField($request);
 
         if (!class_exists($request->relationship_model)) {
-            return back()->with([
+            return back()->with(
+                [
                 'message'    => 'Model Class '.$request->relationship_model.' does not exist. Please create Model before creating relationship.',
                 'alert-type' => 'error',
-            ]);
+                ]
+            );
         }
 
         try {
@@ -285,25 +295,31 @@ class FacilitadorBreadController extends Controller
             $newRow->order = intval(Facilitador::model('DataType')->find($request->data_type_id)->lastRow()->order) + 1;
 
             if (!$newRow->save()) {
-                return back()->with([
+                return back()->with(
+                    [
                     'message'    => 'Error saving new relationship row for '.$request->relationship_table,
                     'alert-type' => 'error',
-                ]);
+                    ]
+                );
             }
 
             DB::commit();
 
-            return back()->with([
+            return back()->with(
+                [
                 'message'    => 'Successfully created new relationship for '.$request->relationship_table,
                 'alert-type' => 'success',
-            ]);
+                ]
+            );
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return back()->with([
+            return back()->with(
+                [
                 'message'    => 'Error creating new relationship: '.$e->getMessage(),
                 'alert-type' => 'error',
-            ]);
+                ]
+            );
         }
     }
 
@@ -347,9 +363,11 @@ class FacilitadorBreadController extends Controller
     {
         Facilitador::model('DataRow')->destroy($id);
 
-        return back()->with([
+        return back()->with(
+            [
                 'message'    => 'Successfully deleted relationship.',
                 'alert-type' => 'success',
-            ]);
+            ]
+        );
     }
 }

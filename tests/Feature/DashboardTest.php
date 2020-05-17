@@ -31,25 +31,25 @@ class DashboardTest extends TestCase
 
         // Test UserDimmer widget
         $this->see(trans_choice('facilitador::dimmer.user', 1))
-             ->click(__('facilitador::dimmer.user_link_text'))
-             ->seePageIs(route('facilitador.users.index'))
-             ->click(__('facilitador::generic.dashboard'))
-             ->seePageIs(route('facilitador.dashboard'));
+            ->click(__('facilitador::dimmer.user_link_text'))
+            ->seePageIs(route('facilitador.users.index'))
+            ->click(__('facilitador::generic.dashboard'))
+            ->seePageIs(route('facilitador.dashboard'));
 
         // Test PostDimmer widget
         $this->see(trans_choice('facilitador::dimmer.post', 4))
-             ->click(__('facilitador::dimmer.post_link_text'))
-             ->seePageIs(route('facilitador.posts.index'))
-             ->click(__('facilitador::generic.dashboard'))
-             ->seePageIs(route('facilitador.dashboard'));
+            ->click(__('facilitador::dimmer.post_link_text'))
+            ->seePageIs(route('facilitador.posts.index'))
+            ->click(__('facilitador::generic.dashboard'))
+            ->seePageIs(route('facilitador.dashboard'));
 
         // Test PageDimmer widget
         $this->see(trans_choice('facilitador::dimmer.page', 1))
-             ->click(__('facilitador::dimmer.page_link_text'))
-             ->seePageIs(route('facilitador.pages.index'))
-             ->click(__('facilitador::generic.dashboard'))
-             ->seePageIs(route('facilitador.dashboard'))
-             ->see(__('facilitador::generic.dashboard'));
+            ->click(__('facilitador::dimmer.page_link_text'))
+            ->seePageIs(route('facilitador.pages.index'))
+            ->click(__('facilitador::generic.dashboard'))
+            ->seePageIs(route('facilitador.dashboard'))
+            ->see(__('facilitador::generic.dashboard'));
     }
 
     /**
@@ -70,7 +70,7 @@ class DashboardTest extends TestCase
 
         // Test UserDimmer widget
         $this->dontSee('<h4>1 '.trans_choice('facilitador::dimmer.user', 1).'</h4>')
-             ->dontSee(__('facilitador::dimmer.user_link_text'));
+            ->dontSee(__('facilitador::dimmer.user_link_text'));
     }
 
     /**
@@ -91,7 +91,7 @@ class DashboardTest extends TestCase
 
         // Test PostDimmer widget
         $this->dontSee('<h4>1 '.trans_choice('facilitador::dimmer.post', 1).'</h4>')
-             ->dontSee(__('facilitador::dimmer.post_link_text'));
+            ->dontSee(__('facilitador::dimmer.post_link_text'));
     }
 
     /**
@@ -112,7 +112,7 @@ class DashboardTest extends TestCase
 
         // Test PageDimmer widget
         $this->dontSee('<h4>1 '.trans_choice('facilitador::dimmer.page', 1).'</h4>')
-             ->dontSee(__('facilitador::dimmer.page_link_text'));
+            ->dontSee(__('facilitador::dimmer.page_link_text'));
     }
 
     /**
@@ -126,6 +126,6 @@ class DashboardTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->visit(route('facilitador.dashboard'))
-             ->see(Facilitador::getVersion());
+            ->see(Facilitador::getVersion());
     }
 }

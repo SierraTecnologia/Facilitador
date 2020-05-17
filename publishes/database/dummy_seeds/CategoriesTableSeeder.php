@@ -20,7 +20,8 @@ class CategoriesTableSeeder extends Seeder
         //Data Type
         $dataType = $this->dataType('name', 'categories');
         if (!$dataType->exists) {
-            $dataType->fill([
+            $dataType->fill(
+                [
                 'slug'                  => 'categories',
                 'display_name_singular' => __('facilitador::seeders.data_types.category.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.category.plural'),
@@ -29,13 +30,15 @@ class CategoriesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
-            ])->save();
+                ]
+            )->save();
         }
         //Data Rows
         $categoryDataType = DataType::where('slug', 'categories')->firstOrFail();
         $dataRow = $this->dataRow($categoryDataType, 'id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'number',
                 'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
@@ -45,12 +48,14 @@ class CategoriesTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 1,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($categoryDataType, 'parent_id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'select_dropdown',
                 'display_name' => __('facilitador::seeders.data_rows.parent'),
                 'required'     => 0,
@@ -71,12 +76,14 @@ class CategoriesTableSeeder extends Seeder
                     ],
                 ],
                 'order' => 2,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($categoryDataType, 'order');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.order'),
                 'required'     => 1,
@@ -89,12 +96,14 @@ class CategoriesTableSeeder extends Seeder
                     'default' => 1,
                 ],
                 'order' => 3,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($categoryDataType, 'name');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.name'),
                 'required'     => 1,
@@ -104,12 +113,14 @@ class CategoriesTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 4,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($categoryDataType, 'slug');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.slug'),
                 'required'     => 1,
@@ -124,12 +135,14 @@ class CategoriesTableSeeder extends Seeder
                     ],
                 ],
                 'order' => 5,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($categoryDataType, 'created_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
@@ -139,12 +152,14 @@ class CategoriesTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 6,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($categoryDataType, 'updated_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
@@ -154,47 +169,60 @@ class CategoriesTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 7,
-            ])->save();
+                ]
+            )->save();
         }
 
         //Menu Item
         $menu = Menu::where('name', 'admin')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
+        $menuItem = MenuItem::firstOrNew(
+            [
             'menu_id' => $menu->id,
             'title'   => __('facilitador::seeders.menu_items.categories'),
             'url'     => '',
             'route'   => 'facilitador.categories.index',
-        ]);
+            ]
+        );
         if (!$menuItem->exists) {
-            $menuItem->fill([
+            $menuItem->fill(
+                [
                 'target'     => '_self',
                 'icon_class' => 'facilitador-categories',
                 'color'      => null,
                 'parent_id'  => null,
                 'order'      => 8,
-            ])->save();
+                ]
+            )->save();
         }
 
         //Permissions
         Permission::generateFor('categories');
 
         //Content
-        $category = Category::firstOrNew([
+        $category = Category::firstOrNew(
+            [
             'slug' => 'category-1',
-        ]);
+            ]
+        );
         if (!$category->exists) {
-            $category->fill([
+            $category->fill(
+                [
                 'name' => 'Category 1',
-            ])->save();
+                ]
+            )->save();
         }
 
-        $category = Category::firstOrNew([
+        $category = Category::firstOrNew(
+            [
             'slug' => 'category-2',
-        ]);
+            ]
+        );
         if (!$category->exists) {
-            $category->fill([
+            $category->fill(
+                [
                 'name' => 'Category 2',
-            ])->save();
+                ]
+            )->save();
         }
     }
 
@@ -208,10 +236,12 @@ class CategoriesTableSeeder extends Seeder
      */
     protected function dataRow($type, $field)
     {
-        return DataRow::firstOrNew([
+        return DataRow::firstOrNew(
+            [
                 'data_type_id' => $type->id,
                 'field'        => $field,
-            ]);
+            ]
+        );
     }
 
     /**

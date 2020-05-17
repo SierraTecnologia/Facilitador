@@ -30,7 +30,8 @@ class Wildcard
 
     /**
      * Constructor
-     * @param string $dir The path "directory" of the admin.  I.e. "admin"
+     *
+     * @param string $dir  The path "directory" of the admin.  I.e. "admin"
      * @param string $verb GET,POST,etc
      * @param string $path A URL path like 'admin/articles/new'
      */
@@ -62,9 +63,11 @@ class Wildcard
         $id = $this->detectId();
 
         // Tell other classes what was found
-        $event = Event::dispatch('wildcard.detection', [
+        $event = Event::dispatch(
+            'wildcard.detection', [
             $controller, $action, $id
-        ]);
+            ]
+        );
 
         // Instantiate controller
         $controller = new $controller();
@@ -132,6 +135,7 @@ class Wildcard
 
     /**
      * Get just the controller's short name from the path
+     *
      * @return mixed false if not found, otherwise a string like "news" or "slides"
      */
     public function detectControllerName()
@@ -146,6 +150,7 @@ class Wildcard
 
     /**
      * Make the regex pattern to find the controller
+     *
      * @return regexp
      */
     private function controllerNameRegex()
@@ -155,6 +160,7 @@ class Wildcard
 
     /**
      * Detect the action for a path
+     *
      * @return string 'create', 'update', 'edit', ....
      */
     public function detectAction()
@@ -183,25 +189,25 @@ class Wildcard
         // If the path ends in a number, the verb defines what it is
         if (preg_match('#\d+$#', $this->path)) {
             switch ($this->verb) {
-                case 'PUT':
-                case 'POST':
-                    return 'update';
+            case 'PUT':
+            case 'POST':
+                return 'update';
 
-                case 'DELETE':
-                    return 'destroy';
+            case 'DELETE':
+                return 'destroy';
 
-                default:
-                    return false;
+            default:
+                return false;
             }
         }
 
         // Else, it must end with the controller name
         switch ($this->verb) {
-            case 'POST':
-                return 'store';
+        case 'POST':
+            return 'store';
 
-            case 'GET':
-                return 'index';
+        case 'GET':
+            return 'index';
         }
 
         // Must have been an erorr if we got here
@@ -210,6 +216,7 @@ class Wildcard
 
     /**
      * Detect the id for the path
+     *
      * @return integer An id number for a DB record
      */
     public function detectId()
@@ -269,13 +276,16 @@ class Wildcard
         }
 
         // Convert all the matches to their classes
-        return array_map(function ($name) {
-            return $this->detectController($this->detectControllerClass($name));
-        }, $matches);
+        return array_map(
+            function ($name) {
+                return $this->detectController($this->detectControllerClass($name));
+            }, $matches
+        );
     }
 
     /**
      * Return the path that the wildcard instance is operating on
+     *
      * @return string ex: admin/news/2/edit
      */
     public function path()

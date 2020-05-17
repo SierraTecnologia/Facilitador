@@ -62,18 +62,26 @@ class Element extends Base
 
         // Set the locale automatically using the locale key in the URL or the
         // default.
-        static::creating(function (Element $el) {
-            $el->setAttribute('locale', request()->segment(3) ?: Facilitador::defaultLocale());
-        });
+        static::creating(
+            function (Element $el) {
+                $el->setAttribute('locale', request()->segment(3) ?: Facilitador::defaultLocale());
+            }
+        );
 
         // A lot of extra stuff gets added to attributes with how I am hydrating
         // models with stuff from the YAML.  So, before, save, remove extra
         // attributes.
-        static::saving(function (Element $el) {
-            $el->setRawAttributes(array_only($el->getAttributes(), [
-                'key', 'type', 'value', 'locale',
-            ]));
-        });
+        static::saving(
+            function (Element $el) {
+                $el->setRawAttributes(
+                    array_only(
+                        $el->getAttributes(), [
+                        'key', 'type', 'value', 'locale',
+                        ]
+                    )
+                );
+            }
+        );
     }
 
     /**
@@ -105,12 +113,12 @@ class Element extends Base
         if ($key == 'type') {
             switch ($value) {
             case 'image': $this->rules['value'] = 'image';
-            break;
+                break;
             case 'file': $this->rules['value'] = 'file';
-            break;
+                break;
             case 'video-encoder': $this->rules['value'] = 'video';
-            break;
-        }
+                break;
+            }
         }
 
         // Continue
@@ -132,14 +140,22 @@ class Element extends Base
 
         // Different outputs depending on type
         switch ($this->type) {
-            case 'boolean': return !empty($this->value);
-            case 'image': return $this->img()->url;
-            case 'textarea': return nl2br($this->value);
-            case 'wysiwyg': return Str::startsWith($this->value, '<') ? $this->value : "<p>{$this->value}</p>";
-            case 'checkboxes': return explode(',', $this->value);
-            case 'video-encoder': return $this->encoding('value')->tag;
-            case 'model': return $this->relatedModel();
-            default: return $this->value;
+        case 'boolean': 
+            return !empty($this->value);
+        case 'image': 
+            return $this->img()->url;
+        case 'textarea': 
+            return nl2br($this->value);
+        case 'wysiwyg': 
+            return Str::startsWith($this->value, '<') ? $this->value : "<p>{$this->value}</p>";
+        case 'checkboxes': 
+            return explode(',', $this->value);
+        case 'video-encoder': 
+            return $this->encoding('value')->tag;
+        case 'model': 
+            return $this->relatedModel();
+        default: 
+            return $this->value;
         }
     }
 
@@ -190,7 +206,8 @@ class Element extends Base
     {
         // Check for an existing Image relation
         if (($image = $this->parentImg($this->inputName()))
-            && $image->exists) {
+            && $image->exists
+        ) {
 
             // If the Image represents a default image, but doesn't match the current
             // item from the config, trash the current one and build the new default
@@ -210,7 +227,7 @@ class Element extends Base
     /**
      * Check if the Image represents a default image but is out of date
      *
-     * @param  Image      $image
+     * @param  Image $image
      * @return Image|void
      */
     protected function getReplacementImage(Image $image)
@@ -227,8 +244,8 @@ class Element extends Base
         $replacement = $yaml[$this->key]['value'];
 
         // Check if the filenames are the same
-        if (pathinfo($image->file, PATHINFO_BASENAME)
-            == pathinfo($replacement, PATHINFO_BASENAME)) {
+        if (pathinfo($image->file, PATHINFO_BASENAME)== pathinfo($replacement, PATHINFO_BASENAME)
+        ) {
             return;
         }
 
@@ -283,14 +300,16 @@ class Element extends Base
         // Create and return new Image instance. The Image::populateFileMeta()
         // requires an UploadedFile, so we need to do it manually here.
         $size = getimagesize($src_abs);
-        $image = new Image([
+        $image = new Image(
+            [
             'file' => $this->value,
             'name' => $this->inputName(),
             'file_type' => pathinfo($src_abs, PATHINFO_EXTENSION),
             'file_size' => filesize($src_abs),
             'width'     => $size[0],
             'height'    => $size[1],
-        ]);
+            ]
+        );
         $this->images()->save($image);
         DB::commit();
 

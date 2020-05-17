@@ -14,7 +14,8 @@ class PostTest extends TestCase
 
         $post = new Post();
 
-        $post->fill([
+        $post->fill(
+            [
             'category_id'      => Category::first()->id,
             'slug'             => 'test-slug',
             'title'            => 'Test Title',
@@ -22,7 +23,8 @@ class PostTest extends TestCase
             'body'             => 'Test Body',
             'meta_description' => 'Test Description',
             'meta_keywords'    => 'Test Meta Keywords',
-        ]);
+            ]
+        );
 
         $post->save();
 

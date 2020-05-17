@@ -14,7 +14,8 @@ class FileTest extends TestCase
      *
      * @return void
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         parent::setUp();
         $this->auth();
     }
@@ -69,13 +70,15 @@ class FileTest extends TestCase
     public function createImageOn($article)
     {
         $this->createVirtualFile('test.jpg');
-        return $article->images()->create([
+        return $article->images()->create(
+            [
             'file' => '/uploads/test.jpg',
             'file_type' => 'image/jpeg',
             'file_size' => 10,
             'width' => 20,
             'height' => 20,
-        ]);
+            ]
+        );
     }
 
     /**
@@ -137,14 +140,16 @@ class FileTest extends TestCase
         $image = $this->createImageOn($article);
 
         // Submit a save
-        $response = $this->post('admin/articles/'.$article->id.'/edit', [
+        $response = $this->post(
+            'admin/articles/'.$article->id.'/edit', [
             'title' => 'Ok?',
             'images' => [
                 $image->id => [
                     'name' => 'image'
                 ]
             ],
-        ]);
+            ]
+        );
 
         $response->assertSessionMissing('errors');
         $path = app('upchuck')->path($image->file);
@@ -184,9 +189,11 @@ class FileTest extends TestCase
     {
         $this->createVirtualFile('test.jpg');
 
-        $recipe = factory(Recipe::class)->create([
+        $recipe = factory(Recipe::class)->create(
+            [
             'file' => '/uploads/test.jpg'
-        ]);
+            ]
+        );
 
         $response = $this->get('admin/recipes/'.$recipe->id.'/destroy');
 
@@ -207,7 +214,8 @@ class FileTest extends TestCase
         $image = $this->createImageOn($article);
 
         // Submit a save
-        $response = $this->post('admin/articles/'.$article->id.'/edit', [
+        $response = $this->post(
+            'admin/articles/'.$article->id.'/edit', [
             'images' => [
                 $image->id => [
                     'name' => '',
@@ -215,7 +223,8 @@ class FileTest extends TestCase
                 ]
             ],
             '_save' => 'save',
-        ]);
+            ]
+        );
 
         $response->assertSessionMissing('errors');
 
@@ -234,16 +243,20 @@ class FileTest extends TestCase
     {
         $this->createVirtualFile('test.jpg');
 
-        $recipe = factory(Recipe::class)->create([
+        $recipe = factory(Recipe::class)->create(
+            [
             'file' => '/uploads/test.jpg'
-        ]);
+            ]
+        );
 
         $this->assertNotEmpty($recipe->file);
 
-        $response = $this->post('admin/recipes/'.$recipe->id.'/edit', [
+        $response = $this->post(
+            'admin/recipes/'.$recipe->id.'/edit', [
             'file' => '',
             '_save' => 'save',
-        ]);
+            ]
+        );
 
         $path = app('upchuck')->path($recipe->file);
         $this->assertNotEmpty($recipe->fresh());

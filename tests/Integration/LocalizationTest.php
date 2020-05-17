@@ -14,7 +14,8 @@ class LocalizationTest extends TestCase
      *
      * @return void
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         parent::setUp();
         $this->auth();
     }
@@ -61,13 +62,15 @@ class LocalizationTest extends TestCase
      */
     public function testStore()
     {
-        $response = $this->call('POST', 'admin/recipes/create', [
+        $response = $this->call(
+            'POST', 'admin/recipes/create', [
             'title' => 'Tasty food',
             'directions' => '<p>Do it</p>',
             'public' => 1,
             'locale' => 'en',
             '_save' => 'save',
-        ]);
+            ]
+        );
 
         $response->assertRedirect('admin/recipes/1/edit');
 
@@ -122,31 +125,39 @@ class LocalizationTest extends TestCase
         $this->disk->put('test.txt', 'test');
 
         // Create recipe with file attachments
-        $recipe = factory(Recipe::class)->create([
+        $recipe = factory(Recipe::class)->create(
+            [
             'title' => 'Title',
             'directions' => 'Directions',
             'file' => '/uploads/test.txt',
             'public' => 0,
-        ]);
-        $recipe->images()->create([
+            ]
+        );
+        $recipe->images()->create(
+            [
             'file' => '/uploads/test.jpg',
             'file_type' => 'image/jpeg',
             'file_size' => 10,
             'width' => 20,
             'height' => 20,
-        ]);
+            ]
+        );
 
         // The localization call
-        $response = $this->call('POST', 'admin/recipes/'.$recipe->id.'/duplicate', [
+        $response = $this->call(
+            'POST', 'admin/recipes/'.$recipe->id.'/duplicate', [
             'locale' => 'es',
-        ]);
+            ]
+        );
 
         // Test that simple fields were copied
-        $this->assertDatabaseHas('recipes', [
+        $this->assertDatabaseHas(
+            'recipes', [
             'title' => 'Title copy',
             'directions' => 'Directions',
             'locale' => 'es',
-        ]);
+            ]
+        );
 
         // Test that the file was duplicated to a new location
         $dupe = Recipe::where('title', 'Title copy')->first();

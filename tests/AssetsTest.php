@@ -40,7 +40,7 @@ class AssetsTest extends TestCase
     }
 
     /**
-     * @dataProvider  urlProvider
+     * @dataProvider urlProvider
      */
     public function testCannotOpenFileOutsideAssets($url)
     {

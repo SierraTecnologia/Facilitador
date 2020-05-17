@@ -51,11 +51,15 @@ class FacilitadorService
 
             // INvez de usar pela classe ta usando direto o eloquentENtity
             // $allModels = collect($this->getDatabaseService()->getAllModels())->map(function($file, $class) {
-            $allModels = collect($this->getDatabaseService()->getAllEloquentsEntitys())->reject(function ($class) {
-                return empty($class);
-            })->map(function($class) {
-                return new ModelService($class);
-            })->values()->all();
+            $allModels = collect($this->getDatabaseService()->getAllEloquentsEntitys())->reject(
+                function ($class) {
+                    return empty($class);
+                }
+            )->map(
+                function ($class) {
+                    return new ModelService($class);
+                }
+            )->values()->all();
             $models = array_merge(
                 $models,
                 $allModels

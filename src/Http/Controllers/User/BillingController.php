@@ -147,7 +147,8 @@ class BillingController extends Controller
     {
         try {
             $user = $request->user();
-            $response = $user->meta->downloadInvoice($id, [
+            $response = $user->meta->downloadInvoice(
+                $id, [
                 'vendor'    => \Illuminate\Support\Facades\Config::get("invoice.company"),
                 'street'    => \Illuminate\Support\Facades\Config::get("invoice.street"),
                 'location'  => \Illuminate\Support\Facades\Config::get("invoice.location"),
@@ -155,7 +156,8 @@ class BillingController extends Controller
                 'url'       => \Illuminate\Support\Facades\Config::get("invoice.url"),
                 'product'   => \Illuminate\Support\Facades\Config::get("invoice.product"),
                 'description'   => 'Subscription',
-            ]);
+                ]
+            );
         } catch (Exception $e) {
             $response = back()->withErrors(['Could not find this invoice, please try again.']);
         }

@@ -35,8 +35,8 @@ class PostCreateAction
      * PostCreateAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param PostManager $postManager
-     * @param CacheManager $cacheManager
+     * @param PostManager     $postManager
+     * @param CacheManager    $cacheManager
      */
     public function __construct(ResponseFactory $responseFactory, PostManager $postManager, CacheManager $cacheManager)
     {
@@ -46,13 +46,13 @@ class PostCreateAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {post} /v1/posts Create
-     * @apiName Create
-     * @apiGroup Posts
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-type application/json
-     * @apiParamExample {json} Request-Body-Example:
+     * @apiVersion        1.0.0
+     * @api               {post} /v1/posts Create
+     * @apiName           Create
+     * @apiGroup          Posts
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-type application/json
+     * @apiParamExample   {json} Request-Body-Example:
      * {
      *     "is_published": true,
      *     "description": "The post description.",
@@ -113,7 +113,7 @@ class PostCreateAction
     /**
      * Create a post.
      *
-     * @param Request $request
+     * @param  Request $request
      * @return JsonResponse
      */
     public function __invoke(Request $request): JsonResponse

@@ -94,14 +94,18 @@ class AdminCommand extends Command
      */
     protected function getAdministratorRole()
     {
-        $role = Facilitador::model('Role')->firstOrNew([
+        $role = Facilitador::model('Role')->firstOrNew(
+            [
             'name' => 'admin',
-        ]);
+            ]
+        );
 
         if (!$role->exists) {
-            $role->fill([
+            $role->fill(
+                [
                 'display_name' => 'Administrator',
-            ])->save();
+                ]
+            )->save();
         }
 
         return $role;
@@ -141,11 +145,13 @@ class AdminCommand extends Command
 
             $this->info('Creating admin account');
 
-            return call_user_func($model.'::create', [
+            return call_user_func(
+                $model.'::create', [
                 'name'     => $name,
                 'email'    => $email,
                 'password' => Hash::make($password),
-            ]);
+                ]
+            );
         }
 
         return call_user_func($model.'::where', 'email', $email)->firstOrFail();

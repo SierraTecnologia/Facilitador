@@ -50,13 +50,15 @@ class BreadMediaUploadTest extends TestCase
 
         $files = json_decode($page->image, true);
 
-        $response = $this->post(route('facilitador.pages.media.remove'), [
+        $response = $this->post(
+            route('facilitador.pages.media.remove'), [
             'id'        => $page->id,
             'slug'      => 'pages',
             'field'     => 'image',
             'multi'     => 'true',
             'filename'  => $files[1],
-        ]);
+            ]
+        );
 
         $this->storage->assertExists($files[0]);
         $this->storage->assertMissing($files[1]);
@@ -99,13 +101,15 @@ class BreadMediaUploadTest extends TestCase
     {
         $page = $this->uploadMedia([$this->image_one], 'image', json_decode($this->details));
 
-        $response = $this->post(route('facilitador.pages.media.remove'), [
+        $response = $this->post(
+            route('facilitador.pages.media.remove'), [
             'id'        => $page->id,
             'slug'      => 'pages',
             'field'     => 'image',
             'multi'     => 'false',
             'filename'  => $page->image,
-        ]);
+            ]
+        );
 
         $details = json_decode($this->details);
         foreach ($details->thumbnails as $thumbnail) {
@@ -159,13 +163,15 @@ class BreadMediaUploadTest extends TestCase
 
         $files = json_decode($page->image, true);
 
-        $response = $this->post(route('facilitador.pages.media.remove'), [
+        $response = $this->post(
+            route('facilitador.pages.media.remove'), [
             'id'        => $page->id,
             'slug'      => 'pages',
             'field'     => 'image',
             'multi'     => 'true',
             'filename'  => $files[1],
-        ]);
+            ]
+        );
 
         $details = json_decode($this->details);
 
@@ -220,13 +226,15 @@ class BreadMediaUploadTest extends TestCase
 
         $file = json_decode($page->image, true);
 
-        $this->call('POST', route('facilitador.pages.media.remove'), [
+        $this->call(
+            'POST', route('facilitador.pages.media.remove'), [
             'id'        => $page->id,
             'slug'      => 'pages',
             'field'     => 'image',
             'multi'     => 'true',
             'filename'  => $file[0]['original_name'],
-        ]);
+            ]
+        );
 
         $this->storage->assertMissing($file[0]['download_link']);
 
@@ -256,13 +264,15 @@ class BreadMediaUploadTest extends TestCase
     {
         $page = $this->uploadMedia([$this->image_one], 'image');
 
-        $response = $this->post(route('facilitador.pages.media.remove'), [
+        $response = $this->post(
+            route('facilitador.pages.media.remove'), [
             'id'        => $page->id,
             'slug'      => 'pages',
             'field'     => 'image',
             'multi'     => 'false',
             'filename'  => $page->image,
-        ]);
+            ]
+        );
 
         $this->storage->assertMissing($page->image);
 
@@ -289,28 +299,30 @@ class BreadMediaUploadTest extends TestCase
         $data_row->save();
 
         switch ($type) {
-            case 'image':
-                $file = UploadedFile::fake()->image($names[0]);
-                break;
-            case 'file':
-                $file = UploadedFile::fake()->create($names[0], 1);
-                break;
-            case 'multiple_images':
-                $file = [];
-                $file[] = UploadedFile::fake()->image($names[0]);
-                $file[] = UploadedFile::fake()->image($names[1]);
-                $file[] = UploadedFile::fake()->image($names[2]);
-                break;
+        case 'image':
+            $file = UploadedFile::fake()->image($names[0]);
+            break;
+        case 'file':
+            $file = UploadedFile::fake()->create($names[0], 1);
+            break;
+        case 'multiple_images':
+            $file = [];
+            $file[] = UploadedFile::fake()->image($names[0]);
+            $file[] = UploadedFile::fake()->image($names[1]);
+            $file[] = UploadedFile::fake()->image($names[2]);
+            break;
         }
 
-        $this->call('POST', route('facilitador.pages.store'), [
+        $this->call(
+            'POST', route('facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Upload',
             'slug'      => 'upload-media',
             'status'    => 'ACTIVE',
-        ], [], [
+            ], [], [
             'image' => $file,
-        ]);
+            ]
+        );
 
         $page = Page::where('slug', 'upload-media')->firstOrFail();
 

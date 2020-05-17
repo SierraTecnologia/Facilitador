@@ -35,8 +35,8 @@ class PostGetAfterIdAction
      * PostGetAfterIdAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param PostManager $postManager
-     * @param CacheManager $cacheManager
+     * @param PostManager     $postManager
+     * @param CacheManager    $cacheManager
      */
     public function __construct(ResponseFactory $responseFactory, PostManager $postManager, CacheManager $cacheManager)
     {
@@ -46,12 +46,12 @@ class PostGetAfterIdAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {get} /v1/posts/:post_id/next Get Next
-     * @apiName Get Next
-     * @apiGroup Posts
-     * @apiHeader {String} Accept application/json
-     * @apiParam {Integer{1..N}} :post_id Unique resource ID.
+     * @apiVersion        1.0.0
+     * @api               {get} /v1/posts/:post_id/next Get Next
+     * @apiName           Get Next
+     * @apiGroup          Posts
+     * @apiHeader         {String} Accept application/json
+     * @apiParam          {Integer{1..N}} :post_id Unique resource ID.
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 201 Created
      * {
@@ -100,8 +100,8 @@ class PostGetAfterIdAction
     /**
      * Get next post.
      *
-     * @param mixed $id
-     * @param Request $request
+     * @param  mixed   $id
+     * @param  Request $request
      * @return JsonResponse
      */
     public function __invoke($id, Request $request): JsonResponse

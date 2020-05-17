@@ -14,10 +14,12 @@ class CrudMakerProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/Templates/Laravel' => base_path('resources/crudmaker'),
             __DIR__.'/../config/crudmaker.php' => base_path('config/crudmaker.php'),
-        ]);
+            ]
+        );
     }
 
     /**
@@ -43,9 +45,11 @@ class CrudMakerProvider extends ServiceProvider
         |--------------------------------------------------------------------------
         */
 
-        $this->commands([
+        $this->commands(
+            [
             \Siravel\Console\Commands\CrudMaker\CrudMaker::class,
             \Siravel\Console\Commands\CrudMaker\TableCrudMaker::class,
-        ]);
+            ]
+        );
     }
 }

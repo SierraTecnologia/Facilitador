@@ -19,7 +19,7 @@ class Controller extends BaseController
     /**
      * Create a new controller instance.
      *
-     * @param  UserRepository  $repositoryService
+     * @param  UserRepository $repositoryService
      * @return void
      */
     public function __construct(FacilitadorService $facilitadorService, RepositoryService $repositoryService)

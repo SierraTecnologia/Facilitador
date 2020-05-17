@@ -29,7 +29,7 @@ class AuthDeleteAction
      * AuthDeleteAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param OAuthProxy $oAuthProxy
+     * @param OAuthProxy      $oAuthProxy
      */
     public function __construct(ResponseFactory $responseFactory, OAuthProxy $oAuthProxy)
     {
@@ -38,11 +38,11 @@ class AuthDeleteAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {delete} /v1/auth/token Delete
-     * @apiName Delete
-     * @apiGroup Auth
-     * @apiHeader {String} Accept application/json
+     * @apiVersion        1.0.0
+     * @api               {delete} /v1/auth/token Delete
+     * @apiName           Delete
+     * @apiGroup          Auth
+     * @apiHeader         {String} Accept application/json
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 204 No Content
      */
@@ -50,7 +50,7 @@ class AuthDeleteAction
     /**
      * Delete an auth token.
      *
-     * @param Request $request
+     * @param  Request $request
      * @return JsonResponse
      */
     public function __invoke(Request $request): JsonResponse

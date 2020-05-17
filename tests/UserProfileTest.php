@@ -35,50 +35,50 @@ class UserProfileTest extends TestCase
     public function testCanSeeTheUserInfoOnHisProfilePage()
     {
         $this->visit(route('facilitador.profile'))
-             ->seeInElement('h4', $this->user->name)
-             ->seeInElement('.user-email', $this->user->email)
-             ->seeLink(__('facilitador::profile.edit'));
+            ->seeInElement('h4', $this->user->name)
+            ->seeInElement('.user-email', $this->user->email)
+            ->seeLink(__('facilitador::profile.edit'));
     }
 
     public function testCanEditUserName()
     {
         $this->visit(route('facilitador.profile'))
-             ->click(__('facilitador::profile.edit'))
-             ->see(__('facilitador::profile.edit_user'))
-             ->seePageIs($this->editPageForTheCurrentUser)
-             ->type('New Awesome Name', 'name')
-             ->press(__('facilitador::generic.save'))
-             ->seePageIs($this->listOfUsers)
-             ->seeInDatabase(
-                 'users',
-                 ['name' => 'New Awesome Name']
-             );
+            ->click(__('facilitador::profile.edit'))
+            ->see(__('facilitador::profile.edit_user'))
+            ->seePageIs($this->editPageForTheCurrentUser)
+            ->type('New Awesome Name', 'name')
+            ->press(__('facilitador::generic.save'))
+            ->seePageIs($this->listOfUsers)
+            ->seeInDatabase(
+                'users',
+                ['name' => 'New Awesome Name']
+            );
     }
 
     public function testCanEditUserEmail()
     {
         $this->visit(route('facilitador.profile'))
-             ->click(__('facilitador::profile.edit'))
-             ->see(__('facilitador::profile.edit_user'))
-             ->seePageIs($this->editPageForTheCurrentUser)
-             ->type('another@email.com', 'email')
-             ->press(__('facilitador::generic.save'))
-             ->seePageIs($this->listOfUsers)
-             ->seeInDatabase(
-                 'users',
-                 ['email' => 'another@email.com']
-             );
+            ->click(__('facilitador::profile.edit'))
+            ->see(__('facilitador::profile.edit_user'))
+            ->seePageIs($this->editPageForTheCurrentUser)
+            ->type('another@email.com', 'email')
+            ->press(__('facilitador::generic.save'))
+            ->seePageIs($this->listOfUsers)
+            ->seeInDatabase(
+                'users',
+                ['email' => 'another@email.com']
+            );
     }
 
     public function testCanEditUserPassword()
     {
         $this->visit(route('facilitador.profile'))
-             ->click(__('facilitador::profile.edit'))
-             ->see(__('facilitador::profile.edit_user'))
-             ->seePageIs($this->editPageForTheCurrentUser)
-             ->type('facilitador-rocks', 'password')
-             ->press(__('facilitador::generic.save'))
-             ->seePageIs($this->listOfUsers);
+            ->click(__('facilitador::profile.edit'))
+            ->see(__('facilitador::profile.edit_user'))
+            ->seePageIs($this->editPageForTheCurrentUser)
+            ->type('facilitador-rocks', 'password')
+            ->press(__('facilitador::generic.save'))
+            ->seePageIs($this->listOfUsers);
 
         $updatedPassword = DB::table('users')->where('id', 1)->first()->password;
         $this->assertTrue(Hash::check('facilitador-rocks', $updatedPassword));
@@ -87,16 +87,16 @@ class UserProfileTest extends TestCase
     public function testCanEditUserAvatar()
     {
         $this->visit(route('facilitador.profile'))
-             ->click(__('facilitador::profile.edit'))
-             ->see(__('facilitador::profile.edit_user'))
-             ->seePageIs($this->editPageForTheCurrentUser)
-             ->attach($this->newImagePath(), 'avatar')
-             ->press(__('facilitador::generic.save'))
-             ->seePageIs($this->listOfUsers)
-             ->dontSeeInDatabase(
-                 'users',
-                 ['id' => 1, 'avatar' => 'user/default.png']
-             );
+            ->click(__('facilitador::profile.edit'))
+            ->see(__('facilitador::profile.edit_user'))
+            ->seePageIs($this->editPageForTheCurrentUser)
+            ->attach($this->newImagePath(), 'avatar')
+            ->press(__('facilitador::generic.save'))
+            ->seePageIs($this->listOfUsers)
+            ->dontSeeInDatabase(
+                'users',
+                ['id' => 1, 'avatar' => 'user/default.png']
+            );
     }
 
     public function testCanEditUserEmailWithEditorPermissions()
@@ -107,32 +107,36 @@ class UserProfileTest extends TestCase
         $role = Role::find($roleId);
         // add permissions which reflect a possible editor role
         // without permissions to edit  users
-        $role->permissions()->attach(\Facilitador\Models\Permission::whereIn('key', [
-            'browse_admin',
-            'browse_users',
-        ])->get()->pluck('id')->all());
+        $role->permissions()->attach(
+            \Facilitador\Models\Permission::whereIn(
+                'key', [
+                'browse_admin',
+                'browse_users',
+                ]
+            )->get()->pluck('id')->all()
+        );
         Auth::onceUsingId($user->id);
         $this->visit(route('facilitador.profile'))
-             ->click(__('facilitador::profile.edit'))
-             ->see(__('facilitador::profile.edit_user'))
-             ->seePageIs($editPageForTheCurrentUser)
-             ->type('another@email.com', 'email')
-             ->press(__('facilitador::generic.save'))
-             ->seePageIs($this->listOfUsers)
-             ->seeInDatabase(
-                 'users',
-                 ['email' => 'another@email.com']
-             );
+            ->click(__('facilitador::profile.edit'))
+            ->see(__('facilitador::profile.edit_user'))
+            ->seePageIs($editPageForTheCurrentUser)
+            ->type('another@email.com', 'email')
+            ->press(__('facilitador::generic.save'))
+            ->seePageIs($this->listOfUsers)
+            ->seeInDatabase(
+                'users',
+                ['email' => 'another@email.com']
+            );
     }
 
     public function testCanSetUserLocale()
     {
         $this->visit(route('facilitador.profile'))
-             ->click(__('facilitador::profile.edit'))
-             ->see(__('facilitador::profile.edit_user'))
-             ->seePageIs($this->editPageForTheCurrentUser)
-             ->select('de', 'locale')
-             ->press(__('facilitador::generic.save'));
+            ->click(__('facilitador::profile.edit'))
+            ->see(__('facilitador::profile.edit_user'))
+            ->seePageIs($this->editPageForTheCurrentUser)
+            ->select('de', 'locale')
+            ->press(__('facilitador::generic.save'));
 
         $user = User::find(1);
         $this->assertTrue(($user->locale == 'de'));
@@ -153,8 +157,8 @@ class UserProfileTest extends TestCase
         );
 
         $this->visit($this->editPageForTheCurrentUser)
-             ->press(__('facilitador::generic.save'))
-             ->seePageIs($this->editPageForTheCurrentUser);
+            ->press(__('facilitador::generic.save'))
+            ->seePageIs($this->editPageForTheCurrentUser);
     }
 
     protected function newImagePath()

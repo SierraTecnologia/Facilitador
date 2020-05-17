@@ -41,7 +41,7 @@ abstract class Base extends \Support\Models\Base
     /**
      * Use the Decoy Base Collection
      *
-     * @param  array  $models
+     * @param  array $models
      * @return Images
      */
     public function newCollection(array $models = [])
@@ -54,31 +54,33 @@ abstract class Base extends \Support\Models\Base
      * doesn't reference a true database-backed attribute, or the key was
      * expressly whitelisted in the admin_mutators property.
      *
-     * @param  string  $key
+     * @param  string $key
      * @return mixed
      */
     public function hasGetMutator($key)
     {
         if (!Facilitador::handling()
             || !array_key_exists($key, $this->attributes)
-            || in_array($key, $this->admin_mutators)) {
+            || in_array($key, $this->admin_mutators)
+        ) {
             return parent::hasGetMutator($key);
         }
     }
 
     /**
-    * Disable mutators unless the active request isn't for the admin, the key
-    * doesn't reference a true database-backed attribute, or the key was
-    * expressly whitelisted in the admin_mutators property.
-    *
-    * @param  string  $key
-    * @return mixed
+     * Disable mutators unless the active request isn't for the admin, the key
+     * doesn't reference a true database-backed attribute, or the key was
+     * expressly whitelisted in the admin_mutators property.
+     *
+     * @param  string $key
+     * @return mixed
      */
     public function hasSetMutator($key)
     {
         if (!Facilitador::handling()
             || !array_key_exists($key, $this->attributes)
-            || in_array($key, $this->admin_mutators)) {
+            || in_array($key, $this->admin_mutators)
+        ) {
             return parent::hasSetMutator($key);
         }
     }
@@ -114,7 +116,8 @@ abstract class Base extends \Support\Models\Base
      */
     public function sluggable()
     {
-        if (!$this->needsSlugging()) return [];
+        if (!$this->needsSlugging()) { return [];
+        }
         return [
             'slug' => [
                 'source' => 'admin_title',
@@ -127,7 +130,7 @@ abstract class Base extends \Support\Models\Base
     /**
      * Make the visibility state action
      *
-     * @param  array  $data The data passed to a listing view
+     * @param  array $data The data passed to a listing view
      * @return string
      */
     protected function makeVisibilityAction($data)
@@ -137,13 +140,15 @@ abstract class Base extends \Support\Models\Base
         // Check if this model supports editing the visibility
         if ($many_to_many
             || !app('facilitador.user')->can('publish', $controller)
-            || !array_key_exists('public', $this->attributes)) {
+            || !array_key_exists('public', $this->attributes)
+        ) {
             return;
         }
 
         // Create the markup
         $public = $this->getAttribute('public');
-        return sprintf('<a class="visibility js-tooltip" data-placement="left" title="%s">
+        return sprintf(
+            '<a class="visibility js-tooltip" data-placement="left" title="%s">
                 <span class="glyphicon glyphicon-eye-%s"></span>
             </a>',
             $public ? __('facilitador::base.standard_list.private') : __('facilitador::base.standard_list.publish'),
@@ -154,7 +159,7 @@ abstract class Base extends \Support\Models\Base
     /**
      * Make the edit or view action.
      *
-     * @param  array  $data The data passed to a listing view
+     * @param  array $data The data passed to a listing view
      * @return string
      */
     protected function makeEditAction($data)
@@ -163,14 +168,15 @@ abstract class Base extends \Support\Models\Base
 
         // Make markup
         $editable = app('facilitador.user')->can('update', $controller);
-        return sprintf('<a href="%s" class="action-edit js-tooltip"
+        return sprintf(
+            '<a href="%s" class="action-edit js-tooltip"
             data-placement="left" title="%s">
                 <span class="glyphicon glyphicon-%s"></span>
             </a>',
             $this->getAdminEditUri($controller, $many_to_many), // URL
             $editable ? // Label
                 __('facilitador::base.action.edit') :
-                __('facilitador::base.action.read') ,
+                __('facilitador::base.action.read'),
             $editable ? 'pencil' : 'zoom-in' // Icon
         );
     }
@@ -195,7 +201,7 @@ abstract class Base extends \Support\Models\Base
     /**
      * Make the view action
      *
-     * @param  array  $data The data passed to a listing view
+     * @param  array $data The data passed to a listing view
      * @return string
      */
     protected function makeViewAction($data)
@@ -204,16 +210,18 @@ abstract class Base extends \Support\Models\Base
             return;
         }
 
-        return sprintf('<a href="%s" target="_blank" class="action-view js-tooltip"
+        return sprintf(
+            '<a href="%s" target="_blank" class="action-view js-tooltip"
             data-placement="left" title="' . __('facilitador::base.action.view') . '">
                 <span class="glyphicon glyphicon-bookmark"></span>
-            </a>', $uri);
+            </a>', $uri
+        );
     }
 
     /**
      * Make the delete action
      *
-     * @param  array  $data The data passed to a listing view
+     * @param  array $data The data passed to a listing view
      * @return string
      */
     protected function makeDeleteAction($data)
@@ -223,7 +231,8 @@ abstract class Base extends \Support\Models\Base
         // Check if this model can be deleted.  This mirrors code found in the table
         //  partial for generating the edit link on the title
         if (!(app('facilitador.user')->can('destroy', $controller)
-            || ($many_to_many && app('facilitador.user')->can('update', $parent_controller)))) {
+            || ($many_to_many && app('facilitador.user')->can('update', $parent_controller)))
+        ) {
             return;
         }
 
@@ -237,10 +246,11 @@ abstract class Base extends \Support\Models\Base
             __('facilitador::base.action.remove') :
             $with_trashed ?
                 __('facilitador::base.action.soft_delete') :
-                __('facilitador::base.action.delete') ;
+                __('facilitador::base.action.delete');
 
         // Return markup
-        return sprintf('<a class="%s js-tooltip" data-placement="left" title="%s">
+        return sprintf(
+            '<a class="%s js-tooltip" data-placement="left" title="%s">
                 <span class="glyphicon glyphicon-%s"></span>
             </a>',
             $many_to_many ? 'remove-now' : 'delete-now',
@@ -269,8 +279,8 @@ abstract class Base extends \Support\Models\Base
     /**
      * Fire an Decoy model event.
      *
-     * @param $string  event The name of this event
-     * @param $array   args  An array of params that will be passed to the handler
+     * @param  $string event The name of this event
+     * @param  $array  args  An array of params that will be passed to the handler
      * @return object
      */
     public function fireDecoyEvent($event, $args = null)

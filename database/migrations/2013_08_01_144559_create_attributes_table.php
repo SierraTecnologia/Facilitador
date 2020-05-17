@@ -15,23 +15,25 @@ class CreateAttributesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'), function (Blueprint $table) {
-            // Columns
-            $table->increments('id');
-            $table->string('slug');
-            $table->{$this->jsonable()}('name');
-            $table->{$this->jsonable()}('description')->nullable();
-            $table->mediumInteger('sort_order')->unsigned()->default(0);
-            $table->string('group')->nullable();
-            $table->string('type');
-            $table->boolean('is_required')->default(false);
-            $table->boolean('is_collection')->default(false);
-            $table->text('default')->nullable();
-            $table->timestamps();
+        Schema::create(
+            \Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'), function (Blueprint $table) {
+                // Columns
+                $table->increments('id');
+                $table->string('slug');
+                $table->{$this->jsonable()}('name');
+                $table->{$this->jsonable()}('description')->nullable();
+                $table->mediumInteger('sort_order')->unsigned()->default(0);
+                $table->string('group')->nullable();
+                $table->string('type');
+                $table->boolean('is_required')->default(false);
+                $table->boolean('is_collection')->default(false);
+                $table->text('default')->nullable();
+                $table->timestamps();
 
-            // Indexes
-            $table->unique('slug');
-        });
+                // Indexes
+                $table->unique('slug');
+            }
+        );
     }
 
     /**

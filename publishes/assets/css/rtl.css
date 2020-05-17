@@ -358,10 +358,10 @@
 }
 
 [dir="rtl"] .app-container .side-body .container-fluid{
-	padding-left:0;
-	padding-right: 15px;
+    padding-left:0;
+    padding-right: 15px;
 
-	}
+    }
 
 [dir="rtl"] .table.dataTable tbody td,
 table.dataTable tbody th {

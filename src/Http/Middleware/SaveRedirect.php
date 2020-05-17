@@ -15,12 +15,12 @@ use Redirect;
 class SaveRedirect
 {
     /**
-    * Run the request filter.
-    *
-    * @param  Illuminate\Http\Request  $request
-    * @param  Closure  $next
-    * @return mixed
-    */
+     * Run the request filter.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @param  Closure                 $next
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
         // Handle a redirect request.  But only if there were no validation errors

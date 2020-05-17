@@ -45,31 +45,35 @@ class LoginController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return Validator::make(
+            $data, [
             'name' => 'required|max:255',
             'email' => 'required|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-        ]);
+            ]
+        );
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::create(
+            [
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+            ]
+        );
     }
 
 
@@ -79,18 +83,21 @@ class LoginController extends Controller
         $password   = $request->get('password');
         $remember   = $request->get('remember');
 
-        if (Auth::attempt([
+        if (Auth::attempt(
+            [
             'email'     => $email,
             'password'  => $password
-        ], $remember == 1 ? true : false)) {
+            ], $remember == 1 ? true : false
+        )
+        ) {
             return redirect()->route('facilitador.dashboard');
-            if ( Auth::user()->hasRole('root')) {
+            if (Auth::user()->hasRole('root')) {
 
                 return redirect()->route('facilitador.dashboard');
 
             }
 
-            if ( Auth::user()->hasRole('administrator')) {
+            if (Auth::user()->hasRole('administrator')) {
 
                 return redirect()->route('facilitador.dashboard');
 
@@ -121,15 +128,19 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         // Pass validation rules
-        Former::withRules(array(
+        Former::withRules(
+            array(
             'email'    => 'required|email',
             'password' => 'required',
-        ));
+            )
+        );
 
         // Show the login homepage
-        return view('facilitador::layouts.decoy.blank', [
+        return view(
+            'facilitador::layouts.decoy.blank', [
             'content' => view('facilitador::account.login'),
-        ]);
+            ]
+        );
     }
 
     /**

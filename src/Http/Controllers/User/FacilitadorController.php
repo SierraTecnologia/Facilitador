@@ -50,10 +50,12 @@ class FacilitadorController extends Controller
 
         if (in_array($ext, ['jpeg', 'jpg', 'png', 'gif'])) {
             $image = Image::make($file)
-                ->resize($resizeWidth, $resizeHeight, function (Constraint $constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
+                ->resize(
+                    $resizeWidth, $resizeHeight, function (Constraint $constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    }
+                );
             if ($ext !== 'gif') {
                 $image->orientate();
             }

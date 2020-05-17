@@ -25,20 +25,22 @@ class GravatarServiceProvider extends ServiceProvider
         $source = realpath(__DIR__.'/../../publishes/config/gravatar.php');
         $this->publishes([$source => config_path('gravatar.php')]);
         $this->mergeConfigFrom($source, 'gravatar');
-	}
-	
-	/**
-	 * Register the service provider.
-	 *
-	 * @return void
-	 */
+    }
+    
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
     public function register()
     {
         $loader = AliasLoader::getInstance();
         $loader->alias('Gravatar', \Facilitador\Facades\Gravatar::class);
-        $this->app->singleton('gravatar', function ($app) {
-            return new Gravatar($this->app['config']);
-        });
-	}
+        $this->app->singleton(
+            'gravatar', function ($app) {
+                return new Gravatar($this->app['config']);
+            }
+        );
+    }
 
 }

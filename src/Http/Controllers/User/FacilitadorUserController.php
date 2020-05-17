@@ -27,10 +27,12 @@ class FacilitadorUserController extends Controller
     public function update(Request $request, $id)
     {
         if (Auth::user()->getKey() == $id) {
-            $request->merge([
+            $request->merge(
+                [
                 'role_id'                              => Auth::user()->role_id,
                 'user_belongstomany_role_relationship' => Auth::user()->roles->pluck('id')->toArray(),
-            ]);
+                ]
+            );
         }
 
         return parent::update($request, $id);

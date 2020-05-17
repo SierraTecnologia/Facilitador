@@ -14,9 +14,9 @@ trait Filterable
     /**
      * Creates local scope to run the filter.
      *
-     * @param $query
-     * @param array $input
-     * @param null|string|ModelFilter $filter
+     * @param  $query
+     * @param  array                   $input
+     * @param  null|string|ModelFilter $filter
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeFilter($query, array $input = [], $filter = null)
@@ -39,9 +39,9 @@ trait Filterable
     /**
      * Paginate the given query with url query params appended.
      *
-     * @param  int $perPage
-     * @param  array $columns
-     * @param  string $pageName
+     * @param  int      $perPage
+     * @param  array    $columns
+     * @param  string   $pageName
      * @param  int|null $page
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      *
@@ -59,10 +59,10 @@ trait Filterable
     /**
      * Paginate the given query with url query params appended.
      *
-     * @param  int $perPage
-     * @param  array $columns
-     * @param  string $pageName
-     * @param int|null $page
+     * @param  int      $perPage
+     * @param  array    $columns
+     * @param  string   $pageName
+     * @param  int|null $page
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      *
      * @throws \InvalidArgumentException
@@ -79,7 +79,7 @@ trait Filterable
     /**
      * Returns ModelFilter class to be instantiated.
      *
-     * @param null|string $filter
+     * @param  null|string $filter
      * @return string
      */
     public function provideFilter($filter = null)
@@ -104,10 +104,10 @@ trait Filterable
     /**
      * WHERE $column LIKE %$value% query.
      *
-     * @param $query
-     * @param $column
-     * @param $value
-     * @param string $boolean
+     * @param  $query
+     * @param  $column
+     * @param  $value
+     * @param  string $boolean
      * @return mixed
      */
     public function scopeWhereLike($query, $column, $value, $boolean = 'and')
@@ -118,10 +118,10 @@ trait Filterable
     /**
      * WHERE $column LIKE $value% query.
      *
-     * @param $query
-     * @param $column
-     * @param $value
-     * @param string $boolean
+     * @param  $query
+     * @param  $column
+     * @param  $value
+     * @param  string $boolean
      * @return mixed
      */
     public function scopeWhereBeginsWith($query, $column, $value, $boolean = 'and')
@@ -132,10 +132,10 @@ trait Filterable
     /**
      * WHERE $column LIKE %$value query.
      *
-     * @param $query
-     * @param $column
-     * @param $value
-     * @param string $boolean
+     * @param  $query
+     * @param  $column
+     * @param  $value
+     * @param  string $boolean
      * @return mixed
      */
     public function scopeWhereEndsWith($query, $column, $value, $boolean = 'and')

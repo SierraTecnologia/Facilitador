@@ -12,22 +12,24 @@ class EncodablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('encodings', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('encodable_type');
-            $table->string('encodable_id'); // String for Elements
-            $table->string('encodable_attribute');
-            $table->string('status')->index();
-            $table->string('job_id')->nullable()->index();
-            $table->text('outputs')->nullable();
-            $table->text('message')->nullable();
-            $table->timestamps();
+        Schema::create(
+            'encodings', function (Blueprint $table) {
+                $table->engine = 'InnoDB';
+                $table->increments('id');
+                $table->string('encodable_type');
+                $table->string('encodable_id'); // String for Elements
+                $table->string('encodable_attribute');
+                $table->string('status')->index();
+                $table->string('job_id')->nullable()->index();
+                $table->text('outputs')->nullable();
+                $table->text('message')->nullable();
+                $table->timestamps();
 
-            $table->index(['encodable_id', 'encodable_type', 'encodable_attribute']);
-            $table->index(['encodable_type', 'encodable_id', 'encodable_attribute']);
-            $table->index(['encodable_attribute', 'encodable_id', 'encodable_type']);
-        });
+                $table->index(['encodable_id', 'encodable_type', 'encodable_attribute']);
+                $table->index(['encodable_type', 'encodable_id', 'encodable_attribute']);
+                $table->index(['encodable_attribute', 'encodable_id', 'encodable_type']);
+            }
+        );
     }
 
     /**

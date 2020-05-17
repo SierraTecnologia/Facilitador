@@ -29,7 +29,7 @@ trait BreadRelationshipParser
     /**
      * Replace relationships' keys for labels and create READ links if a slug is provided.
      *
-     * @param  $dataTypeContent     Can be either an eloquent Model, Collection or LengthAwarePaginator instance.
+     * @param $dataTypeContent Can be either an eloquent Model, Collection or LengthAwarePaginator instance.
      * @param DataType $dataType
      *
      * @return $dataTypeContent

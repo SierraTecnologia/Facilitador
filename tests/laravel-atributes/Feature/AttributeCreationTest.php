@@ -8,7 +8,9 @@ use Facilitador\Attributes\Tests\Stubs\User;
 
 class AttributeCreationTest extends TestCase
 {
-    /** @test */
+    /**
+     * @test 
+     */
     public function it_creates_a_new_attribute()
     {
         $attribute = $this->createAttribute();
@@ -17,7 +19,9 @@ class AttributeCreationTest extends TestCase
         $this->assertDatabaseHas('attribute_entity', ['attribute_id' => $attribute->id, 'entity_type' => User::class]);
     }
 
-    /** @test */
+    /**
+     * @test 
+     */
     public function it_ensures_snake_case_slugs()
     {
         $attribute = $this->createAttribute(['name' => 'Foo Bar']);
@@ -26,7 +30,9 @@ class AttributeCreationTest extends TestCase
         $this->assertDatabaseHas('attributes', ['slug' => 'foo_bar', 'type' => 'integer']);
     }
 
-    /** @test */
+    /**
+     * @test 
+     */
     public function it_ensures_snake_case_slugs_even_if_dashed_slugs_provided()
     {
         $attribute = $this->createAttribute(['slug' => 'foo-bar']);
@@ -34,7 +40,9 @@ class AttributeCreationTest extends TestCase
         $this->assertEquals('foo_bar', $attribute->slug);
     }
 
-    /** @test */
+    /**
+     * @test 
+     */
     public function it_ensures_unique_slugs()
     {
         $this->createAttribute(['name' => 'foo']);
@@ -43,7 +51,9 @@ class AttributeCreationTest extends TestCase
         $this->assertDatabaseHas('attributes', ['slug' => 'foo_1']);
     }
 
-    /** @test */
+    /**
+     * @test 
+     */
     public function it_ensures_unique_slugs_even_if_slugs_explicitly_provided()
     {
         $this->createAttribute(['slug' => 'foo']);
@@ -54,10 +64,14 @@ class AttributeCreationTest extends TestCase
 
     protected function createAttribute($attributes = [])
     {
-        return app('facilitador.attributes.attribute')->create(array_merge([
-            'type' => 'integer',
-            'name' => 'Count',
-            'entities' => [User::class],
-        ], $attributes));
+        return app('facilitador.attributes.attribute')->create(
+            array_merge(
+                [
+                'type' => 'integer',
+                'name' => 'Count',
+                'entities' => [User::class],
+                ], $attributes
+            )
+        );
     }
 }

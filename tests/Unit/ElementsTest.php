@@ -25,12 +25,15 @@ class ElementsTest extends TestCase
     public function testEls()
     {
         // Convert croped images to string that can be tested by phunit easier
-        $els = (new Helpers)->els('homepage', [
+        $els = (new Helpers)->els(
+            'homepage', [
             'bukwild.logo' => [1600, 800],
-        ]);
+            ]
+        );
         $els['bukwild']['logo'] = $els['bukwild']['logo']->url;
 
-        $this->assertEquals([
+        $this->assertEquals(
+            [
             'marquee' => [
                 'title' => 'Welcome to Decoy',
                 'image' => '',
@@ -38,7 +41,8 @@ class ElementsTest extends TestCase
             ], 'bukwild' => [
                 'logo' => 'http://localhost/uploads/elements/logo-1600x800.jpg?token=8f30b24fbc397cade10cf62b9f03b9a7',
             ],
-        ], $els);
+            ], $els
+        );
     }
 
 

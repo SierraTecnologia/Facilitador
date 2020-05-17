@@ -44,7 +44,7 @@ class OldRepositoryController extends Controller
     /**
      * Display a listing of the resource searched.
      *
-     * @param  \Facilitador\Http\Requests\ModelSearchRequest  $request
+     * @param  \Facilitador\Http\Requests\ModelSearchRequest $request
      * @return \Illuminate\Http\Response
      */
     public function search(ModelSearchRequest $request)
@@ -75,7 +75,7 @@ class OldRepositoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Facilitador\Http\Requests\ModelCreateRequest  $request
+     * @param  \Facilitador\Http\Requests\ModelCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(ModelCreateRequest $request)
@@ -96,7 +96,7 @@ class OldRepositoryController extends Controller
     /**
      * Display the specified team.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function showByName($name)

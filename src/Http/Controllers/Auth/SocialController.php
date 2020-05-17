@@ -28,7 +28,7 @@ class SocialController extends Controller
 
         }
 
-        return Socialite::driver( $provider )->redirect();
+        return Socialite::driver($provider)->redirect();
 
     }
 
@@ -43,7 +43,7 @@ class SocialController extends Controller
 
         }
 
-        $user = Socialite::driver( $provider )->user();
+        $user = Socialite::driver($provider)->user();
 
         $socialUser = null;
 
@@ -64,7 +64,7 @@ class SocialController extends Controller
         else {
 
             $sameSocialId = Social::where('social_id', '=', $user->id)
-                ->where('provider', '=', $provider )
+                ->where('provider', '=', $provider)
                 ->first();
 
             if (empty($sameSocialId)) {
@@ -103,13 +103,13 @@ class SocialController extends Controller
 
         auth()->login($socialUser, true);
 
-        if ( auth()->user()->hasRole('user')) {
+        if (auth()->user()->hasRole('user')) {
 
             return redirect()->route('user.home');
 
         }
 
-        if ( auth()->user()->hasRole('administrator')) {
+        if (auth()->user()->hasRole('administrator')) {
 
             return redirect()->route('admin.home');
 

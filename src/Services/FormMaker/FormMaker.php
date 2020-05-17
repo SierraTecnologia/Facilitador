@@ -294,14 +294,16 @@ class FormMaker
             $formBuild .= $this->formContentBuild($field, $column, $input, $errorMessage);
             $formBuild .= '</div>';
         } else {
-            $formBuild = View::make($view, [
+            $formBuild = View::make(
+                $view, [
                 'labelFor' => ucfirst($column),
                 'label' => $this->columnLabel($field, $column),
                 'input' => $input,
                 'field' => $field,
                 'errorMessage' => $this->errorMessage($errorMessage),
                 'errorHighlight' => $errorHighlight,
-            ]);
+                ]
+            );
         }
 
         return $formBuild;
@@ -376,18 +378,18 @@ class FormMaker
         }
 
         switch ($columns) {
-            case 1:
-                return implode("", $formBuild);
-            case 2:
-                return $this->buildBootstrapColumnForm($formBuild, 2);
-            case 3:
-                return $this->buildBootstrapColumnForm($formBuild, 3);
-            case 4:
-                return $this->buildBootstrapColumnForm($formBuild, 4);
-            case 6:
-                return $this->buildBootstrapColumnForm($formBuild, 6);
-            default:
-                return implode("", $formBuild);
+        case 1:
+            return implode("", $formBuild);
+        case 2:
+            return $this->buildBootstrapColumnForm($formBuild, 2);
+        case 3:
+            return $this->buildBootstrapColumnForm($formBuild, 3);
+        case 4:
+            return $this->buildBootstrapColumnForm($formBuild, 4);
+        case 6:
+            return $this->buildBootstrapColumnForm($formBuild, 6);
+        default:
+            return implode("", $formBuild);
         }
     }
 

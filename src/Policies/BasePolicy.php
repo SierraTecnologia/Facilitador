@@ -25,10 +25,14 @@ class BasePolicy
         if (count($arguments) < 2) {
             throw new \InvalidArgumentException('not enough arguments');
         }
-        /** @var \Facilitador\Contracts\User $user */
+        /**
+ * @var \Facilitador\Contracts\User $user 
+*/
         $user = $arguments[0];
 
-        /** @var $model */
+        /**
+ * @var $model 
+*/
         $model = $arguments[1];
 
         return $this->checkPermission($user, $model, $name);
@@ -38,7 +42,7 @@ class BasePolicy
      * Determine if the given model can be restored by the user.
      *
      * @param \Facilitador\Contracts\User $user
-     * @param  $model
+     * @param $model
      *
      * @return bool
      */
@@ -52,7 +56,7 @@ class BasePolicy
      * Determine if the given model can be deleted by the user.
      *
      * @param \Facilitador\Contracts\User $user
-     * @param  $model
+     * @param $model
      *
      * @return bool
      */

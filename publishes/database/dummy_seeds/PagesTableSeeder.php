@@ -20,7 +20,8 @@ class PagesTableSeeder extends Seeder
         //Data Type
         $dataType = $this->dataType('slug', 'pages');
         if (!$dataType->exists) {
-            $dataType->fill([
+            $dataType->fill(
+                [
                 'name'                  => 'pages',
                 'display_name_singular' => __('facilitador::seeders.data_types.page.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.page.plural'),
@@ -29,14 +30,16 @@ class PagesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
-            ])->save();
+                ]
+            )->save();
         }
 
         //Data Rows
         $pageDataType = DataType::where('slug', 'pages')->firstOrFail();
         $dataRow = $this->dataRow($pageDataType, 'id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'number',
                 'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
@@ -46,12 +49,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 1,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'author_id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.author'),
                 'required'     => 1,
@@ -61,12 +66,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 2,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'title');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.title'),
                 'required'     => 1,
@@ -76,12 +83,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 3,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'excerpt');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text_area',
                 'display_name' => __('facilitador::seeders.data_rows.excerpt'),
                 'required'     => 1,
@@ -91,12 +100,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 4,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'body');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'rich_text_box',
                 'display_name' => __('facilitador::seeders.data_rows.body'),
                 'required'     => 1,
@@ -106,12 +117,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 5,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'slug');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.slug'),
                 'required'     => 1,
@@ -129,12 +142,14 @@ class PagesTableSeeder extends Seeder
                     ],
                 ],
                 'order' => 6,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'meta_description');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.meta_description'),
                 'required'     => 1,
@@ -144,12 +159,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 7,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'meta_keywords');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.meta_keywords'),
                 'required'     => 1,
@@ -159,12 +176,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 8,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'status');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'select_dropdown',
                 'display_name' => __('facilitador::seeders.data_rows.status'),
                 'required'     => 1,
@@ -181,12 +200,14 @@ class PagesTableSeeder extends Seeder
                     ],
                 ],
                 'order' => 9,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'created_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 1,
@@ -196,12 +217,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 10,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'updated_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 1,
@@ -211,12 +234,14 @@ class PagesTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 11,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($pageDataType, 'image');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'image',
                 'display_name' => __('facilitador::seeders.data_rows.page_image'),
                 'required'     => 0,
@@ -226,35 +251,43 @@ class PagesTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 12,
-            ])->save();
+                ]
+            )->save();
         }
 
         //Menu Item
         $menu = Menu::where('name', 'admin')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
+        $menuItem = MenuItem::firstOrNew(
+            [
             'menu_id' => $menu->id,
             'title'   => __('facilitador::seeders.menu_items.pages'),
             'url'     => '',
             'route'   => 'facilitador.pages.index',
-        ]);
+            ]
+        );
         if (!$menuItem->exists) {
-            $menuItem->fill([
+            $menuItem->fill(
+                [
                 'target'     => '_self',
                 'icon_class' => 'facilitador-file-text',
                 'color'      => null,
                 'parent_id'  => null,
                 'order'      => 7,
-            ])->save();
+                ]
+            )->save();
         }
 
         //Permissions
         Permission::generateFor('pages');
         //Content
-        $page = Page::firstOrNew([
+        $page = Page::firstOrNew(
+            [
             'slug' => 'hello-world',
-        ]);
+            ]
+        );
         if (!$page->exists) {
-            $page->fill([
+            $page->fill(
+                [
                 'author_id' => 0,
                 'title'     => 'Hello World',
                 'excerpt'   => 'Hang the jib grog grog blossom grapple dance the hempen jig gangway pressgang bilge rat to go on account lugger. Nelsons folly gabion line draught scallywag fire ship gaff fluke fathom case shot. Sea Legs bilge rat sloop matey gabion long clothes run a shot across the bow Gold Road cog league.',
@@ -264,7 +297,8 @@ class PagesTableSeeder extends Seeder
                 'meta_description' => 'Yar Meta Description',
                 'meta_keywords'    => 'Keyword1, Keyword2',
                 'status'           => 'ACTIVE',
-            ])->save();
+                ]
+            )->save();
         }
     }
 
@@ -278,10 +312,12 @@ class PagesTableSeeder extends Seeder
      */
     protected function dataRow($type, $field)
     {
-        return DataRow::firstOrNew([
+        return DataRow::firstOrNew(
+            [
                 'data_type_id' => $type->id,
                 'field'        => $field,
-            ]);
+            ]
+        );
     }
 
     /**

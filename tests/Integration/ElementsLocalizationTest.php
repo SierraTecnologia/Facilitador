@@ -13,7 +13,8 @@ class ElementsLocalizationTest extends TestCase
      *
      * @return void
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         parent::setUp();
         $this->auth();
     }
@@ -47,9 +48,11 @@ class ElementsLocalizationTest extends TestCase
      */
     public function testSavedValueQuarantined()
     {
-        $response = $this->post('admin/elements/es', [
+        $response = $this->post(
+            'admin/elements/es', [
             'homepage|marquee|title' => 'Spanish'
-        ]);
+            ]
+        );
 
         // Clear the cache
         app('facilitador.elements')->reset();
@@ -66,9 +69,11 @@ class ElementsLocalizationTest extends TestCase
      */
     public function testSavedValue()
     {
-        $response = $this->post('admin/elements/es', [
+        $response = $this->post(
+            'admin/elements/es', [
             'homepage|marquee|title' => 'Spanish'
-        ]);
+            ]
+        );
 
         // Clear the cache
         app('facilitador.elements')->reset();

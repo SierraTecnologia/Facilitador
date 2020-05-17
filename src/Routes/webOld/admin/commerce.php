@@ -14,14 +14,18 @@ Route::post('products/discounts/{id}', 'ProductController@updateAlternativeData'
 Route::post('products/images', 'ProductController@setImages');
 Route::delete('products/images/{id}', 'ProductController@deleteImage');
 
-Route::group(['middleware' => 'isAjax'], function () {
-    Route::post('products/variant/save', 'ProductVariantController@saveVariant');
-    Route::post('products/variant/delete', 'ProductVariantController@deleteVariant');
-});
-Route::get('products/{id}/delete', [
+Route::group(
+    ['middleware' => 'isAjax'], function () {
+        Route::post('products/variant/save', 'ProductVariantController@saveVariant');
+        Route::post('products/variant/delete', 'ProductVariantController@deleteVariant');
+    }
+);
+Route::get(
+    'products/{id}/delete', [
     'as' => 'cms.products.delete',
     'uses' => 'ProductController@destroy',
-]);
+    ]
+);
 
 Route::get('commerce-analytics', 'AnalyticsController@dashboard');
 

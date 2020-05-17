@@ -23,11 +23,15 @@ class PostResource extends PostPlainResource
      */
     public function toArray($request)
     {
-        return array_merge(parent::toArray($request), [
+        return array_merge(
+            parent::toArray($request), [
             'photo' => to_object($this->resource->getPhoto(), PhotoResource::class),
-            'tags' => collect($this->resource->getTags())->map(function (TagEntity $tag) {
-                return to_object($tag, TagPlainResource::class);
-            }),
-        ]);
+            'tags' => collect($this->resource->getTags())->map(
+                function (TagEntity $tag) {
+                    return to_object($tag, TagPlainResource::class);
+                }
+            ),
+            ]
+        );
     }
 }

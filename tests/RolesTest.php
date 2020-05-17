@@ -17,32 +17,32 @@ class RolesTest extends TestCase
     public function testRoles()
     {
         $this->visit(route('facilitador.login'))
-             ->type('admin@admin.com', 'email')
-             ->type('password', 'password')
-             ->press(__('facilitador::generic.login'))
-             ->seePageIs(route('facilitador.dashboard'));
+            ->type('admin@admin.com', 'email')
+            ->type('password', 'password')
+            ->press(__('facilitador::generic.login'))
+            ->seePageIs(route('facilitador.dashboard'));
 
         // Adding a New Role
         $this->visit(route('facilitador.roles.create'))
-             ->type('superadmin', 'name')
-             ->type('Super Admin', 'display_name')
-             ->press(__('facilitador::generic.submit'))
-             ->seePageIs(route('facilitador.roles.index'))
-             ->seeInDatabase('roles', ['name' => 'superadmin']);
+            ->type('superadmin', 'name')
+            ->type('Super Admin', 'display_name')
+            ->press(__('facilitador::generic.submit'))
+            ->seePageIs(route('facilitador.roles.index'))
+            ->seeInDatabase('roles', ['name' => 'superadmin']);
 
         // Editing a Role
         $this->visit(route('facilitador.roles.edit', 2))
-             ->type('regular_user', 'name')
-             ->press(__('facilitador::generic.submit'))
-             ->seePageIs(route('facilitador.roles.index'))
-             ->seeInDatabase('roles', ['name' => 'regular_user']);
+            ->type('regular_user', 'name')
+            ->press(__('facilitador::generic.submit'))
+            ->seePageIs(route('facilitador.roles.index'))
+            ->seeInDatabase('roles', ['name' => 'regular_user']);
 
         // Editing a Role
         $this->visit(route('facilitador.roles.edit', 2))
-             ->type('user', 'name')
-             ->press(__('facilitador::generic.submit'))
-             ->seePageIs(route('facilitador.roles.index'))
-             ->seeInDatabase('roles', ['name' => 'user']);
+            ->type('user', 'name')
+            ->press(__('facilitador::generic.submit'))
+            ->seePageIs(route('facilitador.roles.index'))
+            ->seeInDatabase('roles', ['name' => 'user']);
 
         // Get the current super admin role
         $superadmin_role = Role::where('name', '=', 'superadmin')->first();

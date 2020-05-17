@@ -18,11 +18,15 @@ class ViewEventTest extends TestCase
         app('view')->addLocation(__DIR__.'/views');
 
         // Add test route
-        $this->app['router']->get('test', function () {
-            return Facilitador::view('test', [
-                'foo' => 'bar',
-            ]);
-        });
+        $this->app['router']->get(
+            'test', function () {
+                return Facilitador::view(
+                    'test', [
+                    'foo' => 'bar',
+                    ]
+                );
+            }
+        );
     }
 
     public function testRenderingViewTriggersEvent()
@@ -32,13 +36,15 @@ class ViewEventTest extends TestCase
             ->see('This is a test');
 
         // Add event on test view
-        Facilitador::onLoadingView('test', function ($name, array $parameters) {
-            $this->eventTrigered = true;
+        Facilitador::onLoadingView(
+            'test', function ($name, array $parameters) {
+                $this->eventTrigered = true;
 
-            $this->assertEquals('test', $name);
-            $this->assertArrayHasKey('foo', $parameters);
-            $this->assertEquals('bar', $parameters['foo']);
-        });
+                $this->assertEquals('test', $name);
+                $this->assertArrayHasKey('foo', $parameters);
+                $this->assertEquals('bar', $parameters['foo']);
+            }
+        );
 
         // Load view to trigger the event
         $this->get('test');
@@ -50,9 +56,11 @@ class ViewEventTest extends TestCase
     public function testOverwritingViewName()
     {
         // Add event on test view
-        Facilitador::onLoadingView('test', function (&$name, array $parameters) {
-            $name = 'foo';
-        });
+        Facilitador::onLoadingView(
+            'test', function (&$name, array $parameters) {
+                $name = 'foo';
+            }
+        );
 
         // Load view to trigger the event, and see if the new view is used
         $this->get('test')
@@ -62,10 +70,12 @@ class ViewEventTest extends TestCase
     public function testOverwritingViewNameAndParameters()
     {
         // Add event on test view
-        Facilitador::onLoadingView('test', function (&$name, array &$parameters) {
-            $name = 'hello';
-            $parameters['name'] = 'Mark';
-        });
+        Facilitador::onLoadingView(
+            'test', function (&$name, array &$parameters) {
+                $name = 'hello';
+                $parameters['name'] = 'Mark';
+            }
+        );
 
         // Load view to trigger the event, and see if the new view is used
         $this->get('test')

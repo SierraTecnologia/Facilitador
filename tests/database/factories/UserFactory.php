@@ -1,9 +1,10 @@
 <?php
 
-$factory->define(\Facilitador\Models\User::class, function (Faker\Generator $faker) {
-    static $password;
+$factory->define(
+    \Facilitador\Models\User::class, function (Faker\Generator $faker) {
+        static $password;
 
-    return [
+        return [
         'name'    => $faker->name,
         'email'   => $faker->unique()->safeEmail,
         'role_id' => function () {
@@ -11,5 +12,6 @@ $factory->define(\Facilitador\Models\User::class, function (Faker\Generator $fak
         },
         'password'       => $password ?: $password = bcrypt('secret'),
         'remember_token' => Illuminate\Support\Str::random(10),
-    ];
-});
+        ];
+    }
+);

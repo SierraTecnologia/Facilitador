@@ -93,10 +93,12 @@ class FacilitadorBaseController extends Controller
 
             if ($orderBy && in_array($orderBy, $dataType->fields())) {
                 $querySortOrder = (!empty($sortOrder)) ? $sortOrder : 'desc';
-                $dataTypeContent = call_user_func([
+                $dataTypeContent = call_user_func(
+                    [
                     $query->orderBy($orderBy, $querySortOrder),
                     $getter,
-                ]);
+                    ]
+                );
             } elseif ($model->timestamps) {
                 $dataTypeContent = call_user_func([$query->latest($model::CREATED_AT), $getter]);
             } else {
@@ -165,22 +167,24 @@ class FacilitadorBaseController extends Controller
             $view = "facilitador::cruds.$slug.browse";
         }
 
-        return Facilitador::view($view, compact(
-            'actions',
-            'dataType',
-            'dataTypeContent',
-            'isModelTranslatable',
-            'search',
-            'orderBy',
-            'orderColumn',
-            'sortOrder',
-            'searchNames',
-            'isServerSide',
-            'defaultSearchKey',
-            'usesSoftDeletes',
-            'showSoftDeleted',
-            'showCheckboxColumn'
-        ));
+        return Facilitador::view(
+            $view, compact(
+                'actions',
+                'dataType',
+                'dataTypeContent',
+                'isModelTranslatable',
+                'search',
+                'orderBy',
+                'orderColumn',
+                'sortOrder',
+                'searchNames',
+                'isServerSide',
+                'defaultSearchKey',
+                'usesSoftDeletes',
+                'showSoftDeleted',
+                'showCheckboxColumn'
+            )
+        );
     }
 
     //***************************************
@@ -334,10 +338,12 @@ class FacilitadorBaseController extends Controller
             $redirect = redirect()->back();
         }
 
-        return $redirect->with([
+        return $redirect->with(
+            [
             'message'    => __('facilitador::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
             'alert-type' => 'success',
-        ]);
+            ]
+        );
     }
 
     //***************************************
@@ -414,10 +420,12 @@ class FacilitadorBaseController extends Controller
                 $redirect = redirect()->back();
             }
 
-            return $redirect->with([
+            return $redirect->with(
+                [
                     'message'    => __('facilitador::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                     'alert-type' => 'success',
-                ]);
+                ]
+            );
         } else {
             return response()->json(['success' => true, 'data' => $data]);
         }
@@ -623,12 +631,14 @@ class FacilitadorBaseController extends Controller
 
             $data->save();
 
-            return response()->json([
-               'data' => [
+            return response()->json(
+                [
+                'data' => [
                    'status'  => 200,
                    'message' => __('facilitador::media.file_removed'),
-               ],
-            ]);
+                ],
+                ]
+            );
         } catch (Exception $e) {
             $code = 500;
             $message = __('facilitador::generic.internal_error');
@@ -641,12 +651,14 @@ class FacilitadorBaseController extends Controller
                 $message = $e->getMessage();
             }
 
-            return response()->json([
+            return response()->json(
+                [
                 'data' => [
                     'status'  => $code,
                     'message' => $message,
                 ],
-            ], $code);
+                ], $code
+            );
         }
     }
 
@@ -678,21 +690,23 @@ class FacilitadorBaseController extends Controller
         }
 
         // Delete media-picker files
-        $dataType->rows->where('type', 'media_picker')->where('details.delete_files', true)->each(function ($row) use ($data) {
-            $content = $data->{$row->field};
-            if (isset($content)) {
-                if (!is_array($content)) {
-                    $content = json_decode($content);
-                }
-                if (is_array($content)) {
-                    foreach ($content as $file) {
-                        $this->deleteFileIfExists($file);
+        $dataType->rows->where('type', 'media_picker')->where('details.delete_files', true)->each(
+            function ($row) use ($data) {
+                $content = $data->{$row->field};
+                if (isset($content)) {
+                    if (!is_array($content)) {
+                        $content = json_decode($content);
                     }
-                } else {
-                    $this->deleteFileIfExists($content);
+                    if (is_array($content)) {
+                        foreach ($content as $file) {
+                            $this->deleteFileIfExists($file);
+                        }
+                    } else {
+                        $this->deleteFileIfExists($content);
+                    }
                 }
             }
-        });
+        );
     }
 
     /**
@@ -747,11 +761,13 @@ class FacilitadorBaseController extends Controller
 
         if (!isset($dataType->order_column) || !isset($dataType->order_display_column)) {
             return redirect()
-            ->route("facilitador.{$dataType->slug}.index")
-            ->with([
-                'message'    => __('facilitador::cruds.bread.ordering_not_set'),
-                'alert-type' => 'error',
-            ]);
+                ->route("facilitador.{$dataType->slug}.index")
+                ->with(
+                    [
+                    'message'    => __('facilitador::cruds.bread.ordering_not_set'),
+                    'alert-type' => 'error',
+                    ]
+                );
         }
 
         $model = app($dataType->model_name);
@@ -770,12 +786,14 @@ class FacilitadorBaseController extends Controller
             $view = "facilitador::cruds.$slug.order";
         }
 
-        return Facilitador::view($view, compact(
-            'dataType',
-            'display_column',
-            'dataRow',
-            'results'
-        ));
+        return Facilitador::view(
+            $view, compact(
+                'dataType',
+                'display_column',
+                'dataRow',
+                'results'
+            )
+        );
     }
 
     public function update_order(Request $request)
@@ -860,12 +878,14 @@ class FacilitadorBaseController extends Controller
                     ];
                 }
 
-                return response()->json([
+                return response()->json(
+                    [
                     'results'    => $results,
                     'pagination' => [
                         'more' => ($total_count > ($skip + $on_page)),
                     ],
-                ]);
+                    ]
+                );
             }
         }
 

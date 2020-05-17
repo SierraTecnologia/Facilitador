@@ -15,14 +15,14 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class Auth
 {
     /**
-    * Run the request filter.
-    *
-    * @param  Illuminate\Http\Request  $request
-    * @param  Closure  $next
-    * @return mixed
-    *
-    * @throws AccessDeniedHttpException
-    */
+     * Run the request filter.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @param  Closure                 $next
+     * @return mixed
+     *
+     * @throws AccessDeniedHttpException
+     */
     public function handle($request, Closure $next)
     {
         // Require a logged in user
@@ -90,7 +90,7 @@ class Auth
             $controller = request('parent_controller');
             $action = 'update';
 
-        // Otherwise, use the controller from the route
+            // Otherwise, use the controller from the route
         } else {
             $controller = $wildcard->detectControllerName();
         }
@@ -109,18 +109,18 @@ class Auth
     protected function mapActionToPermission($action)
     {
         switch ($action) {
-            case 'new':
-            case 'store':
-                return 'create';
+        case 'new':
+        case 'store':
+            return 'create';
 
-            case 'edit':
-            case 'autocomplete':
-            case 'index':
-            case 'indexChild':
-                return 'read';
+        case 'edit':
+        case 'autocomplete':
+        case 'index':
+        case 'indexChild':
+            return 'read';
 
-            default:
-                return $action;
+        default:
+            return $action;
         }
     }
 }

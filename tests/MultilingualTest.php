@@ -64,13 +64,15 @@ class MultilingualTest extends TestCase
 
     public function testGettingTranslatorModelOfExistingTranslation()
     {
-        DB::table('translations')->insert([
+        DB::table('translations')->insert(
+            [
             'table_name'  => 'posts',
             'column_name' => 'title',
             'foreign_key' => 1,
             'locale'      => 'da',
             'value'       => 'Foo Bar Post',
-        ]);
+            ]
+        );
 
         $model = TranslatableModel::first()->translate('da');
 
@@ -124,13 +126,15 @@ class MultilingualTest extends TestCase
 
     public function testSavingExistingTranslatorModel()
     {
-        DB::table('translations')->insert([
+        DB::table('translations')->insert(
+            [
             'table_name'  => 'posts',
             'column_name' => 'title',
             'foreign_key' => 1,
             'locale'      => 'da',
             'value'       => 'Foo Bar Post',
-        ]);
+            ]
+        );
 
         $model = TranslatableModel::first()->translate('da');
 
@@ -195,13 +199,15 @@ class MultilingualTest extends TestCase
 
     public function testUpdatingTranslation()
     {
-        DB::table('translations')->insert([
+        DB::table('translations')->insert(
+            [
             'table_name'  => 'posts',
             'column_name' => 'title',
             'foreign_key' => 1,
             'locale'      => 'da',
             'value'       => 'Title',
-        ]);
+            ]
+        );
 
         $model = TranslatableModel::first()->translate('da');
 

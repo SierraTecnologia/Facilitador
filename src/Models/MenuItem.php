@@ -25,17 +25,23 @@ class MenuItem extends Model
     {
         parent::boot();
 
-        static::created(function ($model) {
-            $model->menu->removeMenuFromCache();
-        });
+        static::created(
+            function ($model) {
+                $model->menu->removeMenuFromCache();
+            }
+        );
 
-        static::saved(function ($model) {
-            $model->menu->removeMenuFromCache();
-        });
+        static::saved(
+            function ($model) {
+                $model->menu->removeMenuFromCache();
+            }
+        );
 
-        static::deleted(function ($model) {
-            $model->menu->removeMenuFromCache();
-        });
+        static::deleted(
+            function ($model) {
+                $model->menu->removeMenuFromCache();
+            }
+        );
     }
 
     public function children()

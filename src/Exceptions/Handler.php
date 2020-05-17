@@ -17,8 +17,8 @@ class Handler extends AppHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception                $e
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception               $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, BaseException $e)
@@ -45,8 +45,8 @@ class Handler extends AppHandler
      * If a 404 exception, check if there is a redirect rule.  Or return a simple
      * header if an AJAX request.
      *
-     * @param  \Illuminate\Http\Request          $request
-     * @param  \Exception                        $e
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception               $e
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function handle404s($request, BaseException $e)
@@ -70,7 +70,7 @@ class Handler extends AppHandler
     /**
      * If a CSRF invalid exception, log the user out
      *
-     * @param  \Exception                        $e
+     * @param  \Exception $e
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function handleCSRF(BaseException $e)
@@ -85,8 +85,8 @@ class Handler extends AppHandler
     /**
      * Redirect users to the previous page with validation errors
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception                $e
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception               $e
      * @return \Illuminate\Http\Response
      */
     protected function handleValidation($request, BaseException $e)

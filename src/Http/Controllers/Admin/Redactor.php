@@ -19,8 +19,10 @@ class Redactor extends Controller
      */
     public function store()
     {
-        return response()->json([
+        return response()->json(
+            [
             'filelink' => app('upchuck.storage')->moveUpload(request()->file('file'))
-        ]);
+            ]
+        );
     }
 }

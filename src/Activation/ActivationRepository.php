@@ -23,9 +23,11 @@ class ActivationRepository
 
         if ($user->activated) { //if user changed activated email to new one
 
-            $user->update([
+            $user->update(
+                [
                 'activated' => false
-            ]);
+                ]
+            );
 
         }
 

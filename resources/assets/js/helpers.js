@@ -4,7 +4,7 @@
 |
 --------------------*/
 
-var displayAlert = function(alert, alerter) {
+var displayAlert = function (alert, alerter) {
     let alertMethod = alerter[alert.type];
 
     if (alertMethod) {
@@ -14,12 +14,14 @@ var displayAlert = function(alert, alerter) {
     alerter.error("No alert method found for alert type: " + alert.type);
 }
 
-var displayAlerts = function(alerts, alerter, type) {
+var displayAlerts = function (alerts, alerter, type) {
     if (type) {
         // Only display alerts of this type...
-        alerts = alerts.filter(function(alert) {
-            return type == alert.type;
-        });
+        alerts = alerts.filter(
+            function (alert) {
+                return type == alert.type;
+            }
+        );
     }
 
     for (a in alerts) {
@@ -27,7 +29,7 @@ var displayAlerts = function(alerts, alerter, type) {
     }
 }
 
-var bootstrapAlerter = function(customOptions) {
+var bootstrapAlerter = function (customOptions) {
     // Default options
     let options = {
         alertsContainer: '#alertsContainer',
@@ -47,7 +49,8 @@ var bootstrapAlerter = function(customOptions) {
         dismissibleClass = ' alert-dismissible';
     }
 
-    function notify(type, message) {
+    function notify(type, message)
+    {
         let alert = '<div class="alert alert-'  + type +  dismissibleClass + '" role="alert">'
                         + dismissButton + message +
                     '</div>';
@@ -71,8 +74,8 @@ var bootstrapAlerter = function(customOptions) {
     };
 }
 
-var setImageValue = function(url){
-  $('.mce-btn.mce-open').parent().find('.mce-textbox').val(url);
+var setImageValue = function (url) {
+    $('.mce-btn.mce-open').parent().find('.mce-textbox').val(url);
 }
 
 exports.setImageValue = setImageValue;

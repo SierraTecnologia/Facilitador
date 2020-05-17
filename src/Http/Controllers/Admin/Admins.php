@@ -103,7 +103,7 @@ class Admins extends Base
      * Don't let unauthorize folks update their role by passing in role values
      * in the GET
      *
-     * @param  int                                       $id Model key
+     * @param  int $id Model key
      * @throws AccessDeniedHttpException
      * @return Symfony\Component\HttpFoundation\Response
      */

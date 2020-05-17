@@ -23,13 +23,13 @@ trait AppServiceContainerProvider
     
 
     /****************************************************************************************************
-     ************************************************** NO BOOT *************************************
+     * ************************************************* NO BOOT *************************************
      ****************************************************************************************************/
 
     
 
     /****************************************************************************************************
-     ************************************************** NO REGISTER *************************************
+     * ************************************************* NO REGISTER *************************************
      ****************************************************************************************************/
     protected function loadAlias()
     {
@@ -42,9 +42,11 @@ trait AppServiceContainerProvider
     protected function loadServiceContainerSingletons()
     {
         
-        $this->app->singleton('facilitador', function () {
-            return new Facilitador();
-        });
+        $this->app->singleton(
+            'facilitador', function () {
+                return new Facilitador();
+            }
+        );
         // @todo Apaguei, nao sei pra q serve
         // // Register HTML view helpers as "Decoy".  So they get invoked like: `Facilitador::title()`
         // $this->app->singleton('facilitador', function ($app) {
@@ -52,53 +54,67 @@ trait AppServiceContainerProvider
         // });
 
         // Registers explicit rotues and wildcarding routing
-        $this->app->singleton('facilitador.router', function ($app) {
-            $dir = \Illuminate\Support\Facades\Config::get('sitec.core.dir');
+        $this->app->singleton(
+            'facilitador.router', function ($app) {
+                $dir = \Illuminate\Support\Facades\Config::get('sitec.core.dir');
 
-            return new \Facilitador\Routing\Router($dir);
-        });
+                return new \Facilitador\Routing\Router($dir);
+            }
+        );
 
         // Wildcard router
-        $this->app->singleton('facilitador.wildcard', function ($app) {
-            $request = $app['request'];
+        $this->app->singleton(
+            'facilitador.wildcard', function ($app) {
+                $request = $app['request'];
 
-            return new \Facilitador\Routing\Wildcard(
-                \Illuminate\Support\Facades\Config::get('sitec.core.dir'),
-                $request->getMethod(),
-                $request->path()
-            );
-        });
+                return new \Facilitador\Routing\Wildcard(
+                    \Illuminate\Support\Facades\Config::get('sitec.core.dir'),
+                    $request->getMethod(),
+                    $request->path()
+                );
+            }
+        );
 
         // Return the active user account
-        $this->app->singleton('facilitador.user', function ($app) {
-            $guard = \Illuminate\Support\Facades\Config::get('sitec.core.guard');
-            return $app['auth']->guard($guard)->user(); // tinha isso aqui tirei \App\Models\User::first(); //
-        });
+        $this->app->singleton(
+            'facilitador.user', function ($app) {
+                $guard = \Illuminate\Support\Facades\Config::get('sitec.core.guard');
+                return $app['auth']->guard($guard)->user(); // tinha isso aqui tirei \App\Models\User::first(); //
+            }
+        );
 
         // Return a redirect response with extra stuff
-        $this->app->singleton('facilitador.acl_fail', function ($app) {
-            return $app['redirect']
-                ->guest(route('facilitador.account@login'))
-                ->withErrors([ 'error message' => __('facilitador::login.error.login_first')]);
-        });
+        $this->app->singleton(
+            'facilitador.acl_fail', function ($app) {
+                return $app['redirect']
+                    ->guest(route('facilitador.account@login'))
+                    ->withErrors([ 'error message' => __('facilitador::login.error.login_first')]);
+            }
+        );
 
         // Register URL Generators as "FacilitadorURL".
-        $this->app->singleton('facilitador.url', function ($app) {
-            return new \Facilitador\Routing\UrlGenerator($app['request']->path());
-        });
+        $this->app->singleton(
+            'facilitador.url', function ($app) {
+                return new \Facilitador\Routing\UrlGenerator($app['request']->path());
+            }
+        );
 
         // Build the Elements collection
-        $this->app->singleton('facilitador.elements', function ($app) {
-            return with(new \Facilitador\Collections\Elements)->setModel(\Facilitador\Models\Element::class);
-        });
+        $this->app->singleton(
+            'facilitador.elements', function ($app) {
+                return with(new \Facilitador\Collections\Elements)->setModel(\Facilitador\Models\Element::class);
+            }
+        );
 
         // Build the Breadcrumbs store
-        $this->app->singleton('facilitador.breadcrumbs', function ($app) {
-            $breadcrumbs = new \Support\Template\Layout\Breadcrumbs();
-            $breadcrumbs->set($breadcrumbs->parseURL());
+        $this->app->singleton(
+            'facilitador.breadcrumbs', function ($app) {
+                $breadcrumbs = new \Support\Template\Layout\Breadcrumbs();
+                $breadcrumbs->set($breadcrumbs->parseURL());
 
-            return $breadcrumbs;
-        });
+                return $breadcrumbs;
+            }
+        );
 
         // Register Decoy's custom handling of some exception
         $this->app->singleton(ExceptionHandler::class, \Facilitador\Exceptions\Handler::class);
@@ -113,16 +129,17 @@ trait AppServiceContainerProvider
         /**
          * Singleton Facilitador
          */
-        $this->app->singleton(FacilitadorService::class, function($app)
-        {
-            Log::channel('sitec-providers')->debug('Singleton Facilitador');
-            // try {
-            //     throw new \Exception();
-            // } catch (\Exception $e) {
-            //     dd($e);
-            // }
-            return new FacilitadorService(\Illuminate\Support\Facades\Config::get('sitec.discover.models'));
-        });
+        $this->app->singleton(
+            FacilitadorService::class, function ($app) {
+                Log::channel('sitec-providers')->debug('Singleton Facilitador');
+                // try {
+                //     throw new \Exception();
+                // } catch (\Exception $e) {
+                //     dd($e);
+                // }
+                return new FacilitadorService(\Illuminate\Support\Facades\Config::get('sitec.discover.models'));
+            }
+        );
 
     }
 
@@ -133,18 +150,22 @@ trait AppServiceContainerProvider
         /**
          * @todo Ta passando duas vezes por aqui
          */
-        Route::bind('modelClass', function ($value) {
-            Log::channel('sitec-providers')->debug('Route Bind ModelClass - '.Crypto::shareableDecrypt($value).' - '.$value);
-            return new ModelService(Crypto::shareableDecrypt($value));
-        });
-        Route::bind('identify', function ($value) {
-            Log::channel('sitec-providers')->debug('Route Bind Identify - '.Crypto::shareableDecrypt($value).' - '.$value);
-            // throw new Exception(
-            //     "Essa classe deveria ser uma string: ".print_r($modelClass, true),
-            //     400
-            // );
-            return new RegisterService(Crypto::shareableDecrypt($value));
-        });
+        Route::bind(
+            'modelClass', function ($value) {
+                Log::channel('sitec-providers')->debug('Route Bind ModelClass - '.Crypto::shareableDecrypt($value).' - '.$value);
+                return new ModelService(Crypto::shareableDecrypt($value));
+            }
+        );
+        Route::bind(
+            'identify', function ($value) {
+                Log::channel('sitec-providers')->debug('Route Bind Identify - '.Crypto::shareableDecrypt($value).' - '.$value);
+                // throw new Exception(
+                //     "Essa classe deveria ser uma string: ".print_r($modelClass, true),
+                //     400
+                // );
+                return new RegisterService(Crypto::shareableDecrypt($value));
+            }
+        );
     }
 
     protected function loadServiceContainerBinds()
@@ -164,45 +185,48 @@ trait AppServiceContainerProvider
         // use Support\Models\Base;
         // @todo
 
-        $this->app->bind(ModelService::class, function($app)
-        {
-            $modelClass = false;
-            if (isset($app['router']->current()->parameters['modelClass'])) {
-                $modelClass = Crypto::shareableDecrypt($app['router']->current()->parameters['modelClass']);
+        $this->app->bind(
+            ModelService::class, function ($app) {
+                $modelClass = false;
+                if (isset($app['router']->current()->parameters['modelClass'])) {
+                    $modelClass = Crypto::shareableDecrypt($app['router']->current()->parameters['modelClass']);
 
-                if (empty($modelClass)) {
-                    $modelClass = $app['router']->current()->parameters['modelClass'];
+                    if (empty($modelClass)) {
+                        $modelClass = $app['router']->current()->parameters['modelClass'];
+                    }
                 }
+
+                // dd('@todo', 
+                //     $modelClass, $app['router']->current()->parameters['modelClass'], Crypto::shareableDecrypt($app['router']->current()->parameters['modelClass']),
+                //     auth()->id()
+                // );
+                // @todo Ver Como resolver isso aqui
+
+                Log::channel('sitec-providers')->debug('Bind Model Service - '.$modelClass);
+
+                return new ModelService($modelClass);
             }
+        );
 
-            // dd('@todo', 
-            //     $modelClass, $app['router']->current()->parameters['modelClass'], Crypto::shareableDecrypt($app['router']->current()->parameters['modelClass']),
-            //     auth()->id()
-            // );
-            // @todo Ver Como resolver isso aqui
-
-            Log::channel('sitec-providers')->debug('Bind Model Service - '.$modelClass);
-
-            return new ModelService($modelClass);
-        });
-
-        $this->app->bind(RepositoryService::class, function($app)
-        {
-            Log::channel('sitec-providers')->debug('Bind Repository Service');
-            $modelService = $app->make(ModelService::class);
-            return new RepositoryService($modelService);
-        });
-
-        $this->app->bind(RegisterService::class, function($app)
-        {
-            $identify = '';
-            if (isset($app['router']->current()->parameters['identify'])) {
-                $identify = Crypto::shareableDecrypt($app['router']->current()->parameters['identify']);
+        $this->app->bind(
+            RepositoryService::class, function ($app) {
+                Log::channel('sitec-providers')->debug('Bind Repository Service');
+                $modelService = $app->make(ModelService::class);
+                return new RepositoryService($modelService);
             }
+        );
 
-            Log::channel('sitec-providers')->debug('Bind Register Service - '.$identify);
-            return new RegisterService($identify);
-        });
+        $this->app->bind(
+            RegisterService::class, function ($app) {
+                $identify = '';
+                if (isset($app['router']->current()->parameters['identify'])) {
+                    $identify = Crypto::shareableDecrypt($app['router']->current()->parameters['identify']);
+                }
+
+                Log::channel('sitec-providers')->debug('Bind Register Service - '.$identify);
+                return new RegisterService($identify);
+            }
+        );
     }
 
     protected function loadServiceContainerReplaceClasses()

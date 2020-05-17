@@ -130,8 +130,8 @@ class SitecFeatureController extends Controller
     /**
      * Delete the hero image
      *
-     * @param  string $entity
-     * @param  int $id
+     * @param string $entity
+     * @param int    $id
      *
      * @return Response
      */
@@ -140,9 +140,11 @@ class SitecFeatureController extends Controller
         $entity = app('App\Models\\'.ucfirst($entity))->find($id);
 
         if (app(FileService::class)->delete($entity->hero_image)) {
-            $entity->update([
+            $entity->update(
+                [
                 'hero_image' => null,
-            ]);
+                ]
+            );
             Cms::notification('Hero image deleted.', 'success');
             return back();
         }

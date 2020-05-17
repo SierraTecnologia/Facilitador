@@ -29,7 +29,7 @@ class UserGetByIdAction
      * UserGetByIdAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param UserManager $userManager
+     * @param UserManager     $userManager
      */
     public function __construct(ResponseFactory $responseFactory, UserManager $userManager)
     {
@@ -38,12 +38,12 @@ class UserGetByIdAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {get} /v1/users/:user_id Get
-     * @apiName Get
-     * @apiGroup Users
-     * @apiHeader {String} Accept application/json
-     * @apiParam {Integer{1...N}='me'} :user_id Unique resource ID.
+     * @apiVersion        1.0.0
+     * @api               {get} /v1/users/:user_id Get
+     * @apiName           Get
+     * @apiGroup          Users
+     * @apiHeader         {String} Accept application/json
+     * @apiParam          {Integer{1...N}='me'} :user_id Unique resource ID.
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 20O OK
      * {
@@ -59,7 +59,7 @@ class UserGetByIdAction
     /**
      * Get a user.
      *
-     * @param mixed $id
+     * @param  mixed $id
      * @return JsonResponse
      */
     public function __invoke($id): JsonResponse

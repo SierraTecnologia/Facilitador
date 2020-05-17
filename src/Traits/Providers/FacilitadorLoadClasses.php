@@ -10,30 +10,36 @@ trait FacilitadorLoadClasses
 
 
     /****************************************************************************************************
-     ************************************************** NO BOOT *************************************
+     * ************************************************* NO BOOT *************************************
      ****************************************************************************************************/
     protected function loadViews()
     {
         // View namespace
         $viewsPath = $this->getResourcesPath('views');
         $this->loadViewsFrom($viewsPath, 'facilitador');
-        $this->publishes([
+        $this->publishes(
+            [
             $viewsPath => base_path('resources/views/vendor/facilitador'),
-        ], ['views',  'sitec', 'sitec-views']);
+            ], ['views',  'sitec', 'sitec-views']
+        );
         
         // Publish tracking css and js to public directory
-        $this->publishes([
+        $this->publishes(
+            [
             $this->getPublishesPath('public/adminlte') => public_path('vendor/adminlte')
-        ], ['public',  'sitec', 'sitec-public']);
+            ], ['public',  'sitec', 'sitec-public']
+        );
 
     }
     
     protected function loadTranslations()
     {
         // Publish lanaguage files
-        $this->publishes([
+        $this->publishes(
+            [
             $this->getResourcesPath('lang') => resource_path('lang/vendor/facilitador')
-        ], ['lang',  'sitec', 'sitec-lang', 'translations']);
+            ], ['lang',  'sitec', 'sitec-lang', 'translations']
+        );
 
         // Load translations
         $this->loadTranslationsFrom($this->getResourcesPath('lang'), 'facilitador');
@@ -41,7 +47,7 @@ trait FacilitadorLoadClasses
 
 
     /****************************************************************************************************
-     ************************************************** NO REGISTER *************************************
+     * ************************************************* NO REGISTER *************************************
      ****************************************************************************************************/
 
 
@@ -53,9 +59,11 @@ trait FacilitadorLoadClasses
  
 
         // Register commands
-        $this->registerCommandFolders([
+        $this->registerCommandFolders(
+            [
             base_path('vendor/sierratecnologia/facilitador/src/Console/Commands') => '\Facilitador\Console\Commands',
-        ]);
+            ]
+        );
 
 
     }

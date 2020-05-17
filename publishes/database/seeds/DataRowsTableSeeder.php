@@ -17,7 +17,8 @@ class DataRowsTableSeeder extends Seeder
 
         $dataRow = $this->dataRow($userDataType, 'id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'number',
                 'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
@@ -27,12 +28,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 1,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'name');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.name'),
                 'required'     => 1,
@@ -42,12 +45,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 2,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'email');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.email'),
                 'required'     => 1,
@@ -57,12 +62,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 3,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'password');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'password',
                 'display_name' => __('facilitador::seeders.data_rows.password'),
                 'required'     => 1,
@@ -72,12 +79,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 4,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'remember_token');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.remember_token'),
                 'required'     => 0,
@@ -87,12 +96,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 5,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'created_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
@@ -102,12 +113,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 6,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'updated_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
@@ -117,12 +130,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 7,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'avatar');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'image',
                 'display_name' => __('facilitador::seeders.data_rows.avatar'),
                 'required'     => 0,
@@ -132,12 +147,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 8,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'user_belongsto_role_relationship');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'relationship',
                 'display_name' => __('facilitador::seeders.data_rows.role'),
                 'required'     => 0,
@@ -157,12 +174,14 @@ class DataRowsTableSeeder extends Seeder
                     'pivot'       => 0,
                 ],
                 'order'        => 10,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'user_belongstomany_role_relationship');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'relationship',
                 'display_name' => 'Roles',
                 'required'     => 0,
@@ -183,12 +202,14 @@ class DataRowsTableSeeder extends Seeder
                     'taggable'    => '0',
                 ],
                 'order'        => 11,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'settings');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'hidden',
                 'display_name' => 'Settings',
                 'required'     => 0,
@@ -198,12 +219,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 12,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($menuDataType, 'id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'number',
                 'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
@@ -213,12 +236,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 1,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($menuDataType, 'name');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.name'),
                 'required'     => 1,
@@ -228,12 +253,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 2,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($menuDataType, 'created_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
@@ -243,12 +270,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 3,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($menuDataType, 'updated_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
@@ -258,12 +287,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 4,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($roleDataType, 'id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'number',
                 'display_name' => __('facilitador::seeders.data_rows.id'),
                 'required'     => 1,
@@ -273,12 +304,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 1,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($roleDataType, 'name');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.name'),
                 'required'     => 1,
@@ -288,12 +321,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 2,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($roleDataType, 'created_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.created_at'),
                 'required'     => 0,
@@ -303,12 +338,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 3,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($roleDataType, 'updated_at');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'timestamp',
                 'display_name' => __('facilitador::seeders.data_rows.updated_at'),
                 'required'     => 0,
@@ -318,12 +355,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 0,
                 'delete'       => 0,
                 'order'        => 4,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($roleDataType, 'display_name');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.display_name'),
                 'required'     => 1,
@@ -333,12 +372,14 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 5,
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataRow = $this->dataRow($userDataType, 'role_id');
         if (!$dataRow->exists) {
-            $dataRow->fill([
+            $dataRow->fill(
+                [
                 'type'         => 'text',
                 'display_name' => __('facilitador::seeders.data_rows.role'),
                 'required'     => 1,
@@ -348,7 +389,8 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 9,
-            ])->save();
+                ]
+            )->save();
         }
     }
 
@@ -362,9 +404,11 @@ class DataRowsTableSeeder extends Seeder
      */
     protected function dataRow($type, $field)
     {
-        return DataRow::firstOrNew([
+        return DataRow::firstOrNew(
+            [
             'data_type_id' => $type->id,
             'field'        => $field,
-        ]);
+            ]
+        );
     }
 }

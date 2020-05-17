@@ -32,6 +32,7 @@ class UrlGenerator
 
     /**
      * Inject dependencies
+     *
      * @param string $path A Request::path()
      */
     public function __construct($path)
@@ -83,7 +84,7 @@ class UrlGenerator
             if (preg_match('#edit$#', $this->path)
                 || $action == 'index'
                 || !preg_match('#'.$child.'(/\d+)?$#', $path)
-                ) {
+            ) {
                 $path .= '/'.$child;
             }
 
@@ -153,8 +154,10 @@ class UrlGenerator
     public function slugController($controller)
     {
         // Get the controller name
-        $controller = preg_replace('#^('.preg_quote('Facilitador\Http\Controllers\Admin\\')
-            .'|'.preg_quote('App\Http\Controllers\Admin\\').')#', '', $controller);
+        $controller = preg_replace(
+            '#^('.preg_quote('Facilitador\Http\Controllers\Admin\\')
+            .'|'.preg_quote('App\Http\Controllers\Admin\\').')#', '', $controller
+        );
 
         // Convert study caps to dashes
         $controller = Str::snake($controller, '-');

@@ -10,27 +10,35 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        return Post::when($request->title, function($query) use ($request) {
-            return $query->where('title', 'like', "%{$request->title}%");
-        })
-        ->when($request->search, function($query) use ($request) {
-            return $query->where('title', 'like', "%{$request->search}%")
-                         ->orWhere('body', 'like', "%{$request->search}%");
-        })
-        ->when($request->order, function($query) use ($request) {
-            if($request->order == 'oldest') {
-                return $query->oldest();
+        return Post::when(
+            $request->title, function ($query) use ($request) {
+                return $query->where('title', 'like', "%{$request->title}%");
             }
-            return $query->latest();
-        }, function($query) {
-            return $query->latest();
-        })
-        ->when($request->status, function($query) use ($request) {
-            if($query->status == 'published') {
-                return $query->published();
+        )
+        ->when(
+            $request->search, function ($query) use ($request) {
+                return $query->where('title', 'like', "%{$request->search}%")
+                    ->orWhere('body', 'like', "%{$request->search}%");
             }
-            return $query->drafted();
-        })
+        )
+        ->when(
+            $request->order, function ($query) use ($request) {
+                if($request->order == 'oldest') {
+                    return $query->oldest();
+                }
+                return $query->latest();
+            }, function ($query) {
+                return $query->latest();
+            }
+        )
+        ->when(
+            $request->status, function ($query) use ($request) {
+                if($query->status == 'published') {
+                    return $query->published();
+                }
+                return $query->drafted();
+            }
+        )
         ->paginate($request->get('limit', 10));
     }
 

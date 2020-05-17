@@ -51,10 +51,12 @@ class FacilitadorSettingsController extends Controller
         $key_check = Facilitador::model('Setting')->where('key', $key)->get()->count();
 
         if ($key_check > 0) {
-            return back()->with([
+            return back()->with(
+                [
                 'message'    => __('facilitador::settings.key_already_exists', ['key' => $key]),
                 'alert-type' => 'error',
-            ]);
+                ]
+            );
         }
 
         $lastSetting = Facilitador::model('Setting')->orderBy('order', 'DESC')->first();
@@ -73,10 +75,12 @@ class FacilitadorSettingsController extends Controller
 
         request()->flashOnly('setting_tab');
 
-        return back()->with([
+        return back()->with(
+            [
             'message'    => __('facilitador::settings.successfully_created'),
             'alert-type' => 'success',
-        ]);
+            ]
+        );
     }
 
     public function update(Request $request)
@@ -87,11 +91,13 @@ class FacilitadorSettingsController extends Controller
         $settings = Facilitador::model('Setting')->all();
 
         foreach ($settings as $setting) {
-            $content = $this->getContentBasedOnType($request, 'settings', (object) [
+            $content = $this->getContentBasedOnType(
+                $request, 'settings', (object) [
                 'type'    => $setting->type,
                 'field'   => str_replace('.', '_', $setting->key),
                 'group'   => $setting->group,
-            ], $setting->details);
+                ], $setting->details
+            );
 
             if ($setting->type == 'image' && $content == null) {
                 continue;
@@ -111,10 +117,12 @@ class FacilitadorSettingsController extends Controller
 
         request()->flashOnly('setting_tab');
 
-        return back()->with([
+        return back()->with(
+            [
             'message'    => __('facilitador::settings.successfully_saved'),
             'alert-type' => 'success',
-        ]);
+            ]
+        );
     }
 
     public function delete($id)
@@ -128,10 +136,12 @@ class FacilitadorSettingsController extends Controller
 
         request()->session()->flash('setting_tab', $setting->group);
 
-        return back()->with([
+        return back()->with(
+            [
             'message'    => __('facilitador::settings.successfully_deleted'),
             'alert-type' => 'success',
-        ]);
+            ]
+        );
     }
 
     public function move_up($id)
@@ -146,9 +156,9 @@ class FacilitadorSettingsController extends Controller
 
         $swapOrder = $setting->order;
         $previousSetting = Facilitador::model('Setting')
-                            ->where('order', '<', $swapOrder)
-                            ->where('group', $setting->group)
-                            ->orderBy('order', 'DESC')->first();
+            ->where('order', '<', $swapOrder)
+            ->where('group', $setting->group)
+            ->orderBy('order', 'DESC')->first();
         $data = [
             'message'    => __('facilitador::settings.already_at_top'),
             'alert-type' => 'error',
@@ -191,10 +201,12 @@ class FacilitadorSettingsController extends Controller
 
         request()->session()->flash('setting_tab', $setting->group);
 
-        return back()->with([
+        return back()->with(
+            [
             'message'    => __('facilitador::settings.successfully_removed', ['name' => $setting->display_name]),
             'alert-type' => 'success',
-        ]);
+            ]
+        );
     }
 
     public function move_down($id)
@@ -210,9 +222,9 @@ class FacilitadorSettingsController extends Controller
         $swapOrder = $setting->order;
 
         $previousSetting = Facilitador::model('Setting')
-                            ->where('order', '>', $swapOrder)
-                            ->where('group', $setting->group)
-                            ->orderBy('order', 'ASC')->first();
+            ->where('order', '>', $swapOrder)
+            ->where('group', $setting->group)
+            ->orderBy('order', 'ASC')->first();
         $data = [
             'message'    => __('facilitador::settings.already_at_bottom'),
             'alert-type' => 'error',

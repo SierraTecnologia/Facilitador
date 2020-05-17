@@ -31,10 +31,12 @@ class FacilitadorMenuController extends Controller
 
         return redirect()
             ->route('facilitador.menus.builder', [$menu])
-            ->with([
+            ->with(
+                [
                 'message'    => __('facilitador::menu_builder.successfully_deleted'),
                 'alert-type' => 'success',
-            ]);
+                ]
+            );
     }
 
     public function add_item(Request $request)
@@ -66,10 +68,12 @@ class FacilitadorMenuController extends Controller
 
         return redirect()
             ->route('facilitador.menus.builder', [$data['menu_id']])
-            ->with([
+            ->with(
+                [
                 'message'    => __('facilitador::menu_builder.successfully_created'),
                 'alert-type' => 'success',
-            ]);
+                ]
+            );
     }
 
     public function update_item(Request $request)
@@ -94,10 +98,12 @@ class FacilitadorMenuController extends Controller
 
         return redirect()
             ->route('facilitador.menus.builder', [$menuItem->menu_id])
-            ->with([
+            ->with(
+                [
                 'message'    => __('facilitador::menu_builder.successfully_updated'),
                 'alert-type' => 'success',
-            ]);
+                ]
+            );
     }
 
     public function order_item(Request $request)
@@ -124,13 +130,13 @@ class FacilitadorMenuController extends Controller
     protected function prepareParameters($parameters)
     {
         switch (Arr::get($parameters, 'type')) {
-            case 'route':
-                $parameters['url'] = null;
-                break;
-            default:
-                $parameters['route'] = null;
-                $parameters['parameters'] = '';
-                break;
+        case 'route':
+            $parameters['url'] = null;
+            break;
+        default:
+            $parameters['route'] = null;
+            $parameters['parameters'] = '';
+            break;
         }
 
         if (isset($parameters['type'])) {

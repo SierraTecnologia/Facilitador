@@ -113,29 +113,37 @@ class Image extends Base
         parent::boot();
 
         // Convert input strings to objects for casted attributes
-        static::saving(function (Image $image) {
-            $image->convertCastedJson();
-        });
+        static::saving(
+            function (Image $image) {
+                $image->convertCastedJson();
+            }
+        );
 
         // Need to process file meta before Upchuck converts the UploadFile object
         // to a URL string.  If the image file attribute has been set to empty,
         // stop the save and immediately delete.
-        static::saving(function (Image $image) {
-            if ($image->deletedBecauseEmpty()) {
-                return false;
+        static::saving(
+            function (Image $image) {
+                if ($image->deletedBecauseEmpty()) {
+                    return false;
+                }
+                $image->populateFileMeta();
             }
-            $image->populateFileMeta();
-        });
+        );
 
         // If the image is deleted, delete Croppa crops
-        static::updating(function (Image $image) {
-            if ($image->isDirty('file')) {
+        static::updating(
+            function (Image $image) {
+                if ($image->isDirty('file')) {
+                    $image->deleteCrops();
+                }
+            }
+        );
+        static::deleted(
+            function (Image $image) {
                 $image->deleteCrops();
             }
-        });
-        static::deleted(function (Image $image) {
-            $image->deleteCrops();
-        });
+        );
     }
 
     /**
@@ -159,7 +167,8 @@ class Image extends Base
                 continue;
             }
             if (($val = $this->getAttributeValue($attribute))
-                && is_string($val)) {
+                && is_string($val)
+            ) {
                 $this->setAttribute($attribute, json_decode($val));
             }
         }
@@ -196,12 +205,14 @@ class Image extends Base
             return;
         }
         $size = getimagesize($file->getPathname());
-        $this->fill([
+        $this->fill(
+            [
             'file_type' => $this->guessFileType($file),
             'file_size' => $file->getSize(),
             'width'     => $size[0],
             'height'    => $size[1],
-        ]);
+            ]
+        );
     }
 
     /**
@@ -223,15 +234,17 @@ class Image extends Base
     /**
      * Get file type
      *
-     * @param UploadedFile
+     * @param  UploadedFile
      * @return string
      */
     protected function guessFileType(UploadedFile $file)
     {
         $type = $file->guessClientExtension();
         switch ($type) {
-            case 'jpeg': return 'jpg';
-            default: return $type;
+        case 'jpeg': 
+            return 'jpg';
+        default: 
+            return $type;
         }
     }
 
@@ -263,11 +276,13 @@ class Image extends Base
     public function getConfig()
     {
         // Create default keys for the config
-        $config = array_merge([
+        $config = array_merge(
+            [
             'width'   => null,
             'height'  => null,
             'options' => null,
-        ], $this->config);
+            ], $this->config
+        );
 
         // Add crops
         if ($crop = $this->getAttributeValue('crop_box')) {
@@ -350,6 +365,7 @@ class Image extends Base
 
     /**
      * Output a div tag.
+     *
      * @link https://www.w3.org/TR/wai-aria/roles#img
      *
      * @return Element
@@ -528,7 +544,8 @@ class Image extends Base
         }
 
         // Produce the Croppa URL
-        $path = Croppa::url($this->getAttributeValue('file'),
+        $path = Croppa::url(
+            $this->getAttributeValue('file'),
             $width,
             $height,
             $config['options']
@@ -541,7 +558,7 @@ class Image extends Base
     /**
      * Get a percent number from a string
      *
-     * @param string|number val
+     * @param  string|number val
      * @return float
      */
     protected function perc($val)
@@ -577,15 +594,17 @@ class Image extends Base
      */
     public function getJsUrlAttribute()
     {
-        return $this->remember('js_url', function () {
-            if ($this->isLocalFile()) {
-                $file = url(str_replace('public/', 'storage/', $this->location));
-            } else {
-                $file = FileService::fileAsPublicAsset($this->location);
-            }
+        return $this->remember(
+            'js_url', function () {
+                if ($this->isLocalFile()) {
+                    $file = url(str_replace('public/', 'storage/', $this->location));
+                } else {
+                    $file = FileService::fileAsPublicAsset($this->location);
+                }
 
-            return str_replace(url('/'), '', $file);
-        });
+                return str_replace(url('/'), '', $file);
+            }
+        );
     }
 
     /**
@@ -597,17 +616,19 @@ class Image extends Base
      */
     public function getDataUrlAttribute()
     {
-        return $this->remember('data_url', function () {
-            if ($this->isLocalFile()) {
-                $imagePath = storage_path('app/'.$this->location);
-            } else {
-                $imagePath = Storage::disk(\Illuminate\Support\Facades\Config::get('gpower.storage-location', 'local'))->url($this->location);
+        return $this->remember(
+            'data_url', function () {
+                if ($this->isLocalFile()) {
+                    $imagePath = storage_path('app/'.$this->location);
+                } else {
+                    $imagePath = Storage::disk(\Illuminate\Support\Facades\Config::get('gpower.storage-location', 'local'))->url($this->location);
+                }
+
+                $image = InterventionImage::make($imagePath)->resize(800, null);
+
+                return (string) $image->encode('data-url');
             }
-
-            $image = InterventionImage::make($imagePath)->resize(800, null);
-
-            return (string) $image->encode('data-url');
-        });
+        );
     }
 
     public function remember($attribute, $closure)

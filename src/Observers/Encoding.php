@@ -11,8 +11,10 @@ class Encoding
      * Start a new encode if a new encodable file was uploaded
      *
      * @param  string $event
-     * @param  array $payload Contains:
-     *    - Facilitador\Models\Base $model
+     * @param  array  $payload Contains:
+     *                         -
+     *                         Facilitador\Models\Base
+     *                         $model
      * @return void
      */
     public function onSaving($event, $payload)
@@ -40,7 +42,7 @@ class Encoding
     /**
      * Delete all encodes on the model
      *
-     * @param  string $event
+     * @param  string                  $event
      * @param  Facilitador\Models\Base $model
      * @return void
      */

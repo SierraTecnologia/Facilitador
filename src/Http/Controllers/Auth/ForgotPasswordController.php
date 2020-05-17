@@ -24,15 +24,19 @@ class ForgotPasswordController extends ResetPasswordController
     public function showLinkRequestForm()
     {
         // Pass validation rules
-        Former::withRules([
+        Former::withRules(
+            [
             'email' => 'required|email',
-        ]);
+            ]
+        );
 
         // Set the breadcrumbs
-        app('facilitador.breadcrumbs')->set([
+        app('facilitador.breadcrumbs')->set(
+            [
             route('facilitador.account@login') => 'Login',
             url()->current() => 'Forgot Password',
-        ]);
+            ]
+        );
 
         // Show the page
         $this->title = 'Forgot Password';

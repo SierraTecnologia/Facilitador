@@ -17,14 +17,10 @@ class Policy
      * permissions from the config.
      *
      * @param  User   $admin
-     * @param  string  $action     The verb we're checking.  Examples:
-     *                             - create
-     *                             - read
-     *                             - update
-     *                             - destroy
-     *                             - manage
-     *                             - publish
-     * @param  string  $controller
+     * @param  string $action     The verb we're checking.  Examples:
+     *                            - create - read - update - destroy
+     *                            - manage - publish
+     * @param  string $controller
      *                             - controller instance
      *                             - controller name (Admin\ArticlesController)
      *                             - URL (/admin/articles)
@@ -58,14 +54,18 @@ class Policy
         // features will be disabled from the view file.
         if ($controller == 'admins'
             && ($action == 'read'
-            || ($action == 'update' && Request::segment(3) == $admin->id))) {
+            || ($action == 'update' && Request::segment(3) == $admin->id))
+        ) {
             return true;
         }
 
         // Don't allow creation on Decoy controlers that don't allow it
-        if ($action == 'create' && in_array($controller, [
+        if ($action == 'create' && in_array(
+            $controller, [
             'commands', 'changes', 'elements', 'workers',
-            ])) {
+            ]
+        )
+        ) {
             return false;
         }
 
@@ -80,7 +80,8 @@ class Policy
 
             // Check that the controller was defined in the permissions
             if (!isset($permissions->$controller)
-                || !is_array($permissions->$controller)) {
+                || !is_array($permissions->$controller)
+            ) {
                 return false;
             }
 
@@ -102,9 +103,10 @@ class Policy
         if (is_callable($can)) {
             $can = call_user_func($can, $action, $controller);
         }
-        if (is_array($can) &&
-            !in_array($action.'.'.$controller, $can) &&
-            !in_array('manage.'.$controller, $can)) {
+        if (is_array($can) 
+            && !in_array($action.'.'.$controller, $can) 
+            && !in_array('manage.'.$controller, $can)
+        ) {
             return false;
         }
 
@@ -114,9 +116,9 @@ class Policy
         if (is_callable($cant)) {
             $cant = call_user_func($cant, $action, $controller);
         }
-        if (is_array($cant) && (
-            in_array($action.'.'.$controller, $cant) ||
-            in_array('manage.'.$controller, $cant))) {
+        if (is_array($cant) && (in_array($action.'.'.$controller, $cant) 
+            || in_array('manage.'.$controller, $cant))
+        ) {
             return false;
         }
 

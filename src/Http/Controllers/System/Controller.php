@@ -34,14 +34,14 @@ class Controller extends BaseController
     /**
      * Create a new controller instance.
      *
-     * @param  UserRepository  $repositoryService
+     * @param  UserRepository $repositoryService
      * @return void
      */
     public function __construct(FacilitadorService $facilitadorService)
     {
         // @debug
 
-// dd((new \Support\Services\DatabaseService(\Illuminate\Support\Facades\Config::get('sitec.discover.models_alias'), new \Support\Components\Coders\Parser\ComposerParser))->getAllModels());
+        // dd((new \Support\Services\DatabaseService(\Illuminate\Support\Facades\Config::get('sitec.discover.models_alias'), new \Support\Components\Coders\Parser\ComposerParser))->getAllModels());
         // $database = new \Support\Components\Database\Mount\DatabaseMount();
         // $model = new \Facilitador\Services\ModelService(\Population\Models\Identity\Actors\Person::class);
         // $model = new \Facilitador\Services\ModelService('OTQ4ODUzYThiZDY2MTcyNGFhdUhXZnJheUl6VUt6SUtkU1NCdUhFaW54aldLZHh0ZEZJMnVyOGJJL2c9');
@@ -163,9 +163,11 @@ class Controller extends BaseController
             $new_path = str_replace($uuid, $data->getKey(), $old_path);
             $folder_path = substr($old_path, 0, strpos($old_path, $uuid)).$uuid;
 
-            $rows->where('type', 'media_picker')->each(function ($row) use ($data, $uuid) {
-                $data->{$row->field} = str_replace($uuid, $data->getKey(), $data->{$row->field});
-            });
+            $rows->where('type', 'media_picker')->each(
+                function ($row) use ($data, $uuid) {
+                    $data->{$row->field} = str_replace($uuid, $data->getKey(), $data->{$row->field});
+                }
+            );
             $data->save();
             if ($old_path != $new_path && !Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->exists($new_path)) {
                 $request->session()->forget([$slug.'_path', $slug.'_uuid']);
@@ -238,39 +240,61 @@ class Controller extends BaseController
     public function getContentBasedOnType(Request $request, $slug, $row, $options = null)
     {
         switch ($row->type) {
-            /********** PASSWORD TYPE **********/
-            case 'password':
-                return (new Password($request, $slug, $row, $options))->handle();
-            /********** CHECKBOX TYPE **********/
-            case 'checkbox':
-                return (new Checkbox($request, $slug, $row, $options))->handle();
-            /********** MULTIPLE CHECKBOX TYPE **********/
-            case 'multiple_checkbox':
-                return (new MultipleCheckbox($request, $slug, $row, $options))->handle();
-            /********** FILE TYPE **********/
-            case 'file':
-                return (new File($request, $slug, $row, $options))->handle();
-            /********** MULTIPLE IMAGES TYPE **********/
-            case 'multiple_images':
-                return (new MultipleImage($request, $slug, $row, $options))->handle();
-            /********** SELECT MULTIPLE TYPE **********/
-            case 'select_multiple':
-                return (new SelectMultiple($request, $slug, $row, $options))->handle();
-            /********** IMAGE TYPE **********/
-            case 'image':
-                return (new ContentImage($request, $slug, $row, $options))->handle();
-            /********** TIMESTAMP TYPE **********/
-            case 'timestamp':
-                return (new Timestamp($request, $slug, $row, $options))->handle();
-            /********** COORDINATES TYPE **********/
-            case 'coordinates':
-                return (new Coordinates($request, $slug, $row, $options))->handle();
-            /********** RELATIONSHIPS TYPE **********/
-            case 'relationship':
-                return (new Relationship($request, $slug, $row, $options))->handle();
-            /********** ALL OTHER TEXT TYPE **********/
-            default:
-                return (new Text($request, $slug, $row, $options))->handle();
+            /**********
+ * PASSWORD TYPE 
+**********/
+        case 'password':
+            return (new Password($request, $slug, $row, $options))->handle();
+            /**********
+ * CHECKBOX TYPE 
+**********/
+        case 'checkbox':
+            return (new Checkbox($request, $slug, $row, $options))->handle();
+            /**********
+ * MULTIPLE CHECKBOX TYPE 
+**********/
+        case 'multiple_checkbox':
+            return (new MultipleCheckbox($request, $slug, $row, $options))->handle();
+            /**********
+ * FILE TYPE 
+**********/
+        case 'file':
+            return (new File($request, $slug, $row, $options))->handle();
+            /**********
+ * MULTIPLE IMAGES TYPE 
+**********/
+        case 'multiple_images':
+            return (new MultipleImage($request, $slug, $row, $options))->handle();
+            /**********
+ * SELECT MULTIPLE TYPE 
+**********/
+        case 'select_multiple':
+            return (new SelectMultiple($request, $slug, $row, $options))->handle();
+            /**********
+ * IMAGE TYPE 
+**********/
+        case 'image':
+            return (new ContentImage($request, $slug, $row, $options))->handle();
+            /**********
+ * TIMESTAMP TYPE 
+**********/
+        case 'timestamp':
+            return (new Timestamp($request, $slug, $row, $options))->handle();
+            /**********
+ * COORDINATES TYPE 
+**********/
+        case 'coordinates':
+            return (new Coordinates($request, $slug, $row, $options))->handle();
+            /**********
+ * RELATIONSHIPS TYPE 
+**********/
+        case 'relationship':
+            return (new Relationship($request, $slug, $row, $options))->handle();
+            /**********
+ * ALL OTHER TEXT TYPE 
+**********/
+        default:
+            return (new Text($request, $slug, $row, $options))->handle();
         }
     }
 
@@ -291,12 +315,14 @@ class Controller extends BaseController
      */
     protected function getFieldsWithValidationRules($fieldsConfig)
     {
-        return $fieldsConfig->filter(function ($value) {
-            if (empty($value->details)) {
-                return false;
-            }
+        return $fieldsConfig->filter(
+            function ($value) {
+                if (empty($value->details)) {
+                    return false;
+                }
 
-            return !empty($value->details->validation->rule);
-        });
+                return !empty($value->details->validation->rule);
+            }
+        );
     }
 }

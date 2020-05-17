@@ -47,13 +47,17 @@ trait VoyagerProviderTrait
         $loader = AliasLoader::getInstance();
         $loader->alias('Facilitador', FacilitadorFacade::class);
 
-        $this->app->singleton('facilitador', function () {
-            return new Facilitador();
-        });
+        $this->app->singleton(
+            'facilitador', function () {
+                return new Facilitador();
+            }
+        );
 
-        $this->app->singleton('FacilitadorGuard', function () {
-            return \Illuminate\Support\Facades\Config::get('auth.defaults.guard', 'web');
-        });
+        $this->app->singleton(
+            'FacilitadorGuard', function () {
+                return \Illuminate\Support\Facades\Config::get('auth.defaults.guard', 'web');
+            }
+        );
 
         $this->loadHelpers();
 
@@ -75,13 +79,15 @@ trait VoyagerProviderTrait
     {
         if (\Illuminate\Support\Facades\Config::get('sitec.facilitador.user.add_default_role_on_register')) {
             $model = Auth::guard(app('FacilitadorGuard'))->getProvider()->getModel();
-            call_user_func($model.'::created', function ($user) use ($model) {
-                if (is_null($user->role_id)) {
-                    call_user_func($model.'::findOrFail', $user->id)
+            call_user_func(
+                $model.'::created', function ($user) use ($model) {
+                    if (is_null($user->role_id)) {
+                        call_user_func($model.'::findOrFail', $user->id)
                         ->setRole(\Illuminate\Support\Facades\Config::get('sitec.facilitador.user.default_role'))
                         ->save();
+                    }
                 }
-            });
+            );
         }
 
         $router->aliasMiddleware('admin.user', FacilitadorAdminMiddleware::class);
@@ -90,9 +96,11 @@ trait VoyagerProviderTrait
 
         $this->registerViewComposers();
 
-        $event->listen('facilitador.alerts.collecting', function () {
-            $this->addStorageSymlinkAlert();
-        });
+        $event->listen(
+            'facilitador.alerts.collecting', function () {
+                $this->addStorageSymlinkAlert();
+            }
+        );
 
         $this->bootTranslatorCollectionMacros();
     }
@@ -103,7 +111,7 @@ trait VoyagerProviderTrait
     protected function loadHelpers()
     {
         foreach (glob(__DIR__.'/Helpers/*.php') as $filename) {
-            require_once $filename;
+            include_once $filename;
         }
     }
 
@@ -113,9 +121,11 @@ trait VoyagerProviderTrait
     protected function registerViewComposers()
     {
         // Register alerts
-        View::composer('facilitador::*', function ($view) {
-            $view->with('alerts', FacilitadorFacade::alerts());
-        });
+        View::composer(
+            'facilitador::*', function ($view) {
+                $view->with('alerts', FacilitadorFacade::alerts());
+            }
+        );
     }
 
     /**
@@ -190,15 +200,17 @@ trait VoyagerProviderTrait
 
     protected function bootTranslatorCollectionMacros()
     {
-        Collection::macro('translate', function () {
-            $transtors = [];
+        Collection::macro(
+            'translate', function () {
+                $transtors = [];
 
-            foreach ($this->all() as $item) {
-                $transtors[] = call_user_func_array([$item, 'translate'], func_get_args());
+                foreach ($this->all() as $item) {
+                    $transtors[] = call_user_func_array([$item, 'translate'], func_get_args());
+                }
+
+                return new TranslatorCollection($transtors);
             }
-
-            return new TranslatorCollection($transtors);
-        });
+        );
     }
 
     /**

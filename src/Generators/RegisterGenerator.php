@@ -20,10 +20,10 @@ class RegisterGenerator
 
         $html = '';
         if (isset($classes['MorphMany'])) {
-          $html .= $this->optionsButtonsMorphMany($classes['MorphMany']);
+            $html .= $this->optionsButtonsMorphMany($classes['MorphMany']);
         }
         if (isset($classes['MorphToMany'])) {
-          $html .= $this->optionsButtonsMorphToMany($classes['MorphToMany']);
+            $html .= $this->optionsButtonsMorphToMany($classes['MorphToMany']);
         }
 
         return $html;
@@ -44,7 +44,7 @@ class RegisterGenerator
         }
           $html .= '</ul>';
           $html .= '</div>';
-      return $html;
+        return $html;
     }
 
     public function optionsButtonsMorphToMany($classes)
@@ -62,6 +62,6 @@ class RegisterGenerator
         }
           $html .= '</ul>';
           $html .= '</div>';
-      return $html;
+        return $html;
     }
 }

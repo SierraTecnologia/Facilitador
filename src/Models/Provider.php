@@ -7,86 +7,89 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Provider extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	// Meta ========================================================================
+    // Meta ========================================================================
 
-	/**
-	 * The attributes that are not mass-assignable.
-	 *
-	 * @var array
-	 */
-	protected $guarded = ['id', 'login_count', 'created_at', 'updated_at', 'deleted_at'];
+    /**
+     * The attributes that are not mass-assignable.
+     *
+     * @var array
+     */
+    protected $guarded = ['id', 'login_count', 'created_at', 'updated_at', 'deleted_at'];
 
-	/**
-	 * What should be returned when this model is converted to string.
-	 *
-	 * @return string
-	 */
-	public function __toString()
-	{
-		return (string) $this->name;
-	}
+    /**
+     * What should be returned when this model is converted to string.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
 
-	/**
-	 * Get the human-friendly singular name of the resource.
-	 *
-	 * @return string
-	 */
-	protected function getSingularAttribute()
-	{
-		return _('Provider');
-	}
+    /**
+     * Get the human-friendly singular name of the resource.
+     *
+     * @return string
+     */
+    protected function getSingularAttribute()
+    {
+        return _('Provider');
+    }
 
-	/**
-	 * Get the human-friendly plural name of the resource.
-	 *
-	 * @return string
-	 */
-	protected function getPluralAttribute()
-	{
-		return _('Providers');
-	}
+    /**
+     * Get the human-friendly plural name of the resource.
+     *
+     * @return string
+     */
+    protected function getPluralAttribute()
+    {
+        return _('Providers');
+    }
 
-	// Relationships ===============================================================
+    // Relationships ===============================================================
 
-	public function users()
-	{
-		return $this->hasMany('App\Models\User');
-	}
+    public function users()
+    {
+        return $this->hasMany('App\Models\User');
+    }
 
-	// Events ======================================================================
+    // Events ======================================================================
 
-	// Static Methods ==============================================================
+    // Static Methods ==============================================================
 
-	/**
-	 * Get all usable providers.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Collection (of AuthProvider)
-	 */
-	public static function getUsable()
-	{
-		return self::orderBy('name')->get()->filter(function ($provider) {
-			return $provider->isUsable();
-		});
-	}
+    /**
+     * Get all usable providers.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection (of AuthProvider)
+     */
+    public static function getUsable()
+    {
+        return self::orderBy('name')->get()->filter(
+            function ($provider) {
+                return $provider->isUsable();
+            }
+        );
+    }
 
-	// Bussiness logic =============================================================
+    // Bussiness logic =============================================================
 
-	/**
-	 * Determine if provider is enabled and has been configured in config/services.php file.
-	 *
-	 * @return boolean
-	 */
-	public function isUsable()
-	{
-		// Check database fields
-		if( ! $this->id or empty($this->name) or empty($this->slug) or $this->trashed())
-			return false;
+    /**
+     * Determine if provider is enabled and has been configured in config/services.php file.
+     *
+     * @return boolean
+     */
+    public function isUsable()
+    {
+        // Check database fields
+        if(! $this->id or empty($this->name) or empty($this->slug) or $this->trashed()) {
+            return false;
+        }
 
-		// Check config
-		$config = \Illuminate\Support\Facades\Config::get("services.{$this->slug}.client_id", \Illuminate\Support\Facades\Config::get("services.{$this->slug}.client_secret"));
+        // Check config
+        $config = \Illuminate\Support\Facades\Config::get("services.{$this->slug}.client_id", \Illuminate\Support\Facades\Config::get("services.{$this->slug}.client_secret"));
 
-		return ! empty($config);
-	}
+        return ! empty($config);
+    }
 }

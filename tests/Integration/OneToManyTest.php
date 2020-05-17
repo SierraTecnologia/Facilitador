@@ -20,10 +20,12 @@ class OneToManyTest extends TestCase
         $this->auth();
         $article = factory(Article::class)->create();
 
-        $response = $this->call('POST', 'admin/articles/' . $article->id . '/slides/1/create', [
+        $response = $this->call(
+            'POST', 'admin/articles/' . $article->id . '/slides/1/create', [
             'title' => 'Test Slide',
             '_save' => 'save',
-        ]);
+            ]
+        );
 
         $slide = Slide::findOrFail(1);
 

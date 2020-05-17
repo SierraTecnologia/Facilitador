@@ -20,8 +20,10 @@ class ModelCallbacks
      * Handle all model events, both Eloquent and Decoy
      *
      * @param  string $event
-     * @param  array $payload Contains:
-     *    - Facilitador\Models\Base $model
+     * @param  array  $payload Contains:
+     *                         -
+     *                         Facilitador\Models\Base
+     *                         $model
      * @return void
      */
     public function handle($event, $payload)

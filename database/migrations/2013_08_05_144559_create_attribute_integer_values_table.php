@@ -15,19 +15,21 @@ class CreateAttributeIntegerValuesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_integer_values'), function (Blueprint $table) {
-            // Columns
-            $table->increments('id');
-            $table->integer('content');
-            $table->integer('attribute_id')->unsigned();
-            $table->integer('entity_id')->unsigned();
-            $table->string('entity_type');
-            $table->timestamps();
+        Schema::create(
+            \Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_integer_values'), function (Blueprint $table) {
+                // Columns
+                $table->increments('id');
+                $table->integer('content');
+                $table->integer('attribute_id')->unsigned();
+                $table->integer('entity_id')->unsigned();
+                $table->string('entity_type');
+                $table->timestamps();
 
-            // Indexes
-            $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'))
-                  ->onDelete('cascade')->onUpdate('cascade');
-        });
+                // Indexes
+                $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'))
+                    ->onDelete('cascade')->onUpdate('cascade');
+            }
+        );
     }
 
     /**

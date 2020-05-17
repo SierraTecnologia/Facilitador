@@ -31,7 +31,7 @@ class ModelFilterTest extends TestCase
     {
         $this->builder = m::mock(EloquentBuilder::class);
         $this->filter = new TestModelFilter($this->builder);
-        $this->config = require __DIR__.'/config.php';
+        $this->config = include __DIR__.'/config.php';
         $this->testInput = $this->config['test_input'];
     }
 
@@ -56,16 +56,20 @@ class ModelFilterTest extends TestCase
         $this->assertEquals($this->filter->input(), ['name' => 'er']);
 
         // Test with inserting array
-        $this->filter->push([
+        $this->filter->push(
+            [
             'company_id' => '2',
             'roles'      => ['1', '4', '7'],
-        ]);
+            ]
+        );
 
-        $this->assertEquals($this->filter->input(), [
+        $this->assertEquals(
+            $this->filter->input(), [
             'name'       => 'er',
             'company_id' => '2',
             'roles'      => ['1', '4', '7'],
-        ]);
+            ]
+        );
     }
 
     public function testDisableRelations()
@@ -155,9 +159,11 @@ class ModelFilterTest extends TestCase
         $related = 'fakeRelation';
         $this->assertFalse($this->filter->relationIsLocal($related));
 
-        $this->filter->related($related, function (EloquentBuilder $query) {
-            return $query->whereRaw('1 = 1');
-        });
+        $this->filter->related(
+            $related, function (EloquentBuilder $query) {
+                return $query->whereRaw('1 = 1');
+            }
+        );
 
         $this->assertTrue($this->filter->relationIsLocal($related));
     }
@@ -180,9 +186,11 @@ class ModelFilterTest extends TestCase
         $this->assertEquals($this->filter->getLocalRelation('testRelation'), []);
 
         // Define Closure
-        $this->filter->related('testRelation', function (EloquentBuilder $query) {
-            return $query->where('id', 1);
-        });
+        $this->filter->related(
+            'testRelation', function (EloquentBuilder $query) {
+                return $query->where('id', 1);
+            }
+        );
 
         // Return closure
         $relatedClosure = $this->filter->getLocalRelation('testRelation')[0];
@@ -264,10 +272,18 @@ class ModelFilterTest extends TestCase
 
     public function testRelatedReturnsFilter()
     {
-        $this->assertEquals($this->filter, $this->filter->related('relation', function () {
-        }));
-        $this->assertEquals($this->filter, $this->filter->addRelated('relation', function () {
-        }));
+        $this->assertEquals(
+            $this->filter, $this->filter->related(
+                'relation', function () {
+                }
+            )
+        );
+        $this->assertEquals(
+            $this->filter, $this->filter->addRelated(
+                'relation', function () {
+                }
+            )
+        );
         $this->assertEquals($this->filter, $this->filter->related('relation', 'param', 'val'));
     }
 

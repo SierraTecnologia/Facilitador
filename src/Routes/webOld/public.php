@@ -29,9 +29,11 @@ Route::get('public-preview/{encFileName}', 'AssetController@asPreview');
 Route::get('public-asset/{encFileName}', 'AssetController@asPublic');
 Route::get('public-download/{encFileName}/{encRealFileName}', 'AssetController@asDownload');
 Route::get('asset/{path}/{contentType}', 'AssetController@asset');
-Route::group(['prefix' => 'sitec'], function () {
-    Route::get('asset/{path}/{contentType}', 'AssetController@asset');
-});
+Route::group(
+    ['prefix' => 'sitec'], function () {
+        Route::get('asset/{path}/{contentType}', 'AssetController@asset');
+    }
+);
 
 
 Route::get('midia-preview/{encFileName}', 'MidiaController@asPreview');
@@ -47,61 +49,73 @@ Route::get('midia-download/{encFileName}/{encRealFileName}', 'MidiaController@as
 |--------------------------------------------------------------------------
 */
 
-Route::group(['namespace' => 'Features', 'middleware' => ['language', 'analytics']/*, 'as' => 'public.'*/], function () {
+Route::group(
+    ['namespace' => 'Features', 'middleware' => ['language', 'analytics']/*, 'as' => 'public.'*/], function () {
 
     
-    /**
-     * Writelabel
-     */
-    Route::group(['namespace' => 'Writelabel', 'as' => 'writelabel.'], function () {
-        Route::get('', 'PagesController@home');
-        Route::get('home', 'PagesController@home');
-        Route::get('pages', 'PagesController@all');
-        Route::get('page/{url}', 'PagesController@show');
-        Route::get('p/{url}', 'PagesController@show');
+        /**
+         * Writelabel
+         */
+        Route::group(
+            ['namespace' => 'Writelabel', 'as' => 'writelabel.'], function () {
+                Route::get('', 'PagesController@home');
+                Route::get('home', 'PagesController@home');
+                Route::get('pages', 'PagesController@all');
+                Route::get('page/{url}', 'PagesController@show');
+                Route::get('p/{url}', 'PagesController@show');
 
-        Route::get('faqs', 'FaqController@all');
-    });
+                Route::get('faqs', 'FaqController@all');
+            }
+        );
 
-    /**
-     * Midia
-     */
-    Route::group(['namespace' => 'Midia', 'as' => 'midia.'], function () {
-        Route::get('gallery', 'GalleryController@all');
-        Route::get('gallery/{tag}', 'GalleryController@show');
+        /**
+         * Midia
+         */
+        Route::group(
+            ['namespace' => 'Midia', 'as' => 'midia.'], function () {
+                Route::get('gallery', 'GalleryController@all');
+                Route::get('gallery/{tag}', 'GalleryController@show');
         
-        Route::get('midia-preview/{midiaId}', 'MidiaController@asPreview');
-        Route::get('midia-full/{midiaId}', 'MidiaController@asFull');
-        Route::get('midia-download/{midiaId}/{encRealFileName}', 'MidiaController@asDownload');
-    });
+                Route::get('midia-preview/{midiaId}', 'MidiaController@asPreview');
+                Route::get('midia-full/{midiaId}', 'MidiaController@asFull');
+                Route::get('midia-download/{midiaId}/{encRealFileName}', 'MidiaController@asDownload');
+            }
+        );
 
-    /**
-     * Blog
-     */
-    Route::group(['namespace' => 'Blog', 'as' => 'blog.'], function () {
-        Route::get('blog', 'BlogController@all');
-        Route::get('blog/{url}', 'BlogController@show');
-        Route::get('blog/tags/{tag}', 'BlogController@tag');
-    });
+        /**
+         * Blog
+         */
+        Route::group(
+            ['namespace' => 'Blog', 'as' => 'blog.'], function () {
+                Route::get('blog', 'BlogController@all');
+                Route::get('blog/{url}', 'BlogController@show');
+                Route::get('blog/tags/{tag}', 'BlogController@tag');
+            }
+        );
 
-    /**
-     * Calendar
-     */
-    Route::group(['namespace' => 'Calendar', 'as' => 'calendar.'], function () {
-        Route::get('events', 'EventsController@calendar');
-        Route::get('events/{month}', 'EventsController@calendar');
-        Route::get('events/all', 'EventsController@all');
-        Route::get('events/date/{date}', 'EventsController@date');
-        Route::get('events/event/{id}', 'EventsController@show');
-    });
+        /**
+         * Calendar
+         */
+        Route::group(
+            ['namespace' => 'Calendar', 'as' => 'calendar.'], function () {
+                Route::get('events', 'EventsController@calendar');
+                Route::get('events/{month}', 'EventsController@calendar');
+                Route::get('events/all', 'EventsController@all');
+                Route::get('events/date/{date}', 'EventsController@date');
+                Route::get('events/event/{id}', 'EventsController@show');
+            }
+        );
 
-    /**
-     * Commerce
-     */
-    Route::group(['namespace' => 'Commerce', 'as' => 'commerce.'], function () {
-        include dirname(__FILE__) . DIRECTORY_SEPARATOR . "public". DIRECTORY_SEPARATOR . "commerce.php";
-    });
-});
+        /**
+         * Commerce
+         */
+        Route::group(
+            ['namespace' => 'Commerce', 'as' => 'commerce.'], function () {
+                include dirname(__FILE__) . DIRECTORY_SEPARATOR . "public". DIRECTORY_SEPARATOR . "commerce.php";
+            }
+        );
+    }
+);
 
 
 // /****************   Model binding into route **************************/

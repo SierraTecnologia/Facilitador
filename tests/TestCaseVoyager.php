@@ -59,11 +59,13 @@ class TestCase extends OrchestraTestCase
     {
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', [
+        $app['config']->set(
+            'database.connections.testbench', [
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
-        ]);
+            ]
+        );
 
         // Setup Facilitador configuration
         $app['config']->set('facilitador.user.namespace', User::class);
@@ -79,7 +81,7 @@ class TestCase extends OrchestraTestCase
         app(FacilitadorServiceProvider::class, ['app' => $this->app])->loadAuth();
 
         if (file_exists(base_path('routes/web.php'))) {
-            require base_path('routes/web.php');
+            include base_path('routes/web.php');
         }
     }
 

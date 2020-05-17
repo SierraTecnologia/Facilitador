@@ -35,33 +35,39 @@ class ResetPasswordController extends Controller
      *
      * If no token is present, display the link request form.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string|null               $token
+     * @param  \Illuminate\Http\Request $request
+     * @param  string|null              $token
      * @return \Illuminate\Http\Response
      */
     public function showResetForm(Request $request, $token = null)
     {
         // Pass validation rules
-        Former::withRules([
+        Former::withRules(
+            [
             'email'                 => 'required|email',
             'password'              => 'required',
             'password_confirmation' => 'required|same:password',
-        ]);
+            ]
+        );
 
         // Set the breadcrumbs
-        app('facilitador.breadcrumbs')->set([
+        app('facilitador.breadcrumbs')->set(
+            [
             route('facilitador.account@login') => 'Login',
             route('facilitador.account@forgot') => 'Forgot Password',
             url()->current() => 'Reset Password',
-        ]);
+            ]
+        );
 
         // Show the page
         $this->title = 'Reset Password';
         $this->description = 'Almost done.';
 
-        return $this->populateView('facilitador::account.reset', [
+        return $this->populateView(
+            'facilitador::account.reset', [
             'token' => $token,
-        ]);
+            ]
+        );
     }
 
     /**
@@ -86,10 +92,12 @@ class ResetPasswordController extends Controller
      */
     protected function resetPassword($user, $password)
     {
-        $user->forceFill([
+        $user->forceFill(
+            [
             'password' => $password,
             'remember_token' => Str::random(60),
-        ])->save();
+            ]
+        )->save();
 
         Auth::login($user);
     }

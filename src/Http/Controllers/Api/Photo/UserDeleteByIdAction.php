@@ -28,7 +28,7 @@ class UserDeleteByIdAction
      * UserDeleteByIdAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param UserManager $userManager
+     * @param UserManager     $userManager
      */
     public function __construct(ResponseFactory $responseFactory, UserManager $userManager)
     {
@@ -37,12 +37,12 @@ class UserDeleteByIdAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {delete} /v1/users/:user_id Delete
-     * @apiName Delete
-     * @apiGroup Users
-     * @apiHeader {String} Accept application/json
-     * @apiParam {Integer{1...N}='me'} :user_id Unique resource ID.
+     * @apiVersion        1.0.0
+     * @api               {delete} /v1/users/:user_id Delete
+     * @apiName           Delete
+     * @apiGroup          Users
+     * @apiHeader         {String} Accept application/json
+     * @apiParam          {Integer{1...N}='me'} :user_id Unique resource ID.
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 204 No Content
      */
@@ -50,7 +50,7 @@ class UserDeleteByIdAction
     /**
      * Delete a user.
      *
-     * @param mixed $id
+     * @param  mixed $id
      * @return JsonResponse
      */
     public function __invoke($id): JsonResponse

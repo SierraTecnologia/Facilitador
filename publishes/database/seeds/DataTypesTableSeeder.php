@@ -12,7 +12,8 @@ class DataTypesTableSeeder extends Seeder
     {
         $dataType = $this->dataType('slug', 'users');
         if (!$dataType->exists) {
-            $dataType->fill([
+            $dataType->fill(
+                [
                 'name'                  => 'users',
                 'display_name_singular' => __('facilitador::seeders.data_types.user.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.user.plural'),
@@ -22,12 +23,14 @@ class DataTypesTableSeeder extends Seeder
                 'controller'            => 'Facilitador\\Http\\Controllers\\User\\FacilitadorUserController',
                 'generate_permissions'  => 1,
                 'description'           => '',
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataType = $this->dataType('slug', 'menus');
         if (!$dataType->exists) {
-            $dataType->fill([
+            $dataType->fill(
+                [
                 'name'                  => 'menus',
                 'display_name_singular' => __('facilitador::seeders.data_types.menu.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.menu.plural'),
@@ -36,12 +39,14 @@ class DataTypesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
-            ])->save();
+                ]
+            )->save();
         }
 
         $dataType = $this->dataType('slug', 'roles');
         if (!$dataType->exists) {
-            $dataType->fill([
+            $dataType->fill(
+                [
                 'name'                  => 'roles',
                 'display_name_singular' => __('facilitador::seeders.data_types.role.singular'),
                 'display_name_plural'   => __('facilitador::seeders.data_types.role.plural'),
@@ -50,7 +55,8 @@ class DataTypesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
-            ])->save();
+                ]
+            )->save();
         }
     }
 

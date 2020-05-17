@@ -19,13 +19,15 @@ class TestCase extends \Orchestra\Testbench\TestCase
         $this->withFactories(__DIR__.'/Factories');
 
         // Registering the core type map
-        Attribute::typeMap([
+        Attribute::typeMap(
+            [
             'text' => \Support\Elements\Entities\Type\Text::class,
             'bool' => \Support\Elements\Entities\Type\Boolean::class,
             'integer' => \Support\Elements\Entities\Type\Integer::class,
             'varchar' => \Support\Elements\Entities\Type\Varchar::class,
             'datetime' => \Support\Elements\Entities\Type\Datetime::class,
-        ]);
+            ]
+        );
 
         // Push your entity fully qualified namespace
         app('facilitador.attributes.entities')->push(User::class);
@@ -34,11 +36,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('database.default', 'testing');
-        $app['config']->set('database.connections.testing', [
+        $app['config']->set(
+            'database.connections.testing', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
-        ]);
+            ]
+        );
     }
 
     protected function getPackageProviders($app)

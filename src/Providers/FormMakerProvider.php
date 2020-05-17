@@ -17,9 +17,11 @@ class FormMakerProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/../../publishes/config/form-maker.php' => base_path('config/form-maker.php'),
-        ]);
+            ]
+        );
         
 
         /*
@@ -29,30 +31,42 @@ class FormMakerProvider extends ServiceProvider
         */
 
         // Form Maker
-        Blade::directive('form_maker_table', function ($expression) {
-            return "<?php echo FormMaker::fromTable($expression); ?>";
-        });
+        Blade::directive(
+            'form_maker_table', function ($expression) {
+                return "<?php echo FormMaker::fromTable($expression); ?>";
+            }
+        );
 
-        Blade::directive('form_maker_array', function ($expression) {
-            return "<?php echo FormMaker::fromArray($expression); ?>";
-        });
+        Blade::directive(
+            'form_maker_array', function ($expression) {
+                return "<?php echo FormMaker::fromArray($expression); ?>";
+            }
+        );
 
-        Blade::directive('form_maker_object', function ($expression) {
-            return "<?php echo FormMaker::fromObject($expression); ?>";
-        });
+        Blade::directive(
+            'form_maker_object', function ($expression) {
+                return "<?php echo FormMaker::fromObject($expression); ?>";
+            }
+        );
 
-        Blade::directive('form_maker_columns', function ($expression) {
-            return "<?php echo FormMaker::getTableColumns($expression); ?>";
-        });
+        Blade::directive(
+            'form_maker_columns', function ($expression) {
+                return "<?php echo FormMaker::getTableColumns($expression); ?>";
+            }
+        );
 
         // Label Maker
-        Blade::directive('input_maker_label', function ($expression) {
-            return "<?php echo InputMaker::label($expression); ?>";
-        });
+        Blade::directive(
+            'input_maker_label', function ($expression) {
+                return "<?php echo InputMaker::label($expression); ?>";
+            }
+        );
 
-        Blade::directive('input_maker_create', function ($expression) {
-            return "<?php echo InputMaker::create($expression); ?>";
-        });
+        Blade::directive(
+            'input_maker_create', function ($expression) {
+                return "<?php echo InputMaker::create($expression); ?>";
+            }
+        );
     }
 
 
@@ -77,13 +91,17 @@ class FormMakerProvider extends ServiceProvider
         |--------------------------------------------------------------------------
         */
 
-        $this->app->singleton('FormMaker', function () {
-            return new FormMaker();
-        });
+        $this->app->singleton(
+            'FormMaker', function () {
+                return new FormMaker();
+            }
+        );
 
-        $this->app->singleton('InputMaker', function () {
-            return new InputMaker();
-        });
+        $this->app->singleton(
+            'InputMaker', function () {
+                return new InputMaker();
+            }
+        );
 
         $loader = AliasLoader::getInstance();
 

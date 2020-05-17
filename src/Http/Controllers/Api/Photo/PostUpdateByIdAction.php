@@ -35,8 +35,8 @@ class PostUpdateByIdAction
      * PostUpdateByIdAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param PostManager $postManager
-     * @param CacheManager $cacheManager
+     * @param PostManager     $postManager
+     * @param CacheManager    $cacheManager
      */
     public function __construct(ResponseFactory $responseFactory, PostManager $postManager, CacheManager $cacheManager)
     {
@@ -46,14 +46,14 @@ class PostUpdateByIdAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {put} /v1/posts/:post_id Update
-     * @apiName Update
-     * @apiGroup Posts
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-type application/json
-     * @apiParam {Integer{1..N}} :post_id Unique resource ID.
-     * @apiParamExample {json} Request-Body-Example:
+     * @apiVersion        1.0.0
+     * @api               {put} /v1/posts/:post_id Update
+     * @apiName           Update
+     * @apiGroup          Posts
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-type application/json
+     * @apiParam          {Integer{1..N}} :post_id Unique resource ID.
+     * @apiParamExample   {json} Request-Body-Example:
      * {
      *     "is_published": true,
      *     "description": "The post description.",
@@ -114,8 +114,8 @@ class PostUpdateByIdAction
     /**
      * Update a post.
      *
-     * @param mixed $id
-     * @param Request $request
+     * @param  mixed   $id
+     * @param  Request $request
      * @return JsonResponse
      */
     public function __invoke($id, Request $request): JsonResponse

@@ -107,15 +107,17 @@ class RedirectRule extends Base
      */
     public function scopeMatchUsingRequest($query)
     {
-        return $query->where(function ($query) {
-            $from = $this->pathAndQuery();
-            $escaped_from = DB::connection()->getPdo()->quote($from);
-            $from_col = DB::getDriverName() == 'sqlsrv' ? '[from]' : '`from`';
-            $query->where('from', $from)->orWhereRaw("{$escaped_from} LIKE {$from_col}");
-            if (Config::get('facilitador::core.allow_regex_in_redirects')) {
-                $query->orWhereRaw("{$escaped_from} REGEXP {$from_col}");
+        return $query->where(
+            function ($query) {
+                $from = $this->pathAndQuery();
+                $escaped_from = DB::connection()->getPdo()->quote($from);
+                $from_col = DB::getDriverName() == 'sqlsrv' ? '[from]' : '`from`';
+                $query->where('from', $from)->orWhereRaw("{$escaped_from} LIKE {$from_col}");
+                if (Config::get('facilitador::core.allow_regex_in_redirects')) {
+                    $query->orWhereRaw("{$escaped_from} REGEXP {$from_col}");
+                }
             }
-        });
+        );
     }
 
     /**

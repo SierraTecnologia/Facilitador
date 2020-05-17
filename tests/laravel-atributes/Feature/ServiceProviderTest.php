@@ -12,13 +12,17 @@ use Facilitador\Providers\AttributesServiceProvider;
 
 class ServiceProviderTest extends TestCase
 {
-    /** Get the service provider class. */
+    /**
+     * Get the service provider class. 
+     */
     protected function getServiceProviderClass(): string
     {
         return AttributesServiceProvider::class;
     }
 
-    /** @test */
+    /**
+     * @test 
+     */
     public function it_is_a_service_provider()
     {
         $class = $this->getServiceProviderClass();
@@ -32,7 +36,9 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($reflection->isSubclassOf($provider), $msg);
     }
 
-    /** @test */
+    /**
+     * @test 
+     */
     public function it_has_provides_method()
     {
         $class = $this->getServiceProviderClass();

@@ -43,9 +43,11 @@ class AttributesServiceProvider extends ServiceProvider
         $attributeEntityModel === AttributeEntity::class || $this->app->alias('facilitador.attributes.attribute_entity', AttributeEntity::class);
 
         // Register attributes entities
-        $this->app->singleton('facilitador.attributes.entities', function ($app) {
-            return collect();
-        });
+        $this->app->singleton(
+            'facilitador.attributes.entities', function ($app) {
+                return collect();
+            }
+        );
 
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();

@@ -12,12 +12,16 @@ class ReEncodableVideo extends Migration
      */
     public function up()
     {
-        Schema::table('encodings', function (Blueprint $table) {
-            $table->text('response')->after('message')->nullable();
-        });
-        Schema::table('encodings', function (Blueprint $table) {
-            $table->string('preset')->after('encodable_attribute')->default('');
-        });
+        Schema::table(
+            'encodings', function (Blueprint $table) {
+                $table->text('response')->after('message')->nullable();
+            }
+        );
+        Schema::table(
+            'encodings', function (Blueprint $table) {
+                $table->string('preset')->after('encodable_attribute')->default('');
+            }
+        );
     }
 
     /**
@@ -27,11 +31,15 @@ class ReEncodableVideo extends Migration
      */
     public function down()
     {
-        Schema::table('encodings', function (Blueprint $table) {
-            $table->dropColumn('preset');
-        });
-        Schema::table('encodings', function (Blueprint $table) {
-            $table->dropColumn('response');
-        });
+        Schema::table(
+            'encodings', function (Blueprint $table) {
+                $table->dropColumn('preset');
+            }
+        );
+        Schema::table(
+            'encodings', function (Blueprint $table) {
+                $table->dropColumn('response');
+            }
+        );
     }
 }

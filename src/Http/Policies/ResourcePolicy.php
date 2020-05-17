@@ -21,8 +21,8 @@ class ResourcePolicy
     /**
      * Create a resource.
      *
-     * @param User $authUser
-     * @param string $resourceClass
+     * @param  User   $authUser
+     * @param  string $resourceClass
      * @return bool
      */
     public function create(User $authUser, string $resourceClass)
@@ -37,8 +37,8 @@ class ResourcePolicy
     /**
      * Get a resource.
      *
-     * @param User $authUser
-     * @param mixed $resource
+     * @param  User  $authUser
+     * @param  mixed $resource
      * @return bool
      */
     public function get(User $authUser, $resource)
@@ -49,8 +49,8 @@ class ResourcePolicy
     /**
      * Determine if an authenticated user has access to a resource.
      *
-     * @param User $authUser
-     * @param $resource
+     * @param  User $authUser
+     * @param  $resource
      * @return bool
      */
     private function hasAccessToResource(User $authUser, $resource): bool
@@ -73,8 +73,8 @@ class ResourcePolicy
     /**
      * Update a resource.
      *
-     * @param User $authUser
-     * @param mixed $resource
+     * @param  User  $authUser
+     * @param  mixed $resource
      * @return bool
      */
     public function update(User $authUser, $resource)
@@ -85,8 +85,8 @@ class ResourcePolicy
     /**
      * Delete a resource.
      *
-     * @param User $authUser
-     * @param mixed $resource
+     * @param  User  $authUser
+     * @param  mixed $resource
      * @return bool
      */
     public function delete(User $authUser, $resource)

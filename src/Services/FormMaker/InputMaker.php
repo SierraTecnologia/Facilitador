@@ -362,26 +362,26 @@ class InputMaker
     public function getGeneratorMethod($type)
     {
         switch ($type) {
-            case in_array($type, $this->inputGroups['hidden']):
-                return 'makeHidden';
+        case in_array($type, $this->inputGroups['hidden']):
+            return 'makeHidden';
 
-            case in_array($type, $this->inputGroups['text']):
-                return 'makeText';
+        case in_array($type, $this->inputGroups['text']):
+            return 'makeText';
 
-            case in_array($type, $this->inputGroups['select']):
-                return 'makeSelected';
+        case in_array($type, $this->inputGroups['select']):
+            return 'makeSelected';
 
-            case in_array($type, $this->inputGroups['checkbox']):
-                return 'makeCheckbox';
+        case in_array($type, $this->inputGroups['checkbox']):
+            return 'makeCheckbox';
 
-            case in_array($type, $this->inputGroups['radio']):
-                return 'makeRadio';
+        case in_array($type, $this->inputGroups['radio']):
+            return 'makeRadio';
 
-            case in_array($type, $this->inputGroups['relationship']):
-                return 'makeRelationship';
+        case in_array($type, $this->inputGroups['relationship']):
+            return 'makeRelationship';
 
-            default:
-                return 'makeHTMLInputString';
+        default:
+            return 'makeHTMLInputString';
         }
     }
 }

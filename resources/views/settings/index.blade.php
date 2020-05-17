@@ -299,9 +299,9 @@
                                         <input type="file" name="{{ $setting->key }}">
                                     @elseif($setting->type == "select_dropdown")
                                         <?php $options = json_decode($setting->details); ?>
-                                        <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : NULL; ?>
+                                        <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : null; ?>
                                         <select class="form-control" name="{{ $setting->key }}">
-                                            <?php $default = (isset($options->default)) ? $options->default : NULL; ?>
+                                            <?php $default = (isset($options->default)) ? $options->default : null; ?>
                                             @if(isset($options->options))
                                                 @foreach($options->options as $index => $option)
                                                     <option value="{{ $index }}" @if($default == $index && $selected_value === NULL) selected="selected" @endif @if($selected_value == $index) selected="selected" @endif>{{ $option }}</option>
@@ -311,8 +311,8 @@
 
                                     @elseif($setting->type == "radio_btn")
                                         <?php $options = json_decode($setting->details); ?>
-                                        <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : NULL; ?>
-                                        <?php $default = (isset($options->default)) ? $options->default : NULL; ?>
+                                        <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : null; ?>
+                                        <?php $default = (isset($options->default)) ? $options->default : null; ?>
                                         <ul class="radio">
                                             @if(isset($options->options))
                                                 @foreach($options->options as $index => $option)

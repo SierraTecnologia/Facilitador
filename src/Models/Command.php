@@ -52,7 +52,8 @@ class Command
 
         // Loop through PHP files
         $dir = app_path('Console/Commands');
-        if (!is_dir($dir)) return [];
+        if (!is_dir($dir)) { return [];
+        }
         $files = scandir($dir);
         foreach ($files as $file) {
             if (!preg_match('#\w+\.php#', $file)) {

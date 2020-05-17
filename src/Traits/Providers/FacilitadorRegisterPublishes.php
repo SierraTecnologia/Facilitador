@@ -10,7 +10,7 @@ trait FacilitadorRegisterPublishes
 
        
     /****************************************************************************************************
-     ************************************************** NO BOOT *************************************
+     * ************************************************* NO BOOT *************************************
      ****************************************************************************************************/
 
 
@@ -24,9 +24,11 @@ trait FacilitadorRegisterPublishes
     {
         
         // Publish facilitador css and js to public directory
-        $this->publishes([
+        $this->publishes(
+            [
             $this->getDistPath('facilitador') => public_path('assets/facilitador')
-        ], ['public',  'sitec', 'sitec-public']);
+            ], ['public',  'sitec', 'sitec-public']
+        );
 
     }
 
@@ -34,7 +36,8 @@ trait FacilitadorRegisterPublishes
     {
         
         // Publish config files
-        $this->publishes([
+        $this->publishes(
+            [
             // Paths
             $this->getPublishesPath('config/sitec') => config_path('sitec'),
             // Files
@@ -48,7 +51,8 @@ trait FacilitadorRegisterPublishes
             $this->getPublishesPath('config/tinker.php') => config_path('tinker.php'),
             $this->getPublishesPath('config/facilitador-hooks.php') => config_path('facilitador-hooks.php'),
             $this->getPublishesPath('config/facilitador.php') => config_path('facilitador.php')
-        ], ['config',  'sitec', 'sitec-config']);
+            ], ['config',  'sitec', 'sitec-config']
+        );
 
     }
     /****************************************************************************************************

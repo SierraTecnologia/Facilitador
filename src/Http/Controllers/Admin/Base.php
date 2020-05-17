@@ -158,7 +158,8 @@ class Base extends BaseController
         // the parent instance.  These are populated by some AJAX calls like
         // autocomplete on a many to many and the attach method.
         if (($parent_id = request('parent_id'))
-            && ($parent_controller = request('parent_controller'))) {
+            && ($parent_controller = request('parent_controller'))
+        ) {
             $parent_model_class = $this->model($parent_controller);
             $this->parent($parent_model_class::findOrFail($parent_id));
         }
@@ -279,15 +280,15 @@ class Base extends BaseController
         if ($this->parent_controller == $this->controller && method_exists($this->model, $this->parent_to_self.'AsChild')) {
             $this->self_to_parent = $this->parent_to_self.'AsChild';
 
-        // If the parent relationship is a polymorphic one-many, then the
-        // relationship function on the child model will be the model name plus
-        // "able".  For instance, the Link model would have it's relationship to
-        // parent called "linkable".
+            // If the parent relationship is a polymorphic one-many, then the
+            // relationship function on the child model will be the model name plus
+            // "able".  For instance, the Link model would have it's relationship to
+            // parent called "linkable".
         } elseif (is_a($this->parentRelation(), 'Illuminate\Database\Eloquent\Relations\MorphMany')) {
             $this->self_to_parent = Facilitador::belongsToName($this->model).'able';
 
-        // Save out to self to parent relationship.  It will be singular if the
-        // relationship is a many to many.
+            // Save out to self to parent relationship.  It will be singular if the
+            // relationship is a many to many.
         } else {
             $this->self_to_parent = $this->isChildInManyToMany()?
                 Facilitador::hasManyName($this->parent_model):
@@ -306,8 +307,10 @@ class Base extends BaseController
      */
     public function isChildInManyToMany()
     {
-        return is_a($this->parentRelation(),
-            'Illuminate\Database\Eloquent\Relations\BelongsToMany');
+        return is_a(
+            $this->parentRelation(),
+            'Illuminate\Database\Eloquent\Relations\BelongsToMany'
+        );
     }
 
     /**
@@ -385,12 +388,14 @@ class Base extends BaseController
         }
 
         // Render view
-        return $this->populateView($this->show_view, [
+        return $this->populateView(
+            $this->show_view, [
             'item' => null,
             'localize' => $localize,
             'sidebar' => $sidebar,
             'parent_id' => $this->parent ? $this->parent->getKey() : null,
-        ]);
+            ]
+        );
     }
 
     /**
@@ -429,7 +434,7 @@ class Base extends BaseController
     /**
      * Show the edit form.  Sets view via the layout.
      *
-     * @param  int                               $id Model key
+     * @param  int $id Model key
      * @return Illuminate\Contracts\View\Factory
      */
     public function edit($id)
@@ -461,18 +466,20 @@ class Base extends BaseController
         }
 
         // Render view
-        return $this->populateView($this->show_view, [
+        return $this->populateView(
+            $this->show_view, [
             'item' => $item,
             'localize' => $localize,
             'sidebar' => $sidebar,
             'parent_id' => $this->parent ? $this->parent->getKey() : null,
-        ]);
+            ]
+        );
     }
 
     /**
      * Update a record
      *
-     * @param  int                                       $id Model key
+     * @param  int $id Model key
      * @return Symfony\Component\HttpFoundation\Response Redirect to edit view
      */
     public function update($id)
@@ -486,7 +493,8 @@ class Base extends BaseController
         // Hydrate for drag-and-drop sorting
         if (Request::ajax()
             && ($position = new Position($item, $this->self_to_parent))
-            && $position->has()) {
+            && $position->has()
+        ) {
             $position->fill();
         }
 
@@ -508,14 +516,14 @@ class Base extends BaseController
             return Response::json();
         } else {
             return Redirect::to(URL::current())
-            ->with('success', $this->successMessage($item));
+                ->with('success', $this->successMessage($item));
         }
     }
 
     /**
      * Destroy a record
      *
-     * @param  int                                       $id Model key
+     * @param  int $id Model key
      * @return Symfony\Component\HttpFoundation\Response Redirect to listing
      */
     public function destroy($id)
@@ -531,7 +539,7 @@ class Base extends BaseController
             return Response::json();
         } else {
             return Redirect::to(FacilitadorURL::relative('index'))
-            ->with('success', $this->successMessage($item, 'deleted'));
+                ->with('success', $this->successMessage($item, 'deleted'));
         }
     }
 
@@ -542,7 +550,7 @@ class Base extends BaseController
     /**
      * Duplicate a record
      *
-     * @param  int                                       $id Model key
+     * @param  int $id Model key
      * @return Symfony\Component\HttpFoundation\Response Redirect to new record
      */
     public function duplicate($id)
@@ -621,9 +629,8 @@ class Base extends BaseController
             // autocomplete returns no results on an exact match that is already
             // attached is because it already exists.  Otherwise, it would allow the
             // user to create the tag
-            if ($this->parentRelation()
-                ->titleContains(request('query'), true)
-                ->count()) {
+            if ($this->parentRelation()->titleContains(request('query'), true)->count()
+            ) {
                 return Response::json(['exists' => true]);
             }
 
@@ -675,7 +682,7 @@ class Base extends BaseController
      * Attach a model to a parent_id, like with a many to many style
      * autocomplete widget
      *
-     * @param  int                      $id The id of the parent model
+     * @param  int $id The id of the parent model
      * @return Illuminate\Http\Response JSON
      */
     public function attach($id)
@@ -695,7 +702,8 @@ class Base extends BaseController
     /**
      * Remove a relationship.  Very similar to delete, except that we're
      * not actually deleting from the database
-     * @param  mixed                    $id One or many (commaa delimited) parent ids
+     *
+     * @param  mixed $id One or many (commaa delimited) parent ids
      * @return Illuminate\Http\Response Either a JSON or Redirect response
      */
     public function remove($id)
@@ -704,9 +712,11 @@ class Base extends BaseController
         $ids = Request::has('ids') ? explode(',', request('ids')) : [$id];
 
         // Get the model instances for each id, for the purpose of event firing
-        $items = array_map(function ($id) {
-            return $this->findOrFail($id);
-        }, $ids);
+        $items = array_map(
+            function ($id) {
+                return $this->findOrFail($id);
+            }, $ids
+        );
 
         // Lookup up the parent model so we can bulk remove multiple of THIS model
         foreach ($items as $item) {
@@ -757,7 +767,7 @@ class Base extends BaseController
     /**
      * Helper for getting a model instance by ID
      *
-     * @param  scalar         $id
+     * @param  scalar $id
      * @return Eloquent\Model
      */
     protected function findOrFail($id)
@@ -785,9 +795,9 @@ class Base extends BaseController
     /**
      * All actions validate in basically the same way.  This is shared logic for that
      *
-     * @param BaseModel|Request|array $data
-     * @param array $rules A Laravel rules array. If null, will be pulled from model
-     * @param array $messages Special error messages
+     * @param  BaseModel|Request|array $data
+     * @param  array                   $rules    A Laravel rules array. If null, will be pulled from model
+     * @param  array                   $messages Special error messages
      * @return void
      *
      * @throws ValidationFail

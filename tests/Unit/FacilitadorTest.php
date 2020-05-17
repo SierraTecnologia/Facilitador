@@ -16,10 +16,12 @@ class FacilitadorTest extends TestCase
      */
     public function testDimmersReturnsCollectionOfConfiguredWidgets()
     {
-        Config::set('facilitador.dashboard.widgets', [
+        Config::set(
+            'facilitador.dashboard.widgets', [
             'Facilitador\\Tests\\Stubs\\Widgets\\AccessibleDimmer',
             'Facilitador\\Tests\\Stubs\\Widgets\\AccessibleDimmer',
-        ]);
+            ]
+        );
 
         $dimmers = Facilitador::dimmers();
 
@@ -34,11 +36,13 @@ class FacilitadorTest extends TestCase
      */
     public function testDimmersReturnsCollectionOfConfiguredWidgetsWhichShouldBeDisplayed()
     {
-        Config::set('facilitador.dashboard.widgets', [
+        Config::set(
+            'facilitador.dashboard.widgets', [
             'Facilitador\\Tests\\Stubs\\Widgets\\AccessibleDimmer',
             'Facilitador\\Tests\\Stubs\\Widgets\\InAccessibleDimmer',
             'Facilitador\\Tests\\Stubs\\Widgets\\InAccessibleDimmer',
-        ]);
+            ]
+        );
 
         $dimmers = Facilitador::dimmers();
 

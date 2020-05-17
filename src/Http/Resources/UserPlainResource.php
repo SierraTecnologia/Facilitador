@@ -30,9 +30,11 @@ class UserPlainResource extends Resource
         return [
             'id' => to_int(html_purify($this->resource->getId())),
             'name' => to_string(html_purify($this->resource->getName())),
-            'email' => $this->when($visibleUserContacts, function () {
-                return to_string(html_purify($this->resource->getEmail()));
-            }),
+            'email' => $this->when(
+                $visibleUserContacts, function () {
+                    return to_string(html_purify($this->resource->getEmail()));
+                }
+            ),
             'role' => to_string(html_purify($this->resource->getRole())),
             'created_at' => to_string(html_purify($this->resource->getCreatedAt()->toAtomString())),
             'updated_at' => to_string(html_purify($this->resource->getUpdatedAt()->toAtomString())),

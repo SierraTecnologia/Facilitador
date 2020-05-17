@@ -27,10 +27,12 @@ class FacilitadorRoleController extends FacilitadorBaseController
 
         return redirect()
             ->route("facilitador.{$dataType->slug}.index")
-            ->with([
+            ->with(
+                [
                 'message'    => __('facilitador::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                 'alert-type' => 'success',
-                ]);
+                ]
+            );
     }
 
     // POST BRE(A)D
@@ -53,9 +55,11 @@ class FacilitadorRoleController extends FacilitadorBaseController
 
         return redirect()
             ->route("facilitador.{$dataType->slug}.index")
-            ->with([
+            ->with(
+                [
                 'message'    => __('facilitador::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                 'alert-type' => 'success',
-                ]);
+                ]
+            );
     }
 }

@@ -16,7 +16,7 @@ use App\Models\Builders\NotificationBuilder;
  * @property int id
  * @property string value
  * @property Collection posts
- * @package App\Models
+ * @package  App\Models
  */
 class Notification extends Model
 {
@@ -51,9 +51,9 @@ class Notification extends Model
     /**
      * Gera uma Nova Notificação para o Alvo
      *
-     * @param [type] $target
-     * @param [type] $typeNotification
-     * @param array $data
+     * @param  [type] $target
+     * @param  [type] $typeNotification
+     * @param  array  $data
      * @return void
      */
     public static function generate($target, $typeNotification, $data = [])
@@ -71,9 +71,11 @@ class Notification extends Model
     {
         parent::boot();
 
-        static::deleting(function (self $tag) {
-            $tag->posts()->detach();
-        });
+        static::deleting(
+            function (self $tag) {
+                $tag->posts()->detach();
+            }
+        );
     }
 
     // /**
@@ -103,7 +105,7 @@ class Notification extends Model
     /**
      * Setter for the 'value' attribute.
      *
-     * @param string $value
+     * @param  string $value
      * @return $this
      */
     public function setValueAttribute(string $value)

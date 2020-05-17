@@ -32,13 +32,13 @@ class ContactMessageSendAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {post} /v1/contact_message Create
-     * @apiName Create
-     * @apiGroup Contact Message
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-Type application/json
-     * @apiParamExample {json} Request-Body-Example:
+     * @apiVersion        1.0.0
+     * @api               {post} /v1/contact_message Create
+     * @apiName           Create
+     * @apiGroup          Contact Message
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-Type application/json
+     * @apiParamExample   {json} Request-Body-Example:
      * {
      *     "email": "username@domain.name",
      *     "name": "John Doe",
@@ -52,7 +52,7 @@ class ContactMessageSendAction
     /**
      * Create a resource.
      *
-     * @param ContactMessageRequest $request
+     * @param  ContactMessageRequest $request
      * @return JsonResponse
      */
     public function __invoke(ContactMessageRequest $request): JsonResponse

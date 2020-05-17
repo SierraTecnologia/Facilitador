@@ -14,9 +14,11 @@ class TinkerController extends Controller
 
     public function tinker(Request $request)
     {
-        $config = new Configuration([
+        $config = new Configuration(
+            [
             'updateCheck' => 'never'
-        ]);
+            ]
+        );
 
         $config->getPresenter()->addCasters(
             $this->getCasters()

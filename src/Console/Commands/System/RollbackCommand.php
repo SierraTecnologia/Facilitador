@@ -32,11 +32,13 @@ class RollbackCommand extends Command
         $this->alert($this->description);
 
         if (file_exists($path = 'database/migrations/facilitador/laravel-attributes')) {
-            $this->call('migrate:reset', [
+            $this->call(
+                'migrate:reset', [
                 '--step' => true,
                 '--path' => $path,
                 '--force' => $this->option('force'),
-            ]);
+                ]
+            );
         } else {
             $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan facilitador:publish:attributes</>');
         }

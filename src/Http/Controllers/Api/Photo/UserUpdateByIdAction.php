@@ -30,7 +30,7 @@ class UserUpdateByIdAction
      * UserUpdateByIdAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param UserManager $userManager
+     * @param UserManager     $userManager
      */
     public function __construct(ResponseFactory $responseFactory, UserManager $userManager)
     {
@@ -39,14 +39,14 @@ class UserUpdateByIdAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {put} /v1/users/:user_id Update
-     * @apiName Update
-     * @apiGroup Users
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-type application/json
-     * @apiParam {Integer{1...N}='me'} :user_id Unique resource ID.
-     * @apiParamExample {json} Request-Body-Example:
+     * @apiVersion        1.0.0
+     * @api               {put} /v1/users/:user_id Update
+     * @apiName           Update
+     * @apiGroup          Users
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-type application/json
+     * @apiParam          {Integer{1...N}='me'} :user_id Unique resource ID.
+     * @apiParamExample   {json} Request-Body-Example:
      * {
      *     "name": "username",
      *     "email": "username@domain.name",
@@ -67,8 +67,8 @@ class UserUpdateByIdAction
     /**
      * Update a user.
      *
-     * @param mixed $id
-     * @param Request $request
+     * @param  mixed   $id
+     * @param  Request $request
      * @return JsonResponse
      */
     public function __invoke($id, Request $request): JsonResponse

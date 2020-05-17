@@ -38,10 +38,12 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('activate/token/{token}', 'Auth\ActivateController@activate');
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('activate', 'Auth\ActivateController@showActivate');
-    Route::get('activate/send-token', 'Auth\ActivateController@sendToken');
-});
+Route::group(
+    ['middleware' => ['auth']], function () {
+        Route::get('activate', 'Auth\ActivateController@showActivate');
+        Route::get('activate/send-token', 'Auth\ActivateController@sendToken');
+    }
+);
 
 /*
 |--------------------------------------------------------------------------

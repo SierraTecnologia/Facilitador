@@ -8,19 +8,21 @@ use Facilitador\Events\RoutingAfter;
 use Facilitador\Facades\Facilitador;
 
 // Public routes
-Route::group([
+Route::group(
+    [
     'prefix' => \Illuminate\Support\Facades\Config::get('sitec.core.dir', 'admin'),
     'middleware' => 'web',
-], function () {
-    $loadingRoutes = [
+    ], function () {
+        $loadingRoutes = [
         'public',
         'user',
         'manager',
         'voyager'
-    ];
-    event(new Routing());
-    foreach ($loadingRoutes as $loadingRoute) {
-        include dirname(__FILE__) . DIRECTORY_SEPARATOR . "web". DIRECTORY_SEPARATOR . $loadingRoute.".php";
+        ];
+        event(new Routing());
+        foreach ($loadingRoutes as $loadingRoute) {
+            include dirname(__FILE__) . DIRECTORY_SEPARATOR . "web". DIRECTORY_SEPARATOR . $loadingRoute.".php";
+        }
+        event(new RoutingAfter());
     }
-    event(new RoutingAfter());
-});    
+);    

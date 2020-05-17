@@ -102,7 +102,8 @@ class Encoding extends Base
             && ($first = array_pop($sources))          // Get the last source
             && preg_match('#^/(?!/)#', $first)         // Make sure it's a local path
             && ($dir = public_path().dirname($first))  // Get the path of the filename
-            && is_dir($dir)) {                         // Make sure it's a directory
+            && is_dir($dir)
+        ) {                         // Make sure it's a directory
             File::deleteDir($dir);
         }
     }
@@ -132,7 +133,7 @@ class Encoding extends Base
     /**
      * Get an instance of the configured encoding provider
      *
-     * @param Facilitador\Models\Encoding
+     * @param  Facilitador\Models\Encoding
      * @return Facilitador\Input\EncodingProviders\EncodingProvider
      */
     public static function encoder(Encoding $model = null)
@@ -178,7 +179,7 @@ class Encoding extends Base
      * Update the status of the encode
      *
      * @param  string status
-     * @param  string $message
+     * @param  string        $message
      * @return void
      */
     public function status($status, $message = null)
@@ -257,13 +258,19 @@ class Encoding extends Base
         }
 
         return '<div class="stats">'
-            .implode('', array_map(function ($val, $key) {
-                return sprintf('<span class="label">
+            .implode(
+                '', array_map(
+                    function ($val, $key) {
+                        return sprintf(
+                            '<span class="label">
                     <span>%s</span>
                     <span class="badge">%s</span>
-                    </span>',
-                    $key, $val);
-            }, $stats, array_keys($stats)))
+                        </span>',
+                            $key, $val
+                        );
+                    }, $stats, array_keys($stats)
+                )
+            )
             .'</div>';
     }
 
@@ -279,14 +286,18 @@ class Encoding extends Base
         }
         $o = $this->response->output;
 
-        return array_filter([
-            'Bitrate' => number_format($o->video_bitrate_in_kbps
-                + $o->audio_bitrate_in_kbps).' kbps',
+        return array_filter(
+            [
+            'Bitrate' => number_format(
+                $o->video_bitrate_in_kbps
+                + $o->audio_bitrate_in_kbps
+            ).' kbps',
             'Filesize' => number_format($o->file_size_in_bytes/1024/1024, 1).' mb',
             'Duration' => number_format($o->duration_in_ms/1000, 1).' s',
             'Dimensions' => number_format($o->width).' x '.number_format($o->height),
             'Download' => '<a href="'.$this->outputs->mp4.'" target="_blank">MP4</a>'
-        ]);
+            ]
+        );
     }
 
     /**
@@ -297,14 +308,14 @@ class Encoding extends Base
     public function getProgressAttribute()
     {
         switch ($this->status) {
-            case 'pending':
-                return 0;
+        case 'pending':
+            return 0;
 
-            case 'queued':
-                return (static::encoder($this)->progress()/100*25) + 25;
+        case 'queued':
+            return (static::encoder($this)->progress()/100*25) + 25;
 
-            case 'processing':
-                return (static::encoder($this)->progress()/100*50) + 50;
+        case 'processing':
+            return (static::encoder($this)->progress()/100*50) + 50;
         }
     }
 

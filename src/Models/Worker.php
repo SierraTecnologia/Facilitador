@@ -131,10 +131,12 @@ class Worker extends \Illuminate\Console\Command
             $interval = time() - $last->time;
         }
 
-        Cache::forever($this->HEARTBEAT_CRON_KEY, (object) [
+        Cache::forever(
+            $this->HEARTBEAT_CRON_KEY, (object) [
             'time' => time(),
             'interval' => $interval,
-        ]);
+            ]
+        );
 
         // The worker has died
         if (!$this->isRunning()) {
@@ -146,7 +148,7 @@ class Worker extends \Illuminate\Console\Command
             // Do work (since the worker has stopped)
             $this->dispatch();
 
-        // The worker appears to be fine
+            // The worker appears to be fine
         } else {
             $this->info('The '.$this->name.' worker is running');
         }
@@ -181,6 +183,7 @@ class Worker extends \Illuminate\Console\Command
 
     /**
      * Write Command output types to the log
+     *
      * @param $level
      * @param $message
      * @param array $context
@@ -303,14 +306,14 @@ class Worker extends \Illuminate\Console\Command
             return $interval;
         }
         switch ($format) {
-            case 'raw':
-                return $interval;
+        case 'raw':
+            return $interval;
 
-            case 'abbreviated':
-                return Library\Utils\Text::timeElapsed(time() - $interval, $abbreviated);
+        case 'abbreviated':
+            return Library\Utils\Text::timeElapsed(time() - $interval, $abbreviated);
 
-            default:
-                return Library\Utils\Text::timeElapsed(time() - $interval);
+        default:
+            return Library\Utils\Text::timeElapsed(time() - $interval);
         }
     }
 }

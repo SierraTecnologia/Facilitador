@@ -28,12 +28,14 @@ abstract class ModelFilter
 
     /**
      * Container for all relations (local and related ModelFilters).
+     *
      * @var array
      */
     protected $allRelations = [];
 
     /**
      * Array of method names that should not be called.
+     *
      * @var array
      */
     protected $blacklist = [];
@@ -85,7 +87,7 @@ abstract class ModelFilter
      *
      * @param $query
      * @param array $input
-     * @param bool $relationsEnabled
+     * @param bool  $relationsEnabled
      */
     public function __construct($query, array $input = [], $relationsEnabled = true)
     {
@@ -96,8 +98,8 @@ abstract class ModelFilter
     }
 
     /**
-     * @param $method
-     * @param $args
+     * @param  $method
+     * @param  $args
      * @return mixed
      */
     public function __call($method, $args)
@@ -112,7 +114,7 @@ abstract class ModelFilter
     /**
      * Remove empty strings from the input array.
      *
-     * @param array $input
+     * @param  array $input
      * @return array
      */
     public function removeEmptyInput($input)
@@ -151,8 +153,8 @@ abstract class ModelFilter
     /**
      * Locally defines a relation filter method that will be called in the context of the related model.
      *
-     * @param $relation
-     * @param \Closure $closure
+     * @param  $relation
+     * @param  \Closure $closure
      * @return $this
      */
     public function addRelated($relation, \Closure $closure)
@@ -165,11 +167,11 @@ abstract class ModelFilter
     /**
      * Add a where constraint to a relationship.
      *
-     * @param $relation
-     * @param $column
-     * @param null $operator
-     * @param null $value
-     * @param string $boolean
+     * @param  $relation
+     * @param  $column
+     * @param  null   $operator
+     * @param  null   $value
+     * @param  string $boolean
      * @return $this
      */
     public function related($relation, $column, $operator = null, $value = null, $boolean = 'and')
@@ -184,13 +186,15 @@ abstract class ModelFilter
             $operator = '=';
         }
 
-        return $this->addRelated($relation, function ($query) use ($column, $operator, $value, $boolean) {
-            return $query->where($column, $operator, $value, $boolean);
-        });
+        return $this->addRelated(
+            $relation, function ($query) use ($column, $operator, $value, $boolean) {
+                return $query->where($column, $operator, $value, $boolean);
+            }
+        );
     }
 
     /**
-     * @param $key
+     * @param  $key
      * @return string
      */
     public function getFilterMethod($key)
@@ -205,7 +209,7 @@ abstract class ModelFilter
     /**
      * Convert a string to camel case.
      *
-     * @param $value
+     * @param  $value
      * @return string
      */
     protected function convertToCamelCase($value)
@@ -260,6 +264,7 @@ abstract class ModelFilter
 
     /**
      * Returns all local relations and relations requiring other Model's Filter's.
+     *
      * @return array
      */
     public function getAllRelations()
@@ -278,7 +283,7 @@ abstract class ModelFilter
     /**
      * Get all input to pass through related filters and local closures as an array.
      *
-     * @param string $relation
+     * @param  string $relation
      * @return array
      */
     public function getRelationConstraints($relation)
@@ -329,9 +334,11 @@ abstract class ModelFilter
         $joins = [];
 
         if (is_array($queryJoins = $this->query->getQuery()->joins)) {
-            $joins = array_map(function ($join) {
-                return $join->table;
-            }, $queryJoins);
+            $joins = array_map(
+                function ($join) {
+                    return $join->table;
+                }, $queryJoins
+            );
         }
 
         return $joins;
@@ -340,7 +347,7 @@ abstract class ModelFilter
     /**
      * Checks if the relation to filter's table is already joined.
      *
-     * @param $relation
+     * @param  $relation
      * @return bool
      */
     public function relationIsJoined($relation)
@@ -355,7 +362,7 @@ abstract class ModelFilter
     /**
      * Get an empty instance of a related model.
      *
-     * @param $relation
+     * @param  $relation
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function getRelatedModel($relation)
@@ -366,7 +373,7 @@ abstract class ModelFilter
     /**
      * Get the table name from a relationship.
      *
-     * @param $relation
+     * @param  $relation
      * @return string
      */
     public function getRelatedTable($relation)
@@ -377,7 +384,7 @@ abstract class ModelFilter
     /**
      * Get the model filter of a related model.
      *
-     * @param $relation
+     * @param  $relation
      * @return mixed
      */
     public function getRelatedFilter($relation)
@@ -392,27 +399,29 @@ abstract class ModelFilter
      */
     public function filterUnjoinedRelation($related)
     {
-        $this->query->whereHas($related, function ($q) use ($related) {
-            $this->callRelatedLocalSetup($related, $q);
+        $this->query->whereHas(
+            $related, function ($q) use ($related) {
+                $this->callRelatedLocalSetup($related, $q);
 
-            // If we defined it locally then we're running the closure on the related model here right.
-            foreach ($this->getLocalRelation($related) as $closure) {
-                // Run in context of the related model locally
-                $closure($q);
+                // If we defined it locally then we're running the closure on the related model here right.
+                foreach ($this->getLocalRelation($related) as $closure) {
+                    // Run in context of the related model locally
+                    $closure($q);
+                }
+
+                if (count($filterableRelated = $this->getRelatedFilterInput($related)) > 0) {
+                    $q->filter($filterableRelated);
+                }
+
+                return $q;
             }
-
-            if (count($filterableRelated = $this->getRelatedFilterInput($related)) > 0) {
-                $q->filter($filterableRelated);
-            }
-
-            return $q;
-        });
+        );
     }
 
     /**
      * Get input to pass to a related Model's Filter.
      *
-     * @param $related
+     * @param  $related
      * @return array
      */
     public function getRelatedFilterInput($related)
@@ -423,7 +432,7 @@ abstract class ModelFilter
     /**
      * Check to see if there is input or locally defined methods for the given relation.
      *
-     * @param $relation
+     * @param  $relation
      * @return bool
      */
     public function relationIsFilterable($relation)
@@ -434,7 +443,7 @@ abstract class ModelFilter
     /**
      * Checks if there is input that should be passed to a related Model Filter.
      *
-     * @param $related
+     * @param  $related
      * @return bool
      */
     public function relationUsesFilter($related)
@@ -445,7 +454,7 @@ abstract class ModelFilter
     /**
      * Checks to see if there are locally defined relations to filter.
      *
-     * @param $related
+     * @param  $related
      * @return bool
      */
     public function relationIsLocal($related)
@@ -454,7 +463,7 @@ abstract class ModelFilter
     }
 
     /**
-     * @param string $related
+     * @param  string $related
      * @return array
      */
     public function getLocalRelation($related)
@@ -465,8 +474,8 @@ abstract class ModelFilter
     /**
      * Retrieve input by key or all input as array.
      *
-     * @param null $key
-     * @param null $default
+     * @param  null $key
+     * @param  null $default
      * @return array|mixed|null
      */
     public function input($key = null, $default = null)
@@ -562,7 +571,8 @@ abstract class ModelFilter
 
     /**
      * Add method to the blacklist so disable calling it.
-     * @param string $method
+     *
+     * @param  string $method
      * @return $this
      */
     public function blacklistMethod($method)
@@ -574,20 +584,23 @@ abstract class ModelFilter
 
     /**
      * Remove a method from the blacklist.
-     * @param string $method
+     *
+     * @param  string $method
      * @return $this
      */
     public function whitelistMethod($method)
     {
-        $this->blacklist = array_filter($this->blacklist, function ($name) use ($method) {
-            return $name !== $method;
-        });
+        $this->blacklist = array_filter(
+            $this->blacklist, function ($name) use ($method) {
+                return $name !== $method;
+            }
+        );
 
         return $this;
     }
 
     /**
-     * @param $method
+     * @param  $method
      * @return bool
      */
     public function methodIsBlacklisted($method)
@@ -597,7 +610,8 @@ abstract class ModelFilter
 
     /**
      * Check if the method is not blacklisted and callable on the extended class.
-     * @param $method
+     *
+     * @param  $method
      * @return bool
      */
     public function methodIsCallable($method)
@@ -613,24 +627,27 @@ abstract class ModelFilter
      */
     private function registerMacros()
     {
-        if (
-            method_exists(Relation::class, 'hasMacro') &&
-            method_exists(Relation::class, 'macro') &&
-            ! Relation::hasMacro('paginateFilter') &&
-            ! Relation::hasMacro('simplePaginateFilter')
+        if (method_exists(Relation::class, 'hasMacro') 
+            && method_exists(Relation::class, 'macro') 
+            && ! Relation::hasMacro('paginateFilter') 
+            && ! Relation::hasMacro('simplePaginateFilter')
         ) {
-            Relation::macro('paginateFilter', function () {
-                $paginator = call_user_func_array([$this, 'paginate'], func_get_args());
-                $paginator->appends($this->getRelated()->filtered);
+            Relation::macro(
+                'paginateFilter', function () {
+                    $paginator = call_user_func_array([$this, 'paginate'], func_get_args());
+                    $paginator->appends($this->getRelated()->filtered);
 
-                return $paginator;
-            });
-            Relation::macro('simplePaginateFilter', function () {
-                $paginator = call_user_func_array([$this, 'simplePaginate'], func_get_args());
-                $paginator->appends($this->getRelated()->filtered);
+                    return $paginator;
+                }
+            );
+            Relation::macro(
+                'simplePaginateFilter', function () {
+                    $paginator = call_user_func_array([$this, 'simplePaginate'], func_get_args());
+                    $paginator->appends($this->getRelated()->filtered);
 
-                return $paginator;
-            });
+                    return $paginator;
+                }
+            );
         }
     }
 }

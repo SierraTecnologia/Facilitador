@@ -14,14 +14,16 @@ class PageTest extends TestCase
 
         $page = new Page();
 
-        $page->fill([
+        $page->fill(
+            [
             'slug'             => 'test-slug',
             'title'            => 'Test Title',
             'excerpt'          => 'Test Excerpt',
             'body'             => 'Test Body',
             'meta_description' => 'Test Description',
             'meta_keywords'    => 'Test Meta Keywords',
-        ]);
+            ]
+        );
 
         $page->save();
 

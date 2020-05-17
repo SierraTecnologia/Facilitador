@@ -43,8 +43,8 @@ class InputCalibrator
     /**
      * Customizable input name
      *
-     * @param  string $name
-     * @param  array $config
+     * @param string $name
+     * @param array  $config
      *
      * @return string
      */
@@ -61,8 +61,8 @@ class InputCalibrator
     /**
      * Customizable input name
      *
-     * @param  string $name
-     * @param  array $config
+     * @param string $name
+     * @param array  $config
      *
      * @return string
      */

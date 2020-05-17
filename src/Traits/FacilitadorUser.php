@@ -6,7 +6,7 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Facilitador\Facades\Facilitador;
 
 /**
- * @property  \Illuminate\Database\Eloquent\Collection  roles
+ * @property \Illuminate\Database\Eloquent\Collection  roles
  */
 trait FacilitadorUser
 {
@@ -78,8 +78,8 @@ trait FacilitadorUser
         $this->loadPermissionsRelations();
 
         $_permissions = $this->roles_all()
-                              ->pluck('permissions')->flatten()
-                              ->pluck('key')->unique()->toArray();
+            ->pluck('permissions')->flatten()
+            ->pluck('key')->unique()->toArray();
 
         return in_array($name, $_permissions);
     }

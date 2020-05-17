@@ -56,7 +56,9 @@ class SerializedRequest
     {
         $className = $this->className;
 
-        /** @var ExportActionRequest|NovaRequest $request */
+        /**
+ * @var ExportActionRequest|NovaRequest $request 
+*/
         $request           = new $className;
         $request->resource = $this->resource;
         $request->lens     = $this->lens;

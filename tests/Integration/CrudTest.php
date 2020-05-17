@@ -13,7 +13,8 @@ class CrudTest extends TestCase
      *
      * @return void
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         parent::setUp();
         $this->auth();
     }
@@ -54,9 +55,11 @@ class CrudTest extends TestCase
      */
     public function testStoreFailsValidation()
     {
-        $response = $this->post('admin/articles/create', ['title' => ''], [
+        $response = $this->post(
+            'admin/articles/create', ['title' => ''], [
             'HTTP_REFERER' => url('admin/articles/create'),
-        ]);
+            ]
+        );
         $response->assertRedirect('admin/articles/create');
         $response->assertSessionHasErrors('title');
     }
@@ -68,9 +71,13 @@ class CrudTest extends TestCase
      */
     public function testStore()
     {
-        $response = $this->call('POST', 'admin/articles/create', array_merge($this->createData(), [
-            '_save' => 'save',
-        ]));
+        $response = $this->call(
+            'POST', 'admin/articles/create', array_merge(
+                $this->createData(), [
+                '_save' => 'save',
+                ]
+            )
+        );
 
         $response->assertRedirect('admin/articles/1/edit');
 
@@ -101,9 +108,11 @@ class CrudTest extends TestCase
     {
         $article = factory(Article::class)->create();
 
-        $response = $this->call('POST', 'admin/articles/' . $article->id . '/edit', [
+        $response = $this->call(
+            'POST', 'admin/articles/' . $article->id . '/edit', [
             'title' => 'new article title',
-        ]);
+            ]
+        );
 
         $this->assertEquals('new article title', $article->fresh()->title);
     }

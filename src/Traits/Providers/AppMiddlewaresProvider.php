@@ -13,7 +13,7 @@ trait AppMiddlewaresProvider
     
 
     /****************************************************************************************************
-     ************************************************** NO BOOT *************************************
+     * ************************************************* NO BOOT *************************************
      ****************************************************************************************************/
     /**
      * Boot Decoy's auth integration
@@ -23,22 +23,28 @@ trait AppMiddlewaresProvider
     public function bootAuth()
     {
         // Inject Decoy's auth config
-        Config::set('auth.guards.facilitador', [
+        Config::set(
+            'auth.guards.facilitador', [
             'driver'   => 'session',
             'provider' => 'facilitador',
-        ]);
+            ]
+        );
 
-        Config::set('auth.providers.facilitador', [
+        Config::set(
+            'auth.providers.facilitador', [
             'driver' => 'eloquent',
             'model'  => \Illuminate\Support\Facades\Config::get('sitec.core.models.user', \App\Models\User::class),
-        ]);
+            ]
+        );
 
-        Config::set('auth.passwords.facilitador', [
+        Config::set(
+            'auth.passwords.facilitador', [
             'provider' => 'facilitador',
             'email'    => 'facilitador::emails.reset',
             'table'    => 'password_resets',
             'expire'   => 60,
-        ]);
+            ]
+        );
 
         // Point to the Gate policy
         $this->app[Gate::class]->define('facilitador.auth', \Illuminate\Support\Facades\Config::get('sitec.core.policy'));
@@ -65,16 +71,20 @@ trait AppMiddlewaresProvider
         $this->registerMiddlewares();
 
         // Use Decoy's auth by default, while at an admin path
-        Config::set('auth.defaults', [
+        Config::set(
+            'auth.defaults', [
             'guard'     => 'facilitador',
             'passwords' => 'facilitador',
-        ]);
+            ]
+        );
 
         // Set the default mailer settings
-        Config::set('mail.from', [
+        Config::set(
+            'mail.from', [
             'address' => Config::get('sitec.core.mail_from_address'),
             'name' => Config::get('sitec.core.mail_from_name'),
-        ]);
+            ]
+        );
 
         // Config Former
         $this->configureFormer();
@@ -107,29 +117,37 @@ trait AppMiddlewaresProvider
         }
 
         // This group is used by public facilitador routes
-        $this->app['router']->middlewareGroup('facilitador.public', [
+        $this->app['router']->middlewareGroup(
+            'facilitador.public', [
             'web',
-        ]);
+            ]
+        );
 
         // The is the starndard auth protected group
-        $this->app['router']->middlewareGroup('facilitador.protected', [
+        $this->app['router']->middlewareGroup(
+            'facilitador.protected', [
             'web',
             'facilitador.auth',
             'facilitador.save-redirect',
             'facilitador.edit-redirect',
-        ]);
+            ]
+        );
 
         // Require a logged in admin session but no CSRF token
-        $this->app['router']->middlewareGroup('facilitador.protected_endpoint', [
+        $this->app['router']->middlewareGroup(
+            'facilitador.protected_endpoint', [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Session\Middleware\StartSession::class,
             'facilitador.auth',
-        ]);
+            ]
+        );
 
         // An open endpoint, like used by Zendcoder
-        $this->app['router']->middlewareGroup('facilitador.endpoint', [
+        $this->app['router']->middlewareGroup(
+            'facilitador.endpoint', [
             'api'
-        ]);
+            ]
+        );
     }
 
     /****************************************************************************************************

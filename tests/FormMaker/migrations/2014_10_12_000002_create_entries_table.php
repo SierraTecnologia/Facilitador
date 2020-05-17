@@ -12,13 +12,15 @@ class CreateEntriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('entries', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->default();
-            $table->text('details')->default();
-            $table->nullableTimestamps();
-            $table->softDeletes();
-        });
+        Schema::create(
+            'entries', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name')->default();
+                $table->text('details')->default();
+                $table->nullableTimestamps();
+                $table->softDeletes();
+            }
+        );
     }
 
     /**

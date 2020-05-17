@@ -22,9 +22,8 @@
  *  * Google Translator, triggered by a subtle link placed somewhere near the input.
  *  * Option for showing a fall-back version of the field, under the input.
  *    This would apply to text input only.
- *
  */
-;( function( $, window, document, undefined ) {
+;( function ( $, window, document, undefined ) {
 
     "use strict";
 
@@ -34,219 +33,245 @@
             form:          '.form-edit-add',
             transInputs:   'input[data-i18n = true]', // Hidden inputs holding translations
             langSelectors: '.language-selector:first input' // Language selector inputs
-        };
+    };
 
-    function Plugin ( element, options ) {
+    function Plugin( element, options )
+    {
         this.element   = $(element);
-        this.settings  = $.extend( {}, defaults, options );
+        this.settings  = $.extend({}, defaults, options);
         this._defaults = defaults;
         this._name     = pluginName;
         this.init();
     }
 
-    $.extend( Plugin.prototype, {
-        init: function() {
-            this.form          = this.element.find(this.settings.form);
-            this.transInputs   = $(this.settings.transInputs);
-            this.langSelectors = this.element.find(this.settings.langSelectors);
+    $.extend(
+        Plugin.prototype, {
+            init: function () {
+                this.form          = this.element.find(this.settings.form);
+                this.transInputs   = $(this.settings.transInputs);
+                this.langSelectors = this.element.find(this.settings.langSelectors);
 
-            if (this.transInputs.length === 0 || this.langSelectors === 0) {
-                return false;
-            }
-
-            this.setup();
-            this.refresh();
-        },
-
-
-        setup: function() {
-            var _this = this;
-
-            this.locale = this.returnLocale();
-
-            $('.js-language-label').text(this.locale);
-
-            /**
-             * Setup language selector
-             */
-            this.langSelectors.each(function(i, btn) {
-                $(btn).change($.proxy(_this.selectLanguage, _this));
-            });
-
-            /**
-             * Save data before submit
-             */
-            if (this.settings.editing) {
-                $(this.form).on('submit', function(e) {
-                    _this.prepareData();
-                });
-            }
-        },
-
-        /**
-         * Refresh plugin data, required for dynamic calls (ex menu)
-         */
-        refresh: function() {
-            var _this = this;
-
-            /**
-             * Setup translatable inputs
-             */
-            this.transInputs.each(function(i, inp) {
-                var _inp   = $(inp),
-                    inpUsr = _inp.nextAll(_this.settings.editing ? '.form-control' : '');
-
-                inpUsr.data("inp", _inp);
-                _inp.data("inpUsr", inpUsr);
-
-                // Load and Save data in hidden input
-                var $_data = _this.loadJsonField(_inp.val());
-                if (_this.settings.editing) {
-                    _inp.val(JSON.stringify($_data));
+                if (this.transInputs.length === 0 || this.langSelectors === 0) {
+                    return false;
                 }
 
-                _this.langSelectors.each(function(i, btn) {
-                    _inp.data(btn.id, $_data[btn.id]);  // Save translation in mem
-                    if (btn.id == _this.locale) {
-                        _this.loadLang(_inp, btn.id)    // Load active locale
-                    }
-                });
-            });
-        },
+                this.setup();
+                this.refresh();
+            },
 
-        loadJsonField: function(str) {
-            var $_data = {};
 
-            if (this.isJsonValid(str)) {
-                $_data = JSON.parse(str);
+            setup: function () {
+                var _this = this;
+
+                this.locale = this.returnLocale();
+
+                $('.js-language-label').text(this.locale);
 
                 /**
-                 * Convert nulls to ''.
+                 * Setup language selector
                  */
-                this.langSelectors.each(function(i, btn) {  // loop languages
-                    $_data[btn.id] = $_data[btn.id] || '';
-                });
+                this.langSelectors.each(
+                    function (i, btn) {
+                        $(btn).change($.proxy(_this.selectLanguage, _this));
+                    }
+                );
+
+                /**
+                 * Save data before submit
+                 */
+                if (this.settings.editing) {
+                    $(this.form).on(
+                        'submit', function (e) {
+                            _this.prepareData();
+                        }
+                    );
+                }
+            },
+
+                /**
+                 * Refresh plugin data, required for dynamic calls (ex menu)
+                 */
+            refresh: function () {
+                var _this = this;
+
+                /**
+                 * Setup translatable inputs
+                 */
+                this.transInputs.each(
+                    function (i, inp) {
+                        var _inp   = $(inp),
+                        inpUsr = _inp.nextAll(_this.settings.editing ? '.form-control' : '');
+
+                        inpUsr.data("inp", _inp);
+                        _inp.data("inpUsr", inpUsr);
+
+                        // Load and Save data in hidden input
+                        var $_data = _this.loadJsonField(_inp.val());
+                        if (_this.settings.editing) {
+                            _inp.val(JSON.stringify($_data));
+                        }
+
+                        _this.langSelectors.each(
+                            function (i, btn) {
+                                _inp.data(btn.id, $_data[btn.id]);  // Save translation in mem
+                                if (btn.id == _this.locale) {
+                                    _this.loadLang(_inp, btn.id)    // Load active locale
+                                }
+                            }
+                        );
+                    }
+                );
+            },
+
+            loadJsonField: function (str) {
+                var $_data = {};
+
+                if (this.isJsonValid(str)) {
+                    $_data = JSON.parse(str);
+
+                    /**
+                     * Convert nulls to ''.
+                     */
+                    this.langSelectors.each(
+                        function (i, btn) {
+                            // loop languages
+                            $_data[btn.id] = $_data[btn.id] || '';
+                        }
+                    );
+
+                    return $_data;
+                }
+
+                /**
+                 * For the sake of validation, this looks ugly, but it will work
+                 */
+                this.langSelectors.each(
+                    function (i, btn) {
+                        $_data[btn.id] = '';
+                    }
+                );
 
                 return $_data;
-            }
-
-            /**
-             * For the sake of validation, this looks ugly, but it will work
-             */
-            this.langSelectors.each(function(i, btn) {
-                $_data[btn.id] = '';
-            });
-
-            return $_data;
-        },
+            },
 
 
-        isJsonValid: function(str) {
-            try {
-                JSON.parse(str);
-            } catch (ex) {
-                return false;
-            }
-            return true;
-        },
-
-        /**
-         * Return Locale for a given Button Group Selector
-         *
-         * @return string The locale.
-         */
-        returnLocale: function() {
-            return this.langSelectors.filter(function() {
-                return $(this).parent().hasClass('active');
-            }).prop('id');
-        },
-
-        selectLanguage: function(e) {
-            var _this = this,
-                lang  = e.target.id;
-
-            this.transInputs.each(function(i, inp) {
-                if (_this.settings.editing) {
-                    _this.updateInputCache($(inp));
+            isJsonValid: function (str) {
+                try {
+                    JSON.parse(str);
+                } catch (ex) {
+                    return false;
                 }
-                _this.loadLang($(inp), lang);
-            });
+                return true;
+            },
 
-            this.locale = lang;
+                /**
+                 * Return Locale for a given Button Group Selector
+                 *
+                 * @return string The locale.
+                 */
+            returnLocale: function () {
+                return this.langSelectors.filter(
+                    function () {
+                        return $(this).parent().hasClass('active');
+                    }
+                ).prop('id');
+            },
 
-            $('.js-language-label').text(lang);
-        },
+            selectLanguage: function (e) {
+                var _this = this,
+                    lang  = e.target.id;
 
-        /**
-         * Update cache for all inputs, and prepare form data for submit
-         */
-        prepareData: function() {
-            var _this = this;
-            this.transInputs.each(function(i, inp) {
-                _this.updateInputCache($(inp));
-            });
-        },
+                this.transInputs.each(
+                    function (i, inp) {
+                        if (_this.settings.editing) {
+                            _this.updateInputCache($(inp));
+                        }
+                        _this.loadLang($(inp), lang);
+                    }
+                );
 
-        /**
-         * Update cache for a single input
-         */
-        updateInputCache: function(inp) {
-            var _this  = this,
-                inpUsr = inp.data('inpUsr'),
-                $_val  = $(inpUsr).val(),
-                $_data = {};  // Create new data
+                this.locale = lang;
 
-            if (inpUsr.hasClass('richTextBox')) {
-                var $_mce = tinymce.get('richtext'+inpUsr.prop('name'));
-                $_val = $_mce.getContent();
-            }
+                $('.js-language-label').text(lang);
+            },
 
-            if (inpUsr.hasClass('simplemde')) {                                          
-                var $codemirror = inpUsr.nextAll('.CodeMirror')[0].CodeMirror;           
-                $_val = $codemirror.getDoc().getValue();                                 
-                $codemirror.save();                                                      
-            }
+                /**
+                 * Update cache for all inputs, and prepare form data for submit
+                 */
+            prepareData: function () {
+                var _this = this;
+                this.transInputs.each(
+                    function (i, inp) {
+                        _this.updateInputCache($(inp));
+                    }
+                );
+            },
 
-            this.langSelectors.each(function(i, btn) {
-                var lang = btn.id;
-                $_data[lang] = (_this.locale == lang) ? $_val : inp.data(lang);
-            });
+                /**
+                 * Update cache for a single input
+                 */
+            updateInputCache: function (inp) {
+                var _this  = this,
+                    inpUsr = inp.data('inpUsr'),
+                    $_val  = $(inpUsr).val(),
+                    $_data = {};  // Create new data
 
-            inp.val(JSON.stringify($_data));
-            inp.data(this.locale, $_val);     // Update single key Mem
-        },
+                if (inpUsr.hasClass('richTextBox')) {
+                    var $_mce = tinymce.get('richtext'+inpUsr.prop('name'));
+                    $_val = $_mce.getContent();
+                }
 
-        /**
-         * Load input translation
-         */
-        loadLang: function(inp, lang) {
-            var inpUsr = inp.data("inpUsr"),
-                _val   = inp.data(lang);
+                if (inpUsr.hasClass('simplemde')) {                                          
+                    var $codemirror = inpUsr.nextAll('.CodeMirror')[0].CodeMirror;           
+                    $_val = $codemirror.getDoc().getValue();                                 
+                    $codemirror.save();                                                      
+                }
 
-            if (!this.settings.editing) {
-                inpUsr.text(_val);
+                this.langSelectors.each(
+                    function (i, btn) {
+                        var lang = btn.id;
+                        $_data[lang] = (_this.locale == lang) ? $_val : inp.data(lang);
+                    }
+                );
 
-            } else {
-                var _mce = tinymce.get('richtext'+inpUsr.prop('name'));
-                if (inpUsr.hasClass('richTextBox') && _mce && _mce.initialized) {
-                    _mce.setContent(_val);
+                inp.val(JSON.stringify($_data));
+                inp.data(this.locale, $_val);     // Update single key Mem
+            },
+
+                /**
+                 * Load input translation
+                 */
+            loadLang: function (inp, lang) {
+                var inpUsr = inp.data("inpUsr"),
+                    _val   = inp.data(lang);
+
+                if (!this.settings.editing) {
+                    inpUsr.text(_val);
+
                 } else {
-                    inpUsr.val(_val);
-                    if (inpUsr.hasClass('simplemde')) {
-                        var $codemirror = inpUsr.nextAll('.CodeMirror')[0].CodeMirror;
-                        $codemirror.getDoc().setValue(inpUsr.val());
+                    var _mce = tinymce.get('richtext'+inpUsr.prop('name'));
+                    if (inpUsr.hasClass('richTextBox') && _mce && _mce.initialized) {
+                        _mce.setContent(_val);
+                    } else {
+                        inpUsr.val(_val);
+                        if (inpUsr.hasClass('simplemde')) {
+                            var $codemirror = inpUsr.nextAll('.CodeMirror')[0].CodeMirror;
+                            $codemirror.getDoc().setValue(inpUsr.val());
+                        }
                     }
                 }
             }
         }
-    });
+    );
 
-    $.fn[ pluginName ] = function( options ) {
-        return this.each( function() {
-            if ( !$.data( this, pluginName ) ) {
-                $.data( this, pluginName, new Plugin(this, options) );
-            }
-        } );
+    $.fn[ pluginName ] = function ( options ) {
+        return this.each(
+            function () {
+                if (!$.data(this, pluginName) ) {
+                      $.data(this, pluginName, new Plugin(this, options));
+                }
+            } 
+        );
     };
 
-} )( jQuery, window, document );
+} )(jQuery, window, document);

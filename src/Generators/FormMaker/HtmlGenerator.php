@@ -20,7 +20,7 @@ class HtmlGenerator
      *
      * @param array  $config
      * @param string $population
-     * @param mixed $custom
+     * @param mixed  $custom
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class HtmlGenerator
      *
      * @param array  $config
      * @param string $population
-     * @param mixed $custom
+     * @param mixed  $custom
      *
      * @return string
      */
@@ -48,7 +48,7 @@ class HtmlGenerator
      *
      * @param array  $config
      * @param string $selected
-     * @param mixed $custom
+     * @param mixed  $custom
      *
      * @return string
      */
@@ -96,7 +96,7 @@ class HtmlGenerator
      *
      * @param array  $config
      * @param string $selected
-     * @param mixed $custom
+     * @param mixed  $custom
      *
      * @return string
      */
@@ -118,7 +118,7 @@ class HtmlGenerator
      *
      * @param array  $config
      * @param string $selected
-     * @param mixed $custom
+     * @param mixed  $custom
      *
      * @return string
      */
@@ -139,7 +139,7 @@ class HtmlGenerator
      * @param array  $config
      * @param string $label
      * @param string $value
-     * @param mixed $custom
+     * @param mixed  $custom
      *
      * @return string
      */
@@ -274,7 +274,7 @@ class HtmlGenerator
     /**
      * Get an items ID
      *
-     * @param  array $config
+     * @param array $config
      *
      * @return string
      */
@@ -319,7 +319,7 @@ class HtmlGenerator
     /**
      * Process custom attributes since there can be many
      *
-     * @param  mixed $custom
+     * @param mixed $custom
      *
      * @return string
      */

@@ -16,12 +16,12 @@ class ExtendedBreadFormFieldsController extends FacilitadorBaseController
     public function getContentBasedOnType(Request $request, $slug, $row, $options = null)
     {
         switch ($row->type) {
-            case 'key-value_to_json':
-                return (new KeyValueJsonContentType($request, $slug, $row, $options))->handle();
-            case 'multiple_images_with_attrs':
-                return (new MultipleImagesWithAttrsContentType($request, $slug, $row, $options))->handle();
-            default:
-                return Controller::getContentBasedOnType($request, $slug, $row, $options);
+        case 'key-value_to_json':
+            return (new KeyValueJsonContentType($request, $slug, $row, $options))->handle();
+        case 'multiple_images_with_attrs':
+            return (new MultipleImagesWithAttrsContentType($request, $slug, $row, $options))->handle();
+        default:
+            return Controller::getContentBasedOnType($request, $slug, $row, $options);
         }
     }
 
@@ -29,7 +29,7 @@ class ExtendedBreadFormFieldsController extends FacilitadorBaseController
     public function insertUpdateData($request, $slug, $rows, $data)
     {
         foreach ($rows as $row) {
-            if ($row->type == 'multiple_images_with_attrs'){
+            if ($row->type == 'multiple_images_with_attrs') {
                 $is_multiple_image_attrs = 1;
                 $fieldName = $row->field;
                 $ex_files = json_decode($data->{$row->field}, true);
@@ -39,25 +39,26 @@ class ExtendedBreadFormFieldsController extends FacilitadorBaseController
 
         $new_data = FacilitadorBaseController::insertUpdateData($request, $slug, $rows, $data);
         
-        if(isset($is_multiple_image_attrs)){
+        if(isset($is_multiple_image_attrs)) {
             foreach ($rows as $row) {
                 $content = $new_data->$fieldName;
-                if ($row->type == 'multiple_images_with_attrs' && !is_null($content) && $ex_files != json_decode($content,1)) {
+                if ($row->type == 'multiple_images_with_attrs' && !is_null($content) && $ex_files != json_decode($content, 1)) {
                     if (isset($data->{$row->field})) {
                         if (!is_null($ex_files)) {
-                            $content = json_encode(array_merge($ex_files, json_decode($content,1)));
+                            $content = json_encode(array_merge($ex_files, json_decode($content, 1)));
                         }
                     }
                     $new_content = $content;
                 }
             }
             
-            if(isset($new_content)) $content = json_decode($new_content,1);
-                else $content = json_decode($content,1);
+            if(isset($new_content)) { $content = json_decode($new_content, 1);
+            } else { $content = json_decode($content, 1);
+            }
             
-            if(isset($content)){
+            if(isset($content)) {
                 foreach ($content as $i => $value) {
-                    if(isset($request->{$fieldName.'_ext'}[$i])){
+                    if(isset($request->{$fieldName.'_ext'}[$i])) {
                         $end_content[] = array_merge($content[$i], $request->{$fieldName.'_ext'}[$i]);
                     }else{
                         $end_content[] = $content[$i];

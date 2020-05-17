@@ -12,18 +12,20 @@ class ElementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('elements', function ($table) {
-            $table->engine = 'InnoDB';
+        Schema::create(
+            'elements', function ($table) {
+                $table->engine = 'InnoDB';
 
-            $table->string('key');
-            $table->string('type');
-            $table->mediumtext('value')->nullable();
-            $table->string('locale');
-            $table->string('locale_group')->nullable();
+                $table->string('key');
+                $table->string('type');
+                $table->mediumtext('value')->nullable();
+                $table->string('locale');
+                $table->string('locale_group')->nullable();
 
-            $table->primary(['key', 'locale']);
-            $table->index(['locale', 'key']);
-        });
+                $table->primary(['key', 'locale']);
+                $table->index(['locale', 'key']);
+            }
+        );
     }
 
     /**

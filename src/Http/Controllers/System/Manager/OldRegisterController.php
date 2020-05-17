@@ -64,7 +64,7 @@ class OldRegisterController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Facilitador\Http\Requests\ModelUpdateRequest  $request
+     * @param  \Facilitador\Http\Requests\ModelUpdateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function update(ModelUpdateRequest $request)
@@ -73,17 +73,17 @@ class OldRegisterController extends Controller
         $modelRelationsResults = $service->getRelationsResults();
         $register = $this->registerService->getInstance();
 
-    //     $request->validate([
-    //         'commit_name'=>'required',
-    //         'commit_price'=> 'required|integer',
-    //         'commit_qty' => 'required|integer'
-    //     ]);
+        //     $request->validate([
+        //         'commit_name'=>'required',
+        //         'commit_price'=> 'required|integer',
+        //         'commit_qty' => 'required|integer'
+        //     ]);
 
-    //     $service = Commit::findOrFail($id);
-    //     $service->commit_name = $request->get('commit_name');
-    //     $service->commit_price = $request->get('commit_price');
-    //     $service->commit_qty = $request->get('commit_qty');
-    //     $service->save();
+        //     $service = Commit::findOrFail($id);
+        //     $service->commit_name = $request->get('commit_name');
+        //     $service->commit_price = $request->get('commit_price');
+        //     $service->commit_qty = $request->get('commit_qty');
+        //     $service->save();
     
         $id = $this->registerService->getId();
         try {

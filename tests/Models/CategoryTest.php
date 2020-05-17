@@ -14,10 +14,12 @@ class CategoryTest extends TestCase
 
         $category = new Category();
 
-        $category->fill([
+        $category->fill(
+            [
             'name' => 'Test Title',
             'slug' => 'test-slug',
-        ]);
+            ]
+        );
 
         $category->save();
 

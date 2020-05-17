@@ -22,12 +22,16 @@ use Facilitador\Facades\Facilitador;
 */
             
 
-Route::group(['as' => 'facilitador.'], function () {
-    Route::namespace('NoRestrict')->group(function () {
-        // Route::group(['middleware' => 'admin.user'], function () {
+Route::group(
+    ['as' => 'facilitador.'], function () {
+        Route::namespace('NoRestrict')->group(
+            function () {
+                // Route::group(['middleware' => 'admin.user'], function () {
 
-        //Asset Routes
-        Route::get('facilitador-assets', ['uses' => 'SitecFeatureController@assets', 'as' => 'facilitador_assets']);
+                //Asset Routes
+                Route::get('facilitador-assets', ['uses' => 'SitecFeatureController@assets', 'as' => 'facilitador_assets']);
 
-    });
-});
+            }
+        );
+    }
+);

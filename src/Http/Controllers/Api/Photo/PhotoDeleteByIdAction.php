@@ -27,7 +27,7 @@ class PhotoDeleteByIdAction
      * PhotoDeleteByIdAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param PhotoManager $photoManager
+     * @param PhotoManager    $photoManager
      */
     public function __construct(ResponseFactory $responseFactory, PhotoManager $photoManager)
     {
@@ -36,13 +36,13 @@ class PhotoDeleteByIdAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {delete} /v1/photos/:photo_id Delete
-     * @apiName Delete
-     * @apiGroup Photos
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-type multipart/form-data
-     * @apiParam {Integer{1..N}} :photo_id Unique resource ID.
+     * @apiVersion        1.0.0
+     * @api               {delete} /v1/photos/:photo_id Delete
+     * @apiName           Delete
+     * @apiGroup          Photos
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-type multipart/form-data
+     * @apiParam          {Integer{1..N}} :photo_id Unique resource ID.
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 204 No Content
      */
@@ -50,7 +50,7 @@ class PhotoDeleteByIdAction
     /**
      * Delete a photo.
      *
-     * @param mixed $id
+     * @param  mixed $id
      * @return JsonResponse
      */
     public function __invoke($id): JsonResponse

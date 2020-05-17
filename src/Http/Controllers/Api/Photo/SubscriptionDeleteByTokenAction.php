@@ -26,7 +26,7 @@ class SubscriptionDeleteByTokenAction
     /**
      * SubscriptionDeleteByTokenAction constructor.
      *
-     * @param ResponseFactory $responseFactory
+     * @param ResponseFactory     $responseFactory
      * @param SubscriptionManager $subscriptionManager
      */
     public function __construct(ResponseFactory $responseFactory, SubscriptionManager $subscriptionManager)
@@ -36,12 +36,12 @@ class SubscriptionDeleteByTokenAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {delete} /v1/subscriptions/:token Delete
-     * @apiName Delete
-     * @apiGroup Subscriptions
-     * @apiHeader {String} Accept application/json
-     * @apiParam {String{1..255}} :token Subscription token.
+     * @apiVersion        1.0.0
+     * @api               {delete} /v1/subscriptions/:token Delete
+     * @apiName           Delete
+     * @apiGroup          Subscriptions
+     * @apiHeader         {String} Accept application/json
+     * @apiParam          {String{1..255}} :token Subscription token.
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 204 No Content
      */
@@ -49,7 +49,7 @@ class SubscriptionDeleteByTokenAction
     /**
      * Delete a subscription.
      *
-     * @param string $token
+     * @param  string $token
      * @return JsonResponse
      */
     public function __invoke(string $token): JsonResponse

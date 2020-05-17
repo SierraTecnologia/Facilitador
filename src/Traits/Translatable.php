@@ -55,15 +55,19 @@ trait Translatable
             $fallback = \Illuminate\Support\Facades\Config::get('app.fallback_locale', 'en');
         }
 
-        $query->with(['translations' => function (Relation $query) use ($locale, $fallback) {
-            $query->where(function ($q) use ($locale, $fallback) {
-                $q->where('locale', $locale);
+        $query->with(
+            ['translations' => function (Relation $query) use ($locale, $fallback) {
+                $query->where(
+                    function ($q) use ($locale, $fallback) {
+                        $q->where('locale', $locale);
 
-                if ($fallback !== false) {
-                    $q->orWhere('locale', $fallback);
-                }
-            });
-        }]);
+                        if ($fallback !== false) {
+                            $q->orWhere('locale', $fallback);
+                        }
+                    }
+                );
+            }]
+        );
     }
 
     /**
@@ -84,23 +88,27 @@ trait Translatable
             $fallback = \Illuminate\Support\Facades\Config::get('app.fallback_locale', 'en');
         }
 
-        $query->with(['translations' => function (Relation $query) use ($locales, $fallback) {
-            if (is_null($locales)) {
-                return;
-            }
-
-            $query->where(function ($q) use ($locales, $fallback) {
-                if (is_array($locales)) {
-                    $q->whereIn('locale', $locales);
-                } else {
-                    $q->where('locale', $locales);
+        $query->with(
+            ['translations' => function (Relation $query) use ($locales, $fallback) {
+                if (is_null($locales)) {
+                    return;
                 }
 
-                if ($fallback !== false) {
-                    $q->orWhere('locale', $fallback);
-                }
-            });
-        }]);
+                $query->where(
+                    function ($q) use ($locales, $fallback) {
+                        if (is_array($locales)) {
+                            $q->whereIn('locale', $locales);
+                        } else {
+                            $q->where('locale', $locales);
+                        }
+
+                        if ($fallback !== false) {
+                            $q->orWhere('locale', $fallback);
+                        }
+                    }
+                );
+            }]
+        );
     }
 
     /**
@@ -254,8 +262,8 @@ trait Translatable
     /**
      * Get entries filtered by translated value.
      *
-     * @example  Class::whereTranslation('title', '=', 'zuhause', ['de', 'iu'])
-     * @example  $query->whereTranslation('title', '=', 'zuhause', ['de', 'iu'])
+     * @example Class::whereTranslation('title', '=', 'zuhause', ['de', 'iu'])
+     * @example $query->whereTranslation('title', '=', 'zuhause', ['de', 'iu'])
      *
      * @param string       $field    {required} the field your looking to find a value in.
      * @param string       $operator {required} value you are looking for or a relation modifier such as LIKE, =, etc.
@@ -278,16 +286,21 @@ trait Translatable
         $self = new static();
         $table = $self->getTable();
 
-        return $query->whereIn($self->getKeyName(), Translation::where('table_name', $table)
-            ->where('column_name', $field)
-            ->where('value', $operator, $value)
-            ->when(!is_null($locales), function ($query) use ($locales) {
-                return $query->whereIn('locale', $locales);
-            })
+        return $query->whereIn(
+            $self->getKeyName(), Translation::where('table_name', $table)
+                ->where('column_name', $field)
+                ->where('value', $operator, $value)
+                ->when(
+                    !is_null($locales), function ($query) use ($locales) {
+                        return $query->whereIn('locale', $locales);
+                    }
+                )
             ->pluck('foreign_key')
-        )->when($default, function ($query) use ($field, $operator, $value) {
-            return $query->orWhere($field, $operator, $value);
-        });
+        )->when(
+            $default, function ($query) use ($field, $operator, $value) {
+                return $query->orWhere($field, $operator, $value);
+            }
+        );
     }
 
     public function hasTranslatorMethod($name)
@@ -312,11 +325,13 @@ trait Translatable
     {
         $this->translations()
             ->whereIn('column_name', $attributes)
-            ->when(!is_null($locales), function ($query) use ($locales) {
-                $method = is_array($locales) ? 'whereIn' : 'where';
+            ->when(
+                !is_null($locales), function ($query) use ($locales) {
+                    $method = is_array($locales) ? 'whereIn' : 'where';
 
-                return $query->$method('locale', $locales);
-            })
+                    return $query->$method('locale', $locales);
+                }
+            )
             ->delete();
     }
 
@@ -324,11 +339,13 @@ trait Translatable
     {
         $this->translations()
             ->where('column_name', $attribute)
-            ->when(!is_null($locales), function ($query) use ($locales) {
-                $method = is_array($locales) ? 'whereIn' : 'where';
+            ->when(
+                !is_null($locales), function ($query) use ($locales) {
+                    $method = is_array($locales) ? 'whereIn' : 'where';
 
-                return $query->$method('locale', $locales);
-            })
+                    return $query->$method('locale', $locales);
+                }
+            )
             ->delete();
     }
 

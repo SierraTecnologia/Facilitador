@@ -30,7 +30,7 @@ class UserCreateAction
      * UserCreateAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param UserManager $userManager
+     * @param UserManager     $userManager
      */
     public function __construct(ResponseFactory $responseFactory, UserManager $userManager)
     {
@@ -39,13 +39,13 @@ class UserCreateAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {post} /v1/users Create
-     * @apiName Create
-     * @apiGroup Users
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-type application/json
-     * @apiParamExample {json} Request-Body-Example:
+     * @apiVersion        1.0.0
+     * @api               {post} /v1/users Create
+     * @apiName           Create
+     * @apiGroup          Users
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-type application/json
+     * @apiParamExample   {json} Request-Body-Example:
      * {
      *     "name": "username",
      *     "email": "username@domain.name",
@@ -66,7 +66,7 @@ class UserCreateAction
     /**
      * Create a user.
      *
-     * @param Request $request
+     * @param  Request $request
      * @return JsonResponse
      */
     public function __invoke(Request $request): JsonResponse

@@ -89,8 +89,8 @@ class Controller extends BaseController
      * Pass controller properties that are used by the layout and views through
      * to the view layer
      *
-     * @param  mixed                $content string view name or an HtmlObject / View object
-     * @param  array                $vars    Key value pairs passed to the content view
+     * @param  mixed $content string view name or an HtmlObject / View object
+     * @param  array $vars    Key value pairs passed to the content view
      * @return Illuminate\View\View
      */
     protected function populateView($content, $vars = [])
@@ -132,8 +132,10 @@ class Controller extends BaseController
     public function controllerName($class = null)
     {
         $name = $class ? $class : get_class($this);
-        $name = preg_replace('#^('.preg_quote('Facilitador\Http\Controllers\Admin\\')
-            .'|'.preg_quote('App\Http\Controllers\Admin\\').')#', '', $name);
+        $name = preg_replace(
+            '#^('.preg_quote('Facilitador\Http\Controllers\Admin\\')
+            .'|'.preg_quote('App\Http\Controllers\Admin\\').')#', '', $name
+        );
 
         return $name;
     }

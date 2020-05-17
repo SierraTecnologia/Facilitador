@@ -51,7 +51,7 @@ abstract class TestCase extends LaravelTestCase
      */
     public function createApplication()
     {
-        $app = require __DIR__.'/../example/bootstrap/app.php';
+        $app = include __DIR__.'/../example/bootstrap/app.php';
 
         $app->make(Kernel::class)->bootstrap();
 
@@ -65,12 +65,16 @@ abstract class TestCase extends LaravelTestCase
      */
     protected function auth()
     {
-        $this->actingAs(Admin::create([
-            'first_name' => 'First',
-            'last_name' => 'Last',
-            'email' => 'test@domain.com',
-            'password' => 'pass',
-        ]), 'facilitador');
+        $this->actingAs(
+            Admin::create(
+                [
+                'first_name' => 'First',
+                'last_name' => 'Last',
+                'email' => 'test@domain.com',
+                'password' => 'pass',
+                ]
+            ), 'facilitador'
+        );
     }
 
     /**
@@ -102,9 +106,11 @@ abstract class TestCase extends LaravelTestCase
      */
     protected function mockDisk()
     {
-        $this->app->singleton('upchuck.disk', function($app) {
-            return $this->disk = new Filesystem(new VfsAdapter(new Vfs));
-        });
+        $this->app->singleton(
+            'upchuck.disk', function ($app) {
+                return $this->disk = new Filesystem(new VfsAdapter(new Vfs));
+            }
+        );
     }
 
     /**
@@ -115,7 +121,8 @@ abstract class TestCase extends LaravelTestCase
      */
     protected function createUploadedFile($filename = null)
     {
-        if (!$filename) $filename = 'test.jpg';
+        if (!$filename) { $filename = 'test.jpg';
+        }
 
         // Create an image in the tmp directory where Upchuck is expecting it
         $tmp_dir = ini_get('upload_tmp_dir') ?: sys_get_temp_dir();
@@ -144,7 +151,8 @@ abstract class TestCase extends LaravelTestCase
      */
     protected function createVirtualFile($filename = null)
     {
-        if (!$filename) $filename = 'test.jpg';
+        if (!$filename) { $filename = 'test.jpg';
+        }
 
         // Make image
         $img = imagecreatetruecolor(20, 20);
@@ -155,10 +163,11 @@ abstract class TestCase extends LaravelTestCase
     }
 
     /**
-	 * Clear the cache after every test
-	 */
-	public function tearDown() {
-		Cache::flush();
+     * Clear the cache after every test
+     */
+    public function tearDown()
+    {
+        Cache::flush();
         parent::tearDown();
-	}
+    }
 }

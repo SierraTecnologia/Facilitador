@@ -29,23 +29,27 @@ class AddBreadMenuItem
         if (\Illuminate\Support\Facades\Config::get('sitec.facilitador.bread.add_menu_item') && file_exists(base_path('routes/web.php'))) {
             $menu = Facilitador::model('Menu')->where('name', \Illuminate\Support\Facades\Config::get('sitec.facilitador.bread.default_menu'))->firstOrFail();
 
-            $menuItem = Facilitador::model('MenuItem')->firstOrNew([
+            $menuItem = Facilitador::model('MenuItem')->firstOrNew(
+                [
                 'menu_id' => $menu->id,
                 'title'   => $bread->dataType->getTranslatedAttribute('display_name_plural'),
                 'url'     => '',
                 'route'   => 'facilitador.'.$bread->dataType->slug.'.index',
-            ]);
+                ]
+            );
 
             $order = Facilitador::model('MenuItem')->highestOrderMenuItem();
 
             if (!$menuItem->exists) {
-                $menuItem->fill([
+                $menuItem->fill(
+                    [
                     'target'     => '_self',
                     'icon_class' => $bread->dataType->icon,
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => $order,
-                ])->save();
+                    ]
+                )->save();
             }
         }
     }

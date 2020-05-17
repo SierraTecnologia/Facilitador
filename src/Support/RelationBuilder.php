@@ -35,7 +35,7 @@ class RelationBuilder
      * Generate the entity attribute relation closure.
      *
      * @param \Illuminate\Database\Eloquent\Model $entity
-     * @param \Facilitador\Models\Attribute $attribute
+     * @param \Facilitador\Models\Attribute       $attribute
      *
      * @return \Closure
      */
@@ -46,18 +46,20 @@ class RelationBuilder
         // This will return a closure fully binded to the current entity instance,
         // which will help us to simulate any relation as if it was made in the
         // original entity class definition using a function statement.
-        return Closure::bind(function () use ($entity, $attribute, $method) {
-            $relation = $entity->{$method}(Attribute::getTypeModel($attribute->getAttribute('type')), 'entity_id', $entity->getKeyName());
+        return Closure::bind(
+            function () use ($entity, $attribute, $method) {
+                $relation = $entity->{$method}(Attribute::getTypeModel($attribute->getAttribute('type')), 'entity_id', $entity->getKeyName());
 
-            // Since an attribute could be attached to multiple entities, then values could have
-            // same entity ID, but for different entity types, so we need to add type where
-            // clause to fetch only values related to the given entity ID + entity type.
-            $relation->where('entity_type', $entity->getMorphClass());
+                // Since an attribute could be attached to multiple entities, then values could have
+                // same entity ID, but for different entity types, so we need to add type where
+                // clause to fetch only values related to the given entity ID + entity type.
+                $relation->where('entity_type', $entity->getMorphClass());
 
-            // We add a where clause in order to fetch only the elements that are
-            // related to the given attribute. If no condition is set, it will
-            // fetch all the value rows related to the current entity.
-            return $relation->where($attribute->getForeignKey(), $attribute->getKey());
-        }, $entity, get_class($entity));
+                // We add a where clause in order to fetch only the elements that are
+                // related to the given attribute. If no condition is set, it will
+                // fetch all the value rows related to the current entity.
+                return $relation->where($attribute->getForeignKey(), $attribute->getKey());
+            }, $entity, get_class($entity)
+        );
     }
 }

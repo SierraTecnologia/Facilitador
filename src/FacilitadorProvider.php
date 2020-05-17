@@ -327,7 +327,8 @@ class FacilitadorProvider extends ServiceProvider
                 foreach ($dataTypes as $dataType) {
                     $policyClass = BasePolicy::class;
                     if (isset($dataType->policy_name) && $dataType->policy_name !== ''
-                        && class_exists($dataType->policy_name)) {
+                        && class_exists($dataType->policy_name)
+                    ) {
                         $policyClass = $dataType->policy_name;
                     }
 
@@ -342,9 +343,11 @@ class FacilitadorProvider extends ServiceProvider
 
         // Gates
         foreach ($this->gates as $gate) {
-            Gate::define($gate, function ($user) use ($gate) {
-                return $user->hasPermission($gate);
-            });
+            Gate::define(
+                $gate, function ($user) use ($gate) {
+                    return $user->hasPermission($gate);
+                }
+            );
         }
     }
 

@@ -29,7 +29,7 @@ class PhotoCreateAction
      * PhotoCreateAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param PhotoManager $photoManager
+     * @param PhotoManager    $photoManager
      */
     public function __construct(ResponseFactory $responseFactory, PhotoManager $photoManager)
     {
@@ -38,16 +38,16 @@ class PhotoCreateAction
     }
 
     /**
-     * @apiVersion 1.0.0
-     * @api {post} /v1/photos Create
-     * @apiName Create
-     * @apiGroup Photos
-     * @apiHeader {String} Accept application/json
-     * @apiHeader {String} Content-type multipart/form-data
-     * @apiParam {File{1KB..20MB}=JPEG} file Photo file.
-     * @apiParam {Object} location Photo location.
-     * @apiParam {Number{-90-90}} location.latitude Photo location latitude.
-     * @apiParam {Number{-180-180}} location.longitude Photo location longitude.
+     * @apiVersion        1.0.0
+     * @api               {post} /v1/photos Create
+     * @apiName           Create
+     * @apiGroup          Photos
+     * @apiHeader         {String} Accept application/json
+     * @apiHeader         {String} Content-type multipart/form-data
+     * @apiParam          {File{1KB..20MB}=JPEG} file Photo file.
+     * @apiParam          {Object} location Photo location.
+     * @apiParam          {Number{-90-90}} location.latitude Photo location latitude.
+     * @apiParam          {Number{-180-180}} location.longitude Photo location longitude.
      * @apiSuccessExample {json} Success-Response:
      * HTTP/1.1 201 Created
      * {
@@ -86,7 +86,7 @@ class PhotoCreateAction
     /**
      * Create a photo.
      *
-     * @param Request $request
+     * @param  Request $request
      * @return JsonResponse
      */
     public function __invoke(Request $request): JsonResponse

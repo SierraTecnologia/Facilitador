@@ -19,7 +19,7 @@ class PaginatedResource extends ResourceCollection
     /**
      * PaginatedResource constructor.
      *
-     * @param mixed $resource
+     * @param mixed           $resource
      * @param string|callable $wrapper
      */
     public function __construct($resource, $wrapper)
@@ -38,9 +38,11 @@ class PaginatedResource extends ResourceCollection
         if (is_callable($wrapper)) {
             $data = $wrapper($this->collection);
         } elseif (class_exists($wrapper)) {
-            $data = $this->collection->map(function ($item) use ($wrapper) {
-                return new $wrapper($item);
-            });
+            $data = $this->collection->map(
+                function ($item) use ($wrapper) {
+                    return new $wrapper($item);
+                }
+            );
         }
 
         return [

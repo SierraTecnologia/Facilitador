@@ -26,18 +26,20 @@ class FacilitadorDatabaseController extends Controller
 
         $dataTypes = Facilitador::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
 
-        $tables = array_map(function ($table) use ($dataTypes) {
-            $table = Str::replaceFirst(DB::getTablePrefix(), '', $table);
+        $tables = array_map(
+            function ($table) use ($dataTypes) {
+                $table = Str::replaceFirst(DB::getTablePrefix(), '', $table);
 
-            $table = [
+                $table = [
                 'prefix'     => DB::getTablePrefix(),
                 'name'       => $table,
                 'slug'       => $dataTypes[$table]['slug'] ?? null,
                 'dataTypeId' => $dataTypes[$table]['id'] ?? null,
-            ];
+                ];
 
-            return (object) $table;
-        }, SchemaManager::listTableNames());
+                return (object) $table;
+            }, SchemaManager::listTableNames()
+        );
 
         return Facilitador::view('facilitador::tools.database.index')->with(compact('dataTypes', 'tables'));
     }
@@ -96,17 +98,19 @@ class FacilitadorDatabaseController extends Controller
 
                 Artisan::call('facilitador:make:model', $params);
             } elseif (isset($request->create_migration) && $request->create_migration == 'on') {
-                Artisan::call('make:migration', [
+                Artisan::call(
+                    'make:migration', [
                     'name'    => 'create_'.$table->name.'_table',
                     '--table' => $table->name,
-                ]);
+                    ]
+                );
             }
 
             event(new TableAdded($table));
 
             return redirect()
-               ->route('facilitador.database.index')
-               ->with($this->alertSuccess(__('facilitador::database.success_create_table', ['table' => $table->name])));
+                ->route('facilitador.database.index')
+                ->with($this->alertSuccess(__('facilitador::database.success_create_table', ['table' => $table->name])));
         } catch (Exception $e) {
             return back()->with($this->alertException($e))->withInput();
         }
@@ -157,8 +161,8 @@ class FacilitadorDatabaseController extends Controller
         }
 
         return redirect()
-               ->route('facilitador.database.index')
-               ->with($this->alertSuccess(__('facilitador::database.success_create_table', ['table' => $table['name']])));
+            ->route('facilitador.database.index')
+            ->with($this->alertSuccess(__('facilitador::database.success_create_table', ['table' => $table['name']])));
     }
 
     protected function prepareDbManager($action, $table = '')
@@ -175,11 +179,13 @@ class FacilitadorDatabaseController extends Controller
             $db->table = new Table('New Table');
 
             // Add prefilled columns
-            $db->table->addColumn('id', 'integer', [
+            $db->table->addColumn(
+                'id', 'integer', [
                 'unsigned'      => true,
                 'notnull'       => true,
                 'autoincrement' => true,
-            ]);
+                ]
+            );
 
             $db->table->setPrimaryKey(['id'], 'primary');
 

@@ -10,7 +10,7 @@ use App\Models\Model;
  * @property int id
  * @property string value
  * @property Collection posts
- * @package App\Models
+ * @package  App\Models
  */
 class UserMetaEntity extends Model
 {

@@ -19,7 +19,7 @@ use Support\Recursos\Cacheable\CacheableEloquent;
  * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Models\AttributeEntity whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Models\AttributeEntity whereEntityType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Facilitador\Models\AttributeEntity whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @mixin  \Eloquent
  */
 class AttributeEntity extends Model
 {

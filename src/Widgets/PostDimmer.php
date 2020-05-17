@@ -24,16 +24,20 @@ class PostDimmer extends BaseDimmer
         $count = Facilitador::model('Post')->count();
         $string = trans_choice('facilitador::dimmer.post', $count);
 
-        return view('facilitador::dimmer', array_merge($this->config, [
-            'icon'   => 'facilitador-news',
-            'title'  => "{$count} {$string}",
-            'text'   => __('facilitador::dimmer.post_text', ['count' => $count, 'string' => Str::lower($string)]),
-            'button' => [
+        return view(
+            'facilitador::dimmer', array_merge(
+                $this->config, [
+                'icon'   => 'facilitador-news',
+                'title'  => "{$count} {$string}",
+                'text'   => __('facilitador::dimmer.post_text', ['count' => $count, 'string' => Str::lower($string)]),
+                'button' => [
                 'text' => __('facilitador::dimmer.post_link_text'),
                 'link' => route('facilitador.posts.index'),
-            ],
-            'image' => facilitador_asset('images/widget-backgrounds/02.jpg'),
-        ]));
+                ],
+                'image' => facilitador_asset('images/widget-backgrounds/02.jpg'),
+                ]
+            )
+        );
     }
 
     /**

@@ -27,7 +27,7 @@ class InfoGetAction
      * InfoGetAction constructor.
      *
      * @param ResponseFactory $responseFactory
-     * @param Config $config
+     * @param Config          $config
      */
     public function __construct(ResponseFactory $responseFactory, Config $config)
     {
@@ -40,9 +40,11 @@ class InfoGetAction
      */
     public function __invoke()
     {
-        return $this->responseFactory->json([
+        return $this->responseFactory->json(
+            [
             'name' => $this->config->get('app.name'),
             'version' => '1',
-        ]);
+            ]
+        );
     }
 }

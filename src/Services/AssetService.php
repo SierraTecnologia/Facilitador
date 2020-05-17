@@ -22,7 +22,7 @@ class AssetService
 
     public function __construct()
     {
-        $this->mimeTypes = require base_path('config'.DIRECTORY_SEPARATOR.'mime.php');
+        $this->mimeTypes = include base_path('config'.DIRECTORY_SEPARATOR.'mime.php');
     }
 
     /**
@@ -35,22 +35,26 @@ class AssetService
     public function asPublic($encFileName)
     {
         try {
-            return Cache::remember($encFileName.'_asPublic', 3600, function () use ($encFileName) {
-                $fileName = Crypto::url_decode($encFileName);
-                $filePath = $this->getFilePath($fileName);
+            return Cache::remember(
+                $encFileName.'_asPublic', 3600, function () use ($encFileName) {
+                    $fileName = Crypto::url_decode($encFileName);
+                    $filePath = $this->getFilePath($fileName);
 
-                $fileTool = new SplFileInfo($filePath);
-                $ext = $fileTool->getExtension();
-                $contentType = $this->getMimeType($ext);
+                    $fileTool = new SplFileInfo($filePath);
+                    $ext = $fileTool->getExtension();
+                    $contentType = $this->getMimeType($ext);
 
-                $headers = ['Content-Type' => $contentType];
-                $fileContent = $this->getFileContent($fileName, $contentType, $ext);
+                    $headers = ['Content-Type' => $contentType];
+                    $fileContent = $this->getFileContent($fileName, $contentType, $ext);
 
-                return Response::make($fileContent, 200, [
-                    'Content-Type' => $contentType,
-                    'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
-                ]);
-            });
+                    return Response::make(
+                        $fileContent, 200, [
+                        'Content-Type' => $contentType,
+                        'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
+                        ]
+                    );
+                }
+            );
         } catch (Exception $e) {
             return Response::make('file not found');
         }
@@ -66,32 +70,36 @@ class AssetService
     public function asPreview($encFileName, Filesystem $fileSystem)
     {
         try {
-            return Cache::remember($encFileName.'_preview', 3600, function () use ($encFileName, $fileSystem) {
-                $fileName = Crypto::url_decode($encFileName);
+            return Cache::remember(
+                $encFileName.'_preview', 3600, function () use ($encFileName, $fileSystem) {
+                    $fileName = Crypto::url_decode($encFileName);
 
-                if (\Illuminate\Support\Facades\Config::get('cms.storage-location') === 'local' || \Illuminate\Support\Facades\Config::get('cms.storage-location') === null) {
-                    $filePath = storage_path('app/'.$fileName);
-                    $contentType = $fileSystem->mimeType($filePath);
-                    $ext = strtoupper($fileSystem->extension($filePath));
-                } else {
-                    $filePath = Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->url($fileName);
-                    $fileTool = new SplFileInfo($filePath);
-                    $ext = $fileTool->getExtension();
-                    $contentType = $this->getMimeType($ext);
+                    if (\Illuminate\Support\Facades\Config::get('cms.storage-location') === 'local' || \Illuminate\Support\Facades\Config::get('cms.storage-location') === null) {
+                        $filePath = storage_path('app/'.$fileName);
+                        $contentType = $fileSystem->mimeType($filePath);
+                        $ext = strtoupper($fileSystem->extension($filePath));
+                    } else {
+                        $filePath = Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->url($fileName);
+                        $fileTool = new SplFileInfo($filePath);
+                        $ext = $fileTool->getExtension();
+                        $contentType = $this->getMimeType($ext);
+                    }
+
+                    if (stristr($contentType, 'image')) {
+                        $headers = ['Content-Type' => $contentType];
+                        $fileContent = $this->getFileContent($fileName, $contentType, $ext);
+                    } else {
+                        $fileContent = file_get_contents($this->generateImage($ext));
+                    }
+
+                    return Response::make(
+                        $fileContent, 200, [
+                        'Content-Type' => $contentType,
+                        'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
+                        ]
+                    );
                 }
-
-                if (stristr($contentType, 'image')) {
-                    $headers = ['Content-Type' => $contentType];
-                    $fileContent = $this->getFileContent($fileName, $contentType, $ext);
-                } else {
-                    $fileContent = file_get_contents($this->generateImage($ext));
-                }
-
-                return Response::make($fileContent, 200, [
-                    'Content-Type' => $contentType,
-                    'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
-                ]);
-            });
+            );
         } catch (Exception $e) {
             return Response::make('file not found');
         }
@@ -108,23 +116,27 @@ class AssetService
     public function asDownload($encFileName, $encRealFileName)
     {
         try {
-            return Cache::remember($encFileName.'_asDownload', 3600, function () use ($encFileName, $encRealFileName) {
-                $fileName = Crypto::url_decode($encFileName);
-                $realFileName = Crypto::url_decode($encRealFileName);
-                $filePath = $this->getFilePath($fileName);
+            return Cache::remember(
+                $encFileName.'_asDownload', 3600, function () use ($encFileName, $encRealFileName) {
+                    $fileName = Crypto::url_decode($encFileName);
+                    $realFileName = Crypto::url_decode($encRealFileName);
+                    $filePath = $this->getFilePath($fileName);
 
-                $fileTool = new SplFileInfo($filePath);
-                $ext = $fileTool->getExtension();
-                $contentType = $this->getMimeType($ext);
+                    $fileTool = new SplFileInfo($filePath);
+                    $ext = $fileTool->getExtension();
+                    $contentType = $this->getMimeType($ext);
 
-                $headers = ['Content-Type' => $contentType];
-                $fileContent = $this->getFileContent($realFileName, $contentType, $ext);
+                    $headers = ['Content-Type' => $contentType];
+                    $fileContent = $this->getFileContent($realFileName, $contentType, $ext);
 
-                return Response::make($fileContent, 200, [
-                    'Content-Type' => $contentType,
-                    'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
-                ]);
-            });
+                    return Response::make(
+                        $fileContent, 200, [
+                        'Content-Type' => $contentType,
+                        'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
+                        ]
+                    );
+                }
+            );
         } catch (Exception $e) {
             Cms::notification('We encountered an error with that file', 'danger');
 
@@ -159,7 +171,7 @@ class AssetService
             /**
              * Se nao existir o arquivo no thema, verifica no resource normal
              */
-            if (!file_exists($filePath)){
+            if (!file_exists($filePath)) {
                 $filePath = base_path('resources/assets/'.$path);
             }
 
@@ -201,7 +213,7 @@ class AssetService
     /**
      * Get a file's path
      *
-     * @param  string $fileName
+     * @param string $fileName
      *
      * @return string
      */
@@ -219,9 +231,9 @@ class AssetService
     /**
      * Get a files content
      *
-     * @param  string $fileName
-     * @param  string $contentType
-     * @param  string $ext
+     * @param string $fileName
+     * @param string $contentType
+     * @param string $ext
      *
      * @return mixed
      */
@@ -238,9 +250,11 @@ class AssetService
         if (stristr($fileName, 'image') || stristr($contentType, 'image')) {
             if (! is_null(\Illuminate\Support\Facades\Config::get('cms.preview-image-size'))) {
                 $img = Image::make($fileContent);
-                $img->resize(\Illuminate\Support\Facades\Config::get('cms.preview-image-size', 800), null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                $img->resize(
+                    \Illuminate\Support\Facades\Config::get('cms.preview-image-size', 800), null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    }
+                );
 
                 return $img->encode($ext);
             }

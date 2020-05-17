@@ -14,10 +14,14 @@ use Facilitador\Facades\Facilitador;
 
 class FacilitadorMediaController extends Controller
 {
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $filesystem;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $directory = '';
 
     public function __construct()
@@ -234,14 +238,18 @@ class FacilitadorMediaController extends Controller
             } else {
                 $name = str_replace('{uid}', Auth::user()->getKey(), $request->get('filename'));
                 if (Str::contains($name, '{date:')) {
-                    $name = preg_replace_callback('/\{date:([^\/\}]*)\}/', function ($date) {
-                        return \Carbon\Carbon::now()->format($date[1]);
-                    }, $name);
+                    $name = preg_replace_callback(
+                        '/\{date:([^\/\}]*)\}/', function ($date) {
+                            return \Carbon\Carbon::now()->format($date[1]);
+                        }, $name
+                    );
                 }
                 if (Str::contains($name, '{random:')) {
-                    $name = preg_replace_callback('/\{random:([0-9]+)\}/', function ($random) {
-                        return Str::random($random[1]);
-                    }, $name);
+                    $name = preg_replace_callback(
+                        '/\{random:([0-9]+)\}/', function ($random) {
+                            return Str::random($random[1]);
+                        }, $name
+                    );
                 }
             }
 
@@ -293,11 +301,10 @@ class FacilitadorMediaController extends Controller
                                     }
                                 );
                             }
-                            if (
-                                property_exists($details, 'watermark') &&
-                                property_exists($details->watermark, 'source') &&
-                                property_exists($thumbnail_data, 'watermark') &&
-                                $thumbnail_data->watermark
+                            if (property_exists($details, 'watermark') 
+                                && property_exists($details->watermark, 'source') 
+                                && property_exists($thumbnail_data, 'watermark') 
+                                && $thumbnail_data->watermark
                             ) {
                                 $thumbnail = $this->addWatermarkToImage($thumbnail, $details->watermark);
                             }
@@ -369,9 +376,11 @@ class FacilitadorMediaController extends Controller
         $watermark = Image::make(Storage::disk($this->filesystem)->path($options->source));
         // Resize watermark
         $width = $image->width() * (($options->size ?? 15) / 100);
-        $watermark->resize($width, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        $watermark->resize(
+            $width, null, function ($constraint) {
+                $constraint->aspectRatio();
+            }
+        );
 
         return $image->insert(
             $watermark,

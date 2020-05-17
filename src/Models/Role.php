@@ -14,8 +14,8 @@ class Role extends Model
         $userModel = Facilitador::modelClass('User');
 
         return $this->belongsToMany($userModel, 'user_roles')
-                    ->select(app($userModel)->getTable().'.*')
-                    ->union($this->hasMany($userModel))->getQuery();
+            ->select(app($userModel)->getTable().'.*')
+            ->union($this->hasMany($userModel))->getQuery();
     }
 
     public function permissions()

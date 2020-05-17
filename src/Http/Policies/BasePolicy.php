@@ -33,10 +33,14 @@ class BasePolicy
         if (count($arguments) < 2) {
             throw new \InvalidArgumentException('not enough arguments');
         }
-        /** @var \Facilitador\Contracts\User $user */
+        /**
+ * @var \Facilitador\Contracts\User $user 
+*/
         $user = $arguments[0];
 
-        /** @var $model */
+        /**
+ * @var $model 
+*/
         $model = $arguments[1];
 
         return $this->checkPermission($user, $model, $name);

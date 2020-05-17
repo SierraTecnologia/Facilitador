@@ -71,13 +71,15 @@ class Translator implements ArrayAccess, JsonSerializable
                 $translation = FacilitadorFacade::model('Translation');
             }
 
-            $translation->fill([
+            $translation->fill(
+                [
                 'table_name'  => $this->model->getTable(),
                 'column_name' => $key,
                 'foreign_key' => $this->model->getKey(),
                 'value'       => $attribute['value'],
                 'locale'      => $this->locale,
-            ]);
+                ]
+            );
 
             $savings[] = $translation->save();
 
@@ -236,13 +238,15 @@ class Translator implements ArrayAccess, JsonSerializable
         }
 
         $translation = FacilitadorFacade::model('Translation');
-        $translation->fill([
+        $translation->fill(
+            [
             'table_name'  => $this->model->getTable(),
             'column_name' => $key,
             'foreign_key' => $this->model->getKey(),
             'value'       => $value,
             'locale'      => $this->locale,
-        ]);
+            ]
+        );
         $translation->save();
 
         $this->model->getRelation('translations')->add($translation);
@@ -282,9 +286,13 @@ class Translator implements ArrayAccess, JsonSerializable
             ->where('locale', $locale)
             ->delete();
 
-        $this->model->setRelation('translations', $translations->filter(function ($translation) use ($key, $locale) {
-            return $translation->column_name != $key && $translation->locale != $locale;
-        }));
+        $this->model->setRelation(
+            'translations', $translations->filter(
+                function ($translation) use ($key, $locale) {
+                    return $translation->column_name != $key && $translation->locale != $locale;
+                }
+            )
+        );
 
         $this->attributes[$key]['value'] = null;
         $this->attributes[$key]['exists'] = false;
@@ -320,8 +328,10 @@ class Translator implements ArrayAccess, JsonSerializable
 
     public function jsonSerialize()
     {
-        return array_map(function ($array) {
-            return $array['value'];
-        }, $this->getRawAttributes());
+        return array_map(
+            function ($array) {
+                return $array['value'];
+            }, $this->getRawAttributes()
+        );
     }
 }

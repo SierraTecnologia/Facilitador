@@ -36,9 +36,11 @@ class Commands extends Base
      */
     public function index()
     {
-        return $this->populateView('facilitador::tools.commands.index', [
+        return $this->populateView(
+            'facilitador::tools.commands.index', [
             'commands' => Command::all(),
-        ]);
+            ]
+        );
     }
 
     /**

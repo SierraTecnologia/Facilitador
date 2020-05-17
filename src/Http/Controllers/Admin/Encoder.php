@@ -14,7 +14,7 @@ class Encoder extends Controller
     /**
      * Get the status of an encode
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Encoding
      */
     public function progress($id)

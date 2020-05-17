@@ -62,7 +62,8 @@ class RegisterController extends Controller
 
         $data['captcha'] = $this->captchaCheck();
 
-        $validator = Validator::make($data,
+        $validator = Validator::make(
+            $data,
             [
                 'first_name'            => 'required',
                 'last_name'             => 'required',
@@ -97,7 +98,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user =  User::create([
+        $user =  User::create(
+            [
             'name' => $data['name'],
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -106,7 +108,8 @@ class RegisterController extends Controller
             'token' => str_random(64),
             'confirmation_token' => str_limit(md5($data['email'] . str_random()), 25, ''),
             'activated' => !\Illuminate\Support\Facades\Config::get('settings.activation')
-        ]);
+            ]
+        );
 
         if (isset($data['avatar'])) {
             $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
@@ -124,7 +127,7 @@ class RegisterController extends Controller
      * The user has been registered.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\User                $user
+     * @param  \App\Models\User         $user
      * @return void
      */
     protected function registered(Request $request, $user)

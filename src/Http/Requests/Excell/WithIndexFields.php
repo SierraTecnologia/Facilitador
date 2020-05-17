@@ -15,13 +15,15 @@ trait WithIndexFields
      */
     public function indexFields(Resource $resource): array
     {
-        return $this->resourceFields($resource)->map(function (Field $field) {
-            if (!$field->computed()) {
-                return $field->attribute;
-            }
+        return $this->resourceFields($resource)->map(
+            function (Field $field) {
+                if (!$field->computed()) {
+                    return $field->attribute;
+                }
 
-            return $field->name;
-        })->unique()->all();
+                return $field->name;
+            }
+        )->unique()->all();
     }
 
     /**

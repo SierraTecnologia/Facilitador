@@ -13,10 +13,12 @@ class AddRouteToMenuItemsTable extends Migration
      */
     public function up()
     {
-        Schema::table('menu_items', function (Blueprint $table) {
-            $table->string('route')->nullable()->default(null);
-            $table->text('parameters')->nullable()->default(null);
-        });
+        Schema::table(
+            'menu_items', function (Blueprint $table) {
+                $table->string('route')->nullable()->default(null);
+                $table->text('parameters')->nullable()->default(null);
+            }
+        );
     }
 
     /**
@@ -27,15 +29,19 @@ class AddRouteToMenuItemsTable extends Migration
     public function down()
     {
         if (Schema::hasColumn('menu_items', 'route')) {
-            Schema::table('menu_items', function (Blueprint $table) {
-                $table->dropColumn('route');
-            });
+            Schema::table(
+                'menu_items', function (Blueprint $table) {
+                    $table->dropColumn('route');
+                }
+            );
         }
 
         if (Schema::hasColumn('menu_items', 'parameters')) {
-            Schema::table('menu_items', function (Blueprint $table) {
-                $table->dropColumn('parameters');
-            });
+            Schema::table(
+                'menu_items', function (Blueprint $table) {
+                    $table->dropColumn('parameters');
+                }
+            );
         }
     }
 }

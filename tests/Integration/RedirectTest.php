@@ -33,11 +33,13 @@ class RedirectTest extends TestCase
         $from = 'test';
         $to = '/test-redirected';
 
-        $response = $this->post('admin/redirect-rules/create', [
+        $response = $this->post(
+            'admin/redirect-rules/create', [
             'from' => $from,
             'to' => $to,
             'code' => 301,
-        ]);
+            ]
+        );
 
         $redirect = RedirectRule::first();
         $this->assertEquals(1, $redirect->id);

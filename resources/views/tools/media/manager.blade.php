@@ -431,9 +431,9 @@
         data: function() {
             return {
                 current_folder: this.basePath,
-		  		selected_files: [],
+                  selected_files: [],
                 files: [],
-		  		is_loading: true,
+                  is_loading: true,
                 hidden_element: null,
                 expanded: true,
                 modals: {
@@ -466,8 +466,8 @@
                     if (vm.preSelect && data.length > 0) {
                         vm.selected_files.push(data[0]);
                     }
-					vm.is_loading = false;
-				});
+                    vm.is_loading = false;
+                });
             },
             selectFile: function(file, e) {
                 if ((!e.ctrlKey && !e.metaKey && !e.shiftKey) || !this.allowMultiSelect) {
@@ -544,7 +544,7 @@
                 }
 
                 return false;
-			},
+            },
             getCurrentPath: function() {
                 var path = this.current_folder.replace(this.basePath, '').split('/').filter(function (el) {
                     return el != '';
@@ -645,13 +645,13 @@
                     new_filename: object.target.value,
                     _token: '{{ csrf_token() }}'
                 }, function(data){
-					if (data.success == true) {
-						toastr.success('{{ __('facilitador::media.success_renamed') }}', "{{ __('facilitador::generic.sweet_success') }}");
-						vm.getFiles();
-					} else {
-						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
-					}
-				});
+                    if (data.success == true) {
+                        toastr.success('{{ __('facilitador::media.success_renamed') }}', "{{ __('facilitador::generic.sweet_success') }}");
+                        vm.getFiles();
+                    } else {
+                        toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
+                    }
+                });
             },
             createFolder: function(e) {
                 if (!this.allowCreateFolder) {
@@ -660,15 +660,15 @@
                 var vm = this;
                 var name = this.modals.new_folder.name;
                 $.post('{{ route('facilitador.media.new_folder') }}', { new_folder: vm.current_folder+'/'+name, _token: '{{ csrf_token() }}' }, function(data) {
-					if(data.success == true){
-						toastr.success('{{ __('facilitador::generic.successfully_created') }} ' + name, "{{ __('facilitador::generic.sweet_success') }}");
-						vm.getFiles();
-					} else {
-						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
-					}
+                    if(data.success == true){
+                        toastr.success('{{ __('facilitador::generic.successfully_created') }} ' + name, "{{ __('facilitador::generic.sweet_success') }}");
+                        vm.getFiles();
+                    } else {
+                        toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
+                    }
                     vm.modals.new_folder.name = '';
-					$('#create_dir_modal_'+vm._uid).modal('hide');
-				});
+                    $('#create_dir_modal_'+vm._uid).modal('hide');
+                });
             },
             deleteFiles: function() {
                 if (!this.allowDelete) {
@@ -680,16 +680,16 @@
                     files: vm.selected_files,
                     _token: '{{ csrf_token() }}'
                 }, function(data){
-					if(data.success == true){
-						toastr.success('', "{{ __('facilitador::generic.sweet_success') }}");
-						vm.getFiles();
-						$('#confirm_delete_modal_'+vm._uid).modal('hide');
-					} else {
-						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
+                    if(data.success == true){
+                        toastr.success('', "{{ __('facilitador::generic.sweet_success') }}");
                         vm.getFiles();
-						$('#confirm_delete_modal_'+vm._uid).modal('hide');
-					}
-				});
+                        $('#confirm_delete_modal_'+vm._uid).modal('hide');
+                    } else {
+                        toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
+                        vm.getFiles();
+                        $('#confirm_delete_modal_'+vm._uid).modal('hide');
+                    }
+                });
             },
             moveFiles: function(e) {
                 if (!this.allowMove) {
@@ -701,21 +701,21 @@
                     return;
                 }
                 $('#move_files_modal_'+vm._uid).modal('hide');
-				$.post('{{ route('facilitador.media.move') }}', {
+                $.post('{{ route('facilitador.media.move') }}', {
                     path: vm.current_folder,
                     files: vm.selected_files,
                     destination: destination,
                     _token: '{{ csrf_token() }}'
                 }, function(data){
-					if(data.success == true){
-						toastr.success('{{ __('facilitador::media.success_moved') }}', "{{ __('facilitador::generic.sweet_success') }}");
-						vm.getFiles();
-					} else {
-						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
-					}
+                    if(data.success == true){
+                        toastr.success('{{ __('facilitador::media.success_moved') }}', "{{ __('facilitador::generic.sweet_success') }}");
+                        vm.getFiles();
+                    } else {
+                        toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
+                    }
 
                     vm.modals.move_files.destination = '';
-				});
+                });
             },
             crop: function(mode) {
                 if (!this.allowCrop) {
@@ -723,40 +723,40 @@
                 }
                 if (!mode) {
                     if (!window.confirm('{{ __('facilitador::media.crop_override_confirm') }}')) {
-						return;
-					}
+                        return;
+                    }
                 }
 
                 croppedData.originImageName = this.selected_file.name;
-				croppedData.upload_path = this.current_folder;
-				croppedData.createMode = mode;
+                croppedData.upload_path = this.current_folder;
+                croppedData.createMode = mode;
 
                 var vm = this;
                 var postData = Object.assign(croppedData, { _token: '{{ csrf_token() }}' });
-				$.post('{{ route('facilitador.media.crop') }}', postData, function(data) {
-					if (data.success) {
-						toastr.success(data.message);
-						vm.getFiles();
-						$('#crop_modal_'+vm._uid).modal('hide');
-					} else {
-						toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
-					}
-				});
+                $.post('{{ route('facilitador.media.crop') }}', postData, function(data) {
+                    if (data.success) {
+                        toastr.success(data.message);
+                        vm.getFiles();
+                        $('#crop_modal_'+vm._uid).modal('hide');
+                    } else {
+                        toastr.error(data.error, "{{ __('facilitador::generic.whoopsie') }}");
+                    }
+                });
             },
             bytesToSize: function(bytes) {
-				var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-				if (bytes == 0) return '0 Bytes';
-				var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-				return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-			},
+                var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                if (bytes == 0) return '0 Bytes';
+                var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+                return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+            },
             getFileName: function(name) {
                 var name = name.split('/');
                 return name[name.length -1];
             },
             imgIcon: function(path) {
                 path = path.replace(/\\/g,"/");
-				return 'background-size: cover; background-image: url("' + path + '"); background-repeat:no-repeat; background-position:center center;display:inline-block; width:100%; height:100%;';
-			},
+                return 'background-size: cover; background-image: url("' + path + '"); background-repeat:no-repeat; background-position:center center;display:inline-block; width:100%; height:100%;';
+            },
             dateFilter: function(date) {
                 if (!date) {
                     return null;
@@ -835,11 +835,11 @@
                     previewsContainer: "#uploadPreview",
                     totaluploadprogress: function(uploadProgress, totalBytes, totalBytesSent) {
                         progress_bar.css('width', uploadProgress + '%');
-    					if (uploadProgress == 100) {
-    						progress.delay(1500).slideUp(function(){
-    							progress_bar.css('width', '0%');
-    						});
-    					}
+                        if (uploadProgress == 100) {
+                            progress.delay(1500).slideUp(function(){
+                                progress_bar.css('width', '0%');
+                            });
+                        }
                     },
                     processing: function(){
                         progress.fadeIn();
@@ -871,22 +871,22 @@
                 var cropper = $(vm.$el).first().find('#crop_modal_'+vm._uid).first();
                 cropper.on('shown.bs.modal', function (e) {
                     if (typeof cropper !== 'undefined' && cropper instanceof Cropper) {
-    					cropper.destroy();
-    				}
-    				var croppingImage = document.getElementById('cropping-image_'+vm._uid);
-    				cropper = new Cropper(croppingImage, {
-    					crop: function(e) {
-    						document.getElementById('new-image-width_'+vm._uid).innerText = Math.round(e.detail.width) + 'px';
-    						document.getElementById('new-image-height_'+vm._uid).innerText = Math.round(e.detail.height) + 'px';
-    						croppedData = {
-    							x: Math.round(e.detail.x),
-    							y: Math.round(e.detail.y),
-    							height: Math.round(e.detail.height),
-    							width: Math.round(e.detail.width)
-    						};
-    					}
-    				});
-    			});
+                        cropper.destroy();
+                    }
+                    var croppingImage = document.getElementById('cropping-image_'+vm._uid);
+                    cropper = new Cropper(croppingImage, {
+                        crop: function(e) {
+                            document.getElementById('new-image-width_'+vm._uid).innerText = Math.round(e.detail.width) + 'px';
+                            document.getElementById('new-image-height_'+vm._uid).innerText = Math.round(e.detail.height) + 'px';
+                            croppedData = {
+                                x: Math.round(e.detail.x),
+                                y: Math.round(e.detail.y),
+                                height: Math.round(e.detail.height),
+                                width: Math.round(e.detail.width)
+                            };
+                        }
+                    });
+                });
             }
 
             $(document).ready(function () {

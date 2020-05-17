@@ -27,13 +27,13 @@ class Language
     /**
      * Create a new filter instance.
      *
-     * @param  Guard  $auth
-     * @param  ResponseFactory  $response
+     * @param  Guard           $auth
+     * @param  ResponseFactory $response
      * @return void
      */
     public function __construct(Guard $auth,
-                                ResponseFactory $response)
-    {
+        ResponseFactory $response
+    ) {
         $this->auth = $auth;
         $this->response = $response;
     }
@@ -48,8 +48,7 @@ class Language
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->check())
-        {
+        if ($this->auth->check()) {
             $language = (int) $this->auth->user()->language;
         }
 
