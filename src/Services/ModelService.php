@@ -91,7 +91,10 @@ class ModelService
                     'key_name'                => $eloquentService->getData('getKeyName'),
                     'key_type'                => $eloquentService->getData('getKeyType'),
                     'foreign_key'             => $eloquentService->getData('getForeignKey'),
-                    'group'             => $eloquentService->getGroup(),
+                    'group_package'           => $eloquentService->getGroupPackage(),
+                    'group_type'              => $eloquentService->getGroupType(),
+                    'history_type'            => $eloquentService->getHistoryType(),
+                    'register_type'           => $eloquentService->getRegisterType(),
                 ])->save();
 
                 $order = 1;
