@@ -34,7 +34,7 @@
                     data-method="{{ !is_null($dataTypeContent->getKey()) ? 'edit' : 'add' }}"
                 >
                     @php
-                        $model = app($options->model);
+                        $model = app($relationshipData->{$options->model});
                         $query = $model::where($options->key, old($options->column, $dataTypeContent->{$options->column}))->get();
                     @endphp
 

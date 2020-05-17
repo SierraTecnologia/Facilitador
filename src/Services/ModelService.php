@@ -374,7 +374,7 @@ class ModelService
         if ($this->eloquentEntity) {
             return $this->eloquentEntity;
         }
-        return $this->eloquentEntity = $this->getDatabaseService()->getEloquentService($this->getModelClass());
+        return $this->eloquentEntity = $this->getDatabaseService()->getEloquentEntityFromClassName($this->getModelClass());
     }
 
     public function getDatabaseService()
