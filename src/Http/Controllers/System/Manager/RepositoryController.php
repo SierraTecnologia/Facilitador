@@ -36,7 +36,7 @@ class RepositoryController extends Controller
         $slug = $this->repositoryService->getSlug();
 
         // GET THE DataType based on the slug
-        if (!is_object($dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first()) {
+        if (!is_object($dataType = Facilitador::model('DataType')->where('slug', '=', $slug)->first())) {
             throw new Exception;
         }
 
