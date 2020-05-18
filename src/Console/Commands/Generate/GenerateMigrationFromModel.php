@@ -6,7 +6,7 @@ use DB;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 
-class GenerateMigrationFromMySQL extends Command
+class GenerateMigrationFromModel extends Command
 {
 
     /**
@@ -14,7 +14,7 @@ class GenerateMigrationFromMySQL extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:generate:migration';
+    protected $name = 'sitec:generate:migrationFromModel {className}';
 
     /**
      * The console command description.
@@ -40,6 +40,21 @@ class GenerateMigrationFromMySQL extends Command
      */
     public function dispatch()
     {
+
+
+        $parts = array_map('studly_case', explode('\\', $this->argument('className')));
+        $className = array_pop($parts);
+        $ns = count($parts) > 0 ? implode('\\', $parts).'\\' : '';
+
+
+        dd(
+            $parts,
+            $className,
+            $ns
+        );
+
+
+
         preg_match('/(.+)\.(.+)/', $this->argument('database_table'), $matches);
         if (empty($matches[1]) || empty($matches[2])) {
             $this->error('Please enter a valid Database/Table.');

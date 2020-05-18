@@ -14,7 +14,7 @@ class GenerateModelFromMySQL extends Command
      *
      * @var string
      */
-    protected $name = 'generate:model';
+    protected $name = 'sitec:generate:model';
 
     /**
      * The console command description.

@@ -17,7 +17,7 @@ class TableCrudMaker extends Command
      *
      * @var string
      */
-    protected $signature = 'generate:table {table}
+    protected $signature = 'sitec:generate:table {table}
         {--api : Creates an API Controller and Routes}
         {--ui= : Select one of bootstrap|semantic for the UI}
         {--serviceOnly : Does not generate a Controller or Routes}
