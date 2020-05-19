@@ -83,7 +83,10 @@ class FacilitadorService
                         'count' => $model->getRepository()->count(),
                         'icon' => $model->getIcon(),
                         'name' => $model->getName(),
-                        'group' => $model->getGroup(),
+                        'group_package' => $model->getGroupPackage(),
+                        'group_type' => $model->getGroupType(),
+                        'history_type' => $model->getHistoryType(),
+                        'register_type' => $model->getRegisterType(),
                     ];
 
                 } catch(LogicException|ErrorException|RuntimeException|OutOfBoundsException|TypeError|ValidationException|FatalThrowableError|FatalErrorException|Exception|Throwable  $e) {

@@ -1,12 +1,15 @@
 <?php
+/**
+ * @todo falta fazer
+ */
 
 namespace Facilitador\Console\Commands\Generate;
 
 use DB;
-use Illuminate\Console\Command;
+use Support\Contracts\Generator\AbstractGeneratorCommand;
 use Symfony\Component\Console\Input\InputArgument;
 
-class GenerateMigrationFromModel extends Command
+class GenerateMigrationFromModel extends AbstractGeneratorCommand
 {
 
     /**
@@ -14,91 +17,14 @@ class GenerateMigrationFromModel extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:generate:migrationFromModel {className}';
+    protected $name = 'sitec:generate:migrationFromModel {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate migration from MySQL database.';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return \Locaravel\Console\Commands\GenerateModelFromMySQL
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function dispatch()
-    {
-
-
-        $parts = array_map('studly_case', explode('\\', $this->argument('className')));
-        $className = array_pop($parts);
-        $ns = count($parts) > 0 ? implode('\\', $parts).'\\' : '';
-
-
-        dd(
-            $parts,
-            $className,
-            $ns
-        );
-
-
-
-        preg_match('/(.+)\.(.+)/', $this->argument('database_table'), $matches);
-        if (empty($matches[1]) || empty($matches[2])) {
-            $this->error('Please enter a valid Database/Table.');
-            exit();
-        }
-        $database_name = $matches[1];
-        $table_name    = $matches[2];
-
-        //Match the tables
-        $tables = $this->getMatchingTables($database_name, $table_name);
-
-        if (count($tables) == 0) {
-            $this->error('Error: No tables found that match your argument: ' . $table_name);
-            exit();
-        }
-
-        foreach ($tables AS $table)
-        {
-            $this->info('Migration: database/migrations/<date>_create_' . $this->camelCase1($table->name) . '_table.php');
-        }
-
-        $this->comment($this->rules());
-
-        if (!$this->confirm('Are you happy to proceed? [yes|no]')) {
-            $this->error('Error: User is a chicken.');
-            exit();
-        }
-
-        foreach ($tables AS $table)
-        {
-            $template = $this->template();
-
-            $template = preg_replace('/#CLASS_NAME#/', $this->camelCase1($table->name), $template);
-            $template = preg_replace('/#TABLE_NAME#/', $table->name, $template);
-            $template = preg_replace('/#FIELD_DESCRIPTORS#/', $this->generateFieldDescriptors($database_name, $table_name), $template);
-            $template = preg_replace('/#FOREIGN_KEYS#/', $this->generateForeignKeys($database_name, $table_name), $template);
-
-            file_put_contents('database/migrations/' . date('Y_m_d_His_') . 'create_' . $this->camelCase1($table->name) . '_table.php', $template);
-
-        }
-
-        $this->info("\n** The migrations have been created **\n");
-
-    }
+    protected $description = 'Generate migration from exist eloquent model class.';
 
     /**
      * Get the console command arguments.
@@ -108,7 +34,7 @@ class GenerateMigrationFromModel extends Command
     protected function getArguments()
     {
         return [
-        ['database_table', InputArgument::REQUIRED, 'Qualified table name (database.table)'],
+        ['name', InputArgument::REQUIRED, 'Qualified complete class name with double \ (Namespace\\NameClass)'],
         ];
     }
 
@@ -122,6 +48,69 @@ class GenerateMigrationFromModel extends Command
         return [
         //['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
         ];
+    }
+
+    public function handle()
+    {
+        $this->dispatch();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function dispatch()
+    {
+        $name = $this->argument('name');
+        [
+            $className,
+            $namespaceClassName
+        ] = $this->getClassAndNamespace($name);
+
+        $this->getPathForMigration($name);
+        $parserModelClass = $this->getParserClass($name);
+
+        $tableName = $parserModelClass->getTableName();
+        $fields = $parserModelClass->getFillable();
+        $primaryKey = $parserModelClass->getPrimaryKey();
+        $keyName = $parserModelClass->getKeyName();
+        $ketYpe = $parserModelClass->getKeyType();
+        $increment = $parserModelClass->getIncrementing();
+        $foreignKey = $parserModelClass->getForeignKey();
+
+        dd(
+            $parserModelClass->toArray(),
+            $tableName,
+            $fields,
+            $primaryKey,
+            $keyName,
+            $ketYpe,
+            $increment,
+            $foreignKey
+            
+        );
+
+        $this->info('Migration: database/migrations/<date>_create_' . $this->camelCase1($tableName) . '_table.php');
+
+
+
+
+        foreach ($tables AS $table)
+        {
+            $template = $this->template();
+
+            $template = preg_replace('/#CLASS_NAME#/', $this->camelCase1($tableName), $template);
+            $template = preg_replace('/#TABLE_NAME#/', $tableName, $template);
+            $template = preg_replace('/#FIELD_DESCRIPTORS#/', $this->generateFieldDescriptors($database_name, $table_name), $template);
+            $template = preg_replace('/#FOREIGN_KEYS#/', $this->generateForeignKeys($database_name, $table_name), $template);
+
+            file_put_contents('database/migrations/' . date('Y_m_d_His_') . 'create_' . $this->camelCase1($tableName) . '_table.php', $template);
+
+        }
+
+        $this->info("\n** The migrations have been created **\n");
+
     }
 
     private function getMatchingTables($database, $table)
@@ -257,29 +246,6 @@ class GenerateMigrationFromModel extends Command
 
     }
 
-    private function generateForeignKeys($database_name, $table_name)
-    {
-        $fields = DB::select(
-            "SELECT key_column_usage.TABLE_SCHEMA, key_column_usage.TABLE_NAME, key_column_usage.COLUMN_NAME,
-									key_column_usage.REFERENCED_TABLE_SCHEMA, key_column_usage.REFERENCED_TABLE_NAME, key_column_usage.REFERENCED_COLUMN_NAME
-								  FROM information_schema.key_column_usage
-								  WHERE TABLE_SCHEMA='{$database_name}' AND TABLE_NAME='{$table_name}'
-								AND REFERENCED_COLUMN_NAME IS NOT NULL"
-        );
-
-        if(empty($fields)) {
-            return '' ;
-        }
-
-        $foreign_keys = "\t/**  Foreign Key Relations  **/\n";
-
-        foreach($fields AS $field)
-        {
-            $foreign_keys .= "\n\t\t\$table->index('{$field->COLUMN_NAME}') ; \$table->foreign('{$field->COLUMN_NAME}')->references('{$field->REFERENCED_TABLE_NAME}')->on('{$field->REFERENCED_COLUMN_NAME}') ;"; //->onDelete('cascade')" ;
-        }
-
-        return $foreign_keys ;
-    }
 
     private function generateFieldUniqueness($field)
     {

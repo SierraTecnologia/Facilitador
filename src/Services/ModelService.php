@@ -374,7 +374,7 @@ class ModelService
         if ($this->eloquentEntity) {
             return $this->eloquentEntity;
         }
-        return $this->eloquentEntity = $this->getDatabaseService()->getEloquentEntityFromClassName($this->getModelClass());
+        return $this->eloquentEntity = $this->getDatabaseService()->forceGetEloquentEntityFromClassName($this->getModelClass());
     }
 
     public function getDatabaseService()
@@ -407,11 +407,32 @@ class ModelService
         }
         return $this->getDiscoverService()->getIcon();
     }
-    public function getGroup()
+    public function getGroupPackage()
     {
         if (!$this->getDiscoverService()) {
             return '';
         }
-        return $this->getDiscoverService()->getGroup();
+        return $this->getDiscoverService()->getGroupPackage();
+    }
+    public function getGroupType()
+    {
+        if (!$this->getDiscoverService()) {
+            return '';
+        }
+        return $this->getDiscoverService()->getGroupType();
+    }
+    public function getHistoryType()
+    {
+        if (!$this->getDiscoverService()) {
+            return '';
+        }
+        return $this->getDiscoverService()->getHistoryType();
+    }
+    public function getRegisterType()
+    {
+        if (!$this->getDiscoverService()) {
+            return '';
+        }
+        return $this->getDiscoverService()->getRegisterType();
     }
 }

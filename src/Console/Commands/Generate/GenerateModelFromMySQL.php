@@ -14,7 +14,7 @@ class GenerateModelFromMySQL extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:generate:model';
+    protected $name = 'sitec:generate:migrationFromMysql';
 
     /**
      * The console command description.
@@ -45,6 +45,9 @@ class GenerateModelFromMySQL extends Command
      */
     public function dispatch()
     {
+
+
+
         preg_match('/((.+)\.)?(.+)/', $this->argument('database_table'), $matches);
         if (empty($matches[2])) {
             $matches[2] = env('DB_DATABASE');    //No longer require the database name to be provided

@@ -31,12 +31,16 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $models = $this->facilitadorService->getModelServicesToArray(false); //->sortByDesc('field', [], true);
+        
+        dd($models);
+        
         $models = $models->reject(
             function ($item) {
                 return false;
                 // return empty($item['count']);
             }
-        )->SortByDesc('count')->groupBy('group');
+        )->SortByDesc('count')
+        ->groupBy('group_type');
         $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
         // dd($models, 'Debug AdminController');
         return view(

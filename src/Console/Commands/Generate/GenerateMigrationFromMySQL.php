@@ -14,7 +14,7 @@ class GenerateMigrationFromMySQL extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:generate:migration';
+    protected $name = 'sitec:generate:migrationFromMysql {database_table}';
 
     /**
      * The console command description.
@@ -31,6 +31,11 @@ class GenerateMigrationFromMySQL extends Command
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function handle()
+    {
+        $this->dispatch();
     }
 
     /**
