@@ -32,7 +32,6 @@ class AdminController extends Controller
     {
         $models = $this->facilitadorService->getModelServicesToArray(false); //->sortByDesc('field', [], true);
         
-        dd($models);
         
         $models = $models->reject(
             function ($item) {
