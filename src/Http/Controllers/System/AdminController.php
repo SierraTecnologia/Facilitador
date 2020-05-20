@@ -40,6 +40,7 @@ class AdminController extends Controller
             }
         )->SortByDesc('count')
         ->groupBy('group_type');
+
         $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
         // dd($models, 'Debug AdminController');
         return view(
