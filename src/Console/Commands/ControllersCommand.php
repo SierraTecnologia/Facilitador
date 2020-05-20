@@ -14,7 +14,7 @@ class ControllersCommand extends Command
      *
      * @var string
      */
-    protected $name = 'facilitador:controllers';
+    protected $name = 'sitec:facilitador:controllers';
 
     /**
      * The console command description.

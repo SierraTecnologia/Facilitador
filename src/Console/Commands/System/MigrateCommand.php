@@ -13,7 +13,7 @@ class MigrateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'facilitador:migrate:attributes {--force : Force the operation to run when in production.}';
+    protected $signature = 'sitec:facilitador:migrate:attributes {--force : Force the operation to run when in production.}';
 
     /**
      * The console command description.

@@ -12,7 +12,7 @@ class Publish extends Command
      *
      * @var string
      */
-    protected $signature = 'facilitador:init';
+    protected $signature = 'sitec:facilitador:init';
     /**
      * The console command description.
      *

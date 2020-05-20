@@ -13,7 +13,7 @@ class RollbackCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'facilitador:rollback:attributes {--force : Force the operation to run when in production.}';
+    protected $signature = 'sitec:facilitador:rollback:attributes {--force : Force the operation to run when in production.}';
 
     /**
      * The console command description.

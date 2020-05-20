@@ -12,7 +12,7 @@ class MakeModelCommand extends ModelMakeCommand
      *
      * @var string
      */
-    protected $name = 'facilitador:make:model';
+    protected $name = 'sitec:facilitador:make:model';
 
     /**
      * The console command description.

@@ -21,7 +21,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'facilitador:install';
+    protected $name = 'sitec:facilitador:install';
 
     /**
      * The console command description.
