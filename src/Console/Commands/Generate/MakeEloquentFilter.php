@@ -12,7 +12,7 @@ class MakeEloquentFilter extends Command
      *
      * @var string
      */
-    protected $signature = 'sitec:generate:filter {name}';
+    protected $signature = 'sigenerate:generate:filter {name}';
 
     /**
      * The console command description.

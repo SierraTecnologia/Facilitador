@@ -54,7 +54,7 @@ class CrudMaker extends Command
      *
      * @var string
      */
-    protected $signature = 'sitec:generate:crudmaker {table}
+    protected $signature = 'sigenerate:generate:crudmaker {table}
         {--api : Creates an API Controller and Routes}
         {--apiOnly : Creates only the API Controller and Routes}
         {--ui= : Select one of bootstrap|semantic for the UI}

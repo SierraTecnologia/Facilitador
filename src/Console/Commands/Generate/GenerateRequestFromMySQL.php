@@ -14,7 +14,7 @@ class GenerateRequestFromMySQL extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:generate:request';
+    protected $name = 'sigenerate:generate:request';
 
     /**
      * The console command description.

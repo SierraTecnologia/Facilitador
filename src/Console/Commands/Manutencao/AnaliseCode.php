@@ -17,7 +17,7 @@ class AnaliseCode extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:facilitador:analise';
+    protected $name = 'siravel:facilitador:analise';
 
     /**
      * The console command description.

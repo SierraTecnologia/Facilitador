@@ -13,7 +13,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'sitec:facilitador:publish:attributes {--force : Overwrite any existing files.} {--R|resource=all}';
+    protected $signature = 'siravel:facilitador:publish:attributes {--force : Overwrite any existing files.} {--R|resource=all}';
 
     /**
      * The console command description.

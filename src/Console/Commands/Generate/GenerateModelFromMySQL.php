@@ -14,7 +14,7 @@ class GenerateModelFromMySQL extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:generate:migrationFromMysql';
+    protected $name = 'sigenerate:generate:migrationFromMysql';
 
     /**
      * The console command description.

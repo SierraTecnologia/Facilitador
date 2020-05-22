@@ -14,7 +14,7 @@ class Generate extends Command
      *
      * @var string
      */
-    protected $signature = 'sitec:fixes:generate
+    protected $signature = 'sigenerate:fixes:generate
         {model : The class name of a model}';
 
     /**

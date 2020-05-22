@@ -16,7 +16,7 @@ class AdminCommand extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:facilitador:admin';
+    protected $name = 'siravel:facilitador:admin';
 
     /**
      * The console command description.

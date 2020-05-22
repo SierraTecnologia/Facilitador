@@ -17,7 +17,7 @@ class FacilitadorInstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'sitec:facilitador:install';
+    protected $name = 'siravel:facilitador:install';
 
     /**
      * The console command description.
