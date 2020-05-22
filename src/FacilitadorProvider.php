@@ -264,6 +264,7 @@ class FacilitadorProvider extends ServiceProvider
         if (\Illuminate\Support\Facades\Config::get('sitec.core.register_routes') && !$this->app->routesAreCached()) {
             $this->app['facilitador.router']->registerAll();
         }
+        
 
         // Configure Decoy auth setup
         $this->bootAuth();

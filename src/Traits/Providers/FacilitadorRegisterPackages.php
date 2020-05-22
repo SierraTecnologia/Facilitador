@@ -41,14 +41,14 @@ trait FacilitadorRegisterPackages
 
     // public static $providers = [
     public static $providers = [
-        /**
-         * Internos
-         */
-        \Tracking\TrackingProvider::class,
         // /**
         //  * Support
         //  **/
+        /**
+         * Internos
+         */
         \Support\SupportServiceProvider::class,
+        \Tracking\TrackingProvider::class,
         
 
         /**
