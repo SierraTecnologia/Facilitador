@@ -47,7 +47,48 @@ class RepositoryController extends Controller
         // // Check permission
         // $this->authorize('browse', app($dataType->model_name));
 
-        return $this->repositoryIndex($dataType);
+        list(
+            $actions,
+            $dataType,
+            $dataTypeContent,
+            $isModelTranslatable,
+            $search,
+            $orderBy,
+            $orderColumn,
+            $sortOrder,
+            $searchNames,
+            $isServerSide,
+            $defaultSearchKey,
+            $usesSoftDeletes,
+            $showSoftDeleted,
+            $showCheckboxColumn,
+        ) = $this->repositoryIndex($dataType);
+
+
+        $view = 'facilitador::cruds.bread.browse';
+
+        if (view()->exists("facilitador::cruds.$slug.browse")) {
+            $view = "facilitador::cruds.$slug.browse";
+        }
+
+        return Facilitador::view(
+            $view, compact(
+                'actions',
+                'dataType',
+                'dataTypeContent',
+                'isModelTranslatable',
+                'search',
+                'orderBy',
+                'orderColumn',
+                'sortOrder',
+                'searchNames',
+                'isServerSide',
+                'defaultSearchKey',
+                'usesSoftDeletes',
+                'showSoftDeleted',
+                'showCheckboxColumn'
+            )
+        );
     }
 
     //***************************************

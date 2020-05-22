@@ -135,29 +135,21 @@ trait RepositoryTrait
             }
         }
 
-        $view = 'facilitador::cruds.bread.browse';
-
-        if (view()->exists("facilitador::cruds.$slug.browse")) {
-            $view = "facilitador::cruds.$slug.browse";
-        }
-
-        return Facilitador::view(
-            $view, compact(
-                'actions',
-                'dataType',
-                'dataTypeContent',
-                'isModelTranslatable',
-                'search',
-                'orderBy',
-                'orderColumn',
-                'sortOrder',
-                'searchNames',
-                'isServerSide',
-                'defaultSearchKey',
-                'usesSoftDeletes',
-                'showSoftDeleted',
-                'showCheckboxColumn'
-            )
-        );
+        return [
+            $actions,
+            $dataType,
+            $dataTypeContent,
+            $isModelTranslatable,
+            $search,
+            $orderBy,
+            $orderColumn,
+            $sortOrder,
+            $searchNames,
+            $isServerSide,
+            $defaultSearchKey,
+            $usesSoftDeletes,
+            $showSoftDeleted,
+            $showCheckboxColum
+        ];
     }
 }

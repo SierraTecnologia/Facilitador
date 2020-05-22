@@ -60,6 +60,13 @@ class ModelService
         }
     }
 
+    /**
+     * @todo isso repete deve ter um contrato compartilhado com repository
+     */
+    public function getModelService()
+    {
+        return $this;
+    }
     public function getDiscoverService()
     {
         if (!$this->modelDataType) {

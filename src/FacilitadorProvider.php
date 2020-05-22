@@ -68,7 +68,7 @@ class FacilitadorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
-        'Painel' => [
+        'Painel|200' => [
             [
                 'text' => 'User',
                 'icon' => 'fas fa-fw fa-bomb',
@@ -102,7 +102,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
             ],
         ],
-        'Admin' => [
+        'Admin|300' => [
             [
                 'text' => 'Site',
                 'icon' => 'fas fa-fw fa-bomb',
@@ -184,7 +184,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
             ],
         ],
-        'System' => [
+        'System|400' => [
             [
                 'text' => 'Information',
                 'icon' => 'fas fa-fw fa-bomb',
