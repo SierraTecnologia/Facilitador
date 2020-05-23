@@ -68,41 +68,13 @@ class FacilitadorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
-        'Painel|200' => [
+        'Admin|300' => [
             [
-                'text' => 'User',
+                'text' => 'Information',
                 'icon' => 'fas fa-fw fa-bomb',
                 'icon_color' => "blue",
                 'label_color' => "success",
             ],
-            'User' => [
-                [
-                    'text'        => 'Home',
-                    'url'       => '/',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'Profile',
-                    'route'       => 'facilitador.profile',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'Logout',
-                    'route'       => 'facilitador.logout',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-            ],
-        ],
-        'Admin|300' => [
             [
                 'text' => 'Site',
                 'icon' => 'fas fa-fw fa-bomb',
@@ -114,6 +86,24 @@ class FacilitadorProvider extends ServiceProvider
                 'icon' => 'fas fa-fw fa-bomb',
                 'icon_color' => "blue",
                 'label_color' => "success",
+            ],
+            'Information' => [
+                [
+                    'text'        => 'Decoy',
+                    'url'         => 'admin',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Manager',
+                    'route'       => 'facilitador.dashboard',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
             ],
             'Site' => [
                 [
@@ -167,74 +157,8 @@ class FacilitadorProvider extends ServiceProvider
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
-                    'text'        => 'Commands',
-                    'route'       => 'facilitador.commands',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-                [
                     'text'        => 'Hooks',
                     'route'       => 'facilitador.hooks',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-            ],
-        ],
-        'System|400' => [
-            [
-                'text' => 'Information',
-                'icon' => 'fas fa-fw fa-bomb',
-                'icon_color' => "blue",
-                'label_color' => "success",
-            ],
-            [
-                'text' => 'Manager',
-                'icon' => 'fas fa-fw fa-bomb',
-                'icon_color' => "blue",
-                'label_color' => "success",
-            ],
-            'Information' => [
-                [
-                    'text'        => 'Decoy',
-                    'url'         => 'admin',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'Manager',
-                    'route'       => 'facilitador.dashboard',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-            ],
-            'Manager' => [
-                [
-                    'text'        => 'Manager Errors',
-                    'route'       => 'facilitador.dashboard',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'Bread',
-                    'route'       => 'facilitador.bread.index',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'Database',
-                    'route'       => 'facilitador.database.index',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
