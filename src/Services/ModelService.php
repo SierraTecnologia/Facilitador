@@ -56,7 +56,7 @@ class ModelService
             if (is_a($modelClass, EloquentEntity::class)) {
                 $this->setEloquentEntity($modelClass);
             }
-            $this->getDiscoverService();
+            $this->getModelDataType();
         }
     }
 
@@ -69,71 +69,83 @@ class ModelService
     }
     public function getDiscoverService()
     {
-        if (!$this->modelDataType) {
-            if (!$eloquentService = $this->getEloquentEntity()) {
-                // @todo tratar erro
-                // dd(
-                //     'IhhNaoTem',
-                //     $this->modelClass,
-                //     debug_backtrace()
-                // );
-                return false;
-            }
-            $name = 
+        return $this->getModelDataType();
+    }
 
-            $this->modelDataType = $this->dataTypeForCode($eloquentService->getModelClass());
-            if (!$this->modelDataType->exists) {
-                // Name e Slug sao unicos
-                $this->modelDataType->fill(
+    /**
+     * @todo isso repete deve ter um contrato compartilhado com repository
+     */
+    public function getModelDataType(): DataType
+    {   
+        if ($this->modelDataType) {
+            return $this->modelDataType;
+        }
+
+        $this->modelDataType = $this->dataTypeForCode($this->modelClass);
+        if ($this->modelDataType->exists) {
+            return $this->modelDataType;
+        }
+    
+        if (!$eloquentService = $this->getEloquentEntity()) {
+            // @todo tratar erro
+            dd(
+                'IhhNaoTem',
+                $this->modelClass,
+                debug_backtrace()
+            );
+            return false;
+        }
+        // $name = 
+
+        // Name e Slug sao unicos
+        $this->modelDataType->fill(
+            [
+            'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
+            'slug'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
+            'display_name_singular' => $eloquentService->getName(false),
+            'display_name_plural'   => $eloquentService->getName(true),
+            'icon'                  => $eloquentService->getIcon(),
+            'model_name'            => $eloquentService->getModelClass(),
+            'controller'            => '',
+            'generate_permissions'  => 1,
+            'description'           => '',
+            'table_name'              => $eloquentService->getTablename(),
+            'key_name'                => $eloquentService->getData('getKeyName'),
+            'key_type'                => $eloquentService->getData('getKeyType'),
+            'foreign_key'             => $eloquentService->getData('getForeignKey'),
+            'group_package'           => $eloquentService->getGroupPackage(),
+            'group_type'              => $eloquentService->getGroupType(),
+            'history_type'            => $eloquentService->getHistoryType(),
+            'register_type'           => $eloquentService->getRegisterType(),
+            ]
+        )->save();
+
+        $order = 1;
+        foreach ($eloquentService->getColumns() as $column) {
+            // dd(
+            //     $eloquentService->getColumns(),
+            //     $column,
+            //     $column->getData('notnull')
+            // );
+
+            $dataRow = $this->dataRow($this->modelDataType, $column->getColumnName());
+            if (!$dataRow->exists) {
+                $dataRow->fill(
                     [
-                    'name'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
-                    'slug'                  => $eloquentService->getModelClass(), //strtolower($eloquentService->getName(true)),
-                    'display_name_singular' => $eloquentService->getName(false),
-                    'display_name_plural'   => $eloquentService->getName(true),
-                    'icon'                  => $eloquentService->getIcon(),
-                    'model_name'            => $eloquentService->getModelClass(),
-                    'controller'            => '',
-                    'generate_permissions'  => 1,
-                    'description'           => '',
-                    'table_name'              => $eloquentService->getTablename(),
-                    'key_name'                => $eloquentService->getData('getKeyName'),
-                    'key_type'                => $eloquentService->getData('getKeyType'),
-                    'foreign_key'             => $eloquentService->getData('getForeignKey'),
-                    'group_package'           => $eloquentService->getGroupPackage(),
-                    'group_type'              => $eloquentService->getGroupType(),
-                    'history_type'            => $eloquentService->getHistoryType(),
-                    'register_type'           => $eloquentService->getRegisterType(),
+                    // 'type'         => 'select_dropdown',
+                    'type'         => $column->getColumnType(),
+                    'display_name' => $column->getName(),
+                    'required'     => $column->isRequired() ? 1 : 0,
+                    'browse'     => $column->isBrowse() ? 1 : 0,
+                    'read'     => $column->isRead() ? 1 : 0,
+                    'edit'     => $column->isEdit() ? 1 : 0,
+                    'add'     => $column->isAdd() ? 1 : 0,
+                    'delete'     => $column->isDelete() ? 1 : 0,
+                    'details'      => $column->getDetails(),
+                    'order' => $order,
                     ]
                 )->save();
-
-                $order = 1;
-                foreach ($eloquentService->getColumns() as $column) {
-                    // dd(
-                    //     $eloquentService->getColumns(),
-                    //     $column,
-                    //     $column->getData('notnull')
-                    // );
-
-                    $dataRow = $this->dataRow($this->modelDataType, $column->getColumnName());
-                    if (!$dataRow->exists) {
-                        $dataRow->fill(
-                            [
-                            // 'type'         => 'select_dropdown',
-                            'type'         => $column->getColumnType(),
-                            'display_name' => $column->getName(),
-                            'required'     => $column->isRequired() ? 1 : 0,
-                            'browse'     => $column->isBrowse() ? 1 : 0,
-                            'read'     => $column->isRead() ? 1 : 0,
-                            'edit'     => $column->isEdit() ? 1 : 0,
-                            'add'     => $column->isAdd() ? 1 : 0,
-                            'delete'     => $column->isDelete() ? 1 : 0,
-                            'details'      => $column->getDetails(),
-                            'order' => $order,
-                            ]
-                        )->save();
-                        ++$order;
-                    }
-                }
+                ++$order;
             }
         }
         return $this->modelDataType;
