@@ -26,7 +26,8 @@
 
 
             @include('facilitador::components.dash.by-subgroup', [
-                'models' => $realModels->groupBy('history_type')
+                'models' => $realModels->groupBy('history_type'),
+                'identificador' => $groupName
             ])
 
 

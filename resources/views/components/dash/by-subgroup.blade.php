@@ -10,11 +10,12 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapse{!! $groupName !!}" class="panel-collapse collapse{{ $loop->first ? ' in' : '' }}">
+            <div id="collapse{!! $identificador !!}{!! $groupName !!}" class="panel-collapse collapse{{ $loop->first ? ' in' : '' }}">
                 <div class="box-body">
 
                     @include('facilitador::components.dash.numbers', [
                         'models' => $realModels->groupBy('register_type')
+                        'identificador' => $identificador.$groupName
                     ])
 
                 </div>

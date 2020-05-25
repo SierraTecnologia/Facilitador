@@ -27,7 +27,26 @@
         @endif
     </tbody>
 </table> */?>
-
+<?php
+if (isset($registros) && !isset($showCheckboxColumn)) {
+    list(
+        $actions,
+        $dataType,
+        $dataTypeContent,
+        $isModelTranslatable,
+        $search,
+        $orderBy,
+        $orderColumn,
+        $sortOrder,
+        $searchNames,
+        $isServerSide,
+        $defaultSearchKey,
+        $usesSoftDeletes,
+        $showSoftDeleted,
+        $showCheckboxColumn,
+    ) = \Support\Services\DatatableService::make($registros)->repositoryIndex();
+}
+?>
 
 <table id="dataTable" class="table table-hover">
     <thead>
