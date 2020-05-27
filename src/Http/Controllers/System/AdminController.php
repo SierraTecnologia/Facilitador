@@ -41,7 +41,7 @@ class AdminController extends Controller
         )->SortByDesc('count')
         ->groupBy('group_type');
 
-        $htmlGenerator = new \Facilitador\Generators\FacilitadorGenerator($this->facilitadorService);
+        $htmlGenerator = new \Support\Generators\FacilitadorGenerator($this->facilitadorService);
         // dd($models, 'Debug AdminController');
         return view(
             'facilitador::components.dash.home',

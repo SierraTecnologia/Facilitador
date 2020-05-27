@@ -5,7 +5,7 @@ namespace Facilitador\Services\FormMaker;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
-use Facilitador\Generators\FormMaker\HtmlGenerator;
+use Support\Generators\FormMaker\HtmlGenerator;
 
 /**
  * $this->elper to make an HTML input.

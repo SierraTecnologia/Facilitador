@@ -2,8 +2,8 @@
 
 namespace Facilitador\Services\CrudMaker;
 
-use Facilitador\Generators\CrudGenerator;
-use Facilitador\Generators\DatabaseGenerator;
+use Support\Generators\CrudGenerator;
+use Support\Generators\DatabaseGenerator;
 
 class CrudService
 {
