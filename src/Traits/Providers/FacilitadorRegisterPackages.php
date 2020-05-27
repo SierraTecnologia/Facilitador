@@ -31,8 +31,7 @@ trait FacilitadorRegisterPackages
          */
         'Facilitador' => \Facilitador\Facades\Facilitador::class,
         'FacilitadorURL' => \Facilitador\Facades\FacilitadorURL::class,
-        // Form field generation
-        'Former' => \Former\Facades\Former::class,
+
         // Image resizing
         'Croppa' => \Bkwld\Croppa\Facade::class,
         // BrowserDetect
@@ -65,9 +64,6 @@ trait FacilitadorRegisterPackages
          * Layoults
          */
         \JeroenNoten\LaravelAdminLte\ServiceProvider::class,
-        \RicardoSierra\Minify\MinifyServiceProvider::class,
-        \Collective\Html\HtmlServiceProvider::class,
-        \Laracasts\Flash\FlashServiceProvider::class,
 
 
         /**
@@ -81,7 +77,6 @@ trait FacilitadorRegisterPackages
         /**
          * VEio pelo Decoy
          **/
-        \Former\FormerServiceProvider::class,
         // Image resizing
         \Bkwld\Croppa\ServiceProvider::class,
         // PHP utils
@@ -98,11 +93,6 @@ trait FacilitadorRegisterPackages
         \Bkwld\Cloner\ServiceProvider::class,
 
         /**
-         * Outros
-         */
-        \Laravel\Tinker\TinkerServiceProvider::class,
-
-        /**
          * Services Providers
          */
         \Yajra\DataTables\DataTablesServiceProvider::class,
@@ -111,8 +101,6 @@ trait FacilitadorRegisterPackages
     /****************************************************************************************************
      * ************************************************* NO BOOT *************************************
      ****************************************************************************************************/
-
-
 
 
     /****************************************************************************************************
@@ -125,16 +113,6 @@ trait FacilitadorRegisterPackages
         $this->setProviders();
     }
 
-    protected function loadLocalExternalPackages()
-    {
 
-        if ($this->app->environment('local', 'testing')) {
-            $this->app->register(DuskServiceProvider::class);
-        }
-        if ($this->app->environment('local')) {
-            $this->app->register(DebugService::class);
-            // $this->app->register(IdeHelperServiceProvider::class);
-        }
-    }
 
 }

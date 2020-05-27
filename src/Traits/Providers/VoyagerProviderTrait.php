@@ -59,8 +59,6 @@ trait VoyagerProviderTrait
             }
         );
 
-        $this->loadHelpers();
-
         $this->registerAlertComponents();
         $this->registerFormFields();
 
@@ -103,16 +101,6 @@ trait VoyagerProviderTrait
         );
 
         $this->bootTranslatorCollectionMacros();
-    }
-
-    /**
-     * Load helpers.
-     */
-    protected function loadHelpers()
-    {
-        foreach (glob(__DIR__.'/Helpers/*.php') as $filename) {
-            include_once $filename;
-        }
     }
 
     /**

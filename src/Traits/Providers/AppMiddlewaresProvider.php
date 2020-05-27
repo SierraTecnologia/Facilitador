@@ -8,7 +8,6 @@ use Illuminate\Contracts\Auth\Access\Gate;
 
 trait AppMiddlewaresProvider
 {
-    use FacilitadorConfig;
 
     
 
@@ -86,8 +85,6 @@ trait AppMiddlewaresProvider
             ]
         );
 
-        // Config Former
-        $this->configureFormer();
 
         // Delegate events to Decoy observers
         $this->delegateAdminObservers();

@@ -7,9 +7,6 @@ use Illuminate\Contracts\Debug\ExceptionHandler;
 use Facilitador\Services\FacilitadorService;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-use Facilitador\Services\RegisterService;
-use Facilitador\Services\RepositoryService;
-use Facilitador\Services\ModelService;
 use SierraTecnologia\Crypto\Services\Crypto;
 use Log;
 use App;
@@ -141,106 +138,6 @@ trait AppServiceContainerProvider
             }
         );
 
-    }
-
-    protected function loadServiceContainerRouteBinds()
-    {
-        
-        
-        /**
-         * @todo Ta passando duas vezes por aqui
-         */
-        Route::bind(
-            'modelClass', function ($value) {
-                Log::channel('sitec-providers')->debug('Route Bind ModelClass - '.Crypto::shareableDecrypt($value).' - '.$value);
-                return new ModelService(Crypto::shareableDecrypt($value));
-            }
-        );
-        Route::bind(
-            'identify', function ($value) {
-                Log::channel('sitec-providers')->debug('Route Bind Identify - '.Crypto::shareableDecrypt($value).' - '.$value);
-                // throw new Exception(
-                //     "Essa classe deveria ser uma string: ".print_r($modelClass, true),
-                //     400
-                // );
-                return new RegisterService(Crypto::shareableDecrypt($value));
-            }
-        );
-    }
-
-    protected function loadServiceContainerBinds()
-    {
-
-        // /**
-        //  * Cryptos
-        //  * @todo Verificar pq isso ta aqui
-        //  */
-        // $this->app->bind('CryptoService', function ($app) {
-        //     return new CryptoService();
-        // });
-
-
-
-        // Arrumar um jeito de fazer o Base do facilitador passar por cima do support
-        // use Support\Models\Base;
-        // @todo
-
-        $this->app->bind(
-            ModelService::class, function ($app) {
-                $modelClass = false;
-                if (isset($app['router']->current()->parameters['modelClass'])) {
-                    $modelClass = Crypto::shareableDecrypt($app['router']->current()->parameters['modelClass']);
-
-                    if (empty($modelClass)) {
-                        $modelClass = $app['router']->current()->parameters['modelClass'];
-                    }
-                }
-
-                // dd('@todo', 
-                //     $modelClass, $app['router']->current()->parameters['modelClass'], Crypto::shareableDecrypt($app['router']->current()->parameters['modelClass']),
-                //     auth()->id()
-                // );
-                // @todo Ver Como resolver isso aqui
-
-                Log::channel('sitec-providers')->debug('Bind Model Service - '.$modelClass);
-
-                return new ModelService($modelClass);
-            }
-        );
-
-        $this->app->bind(
-            RepositoryService::class, function ($app) {
-                Log::channel('sitec-providers')->debug('Bind Repository Service');
-                $modelService = $app->make(ModelService::class);
-                return new RepositoryService($modelService);
-            }
-        );
-
-        $this->app->bind(
-            RegisterService::class, function ($app) {
-                $identify = '';
-                if (isset($app['router']->current()->parameters['identify'])) {
-                    $identify = Crypto::shareableDecrypt($app['router']->current()->parameters['identify']);
-                }
-
-                Log::channel('sitec-providers')->debug('Bind Register Service - '.$identify);
-                return new RegisterService($identify);
-            }
-        );
-    }
-
-    protected function loadServiceContainerReplaceClasses()
-    {
-
-        
-        // $this->app->when(ModelService::class)
-        //     ->needs('$modelClass')
-        //   ->give(function ($modelClassValue) {
-        //       $request = $modelClassValue['request'];
-        //         dd($request->has('modelClassValue'));
-        //     //   dd();
-        //       return $modelClassValue;
-        //   });
     }
 
 

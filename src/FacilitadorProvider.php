@@ -216,16 +216,12 @@ class FacilitadorProvider extends ServiceProvider
 
         // Register external packages
         $this->loadExternalPackages();
-        $this->loadLocalExternalPackages();
 
         $this->loadMigrations();
         $this->loadAlias();
 
 
         $this->loadServiceContainerSingletons();
-        $this->loadServiceContainerRouteBinds();
-        $this->loadServiceContainerBinds();
-        $this->loadServiceContainerReplaceClasses();
 
 
         $this->loadCommands();
