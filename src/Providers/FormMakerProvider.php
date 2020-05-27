@@ -5,8 +5,8 @@ namespace Facilitador\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Facilitador\Services\FormMaker\FormMaker;
-use Facilitador\Services\FormMaker\InputMaker;
+use Support\Services\FormMaker\FormMaker;
+use Support\Services\FormMaker\InputMaker;
 
 class FormMakerProvider extends ServiceProvider
 {
