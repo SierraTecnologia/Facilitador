@@ -3,7 +3,7 @@
 namespace Facilitador\Events;
 
 use Illuminate\Queue\SerializesModels;
-use Support\Models\DataType;
+use Support\Models\Application\DataType;
 
 class BreadDataRestored
 {
