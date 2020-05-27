@@ -1,6 +1,7 @@
 <div id="commands">
-    <?php foreach($commands as $namespace => $subcommands): ?>
-        <div class='col-sm-6 col-lg-4'>
+    <?php $quantidade = count($commands); $contador = 0; ?>
+    <div class='col-sm-12 col-lg-6'>
+        <?php foreach($commands as $namespace => $subcommands): ?>
             <div class="standard-list fieldset">
                 <div class="legend sidebar-header"><?php echo $namespace?></div>
                 <table>
@@ -12,7 +13,7 @@
                             </td>
                             <td>
                                 <p>
-                        <?php echo $name?>
+                                    <?php echo $name?>
                                     <div class='spinner-46'></div>
                                 </p>
                                 <p><small><?php echo $command->getDescription()?></small></p>
@@ -21,6 +22,12 @@
                     <?php endforeach ?>
                 </table>
             </div>
-        </div>
-    <?php endforeach ?>
+
+            <?php $contador += 1;
+            if (($quantidade/2) <= $contador){ ?>
+                </div>
+                <div class='col-sm-12 col-lg-6'>
+            <?php } ?>
+        <?php endforeach ?>
+    </div>
 </div>

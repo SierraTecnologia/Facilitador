@@ -5,6 +5,7 @@ namespace Facilitador\Traits\Providers;
 use Config;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Contracts\Auth\Access\Gate;
+use Facilitador\Http\Middleware\FacilitadorAdminMiddleware;
 
 trait AppMiddlewaresProvider
 {
@@ -102,6 +103,9 @@ trait AppMiddlewaresProvider
      */
     protected function registerMiddlewares()
     {
+
+        $this->app['router']->aliasMiddleware('admin.user', FacilitadorAdminMiddleware::class);
+
 
         // Register middleware individually
         foreach ([

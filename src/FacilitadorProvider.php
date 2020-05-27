@@ -96,14 +96,6 @@ class FacilitadorProvider extends ServiceProvider
                     'label_color' => 'success',
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
-                [
-                    'text'        => 'Manager',
-                    'route'       => 'facilitador.dashboard',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
             ],
             'Site' => [
                 [

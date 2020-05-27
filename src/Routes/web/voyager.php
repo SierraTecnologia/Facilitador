@@ -27,8 +27,8 @@ Route::namespace('System')->group(
         Route::group(
             ['as' => 'facilitador.'], function () {
 
-                Route::group(
-                    ['middleware' => 'admin.user'], function () {
+                // Route::group(
+                //     ['middleware' => 'admin.user'], function () {
                         event(new RoutingAdmin());
 
                         // @todo nao fazer mais, mts rotas a toa
@@ -128,9 +128,6 @@ Route::namespace('System')->group(
                             }
                         );
 
-                        // Database Routes
-                        Route::resource('database', 'FacilitadorDatabaseController');
-
                         // Compass Routes
                         Route::group(
                             [
@@ -176,7 +173,7 @@ Route::namespace('System')->group(
                     }
                 );
 
-            }
-        );
+            // }
+        // );
     }
 );

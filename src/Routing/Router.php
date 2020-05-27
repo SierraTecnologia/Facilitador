@@ -77,7 +77,6 @@ class Router
             'middleware' => 'facilitador.protected', //@todo voltar aqui
         ], function () {
             $this->registerAdmins();
-            $this->registerCommands();
             $this->registerElements();
             $this->registerEncode();
             $this->registerRedactor();
@@ -187,24 +186,6 @@ class Router
         Route::get('admins/{id}/enable', [
             'as' => 'facilitador.admins@enable',
             'uses' => '\Facilitador\Http\Controllers\Admin\Admins@enable',
-        ]);
-    }
-
-    /**
-     * Commands / Tasks
-     *
-     * @return void
-     */
-    public function registerCommands()
-    {
-        Route::get('commands', [
-            'as' => 'facilitador.commands',
-            'uses' => '\Facilitador\Http\Controllers\Admin\Commands@index',
-        ]);
-
-        Route::post('commands/{command}', [
-            'as' => 'facilitador.commands@execute',
-            'uses' => '\Facilitador\Http\Controllers\Admin\Commands@execute',
         ]);
     }
 

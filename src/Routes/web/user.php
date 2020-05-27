@@ -27,8 +27,8 @@ Route::group(
 
         Route::namespace('User')->group(
             function () {
-                Route::group(
-                    ['middleware' => 'admin.user'], function () {
+                // Route::group(
+                //     ['middleware' => 'admin.user'], function () {
                         event(new RoutingAdmin());
 
                         // Main Admin and Logout Route
@@ -40,8 +40,8 @@ Route::group(
 
                         event(new RoutingAdminAfter());
                     }
-                );
-            }
+                // );
+            // }
         );
     }
 );

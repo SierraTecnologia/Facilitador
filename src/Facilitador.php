@@ -663,6 +663,12 @@ class Facilitador
             $controller,
             $is_facilitador
         );
+        $model = str_replace(
+            'Support\Http\Controllers\Admin',
+            'Support\Models',
+            $model,
+            $is_support
+        );
 
         // Replace non-facilitador controller's with the standard model namespace
         if (!$is_facilitador) {
@@ -672,7 +678,6 @@ class Facilitador
 
         // Make it singular
         $offset = strrpos($model, '\\') + 1;
-
         return substr($model, 0, $offset).Str::singular(substr($model, $offset));
     }
 

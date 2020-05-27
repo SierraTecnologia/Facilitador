@@ -11,6 +11,7 @@ use Monolog\Formatter\LineFormatter;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Support\Models\Command;
 
 /**
  * Workers are tasks that define logic designed to be run as a never
@@ -20,6 +21,13 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class Worker extends \Illuminate\Console\Command
 {
+    /**
+     * Admins should not be localized
+     *
+     * @var boolean
+     */
+    public static $localizable = false;
+
     // Worker settings
     protected $WORKER_SLEEP_SECS = 60;   // How many seconds to wait before each worker exec
     protected $HEARTBEAT_FAIL_MINS = 30; // The age in after which the worker is deemed failed
@@ -230,7 +238,7 @@ class Worker extends \Illuminate\Console\Command
     public static function all()
     {
         $output = array();
-        $namespaced = Command::allCustom();
+        $namespaced = Command::all();
         foreach ($namespaced as $namespace => $commands) {
             foreach ($commands as $title => $command) {
                 if (is_a($command, 'Facilitador\Models\Worker')) {

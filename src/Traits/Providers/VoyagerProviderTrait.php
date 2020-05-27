@@ -19,7 +19,6 @@ use FacilitadorHooks\FacilitadorHooksServiceProvider;
 use Facilitador\Events\FormFieldsRegistered;
 use Facilitador\Facades\Facilitador as FacilitadorFacade;
 use Support\Elements\FormFields\After\DescriptionHandler;
-use Facilitador\Http\Middleware\FacilitadorAdminMiddleware;
 use Facilitador\Models\MenuItem;
 use Facilitador\Models\Setting;
 use Facilitador\Policies\BasePolicy;
@@ -87,8 +86,6 @@ trait VoyagerProviderTrait
                 }
             );
         }
-
-        $router->aliasMiddleware('admin.user', FacilitadorAdminMiddleware::class);
 
         $this->loadAuth();
 

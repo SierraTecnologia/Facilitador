@@ -9,7 +9,7 @@ return [
     'layout' => 'facilitador::layouts.decoy.default',
 
     // Auth guard and policy to use
-    'guard'  => 'web', //'facilitador',
+    'guard'  => 'facilitador', //'web', //
     'policy' => 'Facilitador\Auth\Policy@check',
 
     // Use a password input field for admins
@@ -32,4 +32,9 @@ return [
     'stylesheet' => '/assets/facilitador/index.min.css',
     'script' => '/assets/facilitador/index.min.js',
 
+    'commandsFolders' => [
+        'vendor/sierratecnologia/facilitador/src/Console/Commands',
+        'vendor/sierratecnologia/finder/src/Console/Commands',
+        'vendor/sierratecnologia/laravel-support/src/Console/Commands'
+    ]
 ];

@@ -3,6 +3,7 @@
 namespace Facilitador\Http\Controllers\Admin;
 
 use Facilitador\Exceptions\Exception;
+use Facilitador\Models\Worker;
 
 /**
  * Check the status of workers from the admin
@@ -23,7 +24,7 @@ class Workers extends Base
     {
         return $this->populateView(
             'facilitador::tools.workers.index', [
-            'workers' => Model::all(),
+            'workers' => Worker::all(),
             ]
         );
     }
@@ -36,7 +37,7 @@ class Workers extends Base
     public function tail($worker)
     {
         // Form the path to the file
-        $file = Model::logPath(urldecode($worker));
+        $file = Worker::logPath(urldecode($worker));
         if (!file_exists($file)) {
             throw new Exception('Log not found: '.$file);
         }
