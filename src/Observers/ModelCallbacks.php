@@ -7,8 +7,9 @@ use Log;
 use Illuminate\Support\Str;
 use Facilitador;
 use Population\Models\Identity\Digital\Email;
-
 use Support\Models\Base;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
+use Throwable;
 
 /**
  * Call no-op classes on models for all event types.  This just simplifies
@@ -86,12 +87,26 @@ class ModelCallbacks
         else if ($method == 'onCreated') {
             $this->runInCreated($model);
         }
-
-        if (method_exists($model, $method)) {
-            // dd($model, $method, $payload,  array_slice($payload, 1));
-            // \Log::info('[Facilitador] ModelCallbacks: '.print_r($payload, true));
-            return call_user_func_array([$model, $method], array_slice($payload, 1));
+        else if ($method == 'onValidating' || $method == 'onValidated') {
+            if (empty(array_slice($payload, 1))) {
+                \Log::info('[Facilitador] ModelCallbacks: ignorando onValidating porque nao tem parametro '.print_r([get_class($model), $method], true));
+                return true;
+            }
         }
+
+        // @todo resolver isso aqui e o de cima gambi, deu merda
+        if (method_exists($model, $method)) {
+            if (!empty(array_slice($payload, 1))) {
+                dd($model, $method, $payload,  array_slice($payload, 1));
+            }
+            try {
+                return call_user_func_array([$model, $method], array_slice($payload, 1));
+            } catch (FatalThrowableError|Throwable $th) {
+                \Log::info('[Facilitador] ModelCallbacks: problema aqui'.print_r([get_class($model), $method], true));
+            }
+            
+        }
+        return true;
     }
 
     /**
