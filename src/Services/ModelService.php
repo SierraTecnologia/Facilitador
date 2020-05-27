@@ -91,7 +91,8 @@ class ModelService
             dd(
                 'IhhNaoTem',
                 $this->modelClass,
-                debug_backtrace()
+                debug_backtrace(),
+                'xii'
             );
             return false;
         }

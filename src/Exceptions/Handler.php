@@ -23,7 +23,7 @@ class Handler extends AppHandler
      */
     public function render($request, BaseException $e)
     {
-        dd($e); // @todo tirar aqui
+        // dd($e); // @todo tirar aqui
         // Check for custom handling
         if ($response = $this->handle404s($request, $e)) {
             return $response;

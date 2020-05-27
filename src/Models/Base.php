@@ -16,7 +16,7 @@ use Bkwld\Library\Utils\Collection;
 use Exception;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
-use Facilitador\Collections\Base as BaseCollection;
+use Support\Collections\Base as BaseCollection;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;

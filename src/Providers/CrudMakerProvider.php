@@ -14,12 +14,7 @@ class CrudMakerProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes(
-            [
-            __DIR__.'/Templates/Laravel' => base_path('resources/crudmaker'),
-            __DIR__.'/../config/crudmaker.php' => base_path('config/crudmaker.php'),
-            ]
-        );
+        
     }
 
     /**
@@ -29,27 +24,5 @@ class CrudMakerProvider extends ServiceProvider
      */
     public function register()
     {
-        /*
-        |--------------------------------------------------------------------------
-        | Providers
-        |--------------------------------------------------------------------------
-        */
-
-        if (class_exists('Illuminate\Foundation\AliasLoader')) {
-            $this->app->register(FormMakerProvider::class);
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | Register the Commands
-        |--------------------------------------------------------------------------
-        */
-
-        $this->commands(
-            [
-            \Siravel\Console\Commands\CrudMaker\CrudMaker::class,
-            \Siravel\Console\Commands\CrudMaker\TableCrudMaker::class,
-            ]
-        );
     }
 }

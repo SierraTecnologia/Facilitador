@@ -16,7 +16,6 @@ class ExtendedBreadFormFieldsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'extended-fields');
     }
 
     /**
@@ -26,17 +25,5 @@ class ExtendedBreadFormFieldsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Facilitador::addFormField(KeyValueJsonFormField::class);
-        Facilitador::addFormField(MultipleImagesWithAttrsFormField::class);
-
-        $this->app->bind(
-            'Facilitador\Http\Controllers\FacilitadorBaseController',
-            'ExtendedBreadFormFields\Controllers\ExtendedBreadFormFieldsController'
-        );
-
-        $this->app->bind(
-            'Facilitador\Http\Controllers\FacilitadorMediaController',
-            'ExtendedBreadFormFields\Controllers\ExtendedBreadFormFieldsMediaController'
-        );
     }
 }
