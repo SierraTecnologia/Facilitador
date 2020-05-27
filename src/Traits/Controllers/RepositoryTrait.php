@@ -13,12 +13,15 @@ trait RepositoryTrait
     /**
      * Return default User Role.
      */
-    public function repositoryIndex($dataType)
+    public function repositoryIndex($dataType, $request = false)
     {
         $getter = $dataType->server_side ? 'paginate' : 'get';
 
-        $search = (object) ['value' => $request->get('s'), 'key' => $request->get('key'), 'filter' => $request->get('filter')];
-
+        if ($request) {
+            $search = (object) ['value' => $request->get('s'), 'key' => $request->get('key'), 'filter' => $request->get('filter')];
+        } else {
+            $search = (object) ['value' => '', 'key' => '', 'filter' => ''];
+        }
         $searchNames = [];
         if ($dataType->server_side) {
             $searchable = SchemaManager::describeTable(app($dataType->model_name)->getTable())->pluck('name')->toArray();
@@ -149,7 +152,7 @@ trait RepositoryTrait
             $defaultSearchKey,
             $usesSoftDeletes,
             $showSoftDeleted,
-            $showCheckboxColum
+            $showCheckboxColumn
         ];
     }
 }

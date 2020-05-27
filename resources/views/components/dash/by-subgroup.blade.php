@@ -14,7 +14,7 @@
                 <div class="box-body">
 
                     @include('facilitador::components.dash.numbers', [
-                        'models' => $realModels->groupBy('register_type')
+                        'models' => $realModels->groupBy('register_type'),
                         'identificador' => $identificador.$groupName
                     ])
 

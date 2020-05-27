@@ -35,118 +35,124 @@ class FacilitadorService
         if (!$this->config = $config) {
             $this->config = \Illuminate\Support\Facades\Config::get('sitec.discover.models', []);
         }
-        $this->getModelServicesToArray(false);
+        // $this->getModelServicesToArray(false);
     }
 
-    public function getDatabaseService()
+    public function getModelServices($onlyConfig = true)
     {
-        return resolve(\Support\Services\DatabaseService::class);
+        $dataTypeRepository = resolve(\Support\Repositories\DataTypeRepository::class);
+        return $dataTypeRepository->allModelsServices();
     }
 
-    public function getModelServicesToArray($onlyConfig = true)
-    {
-        $models = $this->getModelServices(); 
+    // public function getDatabaseService()
+    // {
+    //     return resolve(\Support\Services\DatabaseService::class);
+    // }
 
-        if (!$onlyConfig) {
+    // public function getModelServicesToArray($onlyConfig = true)
+    // {
+    //     $models = $this->getModelServices(); 
 
-            // INvez de usar pela classe ta usando direto o eloquentENtity
-            // $allModels = collect($this->getDatabaseService()->getAllModels())->map(function($file, $class) {
-            $allModels = collect($this->getDatabaseService()->getAllEloquentsEntitys())->reject(
-                function ($class) {
-                    return empty($class);
-                }
-            )->map(
-                function ($class) {
-                    return new ModelService($class);
-                }
-            )->values()->all();
-            $models = array_merge(
-                $models,
-                $allModels
-            );
-        }
+    //     if (!$onlyConfig) {
 
-        /////////////
-        $array = [];
+    //         // INvez de usar pela classe ta usando direto o eloquentENtity
+    //         // $allModels = collect($this->getDatabaseService()->getAllModels())->map(function($file, $class) {
+    //         $allModels = collect($this->getDatabaseService()->getAllEloquentsEntitys())->reject(
+    //             function ($class) {
+    //                 return empty($class);
+    //             }
+    //         )->map(
+    //             function ($class) {
+    //                 return new ModelService($class);
+    //             }
+    //         )->values()->all();
+    //         $models = array_merge(
+    //             $models,
+    //             $allModels
+    //         );
+    //     }
 
-        foreach ($models as $model) {
+    //     /////////////
+    //     $array = [];
 
-            if (!$model->getEloquentEntity()) {
-                $this->setErrors(
-                    'Entity retornando falso para modelo: '.$model->getModelClass()
-                );
-            } else {
-                try {
-                    $array[] = [
-                        'model' => $model,
-                        'url' => $model->getUrl(),
-                        'count' => $model->getRepository()->count(),
-                        'icon' => $model->getIcon(),
-                        'name' => $model->getName(),
-                        'group_package' => $model->getGroupPackage(),
-                        'group_type' => $model->getGroupType(),
-                        'history_type' => $model->getHistoryType(),
-                        'register_type' => $model->getRegisterType(),
-                    ];
+    //     foreach ($models as $model) {
 
-                } catch(LogicException|ErrorException|RuntimeException|OutOfBoundsException|TypeError|ValidationException|FatalThrowableError|FatalErrorException|Exception|Throwable  $e) {
-                    $this->setErrors($e);
-                    // dd(
-                    //     'a',
-                    //     $model->getEloquentEntity(),
-                    //     $model,
-                    //     $e
-                    // );
-                } 
-            }
-        }
-        // dd('Modelos', $array);
-        return collect($array);
-    }
+    //         if (!$model->getEloquentEntity()) {
+    //             $this->setErrors(
+    //                 'Entity retornando falso para modelo: '.$model->getModelClass()
+    //             );
+    //         } else {
+    //             try {
+    //                 $array[] = [
+    //                     'model' => $model,
+    //                     'url' => $model->getUrl(),
+    //                     'count' => $model->getRepository()->count(),
+    //                     'icon' => $model->getIcon(),
+    //                     'name' => $model->getName(),
+    //                     'group_package' => $model->getGroupPackage(),
+    //                     'group_type' => $model->getGroupType(),
+    //                     'history_type' => $model->getHistoryType(),
+    //                     'register_type' => $model->getRegisterType(),
+    //                 ];
 
-    public function getModelServices()
-    {
-        if (!$this->modelServices) {
-            $this->modelServices = $this->recoverModelsFromConfig($this->config);
-        }
+    //             } catch(LogicException|ErrorException|RuntimeException|OutOfBoundsException|TypeError|ValidationException|FatalThrowableError|FatalErrorException|Exception|Throwable  $e) {
+    //                 $this->setErrors($e);
+    //                 // dd(
+    //                 //     'a',
+    //                 //     $model->getEloquentEntity(),
+    //                 //     $model,
+    //                 //     $e
+    //                 // );
+    //             } 
+    //         }
+    //     }
+    //     // dd('Modelos', $array);
+    //     return collect($array);
+    // }
 
-        return $this->modelServices;
-    }
+    // public function getModelServices()
+    // {
+    //     if (!$this->modelServices) {
+    //         $this->modelServices = $this->recoverModelsFromConfig($this->config);
+    //     }
 
-    private function recoverModelsFromConfig($configModels)
-    {
-        $models = [];
-        if (empty($configModels)) {
-            return $models;
-        }
-        foreach ($configModels as $model) {
-            if (is_array($model)) {
-                $models = array_merge(
-                    $models,
-                    $this->recoverModelsFromConfig($model)
-                );
-            } else {
-                $models[] = new ModelService($model);
-            }
-        }
-        return $models;
-    }
+    //     return $this->modelServices;
+    // }
 
-    public function modelIsValid($model)
-    {
-        $services = $this->getModelServices();
+    // private function recoverModelsFromConfig($configModels)
+    // {
+    //     $models = [];
+    //     if (empty($configModels)) {
+    //         return $models;
+    //     }
+    //     foreach ($configModels as $model) {
+    //         if (is_array($model)) {
+    //             $models = array_merge(
+    //                 $models,
+    //                 $this->recoverModelsFromConfig($model)
+    //             );
+    //         } else {
+    //             $models[] = new ModelService($model);
+    //         }
+    //     }
+    //     return $models;
+    // }
 
-        if (!is_array($services)) {
-            return false;
-        }
+    // public function modelIsValid($model)
+    // {
+    //     $services = $this->getModelServices();
 
-        foreach ($services as $service) {
-            if ($service->isModelClass($model)) {
-                return true;
-            }
-        }
+    //     if (!is_array($services)) {
+    //         return false;
+    //     }
+
+    //     foreach ($services as $service) {
+    //         if ($service->isModelClass($model)) {
+    //             return true;
+    //         }
+    //     }
         
-        return false;
-    }
+    //     return false;
+    // }
 
 }

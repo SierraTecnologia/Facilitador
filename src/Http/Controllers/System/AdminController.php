@@ -30,9 +30,10 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $models = $this->facilitadorService->getModelServicesToArray(false); //->sortByDesc('field', [], true);
-        
-        
+        // $models = $this->facilitadorService->getModelServicesToArray(false); //->sortByDesc('field', [], true);
+        $dataTypeRepository = resolve(\Support\Repositories\DataTypeRepository::class);
+        $models = $dataTypeRepository->allWithCount();
+
         $models = $models->reject(
             function ($item) {
                 return false;
