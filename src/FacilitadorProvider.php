@@ -106,14 +106,14 @@ class FacilitadorProvider extends ServiceProvider
                     'label_color' => 'success',
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
-                [
-                    'text'        => 'Menu Builder',
-                    'route'       => 'facilitador.menus.builder',
-                    'icon'        => 'fas fa-fw fa-cog',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    // 'access' => \App\Models\Role::$ADMIN
-                ],
+                // [
+                //     'text'        => 'Menu Builder',
+                //     'route'       => 'facilitador.menus.builder',
+                //     'icon'        => 'fas fa-fw fa-cog',
+                //     'icon_color'  => 'blue',
+                //     'label_color' => 'success',
+                //     // 'access' => \App\Models\Role::$ADMIN
+                // ],
                 [
                     'text'        => 'Medias',
                     'route'       => 'facilitador.media.index',

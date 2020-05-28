@@ -4,6 +4,7 @@ namespace Facilitador\Traits\Controllers;
 
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Facilitador\Facades\Facilitador;
+use Support\Models\Application\DataType;
 
 /**
  * @property \Illuminate\Database\Eloquent\Collection  roles
@@ -13,7 +14,7 @@ trait RepositoryTrait
     /**
      * Return default User Role.
      */
-    public function repositoryIndex($dataType, $request = false)
+    public function repositoryIndex(DataType $dataType, $request = false)
     {
         $getter = $dataType->server_side ? 'paginate' : 'get';
 
@@ -32,8 +33,12 @@ trait RepositoryTrait
             }
         }
 
-        $orderBy = $request->get('order_by', $dataType->order_column);
-        $sortOrder = $request->get('sort_order', null);
+        $orderBy = $dataType->order_column;
+        $sortOrder = null;
+        if ($request) {
+            $orderBy = $request->get('order_by', $dataType->order_column);
+            $sortOrder = $request->get('sort_order', null);
+        }
         $usesSoftDeletes = false;
         $showSoftDeleted = false;
 
@@ -52,7 +57,7 @@ trait RepositoryTrait
             // if ($model && in_array(SoftDeletes::class, class_uses($model)) && Auth::user()->can('delete', app($dataType->model_name))) {
                 $usesSoftDeletes = true;
 
-            if ($request->get('showSoftDeleted')) {
+            if ($request && $request->get('showSoftDeleted')) {
                 $showSoftDeleted = true;
                 $query = $query->withTrashed();
             }
