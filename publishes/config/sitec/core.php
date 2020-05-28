@@ -32,7 +32,11 @@ return [
     'stylesheet' => '/assets/facilitador/index.min.css',
     'script' => '/assets/facilitador/index.min.js',
 
+    /**
+     * Os comandos do App\Console sao carregados automagicamente
+     */
     'commandsFolders' => [
+        'vendor/sierratecnologia/tools/siravel/Console/Commands',
         'vendor/sierratecnologia/facilitador/src/Console/Commands',
         'vendor/sierratecnologia/finder/src/Console/Commands',
         'vendor/sierratecnologia/laravel-support/src/Console/Commands'

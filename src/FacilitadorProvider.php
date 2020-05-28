@@ -69,47 +69,71 @@ class FacilitadorProvider extends ServiceProvider
      */
     public static $menuItens = [
         'Admin|300' => [
-            [
-                'text' => 'Information',
-                'icon' => 'fas fa-fw fa-bomb',
-                'icon_color' => "blue",
-                'label_color' => "success",
-            ],
+            // [
+            //     'text' => 'Information',
+            //     'icon' => 'fas fa-fw fa-book',
+            //     'icon_color' => "blue",
+            //     'label_color' => "success",
+            // ],
             [
                 'text' => 'Site',
-                'icon' => 'fas fa-fw fa-bomb',
+                'icon' => 'fas fa-book',
                 'icon_color' => "blue",
                 'label_color' => "success",
             ],
             [
                 'text' => 'Tools',
-                'icon' => 'fas fa-fw fa-bomb',
+                'icon' => 'fas fa-fw fa-th',
                 'icon_color' => "blue",
                 'label_color' => "success",
             ],
-            'Information' => [
+            // 'Information' => [
+            // ],
+            'Site' => [
                 [
                     'text'        => 'Decoy',
                     'url'         => 'admin',
-                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
-            ],
-            'Site' => [
+                [
+                    'text'        => 'Compass',
+                    'route'       => 'facilitador.compass.index',
+                    'icon'        => 'fas fa-fw fa-cog',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Menu Builder',
+                    'route'       => 'facilitador.menus.builder',
+                    'icon'        => 'fas fa-fw fa-cog',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Medias',
+                    'route'       => 'facilitador.media.index',
+                    'icon'        => 'fas fa-fw fa-cog',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    // 'access' => \App\Models\Role::$ADMIN
+                ],
                 [
                     'text'        => 'elements',
                     'route'       => 'facilitador.elements',
-                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon'        => 'fas fa-fw fa-laptop',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
                     'text'        => 'Redirects',
-                    'url'       => '/siravel/redirect-rules',
-                    'icon'        => 'fas fa-fw fa-industry',
+                    'url'         => '/siravel/redirect-rules',
+                    'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
                     // 'access' => \App\Models\Role::$ADMIN
@@ -143,7 +167,7 @@ class FacilitadorProvider extends ServiceProvider
                 [
                     'text'        => 'Workers',
                     'route'       => 'facilitador.workers',
-                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon'        => 'fas fa-fw fa-coffee',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
                     // 'access' => \App\Models\Role::$ADMIN
@@ -151,7 +175,7 @@ class FacilitadorProvider extends ServiceProvider
                 [
                     'text'        => 'Hooks',
                     'route'       => 'facilitador.hooks',
-                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
                     // 'access' => \App\Models\Role::$ADMIN

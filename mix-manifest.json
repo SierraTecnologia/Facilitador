@@ -1,4 +1,5 @@
 {
-    "/dist/js/field.js": "/dist/js/field.js",
-    "/dist/css/field.css": "/dist/css/field.css"
+    "/resources/assets/dist/js/facilitador.js": "/resources/assets/dist/js/facilitador.js",
+    "/resources/assets/dist/css/facilitador.css": "/resources/assets/dist/css/facilitador.css",
+    "/resources/assets/dist/css/colors.css": "/resources/assets/dist/css/colors.css"
 }

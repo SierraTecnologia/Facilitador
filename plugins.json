@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Facilitador Red Theme",
+        "description": "A red theme for Facilitador 2",
+        "type": "theme",
+        "repository": "emptynick/voyager-red-theme",
+        "keywords": ["plugin", "theme", "red", "Facilitador"],
+        "website": "https://github.com/emptynick/voyager-red-theme"
+    }
+]
