@@ -92,7 +92,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                 }
                 @endphp
                 <td>
-                    @if(is_object($data->{$row->field}))
+                    @if(!in_array($row->type, ['date', 'timestamp']) && is_object($data->{$row->field}))
                         <div>{{ var_dump( $data->{$row->field}, true ) }}</div>
                     @elseif (isset($row->details->view))
                         @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $data->{$row->field}, 'action' => 'browse', 'view' => 'browse', 'options' => $row->details])
