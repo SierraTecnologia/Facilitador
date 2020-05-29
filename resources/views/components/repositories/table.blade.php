@@ -135,8 +135,10 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                         {!! $row->details->options->{$data->{$row->field}} ?? '' !!}
 
                     @elseif($row->type == 'date' || $row->type == 'timestamp')
-                        @if ( property_exists($row->details, 'format') && !is_null($data->{$row->field}) )
+                        @if ( !empty($row->details) && property_exists($row->details, 'format') && !is_null($data->{$row->field}) )
                             {{ \Carbon\Carbon::parse($data->{$row->field})->formatLocalized($row->details->format) }}
+                        @elseif ( !is_null($data->{$row->field}) && is_a($data->{$row->field}, \Carbon\Carbon::class) )
+                            {{ \Carbon\Carbon::parse($data->{$row->field})->diffForHumans() }}
                         @else
                             {{ $data->{$row->field} }}
                         @endif

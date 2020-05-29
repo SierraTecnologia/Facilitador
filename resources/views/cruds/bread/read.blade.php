@@ -90,8 +90,10 @@
                                     @endif
                                 @endif
                             @elseif($row->type == 'date' || $row->type == 'timestamp')
-                                @if ( property_exists($row->details, 'format') && !is_null($dataTypeContent->{$row->field}) )
+                                @if ( !empty($row->details) && property_exists($row->details, 'format') && !is_null($dataTypeContent->{$row->field}) )
                                     {{ \Carbon\Carbon::parse($dataTypeContent->{$row->field})->formatLocalized($row->details->format) }}
+                                @elseif ( !is_null($dataTypeContent->{$row->field}) && is_a($dataTypeContent->{$row->field}, \Carbon\Carbon::class) )
+                                    {{ \Carbon\Carbon::parse($dataTypeContent->{$row->field})->diffForHumans() }}
                                 @else
                                     {{ $dataTypeContent->{$row->field} }}
                                 @endif

@@ -88,51 +88,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Database Config
-    |--------------------------------------------------------------------------
-    |
-    | Here you can specify facilitador database settings
-    |
-    */
-
-    'database' => [
-        'tables' => [
-            'hidden' => ['migrations', 'data_rows', 'data_types', 'menu_items', 'password_resets', 'permission_role', 'settings'],
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Multilingual configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you can specify if you want Facilitador to ship with support for
-    | multilingual and what locales are enabled.
-    |
-    */
-
-    'multilingual' => [
-        /*
-         * Set whether or not the multilingual is supported by the BREAD input.
-         */
-        'enabled' => true,
-
-        /*
-         * Select default language
-         */
-        'default' => 'pt',
-
-        /*
-         * Select languages that are supported.
-         */
-        'locales' => [
-            'en',
-            'pt',
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Dashboard config
     |--------------------------------------------------------------------------
     |
