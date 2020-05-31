@@ -12,7 +12,7 @@
 
 		// Email and password
 		echo Former::text('email')->label(__('facilitador::admins.form.email'));
-		if (Config::get('sitec.core.obscure_admin_password')) {
+		if (Config::get('painel.adminer.obscure_admin_password')) {
 			echo Former::password('password')->label(__('facilitador::admins.form.password'));
 			echo Former::password('confirm_password')->label(__('facilitador::admins.form.confirm_password'));
 		} else {
