@@ -81,8 +81,8 @@ trait AppMiddlewaresProvider
         // Set the default mailer settings
         Config::set(
             'mail.from', [
-            'address' => Config::get('sitec.core.mail_from_address'),
-            'name' => Config::get('sitec.core.mail_from_name'),
+            'address' => Config::get('site.core.mail_from_address'),
+            'name' => Config::get('site.core.mail_from_name'),
             ]
         );
 
