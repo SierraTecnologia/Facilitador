@@ -39,7 +39,7 @@ class UserMeta extends Model
      */
     public function user()
     {
-        return $this->belongsTo(\Illuminate\Support\Facades\Config::get('sitec.core.models.user', \App\Models\User::class));
+        return $this->belongsTo(\Illuminate\Support\Facades\Config::get('painel.adminer.model', \App\Models\User::class));
     }
 
     /**

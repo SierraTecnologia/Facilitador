@@ -84,16 +84,16 @@ trait FacilitadorLoadClasses
         $this->mergeConfigFrom($this->getPublishesPath('config/application/hooks.php'), 'application.hooks');
         $this->mergeConfigFrom($this->getPublishesPath('config/application/modelagem.php'), 'application.modelagem');
         $this->mergeConfigFrom($this->getPublishesPath('config/painel/core.php'), 'painel.core');
-        $this->mergeConfigFrom($this->getPublishesPath('config/painel/encode.php'), 'painel.encode');
-        $this->mergeConfigFrom($this->getPublishesPath('config/painel/encode.php'), 'painel.encode');
-        $this->mergeConfigFrom($this->getPublishesPath('config/painel/attributes.php'), 'painel.attributes');
+        $this->mergeConfigFrom($this->getPublishesPath('config/painel/adminer.php'), 'painel.adminer');
+        $this->mergeConfigFrom($this->getPublishesPath('config/painel/elements.php'), 'painel.elements');
+        $this->mergeConfigFrom($this->getPublishesPath('config/painel/layout.php'), 'painel.layout');
         $this->mergeConfigFrom($this->getPublishesPath('config/site/core.php'), 'site.core');
-        $this->mergeConfigFrom($this->getPublishesPath('config/site/elements.yaml'), 'site.elements');
+        // $this->mergeConfigFrom($this->getPublishesPath('config/site/elements.yaml'), 'site.elements');
         $this->mergeConfigFrom($this->getPublishesPath('config/site/layout.php'), 'site.layout');
         $this->mergeConfigFrom($this->getPublishesPath('config/site/profiles.php'), 'site.profiles');
         $this->mergeConfigFrom($this->getPublishesPath('config/site/site.php'), 'site.site');
         $this->mergeConfigFrom($this->getPublishesPath('config/gravatar.php'), 'gravatar');
-        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador-hooks.php'), 'facilitador-hooks');
-        $this->mergeConfigFrom($this->getPublishesPath('config/facilitador.php'), 'facilitador');
+        // $this->mergeConfigFrom($this->getPublishesPath('config/facilitador-hooks.php'), 'facilitador-hooks');
+        // $this->mergeConfigFrom($this->getPublishesPath('config/facilitador.php'), 'facilitador');
     }
 }
