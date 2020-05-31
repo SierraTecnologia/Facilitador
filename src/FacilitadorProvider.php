@@ -201,7 +201,7 @@ class FacilitadorProvider extends ServiceProvider
         $this->loadTranslations();
         
         // Register the routes.
-        if (\Illuminate\Support\Facades\Config::get('sitec.core.register_routes') && !$this->app->routesAreCached()) {
+        if (\Illuminate\Support\Facades\Config::get('site.core.register_routes') && !$this->app->routesAreCached()) {
             $this->app['facilitador.router']->registerAll();
         }
         
