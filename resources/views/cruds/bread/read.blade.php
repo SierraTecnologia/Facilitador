@@ -29,7 +29,7 @@
             {{ __('facilitador::generic.return_to_list') }}
         </a>
     </h1>
-    @include('facilitador::multilingual.language-selector')
+    @include('support::components.forms.multilingual.language-selector')
 @stop
 
 @section('content')
@@ -112,7 +112,7 @@
                             @elseif($row->type == 'coordinates')
                                 @include('facilitador::partials.coordinates')
                             @elseif($row->type == 'rich_text_box')
-                                @include('facilitador::multilingual.input-hidden-bread-read')
+                                @include('support::components.forms.multilingual.input-hidden-bread-read')
                                 <p>{!! $dataTypeContent->{$row->field} !!}</p>
                             @elseif($row->type == 'file')
                                 @if(json_decode($dataTypeContent->{$row->field}))
@@ -128,7 +128,7 @@
                                     </a>
                                 @endif
                             @else
-                                @include('facilitador::multilingual.input-hidden-bread-read')
+                                @include('support::components.forms.multilingual.input-hidden-bread-read')
                                 <p>{{ $dataTypeContent->{$row->field} }}</p>
                             @endif
                         </div><!-- panel-body -->

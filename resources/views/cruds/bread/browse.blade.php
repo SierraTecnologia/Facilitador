@@ -32,7 +32,7 @@
                 @include('facilitador::cruds.bread.partials.actions', ['action' => $action, 'data' => null])
             @endif
         @endforeach
-        @include('facilitador::multilingual.language-selector')
+        @include('support::components.forms.multilingual.language-selector')
     </div>
 @stop
 
