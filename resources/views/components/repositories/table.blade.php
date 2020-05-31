@@ -155,13 +155,13 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                     @elseif($row->type == 'color')
                         <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
                     @elseif($row->type == 'text')
-                        @include('facilitador::multilingual.input-hidden-bread-browse')
+                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
                         <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                     @elseif($row->type == 'text_area')
-                        @include('facilitador::multilingual.input-hidden-bread-browse')
+                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
                         <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                     @elseif($row->type == 'file' && !empty($data->{$row->field}) )
-                        @include('facilitador::multilingual.input-hidden-bread-browse')
+                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
                         @if(json_decode($data->{$row->field}) !== null)
                             @foreach(json_decode($data->{$row->field}) as $file)
                                 <a href="{{ Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank">
@@ -175,7 +175,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                             </a>
                         @endif
                     @elseif($row->type == 'rich_text_box')
-                        @include('facilitador::multilingual.input-hidden-bread-browse')
+                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
                         <div>{{ mb_strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? mb_substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
                     @elseif($row->type == 'coordinates')
                         @include('facilitador::partials.coordinates-static-image')
@@ -222,7 +222,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                             {{ trans_choice('facilitador::tools.media.files', 0) }}
                         @endif
                     @else
-                        @include('facilitador::multilingual.input-hidden-bread-browse')
+                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
                         <span>{{ $data->{$row->field} }}</span>
                     @endif
                 </td>
