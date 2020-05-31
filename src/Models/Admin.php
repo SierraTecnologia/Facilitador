@@ -176,7 +176,7 @@ class Admin extends \Facilitador\Models\User
     //             'first_name' => $admin->first_name,
     //             'last_name' => $admin->last_name,
     //             'email' => request('email'),
-    //             'url' => Request::root().'/'.Config::get('sitec.core.dir'),
+    //             'url' => Request::root().'/'.Config::get('painel.adminer.dir'),
     //             'root' => Request::root(),
     //             'password' => request('password'),
     //         ];
@@ -204,7 +204,7 @@ class Admin extends \Facilitador\Models\User
     //             'last_name' =>request('last_name'),
     //             'email' => request('email'),
     //             'password' =>request('password'),
-    //             'url' => Request::root().'/'.Config::get('sitec.core.dir'),
+    //             'url' => Request::root().'/'.Config::get('painel.adminer.dir'),
     //             'root' => Request::root(),
     //         ];
 

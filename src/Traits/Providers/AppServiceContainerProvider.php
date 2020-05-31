@@ -53,7 +53,7 @@ trait AppServiceContainerProvider
         // Registers explicit rotues and wildcarding routing
         $this->app->singleton(
             'facilitador.router', function ($app) {
-                $dir = \Illuminate\Support\Facades\Config::get('sitec.core.dir');
+                $dir = \Illuminate\Support\Facades\Config::get('painel.adminer.dir');
 
                 return new \Facilitador\Routing\Router($dir);
             }
@@ -65,7 +65,7 @@ trait AppServiceContainerProvider
                 $request = $app['request'];
 
                 return new \Facilitador\Routing\Wildcard(
-                    \Illuminate\Support\Facades\Config::get('sitec.core.dir'),
+                    \Illuminate\Support\Facades\Config::get('painel.adminer.dir'),
                     $request->getMethod(),
                     $request->path()
                 );
