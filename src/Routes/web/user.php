@@ -11,6 +11,10 @@ use Facilitador\Facades\Facilitador;
 //     Facilitador::routes();
 // });
 
+
+Route::post('pusher/auth', function() {
+    return auth()->user();
+  });
 /*
 |--------------------------------------------------------------------------
 | Facilitador Routes
@@ -41,15 +45,33 @@ Route::group(
                         Route::get('/', 'ProfileController@index')->name('home');
                         Route::get('/show', 'ProfileController@show')->name('profile.show');
 
-                        Route::get('/notifications/unread', 'NotificationsController@unread')->name('notifications.unread');
-                        Route::get('/notifications', 'NotificationsController@index')->name('notifications.index');
-                        Route::get('/notifications/count', 'NotificationsController@count')->name('notifications.count');
-
                         Route::get('/messages', 'MessagesController@index')->name('messages.index');
                         Route::get('/messages/to/{id}', 'MessagesController@create')->name('messages.create');
                         Route::post('/messages', 'MessagesController@store')->name('messages.store');
                         Route::get('/messages/{id}', 'MessagesController@show')->name('messages.show');
                         Route::put('/messages/{id}', 'MessagesController@update')->name('messages.update');
+
+                        Route::group(['prefix' => 'notifications'], function () {
+                            Route::get('/', 'NotificationController@index');
+                            Route::get('{uuid}/read', 'NotificationController@read');
+                            Route::delete('{uuid}/delete', 'NotificationController@delete');
+                            Route::get('search', 'NotificationController@search');
+
+                            /**
+                             * Veio separdo
+                             */
+
+                            Route::get('/unread', 'NotificationsController@unread')->name('notifications.unread');
+                            // Route::get('/', 'NotificationsController@index')->name('notifications.index');
+                            Route::get('/count', 'NotificationsController@count')->name('notifications.count');
+
+                        });
+                        
+                        Route::get('settings', 'SettingsController@settings');
+                        Route::post('settings', 'SettingsController@update');
+                        Route::get('password', 'PasswordController@password');
+                        Route::post('password', 'PasswordController@update');
+
                         event(new RoutingAdminAfter());
                     }
                 // );
