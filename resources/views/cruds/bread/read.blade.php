@@ -35,7 +35,12 @@
 @section('content')
     <div class="page-content read container-fluid">
         <div class="row">
-            <div class="col-md-12">
+
+            <div class="col-lg-8 margin-tb">
+                @include('facilitador::components.registers.relations')
+            </div>
+
+            <div class="col-lg-4 margin-tb">
 
                 <div class="panel panel-bordered" style="padding-bottom:5px;">
                     <!-- form start -->

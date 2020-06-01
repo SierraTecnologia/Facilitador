@@ -128,7 +128,7 @@ Read more about multilanguage [here](../core-concepts/multilanguage.md).
 'dashboard' => [
     'navbar_items' => [
         'Profile' => [
-            'route'         => 'facilitador.profile',
+            'route'         => 'profile.profile',
             'classes'       => 'class-full-of-rum',
             'icon_class'    => 'facilitador-person',
         ],
@@ -138,7 +138,7 @@ Read more about multilanguage [here](../core-concepts/multilanguage.md).
             'target_blank'  => true,
         ],
         'Logout' => [
-            'route'      => 'facilitador.logout',
+            'route'      => 'profile.logout',
             'icon_class' => 'facilitador-power',
         ],
     ],

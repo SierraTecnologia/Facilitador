@@ -44,7 +44,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
         $usesSoftDeletes,
         $showSoftDeleted,
         $showCheckboxColumn,
-    ) = \Support\Services\DatatableService::make($registros)->repositoryIndex();
+    ) = \Support\Services\DatatableService::makeFromCollection($registros)->repositoryIndex();
 }
 ?>
 

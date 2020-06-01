@@ -23,7 +23,7 @@ use Facilitador\Facades\Facilitador;
             
 
 Route::group(
-    ['as' => 'facilitador.'], function () {
+    ['as' => 'profile.'], function () {
 
         Route::namespace('User')->group(
             function () {
@@ -38,7 +38,7 @@ Route::group(
 
                         Route::get('profile', ['uses' => 'FacilitadorUserController@profile', 'as' => 'profile']);
 
-                        Route::get('/', 'ProfileController@index')->name('profile');
+                        Route::get('/', 'ProfileController@index')->name('home');
                         Route::get('/show', 'ProfileController@show')->name('profile.show');
 
                         Route::get('/notifications/unread', 'NotificationsController@unread')->name('notifications.unread');

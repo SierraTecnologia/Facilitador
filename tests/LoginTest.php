@@ -32,31 +32,31 @@ class LoginTest extends TestCase
     {
         Auth::loginUsingId(1);
 
-        $this->visit(route('facilitador.login'))
-            ->seePageIs(route('facilitador.dashboard'));
+        $this->visit(route('profile.login'))
+            ->seePageIs(route('profile.dashboard'));
     }
 
     public function testRedirectIfNotLoggedIn()
     {
-        $this->visit(route('facilitador.profile'))
-            ->seePageIs(route('facilitador.login'));
+        $this->visit(route('profile.profile'))
+            ->seePageIs(route('profile.login'));
     }
 
     public function testCanLogout()
     {
         Auth::loginUsingId(1);
 
-        $this->visit(route('facilitador.dashboard'))
+        $this->visit(route('profile.dashboard'))
             ->press(__('facilitador::generic.logout'))
-            ->seePageIs(route('facilitador.login'));
+            ->seePageIs(route('profile.login'));
     }
 
     public function testGetsLockedOutAfterFiveAttempts()
     {
-        session()->setPreviousUrl(route('facilitador.login'));
+        session()->setPreviousUrl(route('profile.login'));
 
         for ($i = 0; $i <= 5; $i++) {
-            $t = $this->visit(route('facilitador.login'))
+            $t = $this->visit(route('profile.login'))
                 ->type('john@Doe.com', 'email')
                 ->type('pass', 'password')
                 ->press(__('facilitador::generic.login'));

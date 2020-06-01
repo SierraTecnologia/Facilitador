@@ -17,7 +17,13 @@
                     </h1>
                 </div>
                 <div class="box-body">
-                        @include('facilitador::components.repositories.table', ['registros' => $relationResult->results, 'service' => $relationResult->repository] )
+                        @include(
+                            'facilitador::components.repositories.table',
+                            [
+                                'registros' => $relationResult->results,
+                                'service' => $relationResult->repository
+                            ]
+                        )
                 </div>
                 <!-- /.box-body -->
             </div>

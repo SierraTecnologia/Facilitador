@@ -68,6 +68,64 @@ class FacilitadorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
+        'User|50' => [
+            [
+                'text'        => 'Dashboard',
+                'route'       => 'profile.dashboard',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+            [
+                'text'        => 'Home',
+                'route'       => 'profile.home',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+            [
+                'text'        => 'Profile',
+                'route'       => 'profile.profile',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+            [
+                'text'        => 'Show Profile',
+                'route'       => 'profile.profile.show',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+            [
+                'text'        => 'Notifications',
+                'route'       => 'profile.notifications.index',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+            [
+                'text'        => 'Messages',
+                'route'       => 'profile.messages.index',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+            [
+                'text'        => 'Logout',
+                'route'       => 'profile.logout',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+        ],
         'Admin|300' => [
             // [
             //     'text' => 'Information',

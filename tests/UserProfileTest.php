@@ -34,7 +34,7 @@ class UserProfileTest extends TestCase
 
     public function testCanSeeTheUserInfoOnHisProfilePage()
     {
-        $this->visit(route('facilitador.profile'))
+        $this->visit(route('profile.profile'))
             ->seeInElement('h4', $this->user->name)
             ->seeInElement('.user-email', $this->user->email)
             ->seeLink(__('facilitador::profile.edit'));
@@ -42,7 +42,7 @@ class UserProfileTest extends TestCase
 
     public function testCanEditUserName()
     {
-        $this->visit(route('facilitador.profile'))
+        $this->visit(route('profile.profile'))
             ->click(__('facilitador::profile.edit'))
             ->see(__('facilitador::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
@@ -57,7 +57,7 @@ class UserProfileTest extends TestCase
 
     public function testCanEditUserEmail()
     {
-        $this->visit(route('facilitador.profile'))
+        $this->visit(route('profile.profile'))
             ->click(__('facilitador::profile.edit'))
             ->see(__('facilitador::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
@@ -72,7 +72,7 @@ class UserProfileTest extends TestCase
 
     public function testCanEditUserPassword()
     {
-        $this->visit(route('facilitador.profile'))
+        $this->visit(route('profile.profile'))
             ->click(__('facilitador::profile.edit'))
             ->see(__('facilitador::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
@@ -86,7 +86,7 @@ class UserProfileTest extends TestCase
 
     public function testCanEditUserAvatar()
     {
-        $this->visit(route('facilitador.profile'))
+        $this->visit(route('profile.profile'))
             ->click(__('facilitador::profile.edit'))
             ->see(__('facilitador::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
@@ -116,7 +116,7 @@ class UserProfileTest extends TestCase
             )->get()->pluck('id')->all()
         );
         Auth::onceUsingId($user->id);
-        $this->visit(route('facilitador.profile'))
+        $this->visit(route('profile.profile'))
             ->click(__('facilitador::profile.edit'))
             ->see(__('facilitador::profile.edit_user'))
             ->seePageIs($editPageForTheCurrentUser)
@@ -131,7 +131,7 @@ class UserProfileTest extends TestCase
 
     public function testCanSetUserLocale()
     {
-        $this->visit(route('facilitador.profile'))
+        $this->visit(route('profile.profile'))
             ->click(__('facilitador::profile.edit'))
             ->see(__('facilitador::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
@@ -143,7 +143,7 @@ class UserProfileTest extends TestCase
 
         // Validate that app()->setLocale() is called
         Auth::loginUsingId($user->id);
-        $this->visitRoute('facilitador.dashboard');
+        $this->visitRoute('profile.dashboard');
         $this->assertTrue(($user->locale == $this->app->getLocale()));
     }
 
