@@ -3,7 +3,7 @@
 return [
 
     // The directory for the admin
-    'dir' => 'siravel',
+    'dir' => 'admin',
 
     // The layout to use
     'layout' => 'facilitador::layouts.decoy.default',

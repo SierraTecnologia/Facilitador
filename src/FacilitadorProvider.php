@@ -126,7 +126,7 @@ class FacilitadorProvider extends ServiceProvider
                 // 'access' => \App\Models\Role::$ADMIN
             ],
         ],
-        'Admin|300' => [
+        'System|350' => [
             // [
             //     'text' => 'Information',
             //     'icon' => 'fas fa-fw fa-book',
