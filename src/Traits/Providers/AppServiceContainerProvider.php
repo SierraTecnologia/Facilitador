@@ -134,7 +134,7 @@ trait AppServiceContainerProvider
                 // } catch (\Exception $e) {
                 //     dd($e);
                 // }
-                return new FacilitadorService(\Illuminate\Support\Facades\Config::get('sitec.discover.models'));
+                return new FacilitadorService(\Illuminate\Support\Facades\Config::get('generators.loader.models'));
             }
         );
 

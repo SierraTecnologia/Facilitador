@@ -41,7 +41,7 @@ class Controller extends BaseController
     {
         // @debug
 
-        // dd((new \Support\Services\DatabaseService(\Illuminate\Support\Facades\Config::get('sitec.discover.models_alias'), new \Support\Components\Coders\Parser\ComposerParser))->getAllModels());
+        // dd((new \Support\Services\DatabaseService(\Illuminate\Support\Facades\Config::get('generators.loader.models_alias'), new \Support\Components\Coders\Parser\ComposerParser))->getAllModels());
         // $database = new \Support\Components\Database\Mount\DatabaseMount();
         // $model = new \Support\Services\ModelService(\Population\Models\Identity\Actors\Person::class);
         // $model = new \Support\Services\ModelService('OTQ4ODUzYThiZDY2MTcyNGFhdUhXZnJheUl6VUt6SUtkU1NCdUhFaW54aldLZHh0ZEZJMnVyOGJJL2c9');
