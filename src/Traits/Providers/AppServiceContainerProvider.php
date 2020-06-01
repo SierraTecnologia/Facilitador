@@ -128,7 +128,7 @@ trait AppServiceContainerProvider
          */
         $this->app->singleton(
             FacilitadorService::class, function ($app) {
-                Log::channel('sitec-providers')->debug('Singleton Facilitador');
+                Log::debug('Singleton Facilitador');
                 // try {
                 //     throw new \Exception();
                 // } catch (\Exception $e) {

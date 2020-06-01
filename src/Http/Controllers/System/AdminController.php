@@ -34,6 +34,15 @@ class AdminController extends Controller
         $dataTypeRepository = resolve(\Support\Repositories\DataTypeRepository::class);
         $models = $dataTypeRepository->allWithCount();
 
+        // $importantModels = $models->reject(
+        //     function ($item) use ($importantConfigModels) {
+        //         $item->model->isModelClass
+        //         return false;
+        //         // return empty($item['count']);
+        //     }
+        // );
+        // dd($models);
+
         $models = $models->reject(
             function ($item) {
                 return false;
