@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Observers;
+namespace Facilitador\Observers;
 
 use App\Models\User;
 use Illuminate\Bus\Queueable;
