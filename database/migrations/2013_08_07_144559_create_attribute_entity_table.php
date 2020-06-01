@@ -16,7 +16,7 @@ class CreateAttributeEntityTable extends Migration
     public function up(): void
     {
         Schema::create(
-            \Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_entity'), function (Blueprint $table) {
+            \Illuminate\Support\Facades\Config::get('application.directorys.tables.attribute_entity'), function (Blueprint $table) {
                 // Columns
                 $table->integer('attribute_id')->unsigned();
                 $table->string('entity_type');
@@ -25,7 +25,7 @@ class CreateAttributeEntityTable extends Migration
 
                 // Indexes
                 $table->unique(['attribute_id', 'entity_type'], 'attributable_attribute_id_entity_type');
-                $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'))
+                $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('application.directorys.tables.attributes'))
                     ->onDelete('cascade')->onUpdate('cascade');
             }
         );
@@ -38,6 +38,6 @@ class CreateAttributeEntityTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_entity'));
+        Schema::dropIfExists(\Illuminate\Support\Facades\Config::get('application.directorys.tables.attribute_entity'));
     }
 }

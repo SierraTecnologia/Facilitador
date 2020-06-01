@@ -16,7 +16,7 @@ class CreateAttributeBooleanValuesTable extends Migration
     public function up(): void
     {
         Schema::create(
-            \Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_boolean_values'), function (Blueprint $table) {
+            \Illuminate\Support\Facades\Config::get('application.directorys.tables.attribute_boolean_values'), function (Blueprint $table) {
                 // Columns
                 $table->increments('id');
                 $table->boolean('content');
@@ -26,7 +26,7 @@ class CreateAttributeBooleanValuesTable extends Migration
                 $table->timestamps();
 
                 // Indexes
-                $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attributes'))
+                $table->foreign('attribute_id')->references('id')->on(\Illuminate\Support\Facades\Config::get('application.directorys.tables.attributes'))
                     ->onDelete('cascade')->onUpdate('cascade');
             }
         );
@@ -39,6 +39,6 @@ class CreateAttributeBooleanValuesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(\Illuminate\Support\Facades\Config::get('sitec.attributes.tables.attribute_boolean_values'));
+        Schema::dropIfExists(\Illuminate\Support\Facades\Config::get('application.directorys.tables.attribute_boolean_values'));
     }
 }
