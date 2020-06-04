@@ -15,12 +15,23 @@ class CreateSettingsTable extends Migration
     {
         Schema::create(
             'settings', function (Blueprint $table) {
-                $table->increments('id');
-                $table->string('key')->unique();
-                $table->string('display_name');
-                $table->text('value');
+
+                $table->engine = 'InnoDB';
+                $table->string('code'); //->unique();
+                // $table->primary('code');
+                $table->string('value')->default(false);
+                $table->string('business_code');
+                $table->foreign('business_code')->references('code')->on('businesses');
+                $table->timestamps();
+                $table->softDeletes();
+                
+                $table->primary(['code', 'business_code']);
+
+                // $table->increments('id');
+                // $table->string('key')->unique();
+                $table->string('display_name')->nullable()->default(null);
                 $table->text('details')->nullable()->default(null);
-                $table->string('type');
+                $table->string('type')->nullable()->default(null);
                 $table->integer('order')->default('1');
             }
         );

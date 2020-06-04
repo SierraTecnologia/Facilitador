@@ -4,11 +4,10 @@ namespace Facilitador\Models;
 
 use App\Models\Model;
 use SierraTecnologia\Cashier\Billable;
-// use Support\Traits\Models\BusinessTrait;
 
 class UserMeta extends Model
 {
-    use Billable; //, BusinessTrait;
+    use Billable;
 
     /**
      * The database table used by the model.
