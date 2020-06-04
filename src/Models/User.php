@@ -88,7 +88,7 @@ class User extends Base implements
      *
      * @var array
      */
-    public $rules = [
+    public static $rules = [
         'name' => 'required',
         'images.default' => 'image',
         'email' => 'required|unique:users,email',

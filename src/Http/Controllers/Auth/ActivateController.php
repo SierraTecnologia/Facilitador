@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers\Auth;
 
-use App\Services\UserService;
+use Siravel\Services\UserService;
 use Siravel\Services\System\ActivateService;
 use App\Http\Controllers\Controller;
 

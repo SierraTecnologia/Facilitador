@@ -155,11 +155,23 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                     @elseif($row->type == 'color')
                         <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
                     @elseif($row->type == 'text')
-                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
-                        <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
+                        @if(is_array($data->{$row->field}))
+                            <div>
+                            {{ implode(', ', $data->{$row->field}) }}
+                            </div>
+                        @else
+                            @include('support::components.forms.multilingual.input-hidden-bread-browse')
+                            <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
+                        @endif
                     @elseif($row->type == 'text_area')
-                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
-                        <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
+                        @if(is_array($data->{$row->field}))
+                            <div>
+                            {{ implode(', ', $data->{$row->field}) }}
+                            </div>
+                        @else
+                            @include('support::components.forms.multilingual.input-hidden-bread-browse')
+                            <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
+                        @endif
                     @elseif($row->type == 'file' && !empty($data->{$row->field}) )
                         @include('support::components.forms.multilingual.input-hidden-bread-browse')
                         @if(json_decode($data->{$row->field}) !== null)
@@ -175,8 +187,14 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                             </a>
                         @endif
                     @elseif($row->type == 'rich_text_box')
-                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
-                        <div>{{ mb_strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? mb_substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
+                        @if(is_array($data->{$row->field}))
+                            <div>
+                            {{ implode(', ', $data->{$row->field}) }}
+                            </div>
+                        @else
+                            @include('support::components.forms.multilingual.input-hidden-bread-browse')
+                            <div>{{ mb_strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? mb_substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
+                        @endif
                     @elseif($row->type == 'coordinates')
                         @include('facilitador::partials.coordinates-static-image')
                     @elseif($row->type == 'multiple_images')

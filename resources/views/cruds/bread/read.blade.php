@@ -35,7 +35,6 @@
 @section('content')
     <div class="page-content read container-fluid">
         <div class="row">
-
             <div class="col-lg-8 margin-tb">
                 @include('facilitador::components.registers.relations')
             </div>
@@ -117,8 +116,12 @@
                             @elseif($row->type == 'coordinates')
                                 @include('facilitador::partials.coordinates')
                             @elseif($row->type == 'rich_text_box')
-                                @include('support::components.forms.multilingual.input-hidden-bread-read')
-                                <p>{!! $dataTypeContent->{$row->field} !!}</p>
+                                @if(is_array($dataTypeContent->{$row->field}))
+                                    <p>{!! implode(', ',$dataTypeContent->{$row->field}) !!}</p>
+                                @else
+                                    @include('support::components.forms.multilingual.input-hidden-bread-read')
+                                    <p>{!! $dataTypeContent->{$row->field} !!}</p>
+                                @endif
                             @elseif($row->type == 'file')
                                 @if(json_decode($dataTypeContent->{$row->field}))
                                     @foreach(json_decode($dataTypeContent->{$row->field}) as $file)
@@ -133,8 +136,12 @@
                                     </a>
                                 @endif
                             @else
-                                @include('support::components.forms.multilingual.input-hidden-bread-read')
-                                <p>{{ $dataTypeContent->{$row->field} }}</p>
+                                @if(is_array($dataTypeContent->{$row->field}))
+                                    <p>{!! implode(', ', $dataTypeContent->{$row->field}) !!}</p>
+                                @else
+                                    @include('support::components.forms.multilingual.input-hidden-bread-read')
+                                    <p>{{ $dataTypeContent->{$row->field} }}</p>
+                                @endif
                             @endif
                         </div><!-- panel-body -->
                         @if(!$loop->last)

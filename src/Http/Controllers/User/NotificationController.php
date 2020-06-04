@@ -4,8 +4,7 @@ namespace Facilitador\Http\Controllers\User;
 
 use Auth;
 use Illuminate\Http\Request;
-use App\Services\NotificationService;
-use App\Http\Requests\NotificationRequest;
+use Siravel\Services\NotificationService;
 
 class NotificationController extends Controller
 {

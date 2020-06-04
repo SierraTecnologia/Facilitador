@@ -4,8 +4,9 @@ namespace Facilitador;
 
 
 
-use Support\Traits\Providers\ConsoleTools;
+use Muleta\Traits\Providers\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Routing\Router;
 
 use Facilitador\Traits\Providers\AppEventsProvider;
 use Facilitador\Traits\Providers\AppMiddlewaresProvider;
@@ -14,7 +15,6 @@ use Facilitador\Traits\Providers\AppServiceContainerProvider;
 use Facilitador\Traits\Providers\FacilitadorRegisterPackages;
 use Facilitador\Traits\Providers\FacilitadorRegisterPublishes;
 use Facilitador\Traits\Providers\VoyagerProviderTrait;
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Schema;
 use Facilitador\Facades\Facilitador as FacilitadorFacade;
 

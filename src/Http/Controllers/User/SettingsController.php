@@ -5,7 +5,7 @@ namespace Facilitador\Http\Controllers\User;
 use Exception;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Services\UserService;
+use Siravel\Services\UserService;
 use App\Http\Requests\UserUpdateRequest;
 
 class SettingsController extends Controller

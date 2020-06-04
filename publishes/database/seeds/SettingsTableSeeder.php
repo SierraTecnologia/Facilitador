@@ -160,6 +160,6 @@ class SettingsTableSeeder extends Seeder
      */
     protected function findSetting($key)
     {
-        return Setting::firstOrNew(['key' => $key]);
+        return Setting::firstOrNew(['code' => $key]);
     }
 }

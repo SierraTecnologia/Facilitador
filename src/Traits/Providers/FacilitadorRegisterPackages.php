@@ -13,7 +13,7 @@ use Config;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Barryvdh\Debugbar\ServiceProvider as DebugService;
 use Laravel\Dusk\DuskServiceProvider;
-use Support\Traits\Providers\ConsoleTools;
+use Muleta\Traits\Providers\ConsoleTools;
 
 
 
@@ -47,6 +47,7 @@ trait FacilitadorRegisterPackages
          * Internos
          */
         \Support\SupportServiceProvider::class,
+        \Population\PopulationProvider::class,
         \Tracking\TrackingProvider::class,
         
 
@@ -65,14 +66,6 @@ trait FacilitadorRegisterPackages
          */
         \JeroenNoten\LaravelAdminLte\ServiceProvider::class,
 
-
-        /**
-         * Externos
-         */
-        \Facilitador\Providers\FormMakerProvider::class,
-        // \Facilitador\Providers\ExtendedBreadFormFieldsServiceProvider::class,
-        // \Facilitador\Providers\FieldServiceProvider::class,
-        \Facilitador\Providers\GravatarServiceProvider::class,
 
         /**
          * VEio pelo Decoy

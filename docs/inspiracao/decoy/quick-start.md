@@ -116,7 +116,7 @@ For more information, see [Models](models).
 The create and edit form are both created by a simple Laravel view.  The view file created by the generator is written in [HAML](https://github.com/arnaud-lb/MtHaml) but can be changed to php, blade, or anything else by just changing the file suffix.  Change the edit view to this to create the fields required for our Article model.
 
 ```haml
-!= View::make('facilitador::shared.form._header', $__data)->render()
+!= View::make('support::shared.form._header', $__data)->render()
 
 %fieldset
   .legend= empty($item) ? 'New' : 'Edit'
@@ -126,10 +126,10 @@ The create and edit form are both created by a simple Laravel view.  The view fi
   != Former::wysiwyg('body')
 
 %fieldset
-  != View::make('facilitador::shared.form._display_module', $__data)->render()
+  != View::make('support::shared.form._display_module', $__data)->render()
   != Former::date('date')->value('now')
 
-!= View::make('facilitador::shared.form._footer', $__data)->render()
+!= View::make('support::shared.form._footer', $__data)->render()
 ```
 
 For more information, see [Views](views) and [Custom form fields](custom-fields).

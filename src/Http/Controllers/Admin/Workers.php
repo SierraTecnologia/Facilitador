@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers\Admin;
 
 use Facilitador\Exceptions\Exception;
-use Facilitador\Models\Worker;
+use Support\Models\Worker;
 
 /**
  * Check the status of workers from the admin

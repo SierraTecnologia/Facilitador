@@ -54,19 +54,19 @@ class Admin extends \Facilitador\Models\User
     //      */
     //     public static $localizable = false;
 
-    //     /**
-    //      * Validation rules
-    //      *
-    //      * @var array
-    //      */
-    //     public $rules = [
-    //         'first_name' => 'required',
-    //         'last_name' => 'required',
-    //         'images.default' => 'image',
-    //         'email' => 'required|unique:admins,email',
-    //         'password' => 'required',
-    //         'confirm_password' => 'sometimes|required_with:password|same:password',
-    //     ];
+        /**
+         * Validation rules
+         *
+         * @var array
+         */
+        public static $rules = [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'images.default' => 'image',
+            'email' => 'required|unique:admins,email',
+            'password' => 'required',
+            'confirm_password' => 'sometimes|required_with:password|same:password',
+        ];
 
     //     /**
     //      * Orders instances of this model in the admin

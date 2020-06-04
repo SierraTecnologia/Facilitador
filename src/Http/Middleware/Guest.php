@@ -87,11 +87,13 @@ class Guest
 
         // Loop through the nav
         $flat = [];
-        foreach ($nav as $val) {
-            if (is_array($val)) {
-                $flat = array_merge($flat, $this->getNavUrls($val));
-            } else {
-                $flat[] = $val;
+        if (!empty($nav)) {
+            foreach ($nav as $val) {
+                if (is_array($val)) {
+                    $flat = array_merge($flat, $this->getNavUrls($val));
+                } else {
+                    $flat[] = $val;
+                }
             }
         }
 

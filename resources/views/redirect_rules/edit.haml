@@ -1,4 +1,4 @@
-!= View::make('facilitador::shared.form._header', $__data)->render()
+!= View::make('support::shared.form._header', $__data)->render()
 
 %fieldset
 	.legend=empty($item) ? __('facilitador::redirect_rules.legend.new') : __('facilitador::redirect_rules.legend.edit')
@@ -14,4 +14,4 @@
 	!= Former::radiolist('code')->label(__('facilitador::redirect_rules.form.code'))->from(Facilitador\Models\RedirectRule::getCodes())->blockHelp(__('facilitador::redirect_rules.form.radio_help'));
 	!= Former::text('label')->label(__('facilitador::redirect_rules.form.label'))->help(__('facilitador::redirect_rules.form.label_help'))
 
-!= View::make('facilitador::shared.form._footer', $__data)->render()
+!= View::make('support::shared.form._footer', $__data)->render()

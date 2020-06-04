@@ -20,7 +20,7 @@ class CreateSettingsTable extends Migration
                 $table->string('code'); //->unique();
                 // $table->primary('code');
                 $table->string('value')->default(false);
-                $table->string('business_code');
+                $table->string('business_code')->nullable()->default(null);
                 $table->foreign('business_code')->references('code')->on('businesses');
                 $table->timestamps();
                 $table->softDeletes();

@@ -16,7 +16,7 @@ class Admins extends Base
     /**
      * @var string
      */
-    protected $show_view = 'facilitador::admins.edit';
+    protected $show_view = 'facilitador::admin.edit';
 
     /**
      * Make search options dependent on whether the site is using roles

@@ -17,13 +17,13 @@ use Validator;
 use Illuminate\Support\Str;
 use Support\Interactions\Input\Search;
 use Bkwld\Library\Utils\File;
-use Facilitador\Input\Sidebar;
+use Support\Interactions\Input\Sidebar;
 use Support\Elements\Fields\Listing;
 use Support\Interactions\Input\Localize;
-use Facilitador\Input\Position;
+use Support\Interactions\Input\Position;
 use Illuminate\Routing\Controller;
-use Facilitador\Input\NestedModels;
-use Facilitador\Input\ModelValidator;
+use Support\Interactions\Input\NestedModels;
+use Support\Interactions\Input\ModelValidator;
 use Facilitador\Models\Base as BaseModel;
 use Facilitador\Exceptions\ValidationFail;
 use Bkwld\Library\Laravel\Validator as BkwldLibraryValidator;
@@ -209,7 +209,7 @@ class Base extends BaseController
      * This is basically a conversion to snake case from studyly case
      *
      * @param  string $class ex: 'Admin\NewsController'
-     * @return string ex: admins.edit or car_lovers.edit
+     * @return string ex: admin.edit or car_lovers.edit
      */
     public function detailPath($class)
     {
