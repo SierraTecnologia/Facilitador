@@ -2,7 +2,7 @@
 
 namespace Facilitador\Traits\Providers;
 
-use Support\Traits\Providers\ConsoleTools;
+use Muleta\Traits\Providers\ConsoleTools;
 
 trait FacilitadorLoadClasses
 {

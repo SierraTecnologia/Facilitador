@@ -34,7 +34,7 @@ class ActivationRepository
         // Create new Activation record for this user/email
         $activation = new Activation;
         $activation->user_id = $user->id;
-        $activation->token = str_random(64);
+        $activation->token = \Illuminate\Support\Str::random(64);
         $activation->save();
 
         // Send activation email notification

@@ -17,7 +17,7 @@
 			echo Former::password('confirm_password')->label(__('facilitador::admins.form.confirm_password'));
 		} else {
 			echo Former::text('password')->label(__('facilitador::admins.form.password'))
-				->forceValue(empty($item) ? str_random(16) : null)
+				->forceValue(empty($item) ? \Illuminate\Support\Str::random(16) : null)
 				->placeholder(empty($item) ? null : __('facilitador::admins.form.password_placeholder'));
 		}
 

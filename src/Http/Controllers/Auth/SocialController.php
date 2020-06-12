@@ -53,7 +53,7 @@ class SocialController extends Controller
         $email = $user->email;
 
         if (!$user->email) {
-            $email = 'missing' . str_random(10);
+            $email = 'missing' . \Illuminate\Support\Str::random(10);
         }
 
         if (!empty($userCheck)) {
@@ -73,8 +73,8 @@ class SocialController extends Controller
                 $newSocialUser = new User;
                 $newSocialUser->email              = $email;
                 $newSocialUser->name              = $user->name;
-                $newSocialUser->password = bcrypt(str_random(16));
-                $newSocialUser->token = str_random(64);
+                $newSocialUser->password = bcrypt(\Illuminate\Support\Str::random(16));
+                $newSocialUser->token = \Illuminate\Support\Str::random(64);
                 $newSocialUser->activated = true; //!\Illuminate\Support\Facades\Config::get('settings.activation');
                 $newSocialUser->save();
 
