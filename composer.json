@@ -33,7 +33,6 @@
         "jeroennoten/laravel-adminlte": "*",
         "google/recaptcha": "*",
         "spatie/laravel-backup": "^6.0|^5.0",
-        "sierratecnologia/laravel-support": "dev-master",
         "sierratecnologia/population": "dev-master",
         "sierratecnologia/tracking": "dev-master",
         "kartik-v/bootstrap-fileinput": "dev-master",
