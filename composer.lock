@@ -8846,7 +8846,7 @@
             "dist": {
                 "type": "path",
                 "url": "../former",
-                "reference": "192a8cc1a20c80959b8486743ba5922ff004eb12"
+                "reference": "7d19ac79a0597b9645f7e30c3e1c69f3397b6035"
             },
             "require": {
                 "anahkiasen/html-object": ">=1.4",
@@ -9038,7 +9038,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Informate",
-                "reference": "6931bc0279c41cdaf235530a4e7057574f6d9c39"
+                "reference": "59cc7300648fa39f6786cc2eab97df7d67b34ea3"
             },
             "require": {
                 "php": ">=7.2.0",
