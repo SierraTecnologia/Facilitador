@@ -39,7 +39,7 @@
 
                         <td class="actions text-right">
                             @if($table->dataTypeId)
-                                <a href="{{ route('facilitador.' . $table->slug . '.index') }}"
+                                <a href="{{ \Facilitador\Routing\UrlGenerator::managerRoute($table->slug, 'index') }}"
                                    class="btn btn-warning btn-sm browse_bread" style="margin-right: 0;">
                                     <i class="facilitador-plus"></i> {{ __('facilitador::generic.browse') }}
                                 </a>

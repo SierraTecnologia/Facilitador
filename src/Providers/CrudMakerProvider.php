@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\CrudMaker;
+namespace Facilitador\Providers;
 
 use Facilitador\FormMaker\FormMakerProvider;
 use Illuminate\Support\ServiceProvider;

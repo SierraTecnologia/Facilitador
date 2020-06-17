@@ -34,7 +34,7 @@
     
     ])
 
-    @include('facilitador::components.dash.by-group', [
+    @include('facilitador::components.dash.numbers', [
         'models' => $models,
     ])
 

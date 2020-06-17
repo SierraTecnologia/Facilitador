@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\FormMaker\Facades;
+namespace SierraTecnologia\FormMaker\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

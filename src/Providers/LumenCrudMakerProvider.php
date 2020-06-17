@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\CrudMaker;
+namespace Facilitador\Providers;
 
 class LumenCrudMakerProvider extends CrudMakerProvider
 {

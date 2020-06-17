@@ -2,7 +2,7 @@
 namespace Tests\Integration;
 
 use Tests\TestCase;
-use Facilitador\Models\RedirectRule;
+use Support\Models\RedirectRule;
 
 class RedirectTest extends TestCase
 {

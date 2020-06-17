@@ -89,7 +89,8 @@ class ModelCallbacks
         }
         else if ($method == 'onValidating' || $method == 'onValidated') {
             if (empty(array_slice($payload, 1))) {
-                \Log::info('[Facilitador] ModelCallbacks: ignorando onValidating porque nao tem parametro '.print_r([get_class($model), $method], true));
+                // @todo resolver dps
+                \Log::debug('[Facilitador] ModelCallbacks: ignorando onValidating porque nao tem parametro '.print_r([get_class($model), $method], true));
                 return true;
             }
         }
@@ -97,7 +98,7 @@ class ModelCallbacks
         // @todo resolver isso aqui e o de cima gambi, deu merda
         if (method_exists($model, $method)) {
             if (!empty(array_slice($payload, 1))) {
-                dd($model, $method, $payload,  array_slice($payload, 1));
+                dd($model, $method, $payload,  array_slice($payload, 1), 'erronoModelCallback');
             }
             try {
                 return call_user_func_array([$model, $method], array_slice($payload, 1));

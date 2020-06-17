@@ -114,25 +114,25 @@ class MenuItemsTableSeeder extends Seeder
             )->save();
         }
 
-        $menuItem = MenuItem::firstOrNew(
-            [
-            'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.menu_builder'),
-            'url'     => '',
-            'route'   => 'facilitador.menus.index',
-            ]
-        );
-        if (!$menuItem->exists) {
-            $menuItem->fill(
-                [
-                'target'     => '_self',
-                'icon_class' => 'facilitador-list',
-                'color'      => null,
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 10,
-                ]
-            )->save();
-        }
+        // $menuItem = MenuItem::firstOrNew(
+        //     [
+        //     'menu_id' => $menu->id,
+        //     'title'   => __('facilitador::seeders.menu_items.menu_builder'),
+        //     'url'     => '',
+        //     'route'   => 'facilitador.menus.index',
+        //     ]
+        // );
+        // if (!$menuItem->exists) {
+        //     $menuItem->fill(
+        //         [
+        //         'target'     => '_self',
+        //         'icon_class' => 'facilitador-list',
+        //         'color'      => null,
+        //         'parent_id'  => $toolsMenuItem->id,
+        //         'order'      => 10,
+        //         ]
+        //     )->save();
+        // }
 
         $menuItem = MenuItem::firstOrNew(
             [

@@ -10,8 +10,6 @@ use Config;
 
 
 
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
-use Barryvdh\Debugbar\ServiceProvider as DebugService;
 use Laravel\Dusk\DuskServiceProvider;
 use Muleta\Traits\Providers\ConsoleTools;
 
