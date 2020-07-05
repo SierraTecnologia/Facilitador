@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Facilitador\Facades\Facilitador;
 use Facilitador\Models\Page;
-use Facilitador\Traits\Translatable;
+use RicardoSierra\Translation\Traits\HasTranslations;
 use Facilitador\Translator;
 use Facilitador\Translator\Collection;
 
@@ -275,7 +275,7 @@ class TranslatableModel extends Model
 {
     protected $table = 'posts';
 
-    use Translatable;
+    use HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -323,7 +323,7 @@ class ActuallyTranslatableModel extends Model
 {
     protected $table = 'posts';
 
-    use Translatable;
+    use HasTranslations;
 
     /**
      * The attributes that are mass assignable.

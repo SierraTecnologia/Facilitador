@@ -4,11 +4,11 @@ namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Facilitador\Traits\Translatable;
+use RicardoSierra\Translation\Traits\HasTranslations;
 
 class Page extends Model
 {
-    use Translatable;
+    use HasTranslations;
 
     protected $translatable = ['title', 'slug', 'body'];
 

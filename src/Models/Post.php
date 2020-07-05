@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Facilitador\Facades\Facilitador;
 use Facilitador\Traits\Resizable;
-use Facilitador\Traits\Translatable;
+use RicardoSierra\Translation\Traits\HasTranslations;
 
 class Post extends Model
 {
-    use Translatable,
+    use HasTranslations,
         Resizable;
 
     protected $translatable = ['title', 'seo_title', 'excerpt', 'body', 'slug', 'meta_description', 'meta_keywords'];

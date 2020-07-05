@@ -4,11 +4,11 @@ namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Facilitador\Facades\Facilitador;
-use Facilitador\Traits\Translatable;
+use RicardoSierra\Translation\Traits\HasTranslations;
 
 class Category extends Model
 {
-    use Translatable;
+    use HasTranslations;
 
     protected $translatable = ['slug', 'name'];
 
