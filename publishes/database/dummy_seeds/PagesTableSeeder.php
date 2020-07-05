@@ -5,7 +5,7 @@ use Support\Models\DataRow;
 use Support\Models\DataType;
 use Facilitador\Models\Menu;
 use Facilitador\Models\MenuItem;
-use Siravel\Models\Page;
+use Siravel\Models\Negocios\Page;
 use Facilitador\Models\Permission;
 
 class PagesTableSeeder extends Seeder

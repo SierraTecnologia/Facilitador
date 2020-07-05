@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Facilitador\Models\Category;
 use Support\Models\DataType;
 use Facilitador\Models\MenuItem;
-use Siravel\Models\Page;
+use Siravel\Models\Negocios\Page;
 use Facilitador\Models\Translation;
 
 class TranslationsTableSeeder extends Seeder

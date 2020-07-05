@@ -46,6 +46,6 @@ class UserMeta extends Model
      */
     public function subscriptions()
     {
-        return $this->hasMany('App\Models\Negocios\Subscription');
+        return $this->hasMany('Siravel\Models\Negocios\Subscription');
     }
 }

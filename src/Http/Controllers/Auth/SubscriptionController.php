@@ -15,7 +15,7 @@ use App\Services\Traits\ActivationTrait;
 
 use App\Http\Requests\SubscriptionRequest;
 
-use App\Models\Commerce\Plan;
+use Siravel\Models\Commerce\Plan;
 use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
