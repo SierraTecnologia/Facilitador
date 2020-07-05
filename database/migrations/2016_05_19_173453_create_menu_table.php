@@ -16,6 +16,7 @@ class CreateMenuTable extends Migration
             'menus', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name')->unique();
+                $table->string('slug')->default('main');
                 $table->timestamps();
             }
         );
