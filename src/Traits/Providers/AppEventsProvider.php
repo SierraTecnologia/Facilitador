@@ -25,10 +25,6 @@ trait AppEventsProvider
     {
         $this->app['events']->listen(
             'eloquent.saving:*',
-            '\Facilitador\Observers\Localize'
-        );
-        $this->app['events']->listen(
-            'eloquent.saving:*',
             '\Facilitador\Observers\Encoding@onSaving'
         );
         $this->app['events']->listen(

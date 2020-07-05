@@ -26,7 +26,6 @@ use Facilitador\Policies\MenuItemPolicy;
 use Facilitador\Policies\SettingPolicy;
 use Facilitador\Providers\FacilitadorDummyServiceProvider;
 use Facilitador\Providers\FacilitadorEventServiceProvider;
-use Facilitador\Translator\Collection as TranslatorCollection;
 use Facilitador\Facilitador;
     
 trait VoyagerProviderTrait
@@ -96,8 +95,6 @@ trait VoyagerProviderTrait
                 $this->addStorageSymlinkAlert();
             }
         );
-
-        $this->bootTranslatorCollectionMacros();
     }
 
     /**
@@ -181,21 +178,6 @@ trait VoyagerProviderTrait
 
             $this->app->bind("facilitador.alert.components.{$component}", $class);
         }
-    }
-
-    protected function bootTranslatorCollectionMacros()
-    {
-        Collection::macro(
-            'translate', function () {
-                $transtors = [];
-
-                foreach ($this->all() as $item) {
-                    $transtors[] = call_user_func_array([$item, 'translate'], func_get_args());
-                }
-
-                return new TranslatorCollection($transtors);
-            }
-        );
     }
 
     /**
