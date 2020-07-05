@@ -20,7 +20,7 @@ use Facilitador\Events\TableAdded;
 use Facilitador\Events\TableDeleted;
 use Facilitador\Events\TableUpdated;
 use Support\Models\DataType;
-use Facilitador\Models\Page;
+use Siravel\Models\Page;
 
 class EventTest extends TestCase
 {

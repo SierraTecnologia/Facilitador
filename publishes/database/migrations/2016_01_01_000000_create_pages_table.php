@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Facilitador\Models\Page;
+use Siravel\Models\Page;
 
 class CreatePagesTable extends Migration
 {

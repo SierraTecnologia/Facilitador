@@ -4,7 +4,7 @@ namespace Facilitador\Tests;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Facilitador\Models\Page;
+use Siravel\Models\Page;
 
 class PageTest extends TestCase
 {

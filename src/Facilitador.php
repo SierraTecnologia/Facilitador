@@ -23,7 +23,7 @@ use Support\Models\Application\DataRelationship;
 use Support\Models\Application\DataType;
 use Facilitador\Models\Menu;
 use Facilitador\Models\MenuItem;
-use Facilitador\Models\Page;
+use Siravel\Models\Page;
 use Facilitador\Models\Permission;
 use Facilitador\Models\Post;
 use Facilitador\Models\Role;

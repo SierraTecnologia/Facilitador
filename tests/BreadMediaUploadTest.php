@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Support\Models\DataRow;
 use Support\Models\DataType;
-use Facilitador\Models\Page;
+use Siravel\Models\Page;
 
 class BreadMediaUploadTest extends TestCase
 {
