@@ -17,7 +17,6 @@ final class Tables
     // Others
     public const TABLE_LOCATIONS = 'locations';
     public const TABLE_PHOTOS = 'photos';
-    public const TABLE_PHOTOS_THUMBNAILS = 'photos_thumbnails';
     public const TABLE_POSTS = 'posts';
     public const TABLE_POSTS_PHOTOS = 'posts_photos';
     public const TABLE_POSTS_TAGS = 'posts_tags';
