@@ -9,7 +9,7 @@ use Redirect;
 use Response;
 use Exception;
 use CryptoService;
-use Artista\Models\File;
+use Stalker\Models\File;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileRequest;
 use Finder\Services\Midia\FileService;
