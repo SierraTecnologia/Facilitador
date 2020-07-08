@@ -3,7 +3,7 @@
 namespace Facilitador\Tests;
 
 use Illuminate\Support\Facades\Auth;
-use Facilitador\Models\Category;
+use Siravel\Models\Blog\Category;
 use Facilitador\Models\Post;
 
 class CategoryTest extends TestCase

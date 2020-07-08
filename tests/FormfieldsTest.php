@@ -6,7 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
-use Facilitador\Models\Category;
+use Siravel\Models\Blog\Category;
 use Support\Models\DataType;
 use Facilitador\Models\Permission;
 

@@ -17,7 +17,7 @@ use Support\Template\Actions\ViewAction;
 use Facilitador\Events\AlertsCollection;
 use Support\Elements\FormFields\After\HandlerInterface as AfterHandlerInterface;
 use Support\Elements\FormFields\HandlerInterface;
-use Facilitador\Models\Category;
+use Siravel\Models\Blog\Category;
 use Support\Models\Application\DataRow;
 use Support\Models\Application\DataRelationship;
 use Support\Models\Application\DataType;

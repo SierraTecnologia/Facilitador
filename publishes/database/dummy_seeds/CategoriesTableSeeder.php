@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Facilitador\Models\Category;
+use Siravel\Models\Blog\Category;
 use Support\Models\DataRow;
 use Support\Models\DataType;
 use Facilitador\Models\Menu;

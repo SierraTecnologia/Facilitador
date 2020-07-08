@@ -34,6 +34,12 @@ class CreateMenuTable extends Migration
                 $table->integer('parent_id')->nullable();
                 $table->integer('order');
                 $table->timestamps();
+
+                $table->string('language_code');
+                $table->string('country_code')->nullable();
+                $table->foreign('language_code')->references('code')->on('languages');
+                $table->foreign('country_code')->references('code')->on('countries');
+                
                 $table->softDeletes();
             }
         );

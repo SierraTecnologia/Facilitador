@@ -21,6 +21,11 @@ class CreateCategoriesTable extends Migration
                 $table->integer('order')->default(1);
                 $table->string('name');
                 $table->string('slug')->unique();
+
+                $table->string('language_code');
+                $table->string('country_code')->nullable();
+                $table->foreign('language_code')->references('code')->on('languages');
+                $table->foreign('country_code')->references('code')->on('countries');
                 $table->timestamps();
             }
         );
