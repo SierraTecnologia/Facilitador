@@ -5,7 +5,7 @@ namespace Facilitador\Http\Controllers\NoRestrict;
 use Cms;
 use Informate\Models\System\Archive;
 use Finder\Services\Midia\FileService;
-use RicardoSierra\Translation\Services\LanguageService;
+use Translation\Services\LanguageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;

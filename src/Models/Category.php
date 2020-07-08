@@ -4,7 +4,7 @@ namespace Facilitador\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Facilitador\Facades\Facilitador;
-use RicardoSierra\Translation\Traits\HasTranslations;
+use Translation\Traits\HasTranslations;
 
 class Category extends Model
 {

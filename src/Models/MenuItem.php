@@ -5,7 +5,7 @@ namespace Facilitador\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Route;
 use Facilitador\Facades\Facilitador;
-use RicardoSierra\Translation\Traits\HasTranslations;
+use Translation\Traits\HasTranslations;
 
 class MenuItem extends Model
 {

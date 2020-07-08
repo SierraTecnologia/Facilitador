@@ -5,7 +5,7 @@ namespace Facilitador\Models;
 use App\Models\Model;
 use App\Models\User;
 use App\Models\Negocio;
-use RicardoSierra\Translation\Models\Language;
+use Translation\Models\Language;
 
 class Setting extends Model
 {
