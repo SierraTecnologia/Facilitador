@@ -12,7 +12,7 @@ use CryptoService;
 use Stalker\Models\File;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileRequest;
-use Finder\Services\Midia\FileService;
+use Stalker\Services\Midia\FileService;
 use App\Services\ValidationService;
 use App\Repositories\FileRepository;
 use App\Services\CmsResponseService;
