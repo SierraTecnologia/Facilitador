@@ -53,12 +53,17 @@ trait FacilitadorRegisterPackages
          * Base
          */
         \RicardoSierra\Translation\TranslationServiceProvider::class,
+        \Locaravel\LocaravelProvider::class,
+        \Gamer\GamerProvider::class,
         
+        /**
+         * Serviços
+         */
+        \Cmgmyr\Messenger\MessengerServiceProvider::class,
         
         /*
          * Dependencias
          */
-        \Locaravel\LocaravelProvider::class,
         /**
          * Layoults
          */

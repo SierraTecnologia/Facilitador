@@ -33,7 +33,7 @@ trait AppMiddlewaresProvider
         Config::set(
             'auth.providers.facilitador', [
             'driver' => 'eloquent',
-            'model'  => \Illuminate\Support\Facades\Config::get('painel.adminer.model', \App\Models\User::class),
+            'model'  => \Illuminate\Support\Facades\Config::get('application.auth.model', \App\Models\User::class),
             ]
         );
 
@@ -47,7 +47,7 @@ trait AppMiddlewaresProvider
         );
 
         // Point to the Gate policy
-        $this->app[Gate::class]->define('facilitador.auth', \Illuminate\Support\Facades\Config::get('painel.adminer.policy'));
+        $this->app[Gate::class]->define('facilitador.auth', \Illuminate\Support\Facades\Config::get('application.auth.policy'));
     }
 
     /**

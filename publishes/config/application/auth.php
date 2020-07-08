@@ -2,13 +2,6 @@
 
 return [
 
-    // The directory for the admin
-    'dir' => 'admin',
-
-    // The layout to use
-    'layout' => 'facilitador::layouts.decoy.default',
-
-
     // Auth guard and policy to use
     'guard'  => 'facilitador', //'web', //
     'model'  => \App\Models\User::class,

@@ -39,7 +39,7 @@ class Policy
         // Get the slug version of the controller.  Test if a URL was passed first
         // and, if not, treat it like a full controller name.  URLs are used in the
         // nav. Also, an already slugified controller name will work fine too.
-        $pattern = '#/'.Config::get('painel.adminer.dir').'/([^/]+)#';
+        $pattern = '#/'.Config::get('application.routes.main').'/([^/]+)#';
         if (preg_match($pattern, $controller, $matches)) {
             $controller = $matches[1];
         } else {

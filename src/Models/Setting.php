@@ -68,7 +68,7 @@ class Setting extends Model
                 'code' => '',
                 'options' => 'string',
                 'defaultValue' => 'PT',
-                'target' => \Illuminate\Support\Facades\Config::get('painel.adminer.model', \App\Models\User::class),
+                'target' => \Illuminate\Support\Facades\Config::get('application.auth.model', \App\Models\User::class),
                 'config' => null,
             ],
             [
@@ -77,7 +77,7 @@ class Setting extends Model
                 'code' => '',
                 'options' => 'string',
                 'defaultValue' => 'BTC',
-                'target' => \Illuminate\Support\Facades\Config::get('painel.adminer.model', \App\Models\User::class),
+                'target' => \Illuminate\Support\Facades\Config::get('application.auth.model', \App\Models\User::class),
                 'config' => null,
             ],
         ];

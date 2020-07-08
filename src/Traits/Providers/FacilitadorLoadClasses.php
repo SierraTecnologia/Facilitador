@@ -80,11 +80,12 @@ trait FacilitadorLoadClasses
         
         // Merge own configs into user configs 
         $this->mergeConfigFrom($this->getPublishesPath('config/application/core.php'), 'application.core');
+        $this->mergeConfigFrom($this->getPublishesPath('config/application/auth.php'), 'application.auth');
+        $this->mergeConfigFrom($this->getPublishesPath('config/application/routes.php'), 'application.routes');
         $this->mergeConfigFrom($this->getPublishesPath('config/application/directorys.php'), 'application.directorys');
         $this->mergeConfigFrom($this->getPublishesPath('config/application/hooks.php'), 'application.hooks');
         $this->mergeConfigFrom($this->getPublishesPath('config/application/modelagem.php'), 'application.modelagem');
         $this->mergeConfigFrom($this->getPublishesPath('config/painel/core.php'), 'painel.core');
-        $this->mergeConfigFrom($this->getPublishesPath('config/painel/adminer.php'), 'painel.adminer');
         $this->mergeConfigFrom($this->getPublishesPath('config/painel/elements.php'), 'painel.elements');
         $this->mergeConfigFrom($this->getPublishesPath('config/painel/layout.php'), 'painel.layout');
         $this->mergeConfigFrom($this->getPublishesPath('config/site/core.php'), 'site.core');

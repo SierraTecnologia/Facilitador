@@ -10,7 +10,7 @@ $factory->define(
         'slug' => $faker->slug,
         'type' => $faker->randomElement(['boolean', 'datetime', 'integer', 'text', 'varchar']),
         'name' => $faker->name,
-        'entities' => $faker->randomElement(['App\Models\Company', 'App\Models\Product', \Illuminate\Support\Facades\Config::get('painel.adminer.model', \App\Models\User::class)]),
+        'entities' => $faker->randomElement(['App\Models\Company', 'App\Models\Product', \Illuminate\Support\Facades\Config::get('application.auth.model', \App\Models\User::class)]),
         ];
     }
 );

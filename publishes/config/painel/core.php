@@ -9,6 +9,9 @@ return [
      */
     'name' => \Illuminate\Support\Facades\Config::get('app.name', 'SiravelAdmin'),
 
+    // The layout to use
+    'layout' => 'facilitador::layouts.decoy.default',
+
 
     /**
      * Automatically apply localization options to all models that at the root
