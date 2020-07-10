@@ -18,7 +18,7 @@ class RssController extends Controller
         $this->module = str_singular($url);
 
         if (! empty($this->module)) {
-            $this->repo = app('App\Repositories\\'.$this->getFeature($this->module).'\\'.ucfirst($this->module).'Repository');
+            $this->repo = app('Siravel\Repositories\\'.$this->getFeature($this->module).'\\'.ucfirst($this->module).'Repository');
         }
     }
 

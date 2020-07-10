@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers;
 
 use Illuminate\Filesystem\Filesystem;
-use App\Services\AssetService;
+use Facilitador\Services\AssetService;
 
 class AssetController extends SitecController
 {
