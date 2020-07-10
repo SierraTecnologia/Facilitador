@@ -11,11 +11,11 @@ use Exception;
 use CryptoService;
 use Stalker\Models\File;
 use Illuminate\Http\Request;
-use App\Http\Requests\FileRequest;
+use Stalker\Http\Requests\FileRequest;
 use Stalker\Services\Midia\FileService;
-use App\Services\ValidationService;
-use App\Repositories\FileRepository;
-use App\Services\CmsResponseService;
+use Facilitador\Services\ValidationService;
+use Stalker\Repositories\FileRepository;
+use Siravel\Services\CmsResponseService;
 
 class FilesController extends SitecController
 {

@@ -40,6 +40,11 @@
         "graham-campbell/markdown": "*",
         "rap2hpoutre/fast-excel": "^1.0",
         "pusher/pusher-php-server": "^3.0|^4.0",
+        "jlapp/swaggervel": "dev-master",
+        "laracasts/flash": "^3.0",
+        "prettus/l5-repository": "*",
+        "hieu-le/active": "^7.0",
+        "ramsey/uuid": "^3.8|^4.0",
         "cmgmyr/messenger": "^2.0|^1.0"
     },
     "require-dev": {

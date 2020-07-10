@@ -24,6 +24,23 @@ use Facilitador\Facades\Facilitador;
 
 Route::group(
     ['as' => 'facilitador.'], function () {
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Public Assets
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('public-preview/{encFileName}', 'AssetController@asPreview');
+        Route::get('public-asset/{encFileName}', 'AssetController@asPublic');
+        Route::get('public-download/{encFileName}/{encRealFileName}', 'AssetController@asDownload');
+        Route::get('asset/{path}/{contentType}', 'AssetController@asset');
+        Route::group(['prefix' => 'sitec'], function () {
+            Route::get('asset/{path}/{contentType}', 'AssetController@asset');
+        });
+
+
         Route::namespace('NoRestrict')->group(
             function () {
                 // Route::group(['middleware' => 'admin.user'], function () {

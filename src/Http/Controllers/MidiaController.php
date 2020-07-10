@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers;
 
 use Illuminate\Filesystem\Filesystem;
-use App\Services\Midia\MidiaService;
+use Stalker\Services\Midia\MidiaService;
 
 class MidiaController extends SitecController
 {
