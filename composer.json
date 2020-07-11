@@ -35,7 +35,7 @@
         "spatie/laravel-backup": "^6.0|^5.0",
         "sierratecnologia/population": "dev-master",
         "sierratecnologia/tracking": "dev-master",
-        "sierratecnologia/support": "dev-master",
+        "sierratecnologia/laravel-support": "dev-master",
         "sierratecnologia/muleta": "dev-master",
         "kartik-v/bootstrap-fileinput": "dev-master",
         "ricardosierra/laravel-model-events": "^1.0",
