@@ -53,6 +53,13 @@ class User extends Base implements
     use HasApiTokens, Notifiable;
     // use CanResetPassword;
 
+
+    // use \Facilitador\Traits\Models\UserRememberTokenHelper;
+    use \Facilitador\Traits\Models\UserSocialiteHelper;
+    use \Facilitador\Traits\Models\UserAvatarHelper;
+    use \Facilitador\Traits\Models\UserActivityHelper;
+
+
     /**
      * Don't allow cloning because duplicate emails are not allowed.
      *

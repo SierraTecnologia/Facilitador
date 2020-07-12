@@ -44,12 +44,11 @@ trait AppEventsProvider
 
     protected function bootEvents(Dispatcher $events)
     {
-        // @todo Voltar com isso
-        // $events->listen(
-        //     BuildingMenu::class, function (BuildingMenu $event) {
-        //         (new \Support\Template\Mounters\SystemMount())->loadMenuForAdminlte($event);
-        //     }
-        // );
+        $events->listen(
+            BuildingMenu::class, function (BuildingMenu $event) {
+                (new \Support\Template\Mounters\SystemMount())->loadMenuForAdminlte($event);
+            }
+        );
 
 
         // Wire up model event callbacks even if request is not for admin.  Do this

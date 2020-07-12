@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Siravel\Services\UserService;
 use App\Http\Requests\UserUpdateRequest;
+use Facilitador\Http\Controllers\User\Controller;
 
 class SettingsController extends Controller
 {

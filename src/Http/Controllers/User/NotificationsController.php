@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers\User;
 
-use Facilitador\Http\Controllers\Controller;
+use Facilitador\Http\Controllers\User\Controller;
 use Auth;
 
 class NotificationsController extends Controller

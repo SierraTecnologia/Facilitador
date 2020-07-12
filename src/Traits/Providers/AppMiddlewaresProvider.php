@@ -70,13 +70,14 @@ trait AppMiddlewaresProvider
         // Register global and named middlewares
         $this->registerMiddlewares();
 
-        // Use Decoy's auth by default, while at an admin path
-        Config::set(
-            'auth.defaults', [
-            'guard'     => 'facilitador',
-            'passwords' => 'facilitador',
-            ]
-        );
+        // @todo Desfazer
+        // // Use Decoy's auth by default, while at an admin path
+        // Config::set(
+        //     'auth.defaults', [
+        //     'guard'     => 'facilitador',
+        //     'passwords' => 'facilitador',
+        //     ]
+        // );
 
         // Set the default mailer settings
         Config::set(

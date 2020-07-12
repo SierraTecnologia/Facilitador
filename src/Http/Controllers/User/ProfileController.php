@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers\User;
 
 use Facilitador\Http\Requests;
-use Facilitador\Http\Controllers\Controller;
+use Facilitador\Http\Controllers\User\Controller;
 use App\Models\Activity;
 use App\Models\Banner;
 use App\Models\Link;
@@ -31,14 +31,23 @@ class ProfileController extends Controller
             break;
         }
 
-        $links  = Link::allFromCache();
-        $banners = Banner::allByPosition();
-
-        $active_users = ActiveUser::fetchAll();
-        $hot_topics = HotTopic::fetchAll();
-        $images = Image::fromActivities($activities);
+        // $links  = Link::allFromCache();
+        // $banners = Banner::allByPosition();
+        // $active_users = ActiveUser::fetchAll();
+        // $hot_topics = HotTopic::fetchAll();
+        // $images = Image::fromActivities($activities);
+        $links  = [];
+        $banners = [];
+        $active_users = [];
+        $hot_topics = [];
+        $images = [];
 
         return view('siravel::components.modules.activities.index', compact('activities', 'links', 'banners', 'active_users', 'hot_topics', 'images'));
+    }
+
+    public function show(Request $request)
+    {
+        return $this->index($request);
     }
 
 }

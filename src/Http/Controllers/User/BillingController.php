@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Log;
 use App\Http\Requests;
 use App\Http\Requests\BillingRequest;
+use Facilitador\Http\Controllers\User\Controller;
 
 class BillingController extends Controller
 {

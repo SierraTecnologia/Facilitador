@@ -12,34 +12,38 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Providers\RouteServiceProvider;
 
 class LoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Registration & Login Controller
+    | Login Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
     |
     */
 
-    // use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-    use AuthenticatesUsers, ValidatesRequests;
+    use AuthenticatesUsers;
 
     /**
-     * Create a new authentication controller instance.
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        // $this->middleware('guest', ['except' => 'getLogout']);
-        // $this->middleware('guest', ['except' => 'logout']);
-        $this->middleware('facilitador.guest', ['except' => 'logout']);
+        $this->middleware('guest')->except('logout');
     }
 
     /**

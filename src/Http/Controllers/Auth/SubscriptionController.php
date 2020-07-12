@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Services\Traits\CaptchaTrait;
-use App\Services\Traits\ActivationTrait;
+use Facilitador\Traits\Services\ActivationTrait;
 
 use App\Http\Requests\SubscriptionRequest;
 

@@ -47,6 +47,8 @@ trait FacilitadorRegisterPackages
         \Support\SupportServiceProvider::class,
         \Population\PopulationProvider::class,
         \Tracking\TrackingProvider::class,
+        \Audit\AuditProvider::class,
+        \Stalker\StalkerProvider::class,
         
 
         /**
@@ -54,7 +56,6 @@ trait FacilitadorRegisterPackages
          */
         \Translation\TranslationServiceProvider::class,
         \Locaravel\LocaravelProvider::class,
-        \Gamer\GamerProvider::class,
         
         /**
          * Serviços

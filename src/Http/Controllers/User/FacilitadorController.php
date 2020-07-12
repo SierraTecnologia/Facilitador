@@ -11,6 +11,7 @@ use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
 use League\Flysystem\Util;
 use Facilitador\Facades\Facilitador;
+use Facilitador\Http\Controllers\User\Controller;
 
 class FacilitadorController extends Controller
 {

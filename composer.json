@@ -33,6 +33,7 @@
         "jeroennoten/laravel-adminlte": "*",
         "sierratecnologia/population": "dev-master",
         "sierratecnologia/tracking": "dev-master",
+        "sierratecnologia/audit": "dev-master",
         "sierratecnologia/laravel-support": "dev-master",
         "sierratecnologia/muleta": "dev-master",
         "sierratecnologia/stalker": "dev-master",

@@ -27,6 +27,7 @@ use Facilitador\Policies\SettingPolicy;
 use Facilitador\Providers\FacilitadorDummyServiceProvider;
 use Facilitador\Providers\FacilitadorEventServiceProvider;
 use Facilitador\Facilitador;
+use Facilitador\Alert;
     
 trait VoyagerProviderTrait
 {

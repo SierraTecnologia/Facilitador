@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Siravel\Services\UserService;
 use App\Http\Requests\PasswordUpdateRequest;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Facilitador\Http\Controllers\User\Controller;
 
 class PasswordController extends Controller
 {

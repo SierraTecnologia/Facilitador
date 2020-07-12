@@ -2,8 +2,9 @@
 
 namespace Facilitador\Http\Controllers\User;
 
-use App\Services\Traits\ActivationTrait;
+use Facilitador\Traits\Services\ActivationTrait;
 use App\Models\Activation;
+use Facilitador\Http\Controllers\User\Controller;
 
 class ActivateController extends Controller
 {

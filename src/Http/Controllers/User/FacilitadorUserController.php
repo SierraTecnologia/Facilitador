@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Facilitador\Facades\Facilitador;
 use Facilitador\Routing\UrlGenerator;
+use Facilitador\Http\Controllers\User\Controller;
 
 class FacilitadorUserController extends Controller
 {

@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Phphub\Markdown\Markdown;
 use App\Jobs\SendNotifyMail;
 use Facilitador\Http\Requests\MessageRequest;
+use Facilitador\Http\Controllers\User\Controller;
 
 class MessagesController extends Controller
 {
