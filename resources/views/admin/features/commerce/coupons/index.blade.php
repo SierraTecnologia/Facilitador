@@ -23,12 +23,12 @@
                         <tbody>
                         @foreach($coupons as $coupon)
                             <tr>
-                                <td><a href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.coupons.show', [$coupon->id]) !!}">{{ $coupon->code }}</a></td>
+                                <td><a href="{!! route(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'.coupons.show', [$coupon->id]) !!}">{{ $coupon->code }}</a></td>
                                 <td>@if ($coupon->expired()) <span class="fa fa-check"></span> @endif</td>
                                 <td>@if ($coupon->for_subscriptions) <span class="fa fa-check"></span> @endif</td>
                                 <td>{{ $coupon->value_string }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-default btn-sm pull-right" href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.coupons.show', [$coupon->id]) !!}"><i class="fa fa-eye"></i> View</a>
+                                    <a class="btn btn-default btn-sm pull-right" href="{!! route(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'.coupons.show', [$coupon->id]) !!}"><i class="fa fa-eye"></i> View</a>
                                 </td>
                             </tr>
                         @endforeach

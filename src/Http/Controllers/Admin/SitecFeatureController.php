@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers\Admin;
 
-use Cms;
+use Siravel;
 use Informate\Models\System\Archive;
 use Stalker\Services\Midia\FileService;
 use Illuminate\Http\Request;
@@ -35,7 +35,7 @@ class SitecFeatureController extends Controller
         $modelInstance->fill($archiveData);
         $modelInstance->save();
 
-        Cms::notification('Reversion was successful', 'success');
+        Siravel::notification('Reversion was successful', 'success');
 
         return redirect(URL::previous());
     }
@@ -53,7 +53,7 @@ class SitecFeatureController extends Controller
         $modelString = str_replace('_', '\\', $entity);
 
         if (!class_exists($modelString)) {
-            Cms::notification('Could not rollback Model not found', 'warning');
+            Siravel::notification('Could not rollback Model not found', 'warning');
 
             return redirect(URL::previous());
         }
@@ -64,7 +64,7 @@ class SitecFeatureController extends Controller
         $archive = Archive::where('entity_id', $id)->where('entity_type', $modelString)->limit(1)->offset(1)->orderBy('id', 'desc')->first();
 
         if (!$archive) {
-            Cms::notification('Could not rollback', 'warning');
+            Siravel::notification('Could not rollback', 'warning');
 
             return redirect(URL::previous());
         }
@@ -74,7 +74,7 @@ class SitecFeatureController extends Controller
         $modelInstance->fill($archiveData);
         $modelInstance->save();
 
-        Cms::notification('Rollback was successful', 'success');
+        Siravel::notification('Rollback was successful', 'success');
 
         return redirect(URL::previous());
     }
@@ -102,7 +102,7 @@ class SitecFeatureController extends Controller
             $entity => $modelInstance,
         ];
 
-        if (config('app.locale') != config('cms.default-language', Cms::config('cms.default-language'))) {
+        if (config('app.locale') != config('siravel.default-language', Siravel::config('siravel.default-language'))) {
             if ($modelInstance->translation(config('app.locale'))) {
                 $data = [
                     $entity => $modelInstance->translation(config('app.locale'))->data,
@@ -110,18 +110,18 @@ class SitecFeatureController extends Controller
             }
         }
 
-        $view = 'cms-frontend::'.$entity.'.show';
+        $view = 'siravel-frontend::'.$entity.'.show';
 
         if (!View::exists($view)) {
-            $view = 'cms-frontend::'.$entity.'s.show';
+            $view = 'siravel-frontend::'.$entity.'s.show';
         }
 
         if ($entity === 'page') {
-            $view = 'cms-frontend::pages.'.$modelInstance->template;
+            $view = 'siravel-frontend::pages.'.$modelInstance->template;
         }
 
         if ($entity === 'blog') {
-            $view = 'cms-frontend::blog.'.$modelInstance->template;
+            $view = 'siravel-frontend::blog.'.$modelInstance->template;
         }
 
         return view($view, $data);
@@ -145,11 +145,11 @@ class SitecFeatureController extends Controller
                 'hero_image' => null,
                 ]
             );
-            Cms::notification('Hero image deleted.', 'success');
+            Siravel::notification('Hero image deleted.', 'success');
             return back();
         }
 
-        Cms::notification('Hero image could not be deleted', 'error');
+        Siravel::notification('Hero image could not be deleted', 'error');
         return back();
     }
 }

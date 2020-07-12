@@ -27,7 +27,7 @@ class RssController extends Controller
         $module = $this->module;
 
         $meta = \Illuminate\Support\Facades\Config::get(
-            'cms.rss', [
+            'siravel.rss', [
             'title' => \Illuminate\Support\Facades\Config::get('app.name'),
             'link' => url('/'),
             ]

@@ -130,7 +130,7 @@ class Setting extends Model
                 'options' => 'string',
                 'defaultValue' => '',
                 'target' => Negocio::class,
-                'config' => "cms.frontend-theme",
+                'config' => "siravel.frontend-theme",
             ],
 
 
@@ -180,7 +180,7 @@ class Setting extends Model
                 'options' => 'boolean',
                 'defaultValue' => true,
                 'target' => Negocio::class,
-                'config' => "cms.can_register_free",
+                'config' => "siravel.can_register_free",
             ],
             'terms' => [
                 'name' => 'Termos e Condições',
@@ -188,7 +188,7 @@ class Setting extends Model
                 'options' => 'string',
                 'defaultValue' => 'Não copie imagens',
                 'target' => Negocio::class,
-                'config' => "cms.terms",
+                'config' => "siravel.terms",
             ],
 
 

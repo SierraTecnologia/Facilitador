@@ -66,5 +66,5 @@
             _balanceValues : {!! json_encode($balanceValues) !!}
         };
     </script>
-    <script type="text/javascript" src="{{ Cms::moduleAsset('commerce', 'js/analytics.js', 'application/javascript') }}"></script>
+    <script type="text/javascript" src="{{ Siravel::moduleAsset('commerce', 'js/analytics.js', 'application/javascript') }}"></script>
 @endsection

@@ -11,7 +11,7 @@
     <div class="col-md-12">
         {!! Form::open(['route' => 'admin.faqs.store', 'class' => 'add']) !!}
 
-            {!! FormMaker::fromTable('faqs', \Illuminate\Support\Facades\Config::get('cms.forms.faqs')) !!}
+            {!! FormMaker::fromTable('faqs', \Illuminate\Support\Facades\Config::get('siravel.forms.faqs')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! url('admin/'.'faqs') !!}" class="btn btn-secondary float-left">Cancel</a>

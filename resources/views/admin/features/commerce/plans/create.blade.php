@@ -4,7 +4,7 @@
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" type="text/css" href="{{ Cms::moduleAsset('commerce', 'css/store.css', 'text/css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ Siravel::moduleAsset('commerce', 'css/store.css', 'text/css') }}">
 @stop
 
 @section('content')
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="col-md-6 mt-4">
-            {!! Form::open(['route' => cms()->route('plans.store')]) !!}
+            {!! Form::open(['route' => siravel()->route('plans.store')]) !!}
 
             {!! FormMaker::setColumns(2)->fromTable("plans", \Illuminate\Support\Facades\Config::get('commerce.forms.plans')) !!}
 
@@ -42,7 +42,7 @@
 
 @section('javascript')
     @parent
-    <script type="text/javascript" src="{!! Cms::moduleAsset('commerce', 'js/plans.js', 'application/javascript') !!}"></script>
+    <script type="text/javascript" src="{!! Siravel::moduleAsset('commerce', 'js/plans.js', 'application/javascript') !!}"></script>
     <script type="text/javascript">
         _visualizeThePlan();
     </script>

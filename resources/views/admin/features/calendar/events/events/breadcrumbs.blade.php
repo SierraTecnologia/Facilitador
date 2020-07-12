@@ -2,7 +2,7 @@
     <ol class="breadcrumb">
         <li><a href="{!! url('admin/events') !!}">Events</a></li>
 
-            {!! Cms::breadcrumbs($location) !!}
+            {!! Siravel::breadcrumbs($location) !!}
 
         <li class="active"></li>
     </ol>

@@ -4,7 +4,7 @@
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" type="text/css" href="{{ Cms::moduleAsset('commerce', 'css/store.css', 'text/css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ Siravel::moduleAsset('commerce', 'css/store.css', 'text/css') }}">
 @stop
 
 @section('content')
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                {!! Form::model($plan, ['route' => [\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.plans.update', $plan->id], 'method' => 'patch']) !!}
+                {!! Form::model($plan, ['route' => [\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'.plans.update', $plan->id], 'method' => 'patch']) !!}
 
                 {!! FormMaker::setColumns(2)->fromObject($plan, \Illuminate\Support\Facades\Config::get('commerce.forms.plans-edit')) !!}
 
@@ -37,12 +37,12 @@
                 {!! Form::close() !!}
 
                 @if ($plan->enabled)
-                    <a href="{{ url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/disable') }}" class="btn btn-warning pull-right raw-margin-right-16">Disable</a>
+                    <a href="{{ url(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'/plans/'.$plan->id.'/state-change/disable') }}" class="btn btn-warning pull-right raw-margin-right-16">Disable</a>
                 @else
-                    <a href="{{ url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/enable') }}" class="btn btn-outline-success pull-right raw-margin-right-16">Enable</a>
+                    <a href="{{ url(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'/plans/'.$plan->id.'/state-change/enable') }}" class="btn btn-outline-success pull-right raw-margin-right-16">Enable</a>
                 @endif
 
-                <form id="deletePlanForm" method="post" action="{!! url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id) !!}">
+                <form id="deletePlanForm" method="post" action="{!! url(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'/plans/'.$plan->id) !!}">
                     {!! csrf_field() !!}
                     {!! method_field('DELETE') !!}
                     <button class="btn delete-plan-btn btn-danger pull-left" type="submit"><i class="fa fa-trash"></i> Delete</button>
@@ -92,7 +92,7 @@
 
 @section('javascript')
     @parent
-    <script type="text/javascript" src="{{ Cms::moduleAsset('commerce', 'js/plans.js', 'application/javascript') }}"></script>
+    <script type="text/javascript" src="{{ Siravel::moduleAsset('commerce', 'js/plans.js', 'application/javascript') }}"></script>
     <script type="text/javascript">
         _visualizeThePlan();
     </script>

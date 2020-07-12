@@ -11,7 +11,7 @@
     <div class="row">
         {!! Form::open(['route' => 'admin.events.store', 'class' => 'add']) !!}
 
-            {!! FormMaker::fromTable('events', Config::get('cms.forms.event')) !!}
+            {!! FormMaker::fromTable('events', Config::get('siravel.forms.event')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! URL::to('admin/events') !!}" class="btn btn-default raw-left">{!! trans('features.cancel') !!}</a>

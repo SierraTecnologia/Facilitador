@@ -11,7 +11,7 @@
     <div class="col-md-12">
         {!! Form::open(['route' => 'admin.links.store', 'class' => 'add']) !!}
 
-            {!! FormMaker::fromTable('links', \Illuminate\Support\Facades\Config::get('cms.forms.link')) !!}
+            {!! FormMaker::fromTable('links', \Illuminate\Support\Facades\Config::get('siravel.forms.link')) !!}
 
             <div class="form-group" style="display: none;">
                 <label for="Page_id">Page</label>
@@ -36,5 +36,5 @@
 @section('javascript')
 
     @parent
-    <script src="{!! CmsService::asset('js/links-module.js', 'application/javascript') !!}"></script>
+    <script src="{!! SiravelService::asset('js/links-module.js', 'application/javascript') !!}"></script>
 @stop

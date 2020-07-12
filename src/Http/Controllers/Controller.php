@@ -85,6 +85,22 @@ class Controller extends BaseController
     }
 
 
+    protected function getFeature($model)
+    {
+        $isModels = [
+            'page',
+            'link',
+            'menu',
+            'plan',
+        ];
+        if (in_array($model, $isModels)) {
+            return 'Negocios';
+        }
+
+        return 'System';
+
+    }
+
     /**
      * Pass controller properties that are used by the layout and views through
      * to the view layer

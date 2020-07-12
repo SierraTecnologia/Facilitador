@@ -24,9 +24,9 @@
     </div>
 
     <div class="row">
-        {!! Form::model($images, ['route' => ['cms.images.update', $images->id], 'method' => 'patch', 'files' => true, 'class' => 'edit']) !!}
+        {!! Form::model($images, ['route' => ['siravel.images.update', $images->id], 'method' => 'patch', 'files' => true, 'class' => 'edit']) !!}
 
-            {!! FormMaker::fromObject($images, Config::get('cms.forms.images-edit')) !!}
+            {!! FormMaker::fromObject($images, Config::get('siravel.forms.images-edit')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! URL::to('admin/images') !!}" class="btn btn-default raw-left">{!! trans('features.cancel') !!}</a>

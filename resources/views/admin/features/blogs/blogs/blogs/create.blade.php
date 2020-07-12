@@ -11,7 +11,7 @@
     <div class="row">
         {!! Form::open(['route' => 'admin.blog.store', 'class' => 'add']) !!}
 
-            {!! FormMaker::fromTable('blogs', Config::get('cms.forms.blog')) !!}
+            {!! FormMaker::fromTable('blogs', Config::get('siravel.forms.blog')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! URL::to('admin/blog') !!}" class="btn btn-default raw-left">{!! trans('features.cancel') !!}</a>

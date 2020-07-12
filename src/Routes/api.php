@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 Route::get('download', ExcelController::class . '@download');
 
-$routePrefix = \Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms');
+$routePrefix = \Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel');
 
 Route::group(
     ['middleware' => 'web'], function () use ($routePrefix) {
@@ -17,7 +17,7 @@ Route::group(
         Route::group(
             ['prefix' => $routePrefix.'/api'], function () use ($routePrefix) {
                 Route::group(
-                    ['middleware' => ['cms-api']], function () use ($routePrefix) {
+                    ['middleware' => ['siravel-api']], function () use ($routePrefix) {
                         Route::get('blog', 'ApiController@all');
                         Route::get('blog/{id}', 'ApiController@find');
 

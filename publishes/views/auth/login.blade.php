@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="col-md-12 form-group">
-                    @if (Config::get('cms.registration-available', false))
+                    @if (Config::get('siravel.registration-available', false))
                         <a class="btn raw100 btn-info" href="/register">{!! trans('features.register') !!}</a>
                     @endif
                 </div>

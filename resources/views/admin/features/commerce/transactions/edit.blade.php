@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    {!! Form::model($transaction, ['route' => [\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.transactions.update', $transaction->id], 'method' => 'patch']) !!}
+    {!! Form::model($transaction, ['route' => [\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'.transactions.update', $transaction->id], 'method' => 'patch']) !!}
 
     <div class="col-md-12">
         <div class="row">
@@ -85,7 +85,7 @@
                 @if ($order && $order->hasActiveOrderItems())
                     <div class="card bg-light border-dark">
                         <div class="card-header">
-                           <a href="{{ url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/orders/'.$order->id.'/edit') }}">Order: #{{ $order->id }}</a>
+                           <a href="{{ url(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'/orders/'.$order->id.'/edit') }}">Order: #{{ $order->id }}</a>
                         </div>
                         <div class="card-body">
                             You must cancel this order if you wish to refund this transaction.
@@ -117,7 +117,7 @@
             {!! Form::close() !!}
 
             @if ($order && is_null($transaction->refund_date))
-                {!! Form::open(['id' => 'refundForm', 'url' => \Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/transactions/refund', 'method' => 'post', 'class' => 'inline-form float-left']) !!}
+                {!! Form::open(['id' => 'refundForm', 'url' => \Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'/transactions/refund', 'method' => 'post', 'class' => 'inline-form float-left']) !!}
                     @input_maker_create('uuid', ['type' => 'hidden'], $transaction)
                     {!! Form::submit('Refund', ['class' => 'btn btn-warning']) !!}
                 {!! Form::close() !!}

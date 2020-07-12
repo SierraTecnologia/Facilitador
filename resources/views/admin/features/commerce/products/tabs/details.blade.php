@@ -1,4 +1,4 @@
-{!! Form::model($product, ['route' => [\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.products.update', $product->id], 'method' => 'patch', 'files' => true]) !!}
+{!! Form::model($product, ['route' => [\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'.products.update', $product->id], 'method' => 'patch', 'files' => true]) !!}
 
     {!! FormMaker::setColumns(2)->fromObject($product, \Illuminate\Support\Facades\Config::get('commerce.forms.details.identity')) !!}
     {!! FormMaker::setColumns(2)->fromObject($product, \Illuminate\Support\Facades\Config::get('commerce.forms.details.price')) !!}

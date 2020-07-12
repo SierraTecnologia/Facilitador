@@ -32,7 +32,7 @@
             <div class="col-md-12 mt-4">
                 {!! Form::model($images, ['route' => ['admin.images.update', $images->id], 'method' => 'patch', 'files' => true, 'class' => 'edit']) !!}
 
-                    {!! FormMaker::setColumns(2)->fromObject($images, \Illuminate\Support\Facades\Config::get('cms.forms.images-edit')) !!}
+                    {!! FormMaker::setColumns(2)->fromObject($images, \Illuminate\Support\Facades\Config::get('siravel.forms.images-edit')) !!}
 
                     <div class="form-group text-right">
                         <a href="{!! url('admin/'.'images') !!}" class="btn btn-secondary float-left">Cancel</a>

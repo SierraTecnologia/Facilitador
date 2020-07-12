@@ -11,7 +11,7 @@
     <div class="col-md-12">
         {!! Form::model($menu, ['route' => ['admin.menus.update', $menu->id], 'method' => 'patch', 'class' => 'edit']) !!}
 
-            {!! FormMaker::fromObject($menu, \Illuminate\Support\Facades\Config::get('cms.forms.menu')) !!}
+            {!! FormMaker::fromObject($menu, \Illuminate\Support\Facades\Config::get('siravel.forms.menu')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! url('admin/'.'menus') !!}" class="btn btn-secondary float-left">Cancel</a>
@@ -38,6 +38,6 @@
     @parent
     var _linkOrder = @if (!is_null($menu->order)) {!! $menu->order !!} @else [] @endif;
     var _id = {{ $menu->id }};
-    var _cmsUrl = _url + "/{{ \Illuminate\Support\Facades\Config::get('cms.backend-route-prefix') }}";
+    var _siravelUrl = _url + "/{{ \Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix') }}";
 
 @stop

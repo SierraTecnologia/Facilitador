@@ -11,10 +11,10 @@
             </div>
             <div class="col-md-6">
                 <div class="btn-toolbar float-right mt-2 mb-4">
-                    @if (! cms()->isDefaultLanguage() && $promotion->translationData(request('lang')))
-                        <a class="btn btn-warning ml-1" href="{!! Cms::rollbackUrl($promotion->translation(request('lang'))) !!}">Rollback</a>
+                    @if (! siravel()->isDefaultLanguage() && $promotion->translationData(request('lang')))
+                        <a class="btn btn-warning ml-1" href="{!! Siravel::rollbackUrl($promotion->translation(request('lang'))) !!}">Rollback</a>
                     @elseif (is_null(request('lang')))
-                        <a class="btn btn-warning ml-1" href="{!! Cms::rollbackUrl($promotion) !!}">Rollback</a>
+                        <a class="btn btn-warning ml-1" href="{!! Siravel::rollbackUrl($promotion) !!}">Rollback</a>
                     @endif
                 </div>
             </div>
@@ -31,13 +31,13 @@
         </div>
 
         <div class="row">
-            <div class="@if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false)) col-md-6 @else col-md-12 @endif">
+            <div class="@if (\Illuminate\Support\Facades\Config::get('siravel.live-preview', false)) col-md-6 @else col-md-12 @endif">
                 {!! Form::model($promotion, ['route' => ['admin.promotions.update', $promotion->id], 'method' => 'patch', 'class' => 'edit']) !!}
 
                     <input type="hidden" name="lang" value="{{ request('lang') }}">
 
-                    {!! FormMaker::setColumns(3)->fromObject($promotion->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.promotion.identity')) !!}
-                    {!! FormMaker::setColumns(1)->fromObject($promotion->asObject(), \Illuminate\Support\Facades\Config::get('cms.forms.promotion.content')) !!}
+                    {!! FormMaker::setColumns(3)->fromObject($promotion->asObject(), \Illuminate\Support\Facades\Config::get('siravel.forms.promotion.identity')) !!}
+                    {!! FormMaker::setColumns(1)->fromObject($promotion->asObject(), \Illuminate\Support\Facades\Config::get('siravel.forms.promotion.content')) !!}
 
                     <div class="form-group text-right">
                         <a href="{!! url('admin/'.'promotions') !!}" class="btn btn-secondary float-left">Cancel</a>
@@ -46,10 +46,10 @@
 
                 {!! Form::close() !!}
             </div>
-            @if (\Illuminate\Support\Facades\Config::get('cms.live-preview', false))
+            @if (\Illuminate\Support\Facades\Config::get('siravel.live-preview', false))
                 <div class="col-md-6 hidden-sm hidden-xs">
                     <div id="wrap">
-                        @if (! cms()->isDefaultLanguage())
+                        @if (! siravel()->isDefaultLanguage())
                             <iframe id="frame" src="{!! url('admin/'.'preview/promotion/'.$promotion->id.'?lang='.request('lang')) !!}"></iframe>
                         @else
                             <iframe id="frame" src="{{ url('admin/'.'preview/promotion/'.$promotion->id) }}"></iframe>

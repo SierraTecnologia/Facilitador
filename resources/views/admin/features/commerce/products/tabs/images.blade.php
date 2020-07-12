@@ -20,7 +20,7 @@
     @foreach($images as $image)
         <div class="col-md-3 image-panel raw-margin-top-24">
             <div class="thumbnail">
-                <a href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.images.edit', [$image->id]) !!}">
+                <a href="{!! route(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'.images.edit', [$image->id]) !!}">
                     <div class="img" style="background-image: url('{!! $image->url !!}')"></div>
                 </a>
             </div>
@@ -34,12 +34,12 @@
                         @endif
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12">
-                        <form method="post" action="{!! url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/products/images/'.$image->id) !!}">
+                        <form method="post" action="{!! url(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'/products/images/'.$image->id) !!}">
                             {!! csrf_field() !!}
                             {!! method_field('DELETE') !!}
                             <button class="delete-btn btn btn-sm img-alter-btn btn-danger float-right" type="submit"><i class="fa fa-trash"></i></button>
                         </form>
-                        <a class="btn btn-sm btn-secondary float-right img-alter-btn raw-margin-right-8" href="{!! route(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.images.edit', [$image->id]) !!}"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-sm btn-secondary float-right img-alter-btn raw-margin-right-8" href="{!! route(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'.images.edit', [$image->id]) !!}"><i class="fa fa-edit"></i></a>
                     </div>
                 </div>
             </div>
@@ -53,12 +53,12 @@
         {!! Form::open(['url' => 'admin/images/upload', 'files' => true, 'class' => 'dropzone', 'id' => 'fileDropzone']); !!}
         {!! Form::close() !!}
 
-        {!! Form::open(['url' => \Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/products/images', 'files' => true, 'id' => 'fileDetailsForm', 'class' => 'add']) !!}
+        {!! Form::open(['url' => \Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'/products/images', 'files' => true, 'id' => 'fileDetailsForm', 'class' => 'add']) !!}
 
             <input type="hidden" name="product_id" value="{{ $product->id }}">
 
             <div class="form-group text-right">
-                <a href="{!! url(\Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'/images') !!}" class="btn btn-secondary raw-left">Cancel</a>
+                <a href="{!! url(\Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'/images') !!}" class="btn btn-secondary raw-left">Cancel</a>
                 {!! Form::submit('Save', ['class' => 'btn btn-primary', 'id' => 'saveImagesBtn']) !!}
             </div>
 

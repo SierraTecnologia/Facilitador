@@ -2,14 +2,14 @@
 
 namespace Facilitador\Http\Controllers\NoRestrict;
 
-use App\Services\CmsService;
+use App\Services\SiravelService;
 use Illuminate\Http\Response;
 
 class SiteMapController extends Controller
 {
     protected $service;
 
-    public function __construct(CmsService $service)
+    public function __construct(SiravelService $service)
     {
         parent::__construct();
 

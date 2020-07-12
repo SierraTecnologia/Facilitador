@@ -59,7 +59,7 @@ class ApiController extends SitecController
 
         return $query
             ->orderBy('created_at', 'desc')
-            ->paginate(Config::get('cms.pagination', 24));
+            ->paginate(Config::get('siravel.pagination', 24));
     }
 
     /**
@@ -82,7 +82,7 @@ class ApiController extends SitecController
 
         return [
             'term' => $input['term'],
-            'result' => $query->paginate(Config::get('cms.pagination', 24)),
+            'result' => $query->paginate(Config::get('siravel.pagination', 24)),
         ];
     }
 }

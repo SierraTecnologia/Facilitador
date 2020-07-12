@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-use Cms;
+use Siravel;
 use Log;
 use SplFileInfo;
 use Crypto;
@@ -74,12 +74,12 @@ class AssetService
                 $encFileName.'_preview', 3600, function () use ($encFileName, $fileSystem) {
                     $fileName = Crypto::url_decode($encFileName);
 
-                    if (\Illuminate\Support\Facades\Config::get('cms.storage-location') === 'local' || \Illuminate\Support\Facades\Config::get('cms.storage-location') === null) {
+                    if (\Illuminate\Support\Facades\Config::get('siravel.storage-location') === 'local' || \Illuminate\Support\Facades\Config::get('siravel.storage-location') === null) {
                         $filePath = storage_path('app/'.$fileName);
                         $contentType = $fileSystem->mimeType($filePath);
                         $ext = strtoupper($fileSystem->extension($filePath));
                     } else {
-                        $filePath = Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->url($fileName);
+                        $filePath = Storage::disk(\Illuminate\Support\Facades\Config::get('siravel.storage-location', 'local'))->url($fileName);
                         $fileTool = new SplFileInfo($filePath);
                         $ext = $fileTool->getExtension();
                         $contentType = $this->getMimeType($ext);
@@ -138,7 +138,7 @@ class AssetService
                 }
             );
         } catch (Exception $e) {
-            Cms::notification('We encountered an error with that file', 'danger');
+            Siravel::notification('We encountered an error with that file', 'danger');
 
             return redirect('errors/general');
         }
@@ -160,7 +160,7 @@ class AssetService
             if (Request::get('isModule') === 'true') {
                 $filePath = $path;
             } else {
-                $filePath = base_path('resources/themes/'.Config::get('cms.frontend-theme').'/assets/'.$path);
+                $filePath = base_path('resources/themes/'.Config::get('siravel.frontend-theme').'/assets/'.$path);
                 // if (str_contains($path, 'dist/') || str_contains($path, 'themes/')) {
                 //     $filePath = __DIR__.'/../Assets/'.$path;
                 // } else {
@@ -222,7 +222,7 @@ class AssetService
         if (file_exists(storage_path('app/'.$fileName))) {
             $filePath = storage_path('app/'.$fileName);
         } else {
-            $filePath = Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->url($fileName);
+            $filePath = Storage::disk(\Illuminate\Support\Facades\Config::get('siravel.storage-location', 'local'))->url($fileName);
         }
 
         return $filePath;
@@ -239,8 +239,8 @@ class AssetService
      */
     public function getFileContent($fileName, $contentType, $ext)
     {
-        if (Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->exists($fileName)) {
-            $fileContent = Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->get($fileName);
+        if (Storage::disk(\Illuminate\Support\Facades\Config::get('siravel.storage-location', 'local'))->exists($fileName)) {
+            $fileContent = Storage::disk(\Illuminate\Support\Facades\Config::get('siravel.storage-location', 'local'))->get($fileName);
         } elseif (!is_null(\Illuminate\Support\Facades\Config::get('filesystems.cloud.key'))) {
             $fileContent = Storage::disk('cloud')->get($fileName);
         } else {
@@ -248,10 +248,10 @@ class AssetService
         }
 
         if (stristr($fileName, 'image') || stristr($contentType, 'image')) {
-            if (! is_null(\Illuminate\Support\Facades\Config::get('cms.preview-image-size'))) {
+            if (! is_null(\Illuminate\Support\Facades\Config::get('siravel.preview-image-size'))) {
                 $img = Image::make($fileContent);
                 $img->resize(
-                    \Illuminate\Support\Facades\Config::get('cms.preview-image-size', 800), null, function ($constraint) {
+                    \Illuminate\Support\Facades\Config::get('siravel.preview-image-size', 800), null, function ($constraint) {
                         $constraint->aspectRatio();
                     }
                 );

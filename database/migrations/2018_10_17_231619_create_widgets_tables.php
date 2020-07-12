@@ -28,7 +28,7 @@ class CreateWidgetsTables extends Migration
 	 */
 	public function down()
 	{
-        Schema::drop(config('cms.db-prefix', '').'widgets');
+        Schema::drop(config('siravel.db-prefix', '').'widgets');
 	}
 
 }

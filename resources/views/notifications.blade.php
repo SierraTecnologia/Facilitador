@@ -1,31 +1,31 @@
 <script>
     @if (Session::has("notification"))
-        cmsNotify("{{ Session::get("notification") }}", "{{ Session::get("notificationType") }}");
+        siravelNotify("{{ Session::get("notification") }}", "{{ Session::get("notificationType") }}");
     @endif
 
     @if (Session::has("message"))
-        cmsNotify("{{ Session::get("message") }}", "alert-info");
+        siravelNotify("{{ Session::get("message") }}", "alert-info");
     @endif
 
     @if (Session::has("success"))
-        cmsNotify("{{ Session::get("success") }}", "alert-success");
+        siravelNotify("{{ Session::get("success") }}", "alert-success");
     @endif
 
     @if (Session::has("errors") && count(Session::get("errors")) >= 1)
-        cmsNotify("{!! collect($errors->all())->implode('<br>') !!}", "alert-danger");
+        siravelNotify("{!! collect($errors->all())->implode('<br>') !!}", "alert-danger");
     @endif
 </script>
 
 @if (Session::has("notification"))
-    cmsNotify("{{ Session::get("notification") }}", "{{ Session::get("notificationType") }}");
+    siravelNotify("{{ Session::get("notification") }}", "{{ Session::get("notificationType") }}");
 @endif
 
 @if (Session::has("message"))
-    cmsNotify("{{ Session::get("message") }}", "alert-info");
+    siravelNotify("{{ Session::get("message") }}", "alert-info");
 @endif
 
 @if (Session::has("errors"))
     @foreach ($errors->all() as $error)
-        cmsNotify("{{ $error }}", "alert-danger");
+        siravelNotify("{{ $error }}", "alert-danger");
     @endforeach
 @endif

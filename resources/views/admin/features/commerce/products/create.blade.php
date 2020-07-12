@@ -7,7 +7,7 @@
     <div class="col-md-12 mt-2">
         @include('admin.features.commerce.products.breadcrumbs', ['location' => ['create']])
 
-        {!! Form::open(['route' => \Illuminate\Support\Facades\Config::get('cms.backend-route-prefix', 'cms').'.products.store', 'files' => true]) !!}
+        {!! Form::open(['route' => \Illuminate\Support\Facades\Config::get('siravel.backend-route-prefix', 'siravel').'.products.store', 'files' => true]) !!}
 
             {!! FormMaker::setColumns(2)->fromTable('products', \Illuminate\Support\Facades\Config::get('commerce.forms.details.identity')) !!}
             {!! FormMaker::setColumns(2)->fromTable('products', \Illuminate\Support\Facades\Config::get('commerce.forms.details.price')) !!}

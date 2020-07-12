@@ -14,7 +14,7 @@
 
         {!! Form::open(['route' => 'admin.images.store', 'files' => true, 'id' => 'fileDetailsForm', 'class' => 'add']) !!}
 
-            {!! FormMaker::fromTable('files', Config::get('cms.forms.images')) !!}
+            {!! FormMaker::fromTable('files', Config::get('siravel.forms.images')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! URL::to('admin/images') !!}" class="btn btn-default raw-left">{!! trans('features.cancel') !!}</a>

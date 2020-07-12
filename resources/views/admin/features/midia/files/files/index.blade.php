@@ -76,10 +76,10 @@
 @section('javascript')
 
 @parent
-{!! Minify::javascript( Cms::asset('js/bootstrap-tagsinput.min.js', 'application/javascript') ) !!}
-{!! Minify::javascript( Cms::asset('dropzone/dropzone.js', 'application/javascript') ) !!}
-{!! Minify::javascript( Cms::asset('js/files-module.js', 'application/javascript') ) !!}
-{!! Minify::javascript( Cms::asset('js/dropzone-custom.js', 'application/javascript') ) !!}
+{!! Minify::javascript( Siravel::asset('js/bootstrap-tagsinput.min.js', 'application/javascript') ) !!}
+{!! Minify::javascript( Siravel::asset('dropzone/dropzone.js', 'application/javascript') ) !!}
+{!! Minify::javascript( Siravel::asset('js/files-module.js', 'application/javascript') ) !!}
+{!! Minify::javascript( Siravel::asset('js/dropzone-custom.js', 'application/javascript') ) !!}
 
 @stop
 

@@ -16,7 +16,7 @@ Route::group(
         );
 
         Route::group(
-            ['prefix' => 'cms'], function () {
+            ['prefix' => 'siravel'], function () {
                 Route::get('images/bulk-delete/{ids}', 'ImagesController@bulkDelete');
                 Route::post('images/upload', 'ImagesController@upload');
                 Route::post('files/upload', 'FilesController@upload');
@@ -40,7 +40,7 @@ Route::group(
         Route::get('files/list', 'FilesController@apiList');
 
         Route::group(
-            ['middleware' => ['cms-api']], function () {
+            ['middleware' => ['siravel-api']], function () {
                 Route::get('blog', 'ApiController@all');
                 Route::get('blog/{id}', 'ApiController@find');
 

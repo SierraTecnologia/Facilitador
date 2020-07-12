@@ -13,9 +13,9 @@
     </div>
 
     <div class="row">
-        {!! Form::model($files, ['route' => ['cms.files.update', $files->id], 'files' => true, 'method' => 'patch', 'class' => 'edit']) !!}
+        {!! Form::model($files, ['route' => ['siravel.files.update', $files->id], 'files' => true, 'method' => 'patch', 'class' => 'edit']) !!}
 
-            {!! FormMaker::fromObject($files, Config::get('cms.forms.file-edit')) !!}
+            {!! FormMaker::fromObject($files, Config::get('siravel.forms.file-edit')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! URL::to('admin/files') !!}" class="btn btn-default raw-left">{!! trans('features.cancel') !!}</a>
@@ -30,10 +30,10 @@
 @section('javascript')
 
     @parent
-    <script type="text/javascript" src="{!! CmsService::asset('js/bootstrap-tagsinput.min.js', 'application/javascript') !!}"></script>
-    <script type="text/javascript" src="{!! CmsService::asset('packages/dropzone/dropzone.js', 'application/javascript') !!}"></script>
-    <script type="text/javascript" src="{!! CmsService::asset('js/files-module.js', 'application/javascript') !!}"></script>
-    <script type="text/javascript" src="{!! CmsService::asset('js/dropzone-custom.js', 'application/javascript') !!}"></script>
+    <script type="text/javascript" src="{!! SiravelService::asset('js/bootstrap-tagsinput.min.js', 'application/javascript') !!}"></script>
+    <script type="text/javascript" src="{!! SiravelService::asset('packages/dropzone/dropzone.js', 'application/javascript') !!}"></script>
+    <script type="text/javascript" src="{!! SiravelService::asset('js/files-module.js', 'application/javascript') !!}"></script>
+    <script type="text/javascript" src="{!! SiravelService::asset('js/dropzone-custom.js', 'application/javascript') !!}"></script>
 
 @stop
 

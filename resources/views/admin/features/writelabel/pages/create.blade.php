@@ -10,10 +10,10 @@
     <div class="col-md-12 mt-4">
         {!! Form::open(['route' => 'admin.pages.store', 'class' => 'add', 'files' => true]) !!}
 
-            {!! FormMaker::setColumns(2)->fromTable('pages', \Illuminate\Support\Facades\Config::get('cms.forms.page.identity')) !!}
-            {!! FormMaker::setColumns(2)->fromTable('pages', \Illuminate\Support\Facades\Config::get('cms.forms.page.content')) !!}
-            {!! FormMaker::setColumns(2)->fromTable('pages', \Illuminate\Support\Facades\Config::get('cms.forms.page.seo')) !!}
-            {!! FormMaker::setColumns(2)->fromTable('pages', \Illuminate\Support\Facades\Config::get('cms.forms.page.publish')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('pages', \Illuminate\Support\Facades\Config::get('siravel.forms.page.identity')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('pages', \Illuminate\Support\Facades\Config::get('siravel.forms.page.content')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('pages', \Illuminate\Support\Facades\Config::get('siravel.forms.page.seo')) !!}
+            {!! FormMaker::setColumns(2)->fromTable('pages', \Illuminate\Support\Facades\Config::get('siravel.forms.page.publish')) !!}
 
             <div class="form-group text-right">
                 <a href="{!! url('admin/'.'pages') !!}" class="btn btn-secondary raw-left">Cancel</a>

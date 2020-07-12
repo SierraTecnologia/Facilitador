@@ -107,6 +107,6 @@
 @section('pre_javascript')
 
     @parent
-    var _cmsUrl = "{{ url('admin/'.'/') }}";
+    var _siravelUrl = "{{ url('admin/'.'/') }}";
 
 @stop

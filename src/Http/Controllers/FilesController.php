@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers;
 
-use Cms;
+use Siravel;
 use Config;
 use Storage;
 use Redirect;
@@ -15,7 +15,7 @@ use Stalker\Http\Requests\FileRequest;
 use Stalker\Services\Midia\FileService;
 use Facilitador\Services\ValidationService;
 use Stalker\Repositories\FileRepository;
-use Siravel\Services\CmsResponseService;
+use Siravel\Services\SiravelResponseService;
 
 class FilesController extends SitecController
 {
@@ -23,13 +23,13 @@ class FilesController extends SitecController
         FileRepository $repository,
         FileService $fileService,
         ValidationService $validationService,
-        CmsResponseService $cmsResponseService
+        SiravelResponseService $siravelResponseService
     ) {
         parent::__construct();
         $this->repository = $repository;
         $this->fileService = $fileService;
         $this->validation = $validationService;
-        $this->responseService = $cmsResponseService;
+        $this->responseService = $siravelResponseService;
     }
 
     /**
@@ -94,7 +94,7 @@ class FilesController extends SitecController
             return $validation['redirect'];
         }
 
-        Cms::notification('File saved successfully.', 'success');
+        Siravel::notification('File saved successfully.', 'success');
 
         return redirect(route('admin.files.index'));
     }
@@ -159,7 +159,7 @@ class FilesController extends SitecController
         $files = $this->repository->find($id);
 
         if (empty($files)) {
-            Cms::notification('File not found', 'warning');
+            Siravel::notification('File not found', 'warning');
 
             return redirect(route('admin.files.index'));
         }
@@ -180,14 +180,14 @@ class FilesController extends SitecController
         $files = $this->repository->find($id);
 
         if (empty($files)) {
-            Cms::notification('File not found', 'warning');
+            Siravel::notification('File not found', 'warning');
 
             return redirect(route('admin.files.index'));
         }
 
         $files = $this->repository->update($files, $request->all());
 
-        Cms::notification('File updated successfully.', 'success');
+        Siravel::notification('File updated successfully.', 'success');
 
         return Redirect::back();
     }
@@ -204,7 +204,7 @@ class FilesController extends SitecController
         $files = $this->repository->find($id);
 
         if (empty($files)) {
-            Cms::notification('File not found', 'warning');
+            Siravel::notification('File not found', 'warning');
 
             return redirect(route('admin.files.index'));
         }
@@ -212,12 +212,12 @@ class FilesController extends SitecController
         if (is_file(storage_path($files->location))) {
             Storage::delete($files->location);
         } else {
-            Storage::disk(\Illuminate\Support\Facades\Config::get('cms.storage-location', 'local'))->delete($files->location);
+            Storage::disk(\Illuminate\Support\Facades\Config::get('siravel.storage-location', 'local'))->delete($files->location);
         }
 
         $files->delete();
 
-        Cms::notification('File deleted successfully.', 'success');
+        Siravel::notification('File deleted successfully.', 'success');
 
         return redirect(route('admin.files.index'));
     }
@@ -229,7 +229,7 @@ class FilesController extends SitecController
      */
     public function apiList(Request $request)
     {
-        if (\Illuminate\Support\Facades\Config::get('cms.api-key') != $request->header('cms')) {
+        if (\Illuminate\Support\Facades\Config::get('siravel.api-key') != $request->header('siravel')) {
             return $this->responseService->apiResponse('error', []);
         }
 
