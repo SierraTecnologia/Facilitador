@@ -10,7 +10,7 @@ use URL;
 use Auth;
 use Config;
 use Socialite;
-use Siravel\Services\UserService;
+use Facilitador\Services\UserService;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 

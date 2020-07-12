@@ -78,13 +78,13 @@ class Notification extends Model
         );
     }
 
-    // /**
-    //  * @inheritdoc
-    //  */
-    // public function newEloquentBuilder($query): NotificationBuilder
-    // {
-    //     return new NotificationBuilder($query);
-    // }
+    /**
+     * @inheritdoc
+     */
+    public function newEloquentBuilder($query): NotificationBuilder
+    {
+        return new NotificationBuilder($query);
+    }
 
     /**
      * @inheritdoc
@@ -115,14 +115,14 @@ class Notification extends Model
         return $this;
     }
 
-    // /**
-    //  * @return NotificationEntity
-    //  */
-    // public function toEntity(): NotificationEntity
-    // {
-    //     return new NotificationEntity([
-    //         'id' => $this->id,
-    //         'value' => $this->value,
-    //     ]);
-    // }
+    /**
+     * @return NotificationEntity
+     */
+    public function toEntity(): NotificationEntity
+    {
+        return new NotificationEntity([
+            'id' => $this->id,
+            'value' => $this->value,
+        ]);
+    }
 }

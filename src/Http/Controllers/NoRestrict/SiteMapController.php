@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers\NoRestrict;
 
-use App\Services\SiravelService;
+use Siravel\Services\SiravelService;
 use Illuminate\Http\Response;
 
 class SiteMapController extends Controller
