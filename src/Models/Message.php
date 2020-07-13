@@ -2,9 +2,10 @@
 
 namespace Facilitador\Models;
 
-use Cmgmyr\Messenger\Models\Message as MessengerMessage;
+// use Cmgmyr\Messenger\Models\Message as BaseMessage;
+use Population\Models\Features\Messenger\Message as BaseMessage;
 
-class Message extends MessengerMessage
+class Message extends BaseMessage
 {
     public function scopeRecent($query)
     {

@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Controllers\Auth;
 
 use Facilitador\Services\UserService;
-use Siravel\Services\System\ActivateService;
+use Facilitador\Services\ActivateService;
 use App\Http\Controllers\Controller;
 
 class ActivateController extends Controller

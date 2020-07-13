@@ -43,14 +43,7 @@ Route::group(
 
         Route::namespace('NoRestrict')->group(
             function () {
-                /*
-                |--------------------------------------------------------------------------
-                | Basic WriteLabels Pages
-                |--------------------------------------------------------------------------
-                */
-                Route::get('{module}/rss', 'RssController@index');
-                Route::get('site-map', 'SiteMapController@index');
-                
+
                 // Route::group(['middleware' => 'admin.user'], function () {
 
                 //Asset Routes

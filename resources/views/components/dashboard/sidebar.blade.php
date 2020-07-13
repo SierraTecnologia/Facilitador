@@ -32,7 +32,7 @@
 
         </div>
         <div id="adminmenu">
-            <admin-menu :items="{{ menu('admin', '_json') }}"></admin-menu>
+            <admin-menu :items=""></admin-menu>
         </div>
     </nav>
 </div>

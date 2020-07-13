@@ -5,6 +5,7 @@ namespace Facilitador\Models;
 use Illuminate\Database\Eloquent\Model;
 use Facilitador\Facades\Facilitador;
 use Translation\Traits\HasTranslations;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
@@ -64,10 +65,6 @@ class Category extends Model
 	 *
 	 * @return array
 	 */
-	public function posts()
-	{
-		return $this->hasMany(Article::class,'article_category_id');
-	}
     public function posts()
     {
         return $this->hasMany(Facilitador::modelClass('Post'))

@@ -177,7 +177,6 @@ class UrlGenerator
         if ($data) {
             $page = '/'.Crypto::shareableEncrypt($data).$page;
         }
-        dd(url(\Illuminate\Support\Facades\Config::get('generators.core.dir', 'siravel').'/manager/'.Crypto::shareableEncrypt($slug).$page));
         return url(\Illuminate\Support\Facades\Config::get('generators.core.dir', 'siravel').'/manager/'.Crypto::shareableEncrypt($slug).$page);
     }
 

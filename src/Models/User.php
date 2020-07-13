@@ -272,8 +272,7 @@ class User extends Base implements
      */
     public function isAdmin()
     {
-        dd('aquiiiii');
-        // return $this->role_id === Role::$GOOD || $this->role_id === Role::$ADMIN; //@todo
+        return $this->role_id === Role::$GOOD || $this->role_id === Role::$ADMIN; //@todo
         return false;
     }
 

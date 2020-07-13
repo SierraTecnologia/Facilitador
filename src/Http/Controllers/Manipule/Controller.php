@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers\Manipule;
 
-use Siravel\Http\Controllers\Features\Controller as BaseController;
+use Facilitador\Http\Controllers\Controller as BaseController;
 
 class Controller extends BaseController
 {

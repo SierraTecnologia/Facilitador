@@ -68,64 +68,71 @@ class FacilitadorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
-        'User|50' => [
-            [
-                'text'        => 'Dashboard',
-                'route'       => 'profile.dashboard',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
-            [
-                'text'        => 'Home',
-                'route'       => 'profile.home',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
-            [
-                'text'        => 'Profile',
-                'route'       => 'profile.profile',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
-            [
-                'text'        => 'Show Profile',
-                'route'       => 'profile.profile.show',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
-            [
-                'text'        => 'Notifications',
-                'route'       => 'profile.notifications.index',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
-            [
-                'text'        => 'Messages',
-                'route'       => 'profile.messages.index',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
-            [
-                'text'        => 'Logout',
-                'route'       => 'profile.logout',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
+        [
+            'text' => 'Painel',
+            'icon' => 'fas fa-fw fa-search',
+            'icon_color' => "blue",
+            'label_color' => "success",
+            'level'       => 1, // 0 (Public), 1, 2 (Admin) , 3 (Root)
         ],
+        // 'User|50' => [
+        //     [
+        //         'text'        => 'Dashboard',
+        //         'route'       => 'profile.dashboard',
+        //         'icon'        => 'fas fa-fw fa-industry',
+        //         'icon_color'  => 'blue',
+        //         'label_color' => 'success',
+        //         // 'access' => \App\Models\Role::$ADMIN
+        //     ],
+        //     [
+        //         'text'        => 'Home',
+        //         'route'       => 'profile.home',
+        //         'icon'        => 'fas fa-fw fa-industry',
+        //         'icon_color'  => 'blue',
+        //         'label_color' => 'success',
+        //         // 'access' => \App\Models\Role::$ADMIN
+        //     ],
+        //     [
+        //         'text'        => 'Profile',
+        //         'route'       => 'profile.profile',
+        //         'icon'        => 'fas fa-fw fa-industry',
+        //         'icon_color'  => 'blue',
+        //         'label_color' => 'success',
+        //         // 'access' => \App\Models\Role::$ADMIN
+        //     ],
+        //     [
+        //         'text'        => 'Show Profile',
+        //         'route'       => 'profile.profile.show',
+        //         'icon'        => 'fas fa-fw fa-industry',
+        //         'icon_color'  => 'blue',
+        //         'label_color' => 'success',
+        //         // 'access' => \App\Models\Role::$ADMIN
+        //     ],
+        //     [
+        //         'text'        => 'Notifications',
+        //         'route'       => 'profile.notifications.index',
+        //         'icon'        => 'fas fa-fw fa-industry',
+        //         'icon_color'  => 'blue',
+        //         'label_color' => 'success',
+        //         // 'access' => \App\Models\Role::$ADMIN
+        //     ],
+        //     [
+        //         'text'        => 'Messages',
+        //         'route'       => 'profile.messages.index',
+        //         'icon'        => 'fas fa-fw fa-industry',
+        //         'icon_color'  => 'blue',
+        //         'label_color' => 'success',
+        //         // 'access' => \App\Models\Role::$ADMIN
+        //     ],
+        //     [
+        //         'text'        => 'Logout',
+        //         'route'       => 'profile.logout',
+        //         'icon'        => 'fas fa-fw fa-industry',
+        //         'icon_color'  => 'blue',
+        //         'label_color' => 'success',
+        //         // 'access' => \App\Models\Role::$ADMIN
+        //     ],
+        // ],
         'System|350' => [
             // [
             //     'text' => 'Information',
@@ -138,12 +145,14 @@ class FacilitadorProvider extends ServiceProvider
                 'icon' => 'fas fa-book',
                 'icon_color' => "blue",
                 'label_color' => "success",
+                'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
             ],
             [
                 'text' => 'Tools',
                 'icon' => 'fas fa-fw fa-th',
                 'icon_color' => "blue",
                 'label_color' => "success",
+                'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
             ],
             // 'Information' => [
             // ],
@@ -154,6 +163,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
@@ -162,6 +172,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 // [
@@ -178,6 +189,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
@@ -186,6 +198,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-laptop',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
@@ -194,6 +207,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
@@ -202,6 +216,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
             ],
@@ -228,6 +243,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-coffee',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
                 [
@@ -236,6 +252,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
             ],

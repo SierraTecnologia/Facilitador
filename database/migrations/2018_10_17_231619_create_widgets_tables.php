@@ -18,6 +18,7 @@ class CreateWidgetsTables extends Migration
             $table->string('slug');
             $table->text('content')->nullable();
             $table->nullableTimestamps();
+			$table->softDeletes();
         });
 	}
 
