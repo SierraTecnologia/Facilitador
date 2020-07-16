@@ -23,7 +23,7 @@ trait FacilitadorUser
      */
     public function roles()
     {
-        return $this->belongsToMany(Facilitador::modelClass('Role'), 'user_roles', 'user_id', 'role_id');
+        return $this->belongsToMany(Facilitador::modelClass('Role'), 'role_user', 'user_id', 'role_id');
     }
 
     /**

@@ -5,7 +5,7 @@ namespace Facilitador\Http\Controllers\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Facilitador\Facades\Facilitador;
-use Facilitador\Routing\UrlGenerator;
+use Support\Routing\UrlGenerator;
 use Facilitador\Http\Controllers\User\Controller;
 
 class FacilitadorUserController extends Controller
@@ -18,7 +18,7 @@ class FacilitadorUserController extends Controller
             $route = route('facilitador.users.edit', Auth::user()->getKey());
         } elseif ($dataType) {
             $route = UrlGenerator::managerRoute($dataType->slug, 'edit', Auth::user()->getKey());
-            // $route = \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', Auth::user()->getKey());
+            // $route = \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', Auth::user()->getKey());
         }
 
         return Facilitador::view('facilitador::profile', compact('route'));

@@ -55,7 +55,7 @@ trait AppServiceContainerProvider
             'facilitador.router', function ($app) {
                 $dir = \Illuminate\Support\Facades\Config::get('application.routes.main');
 
-                return new \Facilitador\Routing\Router($dir);
+                return new \Support\Routing\Router($dir);
             }
         );
 
@@ -64,7 +64,7 @@ trait AppServiceContainerProvider
             'facilitador.wildcard', function ($app) {
                 $request = $app['request'];
 
-                return new \Facilitador\Routing\Wildcard(
+                return new \Support\Routing\Wildcard(
                     \Illuminate\Support\Facades\Config::get('application.routes.main'),
                     $request->getMethod(),
                     $request->path()
@@ -92,7 +92,7 @@ trait AppServiceContainerProvider
         // Register URL Generators as "FacilitadorURL".
         $this->app->singleton(
             'facilitador.url', function ($app) {
-                return new \Facilitador\Routing\UrlGenerator($app['request']->path());
+                return new \Support\Routing\UrlGenerator($app['request']->path());
             }
         );
 

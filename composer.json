@@ -31,7 +31,6 @@
         "socialiteproviders/jira": ">=2.1",
         "socialiteproviders/linkedin": ">=3.0",
         "jeroennoten/laravel-adminlte": "*",
-        "sierratecnologia/population": "dev-master",
         "sierratecnologia/tracking": "dev-master",
         "sierratecnologia/audit": "dev-master",
         "sierratecnologia/laravel-support": "dev-master",

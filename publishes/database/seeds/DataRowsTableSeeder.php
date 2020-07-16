@@ -197,7 +197,7 @@ class DataRowsTableSeeder extends Seeder
                     'column'      => 'id',
                     'key'         => 'id',
                     'label'       => 'display_name',
-                    'pivot_table' => 'user_roles',
+                    'pivot_table' => 'role_user',
                     'pivot'       => '1',
                     'taggable'    => '0',
                 ],

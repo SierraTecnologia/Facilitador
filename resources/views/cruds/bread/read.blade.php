@@ -7,14 +7,14 @@
         <i class="{{ $dataType->icon }}"></i> {{ __('facilitador::generic.viewing') }} {{ ucfirst($dataType->getTranslatedAttribute('display_name_singular')) }} &nbsp;
 
         @can('edit', $dataTypeContent)
-            <a href="{{ \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', $dataTypeContent->getKey()) }}" class="btn btn-info">
+            <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', $dataTypeContent->getKey()) }}" class="btn btn-info">
                 <span class="glyphicon glyphicon-pencil"></span>&nbsp;
                 {{ __('facilitador::generic.edit') }}
             </a>
         @endcan
         @can('delete', $dataTypeContent)
             @if($isSoftDeleted)
-                <a href="{{ \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'restore', $dataTypeContent->getKey()) }}" title="{{ __('facilitador::generic.restore') }}" class="btn btn-default restore" data-id="{{ $dataTypeContent->getKey() }}" id="restore-{{ $dataTypeContent->getKey() }}">
+                <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'restore', $dataTypeContent->getKey()) }}" title="{{ __('facilitador::generic.restore') }}" class="btn btn-default restore" data-id="{{ $dataTypeContent->getKey() }}" id="restore-{{ $dataTypeContent->getKey() }}">
                     <i class="facilitador-trash"></i> <span class="hidden-xs hidden-sm">{{ __('facilitador::generic.restore') }}</span>
                 </a>
             @else
@@ -24,7 +24,7 @@
             @endif
         @endcan
 
-        <a href="{{ \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'index') }}" class="btn btn-warning">
+        <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'index') }}" class="btn btn-warning">
             <span class="glyphicon glyphicon-list"></span>&nbsp;
             {{ __('facilitador::generic.return_to_list') }}
         </a>
@@ -163,7 +163,7 @@
                     <h4 class="modal-title"><i class="facilitador-trash"></i> {{ __('facilitador::generic.delete_question') }} {{ strtolower($dataType->getTranslatedAttribute('display_name_singular')) }}?</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'index') }}" id="delete_form" method="POST">
+                    <form action="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'index') }}" id="delete_form" method="POST">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"

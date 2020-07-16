@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Routing;
+namespace Support\Routing;
 
 use App;
 use Route;
@@ -49,7 +49,7 @@ class Router
         Route::group([
             'namespace' => $namespacePrefix, //'\Facilitador\Http\Controllers',
         ], function (/**$router**/) {
-            require __DIR__.'/../Routes/web.php';
+            require __DIR__.'/../../routes/web.php';
         });
 
 

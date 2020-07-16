@@ -28,7 +28,7 @@ class CreateUserRolesTable extends Migration
             $table->timestamps();
         });
         // Schema::create(
-        //     'user_roles', function (Blueprint $table) {
+        //     'role_user', function (Blueprint $table) {
         //         $type = DB::connection()->getDoctrineColumn(DB::getTablePrefix().'users', 'id')->getType()->getName();
         //         if ($type == 'bigint') {
         //             $table->bigInteger('user_id')->unsigned()->index();
@@ -52,6 +52,6 @@ class CreateUserRolesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('role_user');
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('role_user');
     }
 }

@@ -94,22 +94,6 @@ Route::namespace('System')->group(
                             }
                         );
 
-                        // Admin Media
-                        Route::group(
-                            [
-                            'as'     => 'media.',
-                            'prefix' => 'media',
-                            ], function () {
-                                Route::get('/', ['uses' => 'FacilitadorMediaController@index',              'as' => 'index']);
-                                Route::post('files', ['uses' => 'FacilitadorMediaController@files',              'as' => 'files']);
-                                Route::post('new_folder', ['uses' => 'FacilitadorMediaController@new_folder',         'as' => 'new_folder']);
-                                Route::post('delete_file_folder', ['uses' => 'FacilitadorMediaController@delete', 'as' => 'delete']);
-                                Route::post('move_file', ['uses' => 'FacilitadorMediaController@move',          'as' => 'move']);
-                                Route::post('rename_file', ['uses' => 'FacilitadorMediaController@rename',        'as' => 'rename']);
-                                Route::post('upload', ['uses' => 'FacilitadorMediaController@upload',             'as' => 'upload']);
-                                Route::post('crop', ['uses' => 'FacilitadorMediaController@crop',             'as' => 'crop']);
-                            }
-                        );
 
                         // BREAD Routes
                         Route::group(

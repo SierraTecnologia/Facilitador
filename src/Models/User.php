@@ -49,7 +49,8 @@ class User extends Base implements
     CanResetPasswordContract,
     UserContract // Comentei pq deu erro
 {
-    use Authenticatable, CanResetPassword, \Support\Traits\Models\HasImages;
+    use Authenticatable, CanResetPassword;
+    // use \Support\Traits\Models\HasImages;
     use HasApiTokens, Notifiable;
     // use CanResetPassword;
 
@@ -556,6 +557,24 @@ class User extends Base implements
     }
 
     /**
+     * Adin ltew
+     */
+    public function adminlte_image()
+    {
+        return $this->getGravatarAttribute(); //'https://picsum.photos/300/300';
+    }
+
+    public function adminlte_desc()
+    {
+        return 'That\'s a nice guy';
+    }
+
+    public function adminlte_profile_url()
+    {
+        return 'profile/username';
+    }
+
+    /**
      * Show a badge if the user is the currently logged in
      *
      * @return string
@@ -819,7 +838,7 @@ class User extends Base implements
      */
     public function roles()
     {
-        return $this->belongsToMany(Facilitador::modelClass('Role'), 'user_roles', 'user_id', 'role_id');
+        return $this->belongsToMany(Facilitador::modelClass('Role'), 'role_user', 'user_id', 'role_id');
     }
 
     /**

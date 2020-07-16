@@ -363,7 +363,7 @@ class EventTest extends TestCase
 
         $image = UploadedFile::fake()->image('test.png');
 
-        $this->json('POST', route('facilitador.media.upload'), ['file'=>$image]);
+        $this->json('POST', route('rica.stalker.media.upload'), ['file'=>$image]);
 
         Event::assertDispatched(MediaFileAdded::class);
     }

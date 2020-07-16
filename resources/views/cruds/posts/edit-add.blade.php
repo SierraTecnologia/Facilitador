@@ -377,7 +377,7 @@
             $('.form-group').on('click', '.remove-single-file', deleteHandler('a', false));
 
             $('#confirm_delete').on('click', function(){
-                $.post('{{ \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'media.remove') }}', params, function (response) {
+                $.post('{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'media.remove') }}', params, function (response) {
                     if ( response
                         && response.data
                         && response.data.status

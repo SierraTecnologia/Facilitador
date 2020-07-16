@@ -16,7 +16,7 @@
 @section('content')
     <div class="page-content container-fluid">
         <form class="form-edit-add" role="form"
-              action="@if(!is_null($dataTypeContent->getKey())){{ \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'update', $dataTypeContent->getKey()) }}@else{{ \Facilitador\Routing\UrlGenerator::managerRoute($dataType->slug, 'store') }}@endif"
+              action="@if(!is_null($dataTypeContent->getKey())){{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'update', $dataTypeContent->getKey()) }}@else{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'store') }}@endif"
               method="POST" enctype="multipart/form-data" autocomplete="off">
             <!-- PUT Method if we are editing -->
             @if(isset($dataTypeContent->id))

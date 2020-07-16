@@ -73,65 +73,75 @@ class FacilitadorProvider extends ServiceProvider
             'icon' => 'fas fa-fw fa-search',
             'icon_color' => "blue",
             'label_color' => "success",
-            'level'       => 1, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+            'level'       => 2, // 0 (Public), 1, 2 (Admin) , 3 (Root)
         ],
         // 'User|50' => [
-        //     [
-        //         'text'        => 'Dashboard',
-        //         'route'       => 'profile.dashboard',
-        //         'icon'        => 'fas fa-fw fa-industry',
-        //         'icon_color'  => 'blue',
-        //         'label_color' => 'success',
-        //         // 'access' => \App\Models\Role::$ADMIN
-        //     ],
-        //     [
-        //         'text'        => 'Home',
-        //         'route'       => 'profile.home',
-        //         'icon'        => 'fas fa-fw fa-industry',
-        //         'icon_color'  => 'blue',
-        //         'label_color' => 'success',
-        //         // 'access' => \App\Models\Role::$ADMIN
-        //     ],
-        //     [
-        //         'text'        => 'Profile',
-        //         'route'       => 'profile.profile',
-        //         'icon'        => 'fas fa-fw fa-industry',
-        //         'icon_color'  => 'blue',
-        //         'label_color' => 'success',
-        //         // 'access' => \App\Models\Role::$ADMIN
-        //     ],
-        //     [
-        //         'text'        => 'Show Profile',
-        //         'route'       => 'profile.profile.show',
-        //         'icon'        => 'fas fa-fw fa-industry',
-        //         'icon_color'  => 'blue',
-        //         'label_color' => 'success',
-        //         // 'access' => \App\Models\Role::$ADMIN
-        //     ],
-        //     [
-        //         'text'        => 'Notifications',
-        //         'route'       => 'profile.notifications.index',
-        //         'icon'        => 'fas fa-fw fa-industry',
-        //         'icon_color'  => 'blue',
-        //         'label_color' => 'success',
-        //         // 'access' => \App\Models\Role::$ADMIN
-        //     ],
-        //     [
-        //         'text'        => 'Messages',
-        //         'route'       => 'profile.messages.index',
-        //         'icon'        => 'fas fa-fw fa-industry',
-        //         'icon_color'  => 'blue',
-        //         'label_color' => 'success',
-        //         // 'access' => \App\Models\Role::$ADMIN
-        //     ],
-        //     [
-        //         'text'        => 'Logout',
-        //         'route'       => 'profile.logout',
-        //         'icon'        => 'fas fa-fw fa-industry',
-        //         'icon_color'  => 'blue',
-        //         'label_color' => 'success',
-        //         // 'access' => \App\Models\Role::$ADMIN
-        //     ],
+            // [
+            //     'text'        => 'Dashboard',
+            //     'route'       => 'profile.dashboard',
+            //     'icon'        => 'fas fa-fw fa-industry',
+            //     'icon_color'  => 'blue',
+            //     'label_color' => 'success',
+            //     // 'access' => \App\Models\Role::$ADMIN
+            // ],
+            // [
+            //     'text'        => 'Home',
+            //     'route'       => 'profile.home',
+            //     'icon'        => 'fas fa-fw fa-industry',
+            //     'icon_color'  => 'blue',
+            //     'label_color' => 'success',
+            //     // 'access' => \App\Models\Role::$ADMIN
+            // ],
+            // [
+            //     'text'        => 'Profile',
+            //     'route'       => 'profile.profile',
+            //     'icon'        => 'fas fa-fw fa-industry',
+            //     'icon_color'  => 'blue',
+            //     'label_color' => 'success',
+            //     // 'access' => \App\Models\Role::$ADMIN
+            // ],
+            // [
+            //     'text'        => 'Show Profile',
+            //     'route'       => 'profile.profile.show',
+            //     'icon'        => 'fas fa-fw fa-industry',
+            //     'icon_color'  => 'blue',
+            //     'label_color' => 'success',
+            //     // 'access' => \App\Models\Role::$ADMIN
+            // ],
+            [
+                'text'        => 'Notifications',
+                'route'       => 'profile.notifications.index',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'topnav' => true,
+                // 'topnav_user' => true,
+                'topnav_right' => true,
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+            [
+                'text'        => 'Messages',
+                'route'       => 'profile.messages.index',
+                'icon'        => 'fas fa-fw fa-industry',
+                'icon_color'  => 'blue',
+                'label_color' => 'success',
+                // 'topnav' => true,
+                // 'topnav_user' => true,
+                'topnav_right' => true,
+                'data' => [
+                    'test-one' => 'content-one',
+                    'test-two' => 'content-two',
+                ],
+                // 'access' => \App\Models\Role::$ADMIN
+            ],
+            // [
+            //     'text'        => 'Logout',
+            //     'route'       => 'profile.logout',
+            //     'icon'        => 'fas fa-fw fa-industry',
+            //     'icon_color'  => 'blue',
+            //     'label_color' => 'success',
+            //     // 'access' => \App\Models\Role::$ADMIN
+            // ],
         // ],
         'System|350' => [
             // [
@@ -185,7 +195,7 @@ class FacilitadorProvider extends ServiceProvider
                 // ],
                 [
                     'text'        => 'Medias',
-                    'route'       => 'facilitador.media.index',
+                    'route'       => 'rica.stalker.media.index',
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',

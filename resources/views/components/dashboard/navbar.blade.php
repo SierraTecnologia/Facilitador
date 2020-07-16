@@ -21,10 +21,10 @@
                         $url .= '/'.$segment;
                         @endphp
                         @if ($loop->last)
-                            <li>{{ \Facilitador\Routing\UrlGenerator::displayStringName($segment) }}</li>
+                            <li>{{ \Support\Routing\UrlGenerator::displayStringName($segment) }}</li>
                         @else
                             <li>
-                                <a href="{{ $url }}">{{ \Facilitador\Routing\UrlGenerator::displayStringName($segment) }}</a>
+                                <a href="{{ $url }}">{{ \Support\Routing\UrlGenerator::displayStringName($segment) }}</a>
                             </li>
                         @endif
                     @endforeach

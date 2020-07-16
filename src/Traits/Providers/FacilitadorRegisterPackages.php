@@ -45,7 +45,6 @@ trait FacilitadorRegisterPackages
          * Internos
          */
         \Support\SupportServiceProvider::class,
-        \Population\PopulationProvider::class,
         \Tracking\TrackingProvider::class,
         \Audit\AuditProvider::class,
         \Stalker\StalkerProvider::class,

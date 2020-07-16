@@ -49,7 +49,7 @@ class Role extends Model
     {
         $userModel = Facilitador::modelClass('User');
 
-        return $this->belongsToMany($userModel, 'user_roles')
+        return $this->belongsToMany($userModel, 'role_user')
             ->select(app($userModel)->getTable().'.*')
             ->union($this->hasMany($userModel))->getQuery();
     }

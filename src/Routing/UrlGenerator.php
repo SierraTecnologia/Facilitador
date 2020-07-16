@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Routing;
+namespace Support\Routing;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Routing;
+namespace Support\Routing;
 
 use App;
 use Event;
