@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers\User;
 
-use Facilitador\Http\Requests;
+use Support\Http\Requests;
 use Facilitador\Http\Controllers\User\Controller;
 use App\Models\Activity;
 use App\Models\Banner;

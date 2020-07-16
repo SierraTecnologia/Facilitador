@@ -2,7 +2,7 @@
 
 namespace Facilitador\Tests;
 
-use Facilitador\Alert;
+use Support\Alert;
 use Facilitador\Facades\Facilitador;
 
 class AlertTest extends TestCase
