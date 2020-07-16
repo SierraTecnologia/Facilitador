@@ -82,6 +82,12 @@ class Controller extends BaseController
         if (empty($this->title)) {
             $this->title = $this->title($controller_name);
         }
+
+        $requestUrl = str_replace(['https://', 'http://'], '', Request::url());
+        $requestUrl = explode('/', str_replace(route('facilitador.dashboard'), '', $requestUrl));
+        array_shift($requestUrl);
+        $this->layout->segments = array_filter($requestUrl);
+        $this->layout->url = route('facilitador.dashboard');
     }
 
 
