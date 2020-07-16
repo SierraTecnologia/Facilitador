@@ -5,7 +5,6 @@ Route::post('pusher/auth', function() {
 });
 
 
-Auth::routes();
 
 Auth::routes(['login' => 'auth.login']);
 

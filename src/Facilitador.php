@@ -14,7 +14,7 @@ use Support\Template\Actions\DeleteAction;
 use Support\Template\Actions\EditAction;
 use Support\Template\Actions\RestoreAction;
 use Support\Template\Actions\ViewAction;
-use Facilitador\Events\AlertsCollection;
+use Support\Events\AlertsCollection;
 use Support\Elements\FormFields\After\HandlerInterface as AfterHandlerInterface;
 use Support\Elements\FormFields\HandlerInterface;
 use Siravel\Models\Blog\Category;

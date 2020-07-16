@@ -10,7 +10,9 @@ return [
     'name' => \Illuminate\Support\Facades\Config::get('app.name', 'SiravelAdmin'),
 
     // The layout to use
-    'layout' => 'facilitador::layouts.decoy.default',
+    'layout' => 'support::layouts.adminlte.master',
+    // 'layout' => 'support::layouts.voyager.master',
+    // 'layout' => 'support::layouts.decoy.default',
 
 
     /**

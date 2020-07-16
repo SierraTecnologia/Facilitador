@@ -9,9 +9,9 @@ use ReflectionClass;
 use Support\Components\Database\Schema\SchemaManager;
 use Support\Components\Database\Schema\Table;
 use Support\Components\Database\Types\Type;
-use Facilitador\Events\BreadAdded;
-use Facilitador\Events\BreadDeleted;
-use Facilitador\Events\BreadUpdated;
+use Support\Events\BreadAdded;
+use Support\Events\BreadDeleted;
+use Support\Events\BreadUpdated;
 use Facilitador\Facades\Facilitador;
 
 class FacilitadorBreadController extends Controller

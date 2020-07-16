@@ -4,7 +4,7 @@ namespace Facilitador\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use Facilitador\Events;
+use Support\Events;
 use Support\Listeners;
 
 class FacilitadorEventServiceProvider extends ServiceProvider

@@ -141,7 +141,7 @@ class LoginController extends Controller
 
         // Show the login homepage
         return view(
-            'facilitador::layouts.decoy.blank', [
+            'support::layouts.decoy.blank', [
             'content' => view('facilitador::account.login'),
             ]
         );

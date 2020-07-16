@@ -36,6 +36,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
  * Verificar se ta usando
  */
 use App;
+use Illuminate\Support\Facades\Route;   
 use Config;
 
 
@@ -289,6 +290,15 @@ class FacilitadorProvider extends ServiceProvider
         if (\Illuminate\Support\Facades\Config::get('site.core.register_routes') && !$this->app->routesAreCached()) {
             $this->app['facilitador.router']->registerAll();
         }
+
+        /**
+         * Support Routes
+         */
+        Route::group([
+            'namespace' => '\Facilitador\Http\Controllers',
+        ], function (/**$router**/) {
+            require __DIR__.'/../routes/web.php';
+        });
         
 
         // Configure Decoy auth setup

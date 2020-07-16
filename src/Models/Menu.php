@@ -5,7 +5,7 @@ namespace Facilitador\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Facilitador\Events\MenuDisplay;
+use Support\Events\MenuDisplay;
 use Facilitador\Facades\Facilitador;
 
 /**

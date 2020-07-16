@@ -1,4 +1,4 @@
-@extends('facilitador::layouts.voyager.master')
+@extends('support::layouts.voyager.master')
 
 @section('content')
     <div class="page-content">

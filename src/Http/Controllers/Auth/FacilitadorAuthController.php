@@ -17,7 +17,7 @@ class FacilitadorAuthController extends Controller
             return redirect()->route('facilitador.dashboard');
         }
 
-        return Facilitador::view('facilitador::layouts.voyager.login');
+        return Facilitador::view('support::layouts.voyager.login');
     }
 
     public function postLogin(Request $request)

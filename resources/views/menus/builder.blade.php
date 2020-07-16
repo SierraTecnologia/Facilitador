@@ -1,4 +1,4 @@
-@extends('facilitador::layouts.voyager.master')
+@extends('support::layouts.voyager.master')
 
 @section('page_title', __('facilitador::generic.menu_builder'))
 
