@@ -6,7 +6,6 @@ use Event;
 use Log;
 use Illuminate\Support\Str;
 use Facilitador;
-use Population\Models\Identity\Digital\Email;
 use Support\Models\Base;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Throwable;
@@ -129,8 +128,8 @@ class ModelCallbacks
         ];
         
         // If no author has been assigned, assign the current user's id as the author of the post
-        if (isset($model->email) && !empty($model->email)) {
-            $email = Email::createIfNotExistAndReturn($model->email);
+        if (class_exists(\Population\Models\Identity\Digital\Email::class) && isset($model->email) && !empty($model->email)) {
+            $email = \Population\Models\Identity\Digital\Email::createIfNotExistAndReturn($model->email);
             $email->associations(get_class($model))->save($model);
         }
         $this->linkToInfluencia($model);
