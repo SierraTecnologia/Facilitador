@@ -304,6 +304,17 @@ class FacilitadorProvider extends ServiceProvider
         // Configure Decoy auth setup
         $this->bootAuth();
 
+        // Define constants that Decoy uses
+        if (!defined('FORMAT_DATE')) {
+            define('FORMAT_DATE', __('facilitador::base.constants.format_date'));
+        }
+        if (!defined('FORMAT_DATETIME')) {
+            define('FORMAT_DATETIME', __('facilitador::base.constants.format_datetime'));
+        }
+        if (!defined('FORMAT_TIME')) {
+            define('FORMAT_TIME', __('facilitador::base.constants.format_time'));
+        }
+        
         // Do bootstrapping that only matters if user has requested an admin URL
         if ($this->app['facilitador']->handling()) {
             $this->usingAdmin();

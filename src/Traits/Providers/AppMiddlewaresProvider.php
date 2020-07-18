@@ -56,16 +56,6 @@ trait AppMiddlewaresProvider
     public function usingAdmin()
     {
 
-        // Define constants that Decoy uses
-        if (!defined('FORMAT_DATE')) {
-            define('FORMAT_DATE', __('facilitador::base.constants.format_date'));
-        }
-        if (!defined('FORMAT_DATETIME')) {
-            define('FORMAT_DATETIME', __('facilitador::base.constants.format_datetime'));
-        }
-        if (!defined('FORMAT_TIME')) {
-            define('FORMAT_TIME', __('facilitador::base.constants.format_time'));
-        }
 
         // Register global and named middlewares
         $this->registerMiddlewares();
