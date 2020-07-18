@@ -671,7 +671,7 @@ class Facilitador
         );
 
         // Replace non-facilitador controller's with the standard model namespace
-        if (!$is_facilitador) {
+        if (!$is_facilitador || !$is_support) {
             $namespace = ucfirst(Config::get('application.routes.main'));
             $model = str_replace('App\Http\Controllers\\'.$namespace.'\\', 'App\\', $model);
         }
@@ -694,8 +694,9 @@ class Facilitador
 
         // Replace non-facilitador controller's with the standard model namespace
         if (!$is_facilitador) {
-            $namespace = ucfirst(Config::get('application.routes.main'));
-            $controller = str_replace('App\\', 'App\Http\Controllers\\'.$namespace.'\\', $controller);
+            // $namespace = ucfirst(Config::get('application.routes.main'));
+            // $controller = str_replace('App\\', 'App\Http\Controllers\\'.$namespace.'\\', $controller);
+            $controller = str_replace('App\Models\\', 'App\Http\Controllers\Admin\\', $controller);
         }
 
         // Make it plural

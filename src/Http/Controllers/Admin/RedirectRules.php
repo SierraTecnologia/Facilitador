@@ -2,6 +2,8 @@
 
 namespace Facilitador\Http\Controllers\Admin;
 
+use Support\Models\RedirectRule;
+
 /**
  * Allow admin to manage redirection rules
  */
@@ -11,6 +13,8 @@ class RedirectRules extends Base
      * @var string
      */
     protected $title = 'Redirects';
+    
+    protected $model = RedirectRule::class;
 
     /**
      * @var string
@@ -32,7 +36,7 @@ class RedirectRules extends Base
         'to',
         'code' => [
             'type' => 'select',
-            'options' => 'Facilitador\Models\RedirectRule::getCodes()',
+            'options' => 'Support\Models\RedirectRule::getCodes()',
         ],
         'label',
     ];
@@ -69,7 +73,7 @@ class RedirectRules extends Base
             'code' => [
                 'label' => __('facilitador::redirect_rules.controller.search.code'),
                 'type' => 'select',
-                'options' => 'Facilitador\Models\RedirectRule::getCodes()',
+                'options' => 'Support\Models\RedirectRule::getCodes()',
             ],
             'label' => [
                 'label' => __('facilitador::redirect_rules.controller.search.label'),
