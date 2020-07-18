@@ -38,6 +38,8 @@ use Session;
 use Bkwld\Library;
 use ReflectionClass;
 
+use Crypto;
+
 class Facilitador
 {
     protected $version;
@@ -760,6 +762,26 @@ class Facilitador
         }
 
         return array_filter($array);
+    }
+
+
+    /**
+     * Get a module's asset
+     *
+     * @param string $module      Module name
+     * @param string $path        Path to module asset
+     * @param string $contentType Asset type
+     *
+     * @return string
+     */
+    public function asset($path, $contentType = 'null', $fullURL = true)
+    {
+        if (!$fullURL) {
+            return base_path(__DIR__.'/../Assets/'.$path);
+        }
+
+        return url('/asset/'.Crypto::urlEncode($path).'/'.Crypto::urlEncode($contentType));
+        // return url($this->backendRoute.'/asset/'.Crypto::url_encode($path).'/'.Crypto::url_encode($contentType));
     }
 
 

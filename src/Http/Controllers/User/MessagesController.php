@@ -4,9 +4,9 @@ namespace Facilitador\Http\Controllers\User;
 
 use App\Models\User;
 use Carbon\Carbon;
-use Population\Models\Features\Messenger\Message;
-use Population\Models\Features\Messenger\Participant;
-use Population\Models\Features\Messenger\Thread;
+use Facilitador\Models\Messenger\Message;
+use Facilitador\Models\Messenger\Participant;
+use Facilitador\Models\Messenger\Thread;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;

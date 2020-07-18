@@ -3,7 +3,7 @@
 namespace Facilitador\Models;
 
 // use Cmgmyr\Messenger\Models\Message as BaseMessage;
-use Population\Models\Features\Messenger\Message as BaseMessage;
+use Facilitador\Models\Messenger\Message as BaseMessage;
 
 class Message extends BaseMessage
 {

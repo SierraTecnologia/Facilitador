@@ -37,7 +37,7 @@ class AssetService
         try {
             return Cache::remember(
                 $encFileName.'_asPublic', 3600, function () use ($encFileName) {
-                    $fileName = Crypto::url_decode($encFileName);
+                    $fileName = Crypto::urlDecode($encFileName);
                     $filePath = $this->getFilePath($fileName);
 
                     $fileTool = new SplFileInfo($filePath);
@@ -72,7 +72,7 @@ class AssetService
         try {
             return Cache::remember(
                 $encFileName.'_preview', 3600, function () use ($encFileName, $fileSystem) {
-                    $fileName = Crypto::url_decode($encFileName);
+                    $fileName = Crypto::urlDecode($encFileName);
 
                     if (\Illuminate\Support\Facades\Config::get('siravel.storage-location') === 'local' || \Illuminate\Support\Facades\Config::get('siravel.storage-location') === null) {
                         $filePath = storage_path('app/'.$fileName);
@@ -118,8 +118,8 @@ class AssetService
         try {
             return Cache::remember(
                 $encFileName.'_asDownload', 3600, function () use ($encFileName, $encRealFileName) {
-                    $fileName = Crypto::url_decode($encFileName);
-                    $realFileName = Crypto::url_decode($encRealFileName);
+                    $fileName = Crypto::urlDecode($encFileName);
+                    $realFileName = Crypto::urlDecode($encRealFileName);
                     $filePath = $this->getFilePath($fileName);
 
                     $fileTool = new SplFileInfo($filePath);
@@ -155,7 +155,7 @@ class AssetService
     public function asset($encPath, $contentType, Filesystem $fileSystem)
     {
         try {
-            $path = Crypto::url_decode($encPath);
+            $path = Crypto::urlDecode($encPath);
 
             if (Request::get('isModule') === 'true') {
                 $filePath = $path;
@@ -175,10 +175,18 @@ class AssetService
                 $filePath = base_path('resources/assets/'.$path);
             }
 
+            /**
+             * 
+             */
+
+            if (!file_exists($filePath)) {
+                $filePath = __DIR__.'/../../resources/requires/src/'.$path;
+            }
+
             $fileName = basename($filePath);
 
             if (!is_null($contentType)) {
-                $contentType = Crypto::url_decode($contentType);
+                $contentType = Crypto::urlDecode($contentType);
             }
 
             if (is_null($contentType) || $contentType=='null') {

@@ -1,6 +1,6 @@
 <?php
 
-use Population\Models\Features\Messenger\Models;
+use Facilitador\Models\Messenger\Models;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
