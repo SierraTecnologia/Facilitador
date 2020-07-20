@@ -21,6 +21,7 @@
         "illuminate/console": "^5.0|^6.0|^7.0|^8.0",
         "laravel/framework": "^5.8|^6.0|^7.0|^8.0",
         "sierratecnologia/tracking": "dev-master",
+        "sierratecnologia/transmissor": "dev-master",
         "sierratecnologia/audit": "dev-master",
         "sierratecnologia/laravel-support": "dev-master",
         "sierratecnologia/muleta": "dev-master",
