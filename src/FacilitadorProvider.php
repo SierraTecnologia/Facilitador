@@ -109,40 +109,6 @@ class FacilitadorProvider extends ServiceProvider
             //     'label_color' => 'success',
             //     // 'access' => \App\Models\Role::$ADMIN
             // ],
-            [
-                'text'        => 'Notifications',
-                'route'       => 'profile.notifications.index',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'topnav' => true,
-                // 'topnav_user' => true,
-                'topnav_right' => true,
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
-            [
-                'text'        => 'Messages',
-                'route'       => 'profile.messages.index',
-                'icon'        => 'fas fa-fw fa-industry',
-                'icon_color'  => 'blue',
-                'label_color' => 'success',
-                // 'topnav' => true,
-                // 'topnav_user' => true,
-                'topnav_right' => true,
-                'data' => [
-                    'test-one' => 'content-one',
-                    'test-two' => 'content-two',
-                ],
-                // 'access' => \App\Models\Role::$ADMIN
-            ],
-            // [
-            //     'text'        => 'Logout',
-            //     'route'       => 'profile.logout',
-            //     'icon'        => 'fas fa-fw fa-industry',
-            //     'icon_color'  => 'blue',
-            //     'label_color' => 'success',
-            //     // 'access' => \App\Models\Role::$ADMIN
-            // ],
         // ],
         'System|350' => [
             // [

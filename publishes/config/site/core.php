@@ -17,7 +17,7 @@ return [
     'register_routes' => true,
 
     // Set up the default stylesheet and script tags
-    'stylesheet' => '/assets/facilitador/index.min.css',
-    'script' => '/assets/facilitador/index.min.js',
+    'stylesheet' => '/facilitador-assets/app.css',
+    'script' => '/facilitador-assets/app.js',
 
 ];

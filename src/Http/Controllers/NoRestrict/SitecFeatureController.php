@@ -28,6 +28,11 @@ class SitecFeatureController extends Controller
         } catch (\LogicException $e) {
             abort(404);
         }
+        if (!File::exists($path) && Str::endsWith($path, '.js')) {
+            $path = str_replace('publishes/assets', 'publishes/assets/js', $path);
+        } elseif (!File::exists($path) && Str::endsWith($path, '.css')) {
+            $path = str_replace('publishes/assets', 'publishes/assets/css', $path);
+        }
 
         if (File::exists($path)) {
             $mime = '';

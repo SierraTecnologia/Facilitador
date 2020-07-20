@@ -47,7 +47,7 @@ Route::group(
                 // Route::group(['middleware' => 'admin.user'], function () {
 
                 //Asset Routes
-                Route::get('facilitador-assets', ['uses' => 'SitecFeatureController@assets', 'as' => 'facilitador_assets']);
+                Route::get('facilitador-assets/{path?}', ['uses' => 'SitecFeatureController@assets', 'as' => 'facilitador_assets']);
 
             }
         );

@@ -7,7 +7,6 @@ use Auth;
 use Session;
 use Exception;
 use App\Models\User;
-use Facilitador\Models\UserMeta;
 use Facilitador\Models\Role;
 use Siravel\Events\UserRegisteredEmail;
 use Facilitador\Notifications\ActivateUserEmail;
@@ -22,12 +21,6 @@ class UserService
      */
     public $model;
 
-    /**
-     * User Meta model.
-     *
-     * @var UserMeta
-     */
-    protected $userMeta;
 
     /**
      * Role Service.
@@ -38,11 +31,9 @@ class UserService
 
     public function __construct(
         User $model,
-        UserMeta $userMeta,
         Role $role
     ) {
         $this->model = $model;
-        $this->userMeta = $userMeta;
         $this->role = $role;
     }
 
@@ -121,23 +112,6 @@ class UserService
         return $usersWithRepo;
     }
 
-    /**
-     * Find by the user meta activation token.
-     *
-     * @param string $token
-     *
-     * @return bool
-     */
-    public function findByActivationToken($token)
-    {
-        $userMeta = $this->userMeta->where('activation_token', $token)->first();
-
-        if ($userMeta) {
-            return $userMeta->user();
-        }
-
-        return false;
-    }
 
     /**
      * Create a user's profile.
@@ -154,12 +128,6 @@ class UserService
         try {
             DB::transaction(
                 function () use ($user, $password, $role, $sendEmail) {
-                    $this->userMeta->firstOrCreate(
-                        [
-                        'user_id' => $user->id,
-                        ]
-                    );
-
                     $this->assignRole($role, $user->id);
 
                     if ($sendEmail) {
@@ -194,20 +162,6 @@ class UserService
             return DB::transaction(
                 function () use ($userId, $payload) {
                     $user = $this->model->find($userId);
-
-                    if (isset($payload['meta']['marketing']) && ($payload['meta']['marketing'] == 1 || $payload['meta']['marketing'] == 'on')) {
-                        $payload['meta']['marketing'] = 1;
-                    } else {
-                        $payload['meta']['marketing'] = 0;
-                    }
-
-                    if (isset($payload['meta']['terms_and_cond']) && ($payload['meta']['terms_and_cond'] == 1 || $payload['meta']['terms_and_cond'] == 'on')) {
-                        $payload['meta']['terms_and_cond'] = 1;
-                    } else {
-                        $payload['meta']['terms_and_cond'] = 0;
-                    }
-
-                    $userMetaResult = (isset($payload['meta'])) ? $user->meta->update($payload['meta']) : true;
 
                     $user->update($payload);
 
@@ -262,10 +216,9 @@ class UserService
                 function () use ($id) {
                     $this->unassignAllRoles($id);
 
-                    $userMetaResult = $this->userMeta->where('user_id', $id)->delete();
                     $userResult = $this->model->find($id)->delete();
 
-                    return $userMetaResult && $userResult;
+                    return $userResult;
                 }
             );
         } catch (Exception $e) {
@@ -311,24 +264,6 @@ class UserService
         } catch (Exception $e) {
             throw new Exception('Error returning to your user', 1);
         }
-    }
-
-    /**
-     * Set and send the user activation token via email.
-     *
-     * @param void
-     */
-    public function setAndSendUserActivationToken($user)
-    {
-        $token = md5(\Illuminate\Support\Str::random(40));
-
-        $user->meta()->update(
-            [
-            'activation_token' => $token,
-            ]
-        );
-
-        $user->notify(new ActivateUserEmail($token));
     }
 
     /*
