@@ -11,7 +11,7 @@
 
 return [
     'models' => [
-        'persons' => \Population\Models\Identity\Actors\Person::class,
+        'persons' => \Telefonica\Models\Actors\Person::class,
         'attribute' => \Facilitador\Models\Attribute::class,
         'attribute_entity' => \Facilitador\Models\AttributeEntity::class,
     ],

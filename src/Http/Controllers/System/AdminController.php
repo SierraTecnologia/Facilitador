@@ -11,7 +11,7 @@ use App\Models\HotTopic;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Auth;
-use Population\Models\Identity\Actors;
+use Telefonica\Models\Actors;
 
 class AdminController extends Controller
 {

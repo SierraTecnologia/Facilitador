@@ -13,7 +13,7 @@ return [
     /*
      * Model class name of users.
      */
-    'user_model' => \Illuminate\Support\Facades\Config::get('auth.providers.users.model', Population\Models\Identity\Actors\Person::class),
+    'user_model' => \Illuminate\Support\Facades\Config::get('auth.providers.users.model', Telefonica\Models\Actors\Person::class),
 
     /*
      * Table name of users table.

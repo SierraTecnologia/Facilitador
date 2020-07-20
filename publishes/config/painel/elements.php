@@ -14,7 +14,7 @@ return [
         |
         */
         'importants' => [
-            'persons' => \Population\Models\Identity\Actors\Person::class,
+            'persons' => \Telefonica\Models\Actors\Person::class,
         ],
         'attributes' => [
             'attribute' => \Facilitador\Models\Attribute::class,
@@ -39,12 +39,17 @@ return [
         'Population\Models',
         'Gamer\Models',
         'Casa\Models',
+        'Stalker\Models',
         'Finder\Models',
         'Trainner\Models',
         'Siravel\Models',
-        // 'Audit\Models',
-        // 'Tracking\Models',
-        // 'Facilitador\Models',
+        'Audit\Models',
+        'Boravel\Models',
+        'Tracking\Models',
+        'Facilitador\Models',
+        'Integrations\Models',
+        'Transmissor\Models',
+        'Fabrica\Models',
         // 'Support\Models',
     ],
 

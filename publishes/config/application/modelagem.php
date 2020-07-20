@@ -14,7 +14,7 @@ return [
         |
         */
         'importants' => [
-            'persons' => \Population\Models\Identity\Actors\Person::class,
+            'persons' => \Telefonica\Models\Actors\Person::class,
         ],
         'attributes' => [
             'attribute' => \Facilitador\Models\Attribute::class,

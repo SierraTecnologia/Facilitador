@@ -31,7 +31,7 @@ use Illuminate\Notifications\Notifiable;
 // use Illuminate\Contracts\Auth\Access\Authorizable;
 // use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Foundation\Auth\User as UserAuthenticatable;
-use Population\Traits\AsHuman;
+use Telefonica\Traits\AsHuman;
 use Laravel\Passport\HasApiTokens;
 use Population\Manipule\Builders\UserBuilder;
 
