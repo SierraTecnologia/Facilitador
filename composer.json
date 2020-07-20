@@ -1,11 +1,24 @@
 {
     "name": "sierratecnologia/facilitador",
     "description": "Facilitador para ajudar no desenvolvimento de páginas web",
+    "type": "library",
+    "keywords": [
+        "sierratecnologia",
+        "facilitador"
+    ],
     "license": "MIT",
+    "homepage": "https://sierratecnologia.com/packages/facilitador/",
+    "support": {
+        "email": "help@sierratecnologia.com",
+        "issues": "https://github.com/sierratecnologia/facilitador/issues",
+        "source": "https://github.com/sierratecnologia/facilitador",
+        "docs": "https://github.com/sierratecnologia/facilitador/blob/master/README.md"
+    },
     "authors": [
         {
-            "name": "Ricardo Rebello Sierra",
-            "email": "ricardo@sierratecnologia.com.br"
+            "name": "SierraTecnologia",
+            "homepage": "https://sierratecnologia.com.br",
+            "email": "help@sierratecnologia.com.br"
         }
     ],
     "require": {
