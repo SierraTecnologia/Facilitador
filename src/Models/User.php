@@ -55,10 +55,10 @@ class User extends Base implements
     // use CanResetPassword;
 
 
-    // use \Facilitador\Traits\Models\UserRememberTokenHelper;
-    use \Facilitador\Traits\Models\UserSocialiteHelper;
-    use \Facilitador\Traits\Models\UserAvatarHelper;
-    use \Facilitador\Traits\Models\UserActivityHelper;
+    // use \Transmissor\Traits\UserRememberTokenHelper;
+    use \Transmissor\Traits\UserSocialiteHelper;
+    use \Transmissor\Traits\UserAvatarHelper;
+    use \Transmissor\Traits\UserActivityHelper;
 
 
     /**
