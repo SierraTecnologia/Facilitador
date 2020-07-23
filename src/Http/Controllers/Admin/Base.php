@@ -19,7 +19,7 @@ use Support\Template\Input\Search;
 use Bkwld\Library\Utils\File;
 use Support\Template\Input\Sidebar;
 use Support\Elements\Fields\Listing;
-use Support\Template\Input\Localize;
+use Translation\Template\Localize;
 use Support\Template\Input\Position;
 use Illuminate\Routing\Controller;
 use Support\Template\Input\NestedModels;

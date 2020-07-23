@@ -3,7 +3,7 @@
 namespace Facilitador\Models;
 
 use Croppa;
-use Support\Template\Markup\ImageElement;
+use Stalker\Template\Markup\ImageElement;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
