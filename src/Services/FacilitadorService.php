@@ -6,7 +6,7 @@
 namespace Facilitador\Services;
 
 use Support\Components\Coders\Parser\ComposerParser;
-use Support\Traits\Debugger\HasErrors;
+use Muleta\Traits\Debugger\HasErrors;
 
 
 use Symfony\Component\Debug\Exception\FatalThrowableError;

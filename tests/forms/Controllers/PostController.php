@@ -2,7 +2,7 @@
 
 namespace Facilitador\Test\Forms\Controllers;
 
-use Support\Traits\Models\CrudForms;
+use Muleta\Traits\Models\CrudForms;
 use Illuminate\Routing\Controller;
 use Facilitador\Test\Forms\Models\Post;
 use Illuminate\Foundation\Bus\DispatchesJobs;

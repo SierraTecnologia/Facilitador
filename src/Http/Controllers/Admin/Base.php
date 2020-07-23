@@ -36,7 +36,7 @@ use Facilitador\Http\Controllers\Controller as BaseController;
  */
 class Base extends BaseController
 {
-    use \Support\Traits\Controllers\Exportable;
+    use \Muleta\Traits\Controllers\Exportable;
 
     //---------------------------------------------------------------------------
     // Default settings

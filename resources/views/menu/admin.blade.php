@@ -22,7 +22,7 @@
         </div>
         <div class="dd-handle">
             @if($options->isModelTranslatable)
-                @include('support::components.forms.multilingual.input-hidden', [
+                @include('support::shared.forms.multilingual.input-hidden', [
                     'isModelTranslatable' => true,
                     '_field_name'         => 'title'.$item->id,
                     '_field_trans'        => json_encode($item->getTranslationsOf('title'))

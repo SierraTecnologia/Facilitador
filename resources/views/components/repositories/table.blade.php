@@ -99,7 +99,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                     @elseif($row->type == 'image')
                         <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Facilitador::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
                     @elseif($row->type == 'relationship')
-                        @include('support::components.forms.fields.relationship', ['view' => 'browse','options' => $row->details])
+                        @include('support::shared.forms.fields.relationship', ['view' => 'browse','options' => $row->details])
                     @elseif($row->type == 'select_multiple')
                         @if(property_exists($row->details, 'relationship'))
 
@@ -160,7 +160,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                             {{ implode(', ', $data->{$row->field}) }}
                             </div>
                         @else
-                            @include('support::components.forms.multilingual.input-hidden-bread-browse')
+                            @include('support::shared.forms.multilingual.input-hidden-bread-browse')
                             <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                         @endif
                     @elseif($row->type == 'text_area')
@@ -169,11 +169,11 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                             {{ implode(', ', $data->{$row->field}) }}
                             </div>
                         @else
-                            @include('support::components.forms.multilingual.input-hidden-bread-browse')
+                            @include('support::shared.forms.multilingual.input-hidden-bread-browse')
                             <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                         @endif
                     @elseif($row->type == 'file' && !empty($data->{$row->field}) )
-                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
+                        @include('support::shared.forms.multilingual.input-hidden-bread-browse')
                         @if(json_decode($data->{$row->field}) !== null)
                             @foreach(json_decode($data->{$row->field}) as $file)
                                 <a href="{{ Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank">
@@ -192,7 +192,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                             {{ implode(', ', $data->{$row->field}) }}
                             </div>
                         @else
-                            @include('support::components.forms.multilingual.input-hidden-bread-browse')
+                            @include('support::shared.forms.multilingual.input-hidden-bread-browse')
                             <div>{{ mb_strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? mb_substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
                         @endif
                     @elseif($row->type == 'coordinates')
@@ -240,7 +240,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
                             {{ trans_choice('facilitador::tools.media.files', 0) }}
                         @endif
                     @else
-                        @include('support::components.forms.multilingual.input-hidden-bread-browse')
+                        @include('support::shared.forms.multilingual.input-hidden-bread-browse')
                         <span>{{ $data->{$row->field} }}</span>
                     @endif
                 </td>

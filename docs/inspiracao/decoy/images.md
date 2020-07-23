@@ -4,11 +4,11 @@ Decoy has an polymorphic `Image` model that should be used to store all model im
 
 ## Setup
 
-Add the `Support\Traits\Models\HasImages` trait to models that have images:
+Add the `Muleta\Traits\Models\HasImages` trait to models that have images:
 
 ```php
 class Article extends Base {
-  use \Support\Traits\Models\HasImages;
+  use \Muleta\Traits\Models\HasImages;
 }
 ```
 

@@ -7,7 +7,7 @@ use Facilitador\Test\Forms\Models\Tag;
 use Facilitador\Test\Forms\Models\Post;
 use Facilitador\Test\Forms\Models\Category;
 use Illuminate\Database\Capsule\Manager as DB;
-use Support\Traits\Models\CrudFormsServiceProvider;
+use Muleta\Traits\Models\CrudFormsServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Facilitador\Test\Forms\Providers\RouteServiceProvider;
 

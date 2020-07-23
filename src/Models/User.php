@@ -50,7 +50,7 @@ class User extends Base implements
     UserContract // Comentei pq deu erro
 {
     use Authenticatable, CanResetPassword;
-    // use \Support\Traits\Models\HasImages;
+    // use \Muleta\Traits\Models\HasImages;
     use HasApiTokens, Notifiable;
     // use CanResetPassword;
 

@@ -33,7 +33,7 @@ return [
     |
     */
 
-    'models_alias' => [[
+    'models_alias' => [
         'App\Models',
         // 'Support\Models',
 
@@ -41,6 +41,7 @@ return [
         'Translation\Models',
         'Locaravel\Models',
         'Population\Models',
+        'Telefonica\Models',
         'Stalker\Models',
         'Audit\Models',
         'Tracking\Models',
