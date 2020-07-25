@@ -253,7 +253,7 @@ class FacilitadorProvider extends ServiceProvider
         $this->loadTranslations();
         
         // Register the routes.
-        if (\Illuminate\Support\Facades\Config::get('site.core.register_routes') && !$this->app->routesAreCached()) {
+        if (\Illuminate\Support\Facades\Config::get('site.core.register_routes', true) && !$this->app->routesAreCached()) {
             $this->app['facilitador.router']->registerAll();
         }
 
@@ -281,10 +281,11 @@ class FacilitadorProvider extends ServiceProvider
             define('FORMAT_TIME', __('facilitador::base.constants.format_time'));
         }
         
+        // @todo ajeitar
         // Do bootstrapping that only matters if user has requested an admin URL
-        if ($this->app['facilitador']->handling()) {
+        // if ($this->app['facilitador']->handling()) {
             $this->usingAdmin();
-        }
+        // }
 
         $this->bootEvents($events);
 

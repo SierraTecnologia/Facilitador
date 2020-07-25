@@ -617,7 +617,7 @@ class Base extends BaseController
 
         // Get data matching the query
         $query = call_user_func([$this->model, 'titleContains'], request('query'))
-            ->ordered()
+            ->orderedForce()
             ->take(15); // Note, this is also enforced in the autocomplete.js
 
         // Don't return any rows already attached to the parent.  So make sure the
@@ -750,8 +750,8 @@ class Base extends BaseController
         // Open up the query. We can assume that Model has an ordered() function
         // because it's defined on Decoy's Base_Model
         $query = $this->parent ?
-            $this->parentRelation()->ordered() :
-            call_user_func([$this->model, 'ordered']);
+            $this->parentRelation()->orderedForce() :
+            call_user_func([$this->model, 'orderedForce']);
 
         // Allow trashed records
         if ($this->withTrashed()) {
