@@ -324,6 +324,8 @@ class FacilitadorProvider extends ServiceProvider
      */
     public function loadAuth()
     {
+        return ; // @todo Ver Policy com problema nos can
+        
         // DataType Policies
 
         // This try catch is necessary for the Package Auto-discovery
