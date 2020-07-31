@@ -32,7 +32,6 @@ Route::group(
     'middleware' => 'web',
     ], function () {
         $loadingRoutes = [
-        'manager',
         'voyager'
         ];
         event(new Routing());

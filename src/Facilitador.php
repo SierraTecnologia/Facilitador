@@ -130,7 +130,39 @@ class Facilitador
             $event($name, $parameters);
         }
 
-        return view($name, $parameters);
+
+        $layout = View::make(\Illuminate\Support\Facades\Config::get('painel.core.layout'));
+
+        $requestUrl = str_replace(['https://', 'http://'], '', Request::url());
+        $requestUrl = explode('/', str_replace(route('facilitador.dashboard'), '', $requestUrl));
+        array_shift($requestUrl);
+        $layout->segments = array_filter($requestUrl);
+        $layout->url = route('facilitador.dashboard');
+
+
+        // The view
+        if (is_string($content)) {
+            $layout->content = View::make($content);
+        } else {
+            $layout->content = $content;
+        }
+
+        // Set vars
+        $layout->title = $this->title();
+        $layout->description = $this->description();
+        // View::share('controller', $this->controller);
+
+        // Make sure that the content is a Laravel view before applying vars.
+        // to it.  In the case of the index view, `content` is a Fields\Listing
+        // instance, not a Laravel view
+        if (is_a($layout->content, 'Illuminate\View\View')) {
+            $layout->content->with($vars);
+        }
+
+        // Return the layout View
+        return $layout;
+
+        // return view($name, $parameters);
     }
 
     public function onLoadingView($name, \Closure $closure)
@@ -366,7 +398,7 @@ class Facilitador
         // If no title has been set, try to figure it out based on breadcrumbs
         $title = View::yieldContent('title');
         if (empty($title)) {
-            $title = app('facilitador.breadcrumbs')->title();
+            $title = app('rica.breadcrumbs')->title();
         }
 
         // Set the title

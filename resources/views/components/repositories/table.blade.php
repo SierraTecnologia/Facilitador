@@ -69,7 +69,7 @@ if (isset($registros) && !isset($showCheckboxColumn)) {
     }
 }
 ?>
-@if (!isset($fromCollection) || !$fromCollection)
+@if ((!isset($dataTypeContent) || !$dataTypeContent || empty($dataTypeContent)) && (!isset($fromCollection) || !$fromCollection || empty($fromCollection)))
     Nenhum Registro p/ Mostrar
 
 @else

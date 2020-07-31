@@ -96,9 +96,9 @@ class ModelCallbacks
 
         // @todo resolver isso aqui e o de cima gambi, deu merda
         if (method_exists($model, $method)) {
-            if (!empty(array_slice($payload, 1))) {
-                dd($model, $method, $payload,  array_slice($payload, 1), 'erronoModelCallback');
-            }
+            // if (!empty(array_slice($payload, 1))) {
+            //     dd($model, $method, $payload,  array_slice($payload, 1), 'erronoModelCallback');
+            // }
             try {
                 return call_user_func_array([$model, $method], array_slice($payload, 1));
             } catch (FatalThrowableError|Throwable $th) {

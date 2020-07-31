@@ -103,16 +103,6 @@ trait AppServiceContainerProvider
             }
         );
 
-        // Build the Breadcrumbs store
-        $this->app->singleton(
-            'facilitador.breadcrumbs', function ($app) {
-                $breadcrumbs = new \Support\Template\Layout\Breadcrumbs();
-                $breadcrumbs->set($breadcrumbs->parseURL());
-
-                return $breadcrumbs;
-            }
-        );
-
         // Register Decoy's custom handling of some exception
         $this->app->singleton(ExceptionHandler::class, \Facilitador\Exceptions\Handler::class);
 
@@ -151,7 +141,7 @@ trait AppServiceContainerProvider
         return [
             'facilitador',
             'facilitador.acl_fail',
-            'facilitador.breadcrumbs',
+            'rica.breadcrumbs',
             'facilitador.elements',
             'facilitador.router',
             'facilitador.url',

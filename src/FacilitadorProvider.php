@@ -74,6 +74,7 @@ class FacilitadorProvider extends ServiceProvider
             'icon' => 'fas fa-fw fa-search',
             'icon_color' => "blue",
             'label_color' => "success",
+            'space'      => 'painel',
             'level'       => 2, // 0 (Public), 1, 2 (Admin) , 3 (Root)
         ],
         // 'User|50' => [
@@ -110,7 +111,7 @@ class FacilitadorProvider extends ServiceProvider
             //     // 'access' => \App\Models\Role::$ADMIN
             // ],
         // ],
-        'System|350' => [
+        'Admin|400' => [
             // [
             //     'text' => 'Information',
             //     'icon' => 'fas fa-fw fa-book',
@@ -122,6 +123,7 @@ class FacilitadorProvider extends ServiceProvider
                 'icon' => 'fas fa-book',
                 'icon_color' => "blue",
                 'label_color' => "success",
+                'space'      => 'admin',
                 'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
             ],
             [
@@ -129,6 +131,7 @@ class FacilitadorProvider extends ServiceProvider
                 'icon' => 'fas fa-fw fa-th',
                 'icon_color' => "blue",
                 'label_color' => "success",
+                'space'      => 'admin',
                 'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
             ],
             // 'Information' => [
@@ -140,6 +143,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
@@ -149,6 +153,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
@@ -166,6 +171,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
@@ -175,6 +181,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-laptop',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
@@ -184,6 +191,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
@@ -193,6 +201,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
@@ -220,6 +229,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-coffee',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],
@@ -229,6 +239,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \App\Models\Role::$ADMIN
                 ],

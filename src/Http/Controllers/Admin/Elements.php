@@ -83,7 +83,7 @@ class Elements extends Base
         $elements = $elements->asModels();
 
         // Set the breadcrumbs NOT include the locale/tab
-        app('facilitador.breadcrumbs')->set(
+        app('rica.breadcrumbs')->set(
             [
             route('facilitador.elements') => $this->title,
             ]
