@@ -9,7 +9,7 @@ use Laratrust;
 
 class MenuFilter implements FilterInterface
 {
-    public function transform($item, Builder $builder)
+    public function transform($item)
     {
         // if (isset($item['permission']) && ! Laratrust::can($item['permission'])) {
         //     return false;
@@ -17,13 +17,13 @@ class MenuFilter implements FilterInterface
 
         $user = Auth::user();
 
-        if (!$this->verifyLevel($item, $user)) {
-            return false;
-        }
+        // if (!$this->verifyLevel($item, $user)) {
+        //     return false;
+        // }
 
-        if (!$this->verifyFeature($item, $user)) {
-            return false;
-        }
+        // if (!$this->verifySpace($item, $user)) {
+        //     return false;
+        // }
 
         // Translate
         if (isset($item["text"])) {

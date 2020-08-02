@@ -42,7 +42,7 @@ class ProfileController extends Controller
         $hot_topics = [];
         $images = [];
 
-        return view('siravel::components.modules.activities.index', compact('activities', 'links', 'banners', 'active_users', 'hot_topics', 'images'));
+        return view('transmissor::users.activities.index', compact('activities', 'links', 'banners', 'active_users', 'hot_topics', 'images'));
     }
 
     public function show(Request $request)

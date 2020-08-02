@@ -59,7 +59,7 @@ class Admin extends \Facilitador\Models\User
          *
          * @var array
          */
-        public static $rules = [
+        public $rules = [
             'first_name' => 'required',
             'last_name' => 'required',
             'images.default' => 'image',

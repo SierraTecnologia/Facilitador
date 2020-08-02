@@ -15,6 +15,7 @@ use Redirect;
 use Response;
 use stdClass;
 use Validator;
+use Route;
 use Illuminate\Support\Str;
 use Support\Template\Input\Search;
 use Bkwld\Library\Utils\File;
@@ -84,10 +85,12 @@ class Controller extends BaseController
         }
 
         $requestUrl = str_replace(['https://', 'http://'], '', Request::url());
-        $requestUrl = explode('/', str_replace(route('facilitador.dashboard'), '', $requestUrl));
-        array_shift($requestUrl);
-        $this->layout->segments = array_filter($requestUrl);
-        $this->layout->url = route('facilitador.dashboard');
+        if (Route::has('facilitador.dashboard')) {
+            $requestUrl = explode('/', str_replace(route('facilitador.dashboard'), '', $requestUrl));
+            array_shift($requestUrl);
+            $this->layout->segments = array_filter($requestUrl);
+            $this->layout->url = route('facilitador.dashboard');
+        }
     }
 
 

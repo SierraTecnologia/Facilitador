@@ -17,11 +17,12 @@ class CreateSettingsTable extends Migration
             'settings', function (Blueprint $table) {
                 // @todo resolver lance do bussiness_code
                 $table->engine = 'InnoDB';
-                $table->string('code')->unique();
-                $table->primary('code');
+                $table->increments('id');
+                // $table->string('code')->unique();
+                // $table->primary('code');
+                $table->string('code')->default(false);
                 $table->string('value')->default(false);
-                $table->string('business_code')->nullable()->default(null);
-                // $table->foreign('business_code')->references('code')->on('businesses');
+                
                 $table->timestamps();
                 $table->softDeletes();
                 

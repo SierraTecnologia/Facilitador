@@ -112,6 +112,18 @@ class FacilitadorProvider extends ServiceProvider
             // ],
         // ],
         'Admin|400' => [
+            [
+                'text'        => 'Permissions',
+                'url'         => 'root/permissions',
+                'icon'        => 'lock',
+                'level'       => 3,
+            ],
+            [
+                'text'        => 'Roles',
+                'url'         => 'root/roles',
+                'icon'        => 'key',
+                'level'       => 3,
+            ],
             // [
             //     'text' => 'Information',
             //     'icon' => 'fas fa-fw fa-book',

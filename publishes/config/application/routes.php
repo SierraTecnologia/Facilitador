@@ -7,7 +7,14 @@ return [
      *
      * @var string
      */
-    'main' => 'rica',
+    'main' => '',
+
+    /**
+     * The user directory
+     *
+     * @var string
+     */
+    'user' => 'profile',
 
     /**
      * The dash Directory
@@ -35,5 +42,6 @@ return [
      *
      * @var string
      */
-    'root' => 'sitec',
+    'rica' => 'rica',
+    'root' => 'rica',
 ];

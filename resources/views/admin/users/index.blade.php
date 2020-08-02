@@ -1,47 +1,30 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
-    @if (session('message'))
-        <div class="">
-            {{ session('message') }}
+    <section class="content-header">
+        <h1 class="pull-left">{!! trans('words.users') !!}</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('words.home') !!}</a></li>
+            <li class="active">{!! trans('words.users') !!}</li>
+        </ol>
+    </section>
+    <div class="content">
+        <div class="clearfix"></div>
+
+        @include('layouts.partials.message')
+
+        <div class="clearfix"></div>
+
+        <div class="box box-primary">
+            <div class="btn-group">
+                <h1 class="pull-right">
+                    <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('root.users.create') !!}">{!! trans('words.addNew') !!}</a>
+                </h1>
+            </div>
+            <div class="box-body">
+                    @include('root.users.table')
+            </div>
         </div>
-    @endif
-
-    <h1>User Admin</h1>
-    <a href="/admin/users/invite">Invite New User</a>
-
-    <form id="" method="post" action="/admin/users/search">
-        {!! csrf_field() !!}
-        <input name="search" placeholder="Search">
-    </form>
-
-    @if ($users->count() > 0)
-        <table>
-            <thead>
-                <th>Email</th>
-                <th>Actions</th>
-            </thead>
-            <tbody>
-                @foreach($users as $user)
-                    @if ($user->id !== Auth::id())
-                        <tr>
-                            <td>{{ $user->email }}</td>
-                            <td>
-                                <a href="{{ url('admin/users/'.$user->id.'/edit') }}"><span class="fa fa-edit"> Edit</span></a>
-                                <form method="post" action="{{ url('admin/users/'.$user->id) }}">
-                                    {!! csrf_field() !!}
-                                    {!! method_field('DELETE') !!}
-                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')"><i class="fa fa-trash"></i> Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endif
-                @endforeach
-            </tbody>
-        </table>
-    @else
-        <p>Sorry no users</p>
-    @endif
-
-    <a href="/dashboard">Dashboard</a>
+    </div>
 @endsection
+

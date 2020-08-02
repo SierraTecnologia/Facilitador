@@ -19,7 +19,24 @@ Route::group(
         ];
         event(new Routing());
         foreach ($loadingRoutes as $loadingRoute) {
-            include dirname(__FILE__) . DIRECTORY_SEPARATOR . "web". DIRECTORY_SEPARATOR . $loadingRoute.".php";
+            include dirname(__FILE__) . DIRECTORY_SEPARATOR . "public". DIRECTORY_SEPARATOR . $loadingRoute.".php";
+        }
+        event(new RoutingAfter());
+    }
+);    
+
+// Admin routes
+Route::group(
+    [
+    'prefix' => \Illuminate\Support\Facades\Config::get('application.routes.main', 'admin'),
+    'middleware' => 'web',
+    ], function () {
+        $loadingRoutes = [
+        'user'
+        ];
+        event(new Routing());
+        foreach ($loadingRoutes as $loadingRoute) {
+            include dirname(__FILE__) . DIRECTORY_SEPARATOR . "admin". DIRECTORY_SEPARATOR . $loadingRoute.".php";
         }
         event(new RoutingAfter());
     }
@@ -36,7 +53,7 @@ Route::group(
         ];
         event(new Routing());
         foreach ($loadingRoutes as $loadingRoute) {
-            include dirname(__FILE__) . DIRECTORY_SEPARATOR . "web". DIRECTORY_SEPARATOR . $loadingRoute.".php";
+            include dirname(__FILE__) . DIRECTORY_SEPARATOR . "rica". DIRECTORY_SEPARATOR . $loadingRoute.".php";
         }
         event(new RoutingAfter());
     }

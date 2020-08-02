@@ -1,45 +1,31 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
+    <section class="content-header">
+        <h1>
+            {!! trans('words.user') !!}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('words.home') !!}</a></li>
+            <li><a href="{!! route('root.users.index') !!}"><i class="fa fa-key"></i> {!! trans('words.users') !!}</a></li>
+            <li class="active">{!! trans('words.edit') !!}</li>
+        </ol>
+   </section>
+   <div class="content">
 
-    @include('partials.errors')
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="row">
 
-    @if (session('message'))
-        <div class="">
-            {{ session('message') }}
-        </div>
-    @endif
+                   @include('layouts.partials.message')
 
-    <form method="POST" action="/admin/users/{{ $user->id }}">
-        <input name="_method" type="hidden" value="PATCH">
-        {!! csrf_field() !!}
+                   {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
 
-        <div>
-            @input_maker_label('Email')
-            @input_maker_create('email', ['type' => 'string'], $user)
-        </div>
+                        @include('root.users.fields')
 
-        <div>
-            @input_maker_label('Name')
-            @input_maker_create('name', ['type' => 'string'], $user)
-        </div>
-
-        @include('user.meta')
-
-        <div>
-            @input_maker_label('Role')
-            @input_maker_create('roles', ['type' => 'relationship', 'model' => 'App\Models\Role', 'label' => 'label', 'value' => 'name'], $user)
-        </div>
-
-        <div>
-            <a href="{{ URL::previous() }}">Cancel</a>
-            <button type="submit">Save</button>
-        </div>
-    </form>
-
-    @if (! Session::get('original_user'))
-        <a href="/admin/users/switch/{{ $user->id }}">Login as this User</a>
-    @endif
-
-    <a href="/admin/users">User Admin</a>
+                   {!! Form::close() !!}
+               </div>
+           </div>
+       </div>
+   </div>
 @endsection

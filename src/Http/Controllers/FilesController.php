@@ -15,7 +15,7 @@ use Stalker\Http\Requests\FileRequest;
 use Stalker\Services\Midia\FileService;
 use Facilitador\Services\ValidationService;
 use Stalker\Repositories\FileRepository;
-use Siravel\Services\SiravelResponseService;
+use Support\Services\RiCaResponseService;
 
 class FilesController extends SitecController
 {
@@ -23,7 +23,7 @@ class FilesController extends SitecController
         FileRepository $repository,
         FileService $fileService,
         ValidationService $validationService,
-        SiravelResponseService $siravelResponseService
+        RiCaResponseService $siravelResponseService
     ) {
         parent::__construct();
         $this->repository = $repository;
