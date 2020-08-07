@@ -6,6 +6,7 @@ use JeroenNoten\LaravelAdminLte\Menu\Builder;
 use JeroenNoten\LaravelAdminLte\Menu\Filters\FilterInterface;
 use Illuminate\Support\Facades\Auth;
 use Laratrust;
+use Session;
 
 class MenuFilter implements FilterInterface
 {
@@ -17,13 +18,13 @@ class MenuFilter implements FilterInterface
 
         $user = Auth::user();
 
-        // if (!$this->verifyLevel($item, $user)) {
-        //     return false;
-        // }
+        if (!$this->verifyLevel($item, $user)) {
+            return false;
+        }
 
-        // if (!$this->verifySpace($item, $user)) {
-        //     return false;
-        // }
+        if (!$this->verifySpace($item, $user)) {
+            return false;
+        }
 
         // Translate
         if (isset($item["text"])) {
@@ -37,7 +38,8 @@ class MenuFilter implements FilterInterface
 
     private function verifySpace($item, $user)
     {
-        $feature = null;
+
+        $space = null;
         if (isset($item['space'])) {
             $space = $item['space'];
         }
@@ -46,7 +48,7 @@ class MenuFilter implements FilterInterface
             return true;
         }
 
-        return $space == Session::get('space');
+        return $space == app('support.router')->getRouteSpace(); //Session::get('space');
     }
 
     private function verifyLevel($item, $user)

@@ -21,8 +21,6 @@ use Facilitador\Facades\Facilitador;
 |
 */
             
-Route::namespace('System')->group(
-    function () {
 
         Route::group(
             ['as' => 'facilitador.'], function () {
@@ -159,5 +157,3 @@ Route::namespace('System')->group(
 
             // }
         // );
-    }
-);

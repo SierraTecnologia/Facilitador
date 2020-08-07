@@ -46,6 +46,11 @@ class FacilitadorProvider extends ServiceProvider
 
     use AppEventsProvider, AppMiddlewaresProvider, AppServiceContainerProvider, FacilitadorLoadClasses, FacilitadorRegisterPackages, FacilitadorRegisterPublishes, VoyagerProviderTrait;
 
+    use ConsoleTools;
+
+    public $packageName = 'facilitador';
+    const pathVendor = 'sierratecnologia/facilitador';
+
     /**
      * The policy mappings for the application.
      *
@@ -116,12 +121,14 @@ class FacilitadorProvider extends ServiceProvider
                 'text'        => 'Permissions',
                 'url'         => 'root/permissions',
                 'icon'        => 'lock',
+                'space'      => 'admin',
                 'level'       => 3,
             ],
             [
                 'text'        => 'Roles',
                 'url'         => 'root/roles',
                 'icon'        => 'key',
+                'space'      => 'admin',
                 'level'       => 3,
             ],
             // [
@@ -274,20 +281,11 @@ class FacilitadorProvider extends ServiceProvider
 
         $this->loadViews();
         $this->loadTranslations();
-        
-        // Register the routes.
-        if (\Illuminate\Support\Facades\Config::get('site.core.register_routes', true) && !$this->app->routesAreCached()) {
-            $this->app['facilitador.router']->registerAll();
-        }
 
         /**
-         * Support Routes
+         * Transmissor; Routes
          */
-        Route::group([
-            'namespace' => '\Facilitador\Http\Controllers',
-        ], function (/**$router**/) {
-            require __DIR__.'/../routes/web.php';
-        });
+        $this->loadRoutesForRiCa(__DIR__.'/../routes');
         
 
         // Configure Decoy auth setup

@@ -50,15 +50,6 @@ trait AppServiceContainerProvider
         //     return new \Facilitador\Helpers;
         // });
 
-        // Registers explicit rotues and wildcarding routing
-        $this->app->singleton(
-            'facilitador.router', function ($app) {
-                $dir = \Illuminate\Support\Facades\Config::get('application.routes.main');
-
-                return new \Support\Routing\Router($dir);
-            }
-        );
-
         // Wildcard router
         $this->app->singleton(
             'facilitador.wildcard', function ($app) {
@@ -86,13 +77,6 @@ trait AppServiceContainerProvider
                 return $app['redirect']
                     ->guest(route('facilitador.account@login'))
                     ->withErrors([ 'error message' => __('facilitador::login.error.login_first')]);
-            }
-        );
-
-        // Register URL Generators as "FacilitadorURL".
-        $this->app->singleton(
-            'facilitador.url', function ($app) {
-                return new \Support\Routing\UrlGenerator($app['request']->path());
             }
         );
 
@@ -141,10 +125,7 @@ trait AppServiceContainerProvider
         return [
             'facilitador',
             'facilitador.acl_fail',
-            'rica.breadcrumbs',
             'facilitador.elements',
-            'facilitador.router',
-            'facilitador.url',
             'facilitador.user',
             'facilitador.wildcard',
         ];

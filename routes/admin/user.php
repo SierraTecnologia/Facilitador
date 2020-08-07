@@ -1,8 +1,6 @@
 <?php
 
             
-Route::namespace('Admin')->group(
-    function () {
 
                     
         Route::resource('users', 'UserController');
@@ -31,6 +29,3 @@ Route::namespace('Admin')->group(
         Route::resource('roles', 'RoleController', ['except' => ['show']]);
         Route::post('roles/search', 'RoleController@search');
         Route::get('roles/search', 'RoleController@index');
-
-    }
-);

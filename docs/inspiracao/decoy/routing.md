@@ -49,5 +49,5 @@ Decoy's wildcard router will interfere with creating custom /admin routes becaus
   });
 
   // Register rest of Decoy routes manually
-  app('facilitador.router')->registerAll();
+  app('support.router')->registerAll();
   ```

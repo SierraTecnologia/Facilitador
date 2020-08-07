@@ -9,7 +9,7 @@ use Mail;
 use Facilitador;
 use Config;
 use Request;
-use FacilitadorURL;
+use SupportURL;
 use Bkwld\Library\Utils\Text;
 use Facilitador\Auth\AuthInterface;
 use Facilitador\Notifications\ResetPassword;
@@ -595,7 +595,7 @@ class User extends Base implements
 
         // If row is disabled
         if ($this->disabled()) {
-            $html .= '<a href="' . URL::to(FacilitadorURL::relative('enable', $this->id)) . '" class="label label-warning
+            $html .= '<a href="' . URL::to(SupportURL::relative('enable', $this->id)) . '" class="label label-warning
                 js-tooltip" title="' . __('facilitador::admins.standard_list.click') . '">' .
                 __('facilitador::admins.standard_list.disabled') . '</a>';
         }
@@ -611,7 +611,7 @@ class User extends Base implements
      */
     public function getAdminEditAttribute()
     {
-        return FacilitadorURL::action('Facilitador\Http\Controllers\Admin\Admins@edit', $this->id);
+        return SupportURL::action('Facilitador\Http\Controllers\Admin\Admins@edit', $this->id);
     }
 
     /**
@@ -689,7 +689,7 @@ class User extends Base implements
                 return (object) [
 
                 // Add controller information
-                'slug' => FacilitadorURL::slugController($class),
+                'slug' => SupportURL::slugController($class),
                 'title' => $obj->title(),
                 'description' => $obj->description(),
 

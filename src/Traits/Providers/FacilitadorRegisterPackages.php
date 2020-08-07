@@ -28,7 +28,6 @@ trait FacilitadorRegisterPackages
          * Decoy
          */
         'Facilitador' => \Facilitador\Facades\Facilitador::class,
-        'FacilitadorURL' => \Facilitador\Facades\FacilitadorURL::class,
 
         // Image resizing
         'Croppa' => \Bkwld\Croppa\Facade::class,

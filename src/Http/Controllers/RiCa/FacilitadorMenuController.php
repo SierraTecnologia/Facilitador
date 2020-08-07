@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Http\Controllers\System;
+namespace Facilitador\Http\Controllers\RiCa;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
