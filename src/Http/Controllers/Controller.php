@@ -71,7 +71,7 @@ class Controller extends BaseController
     public function __construct()
     {
         // Set the layout from the Config file
-        $this->layout = View::make(\Illuminate\Support\Facades\Config::get('painel.core.layout'));
+        $this->layout = View::make(\Illuminate\Support\Facades\Config::get('painel.core.layout', 'support::layouts.adminlte.master'));
 
         // Store the controller class for routing
         $this->controller = get_class($this);

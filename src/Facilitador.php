@@ -131,7 +131,7 @@ class Facilitador
         }
 
 
-        $layout = View::make(\Illuminate\Support\Facades\Config::get('painel.core.layout'));
+        $layout = View::make(\Illuminate\Support\Facades\Config::get('painel.core.layout', 'support::layouts.adminlte.master'));
 
         $requestUrl = str_replace(['https://', 'http://'], '', Request::url());
         $requestUrl = explode('/', str_replace(route('facilitador.dashboard'), '', $requestUrl));
