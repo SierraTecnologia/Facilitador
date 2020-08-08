@@ -20,7 +20,7 @@ class RolesTest extends TestCase
             ->type('admin@admin.com', 'email')
             ->type('password', 'password')
             ->press(__('facilitador::generic.login'))
-            ->seePageIs(route('facilitador.dashboard'));
+            ->seePageIs(route('rica.dashboard'));
 
         // Adding a New Role
         $this->visit(route('facilitador.roles.create'))

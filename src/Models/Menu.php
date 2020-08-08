@@ -130,10 +130,10 @@ class Menu extends Model
                     // The current URL is "below" the menu-item URL. For example "admin/posts/1/edit" => "admin/posts"
                     $item->active = true;
                 }
-                if (($item->href == url('') || $item->href == route('facilitador.dashboard')) && $item->children->count() > 0) {
+                if (($item->href == url('') || $item->href == route('rica.dashboard')) && $item->children->count() > 0) {
                     // Exclude sub-menus
                     $item->active = false;
-                } elseif ($item->href == route('facilitador.dashboard') && url()->current() != route('facilitador.dashboard')) {
+                } elseif ($item->href == route('rica.dashboard') && url()->current() != route('rica.dashboard')) {
                     // Exclude dashboard
                     $item->active = false;
                 }

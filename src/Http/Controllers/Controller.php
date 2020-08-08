@@ -85,11 +85,11 @@ class Controller extends BaseController
         }
 
         $requestUrl = str_replace(['https://', 'http://'], '', Request::url());
-        if (Route::has('facilitador.dashboard')) {
-            $requestUrl = explode('/', str_replace(route('facilitador.dashboard'), '', $requestUrl));
+        if (Route::has('rica.dashboard')) {
+            $requestUrl = explode('/', str_replace(route('rica.dashboard'), '', $requestUrl));
             array_shift($requestUrl);
             $this->layout->segments = array_filter($requestUrl);
-            $this->layout->url = route('facilitador.dashboard');
+            $this->layout->url = route('rica.dashboard');
         }
     }
 

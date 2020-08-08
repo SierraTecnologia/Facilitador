@@ -20,7 +20,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('facilitador::seeders.menu_items.dashboard'),
             'url'     => '',
-            'route'   => 'facilitador.dashboard',
+            'route'   => 'rica.dashboard',
             ]
         );
         if (!$menuItem->exists) {

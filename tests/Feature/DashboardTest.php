@@ -26,7 +26,7 @@ class DashboardTest extends TestCase
         // We must first login and visit the dashboard page.
         Auth::loginUsingId(1);
 
-        $this->visit(route('facilitador.dashboard'))
+        $this->visit(route('rica.dashboard'))
             ->see(__('facilitador::generic.dashboard'));
 
         // Test UserDimmer widget
@@ -34,21 +34,21 @@ class DashboardTest extends TestCase
             ->click(__('facilitador::dimmer.user_link_text'))
             ->seePageIs(route('facilitador.users.index'))
             ->click(__('facilitador::generic.dashboard'))
-            ->seePageIs(route('facilitador.dashboard'));
+            ->seePageIs(route('rica.dashboard'));
 
         // Test PostDimmer widget
         $this->see(trans_choice('facilitador::dimmer.post', 4))
             ->click(__('facilitador::dimmer.post_link_text'))
             ->seePageIs(route('facilitador.posts.index'))
             ->click(__('facilitador::generic.dashboard'))
-            ->seePageIs(route('facilitador.dashboard'));
+            ->seePageIs(route('rica.dashboard'));
 
         // Test PageDimmer widget
         $this->see(trans_choice('facilitador::dimmer.page', 1))
             ->click(__('facilitador::dimmer.page_link_text'))
             ->seePageIs(route('facilitador.pages.index'))
             ->click(__('facilitador::generic.dashboard'))
-            ->seePageIs(route('facilitador.dashboard'))
+            ->seePageIs(route('rica.dashboard'))
             ->see(__('facilitador::generic.dashboard'));
     }
 
@@ -65,7 +65,7 @@ class DashboardTest extends TestCase
             $user->role->permissions()->where('key', 'browse_users')->first()
         );
 
-        $this->visit(route('facilitador.dashboard'))
+        $this->visit(route('rica.dashboard'))
             ->see(__('facilitador::generic.dashboard'));
 
         // Test UserDimmer widget
@@ -86,7 +86,7 @@ class DashboardTest extends TestCase
             $user->role->permissions()->where('key', 'browse_posts')->first()
         );
 
-        $this->visit(route('facilitador.dashboard'))
+        $this->visit(route('rica.dashboard'))
             ->see(__('facilitador::generic.dashboard'));
 
         // Test PostDimmer widget
@@ -107,7 +107,7 @@ class DashboardTest extends TestCase
             $user->role->permissions()->where('key', 'browse_pages')->first()
         );
 
-        $this->visit(route('facilitador.dashboard'))
+        $this->visit(route('rica.dashboard'))
             ->see(__('facilitador::generic.dashboard'));
 
         // Test PageDimmer widget
@@ -125,7 +125,7 @@ class DashboardTest extends TestCase
         // We must first login and visit the dashboard page.
         Auth::loginUsingId(1);
 
-        $this->visit(route('facilitador.dashboard'))
+        $this->visit(route('rica.dashboard'))
             ->see(Facilitador::getVersion());
     }
 }

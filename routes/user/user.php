@@ -29,8 +29,8 @@ Route::post('pusher/auth', function() {
 Route::group(
     ['as' => 'profile.'], function () {
 
-        Route::namespace('User')->group(
-            function () {
+        // Route::namespace('User')->group(
+        //     function () {
                 // Route::group(
                 //     ['middleware' => 'admin.user'], function () {
                         event(new RoutingAdmin());
@@ -54,8 +54,8 @@ Route::group(
                     }
                 // );
             // }
-        );
-    }
+    //     );
+    // }
 );
 
 

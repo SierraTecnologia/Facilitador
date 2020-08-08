@@ -29,7 +29,7 @@ class MenuItemPolicy extends BasePolicy
             self::$datatypes = Facilitador::model('DataType')::all()->keyBy('slug');
         }
 
-        $regex = str_replace('/', '\/', preg_quote(route('facilitador.dashboard')));
+        $regex = str_replace('/', '\/', preg_quote(route('rica.dashboard')));
         $slug = preg_replace('/'.$regex.'/', '', $model->link(true));
         $slug = str_replace('/', '', $slug);
 

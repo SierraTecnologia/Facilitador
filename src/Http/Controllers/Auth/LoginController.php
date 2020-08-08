@@ -94,20 +94,20 @@ class LoginController extends Controller
             ], $remember == 1 ? true : false
         )
         ) {
-            return redirect()->route('facilitador.dashboard');
+            return redirect()->route('rica.dashboard');
             if (Auth::user()->hasRole('root')) {
 
-                return redirect()->route('facilitador.dashboard');
+                return redirect()->route('rica.dashboard');
 
             }
 
             if (Auth::user()->hasRole('administrator')) {
 
-                return redirect()->route('facilitador.dashboard');
+                return redirect()->route('rica.dashboard');
 
             }
 
-            return redirect()->route('facilitador.dashboard');
+            return redirect()->route('rica.dashboard');
 
         }
         

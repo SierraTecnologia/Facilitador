@@ -7,14 +7,14 @@
             @section('breadcrumbs')
             <ol class="breadcrumb hidden-xs">
                 @php
-                $segments = array_filter(explode('/', str_replace(route('facilitador.dashboard'), '', Request::url())));
-                $url = route('facilitador.dashboard');
+                $segments = array_filter(explode('/', str_replace(route('rica.dashboard'), '', Request::url())));
+                $url = route('rica.dashboard');
                 @endphp
                 @if(count($segments) == 0)
                     <li class="active"><i class="facilitador-boat"></i> {{ __('facilitador::generic.dashboard') }}</li>
                 @else
                     <li class="active">
-                        <a href="{{ route('facilitador.dashboard')}}"><i class="facilitador-boat"></i> {{ __('facilitador::generic.dashboard') }}</a>
+                        <a href="{{ route('rica.dashboard')}}"><i class="facilitador-boat"></i> {{ __('facilitador::generic.dashboard') }}</a>
                     </li>
                     @foreach ($segments as $segment)
                         @php

@@ -17,7 +17,7 @@ class AssetsTest extends TestCase
 
     public function testCanOpenFileInAssets()
     {
-        $url = route('facilitador.dashboard').$this->prefix.'css/app.css';
+        $url = route('rica.dashboard').$this->prefix.'css/app.css';
 
         $response = $this->call('GET', $url);
         $this->assertEquals(200, $response->status(), $url.' did not return a 200');
@@ -44,7 +44,7 @@ class AssetsTest extends TestCase
      */
     public function testCannotOpenFileOutsideAssets($url)
     {
-        $response = $this->call('GET', route('facilitador.dashboard').$this->prefix.$url);
+        $response = $this->call('GET', route('rica.dashboard').$this->prefix.$url);
         $this->assertEquals(404, $response->status(), $url.' did not return a 404');
     }
 }

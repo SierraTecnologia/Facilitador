@@ -134,10 +134,10 @@ class Facilitador
         $layout = View::make(\Illuminate\Support\Facades\Config::get('painel.core.layout', 'support::layouts.adminlte.master'));
 
         $requestUrl = str_replace(['https://', 'http://'], '', Request::url());
-        $requestUrl = explode('/', str_replace(route('facilitador.dashboard'), '', $requestUrl));
+        $requestUrl = explode('/', str_replace(route('rica.dashboard'), '', $requestUrl));
         array_shift($requestUrl);
         $layout->segments = array_filter($requestUrl);
-        $layout->url = route('facilitador.dashboard');
+        $layout->url = route('rica.dashboard');
 
 
         // The view
@@ -247,7 +247,7 @@ class Facilitador
      */
     public function dimmers()
     {
-        $widgetClasses = \Illuminate\Support\Facades\Config::get('sitec.facilitador.dashboard.widgets');
+        $widgetClasses = \Illuminate\Support\Facades\Config::get('sitec.rica.dashboard.widgets');
         $dimmers = Widget::group('facilitador::dimmers');
 
         foreach ($widgetClasses as $widgetClass) {

@@ -15,12 +15,13 @@ class MenuFilter implements FilterInterface
         // if (isset($item['permission']) && ! Laratrust::can($item['permission'])) {
         //     return false;
         // }
-
+//         if (!isset($item['header']) && $item['text']!=="Dashboard" && $item['text']!=="Visitas" && $item['text']!=="Plugins" && $item['text']!=="Others" )
+// dd($item);
         $user = Auth::user();
 
-        if (!$this->verifyLevel($item, $user)) {
-            return false;
-        }
+        // if (!$this->verifyLevel($item, $user)) {
+        //     return false;
+        // }
 
         if (!$this->verifySpace($item, $user)) {
             return false;

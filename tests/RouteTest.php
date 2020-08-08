@@ -19,7 +19,7 @@ class RouteTest extends TestCase
         $this->press(__('facilitador::generic.login'));
 
         $urls = [
-            route('facilitador.dashboard'),
+            route('rica.dashboard'),
             route('rica.stalker.media.index'),
             route('facilitador.settings.index'),
             route('facilitador.roles.index'),

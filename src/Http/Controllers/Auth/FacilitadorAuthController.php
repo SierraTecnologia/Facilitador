@@ -14,7 +14,7 @@ class FacilitadorAuthController extends Controller
     public function login()
     {
         if ($this->guard()->user()) {
-            return redirect()->route('facilitador.dashboard');
+            return redirect()->route('rica.dashboard');
         }
 
         return Facilitador::view('support::layouts.voyager.login');
@@ -52,7 +52,7 @@ class FacilitadorAuthController extends Controller
      */
     public function redirectTo()
     {
-        return \Illuminate\Support\Facades\Config::get('sitec.facilitador.user.redirect', route('facilitador.dashboard'));
+        return \Illuminate\Support\Facades\Config::get('sitec.facilitador.user.redirect', route('rica.dashboard'));
     }
 
     /**
