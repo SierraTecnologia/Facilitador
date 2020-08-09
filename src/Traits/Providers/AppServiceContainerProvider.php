@@ -67,7 +67,8 @@ trait AppServiceContainerProvider
         $this->app->singleton(
             'facilitador.user', function ($app) {
                 $guard = \Illuminate\Support\Facades\Config::get('painel.adminer.guard');
-                return $app['auth']->guard($guard)->user(); // tinha isso aqui tirei \App\Models\User::first(); //
+                dd(\Illuminate\Support\Facades\Config::get('painel.adminer.guard'));
+                return \App\Models\User::first(); //$app['auth']->guard($guard)->user(); // tinha isso aqui tirei 
             }
         );
 

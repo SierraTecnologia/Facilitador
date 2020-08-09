@@ -3,7 +3,6 @@
 namespace Facilitador\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Siravel\Http\Controllers\Controller;
 use Siravel\Http\Requests\Admin\SettingRequest;
 use Facilitador\Models\Setting;
 

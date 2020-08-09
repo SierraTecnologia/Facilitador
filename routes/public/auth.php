@@ -1,6 +1,6 @@
 <?php
 
-if (config('siravel.facilitador.login', true)) {
+if (config('siravel.login', true)) {
     Route::post('pusher/auth', function() {
         return auth()->user();
     });
