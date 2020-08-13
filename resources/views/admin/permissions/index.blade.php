@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 @section('content')
 <section class="content">
-	<div class="box box-primary">
-		<div class="box-header">
+	<div class="box card box-primary">
+		<div class="box-header card-header">
 			<h3>All Permissions</h3>
 		</div>
-		<div class="box-body">
+		<div class="box-body card-body">
 			<a href="{{url('root/permissions/create')}}" class = "btn btn-success"><i class="fa fa-plus fa-md" aria-hidden="true"></i> {!! trans('words.new') !!}</a>
 			<table class="table table-striped">
 				<head>

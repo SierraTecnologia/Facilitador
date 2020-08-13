@@ -10,7 +10,7 @@
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="/facilitador" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/facilitador" class="small-box-footer card-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -25,7 +25,7 @@
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="admin" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="admin" class="small-box-footer card-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -40,7 +40,7 @@
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="/logs" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/logs" class="small-box-footer card-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -55,7 +55,7 @@
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="route('rica.larametrics::metrics.index')" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="route('rica.larametrics::metrics.index')" class="small-box-footer card-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
