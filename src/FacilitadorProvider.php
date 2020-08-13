@@ -168,7 +168,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'Compass',
-                    'route'       => 'facilitador.compass.index',
+                    'route'       => 'rica.facilitador.compass.index',
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -186,7 +186,7 @@ class FacilitadorProvider extends ServiceProvider
                 // ],
                 [
                     'text'        => 'Medias',
-                    'route'       => 'rica.stalker.media.index',
+                    'route'       => 'admin.media.index',
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',

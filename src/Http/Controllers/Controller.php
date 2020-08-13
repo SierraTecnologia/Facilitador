@@ -64,12 +64,20 @@ class Controller extends BaseController
      * @var Illuminate\Contracts\View\Factory
      */
     protected $layout;
+    protected $loadLayout = false;
 
     /**
      * Populate protected properties on init
      */
     public function __construct()
     {
+        $this->loadLayout();
+    }
+    public function loadLayout()
+    {
+        if ($this->loadLayout) {
+            return ;
+        }
         // Set the layout from the Config file
         $this->layout = View::make(\Illuminate\Support\Facades\Config::get('painel.core.layout', 'support::layouts.adminlte.master'));
 
@@ -91,6 +99,9 @@ class Controller extends BaseController
             $this->layout->segments = array_filter($requestUrl);
             $this->layout->url = route('rica.dashboard');
         }
+
+        $this->loadLayout = true;
+        return ;
     }
 
 
@@ -120,6 +131,8 @@ class Controller extends BaseController
      */
     protected function populateView($content, $vars = [])
     {
+        $this->loadLayout();
+        
         // The view
         if (is_string($content)) {
             $this->layout->content = View::make($content);

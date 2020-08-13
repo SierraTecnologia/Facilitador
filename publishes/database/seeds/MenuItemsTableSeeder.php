@@ -40,7 +40,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('facilitador::seeders.menu_items.media'),
             'url'     => '',
-            'route'   => 'rica.stalker.media.index',
+            'route'   => 'admin.media.index',
             ]
         );
         if (!$menuItem->exists) {
