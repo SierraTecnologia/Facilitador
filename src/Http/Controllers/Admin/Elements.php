@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 use Stalker\Models\Image;
 use Bkwld\Library\Utils\File;
 use Facilitador\Models\Element;
-use Facilitador\Exceptions\ValidationFail;
+use Support\Exceptions\ValidationFail;
 
 /**
  * Render a form that allows admins to override language files
