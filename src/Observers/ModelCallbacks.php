@@ -11,6 +11,7 @@ use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Throwable;
 
 /**
+ * @todo Passar pa/ support
  * Call no-op classes on models for all event types.  This just simplifies
  * the handling of model events for models.
  */
@@ -123,12 +124,14 @@ class ModelCallbacks
      */
     private function runInCreated($model)
     {
-        $executeTo = [
-
-        ];
         
         // If no author has been assigned, assign the current user's id as the author of the post
-        if (class_exists(\Telefonica\Models\Digital\Email::class) && isset($model->email) && !empty($model->email)) {
+        if (
+            class_exists(\Telefonica\Models\Digital\Email::class) && 
+            get_class($model)!=\Telefonica\Models\Digital\Email::class && 
+            isset($model->email) 
+            && !empty($model->email)
+        ) {
             $email = \Telefonica\Models\Digital\Email::createIfNotExistAndReturn($model->email);
             $email->associations(get_class($model))->save($model);
         }

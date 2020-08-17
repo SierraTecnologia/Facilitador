@@ -199,7 +199,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('facilitador::seeders.menu_items.settings'),
             'url'     => '',
-            'route'   => 'facilitador.settings.index',
+            'route'   => 'rica.facilitador.settings.index',
             ]
         );
         if (!$menuItem->exists) {

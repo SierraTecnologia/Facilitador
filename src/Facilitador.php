@@ -176,9 +176,7 @@ class Facilitador
 
     public function formField($row, $dataType, $dataTypeContent)
     {
-        $formField = $this->formFields[$row->type];
-
-        return $formField->handle($row, $dataType, $dataTypeContent);
+        return \Support::formField($row, $dataType, $dataTypeContent);
     }
 
     public function afterFormFields($row, $dataType, $dataTypeContent)

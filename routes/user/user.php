@@ -26,8 +26,8 @@ Route::post('pusher/auth', function() {
 */
             
 
-Route::group(
-    ['as' => 'profile.'], function () {
+// Route::group(
+//     ['as' => 'profile.'], function () {
 
         // Route::namespace('User')->group(
         //     function () {
@@ -51,12 +51,12 @@ Route::group(
                         Route::post('password', 'PasswordController@update');
 
                         event(new RoutingAdminAfter());
-                    }
+                    // }
                 // );
             // }
     //     );
     // }
-);
+// );
 
 
 // Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function()

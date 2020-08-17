@@ -119,16 +119,16 @@ class FacilitadorProvider extends ServiceProvider
         'Admin|400' => [
             [
                 'text'        => 'Permissions',
-                'url'         => 'root/permissions',
+                'route'       => 'admin.permissions.index',
                 'icon'        => 'lock',
-                'space'      => 'admin',
+                'space'       => 'admin',
                 'level'       => 3,
             ],
             [
                 'text'        => 'Roles',
-                'url'         => 'root/roles',
+                'route'       => 'admin.roles.index',
                 'icon'        => 'key',
-                'space'      => 'admin',
+                'space'       => 'admin',
                 'level'       => 3,
             ],
             // [
@@ -216,7 +216,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'settings',
-                    'route'       => 'facilitador.settings.index',
+                    'route'       => 'rica.facilitador.settings.index',
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
@@ -228,7 +228,7 @@ class FacilitadorProvider extends ServiceProvider
             'Tools' => [
                 // [
                 //     'text'        => 'Tools',
-                //     'route'       => 'facilitador.hooks',
+                //     'route'       => 'rica.facilitador.hooks',
                 //     'icon'        => 'fas fa-fw fa-industry',
                 //     'icon_color'  => 'blue',
                 //     'label_color' => 'success',
@@ -254,7 +254,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'Hooks',
-                    'route'       => 'facilitador.hooks',
+                    'route'       => 'rica.facilitador.hooks',
                     'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',

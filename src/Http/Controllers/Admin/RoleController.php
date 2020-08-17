@@ -4,7 +4,7 @@ namespace Facilitador\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
-use Support\Http\Controllers\Manager\RepositoryController;
+use Support\Http\Controllers\RiCa\Manager\RepositoryController;
 use Facilitador\Services\FacilitadorService;
 use Support\Services\RepositoryService;
 use Support\Services\ModelService;
@@ -28,7 +28,7 @@ class RoleController extends Controller
 
         // $roles = Role::all();
 
-        // return view('root.roles.index', compact('roles'));
+        // return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -38,7 +38,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('root.roles.create');
+        return view('admin.roles.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class RoleController extends Controller
     {
         $role = Role::findOrFail($id);
 
-        return view('root.roles.edit', compact('role'));
+        return view('admin.roles.edit', compact('role'));
     }
 
     /**

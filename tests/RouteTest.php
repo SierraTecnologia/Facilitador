@@ -21,7 +21,7 @@ class RouteTest extends TestCase
         $urls = [
             route('rica.dashboard'),
             route('rica.stalker.media.index'),
-            route('facilitador.settings.index'),
+            route('rica.facilitador.settings.index'),
             route('facilitador.roles.index'),
             route('facilitador.roles.create'),
             route('facilitador.roles.show', 1),
