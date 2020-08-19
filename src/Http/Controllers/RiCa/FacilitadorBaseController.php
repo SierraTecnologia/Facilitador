@@ -159,10 +159,10 @@ class FacilitadorBaseController extends Controller
             }
         }
 
-        $view = 'facilitador::cruds.bread.browse';
+        $view = 'support::cruds.bread.browse';
 
-        if (view()->exists("facilitador::cruds.$slug.browse")) {
-            $view = "facilitador::cruds.$slug.browse";
+        if (view()->exists("support::cruds.$slug.browse")) {
+            $view = "support::cruds.$slug.browse";
         }
 
         return Facilitador::view(
@@ -236,10 +236,10 @@ class FacilitadorBaseController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'facilitador::cruds.bread.read';
+        $view = 'support::cruds.bread.read';
 
-        if (view()->exists("facilitador::cruds.$slug.read")) {
-            $view = "facilitador::cruds.$slug.read";
+        if (view()->exists("support::cruds.$slug.read")) {
+            $view = "support::cruds.$slug.read";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
@@ -292,10 +292,10 @@ class FacilitadorBaseController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'facilitador::cruds.bread.edit-add';
+        $view = 'support::cruds.bread.edit-add';
 
-        if (view()->exists("facilitador::cruds.$slug.edit-add")) {
-            $view = "facilitador::cruds.$slug.edit-add";
+        if (view()->exists("support::cruds.$slug.edit-add")) {
+            $view = "support::cruds.$slug.edit-add";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
@@ -380,10 +380,10 @@ class FacilitadorBaseController extends Controller
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
-        $view = 'facilitador::cruds.bread.edit-add';
+        $view = 'support::cruds.bread.edit-add';
 
-        if (view()->exists("facilitador::cruds.$slug.edit-add")) {
-            $view = "facilitador::cruds.$slug.edit-add";
+        if (view()->exists("support::cruds.$slug.edit-add")) {
+            $view = "support::cruds.$slug.edit-add";
         }
 
         return Facilitador::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
@@ -762,7 +762,7 @@ class FacilitadorBaseController extends Controller
                 ->route("facilitador.{$dataType->slug}.index")
                 ->with(
                     [
-                    'message'    => __('facilitador::cruds.bread.ordering_not_set'),
+                    'message'    => __('support::cruds.bread.ordering_not_set'),
                     'alert-type' => 'error',
                     ]
                 );
@@ -778,10 +778,10 @@ class FacilitadorBaseController extends Controller
 
         $dataRow = Facilitador::model('DataRow')->whereDataTypeId($dataType->id)->whereField($display_column)->first();
 
-        $view = 'facilitador::cruds.bread.order';
+        $view = 'support::cruds.bread.order';
 
-        if (view()->exists("facilitador::cruds.$slug.order")) {
-            $view = "facilitador::cruds.$slug.order";
+        if (view()->exists("support::cruds.$slug.order")) {
+            $view = "support::cruds.$slug.order";
         }
 
         return Facilitador::view(

@@ -15,7 +15,7 @@ Alternatively you can override the views for **all** BREADs by creating any of t
 #### Overriding submit button:
 You can override the submit button without the need to override the whole `edit-add.blade.php` by extending the `submit-buttons` section:  
 ```blade
-@extends('facilitador::cruds.bread.edit-add')
+@extends('support::cruds.bread.edit-add')
 @section('submit-buttons')
     @parent
     <button type="submit" class="btn btn-primary save">Save And Publish</button>

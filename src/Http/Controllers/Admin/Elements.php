@@ -91,7 +91,7 @@ class Elements extends Base
 
         // Render the view
         return $this->populateView(
-            'facilitador::components.elements.index', [
+            'support::components.elements.index', [
             'elements' => $elements,
             'locale' => $locale,
             'tab' => $tab,
@@ -348,7 +348,7 @@ class Elements extends Base
     {
         return View::make('support::layouts.decoy.blank')
             ->nest(
-                'content', 'facilitador::components.elements.field', [
+                'content', 'support::components.elements.field', [
                 'element' => app('facilitador.elements')
                     ->localize(Facilitador::locale())
                     ->hydrate(true)
