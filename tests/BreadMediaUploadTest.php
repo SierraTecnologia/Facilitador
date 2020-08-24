@@ -18,7 +18,7 @@ class BreadMediaUploadTest extends TestCase
     protected $details = '{"thumbnails":[{"name":"small","scale":"25%"},{"name":"medium","scale":"50%"},{"name":"large","scale":"75%"}]}';
     protected $storage;
 
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
 

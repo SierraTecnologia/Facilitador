@@ -2,8 +2,8 @@
 namespace Tests;
 
 use Auth;
-use Facilitador\Models\Admin;
 use Cache;
+use Facilitador\Models\Admin;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
@@ -37,7 +37,7 @@ abstract class TestCase extends LaravelTestCase
      *
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         set_time_limit(1200);

@@ -23,7 +23,7 @@ class AbstractActionTest extends TestCase
      */
     protected $user;
 
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
 

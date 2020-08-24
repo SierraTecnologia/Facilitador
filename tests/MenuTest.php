@@ -7,7 +7,7 @@ use Facilitador\Models\Menu;
 
 class MenuTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
 

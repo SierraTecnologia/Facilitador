@@ -3,7 +3,7 @@
 namespace Facilitador\Test\Forms\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Facilitador\Models\Post;
+use Siravel\Models\Blog\Post;
 
 class Tag extends Model
 {

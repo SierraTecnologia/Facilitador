@@ -11,7 +11,7 @@ class TestCase extends OrchestraTestCase
 {
     protected $withDummy = true;
 
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
 

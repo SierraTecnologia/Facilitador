@@ -27,7 +27,7 @@ class ModelFilterTest extends TestCase
      */
     protected $config;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->builder = m::mock(EloquentBuilder::class);
         $this->filter = new TestModelFilter($this->builder);

@@ -3,8 +3,8 @@
 namespace Facilitador\Models;
 
 use App\Models\Model;
-use App\Models\User;
 use App\Models\Negocio;
+use App\Models\User;
 use Translation\Models\Language;
 
 class Setting extends Model
@@ -141,7 +141,7 @@ class Setting extends Model
                 'name' => 'Titulo do Backoffice',
                 'description' => 'Aparecerá no canto superior esquerdo',
                 'options' => 'string',
-                'defaultValue' => 'CMSitec',
+                'defaultValue' => env('APP_TITLE', 'Gpower'),
                 'target' => Negocio::class,
                 'config' => "adminlte.title",
             ],
@@ -149,7 +149,7 @@ class Setting extends Model
                 'name' => 'Prefixo do Tituto do Backoffice',
                 'description' => 'Aparecerá no canto superior esquerdo',
                 'options' => 'string',
-                'defaultValue' => 'CMSitec',
+                'defaultValue' => env('APP_TITLE_PREFIX', 'G'),
                 'target' => Negocio::class,
                 'config' => "adminlte.title_prefix",
             ],
@@ -157,18 +157,18 @@ class Setting extends Model
                 'name' => 'Logo do Backoffice',
                 'description' => 'Aparecerá no canto superior esquerdo',
                 'options' => 'string',
-                'defaultValue' => '<b>CM</b>Sitec',
+                'defaultValue' => env('APP_TITLE_LOGO', '<b>G</b>Power'),
                 'target' => Negocio::class,
                 'config' => "adminlte.logo",
             ],
-            'backoffice-logo_mini' => [
-                'name' => 'MiniLogo do Backoffice',
-                'description' => 'Aparecerá no canto superior esquerdo',
-                'options' => 'string',
-                'defaultValue' => '<b>C</b>MS',
-                'target' => Negocio::class,
-                'config' => "adminlte.logo_mini",
-            ],
+            // 'backoffice-logo_mini' => [
+            //     'name' => 'MiniLogo do Backoffice',
+            //     'description' => 'Aparecerá no canto superior esquerdo',
+            //     'options' => 'string',
+            //     'defaultValue' => '<b>C</b>MS',
+            //     'target' => Negocio::class,
+            //     'config' => "adminlte.logo_mini",
+            // ],
             
 
             /**

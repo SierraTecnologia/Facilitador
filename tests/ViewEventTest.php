@@ -8,7 +8,7 @@ class ViewEventTest extends TestCase
 {
     public $eventTrigered = false;
 
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
 

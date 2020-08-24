@@ -1,6 +1,6 @@
 <?php
 
-namespace Facilitador\Http\Controllers\Admin;
+namespace Facilitador\Http\Controllers\RiCa;
 
 use Hash;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = \App\Models\User::all();
 
-        return view('admin.users.index', compact('users'));
+        return view('facilitador::admin.users.index', compact('users'));
     }
 
     /**
@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('facilitador::admin.users.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
         $userRoles = $user->roles;
         $userPermissions = $user->permissions;
 
-        return view('admin.users.edit', compact('user', 'roles', 'permissions', 'userRoles', 'userPermissions'));
+        return view('facilitador::admin.users.edit', compact('user', 'roles', 'permissions', 'userRoles', 'userPermissions'));
     }
 
     /**

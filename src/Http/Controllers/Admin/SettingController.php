@@ -2,9 +2,9 @@
 
 namespace Facilitador\Http\Controllers\Admin;
 
+use Facilitador\Models\Setting;
 use Illuminate\Http\Request;
 use Siravel\Http\Requests\Admin\SettingRequest;
-use Facilitador\Models\Setting;
 
 class SettingController extends Controller
 {
@@ -18,6 +18,10 @@ class SettingController extends Controller
         $settings = Setting::all();
         $otherOptions = Setting::settingsForNegocios();
 
+        foreach ($settings as $setting) {
+            unset($otherOptions[$setting->code]);
+        }
+
         return view('admin.settings.index', compact('settings', 'otherOptions'));
     }
 
@@ -26,12 +30,12 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function configure($slugSetting)
+    public function configure($codeSetting)
     {
-        $settingInstance = Setting::where('slug', $slugSetting)->first();
-        $settingRules = Setting::settingsForNegocios()[$slugSetting];
+        $settingInstance = Setting::where('code', $codeSetting)->first();
+        $settingRules = Setting::settingsForNegocios()[$codeSetting];
 
-        return view('admin.settings.configure', compact('settingInstance', 'settingRules', 'slugSetting'));
+        return view('admin.settings.configure', compact('settingInstance', 'settingRules', 'codeSetting'));
     }
 
     /**
@@ -40,15 +44,15 @@ class SettingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($slugSetting, SettingRequest $request)
+    public function store($codeSetting, SettingRequest $request)
     {
-        if ($settingInstance = Setting::where('slug', $slugSetting)->first()){
+        if ($settingInstance = Setting::where('code', $codeSetting)->first()){
             $settingInstance->update([
                 'value'       => $request->value
             ]);
         } else {
             Setting::create([
-                'slug'       => $slugSetting,
+                'code'       => $codeSetting,
                 'value'       => $request->value
             ]);
         }

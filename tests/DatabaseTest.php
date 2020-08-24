@@ -15,7 +15,7 @@ class DatabaseTest extends TestCase
 
     protected $table;
 
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
 

@@ -26,7 +26,7 @@ class ModelFilterChildTest extends TestCase
      */
     protected $db;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->model = new User;
         $this->dbSetup();

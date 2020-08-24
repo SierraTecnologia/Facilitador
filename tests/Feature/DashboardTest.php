@@ -8,7 +8,7 @@ use Facilitador\Tests\TestCase;
 
 class DashboardTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
 

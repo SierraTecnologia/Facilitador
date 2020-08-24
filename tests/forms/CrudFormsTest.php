@@ -6,7 +6,7 @@ use Facilitador\Test\Forms\Models\Post;
 
 class CrudFormsTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
     }

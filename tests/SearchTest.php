@@ -4,7 +4,7 @@ namespace Facilitador\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;
-use Facilitador\Models\Post;
+use Siravel\Models\Blog\Post;
 
 class SearchTest extends TestCase
 {
@@ -12,7 +12,7 @@ class SearchTest extends TestCase
 
     protected $user;
 
-    public function setUp(): void
+    protected function setUp(): void: void
     {
         parent::setUp();
 

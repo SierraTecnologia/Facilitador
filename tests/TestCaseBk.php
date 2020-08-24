@@ -36,7 +36,7 @@ class TestCase extends Orchestra\Testbench\TestCase
         ];
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

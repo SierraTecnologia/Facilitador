@@ -10,8 +10,8 @@
         <div class="box card box-primary">
             <div class="box-body card-body">
                 <div class="row" style="padding-left: 20px">
-                    @include('root.users.show_fields')
-                    <a href="{!! route('root.users.index') !!}" class="btn btn-default">{!! trans('words.back') !!}</a>
+                    @include('facilitador::admin.users.show_fields')
+                    <a href="{!! route('admin.users.index') !!}" class="btn btn-default">{!! trans('words.back') !!}</a>
                 </div>
             </div>
         </div>

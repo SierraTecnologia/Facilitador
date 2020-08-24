@@ -6,7 +6,7 @@ use Support\Models\DataType;
 use Facilitador\Models\Menu;
 use Facilitador\Models\MenuItem;
 use Facilitador\Models\Permission;
-use Facilitador\Models\Post;
+use Siravel\Models\Blog\Post;
 
 class PostsTableSeeder extends Seeder
 {
