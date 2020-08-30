@@ -16,7 +16,7 @@ class RolesTest extends TestCase
      */
     public function testRoles()
     {
-        $this->visit(route('facilitador.login'))
+        $this->visit(route('rica.login'))
             ->type('admin@admin.com', 'email')
             ->type('password', 'password')
             ->press(__('facilitador::generic.login'))

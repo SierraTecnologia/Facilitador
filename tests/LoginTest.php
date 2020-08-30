@@ -8,7 +8,7 @@ class LoginTest extends TestCase
 {
     public function testSuccessfulLoginWithDefaultCredentials()
     {
-        $this->visit(route('facilitador.login'))
+        $this->visit(route('rica.login'))
             ->type('admin@admin.com', 'email')
             ->type('password', 'password')
             ->press(__('facilitador::generic.login'))
@@ -17,13 +17,13 @@ class LoginTest extends TestCase
 
     public function testShowAnErrorMessageWhenITryToLoginWithWrongCredentials()
     {
-        session()->setPreviousUrl(route('facilitador.login'));
+        session()->setPreviousUrl(route('rica.login'));
 
-        $this->visit(route('facilitador.login'))
+        $this->visit(route('rica.login'))
             ->type('john@Doe.com', 'email')
             ->type('pass', 'password')
             ->press(__('facilitador::generic.login'))
-            ->seePageIs(route('facilitador.login'))
+            ->seePageIs(route('rica.login'))
             ->see(__('auth.failed'))
             ->seeInField('email', 'john@Doe.com');
     }

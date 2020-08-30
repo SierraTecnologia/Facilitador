@@ -24,7 +24,7 @@ class FacilitadorController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('facilitador.login');
+        return redirect()->route('rica.login');
     }
 
     public function upload(Request $request)

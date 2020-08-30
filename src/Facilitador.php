@@ -10,7 +10,6 @@ use Crypto;
 use Facilitador\Models\Menu;
 use Facilitador\Models\MenuItem;
 use Facilitador\Models\Permission;
-use Siravel\Models\Blog\Post;
 use Facilitador\Models\Role;
 use Facilitador\Models\Setting;
 use Facilitador\Models\Translation;
@@ -25,7 +24,9 @@ use ReflectionClass;
 use Request;
 use Session;
 use Siravel\Models\Blog\Category;
+use Siravel\Models\Blog\Post;
 use Siravel\Models\Negocios\Page;
+use Support;
 use Support\Elements\FormFields\After\HandlerInterface as AfterHandlerInterface;
 use Support\Elements\FormFields\HandlerInterface;
 use Support\Events\AlertsCollection;
@@ -37,7 +38,6 @@ use Support\Template\Actions\EditAction;
 use Support\Template\Actions\RestoreAction;
 use Support\Template\Actions\ViewAction;
 use Translation\Traits\HasTranslations;
-
 use View;
 
 class Facilitador
@@ -141,10 +141,10 @@ class Facilitador
 
 
         // The view
-        if (is_string($content)) {
-            $layout->content = View::make($content);
+        if (is_string($name)) {
+            $layout->content = View::make($name);
         } else {
-            $layout->content = $content;
+            $layout->content = $name;
         }
 
         // Set vars
@@ -156,7 +156,7 @@ class Facilitador
         // to it.  In the case of the index view, `content` is a Fields\Listing
         // instance, not a Laravel view
         if (is_a($layout->content, 'Illuminate\View\View')) {
-            $layout->content->with($vars);
+            $layout->content->with($parameters);
         }
 
         // Return the layout View
@@ -393,16 +393,11 @@ class Facilitador
      */
     public function title()
     {
-        // If no title has been set, try to figure it out based on breadcrumbs
-        $title = View::yieldContent('title');
-        if (empty($title)) {
-            $title = app('rica.breadcrumbs')->title();
-        }
-
-        // Set the title
-        $site = $this->site();
-
-        return '<title>' . ($title ? "$title | $site" : $site) . '</title>';
+        return Support::title();
+    }
+    public function description()
+    {
+        return Support::description();
     }
 
     /**
@@ -525,14 +520,14 @@ class Facilitador
         } elseif (method_exists($item, $column)) {
             return call_user_func([$item, $column]);
 
-            // Else if the column is a property, echo it
+        // Else if the column is a property, echo it
         } elseif (array_key_exists($column, $attributes)) {
 
             // Format date if appropriate
             if ($convert_dates && preg_match('/^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}:\d{2})?$/', $item->$column)) {
                 return date($date_formats[$convert_dates], strtotime($item->$column));
 
-                // If the column name has a plural form as a static array or method on the model, use the key
+            // If the column name has a plural form as a static array or method on the model, use the key
                 // against that array and pull the value.  This is designed to handle my convention
                 // of setting the source for pulldowns, radios, and checkboxes as static arrays
                 // on the model.
@@ -555,7 +550,7 @@ class Facilitador
                     )
                 );
 
-                // Just display the column value
+            // Just display the column value
             } else {
                 return $item->$column;
             }
@@ -618,7 +613,8 @@ class Facilitador
         if (!is_null($this->is_handling)) {
             return $this->is_handling;
         }
-        if (env('DECOY_TESTING')) { return true;
+        if (env('DECOY_TESTING')) {
+            return true;
         }
         $this->is_handling = preg_match('#^'.Config::get('application.routes.main').'($|/)'.'#i', Request::path());
 

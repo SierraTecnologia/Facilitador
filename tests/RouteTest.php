@@ -13,7 +13,7 @@ class RouteTest extends TestCase
     {
         $this->disableExceptionHandling();
 
-        $this->visit(route('facilitador.login'));
+        $this->visit(route('rica.login'));
         $this->type('admin@admin.com', 'email');
         $this->type('password', 'password');
         $this->press(__('facilitador::generic.login'));

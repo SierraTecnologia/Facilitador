@@ -1,7 +1,17 @@
 <?php
 
 namespace Facilitador\Traits\Providers;
-    
+
+use FacilitadorHooks\FacilitadorHooksServiceProvider;
+use Facilitador\Facades\Facilitador as FacilitadorFacade;
+use Facilitador\Facilitador;
+use Facilitador\Models\MenuItem;
+use Facilitador\Models\Setting;
+use Facilitador\Policies\BasePolicy;
+use Facilitador\Policies\MenuItemPolicy;
+use Facilitador\Policies\SettingPolicy;
+use Facilitador\Providers\FacilitadorDummyServiceProvider;
+use Facilitador\Providers\FacilitadorEventServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\AliasLoader;
@@ -15,16 +25,6 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageServiceProvider;
 use Larapack\DoctrineSupport\DoctrineSupportServiceProvider;
-use FacilitadorHooks\FacilitadorHooksServiceProvider;
-use Facilitador\Facades\Facilitador as FacilitadorFacade;
-use Facilitador\Models\MenuItem;
-use Facilitador\Models\Setting;
-use Facilitador\Policies\BasePolicy;
-use Facilitador\Policies\MenuItemPolicy;
-use Facilitador\Policies\SettingPolicy;
-use Facilitador\Providers\FacilitadorDummyServiceProvider;
-use Facilitador\Providers\FacilitadorEventServiceProvider;
-use Facilitador\Facilitador;
 use Support\Alert;
     
 trait VoyagerProviderTrait
@@ -52,13 +52,12 @@ trait VoyagerProviderTrait
 
         $this->app->singleton(
             'FacilitadorGuard', function () {
-                return \Illuminate\Support\Facades\Config::get('auth.defaults.guard', 'web');
+                return 'facilitador'; //\Illuminate\Support\Facades\Config::get('auth.defaults.guard', 'web');
             }
         );
 
 
         if (!$this->app->runningInConsole() || \Illuminate\Support\Facades\Config::get('app.env') == 'testing') {
-
             $this->registerPublishableResources();
         }
     }
@@ -107,6 +106,4 @@ trait VoyagerProviderTrait
             $this->publishes($paths, $group);
         }
     }
-
-
 }

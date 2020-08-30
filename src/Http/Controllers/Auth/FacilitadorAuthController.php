@@ -2,10 +2,10 @@
 
 namespace Facilitador\Http\Controllers\Auth;
 
+use Facilitador\Facades\Facilitador;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Facilitador\Facades\Facilitador;
 
 class FacilitadorAuthController extends Controller
 {
@@ -52,7 +52,7 @@ class FacilitadorAuthController extends Controller
      */
     public function redirectTo()
     {
-        return \Illuminate\Support\Facades\Config::get('sitec.facilitador.user.redirect', route('rica.dashboard'));
+        return route('rica.dashboard'); //\Illuminate\Support\Facades\Config::get('sitec.facilitador.user.redirect', route('rica.dashboard'));
     }
 
     /**
