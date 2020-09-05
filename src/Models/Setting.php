@@ -5,6 +5,7 @@ namespace Facilitador\Models;
 use App\Models\Model;
 use App\Models\Negocio;
 use App\Models\User;
+use Support\Events\SettingUpdated;
 use Translation\Models\Language;
 
 class Setting extends Model
