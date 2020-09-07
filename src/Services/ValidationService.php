@@ -135,11 +135,11 @@ class ValidationService
     private static function getInput($key, $jsonInput)
     {
         if ($jsonInput) {
-            $input = Input::json($key);
-        } elseif (Input::file($key)) {
-            $input = Input::file($key);
+            $input = Request::input($key); //Input::json($key);
+        } elseif (Request::input($key)) {//Input::file($key)) {
+            $input = Request::input($key); //Input::file($key);
         } else {
-            $input = Input::get($key);
+            $input = Request::input($key); //Input::get($key);
         }
 
         return $input;
@@ -155,15 +155,15 @@ class ValidationService
     private static function inputsArray($jsonInput)
     {
         if ($jsonInput) {
-            $inputs = Input::json();
+            $inputs = Request::all(); //Input::json();
         } else {
-            $inputs = Input::all();
+            $inputs = Request::all(); //Input::all();
 
             // Don't send the token back
             unset($inputs['_token']);
 
             foreach ($inputs as $key => $value) {
-                if (Input::file($key)) {
+                if (Request::input($key)) { //Input::file($key)) {
                     unset($inputs[$key]);
                 }
             }

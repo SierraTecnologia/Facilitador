@@ -2,9 +2,9 @@
 
 namespace Facilitador\Http;
 
+use Illuminate\Support\Facades\Auth;
 use JeroenNoten\LaravelAdminLte\Menu\Builder;
 use JeroenNoten\LaravelAdminLte\Menu\Filters\FilterInterface;
-use Illuminate\Support\Facades\Auth;
 use Laratrust;
 use Session;
 
@@ -16,16 +16,16 @@ class MenuFilter implements FilterInterface
         //     return false;
         // }
 //         if (!isset($item['header']) && $item['text']!=="Dashboard" && $item['text']!=="Visitas" && $item['text']!=="Plugins" && $item['text']!=="Others" )
-// dd($item);
+        // dd($item);
         $user = Auth::user();
 
         // if (!$this->verifyLevel($item, $user)) {
         //     return false;
         // }
 
-        if (!$this->verifySpace($item, $user)) {
-            return false;
-        }
+        // if (!$this->verifySpace($item, $user)) {
+        //     return false;
+        // }
 
         // Translate
         if (isset($item["text"])) {
@@ -39,13 +39,12 @@ class MenuFilter implements FilterInterface
 
     private function verifySpace($item, $user)
     {
-
         $space = null;
         if (isset($item['space'])) {
             $space = $item['space'];
         }
 
-        if (empty($space)){
+        if (empty($space)) {
             return true;
         }
 
