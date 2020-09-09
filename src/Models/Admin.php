@@ -74,7 +74,7 @@ class Admin extends Base implements
      * @param  Illuminate\Database\Query\Builder $query
      * @return void
      */
-    public function scopeOrdered($query)
+    public function scopeOrdered(Builder $query, string $direction = 'asc')
     {
         $query->orderBy('last_name')->orderBy('first_name');
     }

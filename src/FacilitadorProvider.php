@@ -69,14 +69,15 @@ class FacilitadorProvider extends ServiceProvider
      * Rotas do Menu
      */
     public static $menuItens = [
-        // [
-        //     'text' => 'Painel',
-        //     'icon' => 'fas fa-fw fa-search',
-        //     'icon_color' => "blue",
-        //     'label_color' => "success",
-        //     'space'      => 'painel',
-        //     'level'       => 2, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        // ],
+        [
+            'text' => 'Painel',
+            'icon' => 'fas fa-fw fa-search',
+            'icon_color' => "blue",
+            'label_color' => "success",
+            'section'     => 'painel',
+            'space'      => 'painel', // @todo remover space
+            'level'       => 2, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        ],
         // // 'User|50' => [
         //     // [
         //     //     'text'        => 'Dashboard',
