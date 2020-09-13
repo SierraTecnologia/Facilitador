@@ -35,6 +35,6 @@ class ElementsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('elements');
+        Schema::dropIfExists('elements');
     }
 }

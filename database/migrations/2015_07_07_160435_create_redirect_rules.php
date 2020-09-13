@@ -34,6 +34,6 @@ class CreateRedirectRules extends Migration
      */
     public function down()
     {
-        Schema::drop('redirect_rules');
+        Schema::dropIfExists('redirect_rules');
     }
 }
