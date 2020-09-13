@@ -19,7 +19,7 @@ class SettingController extends Controller
         $otherOptions = Setting::settingsForNegocios();
 
         foreach ($settings as $setting) {
-            unset($otherOptions[$setting->code]);
+            unset($otherOptions[$setting->setting_key]);
         }
 
         return view('admin.settings.index', compact('settings', 'otherOptions'));
@@ -32,7 +32,7 @@ class SettingController extends Controller
      */
     public function configure($codeSetting)
     {
-        $settingInstance = Setting::where('code', $codeSetting)->first();
+        $settingInstance = Setting::where('setting_key', $codeSetting)->first();
         $settingRules = Setting::settingsForNegocios()[$codeSetting];
 
         return view('admin.settings.configure', compact('settingInstance', 'settingRules', 'codeSetting'));
@@ -46,13 +46,13 @@ class SettingController extends Controller
      */
     public function store($codeSetting, SettingRequest $request)
     {
-        if ($settingInstance = Setting::where('code', $codeSetting)->first()){
+        if ($settingInstance = Setting::where('setting_key', $codeSetting)->first()) {
             $settingInstance->update([
                 'value'       => $request->value
             ]);
         } else {
             Setting::create([
-                'code'       => $codeSetting,
+                'setting_key'       => $codeSetting,
                 'value'       => $request->value
             ]);
         }

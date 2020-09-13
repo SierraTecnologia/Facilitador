@@ -3,37 +3,37 @@
 namespace Facilitador\Models;
 
 // Deps
-use URL;
-use HTML;
-use Mail;
-use Facilitador;
-use Config;
-use Request;
-use SupportURL;
 use Bkwld\Library\Utils\Text;
+use Carbon\Carbon;
+use Config;
+use Facilitador;
 use Facilitador\Auth\AuthInterface;
+use Facilitador\Contracts\User as UserContract;
 use Facilitador\Notifications\ResetPassword;
+use Facilitador\Traits\FacilitadorUser;
+use HTML;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Illuminate\Database\Eloquent\Builder;
-
-use Carbon\Carbon;
-use Facilitador\Contracts\User as UserContract;
-use Facilitador\Traits\FacilitadorUser;
-
+use Illuminate\Foundation\Auth\User as UserAuthenticatable;
 use Illuminate\Notifications\Notifiable;
+
+use Laravel\Passport\HasApiTokens;
+use Mail;
+use Population\Manipule\Builders\UserBuilder;
+
+use Request;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use App\Models\Model;
 // use Illuminate\Contracts\Auth\Access\Authorizable;
 // use Illuminate\Contracts\Auth\CanResetPassword;
-use Illuminate\Foundation\Auth\User as UserAuthenticatable;
+use SupportURL;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Telefonica\Traits\AsHuman;
-use Laravel\Passport\HasApiTokens;
-use Population\Manipule\Builders\UserBuilder;
+use URL;
 
 // class Admin extends Base implements
 //     AuthInterface,
@@ -160,7 +160,7 @@ class User extends Base implements
     /**
      * @inheritdoc
      */
-    protected static function boot()
+    public static function boot()
     {
         parent::boot();
 
@@ -221,7 +221,7 @@ class User extends Base implements
 
     /**
      * Referentes a Business
-     * 
+     *
      * Retorna 3 Caso seja Deus
      * Retorna 2 Caso seja Admin
      * Retorna 1 Caso seja Inscrito
@@ -419,7 +419,9 @@ class User extends Base implements
 
         // Send the email
         Mail::send(
-            'facilitador::emails.create', $email, function ($m) use ($email) {
+            'facilitador::emails.create',
+            $email,
+            function ($m) use ($email) {
                 $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
                 $m->subject('Welcome to the '.Facilitador::site().' admin site');
             }
@@ -448,7 +450,9 @@ class User extends Base implements
 
         // Send the email
         Mail::send(
-            'facilitador::emails.update', $email, function ($m) use ($email) {
+            'facilitador::emails.update',
+            $email,
+            function ($m) use ($email) {
                 $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
                 $m->subject('Your '.Facilitador::site().' admin account info has been updated');
             }
@@ -464,7 +468,6 @@ class User extends Base implements
      */
     public function can($action, $controller)
     {
-        
         return app(Gate::class)
             ->forUser($this)
             ->check('facilitador.auth', [$action, $controller]);
@@ -643,7 +646,8 @@ class User extends Base implements
                 }
 
                 return $title;
-            }, \Illuminate\Support\Facades\Config::get('sitec.site.roles')
+            },
+            \Illuminate\Support\Facades\Config::get('sitec.site.roles')
         );
     }
 
@@ -659,7 +663,8 @@ class User extends Base implements
         $controllers = array_map(
             function ($path) {
                 return 'App\Http\Controllers\Admin\\'.basename($path, '.php');
-            }, glob(app_path('/Http/Controllers/Admin/*.php'))
+            },
+            glob(app_path('/Http/Controllers/Admin/*.php'))
         );
 
         // Add some Decoy controllers
@@ -670,7 +675,8 @@ class User extends Base implements
 
         // Alphabetize the controller classes
         usort(
-            $controllers, function ($a, $b) {
+            $controllers,
+            function ($a, $b) {
                 return substr($a, strrpos($a, '\\') + 1) > substr($b, strrpos($b, '\\') + 1);
             }
         );
@@ -712,16 +718,20 @@ class User extends Base implements
                         // Filter the list of roles to just the roles that allow the
                         // permission currently being iterated through
                         'roles' => array_filter(
-                            $roles, function ($role) use ($action, $class) {
+                            $roles,
+                            function ($role) use ($action, $class) {
                                 return with(new Admin(['role' => $role]))->can($action, $class);
                             }
                         ),
 
                         ];
-                    }, $permissions, array_keys($permissions)
+                    },
+                    $permissions,
+                    array_keys($permissions)
                 ),
                 ];
-            }, $controllers
+            },
+            $controllers
         );
     }
 

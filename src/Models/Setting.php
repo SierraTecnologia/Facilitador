@@ -28,9 +28,9 @@ class Setting extends Model
 
     public $incrementing = false;
     protected $casts = [
-        'code' => 'string',
+        'setting_key' => 'string',
     ];
-    protected $primaryKey = 'code';
+    protected $primaryKey = 'setting_key';
     protected $keyType = 'string';
 
     /**
@@ -39,7 +39,7 @@ class Setting extends Model
      * @var array
      */
     protected $fillable = [
-        'code',
+        'setting_key',
         'value',
         'business_code'
     ];
@@ -48,11 +48,11 @@ class Setting extends Model
     {
         $settingsDefault = self::settingsForNegocios();
         
-        if (!isset($this->code)) {
+        if (!isset($this->setting_key)) {
             return false;
         }
 
-        $array = $settingsDefault[$this->code];
+        $array = $settingsDefault[$this->setting_key];
         if (empty($array)) {
             return false;
         }
@@ -66,7 +66,7 @@ class Setting extends Model
             [
                 'name' => 'Default Language',
                 'description' => '',
-                'code' => '',
+                'setting_key' => '',
                 'options' => 'string',
                 'defaultValue' => 'PT',
                 'target' => \Illuminate\Support\Facades\Config::get('application.auth.model', \App\Models\User::class),
@@ -75,7 +75,7 @@ class Setting extends Model
             [
                 'name' => 'Default Money',
                 'description' => '',
-                'code' => '',
+                'setting_key' => '',
                 'options' => 'string',
                 'defaultValue' => 'BTC',
                 'target' => \Illuminate\Support\Facades\Config::get('application.auth.model', \App\Models\User::class),
