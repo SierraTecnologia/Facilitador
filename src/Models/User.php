@@ -466,7 +466,7 @@ class User extends Base implements
      * @param  string $controller
      * @return bool
      */
-    public function can($action, $controller)
+    public function canHability($action, $controller)
     {
         return app(Gate::class)
             ->forUser($this)
