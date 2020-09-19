@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 use MediaManager\Models\Image;
 use Bkwld\Library\Utils\File;
 use Facilitador\Models\Element;
-use Support\Exceptions\ValidationFail;
+use Pedreiro\Exceptions\ValidationFail;
 
 /**
  * Render a form that allows admins to override language files

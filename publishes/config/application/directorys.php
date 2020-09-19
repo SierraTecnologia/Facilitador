@@ -12,7 +12,7 @@
 return [
     'models' => [
         'persons' => \Telefonica\Models\Actors\Person::class,
-        'attribute' => \Facilitador\Models\Attribute::class,
+        'attribute' => \Pedreiro\Models\Attribute::class,
         'attribute_entity' => \Facilitador\Models\AttributeEntity::class,
     ],
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Faker\Generator as Faker;
 
 $factory->define(
-    Facilitador\Models\Attribute::class, function (Faker $faker) {
+    Pedreiro\Models\Attribute::class, function (Faker $faker) {
         return [
         'slug' => $faker->slug,
         'type' => $faker->randomElement(['boolean', 'datetime', 'integer', 'text', 'varchar']),

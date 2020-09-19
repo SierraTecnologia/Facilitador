@@ -138,7 +138,7 @@ setRelation()
 getRelationValue()
 ```
 
-#### `Support\Support\RelationBuilder`
+#### `Pedreiro\Support\RelationBuilder`
 
 This class creates the Eloquent relations to the attribute values based on their type. If they are multi-valued, it will provide a `hasMany` relation, otherwise just a `hasOne`. This class creates closures that return this kind of relations and may be called straight from the entity model. These closures are stored in `$entityAttributeRelations` property in the `\Muleta\Traits\Models\Attributable` trait.
 
@@ -193,7 +193,7 @@ That's it, we only have to include that trait in our Eloquent model!
 **Facilitador Attributes** does NOT register any types by default as this is considered implementation details, so it's up to you to register the core types listed above, or extend them and only register your custom types.
 
 ```php
-use Facilitador\Models\Attribute;
+use Pedreiro\Models\Attribute;
 
 Attribute::typeMap([
     'varchar' => Pedreiro\Elements\Type\Varchar,
@@ -280,7 +280,7 @@ $product->fill(['price' => 123])->save();
 
 Yes, just like that. Easy! You can work with custom attributes like normal attributes, no difference. All the good stuff you know about eloquent applies here too, whether you are updating single field, mass assigning, creating, or updating, **it just works!**
 
-#### `Support\Support\ValueCollection`
+#### `Pedreiro\Support\ValueCollection`
 
 **Facilitador Attributes** let you register multi-valued attributes. In order to make playing with collections easier, we have included a new collection type which just extends `Illuminate\Database\Eloquent\Collection` and provide some extra functionality. This class let us add and remove values from the attribute. What it basically does is to let the user play with a collection class without having to worry about creating Value model instances. A bit of code will help here:
 

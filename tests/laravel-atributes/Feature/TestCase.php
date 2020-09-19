@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Facilitador\Attributes\Tests\Feature;
 
-use Facilitador\Models\Attribute;
+use Pedreiro\Models\Attribute;
 use Facilitador\Attributes\Tests\Stubs\User;
 use Facilitador\Providers\AttributesServiceProvider;
 

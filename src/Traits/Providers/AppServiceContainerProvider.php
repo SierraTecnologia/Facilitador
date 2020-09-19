@@ -84,7 +84,7 @@ trait AppServiceContainerProvider
         // Build the Elements collection
         $this->app->singleton(
             'facilitador.elements', function ($app) {
-                return with(new \Support\Collections\Elements)->setModel(\Support\Models\Element::class);
+                return with(new \Pedreiro\Collections\Elements)->setModel(\Support\Models\Element::class);
             }
         );
 

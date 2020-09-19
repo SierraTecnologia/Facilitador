@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Facilitador\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Facilitador\Models\Attribute;
+use Pedreiro\Models\Attribute;
 use Facilitador\Models\AttributeEntity;
 use Facilitador\Console\Commands\MigrateCommand;
 use Facilitador\Console\Commands\PublishCommand;
