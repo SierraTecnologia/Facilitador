@@ -15,7 +15,7 @@ use Stalker\Http\Requests\FileRequest;
 use Stalker\Services\Midia\FileService;
 use Muleta\Services\ValidationService;
 use Stalker\Repositories\FileRepository;
-use Support\Services\RiCaResponseService;
+use Muleta\Services\RiCaResponseService;
 
 class FilesController extends SitecController
 {
