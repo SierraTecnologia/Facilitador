@@ -12,7 +12,7 @@ use Request;
 use Redirect;
 use Validator;
 use Illuminate\Support\Str;
-use Stalker\Models\Image;
+use MediaManager\Models\Image;
 use Bkwld\Library\Utils\File;
 use Facilitador\Models\Element;
 use Support\Exceptions\ValidationFail;
