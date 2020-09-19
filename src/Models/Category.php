@@ -29,42 +29,42 @@ class Category extends Model
     }
 
 
-	/**
-	 * Returns a formatted post content entry,
-	 * this ensures that line breaks are returned.
-	 *
-	 * @return string
-	 */
-	public function description()
-	{
-		return nl2br($this->description);
-	}
+    /**
+     * Returns a formatted post content entry,
+     * this ensures that line breaks are returned.
+     *
+     * @return string
+     */
+    public function description()
+    {
+        return nl2br($this->description);
+    }
 
-	/**
-	 * Get the author.
-	 *
-	 * @return User
-	 */
-	public function author()
-	{
-		return $this->belongsTo(User::class, 'user_id');
-	}
+    /**
+     * Get the author.
+     *
+     * @return User
+     */
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
-	/**
-	 * Get the slider's images.
-	 *
-	 * @return array
-	 */
-	public function articles()
-	{
-		return $this->hasMany(Article::class,'article_category_id');
-	}
+    /**
+     * Get the slider's images.
+     *
+     * @return array
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'article_category_id');
+    }
 
-	/**
-	 * Get the slider's images.
-	 *
-	 * @return array
-	 */
+    /**
+     * Get the slider's images.
+     *
+     * @return array
+     */
     public function posts()
     {
         return $this->hasMany(Facilitador::modelClass('Post'))
@@ -72,13 +72,13 @@ class Category extends Model
             ->orderBy('created_at', 'DESC');
     }
 
-	/**
-	 * Get the category's language.
-	 *
-	 * @return Language
-	 */
-	public function language()
-	{
-		return $this->belongsTo(Language::class,'language_code');
-	}
+    /**
+     * Get the category's language.
+     *
+     * @return Language
+     */
+    public function language()
+    {
+        return $this->belongsTo(Language::class, 'language_code');
+    }
 }

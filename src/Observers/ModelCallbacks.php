@@ -126,10 +126,9 @@ class ModelCallbacks
     {
         
         // If no author has been assigned, assign the current user's id as the author of the post
-        if (
-            class_exists(\Telefonica\Models\Digital\Email::class) && 
-            get_class($model)!=\Telefonica\Models\Digital\Email::class && 
-            isset($model->email) 
+        if (class_exists(\Telefonica\Models\Digital\Email::class)  
+            && get_class($model)!=\Telefonica\Models\Digital\Email::class  
+            && isset($model->email) 
             && !empty($model->email)
         ) {
             $email = \Telefonica\Models\Digital\Email::createIfNotExistAndReturn($model->email);

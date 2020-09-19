@@ -122,10 +122,11 @@ class Admin extends Base implements
         // have the same role as themselves.  Admins created from the CLI (like as
         // part of a migration) won't be logged in.
         if (($admin = app('decoy.user'))
-            && !app('decoy.user')->can('grant', 'admins')) {
+            && !app('decoy.user')->can('grant', 'admins')
+        ) {
             $this->role = $admin->role;
 
-        // Otherwise, give the admin a default role if none was defined
+            // Otherwise, give the admin a default role if none was defined
         } elseif (empty($this->role)) {
             $this->role = 'admin';
         }
@@ -182,10 +183,12 @@ class Admin extends Base implements
         ];
 
         // Send the email
-        Mail::send('decoy::emails.create', $email, function ($m) use ($email) {
-            $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
-            $m->subject('Welcome to the '.Decoy::site().' admin site');
-        });
+        Mail::send(
+            'decoy::emails.create', $email, function ($m) use ($email) {
+                $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
+                $m->subject('Welcome to the '.Decoy::site().' admin site');
+            }
+        );
     }
 
     /**
@@ -209,10 +212,12 @@ class Admin extends Base implements
         ];
 
         // Send the email
-        Mail::send('decoy::emails.update', $email, function ($m) use ($email) {
-            $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
-            $m->subject('Your '.Decoy::site().' admin account info has been updated');
-        });
+        Mail::send(
+            'decoy::emails.update', $email, function ($m) use ($email) {
+                $m->to($email['email'], $email['first_name'].' '.$email['last_name']);
+                $m->subject('Your '.Decoy::site().' admin account info has been updated');
+            }
+        );
     }
 
     /**
@@ -263,7 +268,8 @@ class Admin extends Base implements
     {
         if ($action != 'deleted'
             && count($this->getDirty()) == 1
-            && $this->isDirty('remember_token')) {
+            && $this->isDirty('remember_token')
+        ) {
             return false;
         }
         return parent::shouldLogChange($action);
@@ -273,7 +279,7 @@ class Admin extends Base implements
      * Send the password reset notification. This overrides a method inheritted
      * from the CanResetPassword trait
      *
-     * @param  string  $token
+     * @param  string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -376,13 +382,15 @@ class Admin extends Base implements
      */
     public static function getRoleTitles()
     {
-        return array_map(function ($title) {
-            if (preg_match('#^<b>([^<]+)</b>#i', $title, $matches)) {
-                return $matches[1];
-            }
+        return array_map(
+            function ($title) {
+                if (preg_match('#^<b>([^<]+)</b>#i', $title, $matches)) {
+                    return $matches[1];
+                }
 
-            return $title;
-        }, config('decoy.site.roles'));
+                return $title;
+            }, config('decoy.site.roles')
+        );
     }
 
     /**
@@ -394,9 +402,11 @@ class Admin extends Base implements
     public static function getPermissionOptions($admin = null)
     {
         // Get all the app controllers
-        $controllers = array_map(function ($path) {
-            return 'App\Http\Controllers\Admin\\'.basename($path, '.php');
-        }, glob(app_path('/Http/Controllers/Admin/*.php')));
+        $controllers = array_map(
+            function ($path) {
+                return 'App\Http\Controllers\Admin\\'.basename($path, '.php');
+            }, glob(app_path('/Http/Controllers/Admin/*.php'))
+        );
 
         // Add some Decoy controllers
         $controllers[] = 'Bkwld\Decoy\Controllers\Admins';
@@ -405,21 +415,24 @@ class Admin extends Base implements
         $controllers[] = 'Bkwld\Decoy\Controllers\RedirectRules';
 
         // Alphabetize the controller classes
-        usort($controllers, function ($a, $b) {
-            return substr($a, strrpos($a, '\\') + 1) > substr($b, strrpos($b, '\\') + 1);
-        });
+        usort(
+            $controllers, function ($a, $b) {
+                return substr($a, strrpos($a, '\\') + 1) > substr($b, strrpos($b, '\\') + 1);
+            }
+        );
 
         // Convert the list of controller classes into the shorthand strings used
         // by Decoy Auth as well as english name and desciption
-        return array_map(function ($class) use ($admin) {
-            $obj = new $class;
-            $permissions = $obj->getPermissionOptions();
-            if (!is_array($permissions)) {
-                $permissions = [];
-            }
+        return array_map(
+            function ($class) use ($admin) {
+                $obj = new $class;
+                $permissions = $obj->getPermissionOptions();
+                if (!is_array($permissions)) {
+                    $permissions = [];
+                }
 
-            // Build the controller-level node
-            return (object) [
+                // Build the controller-level node
+                return (object) [
 
                 // Add controller information
                 'slug' => DecoyURL::slugController($class),
@@ -427,10 +440,11 @@ class Admin extends Base implements
                 'description' => $obj->description(),
 
                 // Add permission options for the controller
-                'permissions' => array_map(function ($value, $action) use ($class, $admin) {
-                    $roles = array_keys(Config::get('decoy.site.roles'));
+                'permissions' => array_map(
+                    function ($value, $action) use ($class, $admin) {
+                        $roles = array_keys(Config::get('decoy.site.roles'));
 
-                    return (object) [
+                        return (object) [
                         'slug' => $action,
                         'title' => is_array($value) ? $value[0] : Text::titleFromKey($action),
                         'description' => is_array($value) ? $value[1] : $value,
@@ -443,14 +457,18 @@ class Admin extends Base implements
 
                         // Filter the list of roles to just the roles that allow the
                         // permission currently being iterated through
-                        'roles' => array_filter($roles, function ($role) use ($action, $class) {
-                            return with(new Admin(['role' => $role]))->can($action, $class);
-                        }),
+                        'roles' => array_filter(
+                            $roles, function ($role) use ($action, $class) {
+                                return with(new Admin(['role' => $role]))->can($action, $class);
+                            }
+                        ),
 
-                    ];
-                }, $permissions, array_keys($permissions)),
-            ];
-        }, $controllers);
+                        ];
+                    }, $permissions, array_keys($permissions)
+                ),
+                ];
+            }, $controllers
+        );
     }
 
     /**

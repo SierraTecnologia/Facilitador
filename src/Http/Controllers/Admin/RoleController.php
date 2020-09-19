@@ -19,9 +19,11 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $facilitadorService = app(FacilitadorService::class);
-        $repositoryService = new RepositoryService(new ModelService(
-            Role::class
-        ));
+        $repositoryService = new RepositoryService(
+            new ModelService(
+                Role::class
+            )
+        );
         $baseControl = new RepositoryController($facilitadorService, $repositoryService);
 
         return $baseControl->index($request);

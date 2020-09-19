@@ -7,7 +7,7 @@ trait HasRoles
     /**
      * Assign a role to the user
      *
-     * @param  string $roleName
+     * @param  string  $roleName
      * @param  integer $userId
      * @return void
      */
@@ -22,7 +22,7 @@ trait HasRoles
     /**
      * Unassign a role from the user
      *
-     * @param  string $roleName
+     * @param  string  $roleName
      * @param  integer $userId
      * @return void
      */
@@ -37,7 +37,7 @@ trait HasRoles
     /**
      * Unassign all roles from the user
      *
-     * @param  string $roleName
+     * @param  string  $roleName
      * @param  integer $userId
      * @return void
      */

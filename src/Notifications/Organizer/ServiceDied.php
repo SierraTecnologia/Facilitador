@@ -22,7 +22,7 @@ class ServiceDied extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      *
-     * @param $organizerToken
+     * @param  $organizerToken
      * @return void
      */
     public function __construct($organizer)
@@ -33,7 +33,7 @@ class ServiceDied extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -44,7 +44,7 @@ class ServiceDied extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toSms($notifiable)
@@ -52,7 +52,7 @@ class ServiceDied extends Notification implements ShouldQueue
         $number = \App\Tools\Filter::phone($notifiable->telefone_celular);
 
         $nomeProdutora = '';
-        if (!empty($this->_organizer) && isset($this->_organizer->nome)){
+        if (!empty($this->_organizer) && isset($this->_organizer->nome)) {
             $nomeProdutora = $this->_organizer->nome;
         }
 
@@ -72,7 +72,7 @@ class ServiceDied extends Notification implements ShouldQueue
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return array
      */
     public function toArray($notifiable)

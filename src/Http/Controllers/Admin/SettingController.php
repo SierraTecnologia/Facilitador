@@ -41,20 +41,24 @@ class SettingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store($codeSetting, SettingRequest $request)
     {
         if ($settingInstance = Setting::where('setting_key', $codeSetting)->first()) {
-            $settingInstance->update([
+            $settingInstance->update(
+                [
                 'value'       => $request->value
-            ]);
+                ]
+            );
         } else {
-            Setting::create([
+            Setting::create(
+                [
                 'setting_key'       => $codeSetting,
                 'value'       => $request->value
-            ]);
+                ]
+            );
         }
 
         flash()->overlay('Setting configure successfully.');
@@ -65,7 +69,7 @@ class SettingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Setting $setting)
