@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Support\Elements\Entities\Fields\SelectAutoCompleteController;
+use Pedreiro\Elements\Fields\SelectAutoCompleteController;
 
 /*
 |--------------------------------------------------------------------------

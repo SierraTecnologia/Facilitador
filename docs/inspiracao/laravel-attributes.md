@@ -181,11 +181,11 @@ That's it, we only have to include that trait in our Eloquent model!
 ### Core types
 
 ```php
-\Support\Elements\Entities\Type\Text::class
-\Support\Elements\Entities\Type\Boolean::class
-\Support\Elements\Entities\Type\Integer::class
-\Support\Elements\Entities\Type\Varchar::class
-\Support\Elements\Entities\Type\Datetime::class
+\Pedreiro\Elements\Type\Text::class
+\Pedreiro\Elements\Type\Boolean::class
+\Pedreiro\Elements\Type\Integer::class
+\Pedreiro\Elements\Type\Varchar::class
+\Pedreiro\Elements\Type\Datetime::class
 ```
 
 ### Register your types
@@ -196,7 +196,7 @@ That's it, we only have to include that trait in our Eloquent model!
 use Facilitador\Models\Attribute;
 
 Attribute::typeMap([
-    'varchar' => Support\Elements\Entities\Type\Varchar,
+    'varchar' => Pedreiro\Elements\Type\Varchar,
     // ...
     'custom' => \Path\To\Your\Type::class,
 ]);

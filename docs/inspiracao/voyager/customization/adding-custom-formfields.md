@@ -9,7 +9,7 @@ First we create a new class in our project \(it doesn't matter where it is place
 
 namespace App\FormFields;
 
-use Support\Elements\FormFields\AbstractHandler;
+use Pedreiro\Elements\FormFields\AbstractHandler;
 
 class NumberFormField extends AbstractHandler
 {

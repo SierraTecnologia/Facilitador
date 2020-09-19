@@ -21,11 +21,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
         // Registering the core type map
         Attribute::typeMap(
             [
-            'text' => \Support\Elements\Entities\Type\Text::class,
-            'bool' => \Support\Elements\Entities\Type\Boolean::class,
-            'integer' => \Support\Elements\Entities\Type\Integer::class,
-            'varchar' => \Support\Elements\Entities\Type\Varchar::class,
-            'datetime' => \Support\Elements\Entities\Type\Datetime::class,
+            'text' => \Pedreiro\Elements\Type\Text::class,
+            'bool' => \Pedreiro\Elements\Type\Boolean::class,
+            'integer' => \Pedreiro\Elements\Type\Integer::class,
+            'varchar' => \Pedreiro\Elements\Type\Varchar::class,
+            'datetime' => \Pedreiro\Elements\Type\Datetime::class,
             ]
         );
 
