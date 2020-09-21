@@ -2,7 +2,7 @@
 
 namespace Facilitador\Models;
 
-abstract class Base extends \Support\Models\Base
+abstract class Base extends \Pedreiro\Models\Base
 {
 
 }

@@ -6,7 +6,7 @@ use Event;
 use Log;
 use Illuminate\Support\Str;
 use Facilitador;
-use Support\Models\Base;
+use Pedreiro\Models\Base;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Throwable;
 
