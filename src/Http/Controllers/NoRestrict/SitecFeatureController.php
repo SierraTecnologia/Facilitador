@@ -4,7 +4,7 @@ namespace Facilitador\Http\Controllers\NoRestrict;
 
 use Siravel;
 use Informate\Models\System\Archive;
-use Stalker\Services\FileService;
+use MediaManager\Services\FileService;
 use Translation\Services\LanguageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;

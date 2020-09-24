@@ -1,11 +1,11 @@
 <?php
 
+use Facilitador\Facades\Facilitador;
 use Illuminate\Support\Str;
 use Support\Events\Routing;
 use Support\Events\RoutingAdmin;
 use Support\Events\RoutingAdminAfter;
 use Support\Events\RoutingAfter;
-use Facilitador\Facades\Facilitador;
 
 // Public routes
 Route::group(
@@ -14,7 +14,6 @@ Route::group(
     ], function () {
         $loadingRoutes = [
         'public',
-        'auth',
         ];
         event(new Routing());
         foreach ($loadingRoutes as $loadingRoute) {
@@ -22,4 +21,4 @@ Route::group(
         }
         event(new RoutingAfter());
     }
-);    
+);

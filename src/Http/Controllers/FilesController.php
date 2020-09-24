@@ -12,7 +12,7 @@ use CryptoService;
 use Stalker\Models\File;
 use Illuminate\Http\Request;
 use Stalker\Http\Requests\FileRequest;
-use Stalker\Services\FileService;
+use MediaManager\Services\FileService;
 use Muleta\Services\ValidationService;
 use Stalker\Repositories\FileRepository;
 use Muleta\Services\RiCaResponseService;

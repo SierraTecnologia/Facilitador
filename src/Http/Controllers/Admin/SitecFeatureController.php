@@ -4,7 +4,7 @@ namespace Facilitador\Http\Controllers\Admin;
 
 use Siravel;
 use Informate\Models\System\Archive;
-use Stalker\Services\FileService;
+use MediaManager\Services\FileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;

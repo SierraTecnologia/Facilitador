@@ -38,6 +38,8 @@
         "socialiteproviders/github": "dev-master",
         "socialiteproviders/jira": ">=2.1",
         "socialiteproviders/linkedin": ">=3.0",
+        "sierratecnologia/pedreiro": "dev-master",
+        "sierratecnologia/porteiro": "dev-master",
         "sierratecnologia/tracking": "dev-master",
         "sierratecnologia/transmissor": "dev-master",
         "sierratecnologia/audit": "dev-master",
