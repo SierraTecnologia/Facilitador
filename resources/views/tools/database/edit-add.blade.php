@@ -1,4 +1,4 @@
-@extends('support::layouts.voyager.master')
+@extends('pedreiro::layouts.voyager.master')
 @if($db->action == 'update')
     @section('page_title', __('facilitador::database.editing_table', ['table' => $db->table->name]))
 @else

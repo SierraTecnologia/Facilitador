@@ -63,7 +63,7 @@ Gate::define(`browse_create_bill`, function ($user) {
 to use `authorize` in your controller:
 
 ```php
-public function index()
+public function index(Request $request)
 {
   $this->authorize('browse_create_bill');
   //..

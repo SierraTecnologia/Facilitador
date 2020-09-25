@@ -153,7 +153,7 @@ class Articles extends Base {
     'Title' => 'getAdminTitleHtmlAttribute',
     'Date' => 'date',
   ];
-  protected $search = [
+  public $search = [
     'title',
     'date' => 'date',
   ];

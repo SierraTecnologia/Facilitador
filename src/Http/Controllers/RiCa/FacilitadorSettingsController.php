@@ -9,7 +9,7 @@ use Facilitador\Facades\Facilitador;
 
 class FacilitadorSettingsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Check permission
         // $this->authorize('browse', Facilitador::model('Setting'));

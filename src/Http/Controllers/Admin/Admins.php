@@ -3,9 +3,9 @@
 namespace Facilitador\Http\Controllers\Admin;
 
 use App;
-use Request;
-use Redirect;
 use Facilitador\Models\Admin;
+use Illuminate\Http\Request;
+use Redirect;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
@@ -16,7 +16,7 @@ class Admins extends Base
     /**
      * @var string
      */
-    protected $show_view = 'facilitador::admin.edit';
+    public $show_view = 'facilitador::admin.edit';
 
     /**
      * Make search options dependent on whether the site is using roles
@@ -80,7 +80,7 @@ class Admins extends Base
      *
      * @return Symfony\Component\HttpFoundation\Response|void
      */
-    public function index()
+    public function index(Request $request)
     {
         if (!app('facilitador.user')->can('read', 'admins')) {
             return Redirect::to(app('facilitador.user')->getUserUrl());
@@ -107,7 +107,7 @@ class Admins extends Base
      * @throws AccessDeniedHttpException
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         // Encorce permissions on updating ones own role
         if (!app('facilitador.user')->can('update', 'admins') && Request::has('role')) {

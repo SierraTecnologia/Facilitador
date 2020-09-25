@@ -346,7 +346,7 @@ class Elements extends Base
      */
     public function field($key)
     {
-        return View::make('support::layouts.decoy.blank')
+        return View::make('pedreiro::layouts.decoy.blank')
             ->nest(
                 'content', 'support::components.elements.field', [
                 'element' => app('facilitador.elements')
@@ -389,7 +389,7 @@ class Elements extends Base
         // Return the layout with JUST a script variable with the element value
         // after saving.  Thus, post any saving callback operations.
         return View::make(
-            'support::layouts.decoy.blank', [
+            'pedreiro::layouts.decoy.blank', [
             'content' => "<div id='response' data-key='{$key}'>{$el}</div>"
             ]
         );

@@ -1,4 +1,4 @@
-@extends('support::layouts.voyager.master')
+@extends('pedreiro::layouts.voyager.master')
 
 @section('content')
     <div class="page-content">

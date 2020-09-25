@@ -86,7 +86,7 @@ public function onSaving()
 Additionally, you can use this array for searching the list view by referencing it in the `search` property on your controller:
 
 ```php?start_inline=1
-protected $search = array(
+public $search = array(
   'title',
   'category' => array(
     'type' => 'select',

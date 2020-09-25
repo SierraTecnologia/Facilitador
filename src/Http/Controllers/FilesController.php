@@ -39,7 +39,7 @@ class FilesController extends SitecController
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $result = $this->repository->paginated();
 

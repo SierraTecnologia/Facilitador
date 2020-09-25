@@ -31,7 +31,7 @@ class RedirectRules extends Base
     /**
      * @var array
      */
-    protected $search = [
+    public $search = [
         'from',
         'to',
         'code' => [

@@ -20,7 +20,7 @@ class Workers extends Base
      *
      * @return Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         return $this->populateView(
             'facilitador::tools.workers.index', [

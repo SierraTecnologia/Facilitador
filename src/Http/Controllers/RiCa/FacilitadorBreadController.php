@@ -16,7 +16,7 @@ use Facilitador\Facades\Facilitador;
 
 class FacilitadorBreadController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // $this->authorize('browse_bread');
 

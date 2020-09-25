@@ -10,9 +10,9 @@ return [
     'name' => \Illuminate\Support\Facades\Config::get('app.name', 'SiravelAdmin'),
 
     // The layout to use
-    'layout' => 'support::layouts.adminlte.master',
-    // 'layout' => 'support::layouts.voyager.master',
-    // 'layout' => 'support::layouts.decoy.default',
+    'layout' => 'pedreiro::layouts.adminlte.master',
+    // 'layout' => 'pedreiro::layouts.voyager.master',
+    // 'layout' => 'pedreiro::layouts.decoy.default',
 
 
     /**

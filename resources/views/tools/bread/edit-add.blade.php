@@ -1,4 +1,4 @@
-@extends('support::layouts.voyager.master')
+@extends('pedreiro::layouts.voyager.master')
 
 @if (isset($dataType->id))
     @section('page_title', __('support::cruds.bread.edit_bread_for_table', ['table' => $dataType->name]))
