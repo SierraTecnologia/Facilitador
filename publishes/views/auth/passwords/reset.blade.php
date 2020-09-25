@@ -11,7 +11,7 @@
                 {!! csrf_field() !!}
                 <input type="hidden" name="token" value="{{ $token }}">
 
-                @include('partials.errors')
+                @include('pedreiro::partials.errors')
                 @include('partials.status')
 
                 <div class="col-md-12 form-group">

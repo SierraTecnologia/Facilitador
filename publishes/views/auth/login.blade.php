@@ -23,8 +23,8 @@
                     </label>
                 </div>
                 <div class="col-md-12 form-group">
-                    <a class="btn btn-default pull-left" href="/password/reset">{!! trans('features.forgotPassword') !!}</a>
-                    <button class="btn btn-primary pull-right" type="submit">{!! trans('features.login') !!}</button>
+                    <a class="btn btn-secondary float-left" href="/password/reset">{!! trans('features.forgotPassword') !!}</a>
+                    <button class="btn btn-primary float-right" type="submit">{!! trans('features.login') !!}</button>
                 </div>
 
                 <div class="col-md-12 form-group">

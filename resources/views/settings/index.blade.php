@@ -353,7 +353,7 @@
                 </div>
 
             </div>
-            <button type="submit" class="btn btn-primary pull-right">{{ __('facilitador::settings.save') }}</button>
+            <button type="submit" class="btn btn-primary float-right">{{ __('facilitador::settings.save') }}</button>
         </form>
 
         <div style="clear:both"></div>
@@ -412,7 +412,7 @@
                         </div>
                     </div>
                     <div style="clear:both"></div>
-                    <button type="submit" class="btn btn-primary pull-right new-setting-btn">
+                    <button type="submit" class="btn btn-primary float-right new-setting-btn">
                         <i class="facilitador-plus"></i> {{ __('facilitador::settings.add_new') }}
                     </button>
                     <div style="clear:both"></div>
@@ -438,9 +438,9 @@
                     <form action="#" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger pull-right delete-confirm" value="{{ __('facilitador::settings.delete_confirm') }}">
+                        <input type="submit" class="btn btn-danger float-right delete-confirm" value="{{ __('facilitador::settings.delete_confirm') }}">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
                 </div>
             </div>
         </div>

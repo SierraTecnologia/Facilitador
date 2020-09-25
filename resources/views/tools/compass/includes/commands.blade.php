@@ -11,7 +11,7 @@
         <form action="{{ route('facilitador.compass.post') }}" class="cmd_form" method="POST">
             {{ csrf_field() }}
             <input type="text" name="args" autofocus class="form-control" placeholder="{{ __('facilitador::compass.commands.additional_args') }}">
-            <input type="submit" class="btn btn-primary pull-right delete-confirm"
+            <input type="submit" class="btn btn-primary float-right delete-confirm"
                     value="{{ __('facilitador::compass.commands.run_command') }}">
             <input type="hidden" name="command" id="hidden_cmd" value="{{ $command->name }}">
         </form>

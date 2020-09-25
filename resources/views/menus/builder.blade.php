@@ -46,10 +46,10 @@
                           method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger pull-right delete-confirm"
+                        <input type="submit" class="btn btn-danger float-right delete-confirm"
                                value="{{ __('facilitador::menu_builder.delete_item_confirm') }}">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -110,8 +110,8 @@
                         <input type="hidden" name="id" id="m_id" value="">
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success pull-right delete-confirm__" value="{{ __('facilitador::generic.update') }}">
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                        <input type="submit" class="btn btn-success float-right delete-confirm__" value="{{ __('facilitador::generic.update') }}">
+                        <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->

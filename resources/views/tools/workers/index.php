@@ -2,7 +2,7 @@
     <fieldset data-js-view="worker" data-log-url=<?php echo route('facilitador.workers@tail', strtolower(urlencode($worker->getName())))?> data-interval="<?php echo $worker->currentInterval('raw')?>">
         <div class="legend sidebar-header"><?php echo ucwords(str_replace(':', ' : ', $worker->getName())) ?>
 
-            <div class="pull-right actions">
+            <div class="float-right actions">
                 <span class="status">
                     <?php if ($worker->isRunning() == 'ok') : ?>
                         <span class="glyphicon glyphicon-ok"></span>

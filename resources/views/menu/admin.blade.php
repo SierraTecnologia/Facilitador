@@ -3,11 +3,11 @@
 @foreach ($items as $item)
 
     <li class="dd-item" data-id="{{ $item->id }}">
-        <div class="pull-right item_actions">
-            <div class="btn btn-sm btn-danger pull-right delete" data-id="{{ $item->id }}">
+        <div class="float-right item_actions">
+            <div class="btn btn-sm btn-danger float-right delete" data-id="{{ $item->id }}">
                 <i class="facilitador-trash"></i> {{ __('facilitador::generic.delete') }}
             </div>
-            <div class="btn btn-sm btn-primary pull-right edit"
+            <div class="btn btn-sm btn-primary float-right edit"
                 data-id="{{ $item->id }}"
                 data-title="{{ $item->title }}"
                 data-url="{{ $item->url }}"

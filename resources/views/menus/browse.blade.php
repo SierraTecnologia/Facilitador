@@ -45,17 +45,17 @@
                                     @endforeach
                                     <td class="no-sort no-click bread-actions">
                                         @can('delete', $data)
-                                            <div class="btn btn-sm btn-danger pull-right delete" data-id="{{ $data->{$data->getKeyName()} }}">
+                                            <div class="btn btn-sm btn-danger float-right delete" data-id="{{ $data->{$data->getKeyName()} }}">
                                                 <i class="facilitador-trash"></i> {{ __('facilitador::generic.delete') }}
                                             </div>
                                         @endcan
                                         @can('edit', $data)
-                                            <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-primary pull-right edit">
+                                            <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-primary float-right edit">
                                                 <i class="facilitador-edit"></i> {{ __('facilitador::generic.edit') }}
                                             </a>
                                         @endcan
                                         @can('edit', $data)
-                                            <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'builder', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-success pull-right">
+                                            <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'builder', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-success float-right">
                                                 <i class="facilitador-list"></i> {{ __('facilitador::generic.builder') }}
                                             </a>
                                         @endcan
@@ -85,9 +85,9 @@
                     <form action="#" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger pull-right delete-confirm" value="{{ __('facilitador::generic.delete_this_confirm') }} {{ $dataType->getTranslatedAttribute('display_name_singular') }}">
+                        <input type="submit" class="btn btn-danger float-right delete-confirm" value="{{ __('facilitador::generic.delete_this_confirm') }} {{ $dataType->getTranslatedAttribute('display_name_singular') }}">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
                 </div>
             </div>
         </div>
