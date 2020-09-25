@@ -29,7 +29,7 @@
     </div>
     <div class="col-xs-2">
         @if($isModelTranslatable)
-            @include('support::shared.forms.multilingual.input-hidden', [
+            @include('pedreiro::multilingual.input-hidden', [
                 'isModelTranslatable' => true,
                 '_field_name'         => 'field_display_name_' . $relationship['field'],
                 '_field_trans' => get_field_translations($relationship, 'display_name')

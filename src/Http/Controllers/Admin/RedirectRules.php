@@ -12,19 +12,19 @@ class RedirectRules extends Base
     /**
      * @var string
      */
-    protected $title = 'Redirects';
+    public $title = 'Redirects';
     
-    protected $model = RedirectRule::class;
+    public $model = RedirectRule::class;
 
     /**
      * @var string
      */
-    protected $description = 'Rules that redirect an internal URL path to another.';
+    public $description = 'Rules that redirect an internal URL path to another.';
 
     /**
      * @var array
      */
-    protected $columns = [
+    public $columns = [
         'Rule' => 'getAdminTitleAttribute',
     ];
 

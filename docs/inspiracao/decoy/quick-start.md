@@ -147,7 +147,7 @@ namespace App\Http\Controllers\Admin;
 use Facilitador\Http\Controllers\Admin\Base;
 
 class Articles extends Base {
-  protected $title = 'News';
+  public $title = 'News';
   protected $description = 'Articles that appear in the News section.';
   protected $columns = [
     'Title' => 'getAdminTitleHtmlAttribute',

@@ -182,7 +182,7 @@ class FacilitadorProvider extends ServiceProvider
         //         // ],
         //         [
         //             'text'        => 'Medias',
-        //             'route'       => 'admin.media.index',
+        //             'route'       => 'master.media.index',
         //             'icon'        => 'fas fa-fw fa-cog',
         //             'icon_color'  => 'blue',
         //             'label_color' => 'success',

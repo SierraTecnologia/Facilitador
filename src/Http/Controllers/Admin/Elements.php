@@ -25,12 +25,12 @@ class Elements extends Base
     /**
      * @var string
      */
-    protected $title = 'Elements';
+    public $title = 'Elements';
 
     /**
      * @var string
      */
-    protected $description = 'Copy, images, and files that aren\'t managed as part of an item in a list.';
+    public $description = 'Copy, images, and files that aren\'t managed as part of an item in a list.';
 
     /**
      * All elements view

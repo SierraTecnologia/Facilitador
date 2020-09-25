@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Config;
 
 class ApiController extends SitecController
 {
-    protected $model;
+    public $model;
 
     public function __construct(Request $request)
     {
