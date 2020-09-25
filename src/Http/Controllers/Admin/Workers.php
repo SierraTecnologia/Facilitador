@@ -4,6 +4,8 @@ namespace Facilitador\Http\Controllers\Admin;
 
 use Facilitador\Exceptions\Exception;
 use Support\Models\Worker;
+use Illuminate\Http\Request;
+
 
 /**
  * Check the status of workers from the admin

@@ -93,7 +93,7 @@ class Admins extends Base
      *
      * @return void
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         unset(Admin::$rules['password']);
         return parent::edit($id);

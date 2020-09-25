@@ -3,19 +3,19 @@
 namespace Facilitador\Http\Controllers\Admin;
 
 use App;
-use URL;
-use View;
-use Facilitador;
+use Bkwld\Library\Utils\File;
 use Config;
+use Facilitador;
+use Facilitador\Models\Element;
 use Former;
-use Request;
-use Redirect;
-use Validator;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use MediaManager\Models\Image;
-use Bkwld\Library\Utils\File;
-use Facilitador\Models\Element;
 use Pedreiro\Exceptions\ValidationFail;
+use Redirect;
+use URL;
+use Validator;
+use View;
 
 /**
  * Render a form that allows admins to override language files
@@ -46,7 +46,7 @@ class Elements extends Base
             $tab = $locale;
             $locale = null;
 
-            // Otherwise, set a default locale if none was specified
+        // Otherwise, set a default locale if none was specified
         } elseif (!$locale) {
             $locale = Facilitador::defaultLocale();
         }
@@ -63,7 +63,8 @@ class Elements extends Base
         // If handling a deep link to a tab, verify that the passed tab
         // slug is a real key in the data.  Else 404.
         if ($tab && !in_array(
-            $tab, $elements->pluck('page_label')
+            $tab,
+            $elements->pluck('page_label')
                 ->map(
                     function ($title) {
                         return Str::slug($title);
@@ -91,7 +92,8 @@ class Elements extends Base
 
         // Render the view
         return $this->populateView(
-            'support::components.elements.index', [
+            'support::components.elements.index',
+            [
             'elements' => $elements,
             'locale' => $locale,
             'tab' => $tab,
@@ -320,14 +322,14 @@ class Elements extends Base
         if ($image = $el->images->first()) {
             $image->fill($data)->save();
 
-            // Or create a new image, if file data was supplied
+        // Or create a new image, if file data was supplied
         } elseif (!empty($data['file'])) {
             $el->value = null;
             $el->save();
             $image = new Image($data);
             $el->images()->save($image);
 
-            // Othweise, nothing to do
+        // Othweise, nothing to do
         } else {
             return;
         }
@@ -348,7 +350,9 @@ class Elements extends Base
     {
         return View::make('pedreiro::layouts.decoy.blank')
             ->nest(
-                'content', 'support::components.elements.field', [
+                'content',
+                'support::components.elements.field',
+                [
                 'element' => app('facilitador.elements')
                     ->localize(Facilitador::locale())
                     ->hydrate(true)
@@ -389,7 +393,8 @@ class Elements extends Base
         // Return the layout with JUST a script variable with the element value
         // after saving.  Thus, post any saving callback operations.
         return View::make(
-            'pedreiro::layouts.decoy.blank', [
+            'pedreiro::layouts.decoy.blank',
+            [
             'content' => "<div id='response' data-key='{$key}'>{$el}</div>"
             ]
         );

@@ -64,7 +64,7 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $role = Role::findOrFail($id);
 
@@ -96,7 +96,7 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $role = Role::findOrFail($id);
 

@@ -186,7 +186,7 @@ class FacilitadorBreadController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         // $this->authorize('browse_bread');
 
