@@ -32,8 +32,10 @@ trait VoyagerProviderTrait
 
     /**
      * Register the application services.
+     *
+     * @return void
      */
-    public function voyagerRegister()
+    public function voyagerRegister(): void
     {
         $this->app->register(FacilitadorEventServiceProvider::class);
         $this->app->register(ImageServiceProvider::class);
@@ -66,8 +68,10 @@ trait VoyagerProviderTrait
      * Bootstrap the application services.
      *
      * @param \Illuminate\Routing\Router $router
+     *
+     * @return void
      */
-    public function voyagerBoot(Router $router, Dispatcher $event)
+    public function voyagerBoot(Router $router, Dispatcher $event): void
     {
         if (\Illuminate\Support\Facades\Config::get('sitec.facilitador.user.add_default_role_on_register')) {
             $model = Auth::guard(app('FacilitadorGuard'))->getProvider()->getModel();
@@ -87,8 +91,10 @@ trait VoyagerProviderTrait
 
     /**
      * Register the publishes files.
+     *
+     * @return void
      */
-    private function registerPublishableResources()
+    private function registerPublishableResources(): void
     {
         $publishesPath = dirname(__DIR__).'/../../../publishes';
 

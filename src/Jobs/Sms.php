@@ -30,9 +30,9 @@ class Sms implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
+     * @return true
      */
-    public function handle()
+    public function handle(): bool
     {
         $ch = curl_init();
         $data = "{

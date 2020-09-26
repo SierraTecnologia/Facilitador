@@ -16,10 +16,7 @@ use function SiUtils\to_string;
  */
 class PostPlainResource extends Resource
 {
-    /**
-     * @var PostEntity
-     */
-    public $resource;
+
 
     /**
      * @inheritdoc

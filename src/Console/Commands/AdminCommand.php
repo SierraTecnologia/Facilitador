@@ -27,6 +27,10 @@ class AdminCommand extends Command
 
     /**
      * Get user options.
+     *
+     * @return (int|null|string)[][]
+     *
+     * @psalm-return array{0: array{0: string, 1: null, 2: int, 3: string, 4: null}}
      */
     protected function getOptions()
     {
@@ -78,7 +82,9 @@ class AdminCommand extends Command
     /**
      * Get command arguments.
      *
-     * @return array
+     * @return (int|null|string)[][]
+     *
+     * @psalm-return array{0: array{0: string, 1: int, 2: string, 3: null}}
      */
     protected function getArguments()
     {

@@ -15,9 +15,9 @@ class Redactor extends Controller
      * Handle uploads of both images and files.  Relying on Decoy to enforce
      * auth checks.
      *
-     * @return array This array gets auto-converted to JSON by Laravel
+     * @return \Illuminate\Http\JsonResponse This array gets auto-converted to JSON by Laravel
      */
-    public function store()
+    public function store(): \Illuminate\Http\JsonResponse
     {
         return response()->json(
             [

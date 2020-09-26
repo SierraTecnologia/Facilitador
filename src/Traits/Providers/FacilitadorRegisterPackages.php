@@ -103,7 +103,7 @@ trait FacilitadorRegisterPackages
      ****************************************************************************************************/
 
 
-    protected function loadExternalPackages()
+    protected function loadExternalPackages(): void
     {
         $this->setProviders();
     }

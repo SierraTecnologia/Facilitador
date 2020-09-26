@@ -11,15 +11,28 @@ class MenuItem extends Model
 {
     use HasTranslations;
 
-    protected $translatorMethods = [
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{link: string}
+     */
+    protected array $translatorMethods = [
         'link' => 'translatorLink',
     ];
 
-    protected $table = 'menu_items';
+    protected string $table = 'menu_items';
 
-    protected $guarded = [];
+    /**
+     * @var array
+     */
+    protected array $guarded = [];
 
-    protected $translatable = ['title'];
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{0: string}
+     */
+    protected array $translatable = ['title'];
 
     public static function boot()
     {
@@ -44,14 +57,24 @@ class MenuItem extends Model
         );
     }
 
-    public function children()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\HasMany<TRelatedModel>
+     */
+    public function children(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Facilitador::modelClass('MenuItem'), 'parent_id')
             ->with('children')
             ->orderBy('order');
     }
 
-    public function menu()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\BelongsTo<Model>
+     */
+    public function menu(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Facilitador::modelClass('Menu'));
     }
@@ -100,7 +123,7 @@ class MenuItem extends Model
         return json_decode($this->attributes['parameters']);
     }
 
-    public function setParametersAttribute($value)
+    public function setParametersAttribute($value): void
     {
         if (is_array($value)) {
             $value = json_encode($value);
@@ -109,7 +132,7 @@ class MenuItem extends Model
         $this->attributes['parameters'] = $value;
     }
 
-    public function setUrlAttribute($value)
+    public function setUrlAttribute($value): void
     {
         if (is_null($value)) {
             $value = '';
@@ -123,9 +146,9 @@ class MenuItem extends Model
      *
      * @param number $parent (Optional) Parent id. Default null
      *
-     * @return number Order number
+     * @return int Order number
      */
-    public function highestOrderMenuItem($parent = null)
+    public function highestOrderMenuItem($parent = null): int
     {
         $order = 1;
 

@@ -18,8 +18,10 @@ class PageDimmer extends BaseDimmer
     /**
      * Treat this method as a controller action.
      * Return view() or other content to display.
+     *
+     * @return \Illuminate\View\View
      */
-    public function run()
+    public function run(): \Illuminate\View\View
     {
         $count = Facilitador::model('Page')->count();
         $string = trans_choice('facilitador::dimmer.page', $count);

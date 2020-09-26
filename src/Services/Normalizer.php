@@ -18,7 +18,7 @@ class Normalizer
         return $this->value;
     }
 
-    public function plain()
+    public function plain(): string
     {
         return strip_tags($this->value);
     }

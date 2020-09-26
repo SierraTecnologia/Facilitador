@@ -34,7 +34,7 @@ trait AppEventsProvider
     }
 
 
-    protected function bootEvents(Dispatcher $events)
+    protected function bootEvents(Dispatcher $events): void
     {
         $events->listen(
             BuildingMenu::class, function (BuildingMenu $event) {

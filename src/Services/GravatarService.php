@@ -81,16 +81,6 @@ class GravatarService
     private $client;
 
     /**
-     * Create new Gravatar helper instance.
-     *
-     * @param \GuzzleHttp\Client $client
-     */
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
-    }
-
-    /**
      * Build a gravatar url.
      *
      * @param $email
@@ -100,7 +90,7 @@ class GravatarService
      *
      * @return string
      */
-    public function buildURL($email, $size = 100, $default = 'mm', $https = true)
+    public function buildURL($email, $size = 100, $default = 'mm', $https = true): string
     {
         $url = ($https) ? self::BASE_HTTPS : self::BASE_HTTP;
 
@@ -144,12 +134,13 @@ class GravatarService
     /**
      * Set the avatar size to use.
      *
-     * @param  integer $size - The avatar size to use, must be less than 512 and greater than 0.
-     * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+     * @param integer $size - The avatar size to use, must be less than 512 and greater than 0.
+     *
+     * @return self - Provides a fluent interface.
      *
      * @throws \InvalidArgumentException
      */
-    public function setAvatarSize($size)
+    public function setAvatarSize($size): self
     {
         // Wipe out the param cache.
         $this->param_cache = null;
@@ -180,12 +171,13 @@ class GravatarService
     /**
      * Set the default image to use for avatars.
      *
-     * @param  mixed $image - The default image to use. Use boolean false for the gravatar default, a string containing a valid image URL, or a string specifying a recognized gravatar "default".
-     * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+     * @param mixed $image - The default image to use. Use boolean false for the gravatar default, a string containing a valid image URL, or a string specifying a recognized gravatar "default".
+     *
+     * @return self - Provides a fluent interface.
      *
      * @throws \InvalidArgumentException
      */
-    public function setDefaultImage($image)
+    public function setDefaultImage($image): self
     {
         // Quick check against boolean false.
         if($image === false) {
@@ -230,12 +222,13 @@ class GravatarService
     /**
      * Set the maximum allowed rating for avatars.
      *
-     * @param  string $rating - The maximum rating to use for avatars ('g', 'pg', 'r', 'x').
-     * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+     * @param string $rating - The maximum rating to use for avatars ('g', 'pg', 'r', 'x').
+     *
+     * @return self - Provides a fluent interface.
      *
      * @throws \InvalidArgumentException
      */
-    public function setMaxRating($rating)
+    public function setMaxRating($rating): self
     {
         // Wipe out the param cache.
         $this->param_cache = null;
@@ -264,23 +257,11 @@ class GravatarService
     /**
      * Enable the use of the secure protocol for image URLs.
      *
-     * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+     * @return self - Provides a fluent interface.
      */
-    public function enableSecureImages()
+    public function enableSecureImages(): self
     {
         $this->use_secure_url = true;
-
-        return $this;
-    }
-
-    /**
-     * Disable the use of the secure protocol for image URLs.
-     *
-     * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
-     */
-    public function disableSecureImages()
-    {
-        $this->use_secure_url = false;
 
         return $this;
     }
@@ -355,8 +336,10 @@ class GravatarService
      * ...Yeah, it's just an alias of buildGravatarURL.  This is just to make it easier to use as a twig asset.
      *
      * @see \thomaswelton\GravatarLib\Gravatar::buildGravatarURL()
+     *
+     * @return string
      */
-    public function get($email, $hash_email = true)
+    public function get($email, $hash_email = true): string
     {
         // Just an alias.  Makes it easy to use this as a twig asset.
         return $this->buildGravatarURL($email, $hash_email);

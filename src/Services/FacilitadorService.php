@@ -28,20 +28,12 @@ class FacilitadorService
 
     protected $config;
 
-    protected $modelServices = false;
-
     public function __construct($config = false)
     {
         if (!$this->config = $config) {
             $this->config = \Illuminate\Support\Facades\Config::get('generators.loader.models', []);
         }
         // $this->getModelServicesToArray(false);
-    }
-
-    public function getModelServices($onlyConfig = true)
-    {
-        $dataTypeRepository = resolve(\Support\Repositories\DataTypeRepository::class);
-        return $dataTypeRepository->allModelsServices();
     }
 
     // public function getDatabaseService()

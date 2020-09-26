@@ -57,7 +57,7 @@ class ControllersCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return null
      */
     public function handle()
     {
@@ -112,10 +112,11 @@ class ControllersCommand extends Command
      *
      * @param $stub
      * @param $class
+     * @param false|string $class
      *
      * @return mixed
      */
-    protected function generateContent($stub, $class)
+    protected function generateContent(string $stub, $class)
     {
         $namespace = \Illuminate\Support\Facades\Config::get('sitec.facilitador.controllers.namespace', 'Facilitador\\Http\\Controllers');
 
@@ -149,7 +150,9 @@ class ControllersCommand extends Command
     /**
      * Get command options.
      *
-     * @return array
+     * @return (int|string)[][]
+     *
+     * @psalm-return array{0: array{0: string, 1: string, 2: int, 3: string}}
      */
     protected function getOptions()
     {

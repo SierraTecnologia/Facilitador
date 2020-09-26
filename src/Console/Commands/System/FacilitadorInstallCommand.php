@@ -11,7 +11,7 @@ use Facilitador\FacilitadorProvider;
 
 class FacilitadorInstallCommand extends Command
 {
-    protected $userModelFile = 'Models/User.php';
+    protected string $userModelFile = 'Models/User.php';
     /**
      * The console command name.
      *
@@ -26,6 +26,11 @@ class FacilitadorInstallCommand extends Command
      */
     protected $description = 'Install the Facilitador Admin package';
 
+    /**
+     * @return (int|null|string)[][]
+     *
+     * @psalm-return array{0: array{0: string, 1: null, 2: int, 3: string, 4: null}}
+     */
     protected function getOptions()
     {
         return [

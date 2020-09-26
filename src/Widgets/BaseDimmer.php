@@ -9,7 +9,7 @@ abstract class BaseDimmer extends AbstractWidget
     /**
      * Determine if the widget should be displayed.
      *
-     * @return bool
+     * @return true
      */
     public function shouldBeDisplayed()
     {

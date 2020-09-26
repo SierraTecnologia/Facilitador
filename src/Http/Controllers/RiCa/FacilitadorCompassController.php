@@ -178,7 +178,12 @@ class LogViewer
      */
     private static $file;
 
-    private static $levels_classes = [
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{debug: string, info: string, notice: string, warning: string, error: string, critical: string, alert: string, emergency: string, processed: string}
+     */
+    private static array $levels_classes = [
         'debug'     => 'info',
         'info'      => 'info',
         'notice'    => 'info',
@@ -190,7 +195,12 @@ class LogViewer
         'processed' => 'info',
     ];
 
-    private static $levels_imgs = [
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{debug: string, info: string, notice: string, warning: string, error: string, critical: string, alert: string, emergency: string, processed: string}
+     */
+    private static array $levels_imgs = [
         'debug'     => 'info',
         'info'      => 'info',
         'notice'    => 'info',
@@ -223,8 +233,10 @@ class LogViewer
 
     /**
      * @param string $file
+     *
+     * @return void
      */
-    public static function setFile($file)
+    public static function setFile($file): void
     {
         $file = self::pathToLogFile($file);
 
@@ -267,7 +279,9 @@ class LogViewer
     }
 
     /**
-     * @return array
+     * @return (mixed|null|string)[][]|null
+     *
+     * @psalm-return list<array{context: string, level: mixed, level_class: mixed, level_img: mixed, date: string, text: string, in_file: null|string, stack: null|string}>|null
      */
     public static function all()
     {
@@ -331,9 +345,11 @@ class LogViewer
     /**
      * @param bool $basename
      *
-     * @return array
+     * @return string[]
+     *
+     * @psalm-return list<string>
      */
-    public static function getFiles($basename = false)
+    public static function getFiles($basename = false): array
     {
         $files = glob(storage_path().'/logs/*.log');
         $files = array_reverse($files);

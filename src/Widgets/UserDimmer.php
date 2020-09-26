@@ -18,8 +18,10 @@ class UserDimmer extends BaseDimmer
     /**
      * Treat this method as a controller action.
      * Return view() or other content to display.
+     *
+     * @return \Illuminate\View\View
      */
-    public function run()
+    public function run(): \Illuminate\View\View
     {
         $count = Facilitador::model('User')->count();
         $string = trans_choice('facilitador::dimmer.user', $count);

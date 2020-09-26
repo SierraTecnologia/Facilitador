@@ -12,15 +12,19 @@ class GravatarServiceProvider extends ServiceProvider
 
     /**
      * Boot the service provider.
+     *
+     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->setupConfig();
     }
     /**
      * Setup the config.
+     *
+     * @return void
      */
-    protected function setupConfig()
+    protected function setupConfig(): void
     {
         $source = realpath(__DIR__.'/../../publishes/config/gravatar.php');
         $this->publishes([$source => config_path('gravatar.php')]);

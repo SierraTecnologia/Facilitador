@@ -28,7 +28,7 @@ trait AppServiceContainerProvider
     /****************************************************************************************************
      * ************************************************* NO REGISTER *************************************
      ****************************************************************************************************/
-    protected function loadAlias()
+    protected function loadAlias(): void
     {
 
         $loader = AliasLoader::getInstance();
@@ -36,7 +36,7 @@ trait AppServiceContainerProvider
 
 
     }
-    protected function loadServiceContainerSingletons()
+    protected function loadServiceContainerSingletons(): void
     {
         
         $this->app->singleton(
@@ -66,7 +66,7 @@ trait AppServiceContainerProvider
         // Return the active user account
         $this->app->singleton(
             'facilitador.user', function ($app) {
-                $guard = \Illuminate\Support\Facades\Config::get('applcation.auth.guard', 'facilitador');
+                \Illuminate\Support\Facades\Config::get('applcation.auth.guard', 'facilitador');
                 // dd('AppContainerGuardFacilitadorUser',$app['auth']->guard($guard)->user(), \Illuminate\Support\Facades\Config::get('applcation.auth.guard', 'facilitador'));
                 return \App\Models\User::first(); //$app['auth']->guard($guard)->user(); // tinha isso aqui tirei 
             }
@@ -119,7 +119,9 @@ trait AppServiceContainerProvider
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return string[]
+     *
+     * @psalm-return array{0: string, 1: string, 2: string, 3: string, 4: string}
      */
     public function provides()
     {

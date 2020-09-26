@@ -13,9 +13,12 @@ use Facilitador\Facades\Facilitador;
  */
 class Menu extends Model
 {
-    protected $table = 'menus';
+    protected string $table = 'menus';
 
-    protected $guarded = [];
+    /**
+     * @var array
+     */
+    protected array $guarded = [];
 
     public static function boot()
     {
@@ -34,12 +37,22 @@ class Menu extends Model
         );
     }
 
-    public function items()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\HasMany<Model>
+     */
+    public function items(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Facilitador::modelClass('MenuItem'));
     }
 
-    public function parent_items()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\HasMany<Model>
+     */
+    public function parent_items(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Facilitador::modelClass('MenuItem'))
             ->whereNull('parent_id');
@@ -109,7 +122,7 @@ class Menu extends Model
         );
     }
 
-    public function removeMenuFromCache()
+    public function removeMenuFromCache(): void
     {
         \Cache::forget('facilitador_menu_'.$this->name);
     }

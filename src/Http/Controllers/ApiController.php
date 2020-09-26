@@ -68,8 +68,10 @@ class ApiController extends SitecController
      * @param string $term
      *
      * @return array
+     *
+     * @psalm-return array{term: mixed, result: mixed}
      */
-    public function search($term)
+    public function search($term): array
     {
         $query = $this->model->orderBy('created_at', 'desc');
         $query->where('id', 'LIKE', '%'.$input['term'].'%');

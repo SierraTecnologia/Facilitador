@@ -12,18 +12,43 @@ class Category extends Model
     use SoftDeletes;
     use HasTranslations;
 
-    protected $table = 'categories';
+    protected string $table = 'categories';
 
-    protected $translatable = ['slug', 'name'];
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{0: string, 1: string}
+     */
+    protected array $translatable = ['slug', 'name'];
 
-    protected $fillable = ['slug', 'name'];
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{0: string, 1: string}
+     */
+    protected array $fillable = ['slug', 'name'];
 
-    protected $dates = ['deleted_at'];
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{0: string}
+     */
+    protected array $dates = ['deleted_at'];
 
-    protected $guarded  = array('id');
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{0: string}
+     */
+    protected array $guarded  = array('id');
     
 
-    public function parentId()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\BelongsTo<self>
+     */
+    public function parentId(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(self::class);
     }
@@ -43,9 +68,11 @@ class Category extends Model
     /**
      * Get the author.
      *
-     * @return User
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\BelongsTo<User>
      */
-    public function author()
+    public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
@@ -53,9 +80,11 @@ class Category extends Model
     /**
      * Get the slider's images.
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\HasMany<Article>
      */
-    public function articles()
+    public function articles(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Article::class, 'article_category_id');
     }
@@ -75,9 +104,11 @@ class Category extends Model
     /**
      * Get the category's language.
      *
-     * @return Language
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\BelongsTo<Language>
      */
-    public function language()
+    public function language(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Language::class, 'language_code');
     }

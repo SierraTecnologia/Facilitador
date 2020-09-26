@@ -14,7 +14,7 @@ class InstallCommand extends Command
 {
     use Seedable;
 
-    protected $seedersPath = __DIR__.'/../../publishes/database/seeds/';
+    protected string $seedersPath = __DIR__.'/../../publishes/database/seeds/';
 
     /**
      * The console command name.
@@ -30,6 +30,11 @@ class InstallCommand extends Command
      */
     protected $description = 'Install the Facilitador Admin package';
 
+    /**
+     * @return (int|null|string)[][]
+     *
+     * @psalm-return array{0: array{0: string, 1: null, 2: int, 3: string, 4: null}, 1: array{0: string, 1: null, 2: int, 3: string, 4: null}}
+     */
     protected function getOptions()
     {
         return [

@@ -52,14 +52,4 @@ class AttributesServiceProvider extends ServiceProvider
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function boot()
-    {
-        // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesConfig('facilitador/laravel-attributes');
-        ! $this->app->runningInConsole() || $this->publishesMigrations('facilitador/laravel-attributes');
-    }
 }

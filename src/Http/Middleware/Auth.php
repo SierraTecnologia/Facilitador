@@ -50,11 +50,13 @@ class Auth
     /**
      * Get the action and controller from an explicilty defined route
      *
-     * @return array action,controller
+     * @return (mixed|string)[] action,controller
      *
      * @throws Exception
+     *
+     * @psalm-return array{0: mixed, 1: string}
      */
-    protected function dectectFromExplicitRoute()
+    protected function dectectFromExplicitRoute(): array
     {
         // Get the action
         $action = Route::current()->getActionName();
@@ -77,9 +79,11 @@ class Auth
     /**
      * Get the action and controller from the wildcard router
      *
-     * @return array action,controller
+     * @return (\Illuminate\Http\Request|array|mixed|string)[] action,controller
+     *
+     * @psalm-return array{0: mixed, 1: \Illuminate\Http\Request|array|mixed|string}
      */
-    protected function dectectFromWildcardRouter()
+    protected function dectectFromWildcardRouter(): array
     {
         $wildcard = App::make('facilitador.wildcard');
 
@@ -106,7 +110,7 @@ class Auth
      * Map the actions from the wildcard router into the smaller set supported by
      * the Decoy permissions system
      */
-    protected function mapActionToPermission($action)
+    protected function mapActionToPermission(string $action)
     {
         switch ($action) {
         case 'new':

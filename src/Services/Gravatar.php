@@ -58,43 +58,6 @@ class Gravatar extends GravatarService
     }
 
     /**
-     * Return the code of HTML image for a Gravatar.
-     *
-     * @param string      $email      The email address.
-     * @param string      $alt        The alt attribute for the image.
-     * @param array       $attributes Override the 'height' and the 'width' of the image if you want.
-     * @param null|string $rating     Override the default rating if you want to.
-     *
-     * @return string The code of the HTML image.
-     */
-    public function image($email, $alt = null, $attributes = [], $rating = null)
-    {
-        $dimensions = [];
-
-        if (array_key_exists('width', $attributes)) {
-            $dimensions[] = $attributes['width'];
-        }
-        if (array_key_exists('height', $attributes)) {
-            $dimensions[] = $attributes['height'];
-        }
-
-        if (count($dimensions) > 0) {
-            $size = min(self::MAX_SIZE, max($dimensions));
-        } else {
-            $size = $this->defaultSize;
-        }
-
-        $src = $this->src($email, $size, $rating);
-
-        if (!array_key_exists('width', $attributes) && !array_key_exists('height', $attributes)) {
-            $attributes['width'] = $this->size;
-            $attributes['height'] = $this->size;
-        }
-
-        return $this->formatImage($src, $alt, $attributes);
-    }
-
-    /**
      * Check if a Gravatar image exists.
      *
      * @param string $email The email address.

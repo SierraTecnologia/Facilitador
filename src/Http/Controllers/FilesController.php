@@ -89,7 +89,7 @@ class FilesController extends SitecController
         $validation = $this->validation->check(File::$rules);
 
         if (!$validation['errors']) {
-            $file = $this->repository->store($request->all());
+            $this->repository->store($request->all());
         } else {
             return $validation['redirect'];
         }
@@ -173,9 +173,9 @@ class FilesController extends SitecController
      * @param int         $id
      * @param FileRequest $request
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, FileRequest $request)
+    public function update($id, FileRequest $request): \Illuminate\Http\RedirectResponse
     {
         $files = $this->repository->find($id);
 
@@ -185,7 +185,7 @@ class FilesController extends SitecController
             return redirect(route('admin.files.index'));
         }
 
-        $files = $this->repository->update($files, $request->all());
+        $this->repository->update($files, $request->all());
 
         Siravel::notification('File updated successfully.', 'success');
 
@@ -197,9 +197,9 @@ class FilesController extends SitecController
      *
      * @param int $id
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $id): \Illuminate\Http\RedirectResponse
     {
         $files = $this->repository->find($id);
 
