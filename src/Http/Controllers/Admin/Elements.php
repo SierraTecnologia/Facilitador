@@ -46,7 +46,7 @@ class Elements extends Base
             $tab = $locale;
             $locale = null;
 
-        // Otherwise, set a default locale if none was specified
+            // Otherwise, set a default locale if none was specified
         } elseif (!$locale) {
             $locale = Facilitador::defaultLocale();
         }
@@ -322,14 +322,14 @@ class Elements extends Base
         if ($image = $el->images->first()) {
             $image->fill($data)->save();
 
-        // Or create a new image, if file data was supplied
+            // Or create a new image, if file data was supplied
         } elseif (!empty($data['file'])) {
             $el->value = null;
             $el->save();
             $image = new Image($data);
             $el->images()->save($image);
 
-        // Othweise, nothing to do
+            // Othweise, nothing to do
         } else {
             return;
         }
