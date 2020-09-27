@@ -2,9 +2,9 @@
 
 namespace Facilitador\Models;
 
+use Facilitador\Facades\Facilitador;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Route;
-use Facilitador\Facades\Facilitador;
 use Translation\Traits\HasTranslations;
 
 class MenuItem extends Model
@@ -20,12 +20,12 @@ class MenuItem extends Model
         'link' => 'translatorLink',
     ];
 
-    protected string $table = 'menu_items';
+    protected $table = 'menu_items';
 
     /**
      * @var array
      */
-    protected array $guarded = [];
+    protected $guarded = [];
 
     /**
      * @var string[]

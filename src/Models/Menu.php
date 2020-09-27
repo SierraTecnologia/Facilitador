@@ -2,23 +2,23 @@
 
 namespace Facilitador\Models;
 
+use Facilitador\Facades\Facilitador;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Support\Events\MenuDisplay;
-use Facilitador\Facades\Facilitador;
 
 /**
  * @todo: Refactor this class by using something like MenuBuilder Helper.
  */
 class Menu extends Model
 {
-    protected string $table = 'menus';
+    protected $table = 'menus';
 
     /**
      * @var array
      */
-    protected array $guarded = [];
+    protected $guarded = [];
 
     public static function boot()
     {
