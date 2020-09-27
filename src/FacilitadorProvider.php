@@ -57,6 +57,261 @@ class FacilitadorProvider extends ServiceProvider
     ];
 
 
+
+    protected $gates = [
+        'browse_admin',
+        'browse_bread',
+        'browse_database',
+        'browse_media',
+        'browse_compass',
+        'browse_hooks',
+    ];
+
+    /**
+     * Rotas do Menu
+     */
+    public static $menuItens = [
+        [
+            'text' => 'Painel',
+            'icon' => 'fas fa-fw fa-search',
+            'icon_color' => "blue",
+            'label_color' => "success",
+            'section'     => 'painel',
+            'space'      => 'painel', // @todo remover space
+            'level'       => 2, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        ],
+        // // 'User|50' => [
+        //     // [
+        //     //     'text'        => 'Dashboard',
+        //     //     'route'       => 'profile.dashboard',
+        //     //     'icon'        => 'fas fa-fw fa-industry',
+        //     //     'icon_color'  => 'blue',
+        //     //     'label_color' => 'success',
+        //     //     // 'access' => \App\Models\Role::$ADMIN
+        //     // ],
+        //     // [
+        //     //     'text'        => 'Home',
+        //     //     'route'       => 'profile.home',
+        //     //     'icon'        => 'fas fa-fw fa-industry',
+        //     //     'icon_color'  => 'blue',
+        //     //     'label_color' => 'success',
+        //     //     // 'access' => \App\Models\Role::$ADMIN
+        //     // ],
+        //     // [
+        //     //     'text'        => 'Profile',
+        //     //     'route'       => 'profile.profile',
+        //     //     'icon'        => 'fas fa-fw fa-industry',
+        //     //     'icon_color'  => 'blue',
+        //     //     'label_color' => 'success',
+        //     //     // 'access' => \App\Models\Role::$ADMIN
+        //     // ],
+        //     // [
+        //     //     'text'        => 'Show Profile',
+        //     //     'route'       => 'profile.profile.show',
+        //     //     'icon'        => 'fas fa-fw fa-industry',
+        //     //     'icon_color'  => 'blue',
+        //     //     'label_color' => 'success',
+        //     //     // 'access' => \App\Models\Role::$ADMIN
+        //     // ],
+        // // ],
+        // 'Admin|400' => [
+        //     [
+        //         'text'        => 'Permissions',
+        //         'route'       => 'admin.permissions.index',
+        //         'icon'        => 'lock',
+        //         'space'       => 'admin',
+        //         'level'       => 3,
+        //     ],
+        //     [
+        //         'text'        => 'Roles',
+        //         'route'       => 'admin.roles.index',
+        //         'icon'        => 'key',
+        //         'space'       => 'admin',
+        //         'level'       => 3,
+        //     ],
+        //     // [
+        //     //     'text' => 'Information',
+        //     //     'icon' => 'fas fa-fw fa-book',
+        //     //     'icon_color' => "blue",
+        //     //     'label_color' => "success",
+        //     // ],
+        //     [
+        //         'text' => 'Site',
+        //         'icon' => 'fas fa-book',
+        //         'icon_color' => "blue",
+        //         'label_color' => "success",
+        //         'space'      => 'admin',
+        //         'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //     ],
+        //     [
+        //         'text' => 'Tools',
+        //         'icon' => 'fas fa-fw fa-th',
+        //         'icon_color' => "blue",
+        //         'label_color' => "success",
+        //         'space'      => 'admin',
+        //         'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //     ],
+        //     // 'Information' => [
+        //     // ],
+        //     'Site' => [
+        //         [
+        //             'text'        => 'Decoy',
+        //             'url'         => 'admin',
+        //             'icon'        => 'fas fa-fw fa-cog',
+        //             'icon_color'  => 'blue',
+        //             'label_color' => 'success',
+        //             'space'      => 'admin',
+        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //             // 'access' => \App\Models\Role::$ADMIN
+        //         ],
+        //         [
+        //             'text'        => 'Compass',
+        //             'route'       => 'rica.facilitador.compass.index',
+        //             'icon'        => 'fas fa-fw fa-cog',
+        //             'icon_color'  => 'blue',
+        //             'label_color' => 'success',
+        //             'space'      => 'admin',
+        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //             // 'access' => \App\Models\Role::$ADMIN
+        //         ],
+        //         // [
+        //         //     'text'        => 'Menu Builder',
+        //         //     'route'       => 'facilitador.menus.builder',
+        //         //     'icon'        => 'fas fa-fw fa-cog',
+        //         //     'icon_color'  => 'blue',
+        //         //     'label_color' => 'success',
+        //         //     // 'access' => \App\Models\Role::$ADMIN
+        //         // ],
+        //         [
+        //             'text'        => 'Medias',
+        //             'route'       => 'master.media.index',
+        //             'icon'        => 'fas fa-fw fa-cog',
+        //             'icon_color'  => 'blue',
+        //             'label_color' => 'success',
+        //             'space'      => 'admin',
+        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //             // 'access' => \App\Models\Role::$ADMIN
+        //         ],
+        //         [
+        //             'text'        => 'elements',
+        //             'route'       => 'facilitador.elements',
+        //             'icon'        => 'fas fa-fw fa-laptop',
+        //             'icon_color'  => 'blue',
+        //             'label_color' => 'success',
+        //             'space'      => 'admin',
+        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //             // 'access' => \App\Models\Role::$ADMIN
+        //         ],
+        //         [
+        //             'text'        => 'Redirects',
+        //             'url'         => '/siravel/redirect-rules',
+        //             'icon'        => 'fas fa-fw fa-share',
+        //             'icon_color'  => 'blue',
+        //             'label_color' => 'success',
+        //             'space'      => 'admin',
+        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //             // 'access' => \App\Models\Role::$ADMIN
+        //         ],
+        //         [
+        //             'text'        => 'settings',
+        //             'route'       => 'rica.facilitador.settings.index',
+        //             'icon'        => 'fas fa-fw fa-industry',
+        //             'icon_color'  => 'blue',
+        //             'label_color' => 'success',
+        //             'space'      => 'admin',
+        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //             // 'access' => \App\Models\Role::$ADMIN
+        //         ],
+        //     ],
+        //     'Tools' => [
+        //         // [
+        //         //     'text'        => 'Tools',
+        //         //     'route'       => 'rica.facilitador.hooks',
+        //         //     'icon'        => 'fas fa-fw fa-industry',
+        //         //     'icon_color'  => 'blue',
+        //         //     'label_color' => 'success',
+        //         //     // 'access' => \App\Models\Role::$ADMIN
+        //         // ],
+        //         // [
+        //         //     'text'        => 'encode',
+        //         //     'route'       => 'facilitador.encode',
+        //         //     'icon'        => 'fas fa-fw fa-industry',
+        //         //     'icon_color'  => 'blue',
+        //         //     'label_color' => 'success',
+        //         //     // 'access' => \App\Models\Role::$ADMIN
+        //         // ],
+        //         [
+        //             'text'        => 'Workers',
+        //             'route'       => 'facilitador.workers',
+        //             'icon'        => 'fas fa-fw fa-coffee',
+        //             'icon_color'  => 'blue',
+        //             'label_color' => 'success',
+        //             'space'      => 'admin',
+        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //             // 'access' => \App\Models\Role::$ADMIN
+        //         ],
+        //         [
+        //             'text'        => 'Hooks',
+        //             'route'       => 'rica.facilitador.hooks',
+        //             'icon'        => 'fas fa-fw fa-share',
+        //             'icon_color'  => 'blue',
+        //             'label_color' => 'success',
+        //             'space'      => 'admin',
+        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+        //             // 'access' => \App\Models\Role::$ADMIN
+        //         ],
+        //     ],
+        // ],
+    ];
+
+    /**
+     * Boot method.
+     *
+     * @return void
+     */
+    public function boot(Router $router, Dispatcher $events)
+    {
+        
+        // Register configs, migrations, etc
+        $this->publishConfigs();
+        $this->publishAssets();
+        $this->publishMigrations();
+
+        $this->loadViews();
+        $this->loadTranslations();
+
+        /**
+         * Transmissor; Routes
+         */
+        $this->loadRoutesForRiCa(__DIR__.'/../routes');
+        
+
+        // Configure Decoy auth setup
+        $this->bootAuth();
+
+        // Define constants that Decoy uses
+        if (!defined('FORMAT_DATE')) {
+            define('FORMAT_DATE', __('facilitador::base.constants.format_date'));
+        }
+        if (!defined('FORMAT_DATETIME')) {
+            define('FORMAT_DATETIME', __('facilitador::base.constants.format_datetime'));
+        }
+        if (!defined('FORMAT_TIME')) {
+            define('FORMAT_TIME', __('facilitador::base.constants.format_time'));
+        }
+        
+        // @todo ajeitar
+        // Do bootstrapping that only matters if user has requested an admin URL
+        // if ($this->app['facilitador']->handling()) {
+        $this->usingAdmin();
+        // }
+
+        $this->bootEvents($events);
+
+        $this->voyagerBoot($router, $events);
+    }
+
+
     /**
      * Register the service provider.
      *

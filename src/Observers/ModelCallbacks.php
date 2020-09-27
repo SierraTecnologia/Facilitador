@@ -3,9 +3,10 @@
 namespace Facilitador\Observers;
 
 use Event;
-use Log;
-use Illuminate\Support\Str;
 use Facilitador;
+use Illuminate\Support\Str;
+use Log;
+use Pedreiro;
 use Pedreiro\Models\Base;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Throwable;
@@ -83,11 +84,9 @@ class ModelCallbacks
 
         if ($method == 'onCreating') {
             $this->runInCreating($model);
-        }
-        else if ($method == 'onCreated') {
+        } elseif ($method == 'onCreated') {
             $this->runInCreated($model);
-        }
-        else if ($method == 'onValidating' || $method == 'onValidated') {
+        } elseif ($method == 'onValidating' || $method == 'onValidated') {
             if (empty(array_slice($payload, 1))) {
                 // @todo resolver dps
                 \Log::debug('[Facilitador] ModelCallbacks: ignorando onValidating porque nao tem parametro '.print_r([get_class($model), $method], true));
@@ -105,7 +104,6 @@ class ModelCallbacks
             } catch (FatalThrowableError|Throwable $th) {
                 \Log::info('[Facilitador] ModelCallbacks: problema aqui'.print_r([get_class($model), $method], true));
             }
-            
         }
         return true;
     }
@@ -128,9 +126,9 @@ class ModelCallbacks
     {
         
         // If no author has been assigned, assign the current user's id as the author of the post
-        if (class_exists(\Telefonica\Models\Digital\Email::class)  
-            && get_class($model)!=\Telefonica\Models\Digital\Email::class  
-            && isset($model->email) 
+        if (class_exists(\Telefonica\Models\Digital\Email::class)
+            && get_class($model)!=\Telefonica\Models\Digital\Email::class
+            && isset($model->email)
             && !empty($model->email)
         ) {
             $email = \Telefonica\Models\Digital\Email::createIfNotExistAndReturn($model->email);
@@ -140,11 +138,11 @@ class ModelCallbacks
     }
 
     /**
-     * 
+     *
      */
     protected function linkToInfluencia($model)
     {
-        if (!$influencia = Facilitador::getInfluencia()) {
+        if (!$influencia = Pedreiro::getInfluencia()) {
             return false;
         }
 

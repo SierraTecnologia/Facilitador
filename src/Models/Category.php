@@ -2,17 +2,17 @@
 
 namespace Facilitador\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Facilitador\Facades\Facilitador;
-use Translation\Traits\HasTranslations;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Translation\Traits\HasTranslations;
 
 class Category extends Model
 {
     use SoftDeletes;
     use HasTranslations;
 
-    protected string $table = 'categories';
+    protected $table = 'categories';
 
     /**
      * @var string[]
@@ -26,21 +26,21 @@ class Category extends Model
      *
      * @psalm-var array{0: string, 1: string}
      */
-    protected array $fillable = ['slug', 'name'];
+    protected $fillable = ['slug', 'name'];
 
     /**
      * @var string[]
      *
      * @psalm-var array{0: string}
      */
-    protected array $dates = ['deleted_at'];
+    protected $dates = ['deleted_at'];
 
     /**
      * @var string[]
      *
      * @psalm-var array{0: string}
      */
-    protected array $guarded  = array('id');
+    protected $guarded  = array('id');
     
 
     /**
