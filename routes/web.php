@@ -2,10 +2,10 @@
 
 use Facilitador\Facades\Facilitador;
 use Illuminate\Support\Str;
-use Support\Events\Routing;
-use Support\Events\RoutingAdmin;
-use Support\Events\RoutingAdminAfter;
-use Support\Events\RoutingAfter;
+use Pedreiro\Events\Routing;
+use Pedreiro\Events\RoutingAdmin;
+use Pedreiro\Events\RoutingAdminAfter;
+use Pedreiro\Events\RoutingAfter;
 
 // Public routes
 Route::group(

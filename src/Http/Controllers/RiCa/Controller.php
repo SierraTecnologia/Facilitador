@@ -9,7 +9,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Support\Events\FileDeleted;
+use Pedreiro\Events\FileDeleted;
 use Pedreiro\Elements\ContentTypes\Checkbox;
 use Pedreiro\Elements\ContentTypes\Coordinates;
 use Pedreiro\Elements\ContentTypes\File;

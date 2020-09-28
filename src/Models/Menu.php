@@ -6,7 +6,7 @@ use Facilitador\Facades\Facilitador;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Support\Events\MenuDisplay;
+use Pedreiro\Events\MenuDisplay;
 
 /**
  * @todo: Refactor this class by using something like MenuBuilder Helper.

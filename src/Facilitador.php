@@ -29,7 +29,7 @@ use Siravel\Models\Negocios\Page;
 use Support;
 use Pedreiro\Elements\FormFields\After\HandlerInterface as AfterHandlerInterface;
 use Pedreiro\Elements\FormFields\HandlerInterface;
-use Support\Events\AlertsCollection;
+use Pedreiro\Events\AlertsCollection;
 use Support\Models\Application\DataRelationship;
 use Support\Models\Application\DataRow;
 use Support\Models\Application\DataType;
