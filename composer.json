@@ -24,8 +24,8 @@
     "require": {
         "php": "^7.4",
         "arrilot/laravel-widgets": "^3.0",
-        "sierratecnologia/facilitador-hooks": "dev-master",
-        "sierratecnologia/integrations": "dev-master",
+        "sierratecnologia/facilitador-hooks": "^0.4.0",
+        "sierratecnologia/integrations": "^0.4.0",
         "ext-json": "*",
         "illuminate/config": "^7.0 || ^8.0",
         "illuminate/database": "^7.0 || ^8.0",
@@ -38,14 +38,14 @@
         "socialiteproviders/github": "dev-master",
         "socialiteproviders/jira": ">=2.1",
         "socialiteproviders/linkedin": ">=3.0",
-        "sierratecnologia/pedreiro": "dev-master",
-        "sierratecnologia/porteiro": "dev-master",
-        "sierratecnologia/tracking": "dev-master",
-        "sierratecnologia/transmissor": "dev-master",
-        "sierratecnologia/audit": "dev-master",
-        "sierratecnologia/laravel-support": "dev-master",
-        "sierratecnologia/muleta": "dev-master",
-        "sierratecnologia/stalker": "dev-master"
+        "sierratecnologia/pedreiro": "^0.4.0",
+        "sierratecnologia/porteiro": "^0.4.0",
+        "sierratecnologia/tracking": "^0.4.0",
+        "sierratecnologia/transmissor": "^0.4.0",
+        "sierratecnologia/audit": "^0.4.0",
+        "sierratecnologia/laravel-support": "^0.4.0",
+        "sierratecnologia/muleta": "^0.4.0",
+        "sierratecnologia/stalker": "^0.4.0"
     },
     "require-dev": {
         "phpunit/phpunit": ">=6.0",
@@ -69,7 +69,6 @@
         "post-update-cmd": [],
         "post-create-project-cmd": []
     },
-    "repositories": [{"type": "path","url":"../**","options":{"symlink": true}}],
     "extra": {
         "laravel": {
             "providers": [
