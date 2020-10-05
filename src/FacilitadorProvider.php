@@ -289,13 +289,13 @@ class FacilitadorProvider extends ServiceProvider
 
         // Define constants that Decoy uses
         if (!defined('FORMAT_DATE')) {
-            define('FORMAT_DATE', __('facilitador::base.constants.format_date'));
+            define('FORMAT_DATE', __('pedreiro::base.constants.format_date'));
         }
         if (!defined('FORMAT_DATETIME')) {
-            define('FORMAT_DATETIME', __('facilitador::base.constants.format_datetime'));
+            define('FORMAT_DATETIME', __('pedreiro::base.constants.format_datetime'));
         }
         if (!defined('FORMAT_TIME')) {
-            define('FORMAT_TIME', __('facilitador::base.constants.format_time'));
+            define('FORMAT_TIME', __('pedreiro::base.constants.format_time'));
         }
         
         // @todo ajeitar

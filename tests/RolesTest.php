@@ -19,28 +19,28 @@ class RolesTest extends TestCase
         $this->visit(route('rica.login'))
             ->type('admin@admin.com', 'email')
             ->type('password', 'password')
-            ->press(__('facilitador::generic.login'))
+            ->press(__('pedreiro::generic.login'))
             ->seePageIs(route('rica.dashboard'));
 
         // Adding a New Role
         $this->visit(route('facilitador.roles.create'))
             ->type('superadmin', 'name')
             ->type('Super Admin', 'display_name')
-            ->press(__('facilitador::generic.submit'))
+            ->press(__('pedreiro::generic.submit'))
             ->seePageIs(route('facilitador.roles.index'))
             ->seeInDatabase('roles', ['name' => 'superadmin']);
 
         // Editing a Role
         $this->visit(route('facilitador.roles.edit', 2))
             ->type('regular_user', 'name')
-            ->press(__('facilitador::generic.submit'))
+            ->press(__('pedreiro::generic.submit'))
             ->seePageIs(route('facilitador.roles.index'))
             ->seeInDatabase('roles', ['name' => 'regular_user']);
 
         // Editing a Role
         $this->visit(route('facilitador.roles.edit', 2))
             ->type('user', 'name')
-            ->press(__('facilitador::generic.submit'))
+            ->press(__('pedreiro::generic.submit'))
             ->seePageIs(route('facilitador.roles.index'))
             ->seeInDatabase('roles', ['name' => 'user']);
 

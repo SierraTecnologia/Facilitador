@@ -1,10 +1,10 @@
 @extends('pedreiro::layouts.voyager.master')
 
-@section('page_title', __('facilitador::generic.viewing').' '.__('facilitador::generic.bread'))
+@section('page_title', __('pedreiro::generic.viewing').' '.__('pedreiro::generic.bread'))
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="facilitador-bread"></i> {{ __('facilitador::generic.bread') }}
+        <i class="facilitador-bread"></i> {{ __('pedreiro::generic.bread') }}
     </h1>
 @stop
 
@@ -18,7 +18,7 @@
                 <table class="table table-striped database-tables">
                     <thead>
                         <tr>
-                            <th>{{ __('facilitador::database.table_name') }}</th>
+                            <th>{{ __('pedreiro::database.table_name') }}</th>
                             <th style="text-align:right">{{ __('support::cruds.bread.bread_crud_actions') }}</th>
                         </tr>
                     </thead>
@@ -41,15 +41,15 @@
                             @if($table->dataTypeId)
                                 <a href="{{ \Support\Routing\UrlGenerator::managerRoute($table->slug, 'index') }}"
                                    class="btn btn-warning btn-sm browse_bread" style="margin-right: 0;">
-                                    <i class="facilitador-plus"></i> {{ __('facilitador::generic.browse') }}
+                                    <i class="facilitador-plus"></i> {{ __('pedreiro::generic.browse') }}
                                 </a>
                                 <a href="{{ route('facilitador.bread.edit', $table->name) }}"
                                    class="btn btn-primary btn-sm edit">
-                                    <i class="facilitador-edit"></i> {{ __('facilitador::generic.edit') }}
+                                    <i class="facilitador-edit"></i> {{ __('pedreiro::generic.edit') }}
                                 </a>
                                 <a href="#delete-bread" data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
                                      class="btn btn-danger btn-sm delete">
-                                    <i class="facilitador-trash"></i> {{ __('facilitador::generic.delete') }}
+                                    <i class="facilitador-trash"></i> {{ __('pedreiro::generic.delete') }}
                                 </a>
                             @else
                                 <a href="{{ route('facilitador.bread.create', $table->name) }}"
@@ -69,7 +69,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('facilitador::generic.close') }}"><span
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('support::cruds.bread.delete_bread_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
                 </div>
@@ -79,7 +79,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="submit" class="btn btn-danger" value="{{ __('support::cruds.bread.delete_bread_conf') }}">
                     </form>
-                    <button type="button" class="btn btn-outline float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-outline float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -89,7 +89,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('facilitador::generic.close') }}"><span
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title"><i class="facilitador-data"></i> @{{ table.name }}</h4>
                 </div>
@@ -97,12 +97,12 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>{{ __('facilitador::database.field') }}</th>
-                            <th>{{ __('facilitador::database.type') }}</th>
-                            <th>{{ __('facilitador::database.null') }}</th>
-                            <th>{{ __('facilitador::database.key') }}</th>
-                            <th>{{ __('facilitador::database.default') }}</th>
-                            <th>{{ __('facilitador::database.extra') }}</th>
+                            <th>{{ __('pedreiro::database.field') }}</th>
+                            <th>{{ __('pedreiro::database.type') }}</th>
+                            <th>{{ __('pedreiro::database.null') }}</th>
+                            <th>{{ __('pedreiro::database.key') }}</th>
+                            <th>{{ __('pedreiro::database.default') }}</th>
+                            <th>{{ __('pedreiro::database.extra') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -118,7 +118,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline float-right" data-dismiss="modal">{{ __('facilitador::generic.close') }}</button>
+                    <button type="button" class="btn btn-outline float-right" data-dismiss="modal">{{ __('pedreiro::generic.close') }}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

@@ -55,7 +55,7 @@ class DatabaseTest extends TestCase
     public function test_table_created_successfully()
     {
         // Test correct response
-        $this->assertSessionHasAll($this->alertSuccess(__('facilitador::database.success_create_table', ['table' => $this->table['name']])));
+        $this->assertSessionHasAll($this->alertSuccess(__('pedreiro::database.success_create_table', ['table' => $this->table['name']])));
         $this->assertRedirectedToRoute('facilitador.database.index');
 
         // Test table exists
@@ -111,7 +111,7 @@ class DatabaseTest extends TestCase
         $this->delete(route('facilitador.database.destroy', $this->table['name']));
 
         // Test correct response
-        $this->assertSessionHasAll($this->alertSuccess(__('facilitador::database.success_delete_table', ['table' => $this->table['name']])));
+        $this->assertSessionHasAll($this->alertSuccess(__('pedreiro::database.success_delete_table', ['table' => $this->table['name']])));
         $this->assertRedirectedToRoute('facilitador.database.index');
 
         $this->assertFalse(SchemaManager::tableExists($this->table['name']));
@@ -245,7 +245,7 @@ class DatabaseTest extends TestCase
         );
 
         // Test correct response
-        $this->assertSessionHasAll($this->alertSuccess(__('facilitador::database.success_create_table', ['table' => $table['name']])));
+        $this->assertSessionHasAll($this->alertSuccess(__('pedreiro::database.success_create_table', ['table' => $table['name']])));
         $this->assertRedirectedToRoute('facilitador.database.index');
 
         return SchemaManager::listTableDetails($table['name']);

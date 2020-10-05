@@ -23,8 +23,8 @@ class CategoriesTableSeeder extends Seeder
             $dataType->fill(
                 [
                 'slug'                  => 'categories',
-                'display_name_singular' => __('facilitador::seeders.data_types.category.singular'),
-                'display_name_plural'   => __('facilitador::seeders.data_types.category.plural'),
+                'display_name_singular' => __('pedreiro::seeders.data_types.category.singular'),
+                'display_name_plural'   => __('pedreiro::seeders.data_types.category.plural'),
                 'icon'                  => 'facilitador-categories',
                 'model_name'            => 'Facilitador\\Models\\Category',
                 'controller'            => '',
@@ -40,7 +40,7 @@ class CategoriesTableSeeder extends Seeder
             $dataRow->fill(
                 [
                 'type'         => 'number',
-                'display_name' => __('facilitador::seeders.data_rows.id'),
+                'display_name' => __('pedreiro::seeders.data_rows.id'),
                 'required'     => 1,
                 'browse'       => 0,
                 'read'         => 0,
@@ -57,7 +57,7 @@ class CategoriesTableSeeder extends Seeder
             $dataRow->fill(
                 [
                 'type'         => 'select_dropdown',
-                'display_name' => __('facilitador::seeders.data_rows.parent'),
+                'display_name' => __('pedreiro::seeders.data_rows.parent'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 1,
@@ -85,7 +85,7 @@ class CategoriesTableSeeder extends Seeder
             $dataRow->fill(
                 [
                 'type'         => 'text',
-                'display_name' => __('facilitador::seeders.data_rows.order'),
+                'display_name' => __('pedreiro::seeders.data_rows.order'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -105,7 +105,7 @@ class CategoriesTableSeeder extends Seeder
             $dataRow->fill(
                 [
                 'type'         => 'text',
-                'display_name' => __('facilitador::seeders.data_rows.name'),
+                'display_name' => __('pedreiro::seeders.data_rows.name'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -122,7 +122,7 @@ class CategoriesTableSeeder extends Seeder
             $dataRow->fill(
                 [
                 'type'         => 'text',
-                'display_name' => __('facilitador::seeders.data_rows.slug'),
+                'display_name' => __('pedreiro::seeders.data_rows.slug'),
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -144,7 +144,7 @@ class CategoriesTableSeeder extends Seeder
             $dataRow->fill(
                 [
                 'type'         => 'timestamp',
-                'display_name' => __('facilitador::seeders.data_rows.created_at'),
+                'display_name' => __('pedreiro::seeders.data_rows.created_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 1,
@@ -161,7 +161,7 @@ class CategoriesTableSeeder extends Seeder
             $dataRow->fill(
                 [
                 'type'         => 'timestamp',
-                'display_name' => __('facilitador::seeders.data_rows.updated_at'),
+                'display_name' => __('pedreiro::seeders.data_rows.updated_at'),
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -178,7 +178,7 @@ class CategoriesTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.categories'),
+            'title'   => __('pedreiro::seeders.menu_items.categories'),
             'url'     => '',
             'route'   => 'facilitador.categories.index',
             ]

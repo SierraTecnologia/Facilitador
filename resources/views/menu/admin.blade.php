@@ -5,7 +5,7 @@
     <li class="dd-item" data-id="{{ $item->id }}">
         <div class="float-right item_actions">
             <div class="btn btn-sm btn-danger float-right delete" data-id="{{ $item->id }}">
-                <i class="facilitador-trash"></i> {{ __('facilitador::generic.delete') }}
+                <i class="facilitador-trash"></i> {{ __('pedreiro::generic.delete') }}
             </div>
             <div class="btn btn-sm btn-primary float-right edit"
                 data-id="{{ $item->id }}"
@@ -17,7 +17,7 @@
                 data-route="{{ $item->route }}"
                 data-parameters="{{ json_encode($item->parameters) }}"
             >
-                <i class="facilitador-edit"></i> {{ __('facilitador::generic.edit') }}
+                <i class="facilitador-edit"></i> {{ __('pedreiro::generic.edit') }}
             </div>
         </div>
         <div class="dd-handle">

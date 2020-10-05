@@ -20,8 +20,8 @@ class MenuTest extends TestCase
         $this->visitRoute('facilitador.menus.edit', $menu->id)
             ->seeInField('name', $menu->name)
             ->type('new_admin', 'name')
-            ->seeInElement('button', __('facilitador::generic.save'))
-            ->press(__('facilitador::generic.save'))
+            ->seeInElement('button', __('pedreiro::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seePageIs(route('facilitador.menus.index'))
             ->seeInDatabase(
                 'menus', [

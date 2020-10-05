@@ -1,13 +1,13 @@
 @extends('pedreiro::layouts.voyager.master')
 
-@section('page_title', __('facilitador::generic.viewing').' '.$dataType->getTranslatedAttribute('display_name_plural'))
+@section('page_title', __('pedreiro::generic.viewing').' '.$dataType->getTranslatedAttribute('display_name_plural'))
 
 @section('page_header')
     <h1 class="page-title">
         <i class="facilitador-list-add"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
         @can('add',app($dataType->model_name))
             <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'create') }}" class="btn btn-success">
-                <i class="facilitador-plus"></i> {{ __('facilitador::generic.add_new') }}
+                <i class="facilitador-plus"></i> {{ __('pedreiro::generic.add_new') }}
             </a>
         @endcan
     </h1>
@@ -28,7 +28,7 @@
                                 @foreach($dataType->browseRows as $row)
                                 <th>{{ $row->display_name }}</th>
                                 @endforeach
-                                <th class="actions text-right">{{ __('facilitador::generic.actions') }}</th>
+                                <th class="actions text-right">{{ __('pedreiro::generic.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -46,17 +46,17 @@
                                     <td class="no-sort no-click bread-actions">
                                         @can('delete', $data)
                                             <div class="btn btn-sm btn-danger float-right delete" data-id="{{ $data->{$data->getKeyName()} }}">
-                                                <i class="facilitador-trash"></i> {{ __('facilitador::generic.delete') }}
+                                                <i class="facilitador-trash"></i> {{ __('pedreiro::generic.delete') }}
                                             </div>
                                         @endcan
                                         @can('edit', $data)
                                             <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-primary float-right edit">
-                                                <i class="facilitador-edit"></i> {{ __('facilitador::generic.edit') }}
+                                                <i class="facilitador-edit"></i> {{ __('pedreiro::generic.edit') }}
                                             </a>
                                         @endcan
                                         @can('edit', $data)
                                             <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'builder', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-success float-right">
-                                                <i class="facilitador-list"></i> {{ __('facilitador::generic.builder') }}
+                                                <i class="facilitador-list"></i> {{ __('pedreiro::generic.builder') }}
                                             </a>
                                         @endcan
                                     </td>
@@ -74,20 +74,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('facilitador::generic.close') }}">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title">
-                        <i class="facilitador-trash"></i> {{ __('facilitador::generic.delete_question') }} {{ $dataType->getTranslatedAttribute('display_name_singular') }}?
+                        <i class="facilitador-trash"></i> {{ __('pedreiro::generic.delete_question') }} {{ $dataType->getTranslatedAttribute('display_name_singular') }}?
                     </h4>
                 </div>
                 <div class="modal-footer">
                     <form action="#" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger float-right delete-confirm" value="{{ __('facilitador::generic.delete_this_confirm') }} {{ $dataType->getTranslatedAttribute('display_name_singular') }}">
+                        <input type="submit" class="btn btn-danger float-right delete-confirm" value="{{ __('pedreiro::generic.delete_this_confirm') }} {{ $dataType->getTranslatedAttribute('display_name_singular') }}">
                     </form>
-                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
         $(document).ready(function () {
             $('#dataTable').DataTable({
                 "order": [],
-                "language": {!! json_encode(__('facilitador::datatable'), true) !!},
+                "language": {!! json_encode(__('pedreiro::datatable'), true) !!},
                 "columnDefs": [{"targets": -1, "searchable":  false, "orderable": false}]
                 @if(\Illuminate\Support\Facades\Config::get('dashboard.data_tables.responsive')), responsive: true @endif
             });

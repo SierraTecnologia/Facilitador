@@ -29,7 +29,7 @@ class FacilitadorRoleController extends FacilitadorBaseController
             ->route("facilitador.{$dataType->slug}.index")
             ->with(
                 [
-                'message'    => __('facilitador::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+                'message'    => __('pedreiro::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                 'alert-type' => 'success',
                 ]
             );
@@ -57,7 +57,7 @@ class FacilitadorRoleController extends FacilitadorBaseController
             ->route("facilitador.{$dataType->slug}.index")
             ->with(
                 [
-                'message'    => __('facilitador::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+                'message'    => __('pedreiro::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
                 'alert-type' => 'success',
                 ]
             );

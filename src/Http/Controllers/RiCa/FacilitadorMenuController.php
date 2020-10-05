@@ -33,7 +33,7 @@ class FacilitadorMenuController extends Controller
             ->route('facilitador.menus.builder', [$menu])
             ->with(
                 [
-                'message'    => __('facilitador::menu_builder.successfully_deleted'),
+                'message'    => __('pedreiro::menu_builder.successfully_deleted'),
                 'alert-type' => 'success',
                 ]
             );
@@ -70,7 +70,7 @@ class FacilitadorMenuController extends Controller
             ->route('facilitador.menus.builder', [$data['menu_id']])
             ->with(
                 [
-                'message'    => __('facilitador::menu_builder.successfully_created'),
+                'message'    => __('pedreiro::menu_builder.successfully_created'),
                 'alert-type' => 'success',
                 ]
             );
@@ -100,7 +100,7 @@ class FacilitadorMenuController extends Controller
             ->route('facilitador.menus.builder', [$menuItem->menu_id])
             ->with(
                 [
-                'message'    => __('facilitador::menu_builder.successfully_updated'),
+                'message'    => __('pedreiro::menu_builder.successfully_updated'),
                 'alert-type' => 'success',
                 ]
             );

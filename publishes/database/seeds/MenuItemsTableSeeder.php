@@ -18,7 +18,7 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.dashboard'),
+            'title'   => __('pedreiro::seeders.menu_items.dashboard'),
             'url'     => '',
             'route'   => 'rica.dashboard',
             ]
@@ -38,7 +38,7 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.media'),
+            'title'   => __('pedreiro::seeders.menu_items.media'),
             'url'     => '',
             'route'   => 'master.media.index',
             ]
@@ -58,7 +58,7 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.users'),
+            'title'   => __('pedreiro::seeders.menu_items.users'),
             'url'     => '',
             'route'   => 'facilitador.users.index',
             ]
@@ -78,7 +78,7 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.roles'),
+            'title'   => __('pedreiro::seeders.menu_items.roles'),
             'url'     => '',
             'route'   => 'facilitador.roles.index',
             ]
@@ -98,7 +98,7 @@ class MenuItemsTableSeeder extends Seeder
         $toolsMenuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.tools'),
+            'title'   => __('pedreiro::seeders.menu_items.tools'),
             'url'     => '',
             ]
         );
@@ -117,7 +117,7 @@ class MenuItemsTableSeeder extends Seeder
         // $menuItem = MenuItem::firstOrNew(
         //     [
         //     'menu_id' => $menu->id,
-        //     'title'   => __('facilitador::seeders.menu_items.menu_builder'),
+        //     'title'   => __('pedreiro::seeders.menu_items.menu_builder'),
         //     'url'     => '',
         //     'route'   => 'facilitador.menus.index',
         //     ]
@@ -137,7 +137,7 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.database'),
+            'title'   => __('pedreiro::seeders.menu_items.database'),
             'url'     => '',
             'route'   => 'facilitador.database.index',
             ]
@@ -157,7 +157,7 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.compass'),
+            'title'   => __('pedreiro::seeders.menu_items.compass'),
             'url'     => '',
             'route'   => 'facilitador.compass.index',
             ]
@@ -177,7 +177,7 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.bread'),
+            'title'   => __('pedreiro::seeders.menu_items.bread'),
             'url'     => '',
             'route'   => 'facilitador.bread.index',
             ]
@@ -197,7 +197,7 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew(
             [
             'menu_id' => $menu->id,
-            'title'   => __('facilitador::seeders.menu_items.settings'),
+            'title'   => __('pedreiro::seeders.menu_items.settings'),
             'url'     => '',
             'route'   => 'rica.facilitador.settings.index',
             ]

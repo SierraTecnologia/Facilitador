@@ -29,9 +29,9 @@ class PageDimmer extends BaseDimmer
                 $this->config, [
                 'icon'   => 'facilitador-file-text',
                 'title'  => "{$count} {$string}",
-                'text'   => __('facilitador::dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
+                'text'   => __('pedreiro::dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
                 'button' => [
-                'text' => __('facilitador::dimmer.page_link_text'),
+                'text' => __('pedreiro::dimmer.page_link_text'),
                 'link' => route('facilitador.pages.index'),
                 ],
                 'image' => facilitador_asset('images/widget-backgrounds/03.jpg'),

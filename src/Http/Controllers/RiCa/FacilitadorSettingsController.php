@@ -17,16 +17,16 @@ class FacilitadorSettingsController extends Controller
         $data = Facilitador::model('Setting')->orderBy('order', 'ASC')->get();
 
         $settings = [];
-        $settings[__('facilitador::settings.group_general')] = [];
+        $settings[__('pedreiro::settings.group_general')] = [];
         foreach ($data as $d) {
-            if ($d->group == '' || $d->group == __('facilitador::settings.group_general')) {
-                $settings[__('facilitador::settings.group_general')][] = $d;
+            if ($d->group == '' || $d->group == __('pedreiro::settings.group_general')) {
+                $settings[__('pedreiro::settings.group_general')][] = $d;
             } else {
                 $settings[$d->group][] = $d;
             }
         }
-        if (count($settings[__('facilitador::settings.group_general')]) == 0) {
-            unset($settings[__('facilitador::settings.group_general')]);
+        if (count($settings[__('pedreiro::settings.group_general')]) == 0) {
+            unset($settings[__('pedreiro::settings.group_general')]);
         }
 
         $groups_data = Facilitador::model('Setting')->select('group')->distinct()->get();
@@ -53,7 +53,7 @@ class FacilitadorSettingsController extends Controller
         if ($key_check > 0) {
             return back()->with(
                 [
-                'message'    => __('facilitador::settings.key_already_exists', ['key' => $key]),
+                'message'    => __('pedreiro::settings.key_already_exists', ['key' => $key]),
                 'alert-type' => 'error',
                 ]
             );
@@ -77,7 +77,7 @@ class FacilitadorSettingsController extends Controller
 
         return back()->with(
             [
-            'message'    => __('facilitador::settings.successfully_created'),
+            'message'    => __('pedreiro::settings.successfully_created'),
             'alert-type' => 'success',
             ]
         );
@@ -119,7 +119,7 @@ class FacilitadorSettingsController extends Controller
 
         return back()->with(
             [
-            'message'    => __('facilitador::settings.successfully_saved'),
+            'message'    => __('pedreiro::settings.successfully_saved'),
             'alert-type' => 'success',
             ]
         );
@@ -138,7 +138,7 @@ class FacilitadorSettingsController extends Controller
 
         return back()->with(
             [
-            'message'    => __('facilitador::settings.successfully_deleted'),
+            'message'    => __('pedreiro::settings.successfully_deleted'),
             'alert-type' => 'success',
             ]
         );
@@ -160,7 +160,7 @@ class FacilitadorSettingsController extends Controller
             ->where('group', $setting->group)
             ->orderBy('order', 'DESC')->first();
         $data = [
-            'message'    => __('facilitador::settings.already_at_top'),
+            'message'    => __('pedreiro::settings.already_at_top'),
             'alert-type' => 'error',
         ];
 
@@ -171,7 +171,7 @@ class FacilitadorSettingsController extends Controller
             $previousSetting->save();
 
             $data = [
-                'message'    => __('facilitador::settings.moved_order_up', ['name' => $setting->display_name]),
+                'message'    => __('pedreiro::settings.moved_order_up', ['name' => $setting->display_name]),
                 'alert-type' => 'success',
             ];
         }
@@ -203,7 +203,7 @@ class FacilitadorSettingsController extends Controller
 
         return back()->with(
             [
-            'message'    => __('facilitador::settings.successfully_removed', ['name' => $setting->display_name]),
+            'message'    => __('pedreiro::settings.successfully_removed', ['name' => $setting->display_name]),
             'alert-type' => 'success',
             ]
         );
@@ -226,7 +226,7 @@ class FacilitadorSettingsController extends Controller
             ->where('group', $setting->group)
             ->orderBy('order', 'ASC')->first();
         $data = [
-            'message'    => __('facilitador::settings.already_at_bottom'),
+            'message'    => __('pedreiro::settings.already_at_bottom'),
             'alert-type' => 'error',
         ];
 
@@ -237,7 +237,7 @@ class FacilitadorSettingsController extends Controller
             $previousSetting->save();
 
             $data = [
-                'message'    => __('facilitador::settings.moved_order_down', ['name' => $setting->display_name]),
+                'message'    => __('pedreiro::settings.moved_order_down', ['name' => $setting->display_name]),
                 'alert-type' => 'success',
             ];
         }

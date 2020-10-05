@@ -32,19 +32,19 @@ class FormfieldsTest extends TestCase
         $this->visitRoute('facilitador.categories.create')
             ->see('Default Text')
             ->type('New Text', 'text')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('New Text')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('Edited Text', 'text')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Edited Text')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('NULL', 'text')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->seeInDatabase(
                 'categories', [
@@ -66,13 +66,13 @@ class FormfieldsTest extends TestCase
         $this->visitRoute('facilitador.categories.create')
             ->see('Default Text')
             ->type('New Text', 'text_area')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('New Text')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('Edited Text', 'text_area')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Edited Text');
     }
@@ -90,13 +90,13 @@ class FormfieldsTest extends TestCase
         $this->visitRoute('facilitador.categories.create')
             ->see('Default Text')
             ->type('New Text', 'code_editor')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('New Text')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('Edited Text', 'code_editor')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Edited Text');
     }
@@ -107,13 +107,13 @@ class FormfieldsTest extends TestCase
 
         $this->visitRoute('facilitador.categories.create')
             ->type('# New Text', 'markdown_editor')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('New Text')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('# Edited Text', 'markdown_editor')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Edited Text');
     }
@@ -124,13 +124,13 @@ class FormfieldsTest extends TestCase
 
         $this->visitRoute('facilitador.categories.create')
             ->type('New Text', 'rich_text_box')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('New Text')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('Edited Text', 'rich_text_box')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Edited Text');
     }
@@ -148,13 +148,13 @@ class FormfieldsTest extends TestCase
         $this->visitRoute('facilitador.categories.create')
             ->see('Default Text')
             ->type('New Text', 'hidden')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('New Text')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('Edited Text', 'hidden')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Edited Text');
     }
@@ -165,13 +165,13 @@ class FormfieldsTest extends TestCase
 
         $t = $this->visitRoute('facilitador.categories.create')
             ->type('newpassword', 'password')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index');
         $this->assertTrue(Hash::check('newpassword', Category::first()->password));
 
-        $t->click(__('facilitador::generic.edit'))
+        $t->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index');
         $this->assertTrue(Hash::check('newpassword', Category::first()->password));
     }
@@ -189,13 +189,13 @@ class FormfieldsTest extends TestCase
         $this->visitRoute('facilitador.categories.create')
             ->see('1')
             ->type('2', 'number')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('2')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('3', 'number')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('3');
     }
@@ -214,13 +214,13 @@ class FormfieldsTest extends TestCase
         $this->visitRoute('facilitador.categories.create')
             ->see('Inactive')
             ->check('checkbox')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Active')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->uncheck('checkbox')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Inactive');
     }
@@ -231,13 +231,13 @@ class FormfieldsTest extends TestCase
 
         $this->visitRoute('facilitador.categories.create')
             ->type('12:50', 'time')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('12:50')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('6:25', 'time')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('6:25');
     }
@@ -254,13 +254,13 @@ class FormfieldsTest extends TestCase
 
         $this->visitRoute('facilitador.categories.create')
             ->type('2019-01-01', 'date')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('2019-01-01')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('2018-12-31', 'date')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('2018-12-31');
     }
@@ -277,19 +277,19 @@ class FormfieldsTest extends TestCase
 
         $this->visitRoute('facilitador.categories.create')
             ->type('2019-01-01 12:00:00', 'timestamp')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('2019-01-01 12:00:00')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('2018-12-31 23:59:59', 'timestamp')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('2018-12-31 23:59:59')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('', 'timestamp')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->seeInDatabase(
                 'categories', [
@@ -304,13 +304,13 @@ class FormfieldsTest extends TestCase
 
         $this->visitRoute('facilitador.categories.create')
             ->type('#FF0000', 'color')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('#FF0000')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->type('#00FF00', 'color')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('#00FF00');
     }
@@ -331,13 +331,13 @@ class FormfieldsTest extends TestCase
 
         $this->visitRoute('facilitador.categories.create')
             ->select('radio1', 'radio_btn')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Foo')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->select('radio2', 'radio_btn')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Bar');
     }
@@ -358,13 +358,13 @@ class FormfieldsTest extends TestCase
 
         $this->visitRoute('facilitador.categories.create')
             ->select('option1', 'select_dropdown')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Foo')
-            ->click(__('facilitador::generic.edit'))
+            ->click(__('pedreiro::generic.edit'))
             ->seeRouteIs('facilitador.categories.edit', 1)
             ->select('option2', 'select_dropdown')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->see('Bar');
     }
@@ -375,10 +375,10 @@ class FormfieldsTest extends TestCase
         $file = UploadedFile::fake()->create('test.txt', 1);
         $this->visitRoute('facilitador.categories.create')
             ->attach([$file->getPathName()], 'file[]')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->visitRoute('facilitador.categories.create')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->seeInDatabase(
                 'categories', [
@@ -399,10 +399,10 @@ class FormfieldsTest extends TestCase
         $file = UploadedFile::fake()->create('test.txt', 1);
         $this->visitRoute('facilitador.categories.create')
             ->attach([$file->getPathName()], 'file[]')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->visitRoute('facilitador.categories.create')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->seeInDatabase(
                 'categories', [
@@ -430,7 +430,7 @@ class FormfieldsTest extends TestCase
             ->select($name, 'field_input_type_'.$name)
             ->type($options, 'field_details_'.$name)
             ->type('Facilitador\\Models\\Category', 'model_name')
-            ->press(__('facilitador::generic.submit'))
+            ->press(__('pedreiro::generic.submit'))
             ->seeRouteIs('facilitador.bread.index');
 
         // Attach permissions to role

@@ -27,30 +27,30 @@ class Admins extends Base
     {
         $options = [
             'first_name' => [
-                'label' => __('facilitador::admins.controller.search.first_name'),
+                'label' => __('pedreiro::admins.controller.search.first_name'),
                 'type' => 'text',
             ],
             'last_name' => [
-                'label' => __('facilitador::admins.controller.search.last_name'),
+                'label' => __('pedreiro::admins.controller.search.last_name'),
                 'type' => 'text',
             ],
             'email' => [
-                'label' => __('facilitador::admins.controller.search.email'),
+                'label' => __('pedreiro::admins.controller.search.email'),
                 'type' => 'text',
             ],
             'status' => [
-                'label' => __('facilitador::admins.controller.search.status'),
+                'label' => __('pedreiro::admins.controller.search.status'),
                 'type' => 'select',
                 'options' => [
-                    1 => __('facilitador::admins.controller.search.enabled'),
-                    0 => __('facilitador::admins.controller.search.disabled'),
+                    1 => __('pedreiro::admins.controller.search.enabled'),
+                    0 => __('pedreiro::admins.controller.search.disabled'),
                 ],
             ],
         ];
 
         if (($roles = Admin::getRoleTitles()) && count($roles)) {
             $options['role'] = [
-                'label' => __('facilitador::admins.controller.search.role'),
+                'label' => __('pedreiro::admins.controller.search.role'),
                 'type' => 'select',
                 'options' => $roles,
             ];
@@ -172,12 +172,12 @@ class Admins extends Base
      */
     public function __construct()
     {
-        $this->title = __('facilitador::admins.controller.title');
-        $this->description = __('facilitador::admins.controller.description');
+        $this->title = __('pedreiro::admins.controller.title');
+        $this->description = __('pedreiro::admins.controller.description');
         $this->columns = [
-            __('facilitador::admins.controller.column.name') => 'getAdminTitleHtmlAttribute',
-            __('facilitador::admins.controller.column.status') => 'getAdminStatusAttribute',
-            __('facilitador::admins.controller.column.email') => 'email',
+            __('pedreiro::admins.controller.column.name') => 'getAdminTitleHtmlAttribute',
+            __('pedreiro::admins.controller.column.status') => 'getAdminStatusAttribute',
+            __('pedreiro::admins.controller.column.email') => 'email',
         ];
 
         parent::__construct();

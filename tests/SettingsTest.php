@@ -25,8 +25,8 @@ class SettingsTest extends TestCase
         $this->visit(route('rica.facilitador.settings.index'))
             ->seeInField($key, Setting::where('key', '=', $key)->first()->value)
             ->type($newTitle, $key)
-            ->seeInElement('button', __('facilitador::settings.save'))
-            ->press(__('facilitador::settings.save'))
+            ->seeInElement('button', __('pedreiro::settings.save'))
+            ->press(__('pedreiro::settings.save'))
             ->seePageIs(route('rica.facilitador.settings.index'))
             ->seeInDatabase(
                 'settings', [
@@ -43,7 +43,7 @@ class SettingsTest extends TestCase
             ->type('new_setting', 'key')
             ->select('text', 'type')
             ->select('Site', 'group')
-            ->press(__('facilitador::settings.add_new'))
+            ->press(__('pedreiro::settings.add_new'))
             ->seePageIs(route('rica.facilitador.settings.index'))
             ->seeInDatabase(
                 'settings', [

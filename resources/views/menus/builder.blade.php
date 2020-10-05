@@ -1,11 +1,11 @@
 @extends('pedreiro::layouts.voyager.master')
 
-@section('page_title', __('facilitador::generic.menu_builder'))
+@section('page_title', __('pedreiro::generic.menu_builder'))
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="facilitador-list"></i>{{ __('facilitador::generic.menu_builder') }} ({{ $menu->name }})
-        <div class="btn btn-success add_item"><i class="facilitador-plus"></i> {{ __('facilitador::menu_builder.new_menu_item') }}</div>
+        <i class="facilitador-list"></i>{{ __('pedreiro::generic.menu_builder') }} ({{ $menu->name }})
+        <div class="btn btn-success add_item"><i class="facilitador-plus"></i> {{ __('pedreiro::menu_builder.new_menu_item') }}</div>
     </h1>
     @include('pedreiro::multilingual.language-selector')
 @stop
@@ -18,7 +18,7 @@
             <div class="col-md-12">
                 <div class="panel panel-bordered">
                     <div class="panel-heading">
-                        <p class="panel-title" style="color:#777">{{ __('facilitador::menu_builder.drag_drop_info') }}</p>
+                        <p class="panel-title" style="color:#777">{{ __('pedreiro::menu_builder.drag_drop_info') }}</p>
                     </div>
 
                     <div class="panel-body" style="padding:30px;">
@@ -36,9 +36,9 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('facilitador::generic.close') }}"><span
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="facilitador-trash"></i> {{ __('facilitador::menu_builder.delete_item_question') }}</h4>
+                    <h4 class="modal-title"><i class="facilitador-trash"></i> {{ __('pedreiro::menu_builder.delete_item_question') }}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('facilitador.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}"
@@ -47,9 +47,9 @@
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger float-right delete-confirm"
-                               value="{{ __('facilitador::menu_builder.delete_item_confirm') }}">
+                               value="{{ __('pedreiro::menu_builder.delete_item_confirm') }}">
                     </form>
-                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -60,10 +60,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('facilitador::generic.close') }}"><span
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 id="m_hd_add" class="modal-title hidden"><i class="facilitador-plus"></i> {{ __('facilitador::menu_builder.create_new_item') }}</h4>
-                    <h4 id="m_hd_edit" class="modal-title hidden"><i class="facilitador-edit"></i> {{ __('facilitador::menu_builder.edit_item') }}</h4>
+                    <h4 id="m_hd_add" class="modal-title hidden"><i class="facilitador-plus"></i> {{ __('pedreiro::menu_builder.create_new_item') }}</h4>
+                    <h4 id="m_hd_edit" class="modal-title hidden"><i class="facilitador-edit"></i> {{ __('pedreiro::menu_builder.edit_item') }}</h4>
                 </div>
                 <form action="" id="m_form" method="POST"
                       data-action-add="{{ route('facilitador.menus.item.add', ['menu' => $menu->id]) }}"
@@ -74,44 +74,44 @@
                     <div class="modal-body">
                         <div>
                             @include('pedreiro::multilingual.language-selector')
-                            <label for="name">{{ __('facilitador::menu_builder.item_title') }}</label>
+                            <label for="name">{{ __('pedreiro::menu_builder.item_title') }}</label>
                             @include('pedreiro::multilingual.input-hidden', ['_field_name' => 'title', '_field_trans' => ''])
-                            <input type="text" class="form-control" id="m_title" name="title" placeholder="{{ __('facilitador::generic.title') }}"><br>
+                            <input type="text" class="form-control" id="m_title" name="title" placeholder="{{ __('pedreiro::generic.title') }}"><br>
                         </div>
-                        <label for="type">{{ __('facilitador::menu_builder.link_type') }}</label>
+                        <label for="type">{{ __('pedreiro::menu_builder.link_type') }}</label>
                         <select id="m_link_type" class="form-control" name="type">
-                            <option value="url" selected="selected">{{ __('facilitador::menu_builder.static_url') }}</option>
-                            <option value="route">{{ __('facilitador::menu_builder.dynamic_route') }}</option>
+                            <option value="url" selected="selected">{{ __('pedreiro::menu_builder.static_url') }}</option>
+                            <option value="route">{{ __('pedreiro::menu_builder.dynamic_route') }}</option>
                         </select><br>
                         <div id="m_url_type">
-                            <label for="url">{{ __('facilitador::menu_builder.url') }}</label>
-                            <input type="text" class="form-control" id="m_url" name="url" placeholder="{{ __('facilitador::generic.url') }}"><br>
+                            <label for="url">{{ __('pedreiro::menu_builder.url') }}</label>
+                            <input type="text" class="form-control" id="m_url" name="url" placeholder="{{ __('pedreiro::generic.url') }}"><br>
                         </div>
                         <div id="m_route_type">
-                            <label for="route">{{ __('facilitador::menu_builder.item_route') }}</label>
-                            <input type="text" class="form-control" id="m_route" name="route" placeholder="{{ __('facilitador::generic.route') }}"><br>
-                            <label for="parameters">{{ __('facilitador::menu_builder.route_parameter') }}</label>
+                            <label for="route">{{ __('pedreiro::menu_builder.item_route') }}</label>
+                            <input type="text" class="form-control" id="m_route" name="route" placeholder="{{ __('pedreiro::generic.route') }}"><br>
+                            <label for="parameters">{{ __('pedreiro::menu_builder.route_parameter') }}</label>
                             <textarea rows="3" class="form-control" id="m_parameters" name="parameters" placeholder="{{ json_encode(['key' => 'value'], JSON_PRETTY_PRINT) }}"></textarea><br>
                         </div>
-                        <label for="icon_class">{{ __('facilitador::menu_builder.icon_class') }} <a
+                        <label for="icon_class">{{ __('pedreiro::menu_builder.icon_class') }} <a
                                     href="{{ route('facilitador.compass.index', [], false) }}#fonts"
-                                    target="_blank">{!! __('facilitador::menu_builder.icon_class2') !!}</label>
+                                    target="_blank">{!! __('pedreiro::menu_builder.icon_class2') !!}</label>
                         <input type="text" class="form-control" id="m_icon_class" name="icon_class"
-                               placeholder="{{ __('facilitador::menu_builder.icon_class_ph') }}"><br>
-                        <label for="color">{{ __('facilitador::menu_builder.color') }}</label>
+                               placeholder="{{ __('pedreiro::menu_builder.icon_class_ph') }}"><br>
+                        <label for="color">{{ __('pedreiro::menu_builder.color') }}</label>
                         <input type="color" class="form-control" id="m_color" name="color"
-                               placeholder="{{ __('facilitador::menu_builder.color_ph') }}"><br>
-                        <label for="target">{{ __('facilitador::menu_builder.open_in') }}</label>
+                               placeholder="{{ __('pedreiro::menu_builder.color_ph') }}"><br>
+                        <label for="target">{{ __('pedreiro::menu_builder.open_in') }}</label>
                         <select id="m_target" class="form-control" name="target">
-                            <option value="_self" selected="selected">{{ __('facilitador::menu_builder.open_same') }}</option>
-                            <option value="_blank">{{ __('facilitador::menu_builder.open_new') }}</option>
+                            <option value="_self" selected="selected">{{ __('pedreiro::menu_builder.open_same') }}</option>
+                            <option value="_blank">{{ __('pedreiro::menu_builder.open_new') }}</option>
                         </select>
                         <input type="hidden" name="menu_id" value="{{ $menu->id }}">
                         <input type="hidden" name="id" id="m_id" value="">
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success float-right delete-confirm__" value="{{ __('facilitador::generic.update') }}">
-                        <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                        <input type="submit" class="btn btn-success float-right delete-confirm__" value="{{ __('pedreiro::generic.update') }}">
+                        <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -179,7 +179,7 @@
              */
             $('.add_item').click(function() {
                 $m_form.trigger('reset');
-                $m_form.find("input[type=submit]").val('{{ __('facilitador::generic.add') }}');
+                $m_form.find("input[type=submit]").val('{{ __('pedreiro::generic.add') }}');
                 $m_modal.modal('show', {data: null});
             });
 
@@ -187,7 +187,7 @@
              * Edit Menu
              */
             $('.item_actions').on('click', '.edit', function (e) {
-                $m_form.find("input[type=submit]").val('{{ __('facilitador::generic.update') }}');
+                $m_form.find("input[type=submit]").val('{{ __('pedreiro::generic.update') }}');
                 $m_modal.modal('show', {data: $(e.currentTarget)});
             });
 
@@ -292,7 +292,7 @@
                     order: JSON.stringify($('.dd').nestable('serialize')),
                     _token: '{{ csrf_token() }}'
                 }, function (data) {
-                    toastr.success("{{ __('facilitador::menu_builder.updated_order') }}");
+                    toastr.success("{{ __('pedreiro::menu_builder.updated_order') }}");
                 });
             });
         });

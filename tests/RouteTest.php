@@ -16,7 +16,7 @@ class RouteTest extends TestCase
         $this->visit(route('rica.login'));
         $this->type('admin@admin.com', 'email');
         $this->type('password', 'password');
-        $this->press(__('facilitador::generic.login'));
+        $this->press(__('pedreiro::generic.login'));
 
         $urls = [
             route('rica.dashboard'),

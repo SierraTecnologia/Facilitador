@@ -27,29 +27,29 @@ class DashboardTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->visit(route('rica.dashboard'))
-            ->see(__('facilitador::generic.dashboard'));
+            ->see(__('pedreiro::generic.dashboard'));
 
         // Test UserDimmer widget
         $this->see(trans_choice('facilitador::dimmer.user', 1))
-            ->click(__('facilitador::dimmer.user_link_text'))
+            ->click(__('pedreiro::dimmer.user_link_text'))
             ->seePageIs(route('facilitador.users.index'))
-            ->click(__('facilitador::generic.dashboard'))
+            ->click(__('pedreiro::generic.dashboard'))
             ->seePageIs(route('rica.dashboard'));
 
         // Test PostDimmer widget
         $this->see(trans_choice('facilitador::dimmer.post', 4))
-            ->click(__('facilitador::dimmer.post_link_text'))
+            ->click(__('pedreiro::dimmer.post_link_text'))
             ->seePageIs(route('facilitador.posts.index'))
-            ->click(__('facilitador::generic.dashboard'))
+            ->click(__('pedreiro::generic.dashboard'))
             ->seePageIs(route('rica.dashboard'));
 
         // Test PageDimmer widget
         $this->see(trans_choice('facilitador::dimmer.page', 1))
-            ->click(__('facilitador::dimmer.page_link_text'))
+            ->click(__('pedreiro::dimmer.page_link_text'))
             ->seePageIs(route('facilitador.pages.index'))
-            ->click(__('facilitador::generic.dashboard'))
+            ->click(__('pedreiro::generic.dashboard'))
             ->seePageIs(route('rica.dashboard'))
-            ->see(__('facilitador::generic.dashboard'));
+            ->see(__('pedreiro::generic.dashboard'));
     }
 
     /**
@@ -66,11 +66,11 @@ class DashboardTest extends TestCase
         );
 
         $this->visit(route('rica.dashboard'))
-            ->see(__('facilitador::generic.dashboard'));
+            ->see(__('pedreiro::generic.dashboard'));
 
         // Test UserDimmer widget
         $this->dontSee('<h4>1 '.trans_choice('facilitador::dimmer.user', 1).'</h4>')
-            ->dontSee(__('facilitador::dimmer.user_link_text'));
+            ->dontSee(__('pedreiro::dimmer.user_link_text'));
     }
 
     /**
@@ -87,11 +87,11 @@ class DashboardTest extends TestCase
         );
 
         $this->visit(route('rica.dashboard'))
-            ->see(__('facilitador::generic.dashboard'));
+            ->see(__('pedreiro::generic.dashboard'));
 
         // Test PostDimmer widget
         $this->dontSee('<h4>1 '.trans_choice('facilitador::dimmer.post', 1).'</h4>')
-            ->dontSee(__('facilitador::dimmer.post_link_text'));
+            ->dontSee(__('pedreiro::dimmer.post_link_text'));
     }
 
     /**
@@ -108,11 +108,11 @@ class DashboardTest extends TestCase
         );
 
         $this->visit(route('rica.dashboard'))
-            ->see(__('facilitador::generic.dashboard'));
+            ->see(__('pedreiro::generic.dashboard'));
 
         // Test PageDimmer widget
         $this->dontSee('<h4>1 '.trans_choice('facilitador::dimmer.page', 1).'</h4>')
-            ->dontSee(__('facilitador::dimmer.page_link_text'));
+            ->dontSee(__('pedreiro::dimmer.page_link_text'));
     }
 
     /**

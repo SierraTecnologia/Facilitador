@@ -37,17 +37,17 @@ class UserProfileTest extends TestCase
         $this->visit(route('profile.profile'))
             ->seeInElement('h4', $this->user->name)
             ->seeInElement('.user-email', $this->user->email)
-            ->seeLink(__('facilitador::profile.edit'));
+            ->seeLink(__('pedreiro::profile.edit'));
     }
 
     public function testCanEditUserName()
     {
         $this->visit(route('profile.profile'))
-            ->click(__('facilitador::profile.edit'))
-            ->see(__('facilitador::profile.edit_user'))
+            ->click(__('pedreiro::profile.edit'))
+            ->see(__('pedreiro::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
             ->type('New Awesome Name', 'name')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seePageIs($this->listOfUsers)
             ->seeInDatabase(
                 'users',
@@ -58,11 +58,11 @@ class UserProfileTest extends TestCase
     public function testCanEditUserEmail()
     {
         $this->visit(route('profile.profile'))
-            ->click(__('facilitador::profile.edit'))
-            ->see(__('facilitador::profile.edit_user'))
+            ->click(__('pedreiro::profile.edit'))
+            ->see(__('pedreiro::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
             ->type('another@email.com', 'email')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seePageIs($this->listOfUsers)
             ->seeInDatabase(
                 'users',
@@ -73,11 +73,11 @@ class UserProfileTest extends TestCase
     public function testCanEditUserPassword()
     {
         $this->visit(route('profile.profile'))
-            ->click(__('facilitador::profile.edit'))
-            ->see(__('facilitador::profile.edit_user'))
+            ->click(__('pedreiro::profile.edit'))
+            ->see(__('pedreiro::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
             ->type('facilitador-rocks', 'password')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seePageIs($this->listOfUsers);
 
         $updatedPassword = DB::table('users')->where('id', 1)->first()->password;
@@ -87,11 +87,11 @@ class UserProfileTest extends TestCase
     public function testCanEditUserAvatar()
     {
         $this->visit(route('profile.profile'))
-            ->click(__('facilitador::profile.edit'))
-            ->see(__('facilitador::profile.edit_user'))
+            ->click(__('pedreiro::profile.edit'))
+            ->see(__('pedreiro::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
             ->attach($this->newImagePath(), 'avatar')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seePageIs($this->listOfUsers)
             ->dontSeeInDatabase(
                 'users',
@@ -117,11 +117,11 @@ class UserProfileTest extends TestCase
         );
         Auth::onceUsingId($user->id);
         $this->visit(route('profile.profile'))
-            ->click(__('facilitador::profile.edit'))
-            ->see(__('facilitador::profile.edit_user'))
+            ->click(__('pedreiro::profile.edit'))
+            ->see(__('pedreiro::profile.edit_user'))
             ->seePageIs($editPageForTheCurrentUser)
             ->type('another@email.com', 'email')
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seePageIs($this->listOfUsers)
             ->seeInDatabase(
                 'users',
@@ -132,11 +132,11 @@ class UserProfileTest extends TestCase
     public function testCanSetUserLocale()
     {
         $this->visit(route('profile.profile'))
-            ->click(__('facilitador::profile.edit'))
-            ->see(__('facilitador::profile.edit_user'))
+            ->click(__('pedreiro::profile.edit'))
+            ->see(__('pedreiro::profile.edit_user'))
             ->seePageIs($this->editPageForTheCurrentUser)
             ->select('de', 'locale')
-            ->press(__('facilitador::generic.save'));
+            ->press(__('pedreiro::generic.save'));
 
         $user = User::find(1);
         $this->assertTrue(($user->locale == 'de'));
@@ -157,7 +157,7 @@ class UserProfileTest extends TestCase
         );
 
         $this->visit($this->editPageForTheCurrentUser)
-            ->press(__('facilitador::generic.save'))
+            ->press(__('pedreiro::generic.save'))
             ->seePageIs($this->editPageForTheCurrentUser);
     }
 

@@ -77,7 +77,7 @@ trait AppServiceContainerProvider
             'facilitador.acl_fail', function ($app) {
                 return $app['redirect']
                     ->guest(route('facilitador.account@login'))
-                    ->withErrors([ 'error message' => __('facilitador::login.error.login_first')]);
+                    ->withErrors([ 'error message' => __('pedreiro::login.error.login_first')]);
             }
         );
 

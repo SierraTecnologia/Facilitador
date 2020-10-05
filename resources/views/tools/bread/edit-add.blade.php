@@ -31,11 +31,11 @@
 @section('breadcrumbs')
 <ol class="breadcrumb hidden-xs">
     <li class="active">
-        <a href="{{ route('rica.dashboard')}}"><i class="facilitador-boat"></i> {{ __('facilitador::generic.dashboard') }}</a>
+        <a href="{{ route('rica.dashboard')}}"><i class="facilitador-boat"></i> {{ __('pedreiro::generic.dashboard') }}</a>
     </li>
     <li class="active">
         <a href="{{ route('facilitador.bread.index') }}">
-            {{ __('facilitador::generic.bread') }}
+            {{ __('pedreiro::generic.bread') }}
         </a>
     </li>
     <li class="active">
@@ -50,7 +50,7 @@
         @endif
     </li>
     <li>
-        {{ isset($dataType->id) ? __('facilitador::generic.edit') : __('facilitador::generic.add') }}
+        {{ isset($dataType->id) ? __('pedreiro::generic.edit') : __('pedreiro::generic.add') }}
     </li>
 </ol>
 @endsection
@@ -81,7 +81,7 @@
                         <div class="panel-body">
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="name">{{ __('facilitador::database.table_name') }}</label>
+                                    <label for="name">{{ __('pedreiro::database.table_name') }}</label>
                                     <input type="text" class="form-control" readonly name="name" placeholder="{{ __('generic_name') }}"
                                            value="{{ $dataType->name ?? $table }}">
                                 </div>
@@ -172,8 +172,8 @@
                                     <input type="checkbox"
                                            name="generate_permissions"
                                            class="toggleswitch"
-                                           data-on="{{ __('facilitador::generic.yes') }}"
-                                           data-off="{{ __('facilitador::generic.no') }}"
+                                           data-on="{{ __('pedreiro::generic.yes') }}"
+                                           data-off="{{ __('pedreiro::generic.no') }}"
                                            @if($checked) checked @endif >
                                 </div>
                                 <div class="col-md-3 form-group">
@@ -182,8 +182,8 @@
                                     <input type="checkbox"
                                            name="server_side"
                                            class="toggleswitch"
-                                           data-on="{{ __('facilitador::generic.yes') }}"
-                                           data-off="{{ __('facilitador::generic.no') }}"
+                                           data-on="{{ __('pedreiro::generic.yes') }}"
+                                           data-off="{{ __('pedreiro::generic.no') }}"
                                            @if($checked) checked @endif >
                                 </div>
                             </div>
@@ -196,7 +196,7 @@
                                           data-placement="right"
                                           title="{{ __('support::cruds.bread.order_column_ph') }}"></span>
                                     <select name="order_column" class="select2 form-control">
-                                        <option value="">-- {{ __('facilitador::generic.none') }} --</option>
+                                        <option value="">-- {{ __('pedreiro::generic.none') }} --</option>
                                         @foreach($fieldOptions as $tbl)
                                         <option value="{{ $tbl['field'] }}"
                                                 @if(isset($dataType) && $dataType->order_column == $tbl['field']) selected @endif
@@ -212,7 +212,7 @@
                                           data-placement="right"
                                           title="{{ __('support::cruds.bread.order_ident_column_ph') }}"></span>
                                     <select name="order_display_column" class="select2 form-control">
-                                        <option value="">-- {{ __('facilitador::generic.none') }} --</option>
+                                        <option value="">-- {{ __('pedreiro::generic.none') }} --</option>
                                         @foreach($fieldOptions as $tbl)
                                         <option value="{{ $tbl['field'] }}"
                                                 @if(isset($dataType) && $dataType->order_display_column == $tbl['field']) selected @endif
@@ -224,10 +224,10 @@
                                     <label for="order_direction">{{ __('support::cruds.bread.order_direction') }}</label>
                                     <select name="order_direction" class="select2 form-control">
                                         <option value="asc" @if(isset($dataType) && $dataType->order_direction == 'asc') selected @endif>
-                                            {{ __('facilitador::generic.ascending') }}
+                                            {{ __('pedreiro::generic.ascending') }}
                                         </option>
                                         <option value="desc" @if(isset($dataType) && $dataType->order_direction == 'desc') selected @endif>
-                                            {{ __('facilitador::generic.descending') }}
+                                            {{ __('pedreiro::generic.descending') }}
                                         </option>
                                     </select>
                                 </div>
@@ -239,7 +239,7 @@
                                           data-placement="right"
                                           title="{{ __('support::cruds.bread.default_search_key_ph') }}"></span>
                                     <select name="default_search_key" class="select2 form-control">
-                                        <option value="">-- {{ __('facilitador::generic.none') }} --</option>
+                                        <option value="">-- {{ __('pedreiro::generic.none') }} --</option>
                                         @foreach($fieldOptions as $tbl)
                                         <option value="{{ $tbl['field'] }}"
                                                 @if(isset($dataType) && $dataType->default_search_key == $tbl['field']) selected @endif
@@ -253,7 +253,7 @@
                                     <div class="col-md-3 form-group">
                                         <label for="scope">{{ __('support::cruds.bread.scope') }}</label>
                                         <select name="scope" class="select2 form-control">
-                                            <option value="">-- {{ __('facilitador::generic.none') }} --</option>
+                                            <option value="">-- {{ __('pedreiro::generic.none') }} --</option>
                                             @foreach($scopes as $scope)
                                             <option value="{{ $scope }}"
                                                     @if($dataType->scope == $scope) selected @endif
@@ -284,11 +284,11 @@
 
                         <div class="panel-body">
                             <div class="row fake-table-hd">
-                                <div class="col-xs-2">{{ __('facilitador::database.field') }}</div>
-                                <div class="col-xs-2">{{ __('facilitador::database.visibility') }}</div>
-                                <div class="col-xs-2">{{ __('facilitador::database.input_type') }}</div>
+                                <div class="col-xs-2">{{ __('pedreiro::database.field') }}</div>
+                                <div class="col-xs-2">{{ __('pedreiro::database.visibility') }}</div>
+                                <div class="col-xs-2">{{ __('pedreiro::database.input_type') }}</div>
                                 <div class="col-xs-2">{{ __('support::cruds.bread.display_name') }}</div>
-                                <div class="col-xs-4">{{ __('facilitador::database.optional_details') }}</div>
+                                <div class="col-xs-4">{{ __('pedreiro::database.optional_details') }}</div>
                             </div>
 
                             <div id="bread-items">
@@ -307,14 +307,14 @@
                                 <div class="row row-dd">
                                     <div class="col-xs-2">
                                         <h4><strong>{{ $data['field'] }}</strong></h4>
-                                        <strong>{{ __('facilitador::database.type') }}:</strong> <span>{{ $data['type'] }}</span><br/>
-                                        <strong>{{ __('facilitador::database.key') }}:</strong> <span>{{ $data['key'] }}</span><br/>
-                                        <strong>{{ __('facilitador::generic.required') }}:</strong>
+                                        <strong>{{ __('pedreiro::database.type') }}:</strong> <span>{{ $data['type'] }}</span><br/>
+                                        <strong>{{ __('pedreiro::database.key') }}:</strong> <span>{{ $data['key'] }}</span><br/>
+                                        <strong>{{ __('pedreiro::generic.required') }}:</strong>
                                         @if($data['null'] == "NO")
-                                            <span>{{ __('facilitador::generic.yes') }}</span>
+                                            <span>{{ __('pedreiro::generic.yes') }}</span>
                                             <input type="hidden" value="1" name="field_required_{{ $data['field'] }}" checked="checked">
                                         @else
-                                            <span>{{ __('facilitador::generic.no') }}</span>
+                                            <span>{{ __('pedreiro::generic.no') }}</span>
                                             <input type="hidden" value="0" name="field_required_{{ $data['field'] }}">
                                         @endif
                                         <div class="handler facilitador-handle"></div>
@@ -331,28 +331,28 @@
                                                @elseif(!isset($dataRow->browse))
                                                    checked="checked"
                                                @endif>
-                                        <label for="field_browse_{{ $data['field'] }}">{{ __('facilitador::generic.browse') }}</label><br/>
+                                        <label for="field_browse_{{ $data['field'] }}">{{ __('pedreiro::generic.browse') }}</label><br/>
                                         <input type="checkbox"
                                                id="field_read_{{ $data['field'] }}"
                                                name="field_read_{{ $data['field'] }}" @if(isset($dataRow->read) && $dataRow->read) checked="checked" @elseif($data['key'] == 'PRI')@elseif($data['type'] == 'timestamp' && $data['field'] == 'updated_at')@elseif(!isset($dataRow->read)) checked="checked" @endif>
-                                        <label for="field_read_{{ $data['field'] }}">{{ __('facilitador::generic.read') }}</label><br/>
+                                        <label for="field_read_{{ $data['field'] }}">{{ __('pedreiro::generic.read') }}</label><br/>
                                         <input type="checkbox"
                                                id="field_edit_{{ $data['field'] }}"
                                                name="field_edit_{{ $data['field'] }}" @if(isset($dataRow->edit) && $dataRow->edit) checked="checked" @elseif($data['key'] == 'PRI')@elseif($data['type'] == 'timestamp' && $data['field'] == 'updated_at')@elseif(!isset($dataRow->edit)) checked="checked" @endif>
-                                        <label for="field_edit_{{ $data['field'] }}">{{ __('facilitador::generic.edit') }}</label><br/>
+                                        <label for="field_edit_{{ $data['field'] }}">{{ __('pedreiro::generic.edit') }}</label><br/>
                                         <input type="checkbox"
                                                id="field_add_{{ $data['field'] }}"
                                                name="field_add_{{ $data['field'] }}" @if(isset($dataRow->add) && $dataRow->add) checked="checked" @elseif($data['key'] == 'PRI')@elseif($data['type'] == 'timestamp' && $data['field'] == 'created_at')@elseif($data['type'] == 'timestamp' && $data['field'] == 'updated_at')@elseif(!isset($dataRow->add)) checked="checked" @endif>
-                                            <label for="field_add_{{ $data['field'] }}">{{ __('facilitador::generic.add') }}</label><br/>
+                                            <label for="field_add_{{ $data['field'] }}">{{ __('pedreiro::generic.add') }}</label><br/>
                                         <input type="checkbox"
                                                id="field_delete_{{ $data['field'] }}"
                                                name="field_delete_{{ $data['field'] }}" @if(isset($dataRow->delete) && $dataRow->delete) checked="checked" @elseif($data['key'] == 'PRI')@elseif($data['type'] == 'timestamp' && $data['field'] == 'updated_at')@elseif(!isset($dataRow->delete)) checked="checked" @endif>
-                                                <label for="field_delete_{{ $data['field'] }}">{{ __('facilitador::generic.delete') }}</label><br/>
+                                                <label for="field_delete_{{ $data['field'] }}">{{ __('pedreiro::generic.delete') }}</label><br/>
                                     </div>
                                     <div class="col-xs-2">
                                         <input type="hidden" name="field_{{ $data['field'] }}" value="{{ $data['field'] }}">
                                         @if($data['type'] == 'timestamp')
-                                            <p>{{ __('facilitador::generic.timestamp') }}</p>
+                                            <p>{{ __('pedreiro::generic.timestamp') }}</p>
                                             <input type="hidden" value="timestamp"
                                                    name="field_input_type_{{ $data['field'] }}">
                                         @else
@@ -382,7 +382,7 @@
                                     </div>
                                     <div class="col-xs-4">
                                         <div class="alert alert-danger validation-error">
-                                            {{ __('facilitador::json.invalid') }}
+                                            {{ __('pedreiro::json.invalid') }}
                                         </div>
                                         <textarea id="json-input-{{ json_encode($data['field']) }}"
                                                   class="resizable-editor"
@@ -408,11 +408,11 @@
                         </div><!-- .panel-body -->
                         <div class="panel-footer">
                              <div class="btn btn-new-relationship"><i class="facilitador-heart"></i> <span>
-                             {{ __('facilitador::database.relationship.create') }}</span></div>
+                             {{ __('pedreiro::database.relationship.create') }}</span></div>
                         </div>
                     </div><!-- .panel -->
 
-                    <button type="submit" class="btn float-right btn-primary">{{ __('facilitador::generic.submit') }}</button>
+                    <button type="submit" class="btn float-right btn-primary">{{ __('pedreiro::generic.submit') }}</button>
 
                 </form>
             </div><!-- .col-md-12 -->
@@ -514,7 +514,7 @@
                         for (var i = window.invalidEditors.length - 1; i >= 0; i--) {
                             $('#'+window.invalidEditors[i]).siblings('.validation-error').show();
                         }
-                        toastr.error('{{ __('facilitador::json.invalid_message') }}', '{{ __('facilitador::json.validation_errors') }}', {"preventDuplicates": true, "preventOpenDuplicates": true});
+                        toastr.error('{{ __('pedreiro::json.invalid_message') }}', '{{ __('pedreiro::json.validation_errors') }}', {"preventDuplicates": true, "preventOpenDuplicates": true});
                     } else {
                         if (_session.getValue()) {
                             // uglify JSON object and update textarea for submit purposes

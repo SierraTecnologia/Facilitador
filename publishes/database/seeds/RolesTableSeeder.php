@@ -14,7 +14,7 @@ class RolesTableSeeder extends Seeder
         if (!$role->exists) {
             $role->fill(
                 [
-                    'display_name' => __('facilitador::seeders.roles.admin'),
+                    'display_name' => __('pedreiro::seeders.roles.admin'),
                 ]
             )->save();
         }
@@ -23,7 +23,7 @@ class RolesTableSeeder extends Seeder
         if (!$role->exists) {
             $role->fill(
                 [
-                    'display_name' => __('facilitador::seeders.roles.user'),
+                    'display_name' => __('pedreiro::seeders.roles.user'),
                 ]
             )->save();
         }

@@ -1,6 +1,6 @@
 @extends('pedreiro::layouts.voyager.master')
 
-@section('page_title', __('facilitador::generic.viewing').' '.__('facilitador::generic.settings'))
+@section('page_title', __('pedreiro::generic.viewing').' '.__('pedreiro::generic.settings'))
 
 @section('css')
     <style>
@@ -210,7 +210,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="facilitador-settings"></i> {{ __('facilitador::generic.settings') }}
+        <i class="facilitador-settings"></i> {{ __('pedreiro::generic.settings') }}
     </h1>
 @stop
 
@@ -219,8 +219,8 @@
         @include('facilitador::alerts')
         @if(\Illuminate\Support\Facades\Config::get('sitec.facilitador.show_dev_tips'))
         <div class="alert alert-info">
-            <strong>{{ __('facilitador::generic.how_to_use') }}:</strong>
-            <p>{{ __('facilitador::settings.usage_help') }} <code>setting('group.key')</code></p>
+            <strong>{{ __('pedreiro::generic.how_to_use') }}:</strong>
+            <p>{{ __('pedreiro::settings.usage_help') }} <code>setting('group.key')</code></p>
         </div>
         @endif
     </div>
@@ -353,7 +353,7 @@
                 </div>
 
             </div>
-            <button type="submit" class="btn btn-primary float-right">{{ __('facilitador::settings.save') }}</button>
+            <button type="submit" class="btn btn-primary float-right">{{ __('pedreiro::settings.save') }}</button>
         </form>
 
         <div style="clear:both"></div>
@@ -362,37 +362,37 @@
         <div class="panel" style="margin-top:10px;">
             <div class="panel-heading new-setting">
                 <hr>
-                <h3 class="panel-title"><i class="facilitador-plus"></i> {{ __('facilitador::settings.new') }}</h3>
+                <h3 class="panel-title"><i class="facilitador-plus"></i> {{ __('pedreiro::settings.new') }}</h3>
             </div>
             <div class="panel-body">
                 <form action="{{ route('rica.facilitador.settings.store') }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="setting_tab" class="setting_tab" value="{{ $active }}" />
                     <div class="col-md-3">
-                        <label for="display_name">{{ __('facilitador::generic.name') }}</label>
-                        <input type="text" class="form-control" name="display_name" placeholder="{{ __('facilitador::settings.help_name') }}" required="required">
+                        <label for="display_name">{{ __('pedreiro::generic.name') }}</label>
+                        <input type="text" class="form-control" name="display_name" placeholder="{{ __('pedreiro::settings.help_name') }}" required="required">
                     </div>
                     <div class="col-md-3">
-                        <label for="key">{{ __('facilitador::generic.key') }}</label>
-                        <input type="text" class="form-control" name="key" placeholder="{{ __('facilitador::settings.help_key') }}" required="required">
+                        <label for="key">{{ __('pedreiro::generic.key') }}</label>
+                        <input type="text" class="form-control" name="key" placeholder="{{ __('pedreiro::settings.help_key') }}" required="required">
                     </div>
                     <div class="col-md-3">
-                        <label for="type">{{ __('facilitador::generic.type') }}</label>
+                        <label for="type">{{ __('pedreiro::generic.type') }}</label>
                         <select name="type" class="form-control" required="required">
-                            <option value="">{{ __('facilitador::generic.choose_type') }}</option>
-                            <option value="text">{{ __('facilitador::form.type_textbox') }}</option>
-                            <option value="text_area">{{ __('facilitador::form.type_textarea') }}</option>
-                            <option value="rich_text_box">{{ __('facilitador::form.type_richtextbox') }}</option>
-                            <option value="code_editor">{{ __('facilitador::form.type_codeeditor') }}</option>
-                            <option value="checkbox">{{ __('facilitador::form.type_checkbox') }}</option>
-                            <option value="radio_btn">{{ __('facilitador::form.type_radiobutton') }}</option>
-                            <option value="select_dropdown">{{ __('facilitador::form.type_selectdropdown') }}</option>
-                            <option value="file">{{ __('facilitador::form.type_file') }}</option>
-                            <option value="image">{{ __('facilitador::form.type_image') }}</option>
+                            <option value="">{{ __('pedreiro::generic.choose_type') }}</option>
+                            <option value="text">{{ __('pedreiro::form.type_textbox') }}</option>
+                            <option value="text_area">{{ __('pedreiro::form.type_textarea') }}</option>
+                            <option value="rich_text_box">{{ __('pedreiro::form.type_richtextbox') }}</option>
+                            <option value="code_editor">{{ __('pedreiro::form.type_codeeditor') }}</option>
+                            <option value="checkbox">{{ __('pedreiro::form.type_checkbox') }}</option>
+                            <option value="radio_btn">{{ __('pedreiro::form.type_radiobutton') }}</option>
+                            <option value="select_dropdown">{{ __('pedreiro::form.type_selectdropdown') }}</option>
+                            <option value="file">{{ __('pedreiro::form.type_file') }}</option>
+                            <option value="image">{{ __('pedreiro::form.type_image') }}</option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label for="group">{{ __('facilitador::settings.group') }}</label>
+                        <label for="group">{{ __('pedreiro::settings.group') }}</label>
                         <select class="form-control group_select group_select_new" name="group">
                             @foreach($groups as $group)
                                 <option value="{{ $group }}">{{ $group }}</option>
@@ -400,20 +400,20 @@
                         </select>
                     </div>
                     <div class="col-md-12">
-                        <a id="toggle_options"><i class="facilitador-double-down"></i> {{ mb_strtoupper(__('facilitador::generic.options')) }}</a>
+                        <a id="toggle_options"><i class="facilitador-double-down"></i> {{ mb_strtoupper(__('pedreiro::generic.options')) }}</a>
                         <div class="new-settings-options">
-                            <label for="options">{{ __('facilitador::generic.options') }}
-                                <small>{{ __('facilitador::settings.help_option') }}</small>
+                            <label for="options">{{ __('pedreiro::generic.options') }}
+                                <small>{{ __('pedreiro::settings.help_option') }}</small>
                             </label>
                             <div id="options_editor" class="form-control min_height_200" data-language="json"></div>
                             <textarea id="options_textarea" name="details" class="hidden"></textarea>
-                            <div id="valid_options" class="alert-success alert" style="display:none">{{ __('facilitador::json.valid') }}</div>
-                            <div id="invalid_options" class="alert-danger alert" style="display:none">{{ __('facilitador::json.invalid') }}</div>
+                            <div id="valid_options" class="alert-success alert" style="display:none">{{ __('pedreiro::json.valid') }}</div>
+                            <div id="invalid_options" class="alert-danger alert" style="display:none">{{ __('pedreiro::json.invalid') }}</div>
                         </div>
                     </div>
                     <div style="clear:both"></div>
                     <button type="submit" class="btn btn-primary float-right new-setting-btn">
-                        <i class="facilitador-plus"></i> {{ __('facilitador::settings.add_new') }}
+                        <i class="facilitador-plus"></i> {{ __('pedreiro::settings.add_new') }}
                     </button>
                     <div style="clear:both"></div>
                 </form>
@@ -427,20 +427,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('facilitador::generic.close') }}">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title">
-                        <i class="facilitador-trash"></i> {!! __('facilitador::settings.delete_question', ['setting' => '<span id="delete_setting_title"></span>']) !!}
+                        <i class="facilitador-trash"></i> {!! __('pedreiro::settings.delete_question', ['setting' => '<span id="delete_setting_title"></span>']) !!}
                     </h4>
                 </div>
                 <div class="modal-footer">
                     <form action="#" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger float-right delete-confirm" value="{{ __('facilitador::settings.delete_confirm') }}">
+                        <input type="submit" class="btn btn-danger float-right delete-confirm" value="{{ __('pedreiro::settings.delete_confirm') }}">
                     </form>
-                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('facilitador::generic.cancel') }}</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>
             </div>
         </div>

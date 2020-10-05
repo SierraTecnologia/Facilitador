@@ -175,7 +175,7 @@ class FacilitadorBreadController extends Controller
 
             return redirect()->route('facilitador.bread.index')->with($data);
         } catch (Exception $e) {
-            return back()->with($this->alertException($e, __('facilitador::generic.update_failed')));
+            return back()->with($this->alertException($e, __('pedreiro::generic.update_failed')));
         }
     }
 

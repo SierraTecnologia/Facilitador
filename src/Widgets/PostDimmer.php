@@ -29,9 +29,9 @@ class PostDimmer extends BaseDimmer
                 $this->config, [
                 'icon'   => 'facilitador-news',
                 'title'  => "{$count} {$string}",
-                'text'   => __('facilitador::dimmer.post_text', ['count' => $count, 'string' => Str::lower($string)]),
+                'text'   => __('pedreiro::dimmer.post_text', ['count' => $count, 'string' => Str::lower($string)]),
                 'button' => [
-                'text' => __('facilitador::dimmer.post_link_text'),
+                'text' => __('pedreiro::dimmer.post_link_text'),
                 'link' => route('facilitador.posts.index'),
                 ],
                 'image' => facilitador_asset('images/widget-backgrounds/02.jpg'),

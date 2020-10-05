@@ -1,17 +1,17 @@
 != View::make('support::shared.form._header', $__data)->render()
 
 %fieldset
-	.legend=empty($item) ? __('facilitador::redirect_rules.legend.new') : __('facilitador::redirect_rules.legend.edit')
+	.legend=empty($item) ? __('pedreiro::redirect_rules.legend.new') : __('pedreiro::redirect_rules.legend.edit')
 
 	:php
-		$help = __('facilitador::redirect_rules.form.from_help', ['root' => Request::root()]);
+		$help = __('pedreiro::redirect_rules.form.from_help', ['root' => Request::root()]);
 		if (Config::get('facilitador::core.allow_regex_in_redirects')) {
-			$help .= __('facilitador::redirect_rules.form.from_regex_help');
+			$help .= __('pedreiro::redirect_rules.form.from_regex_help');
 		}
-		echo Former::text('from')->label(__('facilitador::redirect_rules.form.from'))->blockHelp($help);
+		echo Former::text('from')->label(__('pedreiro::redirect_rules.form.from'))->blockHelp($help);
 
-	!= Former::text('to')->label(__('facilitador::redirect_rules.form.to'))->blockHelp(__('facilitador::redirect_rules.form.to_help'))
-	!= Former::radiolist('code')->label(__('facilitador::redirect_rules.form.code'))->from(Support\Models\RedirectRule::getCodes())->blockHelp(__('facilitador::redirect_rules.form.radio_help'));
-	!= Former::text('label')->label(__('facilitador::redirect_rules.form.label'))->help(__('facilitador::redirect_rules.form.label_help'))
+	!= Former::text('to')->label(__('pedreiro::redirect_rules.form.to'))->blockHelp(__('pedreiro::redirect_rules.form.to_help'))
+	!= Former::radiolist('code')->label(__('pedreiro::redirect_rules.form.code'))->from(Support\Models\RedirectRule::getCodes())->blockHelp(__('pedreiro::redirect_rules.form.radio_help'));
+	!= Former::text('label')->label(__('pedreiro::redirect_rules.form.label'))->help(__('pedreiro::redirect_rules.form.label_help'))
 
 != View::make('support::shared.form._footer', $__data)->render()

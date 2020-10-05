@@ -14,8 +14,8 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.site.title'),
-                'value'        => __('facilitador::seeders.settings.site.title'),
+                'display_name' => __('pedreiro::seeders.settings.site.title'),
+                'value'        => __('pedreiro::seeders.settings.site.title'),
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 1,
@@ -28,8 +28,8 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.site.description'),
-                'value'        => __('facilitador::seeders.settings.site.description'),
+                'display_name' => __('pedreiro::seeders.settings.site.description'),
+                'value'        => __('pedreiro::seeders.settings.site.description'),
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 2,
@@ -42,7 +42,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.site.logo'),
+                'display_name' => __('pedreiro::seeders.settings.site.logo'),
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'image',
@@ -56,7 +56,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.site.google_analytics_tracking_id'),
+                'display_name' => __('pedreiro::seeders.settings.site.google_analytics_tracking_id'),
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'text',
@@ -70,7 +70,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.admin.background_image'),
+                'display_name' => __('pedreiro::seeders.settings.admin.background_image'),
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'image',
@@ -84,7 +84,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.admin.title'),
+                'display_name' => __('pedreiro::seeders.settings.admin.title'),
                 'value'        => 'Facilitador',
                 'details'      => '',
                 'type'         => 'text',
@@ -98,8 +98,8 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.admin.description'),
-                'value'        => __('facilitador::seeders.settings.admin.description_value'),
+                'display_name' => __('pedreiro::seeders.settings.admin.description'),
+                'value'        => __('pedreiro::seeders.settings.admin.description_value'),
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 2,
@@ -112,7 +112,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.admin.loader'),
+                'display_name' => __('pedreiro::seeders.settings.admin.loader'),
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'image',
@@ -126,7 +126,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.admin.icon_image'),
+                'display_name' => __('pedreiro::seeders.settings.admin.icon_image'),
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'image',
@@ -140,7 +140,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill(
                 [
-                'display_name' => __('facilitador::seeders.settings.admin.google_analytics_client_id'),
+                'display_name' => __('pedreiro::seeders.settings.admin.google_analytics_client_id'),
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'text',

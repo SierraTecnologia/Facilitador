@@ -1,6 +1,6 @@
 
 <div class="col-sm-3 col-md-3 sidebar">
-  <h3><i class="facilitador-logbook"></i> {{ __('facilitador::compass.logs.title') }} <small>{{ __('facilitador::compass.logs.text') }}.</small></h3>
+  <h3><i class="facilitador-logbook"></i> {{ __('pedreiro::compass.logs.title') }} <small>{{ __('pedreiro::compass.logs.text') }}.</small></h3>
   <div class="list-group">
     @foreach($files as $file)
       <a href="?log={{ base64_encode($file) }}"
@@ -13,16 +13,16 @@
 <div class="col-sm-9 col-md-9 table-container">
   @if ($logs === null)
     <div>
-      {{ __('facilitador::compass.logs.file_too_big') }}
+      {{ __('pedreiro::compass.logs.file_too_big') }}
     </div>
   @else
     <table id="table-log" class="table table-striped">
       <thead>
       <tr>
-        <th>{{ __('facilitador::compass.logs.level') }}</th>
-        <th>{{ __('facilitador::compass.logs.context') }}</th>
-        <th>{{ __('facilitador::compass.logs.date') }}</th>
-        <th>{{ __('facilitador::compass.logs.content') }}</th>
+        <th>{{ __('pedreiro::compass.logs.level') }}</th>
+        <th>{{ __('pedreiro::compass.logs.context') }}</th>
+        <th>{{ __('pedreiro::compass.logs.date') }}</th>
+        <th>{{ __('pedreiro::compass.logs.content') }}</th>
       </tr>
       </thead>
       <tbody>
@@ -53,13 +53,13 @@
   <div>
     @if($current_file)
       <a href="?download={{ base64_encode($current_file) }}"><span class="glyphicon glyphicon-download-alt"></span>
-        {{ __('facilitador::compass.logs.download_file') }}</a>
+        {{ __('pedreiro::compass.logs.download_file') }}</a>
       -
       <a id="delete-log" href="?del={{ base64_encode($current_file) }}"><span
-            class="glyphicon glyphicon-trash"></span> {{ __('facilitador::compass.logs.delete_file') }}</a>
+            class="glyphicon glyphicon-trash"></span> {{ __('pedreiro::compass.logs.delete_file') }}</a>
       @if(count($files) > 1)
         -
-        <a id="delete-all-log" href="?delall=true"><span class="glyphicon glyphicon-trash"></span> {{ __('facilitador::compass.logs.delete_all_files') }}</a>
+        <a id="delete-all-log" href="?delall=true"><span class="glyphicon glyphicon-trash"></span> {{ __('pedreiro::compass.logs.delete_all_files') }}</a>
       @endif
     @endif
   </div>

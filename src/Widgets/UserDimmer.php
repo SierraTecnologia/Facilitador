@@ -29,9 +29,9 @@ class UserDimmer extends BaseDimmer
                 $this->config, [
                 'icon'   => 'facilitador-group',
                 'title'  => "{$count} {$string}",
-                'text'   => __('facilitador::dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
+                'text'   => __('pedreiro::dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
                 'button' => [
-                'text' => __('facilitador::dimmer.user_link_text'),
+                'text' => __('pedreiro::dimmer.user_link_text'),
                 'link' => route('facilitador.users.index'),
                 ],
                 'image' => facilitador_asset('images/widget-backgrounds/01.jpg'),

@@ -11,7 +11,7 @@ class LoginTest extends TestCase
         $this->visit(route('rica.login'))
             ->type('admin@admin.com', 'email')
             ->type('password', 'password')
-            ->press(__('facilitador::generic.login'))
+            ->press(__('pedreiro::generic.login'))
             ->seePageIs(route('rica.dashboard'));
     }
 
@@ -22,7 +22,7 @@ class LoginTest extends TestCase
         $this->visit(route('rica.login'))
             ->type('john@Doe.com', 'email')
             ->type('pass', 'password')
-            ->press(__('facilitador::generic.login'))
+            ->press(__('pedreiro::generic.login'))
             ->seePageIs(route('rica.login'))
             ->see(__('auth.failed'))
             ->seeInField('email', 'john@Doe.com');
@@ -47,7 +47,7 @@ class LoginTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->visit(route('profile.dashboard'))
-            ->press(__('facilitador::generic.logout'))
+            ->press(__('pedreiro::generic.logout'))
             ->seePageIs(route('profile.login'));
     }
 
@@ -59,7 +59,7 @@ class LoginTest extends TestCase
             $t = $this->visit(route('profile.login'))
                 ->type('john@Doe.com', 'email')
                 ->type('pass', 'password')
-                ->press(__('facilitador::generic.login'));
+                ->press(__('pedreiro::generic.login'));
         }
 
         $t->see(__('auth.throttle', ['seconds' => 60]));
