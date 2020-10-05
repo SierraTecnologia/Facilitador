@@ -2,19 +2,16 @@
 
 namespace Facilitador\Traits\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Log;
 use App;
 use Config;
-
-
-
-
+use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\DuskServiceProvider;
+
+
+
+
+use Log;
 use Muleta\Traits\Providers\ConsoleTools;
-
-
-
 
 trait FacilitadorRegisterPackages
 {
@@ -76,8 +73,6 @@ trait FacilitadorRegisterPackages
         \Bkwld\Croppa\ServiceProvider::class,
         // PHP utils
         \Bkwld\Library\ServiceProvider::class,
-        // HAML
-        \Bkwld\LaravelHaml\ServiceProvider::class,
         // BrowserDetect
         \Jenssegers\Agent\AgentServiceProvider::class,
         // File uploading
@@ -107,7 +102,4 @@ trait FacilitadorRegisterPackages
     {
         $this->setProviders();
     }
-
-
-
 }
