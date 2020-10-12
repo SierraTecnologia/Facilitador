@@ -1,6 +1,6 @@
 # Controllers
 
-A lot of Decoy's "magic" comes by having your admin controllers extend the `Facilitador\Http\Controllers\Admin\Base`.  The title, description, listing columns, and many other things can be adjusted through the defintion of protected properties in the controller class.  To more dramatically affect behavior, you can also override the [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) action methods of the base controller.  These approaches are described below.  
+A lot of Decoy's "magic" comes by having your admin controllers extend the `Pedreiro\Http\Controllers\Admin\Base`.  The title, description, listing columns, and many other things can be adjusted through the defintion of protected properties in the controller class.  To more dramatically affect behavior, you can also override the [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) action methods of the base controller.  These approaches are described below.  
 
 ## Configurable properties
 
@@ -97,7 +97,7 @@ Several of these properties have accessor functions that can be overrode in your
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Facilitador\Http\Controllers\Admin\Base;
+use Pedreiro\Http\Controllers\Admin\Base;
 class Articles extends Base {
 
     public function search() {
