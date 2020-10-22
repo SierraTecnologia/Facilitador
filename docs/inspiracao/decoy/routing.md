@@ -2,7 +2,7 @@
 
 ## Standard CRUD routes
 
-Decoy registers a wildcard `admin/*` route. It parses the requested path to determine what controller and action should be used.  The route is parsed by taking dash-delimited slugs of the controller and converting them to StudlyCased controller names and snakeCased actions on the controller.  You can read the Facilitador\Http\Controllers\Admin\Base docs for all of the default actions, but here's an example of the more significant ones:
+Decoy registers a wildcard `admin/*` route. It parses the requested path to determine what controller and action should be used.  The route is parsed by taking dash-delimited slugs of the controller and converting them to StudlyCased controller names and snakeCased actions on the controller.  You can read the Pedreiro\Http\Controllers\Admin\Base docs for all of the default actions, but here's an example of the more significant ones:
 
 Assuming your model is `App\ProjectCategory` with a controller of `App\Http\Controllers\Admin\ProjectCategories`:
 

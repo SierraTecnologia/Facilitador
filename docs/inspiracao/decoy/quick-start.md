@@ -144,7 +144,7 @@ Change your Article controller to:
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Facilitador\Http\Controllers\Admin\Base;
+use Pedreiro\Http\Controllers\Admin\Base;
 
 class Articles extends Base {
   public $title = 'News';
