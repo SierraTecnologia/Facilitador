@@ -19,7 +19,7 @@ trait FacilitadorLoadClasses
         $this->loadViewsFrom($viewsPath, 'facilitador');
         $this->publishes(
             [
-            $viewsPath => base_path('resources/views/vendor/facilitador'),
+            $viewsPath => base_path('resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'facilitador'),
             ], ['views',  'sitec', 'sitec-views']
         );
         
@@ -37,7 +37,7 @@ trait FacilitadorLoadClasses
         // Publish lanaguage files
         $this->publishes(
             [
-            $this->getResourcesPath('lang') => resource_path('lang/vendor/facilitador')
+            $this->getResourcesPath('lang') => resource_path('lang'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'facilitador')
             ], ['lang',  'sitec', 'sitec-lang', 'translations']
         );
 
