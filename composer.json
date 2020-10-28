@@ -35,7 +35,7 @@
         "laravel/framework": "^7.0 || ^8.0",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "socialiteproviders/manager": "~2.0 || ~3.0 || ~4.0",
-        "socialiteproviders/github": "dev-master",
+        "socialiteproviders/github": "^4.0",
         "socialiteproviders/jira": ">=2.1",
         "socialiteproviders/linkedin": ">=3.0",
         "sierratecnologia/pedreiro": "^0.4.0",
