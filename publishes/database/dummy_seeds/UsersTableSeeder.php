@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
-use Facilitador\Models\Role;
+use Porteiro\Models\Role;
 use Facilitador\Models\User;
 
 class UsersTableSeeder extends Seeder

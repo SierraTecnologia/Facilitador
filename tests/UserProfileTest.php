@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Facilitador\Models\Role;
+use Porteiro\Models\Role;
 use Facilitador\Models\User;
 
 class UserProfileTest extends TestCase
