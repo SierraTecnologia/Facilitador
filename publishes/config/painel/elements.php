@@ -36,18 +36,24 @@ return [
     'models_alias' => [
         'App\Models',
         // 'Support\Models',
+        'Porteiro\Models',
+        'Pedreiro\Models',
 
         'Informate\Models',
         'Translation\Models',
         'Locaravel\Models',
         'Population\Models',
         'Telefonica\Models',
+        'MediaManager\Models',
         'Stalker\Models',
         'Audit\Models',
         'Tracking\Models',
 
         'Integrations\Models',
         'Transmissor\Models',
+        'Market\Models',
+        'Bancario\Models',
+        'Operador\Models',
         'Fabrica\Models',
         'Finder\Models',
         'Casa\Models',
@@ -58,6 +64,7 @@ return [
         'Facilitador\Models',
         'Siravel\Models',
         'Boravel\Models',
+        'Socrates\Models',
     ],
 
 ];
