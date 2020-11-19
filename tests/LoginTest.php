@@ -38,7 +38,7 @@ class LoginTest extends TestCase
 
     public function testRedirectIfNotLoggedIn()
     {
-        $this->visit(route('profile.profile'))
+        $this->visit(route('profile.porteiro.profile'))
             ->seePageIs(route('profile.login'));
     }
 

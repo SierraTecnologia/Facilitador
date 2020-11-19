@@ -97,7 +97,7 @@ class FacilitadorProvider extends ServiceProvider
         //     // ],
         //     // [
         //     //     'text'        => 'Profile',
-        //     //     'route'       => 'profile.profile',
+        //     //     'route'       => 'profile.porteiro.profile',
         //     //     'icon'        => 'fas fa-fw fa-industry',
         //     //     'icon_color'  => 'blue',
         //     //     'label_color' => 'success',
@@ -105,7 +105,7 @@ class FacilitadorProvider extends ServiceProvider
         //     // ],
         //     // [
         //     //     'text'        => 'Show Profile',
-        //     //     'route'       => 'profile.profile.show',
+        //     //     'route'       => 'profile.porteiro.profile.show',
         //     //     'icon'        => 'fas fa-fw fa-industry',
         //     //     'icon_color'  => 'blue',
         //     //     'label_color' => 'success',
