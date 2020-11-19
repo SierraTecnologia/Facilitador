@@ -128,7 +128,7 @@ Read more about multilanguage [here](../core-concepts/multilanguage.md).
 'dashboard' => [
     'navbar_items' => [
         'Profile' => [
-            'route'         => 'profile.profile',
+            'route'         => 'profile.porteiro.profile',
             'classes'       => 'class-full-of-rum',
             'icon_class'    => 'facilitador-person',
         ],

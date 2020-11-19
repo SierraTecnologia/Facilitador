@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Facilitador\Models\Permission;
-use Facilitador\Models\Role;
+use Porteiro\Models\Role;
 
 class PermissionRoleTableSeeder extends Seeder
 {

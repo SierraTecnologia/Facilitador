@@ -1,7 +1,7 @@
 <?php
 
 $factory->define(
-    \Facilitador\Models\Role::class, function (Faker\Generator $faker) {
+    \Porteiro\Models\Role::class, function (Faker\Generator $faker) {
         $role = $faker->word;
 
         return [

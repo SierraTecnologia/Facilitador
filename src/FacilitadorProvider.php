@@ -85,7 +85,7 @@ class FacilitadorProvider extends ServiceProvider
         //     //     'icon'        => 'fas fa-fw fa-industry',
         //     //     'icon_color'  => 'blue',
         //     //     'label_color' => 'success',
-        //     //     // 'access' => \App\Models\Role::$ADMIN
+        //     //     // 'access' => \Porteiro\Models\Role::$ADMIN
         //     // ],
         //     // [
         //     //     'text'        => 'Home',
@@ -93,23 +93,23 @@ class FacilitadorProvider extends ServiceProvider
         //     //     'icon'        => 'fas fa-fw fa-industry',
         //     //     'icon_color'  => 'blue',
         //     //     'label_color' => 'success',
-        //     //     // 'access' => \App\Models\Role::$ADMIN
+        //     //     // 'access' => \Porteiro\Models\Role::$ADMIN
         //     // ],
         //     // [
         //     //     'text'        => 'Profile',
-        //     //     'route'       => 'profile.profile',
+        //     //     'route'       => 'profile.porteiro.profile',
         //     //     'icon'        => 'fas fa-fw fa-industry',
         //     //     'icon_color'  => 'blue',
         //     //     'label_color' => 'success',
-        //     //     // 'access' => \App\Models\Role::$ADMIN
+        //     //     // 'access' => \Porteiro\Models\Role::$ADMIN
         //     // ],
         //     // [
         //     //     'text'        => 'Show Profile',
-        //     //     'route'       => 'profile.profile.show',
+        //     //     'route'       => 'profile.porteiro.profile.show',
         //     //     'icon'        => 'fas fa-fw fa-industry',
         //     //     'icon_color'  => 'blue',
         //     //     'label_color' => 'success',
-        //     //     // 'access' => \App\Models\Role::$ADMIN
+        //     //     // 'access' => \Porteiro\Models\Role::$ADMIN
         //     // ],
         // // ],
         // 'Admin|400' => [
@@ -160,7 +160,7 @@ class FacilitadorProvider extends ServiceProvider
         //             'label_color' => 'success',
         //             'space'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \App\Models\Role::$ADMIN
+        //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
         //         [
         //             'text'        => 'Compass',
@@ -170,7 +170,7 @@ class FacilitadorProvider extends ServiceProvider
         //             'label_color' => 'success',
         //             'space'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \App\Models\Role::$ADMIN
+        //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
         //         // [
         //         //     'text'        => 'Menu Builder',
@@ -178,7 +178,7 @@ class FacilitadorProvider extends ServiceProvider
         //         //     'icon'        => 'fas fa-fw fa-cog',
         //         //     'icon_color'  => 'blue',
         //         //     'label_color' => 'success',
-        //         //     // 'access' => \App\Models\Role::$ADMIN
+        //         //     // 'access' => \Porteiro\Models\Role::$ADMIN
         //         // ],
         //         [
         //             'text'        => 'Medias',
@@ -188,7 +188,7 @@ class FacilitadorProvider extends ServiceProvider
         //             'label_color' => 'success',
         //             'space'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \App\Models\Role::$ADMIN
+        //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
         //         [
         //             'text'        => 'elements',
@@ -198,7 +198,7 @@ class FacilitadorProvider extends ServiceProvider
         //             'label_color' => 'success',
         //             'space'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \App\Models\Role::$ADMIN
+        //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
         //         [
         //             'text'        => 'Redirects',
@@ -208,7 +208,7 @@ class FacilitadorProvider extends ServiceProvider
         //             'label_color' => 'success',
         //             'space'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \App\Models\Role::$ADMIN
+        //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
         //         [
         //             'text'        => 'settings',
@@ -218,7 +218,7 @@ class FacilitadorProvider extends ServiceProvider
         //             'label_color' => 'success',
         //             'space'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \App\Models\Role::$ADMIN
+        //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
         //     ],
         //     'Tools' => [
@@ -228,7 +228,7 @@ class FacilitadorProvider extends ServiceProvider
         //         //     'icon'        => 'fas fa-fw fa-industry',
         //         //     'icon_color'  => 'blue',
         //         //     'label_color' => 'success',
-        //         //     // 'access' => \App\Models\Role::$ADMIN
+        //         //     // 'access' => \Porteiro\Models\Role::$ADMIN
         //         // ],
         //         // [
         //         //     'text'        => 'encode',
@@ -236,7 +236,7 @@ class FacilitadorProvider extends ServiceProvider
         //         //     'icon'        => 'fas fa-fw fa-industry',
         //         //     'icon_color'  => 'blue',
         //         //     'label_color' => 'success',
-        //         //     // 'access' => \App\Models\Role::$ADMIN
+        //         //     // 'access' => \Porteiro\Models\Role::$ADMIN
         //         // ],
         //         [
         //             'text'        => 'Workers',
@@ -246,7 +246,7 @@ class FacilitadorProvider extends ServiceProvider
         //             'label_color' => 'success',
         //             'space'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \App\Models\Role::$ADMIN
+        //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
         //         [
         //             'text'        => 'Hooks',
@@ -256,7 +256,7 @@ class FacilitadorProvider extends ServiceProvider
         //             'label_color' => 'success',
         //             'space'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \App\Models\Role::$ADMIN
+        //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
         //     ],
         // ],

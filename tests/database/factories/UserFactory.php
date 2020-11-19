@@ -8,7 +8,7 @@ $factory->define(
         'name'    => $faker->name,
         'email'   => $faker->unique()->safeEmail,
         'role_id' => function () {
-            return factory(\Facilitador\Models\Role::class)->create()->id;
+            return factory(\Porteiro\Models\Role::class)->create()->id;
         },
         'password'       => $password ?: $password = bcrypt('secret'),
         'remember_token' => Illuminate\Support\Str::random(10),

@@ -3,7 +3,7 @@
 namespace Facilitador\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Facilitador\Models\Role;
+use Porteiro\Models\Role;
 
 class RolesTest extends TestCase
 {

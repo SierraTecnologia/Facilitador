@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers\RiCa;
 
-use App\Models\Role;
+use Porteiro\Models\Role;
 use Facilitador\Services\FacilitadorService;
 use Illuminate\Http\Request;
 use Support\Http\Controllers\RiCa\Manager\RepositoryController;
