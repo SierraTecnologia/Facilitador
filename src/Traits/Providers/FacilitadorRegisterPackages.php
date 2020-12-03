@@ -82,10 +82,6 @@ trait FacilitadorRegisterPackages
         // Support for cloning models
         \Bkwld\Cloner\ServiceProvider::class,
 
-        /**
-         * Services Providers
-         */
-        \Yajra\DataTables\DataTablesServiceProvider::class,
     ];
 
     /****************************************************************************************************
