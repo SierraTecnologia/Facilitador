@@ -6,7 +6,7 @@
     <h1 class="page-title">
         <i class="facilitador-list-add"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
         @can('add',app($dataType->model_name))
-            <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'create') }}" class="btn btn-success">
+            <a href="{{ \Pedreiro\Routing\UrlGenerator::managerRoute($dataType->slug, 'create') }}" class="btn btn-success">
                 <i class="facilitador-plus"></i> {{ __('pedreiro::generic.add_new') }}
             </a>
         @endcan
@@ -50,12 +50,12 @@
                                             </div>
                                         @endcan
                                         @can('edit', $data)
-                                            <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-primary float-right edit">
+                                            <a href="{{ \Pedreiro\Routing\UrlGenerator::managerRoute($dataType->slug, 'edit', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-primary float-right edit">
                                                 <i class="facilitador-edit"></i> {{ __('pedreiro::generic.edit') }}
                                             </a>
                                         @endcan
                                         @can('edit', $data)
-                                            <a href="{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'builder', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-success float-right">
+                                            <a href="{{ \Pedreiro\Routing\UrlGenerator::managerRoute($dataType->slug, 'builder', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-success float-right">
                                                 <i class="facilitador-list"></i> {{ __('pedreiro::generic.builder') }}
                                             </a>
                                         @endcan
@@ -107,7 +107,7 @@
         });
 
         $('td').on('click', '.delete', function (e) {
-            $('#delete_form')[0].action = '{{ \Support\Routing\UrlGenerator::managerRoute($dataType->slug, 'destroy', ['id' => '__menu']) }}'.replace('__menu', $(this).data('id'));
+            $('#delete_form')[0].action = '{{ \Pedreiro\Routing\UrlGenerator::managerRoute($dataType->slug, 'destroy', ['id' => '__menu']) }}'.replace('__menu', $(this).data('id'));
 
             $('#delete_modal').modal('show');
         });
