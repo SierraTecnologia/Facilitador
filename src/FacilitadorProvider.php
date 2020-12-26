@@ -201,16 +201,16 @@ class FacilitadorProvider extends ServiceProvider
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
         //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
-        //         [
-        //             'text'        => 'settings',
-        //             'route'       => 'rica.facilitador.settings.index',
-        //             'icon'        => 'fas fa-fw fa-industry',
-        //             'icon_color'  => 'blue',
-        //             'label_color' => 'success',
-        //             'space'      => 'admin',
-        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         ],
+                [
+                    'text'        => 'settings',
+                    'route'       => 'rica.facilitador.settings.index',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'space'      => 'admin',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
         //     ],
         //     'Tools' => [
         //         // [

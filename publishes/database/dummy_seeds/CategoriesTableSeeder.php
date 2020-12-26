@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Siravel\Models\Blog\Category;
-use Support\Models\DataRow;
-use Support\Models\DataType;
+use Support\Models\Application\DataRow;
+use Support\Models\Application\DataType;
 use Facilitador\Models\Menu;
 use Facilitador\Models\MenuItem;
 use Facilitador\Models\Permission;

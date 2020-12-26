@@ -19,7 +19,7 @@ use Support\Events\MediaFileAdded;
 use Support\Events\TableAdded;
 use Support\Events\TableDeleted;
 use Support\Events\TableUpdated;
-use Support\Models\DataType;
+use Support\Models\Application\DataType;
 use Siravel\Models\Negocios\Page;
 
 class EventTest extends TestCase

@@ -5,8 +5,8 @@ namespace Facilitador\Tests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Support\Models\DataRow;
-use Support\Models\DataType;
+use Support\Models\Application\DataRow;
+use Support\Models\Application\DataType;
 use Siravel\Models\Negocios\Page;
 
 class BreadMediaUploadTest extends TestCase

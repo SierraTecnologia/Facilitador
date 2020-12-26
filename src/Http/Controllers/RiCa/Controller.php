@@ -3,6 +3,7 @@
 namespace Facilitador\Http\Controllers\RiCa;
 
 use Facilitador\Services\FacilitadorService;
+// use Pedreiro\Http\Controllers\Admin\PedreiroBaseController as BaseController;
 use Facilitador\Http\Controllers\Controller as BaseController;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -46,6 +47,8 @@ class Controller extends BaseController
         // $model = new \Support\Services\ModelService(\Telefonica\Models\Actors\Person::class);
         // $model = new \Support\Services\ModelService('OTQ4ODUzYThiZDY2MTcyNGFhdUhXZnJheUl6VUt6SUtkU1NCdUhFaW54aldLZHh0ZEZJMnVyOGJJL2c9');
         $this->facilitadorService = $facilitadorService;
+
+        parent::__construct();
     }
 
     public function getSlug(Request $request)

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Siravel\Models\Blog\Category;
-use Support\Models\DataType;
+use Support\Models\Application\DataType;
 use Facilitador\Models\Permission;
 
 class FormfieldsTest extends TestCase
