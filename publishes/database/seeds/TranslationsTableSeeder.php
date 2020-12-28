@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Siravel\Models\Blog\Category;
 use Support\Models\Application\DataType;
-use Facilitador\Models\MenuItem;
+use Siravel\Models\Negocios\MenuItem;
 use Siravel\Models\Negocios\Page;
 use Facilitador\Models\Translation;
 

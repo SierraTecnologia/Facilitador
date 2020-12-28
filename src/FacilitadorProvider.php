@@ -6,7 +6,7 @@ use App;
 use Config;
 use Facilitador\Facades\Facilitador as FacilitadorFacade;
 
-use Facilitador\Models\MenuItem;
+use Siravel\Models\Negocios\MenuItem;
 use Facilitador\Models\Setting;
 use Facilitador\Policies\BasePolicy;
 use Facilitador\Policies\MenuItemPolicy;

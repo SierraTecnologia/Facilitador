@@ -3,8 +3,8 @@
 use Illuminate\Database\Seeder;
 use Support\Models\Application\DataRow;
 use Support\Models\Application\DataType;
-use Facilitador\Models\Menu;
-use Facilitador\Models\MenuItem;
+use Siravel\Models\Negocios\Menu;
+use Siravel\Models\Negocios\MenuItem;
 use Facilitador\Models\Permission;
 use Siravel\Models\Blog\Post;
 

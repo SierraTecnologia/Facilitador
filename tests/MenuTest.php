@@ -3,7 +3,7 @@
 namespace Facilitador\Tests;
 
 use Illuminate\Support\Facades\Auth;
-use Facilitador\Models\Menu;
+use Siravel\Models\Negocios\Menu;
 
 class MenuTest extends TestCase
 {
