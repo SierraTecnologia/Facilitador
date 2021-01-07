@@ -250,10 +250,10 @@
                                     {{ $setting->display_name }} @if(\Illuminate\Support\Facades\Config::get('sitec.facilitador.show_dev_tips'))<code>setting('{{ $setting->key }}')</code>@endif
                                 </h3>
                                 <div class="panel-actions">
-                                    <a href="{{ route('rica.facilitador.settings.move_up', $setting->id) }}">
+                                    <a href="{{ route('rica.facilitador.settings.move_up', ['id' => $setting->id]) }}">
                                         <i class="sort-icons facilitador-sort-asc"></i>
                                     </a>
-                                    <a href="{{ route('rica.facilitador.settings.move_down', $setting->id) }}">
+                                    <a href="{{ route('rica.facilitador.settings.move_down', ['id' => $setting->id]) }}">
                                         <i class="sort-icons facilitador-sort-desc"></i>
                                     </a>
                                     @can('delete', Facilitador::model('Setting'))
@@ -280,7 +280,7 @@
                                     @elseif($setting->type == "image" || $setting->type == "file")
                                         @if(isset( $setting->value ) && !empty( $setting->value ) && Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->exists($setting->value))
                                             <div class="img_settings_container">
-                                                <a href="{{ route('rica.facilitador.settings.delete_value', $setting->id) }}" class="facilitador-x delete_value"></a>
+                                                <a href="{{ route('rica.facilitador.settings.delete_value', ['id' => $setting->id]) }}" class="facilitador-x delete_value"></a>
                                                 <img src="{{ Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->url($setting->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                             </div>
                                             <div class="clearfix"></div>
@@ -291,7 +291,7 @@
                                                     <a class="fileType" target="_blank" href="{{ Storage::disk(\Illuminate\Support\Facades\Config::get('sitec.facilitador.storage.disk'))->url($file->download_link) }}">
                                                       {{ $file->original_name }}
                                                     </a>
-                                                    <a href="{{ route('rica.facilitador.settings.delete_value', $setting->id) }}" class="facilitador-x delete_value"></a>
+                                                    <a href="{{ route('rica.facilitador.settings.delete_value', ['id' => $setting->id]) }}" class="facilitador-x delete_value"></a>
                                                  </div>
                                                 @endforeach
                                             @endif

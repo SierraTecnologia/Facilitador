@@ -9,7 +9,7 @@ class SettingsTest extends TestCase
 {
     protected $user;
 
-    protected function setUp(): void: void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -59,7 +59,7 @@ class SettingsTest extends TestCase
     {
         $setting = Setting::firstOrFail();
 
-        $this->call('DELETE', route('rica.facilitador.settings.delete', $setting->id));
+        $this->call('DELETE', route('rica.facilitador.settings.delete', ['id' => $setting->id]));
 
         $this->notSeeInDatabase(
             'settings', [
@@ -73,7 +73,7 @@ class SettingsTest extends TestCase
         $setting = Setting::firstOrFail();
         $this->assertFalse(Setting::find($setting->id)->value == null);
 
-        $this->call('PUT', route('rica.facilitador.settings.delete_value', $setting->id));
+        $this->call('PUT', route('rica.facilitador.settings.delete_value', ['id' => $setting->id]));
 
         $this->seeInDatabase(
             'settings', [
@@ -87,7 +87,7 @@ class SettingsTest extends TestCase
     {
         $setting = Setting::where('order', '!=', 1)->first();
 
-        $this->call('GET', route('rica.facilitador.settings.move_up', $setting->id));
+        $this->call('GET', route('rica.facilitador.settings.move_up', ['id' => $setting->id]));
 
         $this->seeInDatabase(
             'settings', [
@@ -101,7 +101,7 @@ class SettingsTest extends TestCase
     {
         $setting = Setting::where('order', '!=', 1)->first();
 
-        $this->call('GET', route('rica.facilitador.settings.move_down', $setting->id));
+        $this->call('GET', route('rica.facilitador.settings.move_down', ['id' => $setting->id]));
 
         $this->seeInDatabase(
             'settings', [
