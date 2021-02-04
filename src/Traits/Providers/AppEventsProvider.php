@@ -24,10 +24,6 @@ trait AppEventsProvider
     protected function delegateAdminObservers()
     {
         $this->app['events']->listen(
-            'eloquent.saved:*',
-            '\Facilitador\Observers\ManyToManyChecklist'
-        );
-        $this->app['events']->listen(
             'facilitador::model.validating:*',
             '\Facilitador\Observers\ValidateExistingFiles@onValidating'
         );

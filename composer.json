@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.2|^8.0",
         "arrilot/laravel-widgets": "^3.0",
         "sierratecnologia/facilitador-hooks": "dev-master",
         "sierratecnologia/integrations": "dev-master",
