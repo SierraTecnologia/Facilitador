@@ -10,7 +10,7 @@ class PermissionTest extends TestCase
 {
     protected $user;
 
-    protected function setUp(): void: void
+    protected function setUp(): void
     {
         parent::setUp();
 

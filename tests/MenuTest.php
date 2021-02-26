@@ -7,7 +7,7 @@ use Siravel\Models\Negocios\Menu;
 
 class MenuTest extends TestCase
 {
-    protected function setUp(): void: void
+    protected function setUp(): void
     {
         parent::setUp();
 
