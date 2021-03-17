@@ -3,7 +3,7 @@
 namespace Facilitador\Http\Resources;
 
 use App\Models\Entities\SubscriptionEntity;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource as Resource;
 use function SiUtils\html_purify;
 use function SiUtils\to_string;
 

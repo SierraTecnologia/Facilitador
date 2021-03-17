@@ -59,11 +59,11 @@ class SettingsTest extends TestCase
     {
         $setting = Setting::firstOrFail();
 
-        $this->call('DELETE', route('rica.facilitador.settings.delete', ['id' => $setting->id]));
+        $this->call('DELETE', route('rica.facilitador.settings.delete', ['id' => $setting->setting_key]));
 
         $this->notSeeInDatabase(
             'settings', [
-            'id'    => $setting->id,
+            'setting_key'    => $setting->setting_key,
             ]
         );
     }
@@ -71,13 +71,13 @@ class SettingsTest extends TestCase
     public function testCanDeleteSettingsValue()
     {
         $setting = Setting::firstOrFail();
-        $this->assertFalse(Setting::find($setting->id)->value == null);
+        $this->assertFalse(Setting::find($setting->setting_key)->value == null);
 
-        $this->call('PUT', route('rica.facilitador.settings.delete_value', ['id' => $setting->id]));
+        $this->call('PUT', route('rica.facilitador.settings.delete_value', ['id' => $setting->setting_key]));
 
         $this->seeInDatabase(
             'settings', [
-            'id'    => $setting->id,
+            'setting_key'    => $setting->isetting_key,
             'value' => '',
             ]
         );
@@ -87,11 +87,11 @@ class SettingsTest extends TestCase
     {
         $setting = Setting::where('order', '!=', 1)->first();
 
-        $this->call('GET', route('rica.facilitador.settings.move_up', ['id' => $setting->id]));
+        $this->call('GET', route('rica.facilitador.settings.move_up', ['id' => $setting->setting_key]));
 
         $this->seeInDatabase(
             'settings', [
-            'id'    => $setting->id,
+            'setting_key'    => $setting->setting_key,
             'order' => ($setting->order - 1),
             ]
         );
@@ -101,11 +101,11 @@ class SettingsTest extends TestCase
     {
         $setting = Setting::where('order', '!=', 1)->first();
 
-        $this->call('GET', route('rica.facilitador.settings.move_down', ['id' => $setting->id]));
+        $this->call('GET', route('rica.facilitador.settings.move_down', ['id' => $setting->setting_key]));
 
         $this->seeInDatabase(
             'settings', [
-            'id'    => $setting->id,
+            'setting_key'    => $setting->setting_key,
             'order' => ($setting->order + 1),
             ]
         );
