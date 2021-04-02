@@ -52,7 +52,7 @@ class Elements extends Base
         }
 
         // Get all the elements for the current locale
-        $elements = app('facilitador.elements')->localize($locale)->hydrate(true);
+        $elements = app('pedreiro.elements')->localize($locale)->hydrate(true);
 
         // If the user has customized permissions, filter the elements to only the
         // allowed pages of elements.
@@ -86,13 +86,13 @@ class Elements extends Base
         // Set the breadcrumbs NOT include the locale/tab
         app('rica.breadcrumbs')->set(
             [
-            route('facilitador.elements') => $this->title,
+            route('pedreiro.elements') => $this->title,
             ]
         );
 
         // Render the view
         return $this->populateView(
-            'support::components.elements.index',
+            'pedreiro::components.elements.index',
             [
             'elements' => $elements,
             'locale' => $locale,
@@ -203,7 +203,7 @@ class Elements extends Base
         }
 
         // Hydrate the elements collection
-        $elements = app('facilitador.elements')
+        $elements = app('pedreiro.elements')
             ->localize($locale)
             ->hydrate(true);
 
@@ -351,9 +351,9 @@ class Elements extends Base
         return View::make('pedreiro::layouts.decoy.blank')
             ->nest(
                 'content',
-                'support::components.elements.field',
+                'pedreiro::components.elements.field',
                 [
-                'element' => app('facilitador.elements')
+                'element' => app('pedreiro.elements')
                     ->localize(Facilitador::locale())
                     ->hydrate(true)
                     ->get($key),
@@ -370,10 +370,10 @@ class Elements extends Base
      */
     public function fieldUpdate($key)
     {
-        $elements = app('facilitador.elements')->localize(Facilitador::locale());
+        $elements = app('pedreiro.elements')->localize(Facilitador::locale());
 
         // If the value has changed, update or an insert a record in the database.
-        $el = Facilitador::el($key);
+        $el = Pedreiro::el($key);
         $value = request('value');
         if ($value != $el->value || Request::hasFile('value')) {
 
@@ -408,7 +408,7 @@ class Elements extends Base
     public function getPermissionOptions()
     {
         // Get all the grouped elements
-        $elements = app('facilitador.elements')
+        $elements = app('pedreiro.elements')
             ->localize(Facilitador::locale())
             ->hydrate(true)
             ->asModels()

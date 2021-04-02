@@ -183,7 +183,7 @@ class FacilitadorProvider extends ServiceProvider
         //         ],
         //         [
         //             'text'        => 'elements',
-        //             'route'       => 'facilitador.elements',
+        //             'route'       => 'pedreiro.elements',
         //             'icon'        => 'fas fa-fw fa-laptop',
         //             'icon_color'  => 'blue',
         //             'label_color' => 'success',
@@ -207,6 +207,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-industry',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
+                    'order' => 4300,
                     'space'      => 'admin',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \Porteiro\Models\Role::$ADMIN
@@ -277,17 +278,6 @@ class FacilitadorProvider extends ServiceProvider
 
         // Configure Decoy auth setup
         $this->bootAuth();
-
-        // Define constants that Decoy uses
-        if (!defined('FORMAT_DATE')) {
-            define('FORMAT_DATE', __('pedreiro::base.constants.format_date'));
-        }
-        if (!defined('FORMAT_DATETIME')) {
-            define('FORMAT_DATETIME', __('pedreiro::base.constants.format_datetime'));
-        }
-        if (!defined('FORMAT_TIME')) {
-            define('FORMAT_TIME', __('pedreiro::base.constants.format_time'));
-        }
         
         // @todo ajeitar
         // Do bootstrapping that only matters if user has requested an admin URL
