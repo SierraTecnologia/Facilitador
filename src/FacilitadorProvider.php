@@ -185,7 +185,7 @@ class FacilitadorProvider extends ServiceProvider
                 ],
                 [
                     'text'        => 'Redirects',
-                    'url'         => '/siravel/redirect-rules',
+                    'route'         => 'admin.facilitador.redirect-rules.index',
                     'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',

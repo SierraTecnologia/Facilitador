@@ -96,14 +96,14 @@ Route::group(
     'as'     => 'bread.',
     'prefix' => 'bread',
     ], function () {
-        Route::get('/', ['uses' => 'FacilitadorBreadController@index',              'as' => 'index']);
-        Route::get('{table}/create', ['uses' => 'FacilitadorBreadController@create',     'as' => 'create']);
-        Route::post('/', ['uses' => 'FacilitadorBreadController@store',   'as' => 'store']);
-        Route::get('{table}/edit', ['uses' => 'FacilitadorBreadController@edit', 'as' => 'edit']);
-        Route::put('{id}', ['uses' => 'FacilitadorBreadController@update',  'as' => 'update']);
-        Route::delete('{id}', ['uses' => 'FacilitadorBreadController@destroy',  'as' => 'delete']);
-        Route::post('relationship', ['uses' => 'FacilitadorBreadController@addRelationship',  'as' => 'relationship']);
-        Route::get('delete_relationship/{id}', ['uses' => 'FacilitadorBreadController@deleteRelationship',  'as' => 'delete_relationship']);
+        Route::get('/', ['uses' => 'BreadController@index',              'as' => 'index']);
+        Route::get('{table}/create', ['uses' => 'BreadController@create',     'as' => 'create']);
+        Route::post('/', ['uses' => 'BreadController@store',   'as' => 'store']);
+        Route::get('{table}/edit', ['uses' => 'BreadController@edit', 'as' => 'edit']);
+        Route::put('{id}', ['uses' => 'BreadController@update',  'as' => 'update']);
+        Route::delete('{id}', ['uses' => 'BreadController@destroy',  'as' => 'delete']);
+        Route::post('relationship', ['uses' => 'BreadController@addRelationship',  'as' => 'relationship']);
+        Route::get('delete_relationship/{id}', ['uses' => 'BreadController@deleteRelationship',  'as' => 'delete_relationship']);
     }
 );
 

@@ -7,7 +7,7 @@
         <i class="facilitador-list"></i>{{ __('pedreiro::generic.menu_builder') }} ({{ $menu->name }})
         <div class="btn btn-success add_item"><i class="facilitador-plus"></i> {{ __('pedreiro::menu_builder.new_menu_item') }}</div>
     </h1>
-    @include('pedreiro::multilingual.language-selector')
+    @include('pedreiro::shared.forms.multilingual.language-selector')
 @stop
 
 @section('content')
@@ -73,9 +73,9 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div>
-                            @include('pedreiro::multilingual.language-selector')
+                            @include('pedreiro::shared.forms.multilingual.language-selector')
                             <label for="name">{{ __('pedreiro::menu_builder.item_title') }}</label>
-                            @include('pedreiro::multilingual.input-hidden', ['_field_name' => 'title', '_field_trans' => ''])
+                            @include('pedreiro::shared.forms.multilingual.input-hidden', ['_field_name' => 'title', '_field_trans' => ''])
                             <input type="text" class="form-control" id="m_title" name="title" placeholder="{{ __('pedreiro::generic.title') }}"><br>
                         </div>
                         <label for="type">{{ __('pedreiro::menu_builder.link_type') }}</label>

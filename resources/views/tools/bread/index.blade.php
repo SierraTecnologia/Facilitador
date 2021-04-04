@@ -18,7 +18,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('pedreiro::database.table_name') }}</th>
-                            <th style="text-align:right">{{ __('support::cruds.bread.bread_crud_actions') }}</th>
+                            <th style="text-align:right">{{ __('bread.bread_crud_actions') }}</th>
                         </tr>
                     </thead>
 
@@ -53,7 +53,7 @@
                             @else
                                 <a href="{{ route('rica.facilitador.bread.create', $table->name) }}"
                                    class="_btn btn-secondary btn-sm float-right">
-                                    <i class="facilitador-plus"></i> {{ __('support::cruds.bread.add_bread') }}
+                                    <i class="facilitador-plus"></i> {{ __('bread.add_bread') }}
                                 </a>
                             @endif
                         </td>
@@ -70,13 +70,13 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('support::cruds.bread.delete_bread_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
+                    <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('bread.delete_bread_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="#" id="delete_builder_form" method="POST">
                         {{ method_field('DELETE') }}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-danger" value="{{ __('support::cruds.bread.delete_bread_conf') }}">
+                        <input type="submit" class="btn btn-danger" value="{{ __('bread.delete_bread_conf') }}">
                     </form>
                     <button type="button" class="btn btn-outline float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>

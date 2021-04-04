@@ -46,16 +46,16 @@
                                 </a>
                                 <a href="{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('bread', 'edit', $table->name) }}"
                                    class="btn-sm btn-secondary edit">
-                                   {{ __('support::cruds.bread.edit_bread') }}
+                                   {{ __('bread.edit_bread') }}
                                 </a>
                                 <a data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
                                      class="btn-sm btn-danger delete">
-                                     {{ __('support::cruds.bread.delete_bread') }}
+                                     {{ __('bread.delete_bread') }}
                                 </a>
                             @else
                                 <a href="{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('bread', 'create', $table->name) }}"
                                    class="btn-sm btn-secondary">
-                                    <i class="facilitador-plus"></i> {{ __('support::cruds.bread.add_bread') }}
+                                    <i class="facilitador-plus"></i> {{ __('bread.add_bread') }}
                                 </a>
                             @endif
                             </div>
@@ -90,13 +90,13 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('support::cruds.bread.delete_bread_quest', ['table' => '<span id="delete_bread_name"></span>']) !!}</h4>
+                    <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('bread.delete_bread_quest', ['table' => '<span id="delete_bread_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="#" id="delete_bread_form" method="POST">
                         {{ method_field('DELETE') }}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-danger" value="{{ __('support::cruds.bread.delete_bread_conf') }}">
+                        <input type="submit" class="btn btn-danger" value="{{ __('bread.delete_bread_conf') }}">
                     </form>
                     <button type="button" class="btn btn-outline float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>

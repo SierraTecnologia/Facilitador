@@ -33,7 +33,7 @@ class Elements extends Base
     public $description = 'Copy, images, and files that aren\'t managed as part of an item in a list.';
 
     /**
-     * All elements view
+     * All elements view @todo
      *
      * @param  string $locale The locale to load from the DB
      * @param  string $tab    A deep link to a specific tab.  Will get processed by JS
@@ -89,7 +89,7 @@ class Elements extends Base
             route('pedreiro.elements') => $this->title,
             ]
         );
-
+        
         // Render the view
         return $this->populateView(
             'pedreiro::components.elements.index',
