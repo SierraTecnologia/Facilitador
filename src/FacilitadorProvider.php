@@ -100,38 +100,25 @@ class FacilitadorProvider extends ServiceProvider
         //         'text'        => 'Permissions',
         //         'route'       => 'admin.permissions.index',
         //         'icon'        => 'lock',
-        //         'space'       => 'admin',
+        //         'section'       => 'admin',
         //         'level'       => 3,
         //     ],
         //     [
         //         'text'        => 'Roles',
         //         'route'       => 'admin.roles.index',
         //         'icon'        => 'key',
-        //         'space'       => 'admin',
+        //         'section'       => 'admin',
         //         'level'       => 3,
         //     ],
-        //     // [
-        //     //     'text' => 'Information',
-        //     //     'icon' => 'fas fa-fw fa-book',
-        //     //     'icon_color' => "blue",
-        //     //     'label_color' => "success",
-        //     // ],
-        //     [
-        //         'text' => 'Site',
-        //         'icon' => 'fas fa-book',
-        //         'icon_color' => "blue",
-        //         'label_color' => "success",
-        //         'space'      => 'admin',
-        //         'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //     ],
-        //     [
-        //         'text' => 'Tools',
-        //         'icon' => 'fas fa-fw fa-th',
-        //         'icon_color' => "blue",
-        //         'label_color' => "success",
-        //         'space'      => 'admin',
-        //         'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //     ],
+            [
+                'text' => 'Tools',
+                'icon' => 'fas fa-fw fa-th',
+                'icon_color' => "blue",
+                'label_color' => "success",
+                'section'      => 'rica',
+                'order' => 4250,
+                'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+            ],
         //     // 'Information' => [
         //     // ],
         //     'Site' => [
@@ -141,17 +128,62 @@ class FacilitadorProvider extends ServiceProvider
         //             'icon'        => 'fas fa-fw fa-cog',
         //             'icon_color'  => 'blue',
         //             'label_color' => 'success',
-        //             'space'      => 'admin',
+        //             'section'      => 'admin',
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
         //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
+                [
+                    'text'        => 'elements',
+                    'route'       => 'pedreiro.elements',
+                    'icon'        => 'fas fa-fw fa-laptop',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'section'      => 'admin',
+                    'order' => 2300,
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Redirects',
+                    'route'       => 'admin.facilitador.redirect-rules.index',
+                    'icon'        => 'fas fa-fw fa-share',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'section'       => 'admin',
+                    'order' => 2300,
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'settings',
+                    'route'       => 'rica.facilitador.settings.index',
+                    'icon'        => 'fas fa-fw fa-industry',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'order' => 2300,
+                    'section'      => 'admin',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Medias',
+                    'route'       => 'master.media.index',
+                    'icon'        => 'fas fa-fw fa-cog',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'section'      => 'admin',
+                    'order' => 2250,
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
                 [
                     'text'        => 'Compass',
                     'route'       => 'rica.facilitador.compass.index',
                     'icon'        => 'fas fa-fw fa-cog',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
-                    'space'      => 'admin',
+                    'section'      => 'rica',
+                    'order' => 4250,
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \Porteiro\Models\Role::$ADMIN
                 ],
@@ -163,57 +195,8 @@ class FacilitadorProvider extends ServiceProvider
                 //     'label_color' => 'success',
                 //     // 'access' => \Porteiro\Models\Role::$ADMIN
                 // ],
-                [
-                    'text'        => 'Medias',
-                    'route'       => 'master.media.index',
-                    'icon'        => 'fas fa-fw fa-cog',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    'space'      => 'admin',
-                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-                    // 'access' => \Porteiro\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'elements',
-                    'route'       => 'pedreiro.elements',
-                    'icon'        => 'fas fa-fw fa-laptop',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    'space'      => 'admin',
-                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-                    // 'access' => \Porteiro\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'Redirects',
-                    'route'         => 'admin.facilitador.redirect-rules.index',
-                    'icon'        => 'fas fa-fw fa-share',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    'space'      => 'admin',
-                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-                    // 'access' => \Porteiro\Models\Role::$ADMIN
-                ],
-                [
-                    'text'        => 'settings',
-                    'route'       => 'rica.facilitador.settings.index',
-                    'icon'        => 'fas fa-fw fa-industry',
-                    'icon_color'  => 'blue',
-                    'label_color' => 'success',
-                    'order' => 4300,
-                    'space'      => 'admin',
-                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-                    // 'access' => \Porteiro\Models\Role::$ADMIN
-                ],
         //     ],
             'Tools' => [
-                // [
-                //     'text'        => 'Tools',
-                //     'route'       => 'rica.facilitador.hooks',
-                //     'icon'        => 'fas fa-fw fa-industry',
-                //     'icon_color'  => 'blue',
-                //     'label_color' => 'success',
-                //     // 'access' => \Porteiro\Models\Role::$ADMIN
-                // ],
                 // [
                 //     'text'        => 'encode',
                 //     'route'       => 'facilitador.encode',
@@ -228,7 +211,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-coffee',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
-                    'space'      => 'admin',
+                    'section'      => 'rica',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \Porteiro\Models\Role::$ADMIN
                 ],
@@ -238,7 +221,7 @@ class FacilitadorProvider extends ServiceProvider
                     'icon'        => 'fas fa-fw fa-share',
                     'icon_color'  => 'blue',
                     'label_color' => 'success',
-                    'space'      => 'admin',
+                    'section'      => 'rica',
                     'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
                     // 'access' => \Porteiro\Models\Role::$ADMIN
                 ],

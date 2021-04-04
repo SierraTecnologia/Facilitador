@@ -90,7 +90,7 @@
                                 <div class="col-md-6 form-group">
                                     <label for="display_name_singular">{{ __('bread.display_name_singular') }}</label>
                                     @if($isModelTranslatable)
-                                        @include('pedreiro::multilingual.input-hidden', [
+                                        @include('pedreiro::shared.forms.multilingual.input-hidden', [
                                             'isModelTranslatable' => true,
                                             '_field_name'         => 'display_name_singular',
                                             '_field_trans' => get_field_translations($dataType, 'display_name_singular')
@@ -105,7 +105,7 @@
                                 <div class="col-md-6 form-group">
                                     <label for="display_name_plural">{{ __('bread.display_name_plural') }}</label>
                                     @if($isModelTranslatable)
-                                        @include('pedreiro::multilingual.input-hidden', [
+                                        @include('pedreiro::shared.forms.multilingual.input-hidden', [
                                             'isModelTranslatable' => true,
                                             '_field_name'         => 'display_name_plural',
                                             '_field_trans' => get_field_translations($dataType, 'display_name_plural')
@@ -370,7 +370,7 @@
                                     </div>
                                     <div class="col-xs-2">
                                         @if($isModelTranslatable)
-                                            @include('pedreiro::multilingual.input-hidden', [
+                                            @include('pedreiro::shared.forms.multilingual.input-hidden', [
                                                 'isModelTranslatable' => true,
                                                 '_field_name'         => 'field_display_name_' . $data['field'],
                                                 '_field_trans' => $dataRow ? get_field_translations($dataRow, 'display_name') : $data['field'],

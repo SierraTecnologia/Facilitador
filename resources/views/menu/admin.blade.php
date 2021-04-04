@@ -22,7 +22,7 @@
         </div>
         <div class="dd-handle">
             @if($options->isModelTranslatable)
-                @include('pedreiro::multilingual.input-hidden', [
+                @include('pedreiro::shared.forms.multilingual.input-hidden', [
                     'isModelTranslatable' => true,
                     '_field_name'         => 'title'.$item->id,
                     '_field_trans'        => json_encode($item->getTranslationsOf('title'))
