@@ -8,7 +8,7 @@
     <div class="command" data-command="{{ $command->name }}">
         <code>php artisan {{ $command->name }}</code>
         <small>{{ $command->description }}</small><i class="facilitador-terminal"></i>
-        <form action="{{ route('facilitador.compass.post') }}" class="cmd_form" method="POST">
+        <form action="{{ route('rica.facilitador.compass.post') }}" class="cmd_form" method="POST">
             {{ csrf_field() }}
             <input type="text" name="args" autofocus class="form-control" placeholder="{{ __('pedreiro::compass.commands.additional_args') }}">
             <input type="submit" class="btn btn-primary float-right delete-confirm"

@@ -29,7 +29,7 @@ class FormfieldsTest extends TestCase
                 ]
             )
         );
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->see('Default Text')
             ->type('New Text', 'text')
             ->press(__('pedreiro::generic.save'))
@@ -63,7 +63,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->see('Default Text')
             ->type('New Text', 'text_area')
             ->press(__('pedreiro::generic.save'))
@@ -87,7 +87,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->see('Default Text')
             ->type('New Text', 'code_editor')
             ->press(__('pedreiro::generic.save'))
@@ -105,7 +105,7 @@ class FormfieldsTest extends TestCase
     {
         $this->createBreadForFormfield('text', 'markdown_editor');
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->type('# New Text', 'markdown_editor')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
@@ -122,7 +122,7 @@ class FormfieldsTest extends TestCase
     {
         $this->createBreadForFormfield('text', 'rich_text_box');
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->type('New Text', 'rich_text_box')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
@@ -145,7 +145,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->see('Default Text')
             ->type('New Text', 'hidden')
             ->press(__('pedreiro::generic.save'))
@@ -163,7 +163,7 @@ class FormfieldsTest extends TestCase
     {
         $this->createBreadForFormfield('text', 'password');
 
-        $t = $this->visitRoute('facilitador.categories.create')
+        $t = $this->visitRoute('rica.facilitador.categories.create')
             ->type('newpassword', 'password')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index');
@@ -186,7 +186,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->see('1')
             ->type('2', 'number')
             ->press(__('pedreiro::generic.save'))
@@ -211,7 +211,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->see('Inactive')
             ->check('checkbox')
             ->press(__('pedreiro::generic.save'))
@@ -229,7 +229,7 @@ class FormfieldsTest extends TestCase
     {
         $this->createBreadForFormfield('time', 'time');
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->type('12:50', 'time')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
@@ -252,7 +252,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->type('2019-01-01', 'date')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
@@ -275,7 +275,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->type('2019-01-01 12:00:00', 'timestamp')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
@@ -302,7 +302,7 @@ class FormfieldsTest extends TestCase
     {
         $this->createBreadForFormfield('text', 'color');
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->type('#FF0000', 'color')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
@@ -329,7 +329,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->select('radio1', 'radio_btn')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
@@ -356,7 +356,7 @@ class FormfieldsTest extends TestCase
             )
         );
 
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->select('option1', 'select_dropdown')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
@@ -373,11 +373,11 @@ class FormfieldsTest extends TestCase
     {
         $this->createBreadForFormfield('text', 'file');
         $file = UploadedFile::fake()->create('test.txt', 1);
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->attach([$file->getPathName()], 'file[]')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
-            ->visitRoute('facilitador.categories.create')
+            ->visitRoute('rica.facilitador.categories.create')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->seeInDatabase(
@@ -397,11 +397,11 @@ class FormfieldsTest extends TestCase
             )
         );
         $file = UploadedFile::fake()->create('test.txt', 1);
-        $this->visitRoute('facilitador.categories.create')
+        $this->visitRoute('rica.facilitador.categories.create')
             ->attach([$file->getPathName()], 'file[]')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
-            ->visitRoute('facilitador.categories.create')
+            ->visitRoute('rica.facilitador.categories.create')
             ->press(__('pedreiro::generic.save'))
             ->seeRouteIs('facilitador.categories.index')
             ->seeInDatabase(
@@ -423,10 +423,10 @@ class FormfieldsTest extends TestCase
         );
 
         // Delete old BREAD
-        $this->delete(route('facilitador.bread.delete', ['id' => DataType::where('name', 'categories')->first()->id]));
+        $this->delete(route('rica.facilitador.bread.delete', ['id' => DataType::where('name', 'categories')->first()->id]));
 
         // Create BREAD
-        $this->visitRoute('facilitador.bread.create', ['table' => 'categories'])
+        $this->visitRoute('rica.facilitador.bread.create', ['table' => 'categories'])
             ->select($name, 'field_input_type_'.$name)
             ->type($options, 'field_details_'.$name)
             ->type('Facilitador\\Models\\Category', 'model_name')

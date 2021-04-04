@@ -5,7 +5,7 @@
 @section('page_header')
     <h1 class="page-title">
         <i class="facilitador-data"></i> {{ __('pedreiro::generic.database') }}
-        <a href="{{ route('facilitador.database.create') }}" class="btn btn-success"><i class="facilitador-plus"></i>
+        <a href="{{ route('rica.facilitador.database.create') }}" class="btn btn-success"><i class="facilitador-plus"></i>
             {{ __('pedreiro::database.create_new_table') }}</a>
     </h1>
 @stop

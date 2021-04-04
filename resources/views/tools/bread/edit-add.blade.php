@@ -34,17 +34,17 @@
         <a href="{{ route('rica.dashboard')}}"><i class="facilitador-boat"></i> {{ __('pedreiro::generic.dashboard') }}</a>
     </li>
     <li class="active">
-        <a href="{{ route('facilitador.bread.index') }}">
+        <a href="{{ route('rica.facilitador.bread.index') }}">
             {{ __('pedreiro::generic.bread') }}
         </a>
     </li>
     <li class="active">
         @if(isset($dataType->id))
-        <a href="{{ route('facilitador.bread.edit', $table) }}">
+        <a href="{{ route('rica.facilitador.bread.edit', $table) }}">
             {{ $display_name }}
         </a>
         @else
-        <a href="{{ route('facilitador.bread.create', $table) }}">
+        <a href="{{ route('rica.facilitador.bread.create', $table) }}">
             {{ $display_name }}
         </a>
         @endif
@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="@if(isset($dataType->id)){{ route('facilitador.bread.update', $dataType->id) }}@else{{ route('facilitador.bread.store') }}@endif"
+                <form action="@if(isset($dataType->id)){{ route('rica.facilitador.bread.update', $dataType->id) }}@else{{ route('rica.facilitador.bread.store') }}@endif"
                       method="POST" role="form">
                 @if(isset($dataType->id))
                     <input type="hidden" value="{{ $dataType->id }}" name="id">
@@ -126,7 +126,7 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="icon">{{ __('support::cruds.bread.icon_hint') }} <a
-                                                href="{{ route('facilitador.compass.index', [], false) }}#fonts"
+                                                href="{{ route('rica.facilitador.compass.index', [], false) }}#fonts"
                                                 target="_blank">{{ __('support::cruds.bread.icon_hint2') }}</a></label>
                                     <input type="text" class="form-control" name="icon"
                                            placeholder="{{ __('support::cruds.bread.icon_class') }}"
@@ -617,7 +617,7 @@
             var tbl = dropdown.data('table');
             var selected_value = dropdown.data('selected');
             if(tbl.length != 0){
-                $.get('{{ route('facilitador.database.index') }}/' + tbl, function(data){
+                $.get('{{ route('rica.facilitador.database.index') }}/' + tbl, function(data){
                     $(dropdown).empty();
                     for (var option in data) {
                        $('<option/>', {

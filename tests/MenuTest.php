@@ -17,12 +17,12 @@ class MenuTest extends TestCase
     public function testCanRenameMenu()
     {
         $menu = Menu::where('name', '=', 'admin')->first();
-        $this->visitRoute('facilitador.menus.edit', $menu->id)
+        $this->visitRoute('rica.facilitador.menus.edit', $menu->id)
             ->seeInField('name', $menu->name)
             ->type('new_admin', 'name')
             ->seeInElement('button', __('pedreiro::generic.save'))
             ->press(__('pedreiro::generic.save'))
-            ->seePageIs(route('facilitador.menus.index'))
+            ->seePageIs(route('rica.facilitador.menus.index'))
             ->seeInDatabase(
                 'menus', [
                 'id'   => $menu->id,
@@ -106,7 +106,7 @@ class MenuTest extends TestCase
     public function testCanSeeMenuBuilder()
     {
         $menu = Menu::where('name', '=', 'admin')->first();
-        $response = $this->call('GET', route('facilitador.menus.builder', ['menu' => $menu->id]));
+        $response = $this->call('GET', route('rica.facilitador.menus.builder', ['menu' => $menu->id]));
         $this->assertEquals(200, $response->status());
     }
 }

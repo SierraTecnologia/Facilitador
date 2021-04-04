@@ -145,54 +145,54 @@ class FacilitadorProvider extends ServiceProvider
         //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
         //             // 'access' => \Porteiro\Models\Role::$ADMIN
         //         ],
-        //         [
-        //             'text'        => 'Compass',
-        //             'route'       => 'rica.facilitador.compass.index',
-        //             'icon'        => 'fas fa-fw fa-cog',
-        //             'icon_color'  => 'blue',
-        //             'label_color' => 'success',
-        //             'space'      => 'admin',
-        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         ],
-        //         // [
-        //         //     'text'        => 'Menu Builder',
-        //         //     'route'       => 'facilitador.menus.builder',
-        //         //     'icon'        => 'fas fa-fw fa-cog',
-        //         //     'icon_color'  => 'blue',
-        //         //     'label_color' => 'success',
-        //         //     // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         // ],
-        //         [
-        //             'text'        => 'Medias',
-        //             'route'       => 'master.media.index',
-        //             'icon'        => 'fas fa-fw fa-cog',
-        //             'icon_color'  => 'blue',
-        //             'label_color' => 'success',
-        //             'space'      => 'admin',
-        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         ],
-        //         [
-        //             'text'        => 'elements',
-        //             'route'       => 'pedreiro.elements',
-        //             'icon'        => 'fas fa-fw fa-laptop',
-        //             'icon_color'  => 'blue',
-        //             'label_color' => 'success',
-        //             'space'      => 'admin',
-        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         ],
-        //         [
-        //             'text'        => 'Redirects',
-        //             'url'         => '/siravel/redirect-rules',
-        //             'icon'        => 'fas fa-fw fa-share',
-        //             'icon_color'  => 'blue',
-        //             'label_color' => 'success',
-        //             'space'      => 'admin',
-        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         ],
+                [
+                    'text'        => 'Compass',
+                    'route'       => 'rica.facilitador.compass.index',
+                    'icon'        => 'fas fa-fw fa-cog',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'space'      => 'admin',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
+                // [
+                //     'text'        => 'Menu Builder',
+                //     'route'       => 'facilitador.menus.builder',
+                //     'icon'        => 'fas fa-fw fa-cog',
+                //     'icon_color'  => 'blue',
+                //     'label_color' => 'success',
+                //     // 'access' => \Porteiro\Models\Role::$ADMIN
+                // ],
+                [
+                    'text'        => 'Medias',
+                    'route'       => 'master.media.index',
+                    'icon'        => 'fas fa-fw fa-cog',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'space'      => 'admin',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'elements',
+                    'route'       => 'pedreiro.elements',
+                    'icon'        => 'fas fa-fw fa-laptop',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'space'      => 'admin',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Redirects',
+                    'url'         => '/siravel/redirect-rules',
+                    'icon'        => 'fas fa-fw fa-share',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'space'      => 'admin',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
                 [
                     'text'        => 'settings',
                     'route'       => 'rica.facilitador.settings.index',
@@ -205,44 +205,44 @@ class FacilitadorProvider extends ServiceProvider
                     // 'access' => \Porteiro\Models\Role::$ADMIN
                 ],
         //     ],
-        //     'Tools' => [
-        //         // [
-        //         //     'text'        => 'Tools',
-        //         //     'route'       => 'rica.facilitador.hooks',
-        //         //     'icon'        => 'fas fa-fw fa-industry',
-        //         //     'icon_color'  => 'blue',
-        //         //     'label_color' => 'success',
-        //         //     // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         // ],
-        //         // [
-        //         //     'text'        => 'encode',
-        //         //     'route'       => 'facilitador.encode',
-        //         //     'icon'        => 'fas fa-fw fa-industry',
-        //         //     'icon_color'  => 'blue',
-        //         //     'label_color' => 'success',
-        //         //     // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         // ],
-        //         [
-        //             'text'        => 'Workers',
-        //             'route'       => 'facilitador.workers',
-        //             'icon'        => 'fas fa-fw fa-coffee',
-        //             'icon_color'  => 'blue',
-        //             'label_color' => 'success',
-        //             'space'      => 'admin',
-        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         ],
-        //         [
-        //             'text'        => 'Hooks',
-        //             'route'       => 'rica.facilitador.hooks',
-        //             'icon'        => 'fas fa-fw fa-share',
-        //             'icon_color'  => 'blue',
-        //             'label_color' => 'success',
-        //             'space'      => 'admin',
-        //             'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
-        //             // 'access' => \Porteiro\Models\Role::$ADMIN
-        //         ],
-        //     ],
+            'Tools' => [
+                // [
+                //     'text'        => 'Tools',
+                //     'route'       => 'rica.facilitador.hooks',
+                //     'icon'        => 'fas fa-fw fa-industry',
+                //     'icon_color'  => 'blue',
+                //     'label_color' => 'success',
+                //     // 'access' => \Porteiro\Models\Role::$ADMIN
+                // ],
+                // [
+                //     'text'        => 'encode',
+                //     'route'       => 'facilitador.encode',
+                //     'icon'        => 'fas fa-fw fa-industry',
+                //     'icon_color'  => 'blue',
+                //     'label_color' => 'success',
+                //     // 'access' => \Porteiro\Models\Role::$ADMIN
+                // ],
+                [
+                    'text'        => 'Workers',
+                    'route'       => 'facilitador.workers',
+                    'icon'        => 'fas fa-fw fa-coffee',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'space'      => 'admin',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
+                [
+                    'text'        => 'Hooks',
+                    'route'       => 'rica.facilitador.hooks',
+                    'icon'        => 'fas fa-fw fa-share',
+                    'icon_color'  => 'blue',
+                    'label_color' => 'success',
+                    'space'      => 'admin',
+                    'level'       => 3, // 0 (Public), 1, 2 (Admin) , 3 (Root)
+                    // 'access' => \Porteiro\Models\Role::$ADMIN
+                ],
+            ],
         // ],
     ];
 

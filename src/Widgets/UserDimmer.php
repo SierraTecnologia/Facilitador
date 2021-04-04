@@ -32,7 +32,7 @@ class UserDimmer extends BaseDimmer
                 'text'   => __('pedreiro::dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
                 'button' => [
                 'text' => __('pedreiro::dimmer.user_link_text'),
-                'link' => route('facilitador.users.index'),
+                'link' => route('rica.facilitador.users.index'),
                 ],
                 'image' => facilitador_asset('images/widget-backgrounds/01.jpg'),
                 ]

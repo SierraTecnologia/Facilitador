@@ -29,12 +29,12 @@ class SearchTest extends TestCase
             'filter' => 'equals',
             's'      => '0',
         ];
-        $this->visit(route('facilitador.posts.index').'?'.http_build_query($params))
+        $this->visit(route('rica.facilitador.posts.index').'?'.http_build_query($params))
             ->dontSee($post->title)
             ->see(Post::where('featured', 0)->first()->title);
 
         $params['s'] = 1;
-        $this->visit(route('facilitador.posts.index').'?'.http_build_query($params))
+        $this->visit(route('rica.facilitador.posts.index').'?'.http_build_query($params))
             ->see($post->title)
             ->dontSee(Post::where('featured', 0)->first()->title);
     }

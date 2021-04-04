@@ -37,7 +37,7 @@ class FacilitadorBreadController extends Controller
             }, SchemaManager::listTableNames()
         );
 
-        return Facilitador::view('facilitador::tools.bread.index')->with(compact('dataTypes', 'tables'));
+        return Facilitador::view('facilitador::tools.bread.index', compact('dataTypes', 'tables'));
     }
 
     /**
@@ -105,9 +105,9 @@ class FacilitadorBreadController extends Controller
                 event(new BreadAdded($dataType, $data));
             }
 
-            return redirect()->route('facilitador.bread.index')->with($data);
+            return redirect()->route('rica.facilitador.bread.index')->with($data);
         } catch (Exception $e) {
-            return redirect()->route('facilitador.bread.index')->with($this->alertException($e, 'Saving Failed'));
+            return redirect()->route('rica.facilitador.bread.index')->with($this->alertException($e, 'Saving Failed'));
         }
     }
 
@@ -173,7 +173,7 @@ class FacilitadorBreadController extends Controller
             // Save translations if applied
             $dataType->saveTranslations($translations);
 
-            return redirect()->route('facilitador.bread.index')->with($data);
+            return redirect()->route('rica.facilitador.bread.index')->with($data);
         } catch (Exception $e) {
             return back()->with($this->alertException($e, __('pedreiro::generic.update_failed')));
         }
@@ -210,7 +210,7 @@ class FacilitadorBreadController extends Controller
             Facilitador::model('Permission')->removeFrom($dataType->name);
         }
 
-        return redirect()->route('facilitador.bread.index')->with($data);
+        return redirect()->route('rica.facilitador.bread.index')->with($data);
     }
 
     public function getModelScopes($model_name)

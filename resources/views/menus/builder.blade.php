@@ -41,7 +41,7 @@
                     <h4 class="modal-title"><i class="facilitador-trash"></i> {{ __('pedreiro::menu_builder.delete_item_question') }}</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('facilitador.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}"
+                    <form action="{{ route('rica.facilitador.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}"
                           id="delete_form"
                           method="POST">
                         {{ method_field("DELETE") }}
@@ -66,8 +66,8 @@
                     <h4 id="m_hd_edit" class="modal-title hidden"><i class="facilitador-edit"></i> {{ __('pedreiro::menu_builder.edit_item') }}</h4>
                 </div>
                 <form action="" id="m_form" method="POST"
-                      data-action-add="{{ route('facilitador.menus.item.add', ['menu' => $menu->id]) }}"
-                      data-action-update="{{ route('facilitador.menus.item.update', ['menu' => $menu->id]) }}">
+                      data-action-add="{{ route('rica.facilitador.menus.item.add', ['menu' => $menu->id]) }}"
+                      data-action-update="{{ route('rica.facilitador.menus.item.update', ['menu' => $menu->id]) }}">
 
                     <input id="m_form_method" type="hidden" name="_method" value="POST">
                     {{ csrf_field() }}
@@ -94,7 +94,7 @@
                             <textarea rows="3" class="form-control" id="m_parameters" name="parameters" placeholder="{{ json_encode(['key' => 'value'], JSON_PRETTY_PRINT) }}"></textarea><br>
                         </div>
                         <label for="icon_class">{{ __('pedreiro::menu_builder.icon_class') }} <a
-                                    href="{{ route('facilitador.compass.index', [], false) }}#fonts"
+                                    href="{{ route('rica.facilitador.compass.index', [], false) }}#fonts"
                                     target="_blank">{!! __('pedreiro::menu_builder.icon_class2') !!}</label>
                         <input type="text" class="form-control" id="m_icon_class" name="icon_class"
                                placeholder="{{ __('pedreiro::menu_builder.icon_class_ph') }}"><br>
@@ -279,7 +279,7 @@
              */
             $('.item_actions').on('click', '.delete', function (e) {
                 id = $(e.currentTarget).data('id');
-                $('#delete_form')[0].action = '{{ route('facilitador.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}'.replace('__id', id);
+                $('#delete_form')[0].action = '{{ route('rica.facilitador.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}'.replace('__id', id);
                 $('#delete_modal').modal('show');
             });
 
@@ -288,7 +288,7 @@
              * Reorder items
              */
             $('.dd').on('change', function (e) {
-                $.post('{{ route('facilitador.menus.order',['menu' => $menu->id]) }}', {
+                $.post('{{ route('rica.facilitador.menus.order',['menu' => $menu->id]) }}', {
                     order: JSON.stringify($('.dd').nestable('serialize')),
                     _token: '{{ csrf_token() }}'
                 }, function (data) {

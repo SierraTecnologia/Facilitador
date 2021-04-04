@@ -32,7 +32,7 @@ class PageDimmer extends BaseDimmer
                 'text'   => __('pedreiro::dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
                 'button' => [
                 'text' => __('pedreiro::dimmer.page_link_text'),
-                'link' => route('facilitador.pages.index'),
+                'link' => route('rica.facilitador.pages.index'),
                 ],
                 'image' => facilitador_asset('images/widget-backgrounds/03.jpg'),
                 ]

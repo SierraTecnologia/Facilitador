@@ -25,9 +25,9 @@ class UserProfileTest extends TestCase
 
         $this->user = Auth::loginUsingId(1);
 
-        $this->editPageForTheCurrentUser = route('facilitador.users.edit', [$this->user->id]);
+        $this->editPageForTheCurrentUser = route('rica.facilitador.users.edit', [$this->user->id]);
 
-        $this->listOfUsers = route('facilitador.users.index');
+        $this->listOfUsers = route('rica.facilitador.users.index');
 
         $this->withFactories(__DIR__.'/database/factories');
     }
@@ -102,7 +102,7 @@ class UserProfileTest extends TestCase
     public function testCanEditUserEmailWithEditorPermissions()
     {
         $user = factory(\Facilitador\Models\User::class)->create();
-        $editPageForTheCurrentUser = route('facilitador.users.edit', [$user->id]);
+        $editPageForTheCurrentUser = route('rica.facilitador.users.edit', [$user->id]);
         $roleId = $user->role_id;
         $role = Role::find($roleId);
         // add permissions which reflect a possible editor role

@@ -46,7 +46,7 @@ class DatabaseTest extends TestCase
 
         // Create table
         $this->post(
-            route('facilitador.database.store'), [
+            route('rica.facilitador.database.store'), [
             'table' => json_encode($this->table),
             ]
         );
@@ -56,7 +56,7 @@ class DatabaseTest extends TestCase
     {
         // Test correct response
         $this->assertSessionHasAll($this->alertSuccess(__('pedreiro::database.success_create_table', ['table' => $this->table['name']])));
-        $this->assertRedirectedToRoute('facilitador.database.index');
+        $this->assertRedirectedToRoute('rica.facilitador.database.index');
 
         // Test table exists
         $this->assertTrue(SchemaManager::tableExists($this->table['name']));
@@ -108,11 +108,11 @@ class DatabaseTest extends TestCase
     {
         $this->assertTrue(SchemaManager::tableExists($this->table['name']));
 
-        $this->delete(route('facilitador.database.destroy', $this->table['name']));
+        $this->delete(route('rica.facilitador.database.destroy', $this->table['name']));
 
         // Test correct response
         $this->assertSessionHasAll($this->alertSuccess(__('pedreiro::database.success_delete_table', ['table' => $this->table['name']])));
-        $this->assertRedirectedToRoute('facilitador.database.index');
+        $this->assertRedirectedToRoute('rica.facilitador.database.index');
 
         $this->assertFalse(SchemaManager::tableExists($this->table['name']));
     }
@@ -122,7 +122,7 @@ class DatabaseTest extends TestCase
         $table = (new Table('i_dont_exist_please_create_me_first'))->toArray();
 
         $this->put(
-            route('facilitador.database.update', $table['oldName']), [
+            route('rica.facilitador.database.update', $table['oldName']), [
             'table' => json_encode($table),
             ]
         );
@@ -239,14 +239,14 @@ class DatabaseTest extends TestCase
     {
         // Update table
         $this->put(
-            route('facilitador.database.update', $table['oldName']), [
+            route('rica.facilitador.database.update', $table['oldName']), [
             'table' => json_encode($table),
             ]
         );
 
         // Test correct response
         $this->assertSessionHasAll($this->alertSuccess(__('pedreiro::database.success_create_table', ['table' => $table['name']])));
-        $this->assertRedirectedToRoute('facilitador.database.index');
+        $this->assertRedirectedToRoute('rica.facilitador.database.index');
 
         return SchemaManager::listTableDetails($table['name']);
     }

@@ -9,7 +9,6 @@
 @stop
 
 @section('content')
-
     <div class="page-content container-fluid">
         @include('facilitador::alerts')
         <div class="row">
@@ -28,7 +27,7 @@
                     <tr>
                         <td>
                             <p class="name">
-                                <a href="{{ route('facilitador.database.show', $table->prefix.$table->name) }}"
+                                <a href="{{ route('rica.facilitador.database.show', $table->prefix.$table->name) }}"
                                    data-name="{{ $table->prefix.$table->name }}" class="desctable">
                                    {{ $table->name }}
                                 </a>
@@ -43,7 +42,7 @@
                                    class="btn btn-warning btn-sm browse_bread" style="margin-right: 0;">
                                     <i class="facilitador-plus"></i> {{ __('pedreiro::generic.browse') }}
                                 </a>
-                                <a href="{{ route('facilitador.bread.edit', $table->name) }}"
+                                <a href="{{ route('rica.facilitador.bread.edit', $table->name) }}"
                                    class="btn btn-primary btn-sm edit">
                                     <i class="facilitador-edit"></i> {{ __('pedreiro::generic.edit') }}
                                 </a>
@@ -52,7 +51,7 @@
                                     <i class="facilitador-trash"></i> {{ __('pedreiro::generic.delete') }}
                                 </a>
                             @else
-                                <a href="{{ route('facilitador.bread.create', $table->name) }}"
+                                <a href="{{ route('rica.facilitador.bread.create', $table->name) }}"
                                    class="_btn btn-secondary btn-sm float-right">
                                     <i class="facilitador-plus"></i> {{ __('support::cruds.bread.add_bread') }}
                                 </a>
@@ -151,7 +150,7 @@
                 name = $(this).data('name');
 
                 $('#delete_builder_name').text(name);
-                $('#delete_builder_form')[0].action = '{{ route('facilitador.bread.delete', ['__id']) }}'.replace('__id', id);
+                $('#delete_builder_form')[0].action = '{{ route('rica.facilitador.bread.delete', ['__id']) }}'.replace('__id', id);
                 $('#delete_builder_modal').modal('show');
             });
 
