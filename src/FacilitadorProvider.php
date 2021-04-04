@@ -71,14 +71,6 @@ class FacilitadorProvider extends ServiceProvider
     public static $menuItens = [
         // // 'User|50' => [
         //     // [
-        //     //     'text'        => 'Dashboard',
-        //     //     'route'       => 'profile.dashboard',
-        //     //     'icon'        => 'fas fa-fw fa-industry',
-        //     //     'icon_color'  => 'blue',
-        //     //     'label_color' => 'success',
-        //     //     // 'access' => \Porteiro\Models\Role::$ADMIN
-        //     // ],
-        //     // [
         //     //     'text'        => 'Home',
         //     //     'route'       => 'profile.home',
         //     //     'icon'        => 'fas fa-fw fa-industry',
