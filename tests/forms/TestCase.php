@@ -7,7 +7,6 @@ use Facilitador\Test\Forms\Models\Tag;
 use Facilitador\Test\Forms\Models\Post;
 use Facilitador\Test\Forms\Models\Category;
 use Illuminate\Database\Capsule\Manager as DB;
-use Muleta\Traits\Models\CrudFormsServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Facilitador\Test\Forms\Providers\RouteServiceProvider;
 
@@ -18,7 +17,7 @@ abstract class TestCase extends OrchestraTestCase
      *
      * @return void
      */
-    protected function setUp(): void: void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -36,7 +35,6 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            CrudFormsServiceProvider::class,
             RouteServiceProvider::class,
         ];
     }

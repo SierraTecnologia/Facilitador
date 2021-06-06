@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Seeder;
 use Siravel\Models\Blog\Category;
-use Support\Models\DataRow;
-use Support\Models\DataType;
-use Facilitador\Models\Menu;
-use Facilitador\Models\MenuItem;
+use Support\Models\Application\DataRow;
+use Support\Models\Application\DataType;
+use Siravel\Models\Negocios\Menu;
+use Siravel\Models\Negocios\MenuItem;
 use Facilitador\Models\Permission;
 
 class CategoriesTableSeeder extends Seeder

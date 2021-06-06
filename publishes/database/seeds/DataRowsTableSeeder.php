@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Support\Models\DataRow;
-use Support\Models\DataType;
+use Support\Models\Application\DataRow;
+use Support\Models\Application\DataType;
 
 class DataRowsTableSeeder extends Seeder
 {

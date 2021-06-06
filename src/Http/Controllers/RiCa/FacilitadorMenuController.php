@@ -30,7 +30,7 @@ class FacilitadorMenuController extends Controller
         $item->destroy($id);
 
         return redirect()
-            ->route('facilitador.menus.builder', [$menu])
+            ->route('rica.facilitador.menus.builder', [$menu])
             ->with(
                 [
                 'message'    => __('pedreiro::menu_builder.successfully_deleted'),
@@ -67,7 +67,7 @@ class FacilitadorMenuController extends Controller
         }
 
         return redirect()
-            ->route('facilitador.menus.builder', [$data['menu_id']])
+            ->route('rica.facilitador.menus.builder', [$data['menu_id']])
             ->with(
                 [
                 'message'    => __('pedreiro::menu_builder.successfully_created'),
@@ -97,7 +97,7 @@ class FacilitadorMenuController extends Controller
         $menuItem->update($data);
 
         return redirect()
-            ->route('facilitador.menus.builder', [$menuItem->menu_id])
+            ->route('rica.facilitador.menus.builder', [$menuItem->menu_id])
             ->with(
                 [
                 'message'    => __('pedreiro::menu_builder.successfully_updated'),

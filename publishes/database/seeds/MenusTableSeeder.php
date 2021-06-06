@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Facilitador\Models\Menu;
+use Siravel\Models\Negocios\Menu;
 
 class MenusTableSeeder extends Seeder
 {

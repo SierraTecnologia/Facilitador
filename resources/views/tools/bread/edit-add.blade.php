@@ -1,22 +1,22 @@
 @extends('pedreiro::layouts.voyager.master')
 
 @if (isset($dataType->id))
-    @section('page_title', __('support::cruds.bread.edit_bread_for_table', ['table' => $dataType->name]))
+    @section('page_title', __('bread.edit_bread_for_table', ['table' => $dataType->name]))
     @php
         $display_name = $dataType->getTranslatedAttribute('display_name_singular');
         $display_name_plural = $dataType->getTranslatedAttribute('display_name_plural');
     @endphp
 @else
-    @section('page_title', __('support::cruds.bread.create_bread_for_table', ['table' => $table]))
+    @section('page_title', __('bread.create_bread_for_table', ['table' => $table]))
 @endif
 
 @section('page_header')
     <div class="page-title">
         <i class="facilitador-data"></i>
         @if (isset($dataType->id))
-            {{ __('support::cruds.bread.edit_bread_for_table', ['table' => $dataType->name]) }}
+            {{ __('bread.edit_bread_for_table', ['table' => $dataType->name]) }}
         @else
-            {{ __('support::cruds.bread.create_bread_for_table', ['table' => $table]) }}
+            {{ __('bread.create_bread_for_table', ['table' => $table]) }}
         @endif
     </div>
     @php
@@ -25,7 +25,7 @@
             $table = $dataType->name;
         }
     @endphp
-    @include('pedreiro::multilingual.language-selector')
+    @include('pedreiro::shared.forms.multilingual.language-selector')
 @stop
 
 @section('breadcrumbs')
@@ -34,17 +34,17 @@
         <a href="{{ route('rica.dashboard')}}"><i class="facilitador-boat"></i> {{ __('pedreiro::generic.dashboard') }}</a>
     </li>
     <li class="active">
-        <a href="{{ route('facilitador.bread.index') }}">
+        <a href="{{ route('rica.facilitador.bread.index') }}">
             {{ __('pedreiro::generic.bread') }}
         </a>
     </li>
     <li class="active">
         @if(isset($dataType->id))
-        <a href="{{ route('facilitador.bread.edit', $table) }}">
+        <a href="{{ route('rica.facilitador.bread.edit', $table) }}">
             {{ $display_name }}
         </a>
         @else
-        <a href="{{ route('facilitador.bread.create', $table) }}">
+        <a href="{{ route('rica.facilitador.bread.create', $table) }}">
             {{ $display_name }}
         </a>
         @endif
@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="@if(isset($dataType->id)){{ route('facilitador.bread.update', $dataType->id) }}@else{{ route('facilitador.bread.store') }}@endif"
+                <form action="@if(isset($dataType->id)){{ route('rica.facilitador.bread.update', $dataType->id) }}@else{{ route('rica.facilitador.bread.store') }}@endif"
                       method="POST" role="form">
                 @if(isset($dataType->id))
                     <input type="hidden" value="{{ $dataType->id }}" name="id">
@@ -72,7 +72,7 @@
                     <div class="panel panel-primary panel-bordered">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title panel-icon"><i class="facilitador-bread"></i> {{ ucfirst($table) }} {{ __('support::cruds.bread.bread_info') }}</h3>
+                            <h3 class="panel-title panel-icon"><i class="facilitador-bread"></i> {{ ucfirst($table) }} {{ __('bread.bread_info') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action facilitador-angle-up" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -88,9 +88,9 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="display_name_singular">{{ __('support::cruds.bread.display_name_singular') }}</label>
+                                    <label for="display_name_singular">{{ __('bread.display_name_singular') }}</label>
                                     @if($isModelTranslatable)
-                                        @include('pedreiro::multilingual.input-hidden', [
+                                        @include('pedreiro::shared.forms.multilingual.input-hidden', [
                                             'isModelTranslatable' => true,
                                             '_field_name'         => 'display_name_singular',
                                             '_field_trans' => get_field_translations($dataType, 'display_name_singular')
@@ -99,13 +99,13 @@
                                     <input type="text" class="form-control"
                                            name="display_name_singular"
                                            id="display_name_singular"
-                                           placeholder="{{ __('support::cruds.bread.display_name_singular') }}"
+                                           placeholder="{{ __('bread.display_name_singular') }}"
                                            value="{{ $display_name }}">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="display_name_plural">{{ __('support::cruds.bread.display_name_plural') }}</label>
+                                    <label for="display_name_plural">{{ __('bread.display_name_plural') }}</label>
                                     @if($isModelTranslatable)
-                                        @include('pedreiro::multilingual.input-hidden', [
+                                        @include('pedreiro::shared.forms.multilingual.input-hidden', [
                                             'isModelTranslatable' => true,
                                             '_field_name'         => 'display_name_plural',
                                             '_field_trans' => get_field_translations($dataType, 'display_name_plural')
@@ -114,60 +114,60 @@
                                     <input type="text" class="form-control"
                                            name="display_name_plural"
                                            id="display_name_plural"
-                                           placeholder="{{ __('support::cruds.bread.display_name_plural') }}"
+                                           placeholder="{{ __('bread.display_name_plural') }}"
                                            value="{{ $display_name_plural }}">
                                 </div>
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="slug">{{ __('support::cruds.bread.url_slug') }}</label>
-                                    <input type="text" class="form-control" name="slug" placeholder="{{ __('support::cruds.bread.url_slug_ph') }}"
+                                    <label for="slug">{{ __('bread.url_slug') }}</label>
+                                    <input type="text" class="form-control" name="slug" placeholder="{{ __('bread.url_slug_ph') }}"
                                            value="{{ $dataType->slug ?? $slug }}">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="icon">{{ __('support::cruds.bread.icon_hint') }} <a
-                                                href="{{ route('facilitador.compass.index', [], false) }}#fonts"
-                                                target="_blank">{{ __('support::cruds.bread.icon_hint2') }}</a></label>
+                                    <label for="icon">{{ __('bread.icon_hint') }} <a
+                                                href="{{ route('rica.facilitador.compass.index', [], false) }}#fonts"
+                                                target="_blank">{{ __('bread.icon_hint2') }}</a></label>
                                     <input type="text" class="form-control" name="icon"
-                                           placeholder="{{ __('support::cruds.bread.icon_class') }}"
+                                           placeholder="{{ __('bread.icon_class') }}"
                                            value="{{ $dataType->icon ?? '' }}">
                                 </div>
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="model_name">{{ __('support::cruds.bread.model_name') }}</label>
+                                    <label for="model_name">{{ __('bread.model_name') }}</label>
                                     <span class="facilitador-question"
                                         aria-hidden="true"
                                         data-toggle="tooltip"
                                         data-placement="right"
-                                        title="{{ __('support::cruds.bread.model_name_ph') }}"></span>
-                                    <input type="text" class="form-control" name="model_name" placeholder="{{ __('support::cruds.bread.model_class') }}"
+                                        title="{{ __('bread.model_name_ph') }}"></span>
+                                    <input type="text" class="form-control" name="model_name" placeholder="{{ __('bread.model_class') }}"
                                            value="{{ $dataType->model_name ?? $model_name }}">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="controller">{{ __('support::cruds.bread.controller_name') }}</label>
+                                    <label for="controller">{{ __('bread.controller_name') }}</label>
                                     <span class="facilitador-question"
                                         aria-hidden="true"
                                         data-toggle="tooltip"
                                         data-placement="right"
-                                        title="{{ __('support::cruds.bread.controller_name_hint') }}"></span>
-                                    <input type="text" class="form-control" name="controller" placeholder="{{ __('support::cruds.bread.controller_name') }}"
+                                        title="{{ __('bread.controller_name_hint') }}"></span>
+                                    <input type="text" class="form-control" name="controller" placeholder="{{ __('bread.controller_name') }}"
                                            value="{{ $dataType->controller ?? '' }}">
                                 </div>
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6 form-group">
-                                    <label for="policy_name">{{ __('support::cruds.bread.policy_name') }}</label>
+                                    <label for="policy_name">{{ __('bread.policy_name') }}</label>
                                     <span class="facilitador-question"
                                           aria-hidden="true"
                                           data-toggle="tooltip"
                                           data-placement="right"
-                                          title="{{ __('support::cruds.bread.policy_name_ph') }}"></span>
-                                    <input type="text" class="form-control" name="policy_name" placeholder="{{ __('support::cruds.bread.policy_class') }}"
+                                          title="{{ __('bread.policy_name_ph') }}"></span>
+                                    <input type="text" class="form-control" name="policy_name" placeholder="{{ __('bread.policy_class') }}"
                                            value="{{ $dataType->policy_name ?? '' }}">
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for="generate_permissions">{{ __('support::cruds.bread.generate_permissions') }}</label><br>
+                                    <label for="generate_permissions">{{ __('bread.generate_permissions') }}</label><br>
                                     <?php $checked = (isset($dataType->generate_permissions) && $dataType->generate_permissions == 1) || (isset($generate_permissions) && $generate_permissions); ?>
                                     <input type="checkbox"
                                            name="generate_permissions"
@@ -177,7 +177,7 @@
                                            @if($checked) checked @endif >
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for="server_side">{{ __('support::cruds.bread.server_pagination') }}</label><br>
+                                    <label for="server_side">{{ __('bread.server_pagination') }}</label><br>
                                     <?php $checked = (isset($dataType->server_side) && $dataType->server_side == 1) || (isset($server_side) && $server_side); ?>
                                     <input type="checkbox"
                                            name="server_side"
@@ -189,12 +189,12 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-3 form-group">
-                                    <label for="order_column">{{ __('support::cruds.bread.order_column') }}</label>
+                                    <label for="order_column">{{ __('bread.order_column') }}</label>
                                     <span class="facilitador-question"
                                           aria-hidden="true"
                                           data-toggle="tooltip"
                                           data-placement="right"
-                                          title="{{ __('support::cruds.bread.order_column_ph') }}"></span>
+                                          title="{{ __('bread.order_column_ph') }}"></span>
                                     <select name="order_column" class="select2 form-control">
                                         <option value="">-- {{ __('pedreiro::generic.none') }} --</option>
                                         @foreach($fieldOptions as $tbl)
@@ -205,12 +205,12 @@
                                       </select>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for="order_display_column">{{ __('support::cruds.bread.order_ident_column') }}</label>
+                                    <label for="order_display_column">{{ __('bread.order_ident_column') }}</label>
                                     <span class="facilitador-question"
                                           aria-hidden="true"
                                           data-toggle="tooltip"
                                           data-placement="right"
-                                          title="{{ __('support::cruds.bread.order_ident_column_ph') }}"></span>
+                                          title="{{ __('bread.order_ident_column_ph') }}"></span>
                                     <select name="order_display_column" class="select2 form-control">
                                         <option value="">-- {{ __('pedreiro::generic.none') }} --</option>
                                         @foreach($fieldOptions as $tbl)
@@ -221,7 +221,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for="order_direction">{{ __('support::cruds.bread.order_direction') }}</label>
+                                    <label for="order_direction">{{ __('bread.order_direction') }}</label>
                                     <select name="order_direction" class="select2 form-control">
                                         <option value="asc" @if(isset($dataType) && $dataType->order_direction == 'asc') selected @endif>
                                             {{ __('pedreiro::generic.ascending') }}
@@ -232,12 +232,12 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for="default_search_key">{{ __('support::cruds.bread.default_search_key') }}</label>
+                                    <label for="default_search_key">{{ __('bread.default_search_key') }}</label>
                                     <span class="facilitador-question"
                                           aria-hidden="true"
                                           data-toggle="tooltip"
                                           data-placement="right"
-                                          title="{{ __('support::cruds.bread.default_search_key_ph') }}"></span>
+                                          title="{{ __('bread.default_search_key_ph') }}"></span>
                                     <select name="default_search_key" class="select2 form-control">
                                         <option value="">-- {{ __('pedreiro::generic.none') }} --</option>
                                         @foreach($fieldOptions as $tbl)
@@ -251,7 +251,7 @@
                             <div class="row clearfix">
                                 @if (isset($scopes) && isset($dataType))
                                     <div class="col-md-3 form-group">
-                                        <label for="scope">{{ __('support::cruds.bread.scope') }}</label>
+                                        <label for="scope">{{ __('bread.scope') }}</label>
                                         <select name="scope" class="select2 form-control">
                                             <option value="">-- {{ __('pedreiro::generic.none') }} --</option>
                                             @foreach($scopes as $scope)
@@ -263,10 +263,10 @@
                                     </div>
                                 @endif
                                 <div class="col-md-9 form-group">
-                                    <label for="description">{{ __('support::cruds.bread.description') }}</label>
+                                    <label for="description">{{ __('bread.description') }}</label>
                                     <textarea class="form-control"
                                               name="description"
-                                              placeholder="{{ __('support::cruds.bread.description') }}"
+                                              placeholder="{{ __('bread.description') }}"
                                     >{{ $dataType->description ?? '' }}</textarea>
                                 </div>
                             </div>
@@ -276,7 +276,7 @@
 
                     <div class="panel panel-primary panel-bordered">
                         <div class="panel-heading">
-                            <h3 class="panel-title panel-icon"><i class="facilitador-window-list"></i> {{ __('support::cruds.bread.edit_rows', ['table' => $table]) }}:</h3>
+                            <h3 class="panel-title panel-icon"><i class="facilitador-window-list"></i> {{ __('bread.edit_rows', ['table' => $table]) }}:</h3>
                             <div class="panel-actions">
                                 <a class="panel-action facilitador-angle-up" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -287,7 +287,7 @@
                                 <div class="col-xs-2">{{ __('pedreiro::database.field') }}</div>
                                 <div class="col-xs-2">{{ __('pedreiro::database.visibility') }}</div>
                                 <div class="col-xs-2">{{ __('pedreiro::database.input_type') }}</div>
-                                <div class="col-xs-2">{{ __('support::cruds.bread.display_name') }}</div>
+                                <div class="col-xs-2">{{ __('bread.display_name') }}</div>
                                 <div class="col-xs-4">{{ __('pedreiro::database.optional_details') }}</div>
                             </div>
 
@@ -370,7 +370,7 @@
                                     </div>
                                     <div class="col-xs-2">
                                         @if($isModelTranslatable)
-                                            @include('pedreiro::multilingual.input-hidden', [
+                                            @include('pedreiro::shared.forms.multilingual.input-hidden', [
                                                 'isModelTranslatable' => true,
                                                 '_field_name'         => 'field_display_name_' . $data['field'],
                                                 '_field_trans' => $dataRow ? get_field_translations($dataRow, 'display_name') : $data['field'],
@@ -617,7 +617,7 @@
             var tbl = dropdown.data('table');
             var selected_value = dropdown.data('selected');
             if(tbl.length != 0){
-                $.get('{{ route('facilitador.database.index') }}/' + tbl, function(data){
+                $.get('{{ route('rica.facilitador.database.index') }}/' + tbl, function(data){
                     $(dropdown).empty();
                     for (var option in data) {
                        $('<option/>', {

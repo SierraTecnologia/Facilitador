@@ -8,7 +8,7 @@ Admin views are stored in /app/views/admin/CONTROLLER where "CONTROLLER" is the 
 Use a `fieldset` and a div of class `.legend` to contain groups of fields in box.  For instance:
 
 ```haml
-!= View::make('support::shared.form._header', $__data)->render()
+!= View::make('pedreiro::shared.form._header', $__data)->render()
 %fieldset
   .legend=empty($item)?'New':'Edit'
   != Former::text('title')
@@ -30,7 +30,7 @@ $sidebar->add(Former::listing('Contributor')->take(30))
 $sidebar->add('<p>A paragraph</p>')
 ```
 
-Note: This must be run **before** the include of the `support::shared.form._header` partial.
+Note: This must be run **before** the include of the `pedreiro::shared.form._header` partial.
 
 
 ## Embeded / inline relationship list

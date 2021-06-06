@@ -144,7 +144,7 @@ class Setting extends Model
                 'options' => 'string',
                 'defaultValue' => env('APP_TITLE', 'Gpower'),
                 'target' => Negocio::class,
-                'config' => "adminlte.title",
+                'config' => "adminlte.title|logo_img_alt",
             ],
             'backoffice-title_prefix' => [
                 'name' => 'Prefixo do Tituto do Backoffice',

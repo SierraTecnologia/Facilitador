@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Siravel\Models\Blog\Category;
-use Support\Models\DataType;
-use Facilitador\Models\MenuItem;
+use Support\Models\Application\DataType;
+use Siravel\Models\Negocios\MenuItem;
 use Siravel\Models\Negocios\Page;
 use Facilitador\Models\Translation;
 

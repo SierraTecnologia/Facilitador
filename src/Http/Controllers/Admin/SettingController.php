@@ -22,7 +22,7 @@ class SettingController extends Controller
             unset($otherOptions[$setting->setting_key]);
         }
 
-        return view('admin.settings.index', compact('settings', 'otherOptions'));
+        return view('siravel::admin.settings.index', compact('settings', 'otherOptions'));
     }
 
     /**
@@ -35,7 +35,7 @@ class SettingController extends Controller
         $settingInstance = Setting::where('setting_key', $codeSetting)->first();
         $settingRules = Setting::settingsForNegocios()[$codeSetting];
 
-        return view('admin.settings.configure', compact('settingInstance', 'settingRules', 'codeSetting'));
+        return view('siravel::admin.settings.configure', compact('settingInstance', 'settingRules', 'codeSetting'));
     }
 
     /**

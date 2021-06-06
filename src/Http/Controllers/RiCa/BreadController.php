@@ -14,7 +14,7 @@ use Support\Events\BreadDeleted;
 use Support\Events\BreadUpdated;
 use Facilitador\Facades\Facilitador;
 
-class FacilitadorBreadController extends Controller
+class BreadController extends Controller
 {
     public function index(Request $request)
     {
@@ -37,7 +37,7 @@ class FacilitadorBreadController extends Controller
             }, SchemaManager::listTableNames()
         );
 
-        return Facilitador::view('facilitador::tools.bread.index')->with(compact('dataTypes', 'tables'));
+        return Facilitador::view('facilitador::tools.bread.index', compact('dataTypes', 'tables'));
     }
 
     /**
@@ -99,15 +99,15 @@ class FacilitadorBreadController extends Controller
             $dataType = Facilitador::model('DataType');
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
-                ? $this->alertSuccess(__('support::cruds.bread.success_created_bread'))
-                : $this->alertError(__('support::cruds.bread.error_creating_bread'));
+                ? $this->alertSuccess(__('bread.success_created_bread'))
+                : $this->alertError(__('bread.error_creating_bread'));
             if ($res) {
                 event(new BreadAdded($dataType, $data));
             }
 
-            return redirect()->route('facilitador.bread.index')->with($data);
+            return redirect()->route('rica.facilitador.bread.index')->with($data);
         } catch (Exception $e) {
-            return redirect()->route('facilitador.bread.index')->with($this->alertException($e, 'Saving Failed'));
+            return redirect()->route('rica.facilitador.bread.index')->with($this->alertException($e, 'Saving Failed'));
         }
     }
 
@@ -164,8 +164,8 @@ class FacilitadorBreadController extends Controller
 
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
-                ? $this->alertSuccess(__('support::cruds.bread.success_update_bread', ['datatype' => $dataType->name]))
-                : $this->alertError(__('support::cruds.bread.error_updating_bread'));
+                ? $this->alertSuccess(__('bread.success_update_bread', ['datatype' => $dataType->name]))
+                : $this->alertError(__('bread.error_updating_bread'));
             if ($res) {
                 event(new BreadUpdated($dataType, $data));
             }
@@ -173,7 +173,7 @@ class FacilitadorBreadController extends Controller
             // Save translations if applied
             $dataType->saveTranslations($translations);
 
-            return redirect()->route('facilitador.bread.index')->with($data);
+            return redirect()->route('rica.facilitador.bread.index')->with($data);
         } catch (Exception $e) {
             return back()->with($this->alertException($e, __('pedreiro::generic.update_failed')));
         }
@@ -200,8 +200,8 @@ class FacilitadorBreadController extends Controller
 
         $res = Facilitador::model('DataType')->destroy($id);
         $data = $res
-            ? $this->alertSuccess(__('support::cruds.bread.success_remove_bread', ['datatype' => $dataType->name]))
-            : $this->alertError(__('support::cruds.bread.error_updating_bread'));
+            ? $this->alertSuccess(__('bread.success_remove_bread', ['datatype' => $dataType->name]))
+            : $this->alertError(__('bread.error_updating_bread'));
         if ($res) {
             event(new BreadDeleted($dataType, $data));
         }
@@ -210,7 +210,7 @@ class FacilitadorBreadController extends Controller
             Facilitador::model('Permission')->removeFrom($dataType->name);
         }
 
-        return redirect()->route('facilitador.bread.index')->with($data);
+        return redirect()->route('rica.facilitador.bread.index')->with($data);
     }
 
     public function getModelScopes($model_name)

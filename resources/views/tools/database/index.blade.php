@@ -5,7 +5,7 @@
 @section('page_header')
     <h1 class="page-title">
         <i class="facilitador-data"></i> {{ __('pedreiro::generic.database') }}
-        <a href="{{ route('facilitador.database.create') }}" class="btn btn-success"><i class="facilitador-plus"></i>
+        <a href="{{ route('rica.facilitador.database.create') }}" class="btn btn-success"><i class="facilitador-plus"></i>
             {{ __('pedreiro::database.create_new_table') }}</a>
     </h1>
 @stop
@@ -30,7 +30,7 @@
                     <tr>
                         <td>
                             <p class="name">
-                                <a href="{{ \Support\Routing\UrlGenerator::routeForSlug('database', 'show', $table->prefix.$table->name) }}"
+                                <a href="{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('database', 'show', $table->prefix.$table->name) }}"
                                    data-name="{{ $table->prefix.$table->name }}" class="desctable">
                                    {{ $table->name }}
                                 </a>
@@ -40,22 +40,22 @@
                         <td>
                             <div class="bread_actions">
                             @if($table->dataTypeId)
-                                <a href="{{ \Support\Routing\UrlGenerator::routeForSlug($table->slug, 'index') }}"
+                                <a href="{{ \Pedreiro\Routing\UrlGenerator::routeForSlug($table->slug, 'index') }}"
                                    class="btn-sm btn-warning browse_bread">
                                     <i class="facilitador-plus"></i> {{ __('pedreiro::database.browse_bread') }}
                                 </a>
-                                <a href="{{ \Support\Routing\UrlGenerator::routeForSlug('bread', 'edit', $table->name) }}"
+                                <a href="{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('bread', 'edit', $table->name) }}"
                                    class="btn-sm btn-secondary edit">
-                                   {{ __('support::cruds.bread.edit_bread') }}
+                                   {{ __('bread.edit_bread') }}
                                 </a>
                                 <a data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
                                      class="btn-sm btn-danger delete">
-                                     {{ __('support::cruds.bread.delete_bread') }}
+                                     {{ __('bread.delete_bread') }}
                                 </a>
                             @else
-                                <a href="{{ \Support\Routing\UrlGenerator::routeForSlug('bread', 'create', $table->name) }}"
+                                <a href="{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('bread', 'create', $table->name) }}"
                                    class="btn-sm btn-secondary">
-                                    <i class="facilitador-plus"></i> {{ __('support::cruds.bread.add_bread') }}
+                                    <i class="facilitador-plus"></i> {{ __('bread.add_bread') }}
                                 </a>
                             @endif
                             </div>
@@ -66,11 +66,11 @@
                                data-table="{{ $table->prefix.$table->name }}">
                                <i class="facilitador-trash"></i> {{ __('pedreiro::generic.delete') }}
                             </a>
-                            <a href="{{ \Support\Routing\UrlGenerator::routeForSlug('database', 'edit', $table->prefix.$table->name) }}"
+                            <a href="{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('database', 'edit', $table->prefix.$table->name) }}"
                                class="btn btn-sm btn-primary float-right" style="display:inline; margin-right:10px;">
                                <i class="facilitador-edit"></i> {{ __('pedreiro::generic.edit') }}
                             </a>
-                            <a href="{{ \Support\Routing\UrlGenerator::routeForSlug('database', 'show', $table->prefix.$table->name) }}"
+                            <a href="{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('database', 'show', $table->prefix.$table->name) }}"
                                data-name="{{ $table->name }}"
                                class="btn btn-sm btn-warning float-right desctable" style="display:inline; margin-right:10px;">
                                <i class="facilitador-eye"></i> {{ __('pedreiro::generic.view') }}
@@ -90,13 +90,13 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('pedreiro::generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('support::cruds.bread.delete_bread_quest', ['table' => '<span id="delete_bread_name"></span>']) !!}</h4>
+                    <h4 class="modal-title"><i class="facilitador-trash"></i>  {!! __('bread.delete_bread_quest', ['table' => '<span id="delete_bread_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="#" id="delete_bread_form" method="POST">
                         {{ method_field('DELETE') }}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-danger" value="{{ __('support::cruds.bread.delete_bread_conf') }}">
+                        <input type="submit" class="btn btn-danger" value="{{ __('bread.delete_bread_conf') }}">
                     </form>
                     <button type="button" class="btn btn-outline float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>
@@ -217,7 +217,7 @@
                 } else {
                     $('#delete_table_name').text(table);
 
-                    $('#delete_table_form')[0].action = '{{ \Support\Routing\UrlGenerator::routeForSlug('database', 'destroy', ['database' => '__database']) }}'.replace('__database', table)
+                    $('#delete_table_form')[0].action = '{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('database', 'destroy', ['database' => '__database']) }}'.replace('__database', table)
                     $('#delete_modal').modal('show');
                 }
             });
@@ -229,7 +229,7 @@
                 name = $(this).data('name');
 
                 $('#delete_bread_name').text(name);
-                $('#delete_bread_form')[0].action = '{{ \Support\Routing\UrlGenerator::routeForSlug('bread', 'delete', '__id') }}'.replace('__id', id);
+                $('#delete_bread_form')[0].action = '{{ \Pedreiro\Routing\UrlGenerator::routeForSlug('bread', 'delete', '__id') }}'.replace('__id', id);
                 $('#delete_bread_modal').modal('show');
             });
         });

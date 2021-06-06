@@ -2,7 +2,7 @@
 
 namespace Facilitador\Http\Controllers\Admin;
 
-use Support\Models\RedirectRule;
+use Pedreiro\Models\RedirectRule;
 
 /**
  * Allow admin to manage redirection rules
@@ -36,7 +36,7 @@ class RedirectRules extends Base
         'to',
         'code' => [
             'type' => 'select',
-            'options' => 'Support\Models\RedirectRule::getCodes()',
+            'options' => 'Pedreiro\Models\RedirectRule::getCodes()',
         ],
         'label',
     ];
@@ -73,7 +73,7 @@ class RedirectRules extends Base
             'code' => [
                 'label' => __('pedreiro::redirect_rules.controller.search.code'),
                 'type' => 'select',
-                'options' => 'Support\Models\RedirectRule::getCodes()',
+                'options' => 'Pedreiro\Models\RedirectRule::getCodes()',
             ],
             'label' => [
                 'label' => __('pedreiro::redirect_rules.controller.search.label'),

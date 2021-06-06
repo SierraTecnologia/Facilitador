@@ -12,7 +12,7 @@ class AbstractActionTest extends TestCase
     /**
      * The users DataType instance.
      *
-     * @var \Support\Models\DataType
+     * @var \Support\Models\Application\DataType
      */
     protected $userDataType;
 
@@ -23,7 +23,7 @@ class AbstractActionTest extends TestCase
      */
     protected $user;
 
-    protected function setUp(): void: void
+    protected function setUp(): void
     {
         parent::setUp();
 

@@ -57,7 +57,7 @@ class FacilitadorService
 
     //         // INvez de usar pela classe ta usando direto o eloquentENtity
     //         // $allModels = collect($this->getDatabaseService()->getAllModels())->map(function($file, $class) {
-    //         $allModels = collect($this->getDatabaseService()->getAllEloquentsEntitys())->reject(
+    //         $allModels = collect($this->getDatabaseService()->getAllEloquentsEntities())->reject(
     //             function ($class) {
     //                 return empty($class);
     //             }

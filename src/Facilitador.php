@@ -4,11 +4,11 @@ namespace Facilitador;
 
 use App\Models\User;
 use Arrilot\Widgets\Facade as Widget;
-use Bkwld\Library;
+use Muleta\Library;
 use Config;
 use Crypto;
-use Facilitador\Models\Menu;
-use Facilitador\Models\MenuItem;
+use Siravel\Models\Negocios\Menu;
+use Siravel\Models\Negocios\MenuItem;
 use Facilitador\Models\Permission;
 use Porteiro\Models\Role;
 use Facilitador\Models\Setting;
@@ -29,7 +29,7 @@ use Siravel\Models\Negocios\Page;
 use Support;
 use Pedreiro\Elements\FormFields\After\HandlerInterface as AfterHandlerInterface;
 use Pedreiro\Elements\FormFields\HandlerInterface;
-use Support\Events\AlertsCollection;
+use Pedreiro\Events\AlertsCollection;
 use Support\Models\Application\DataRelationship;
 use Support\Models\Application\DataRow;
 use Support\Models\Application\DataType;
@@ -484,121 +484,6 @@ class Facilitador
         return $key.']';
     }
 
-    /**
-     * Formats the data in the standard list shared partial.
-     * - $item - A row of data from a Model query
-     * - $column - The field name that we're currently displaying
-     * - $conver_dates - A string that matches one of the date_formats
-     *
-     * I tried very hard to get this code to be an aonoymous function that was passed
-     * to the view by the view composer that handles the standard list, but PHP
-     * wouldn't let me.
-     */
-    public function renderListColumn($item, $column, $convert_dates)
-    {
-        // Date formats
-        $date_formats = [
-            'date'     => FORMAT_DATE,
-            'datetime' => FORMAT_DATETIME,
-            'time'     => FORMAT_TIME,
-        ];
-
-        // Convert the item to an array so I can test for values
-        $attributes = $item->getAttributes();
-
-        // Get values needed for static array test
-        $class = get_class($item);
-
-        // If the column is named, locale, convert it to its label
-        if ($column == 'locale') {
-            $locales = Config::get('sitec.site.locales');
-            if (isset($locales[$item->locale])) {
-                return $locales[$item->locale];
-            }
-
-            // If the object has a method defined with the column value, use it
-        } elseif (method_exists($item, $column)) {
-            return call_user_func([$item, $column]);
-
-            // Else if the column is a property, echo it
-        } elseif (array_key_exists($column, $attributes)) {
-
-            // Format date if appropriate
-            if ($convert_dates && preg_match('/^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}:\d{2})?$/', $item->$column)) {
-                return date($date_formats[$convert_dates], strtotime($item->$column));
-
-                // If the column name has a plural form as a static array or method on the model, use the key
-                // against that array and pull the value.  This is designed to handle my convention
-                // of setting the source for pulldowns, radios, and checkboxes as static arrays
-                // on the model.
-            } elseif (($plural = Str::plural($column))
-                && (isset($class::$$plural) && is_array($class::$$plural) && ($ar = $class::$$plural)
-                || (method_exists($class, $plural) && ($ar = forward_static_call([$class, $plural]))))
-            ) {
-
-                // Support comma delimited lists by splitting on commas before checking
-                // if the key exists in the array
-                return join(
-                    ', ', array_map(
-                        function ($key) use ($ar, $class, $plural) {
-                            if (array_key_exists($key, $ar)) {
-                                return $ar[$key];
-                            }
-
-                            return $key;
-                        }, explode(',', $item->$column)
-                    )
-                );
-
-                // Just display the column value
-            } else {
-                return $item->$column;
-            }
-        }
-
-        // Else, just display it as a string
-        return $column;
-    }
-
-    /**
-     * Get the value of an Element given it's key
-     *
-     * @param  string $key
-     * @return mixed
-     */
-    public function el($key)
-    {
-        return app('facilitador.elements')->localize($this->locale())->get($key);
-    }
-
-    /**
-     * Return a number of Element values at once in an associative array
-     *
-     * @param  string $prefix Any leading part of a key
-     * @param  array  $crops  Assoc array with Element partial keys for ITS keys
-     *                        and values as an arary of crop()-style arguments
-     * @return array
-     */
-    public function els($prefix, $crops = [])
-    {
-        return app('facilitador.elements')
-            ->localize($this->locale())
-            ->getMany($prefix, $crops);
-    }
-
-    /**
-     * Check if the Element key exists
-     *
-     * @param  string $key
-     * @return boolean
-     */
-    public function hasEl($key)
-    {
-        return app('facilitador.elements')
-            ->localize($this->locale())
-            ->hydrate()
-            ->has($key);
-    }
 
     /**
      * Is Decoy handling the request?  Check if the current path is exactly "admin" or if

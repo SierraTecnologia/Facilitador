@@ -72,7 +72,7 @@ trait FacilitadorRegisterPackages
         // Image resizing
         \Bkwld\Croppa\ServiceProvider::class,
         // PHP utils
-        \Bkwld\Library\ServiceProvider::class,
+        \Muleta\Library\ServiceProvider::class,
         // BrowserDetect
         \Jenssegers\Agent\AgentServiceProvider::class,
         // File uploading
@@ -82,10 +82,6 @@ trait FacilitadorRegisterPackages
         // Support for cloning models
         \Bkwld\Cloner\ServiceProvider::class,
 
-        /**
-         * Services Providers
-         */
-        \Yajra\DataTables\DataTablesServiceProvider::class,
     ];
 
     /****************************************************************************************************

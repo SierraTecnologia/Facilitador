@@ -2,7 +2,7 @@
 
 namespace Facilitador\Test\Forms\Controllers;
 
-use Muleta\Traits\Models\CrudForms;
+use Pedreiro\CrudController;
 use Illuminate\Routing\Controller;
 use Facilitador\Test\Forms\Models\Post;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class PostController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    use CrudForms;
+    use CrudController;
 
     public function __construct(Post $post)
     {

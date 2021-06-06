@@ -2,8 +2,8 @@
 
 namespace Facilitador\Http\Resources;
 
-use App\Models\Entities\TagEntity;
-use Illuminate\Http\Resources\Json\Resource;
+use Population\Manipule\Entities\TagEntity;
+use Illuminate\Http\Resources\Json\JsonResource as Resource;
 use function SiUtils\html_purify;
 use function SiUtils\to_string;
 

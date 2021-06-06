@@ -32,7 +32,7 @@ class PostDimmer extends BaseDimmer
                 'text'   => __('pedreiro::dimmer.post_text', ['count' => $count, 'string' => Str::lower($string)]),
                 'button' => [
                 'text' => __('pedreiro::dimmer.post_link_text'),
-                'link' => route('facilitador.posts.index'),
+                'link' => route('rica.facilitador.posts.index'),
                 ],
                 'image' => facilitador_asset('images/widget-backgrounds/02.jpg'),
                 ]

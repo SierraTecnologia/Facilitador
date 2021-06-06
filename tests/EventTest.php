@@ -19,7 +19,7 @@ use Support\Events\MediaFileAdded;
 use Support\Events\TableAdded;
 use Support\Events\TableDeleted;
 use Support\Events\TableUpdated;
-use Support\Models\DataType;
+use Support\Models\Application\DataType;
 use Siravel\Models\Negocios\Page;
 
 class EventTest extends TestCase
@@ -32,7 +32,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.bread.store'), [
+            route('rica.facilitador.bread.store'), [
             'name'                  => 'Toast',
             'slug'                  => 'toast',
             'display_name_singular' => 'toast',
@@ -60,7 +60,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.bread.store'), [
+            route('rica.facilitador.bread.store'), [
             'name'                  => 'Toast',
             'slug'                  => 'toast',
             'display_name_singular' => 'toast',
@@ -74,7 +74,7 @@ class EventTest extends TestCase
         $dataType = DataType::where('slug', 'toast')->firstOrFail();
 
         $this->put(
-            route('facilitador.bread.update', [$dataType->id]), [
+            route('rica.facilitador.bread.update', [$dataType->id]), [
             'name'                  => 'Test',
             'slug'                  => 'test',
             'display_name_singular' => 'test',
@@ -102,7 +102,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.bread.store'), [
+            route('rica.facilitador.bread.store'), [
             'name'                  => 'Toast',
             'slug'                  => 'toast',
             'display_name_singular' => 'toast',
@@ -115,7 +115,7 @@ class EventTest extends TestCase
         Event::assertNotDispatched(BreadDeleted::class);
         $dataType = DataType::where('slug', 'toast')->firstOrFail();
 
-        $this->delete(route('facilitador.bread.delete', [$dataType->id]));
+        $this->delete(route('rica.facilitador.bread.delete', [$dataType->id]));
 
         Event::assertDispatched(BreadDeleted::class);
     }
@@ -126,7 +126,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.pages.store'), [
+            route('rica.facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
@@ -143,7 +143,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.pages.store'), [
+            route('rica.facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
@@ -156,7 +156,7 @@ class EventTest extends TestCase
         $page = Page::where('slug', 'toasts')->firstOrFail();
 
         $this->put(
-            route('facilitador.pages.update', [$page->id]), [
+            route('rica.facilitador.pages.update', [$page->id]), [
             'title'  => 'Test',
             'slug'   => 'tests',
             'status' => 'INACTIVE',
@@ -172,7 +172,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.pages.store'), [
+            route('rica.facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
@@ -184,7 +184,7 @@ class EventTest extends TestCase
 
         $page = Page::where('slug', 'toasts')->firstOrFail();
 
-        $this->delete(route('facilitador.pages.destroy', [$page->id]));
+        $this->delete(route('rica.facilitador.pages.destroy', [$page->id]));
 
         Event::assertDispatched(BreadDataDeleted::class);
     }
@@ -198,7 +198,7 @@ class EventTest extends TestCase
         $image = UploadedFile::fake()->image('test.png');
 
         $this->call(
-            'POST', route('facilitador.pages.store'), [
+            'POST', route('rica.facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
@@ -212,7 +212,7 @@ class EventTest extends TestCase
 
         $page = Page::where('slug', 'toasts')->firstOrFail();
 
-        $this->delete(route('facilitador.pages.destroy', [$page->id]));
+        $this->delete(route('rica.facilitador.pages.destroy', [$page->id]));
 
         Event::assertDispatched(BreadImagesDeleted::class);
     }
@@ -226,7 +226,7 @@ class EventTest extends TestCase
         $image = UploadedFile::fake()->image('test.png');
 
         $this->call(
-            'POST', route('facilitador.pages.store'), [
+            'POST', route('rica.facilitador.pages.store'), [
             'author_id' => 1,
             'title'     => 'Toast',
             'slug'      => 'toasts',
@@ -240,7 +240,7 @@ class EventTest extends TestCase
 
         $page = Page::where('slug', 'toasts')->firstOrFail();
 
-        $this->delete(route('facilitador.pages.destroy', [$page->id]));
+        $this->delete(route('rica.facilitador.pages.destroy', [$page->id]));
 
         Event::assertDispatched(FileDeleted::class);
     }
@@ -251,7 +251,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.database.store'), [
+            route('rica.facilitador.database.store'), [
             'table' => [
                 'name'    => 'test',
                 'columns' => [
@@ -278,7 +278,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.database.store'), [
+            route('rica.facilitador.database.store'), [
             'table' => [
                 'name'    => 'test',
                 'columns' => [
@@ -299,7 +299,7 @@ class EventTest extends TestCase
         Event::assertNotDispatched(TableUpdated::class);
 
         $this->put(
-            route('facilitador.database.update', ['test']), [
+            route('rica.facilitador.database.update', ['test']), [
             'table' => json_encode(
                 [
                 'name'    => 'test',
@@ -330,7 +330,7 @@ class EventTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->post(
-            route('facilitador.database.store'), [
+            route('rica.facilitador.database.store'), [
             'table' => [
                 'name'    => 'test',
                 'columns' => [
@@ -350,7 +350,7 @@ class EventTest extends TestCase
 
         Event::assertNotDispatched(TableDeleted::class);
 
-        $this->delete(route('facilitador.database.destroy', ['test']));
+        $this->delete(route('rica.facilitador.database.destroy', ['test']));
 
         Event::assertDispatched(TableDeleted::class);
     }

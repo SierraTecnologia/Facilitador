@@ -1,5 +1,5 @@
 <?php foreach($workers as $worker): ?>
-    <fieldset data-js-view="worker" data-log-url=<?php echo route('facilitador.workers@tail', strtolower(urlencode($worker->getName())))?> data-interval="<?php echo $worker->currentInterval('raw')?>">
+    <fieldset data-js-view="worker" data-log-url=<?php echo route('rica.facilitador.workers@tail', strtolower(urlencode($worker->getName())))?> data-interval="<?php echo $worker->currentInterval('raw')?>">
         <div class="legend sidebar-header"><?php echo ucwords(str_replace(':', ' : ', $worker->getName())) ?>
 
             <div class="float-right actions">

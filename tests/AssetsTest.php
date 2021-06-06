@@ -8,7 +8,7 @@ class AssetsTest extends TestCase
 {
     protected $prefix = '/facilitador-assets?path=';
 
-    protected function setUp(): void: void
+    protected function setUp(): void
     {
         parent::setUp();
 

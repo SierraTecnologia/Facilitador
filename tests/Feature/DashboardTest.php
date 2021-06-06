@@ -8,7 +8,7 @@ use Facilitador\Tests\TestCase;
 
 class DashboardTest extends TestCase
 {
-    protected function setUp(): void: void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -32,21 +32,21 @@ class DashboardTest extends TestCase
         // Test UserDimmer widget
         $this->see(trans_choice('facilitador::dimmer.user', 1))
             ->click(__('pedreiro::dimmer.user_link_text'))
-            ->seePageIs(route('facilitador.users.index'))
+            ->seePageIs(route('rica.facilitador.users.index'))
             ->click(__('pedreiro::generic.dashboard'))
             ->seePageIs(route('rica.dashboard'));
 
         // Test PostDimmer widget
         $this->see(trans_choice('facilitador::dimmer.post', 4))
             ->click(__('pedreiro::dimmer.post_link_text'))
-            ->seePageIs(route('facilitador.posts.index'))
+            ->seePageIs(route('rica.facilitador.posts.index'))
             ->click(__('pedreiro::generic.dashboard'))
             ->seePageIs(route('rica.dashboard'));
 
         // Test PageDimmer widget
         $this->see(trans_choice('facilitador::dimmer.page', 1))
             ->click(__('pedreiro::dimmer.page_link_text'))
-            ->seePageIs(route('facilitador.pages.index'))
+            ->seePageIs(route('rica.facilitador.pages.index'))
             ->click(__('pedreiro::generic.dashboard'))
             ->seePageIs(route('rica.dashboard'))
             ->see(__('pedreiro::generic.dashboard'));

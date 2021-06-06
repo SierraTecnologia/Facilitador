@@ -2,8 +2,8 @@
 
 namespace Facilitador\Http\Resources;
 
-use App\Models\Entities\PostEntity;
-use App\Models\Entities\TagEntity;
+use Population\Manipule\Entities\PostEntity;
+use Population\Manipule\Entities\TagEntity;
 use function SiUtils\to_object;
 
 /**
