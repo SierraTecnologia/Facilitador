@@ -14,13 +14,13 @@ trait FacilitadorRegisterPublishes
      ****************************************************************************************************/
 
 
-    protected function publishMigrations()
+    protected function publishMigrations(): void
     {
         
        
     }
        
-    protected function publishAssets()
+    protected function publishAssets(): void
     {
         
         // Publish facilitador css and js to public directory
@@ -32,7 +32,7 @@ trait FacilitadorRegisterPublishes
 
     }
 
-    protected function publishConfigs()
+    protected function publishConfigs(): void
     {
         
         // Publish config files

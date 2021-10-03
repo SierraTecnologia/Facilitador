@@ -223,8 +223,10 @@ class LogViewer
 
     /**
      * @param string $file
+     *
+     * @return void
      */
-    public static function setFile($file)
+    public static function setFile($file): void
     {
         $file = self::pathToLogFile($file);
 
@@ -267,7 +269,9 @@ class LogViewer
     }
 
     /**
-     * @return array
+     * @return (mixed|null|string)[][]|null
+     *
+     * @psalm-return list<array{context: string, level: mixed, level_class: mixed, level_img: mixed, date: string, text: string, in_file: null|string, stack: null|string}>|null
      */
     public static function all()
     {

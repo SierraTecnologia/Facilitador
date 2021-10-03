@@ -112,10 +112,11 @@ class ControllersCommand extends Command
      *
      * @param $stub
      * @param $class
+     * @param false|string $class
      *
-     * @return mixed
+     * @return string
      */
-    protected function generateContent($stub, $class)
+    protected function generateContent(string $stub, $class): string
     {
         $namespace = \Illuminate\Support\Facades\Config::get('sitec.facilitador.controllers.namespace', 'Facilitador\\Http\\Controllers');
 

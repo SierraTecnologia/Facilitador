@@ -121,8 +121,10 @@ class ModelCallbacks
 
     /**
      * @todo melhorar isso aqui refatorar
+     *
+     * @return void
      */
-    private function runInCreated($model)
+    private function runInCreated($model): void
     {
         
         // If no author has been assigned, assign the current user's id as the author of the post

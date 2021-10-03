@@ -292,8 +292,10 @@ class FacilitadorProvider extends ServiceProvider
 
     /**
      * Veio do Voyager
+     *
+     * @return void
      */
-    public function loadAuth()
+    public function loadAuth(): void
     {
         return ; // @todo Ver Policy com problema nos can
         

@@ -194,10 +194,12 @@ abstract class ModelFilter
     }
 
     /**
-     * @param  $key
+     * @param $key
+     * @param (int|string) $key
+     *
      * @return string
      */
-    public function getFilterMethod($key)
+    public function getFilterMethod($key): string
     {
         // Remove '.' chars in methodName
         $methodName = str_replace('.', '', $this->drop_id ? preg_replace('/^(.*)_id$/', '$1', $key) : $key);
@@ -212,7 +214,7 @@ abstract class ModelFilter
      * @param  $value
      * @return string
      */
-    protected function convertToCamelCase($value)
+    protected function convertToCamelCase(string $value)
     {
         if (function_exists('camel_case')) {
             return camel_case($value);
@@ -225,8 +227,10 @@ abstract class ModelFilter
 
     /**
      * Filter with input array.
+     *
+     * @return void
      */
-    public function filterInput()
+    public function filterInput(): void
     {
         foreach ($this->input as $key => $val) {
             // Call all local methods on filter
@@ -291,7 +295,7 @@ abstract class ModelFilter
         return array_key_exists($relation, $this->allRelations) ? $this->allRelations[$relation] : [];
     }
 
-    public function callRelatedLocalSetup($related, $query)
+    public function callRelatedLocalSetup($related, QueryBuilder $query): void
     {
         if (method_exists($this, $method = camel_case($related).'Setup')) {
             $this->{$method}($query);
@@ -302,8 +306,11 @@ abstract class ModelFilter
      * Run the filter on models that already have their tables joined.
      *
      * @param $related
+     * @param (int|string) $related
+     *
+     * @return void
      */
-    public function filterJoinedRelation($related)
+    public function filterJoinedRelation($related): void
     {
         // Apply any relation based scope to avoid method duplication
         $this->callRelatedLocalSetup($related, $this->query);
@@ -347,10 +354,12 @@ abstract class ModelFilter
     /**
      * Checks if the relation to filter's table is already joined.
      *
-     * @param  $relation
+     * @param $relation
+     * @param (int|string) $relation
+     *
      * @return bool
      */
-    public function relationIsJoined($relation)
+    public function relationIsJoined($relation): bool
     {
         if ($this->_joinedTables === null) {
             $this->_joinedTables = $this->getJoinedTables();
@@ -396,8 +405,11 @@ abstract class ModelFilter
      * Filters by a relationship that isn't joined by using that relation's ModelFilter.
      *
      * @param $related
+     * @param (int|string) $related
+     *
+     * @return void
      */
-    public function filterUnjoinedRelation($related)
+    public function filterUnjoinedRelation($related): void
     {
         $this->query->whereHas(
             $related, function ($q) use ($related) {
@@ -421,10 +433,12 @@ abstract class ModelFilter
     /**
      * Get input to pass to a related Model's Filter.
      *
-     * @param  $related
+     * @param $related
+     * @param (int|string) $related
+     *
      * @return array
      */
-    public function getRelatedFilterInput($related)
+    public function getRelatedFilterInput($related): array
     {
         return array_key_exists($related, $this->relations) ? array_only($this->input, $this->relations[$related]) : [];
     }
@@ -527,8 +541,10 @@ abstract class ModelFilter
      *
      * @param $key
      * @param null $value
+     *
+     * @return void
      */
-    public function push($key, $value = null)
+    public function push($key, $value = null): void
     {
         if (is_array($key)) {
             $this->input = array_merge($this->input, $key);
@@ -603,7 +619,7 @@ abstract class ModelFilter
      * @param  $method
      * @return bool
      */
-    public function methodIsBlacklisted($method)
+    public function methodIsBlacklisted(string $method)
     {
         return in_array($method, $this->blacklist, true);
     }
@@ -614,7 +630,7 @@ abstract class ModelFilter
      * @param  $method
      * @return bool
      */
-    public function methodIsCallable($method)
+    public function methodIsCallable(string $method)
     {
         return ! $this->methodIsBlacklisted($method) &&
             method_exists($this, $method) &&
@@ -624,8 +640,10 @@ abstract class ModelFilter
     /**
      * Register paginate and simplePaginate macros on relations
      * BelongsToMany overrides the QueryBuilder's paginate to append the pivot.
+     *
+     * @return void
      */
-    private function registerMacros()
+    private function registerMacros(): void
     {
         if (method_exists(Relation::class, 'hasMacro') 
             && method_exists(Relation::class, 'macro') 

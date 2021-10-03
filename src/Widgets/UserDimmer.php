@@ -18,6 +18,8 @@ class UserDimmer extends BaseDimmer
     /**
      * Treat this method as a controller action.
      * Return view() or other content to display.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function run()
     {

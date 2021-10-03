@@ -30,7 +30,7 @@ trait AppEventsProvider
     }
 
 
-    protected function bootEvents(Dispatcher $events)
+    protected function bootEvents(Dispatcher $events): void
     {
 
 

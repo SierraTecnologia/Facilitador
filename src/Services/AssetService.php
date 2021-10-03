@@ -276,9 +276,9 @@ class AssetService
      *
      * @param string $ext
      *
-     * @return Image
+     * @return string
      */
-    public function generateImage($ext)
+    public function generateImage($ext): string
     {
         if ($ext == 'File Not Found') {
             return __DIR__.'/../Assets/src/images/blank-file-not-found.jpg';

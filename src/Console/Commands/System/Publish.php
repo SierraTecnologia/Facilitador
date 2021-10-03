@@ -37,9 +37,9 @@ class Publish extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->publishConfig();
         $this->publishTemplates();
@@ -55,7 +55,7 @@ class Publish extends Command
      *
      * @return bool|int
      */
-    public function copyDirectory($directory, $destination)
+    public function copyDirectory(string $directory, string $destination)
     {
         $files = $this->fileSystem->allFiles($directory);
         $fileDeployed = false;
@@ -70,9 +70,11 @@ class Publish extends Command
     }
 
     /**
-     *  Publish config files for Lumen.
+     * Publish config files for Lumen.
+     *
+     * @return void
      */
-    private function publishConfig()
+    private function publishConfig(): void
     {
         if (!file_exists(getcwd().'/config/crudmaker.php')) {
             $this->copyDirectory(__DIR__.'/../../config', getcwd().'/config');
@@ -83,9 +85,11 @@ class Publish extends Command
     }
 
     /**
-     *  Publish templates files for Lumen.
+     * Publish templates files for Lumen.
+     *
+     * @return void
      */
-    private function publishTemplates()
+    private function publishTemplates(): void
     {
         if (!$this->fileSystem->isDirectory(getcwd().'/resources/crudmaker')) {
             $this->copyDirectory(__DIR__.'/../Templates/Lumen', getcwd().'/resources/crudmaker');

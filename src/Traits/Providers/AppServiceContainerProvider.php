@@ -28,7 +28,7 @@ trait AppServiceContainerProvider
     /****************************************************************************************************
      * ************************************************* NO REGISTER *************************************
      ****************************************************************************************************/
-    protected function loadAlias()
+    protected function loadAlias(): void
     {
 
         $loader = AliasLoader::getInstance();
@@ -36,7 +36,7 @@ trait AppServiceContainerProvider
 
 
     }
-    protected function loadServiceContainerSingletons()
+    protected function loadServiceContainerSingletons(): void
     {
         
         $this->app->singleton(
