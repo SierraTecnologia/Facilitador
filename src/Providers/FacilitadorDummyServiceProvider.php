@@ -23,8 +23,10 @@ class FacilitadorDummyServiceProvider extends ServiceProvider
 
     /**
      * Register the publishes files.
+     *
+     * @return void
      */
-    private function registerPublishableResources()
+    private function registerPublishableResources(): void
     {
         $publishesPath = dirname(__DIR__).'/../publishes';
 
@@ -49,7 +51,7 @@ class FacilitadorDummyServiceProvider extends ServiceProvider
         }
     }
 
-    public function registerConfigs()
+    public function registerConfigs(): void
     {
         // $this->mergeConfigFrom(
         //     dirname(__DIR__).'/../publishes/config/facilitador_dummy.php', 'facilitador'

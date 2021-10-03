@@ -55,8 +55,10 @@ class AttributesServiceProvider extends ServiceProvider
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishesConfig('facilitador/laravel-attributes');

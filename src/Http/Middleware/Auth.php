@@ -105,8 +105,10 @@ class Auth
     /**
      * Map the actions from the wildcard router into the smaller set supported by
      * the Decoy permissions system
+     *
+     * @return string
      */
-    protected function mapActionToPermission($action)
+    protected function mapActionToPermission(string $action): string
     {
         switch ($action) {
         case 'new':

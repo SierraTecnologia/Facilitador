@@ -12,7 +12,7 @@ trait FacilitadorLoadClasses
     /****************************************************************************************************
      * ************************************************* NO BOOT *************************************
      ****************************************************************************************************/
-    protected function loadViews()
+    protected function loadViews(): void
     {
         // View namespace
         $viewsPath = $this->getResourcesPath('views');
@@ -32,7 +32,7 @@ trait FacilitadorLoadClasses
 
     }
     
-    protected function loadTranslations()
+    protected function loadTranslations(): void
     {
         // Publish lanaguage files
         $this->publishes(
@@ -53,7 +53,7 @@ trait FacilitadorLoadClasses
 
 
 
-    protected function loadCommands()
+    protected function loadCommands(): void
     {
 
  
@@ -68,14 +68,14 @@ trait FacilitadorLoadClasses
 
     }
        
-    protected function loadMigrations()
+    protected function loadMigrations(): void
     {
         // Register Migrations
         $this->loadMigrationsFrom(__DIR__.'/../../../database/migrations');
        
     }
 
-    protected function loadConfigs()
+    protected function loadConfigs(): void
     {
         
         // Merge own configs into user configs 

@@ -52,8 +52,10 @@ trait AppMiddlewaresProvider
 
     /**
      * Things that happen only if the request is for the admin
+     *
+     * @return void
      */
-    public function usingAdmin()
+    public function usingAdmin(): void
     {
 
         // @todo Desfazer

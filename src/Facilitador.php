@@ -97,7 +97,10 @@ class Facilitador
         $this->findVersion();
     }
 
-    public function model($name)
+    /**
+     * @param string $name
+     */
+    public function model(string $name)
     {
         return app($this->models[Str::studly($name)]);
     }
@@ -107,7 +110,10 @@ class Facilitador
         return $this->models[$name];
     }
 
-    public function useModel($name, $object)
+    /**
+     * @return static
+     */
+    public function useModel($name, $object): self
     {
         if (is_string($object)) {
             $object = app($object);
@@ -165,7 +171,7 @@ class Facilitador
         // return view($name, $parameters);
     }
 
-    public function onLoadingView($name, \Closure $closure)
+    public function onLoadingView($name, \Closure $closure): void
     {
         if (!isset($this->viewLoadingEvents[$name])) {
             $this->viewLoadingEvents[$name] = [];
@@ -179,7 +185,10 @@ class Facilitador
         return \Support::formField($row, $dataType, $dataTypeContent);
     }
 
-    public function afterFormFields($row, $dataType, $dataTypeContent)
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function afterFormFields($row, $dataType, $dataTypeContent): self
     {
         return collect($this->afterFormFields)->filter(
             function ($after) use ($row, $dataType, $dataTypeContent) {
@@ -188,7 +197,10 @@ class Facilitador
         );
     }
 
-    public function addFormField($handler)
+    /**
+     * @return static
+     */
+    public function addFormField($handler): self
     {
         if (!$handler instanceof HandlerInterface) {
             $handler = app($handler);
@@ -199,7 +211,10 @@ class Facilitador
         return $this;
     }
 
-    public function addAfterFormField($handler)
+    /**
+     * @return static
+     */
+    public function addAfterFormField($handler): self
     {
         if (!$handler instanceof AfterHandlerInterface) {
             $handler = app($handler);
@@ -210,7 +225,10 @@ class Facilitador
         return $this;
     }
 
-    public function formFields()
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function formFields(): self
     {
         $connection = \Illuminate\Support\Facades\Config::get('database.default');
         $driver = \Illuminate\Support\Facades\Config::get("database.connections.{$connection}.driver", 'mysql');
@@ -222,12 +240,12 @@ class Facilitador
         );
     }
 
-    public function addAction($action)
+    public function addAction($action): void
     {
         array_push($this->actions, $action);
     }
 
-    public function replaceAction($actionToReplace, $action)
+    public function replaceAction($actionToReplace, $action): void
     {
         $key = array_search($actionToReplace, $this->actions);
         $this->actions[$key] = $action;
@@ -308,7 +326,7 @@ class Facilitador
         return $this->version;
     }
 
-    public function addAlert(Alert $alert)
+    public function addAlert(Alert $alert): void
     {
         $this->alerts[] = $alert;
     }
@@ -324,6 +342,9 @@ class Facilitador
         return $this->alerts;
     }
 
+    /**
+     * @return void
+     */
     protected function findVersion()
     {
         if (!is_null($this->version)) {
@@ -374,7 +395,7 @@ class Facilitador
         return in_array(Translatable::class, $traits);
     }
 
-    public function getLocales()
+    public function getLocales(): array
     {
         return array_diff(scandir(realpath(__DIR__.'/../publishes/lang')), ['..', '.']);
     }
@@ -417,8 +438,10 @@ class Facilitador
 
     /**
      * Add the controller and action as CSS classes on the body tag
+     *
+     * @return string
      */
-    public function bodyClass()
+    public function bodyClass(): string
     {
         $path = Request::path();
         $classes = [];
@@ -683,7 +706,7 @@ class Facilitador
      * @param string $path        Path to module asset
      * @param string $contentType Asset type
      *
-     * @return string
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function asset($path, $contentType = 'null', $fullURL = true)
     {
@@ -698,8 +721,10 @@ class Facilitador
 
     /**
      * Set Influencia
+     *
+     * @return void
      */
-    public function setInfluencia($influencia = false)
+    public function setInfluencia($influencia = false): void
     {
         $this->influenciaModel = $influencia;
     }
@@ -707,7 +732,7 @@ class Facilitador
     {
         return $this->influenciaModel;
     }
-    public function emptyInfluencia()
+    public function emptyInfluencia(): void
     {
         $this->setInfluencia();
     }
