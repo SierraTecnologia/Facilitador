@@ -126,7 +126,7 @@ class Admins extends Base
     /**
      * Disable the admin
      *
-     * @return Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function disable($id)
     {
@@ -147,7 +147,7 @@ class Admins extends Base
     /**
      * Enable the admin
      *
-     * @return Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function enable($id)
     {

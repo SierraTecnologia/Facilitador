@@ -100,11 +100,13 @@ abstract class TestCase extends OrchestraTestCase
                 $table->text('body');
                 $table->date('publish_on')->nullable();
                 $table->boolean('published')->default(false);
-                $table->unsignedInteger('category_id');
                 $table->timestamps();
                 $table->softDeletes();
 
-                $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+                if (Schema::hasTable('categories')) {
+                    $table->unsignedInteger('category_id')->nullable();
+                    $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+                }
             }
         );
 

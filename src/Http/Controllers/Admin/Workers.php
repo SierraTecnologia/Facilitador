@@ -20,7 +20,7 @@ class Workers extends Base
     /**
      * Display all the workers
      *
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function index(Request $request)
     {
