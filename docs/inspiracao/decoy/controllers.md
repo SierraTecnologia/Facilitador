@@ -100,7 +100,7 @@ namespace App\Http\Controllers\Admin;
 use Pedreiro\Http\Controllers\Admin\Base;
 class Articles extends Base {
 
-    public function search() {
+    public function search(Request $request) {
         return [
 
             // Load configuration data from Laravel \Illuminate\Support\Facades\Config::get()

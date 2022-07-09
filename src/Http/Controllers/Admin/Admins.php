@@ -23,7 +23,7 @@ class Admins extends Base
      *
      * @return array
      */
-    public function search()
+    public function search(Request $request)
     {
         $options = [
             'first_name' => [
