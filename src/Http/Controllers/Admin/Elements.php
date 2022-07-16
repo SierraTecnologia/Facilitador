@@ -37,7 +37,7 @@ class Elements extends Base
      *
      * @param  string $locale The locale to load from the DB
      * @param  string $tab    A deep link to a specific tab.  Will get processed by JS
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function index($locale = null, $tab = null)
     {
@@ -193,7 +193,7 @@ class Elements extends Base
      * Handle form post
      *
      * @param  string $locale The locale to assign to it
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function store($locale = null)
     {
@@ -344,7 +344,7 @@ class Elements extends Base
      * the frontend
      *
      * @param  string $key A full Element key
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function field($key)
     {
@@ -366,7 +366,7 @@ class Elements extends Base
      * iframe post
      *
      * @param  string $key A full Element key
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function fieldUpdate($key)
     {

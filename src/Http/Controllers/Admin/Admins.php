@@ -23,7 +23,7 @@ class Admins extends Base
      *
      * @return array
      */
-    public function search()
+    public function search(Request $request)
     {
         $options = [
             'first_name' => [
@@ -126,7 +126,7 @@ class Admins extends Base
     /**
      * Disable the admin
      *
-     * @return Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function disable($id)
     {
@@ -147,7 +147,7 @@ class Admins extends Base
     /**
      * Enable the admin
      *
-     * @return Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function enable($id)
     {
