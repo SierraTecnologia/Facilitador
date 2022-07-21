@@ -245,7 +245,7 @@
                         @foreach($settings as $group => $group_settings)
                         <div id="{{ \Illuminate\Support\Str::slug($group) }}" class="tab-pane fade in @if($group == $active) active @endif">
                             @foreach($group_settings as $setting)
-                            <div class="panel-heading">
+                            <div class="card-header">
                                 <h3 class="panel-title">
                                     {{ $setting->display_name }} @if(\Illuminate\Support\Facades\Config::get('sitec.facilitador.show_dev_tips'))<code>setting('{{ $setting->key }}')</code>@endif
                                 </h3>
@@ -360,11 +360,11 @@
 
         @can('add', Facilitador::model('Setting'))
         <div class="panel" style="margin-top:10px;">
-            <div class="panel-heading new-setting">
+            <div class="card-header new-setting">
                 <hr>
                 <h3 class="panel-title"><i class="facilitador-plus"></i> {{ __('pedreiro::settings.new') }}</h3>
             </div>
-            <div class="panel-body">
+            <div class="box-body panel-body card-body">
                 <form action="{{ route('rica.facilitador.settings.store') }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="setting_tab" class="setting_tab" value="{{ $active }}" />
