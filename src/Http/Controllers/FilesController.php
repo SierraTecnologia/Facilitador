@@ -9,7 +9,7 @@ use Redirect;
 use Response;
 use Exception;
 use CryptoService;
-use Stalker\Models\File;
+use MediaManager\Models\File;
 use Illuminate\Http\Request;
 use Stalker\Http\Requests\FileRequest;
 use MediaManager\Services\FileService;

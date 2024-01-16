@@ -33,7 +33,7 @@
         "illuminate/support": "^7.0 || ^8.0",
         "illuminate/console": "^7.0 || ^8.0",
         "laravel/framework": "^7.0 || ^8.0",
-        "guzzlehttp/guzzle": "^6.0 || ^7.0",
+        "guzzlehttp/guzzle": "^6.0|^7.0|^8.0",
         "socialiteproviders/manager": "~2.0 || ~3.0 || ~4.0",
         "socialiteproviders/github": "^4.0",
         "socialiteproviders/jira": ">=2.1",
@@ -46,6 +46,9 @@
         "sierratecnologia/laravel-support": "^0.4.0",
         "sierratecnologia/muleta": "^0.4.0",
         "sierratecnologia/stalker": "^0.4.0"
+    },
+    "suggest": {
+
     },
     "suggest": {
 
@@ -85,5 +88,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": true,
+            "php-http/discovery": true
+        }
+    }
 }
