@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<ruleset name="Facilitador PHPMD Rules"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>Regras PHPMD para o projeto Facilitador</description>
+
+    <!-- Regras de Clean Code -->
+    <rule ref="rulesets/cleancode.xml">
+        <exclude name="StaticAccess"/>
+        <exclude name="ElseExpression"/>
+    </rule>
+
+    <!-- Regras de Code Size -->
+    <rule ref="rulesets/codesize.xml">
+        <exclude name="ExcessiveParameterList"/>
+        <exclude name="ExcessiveMethodLength"/>
+        <exclude name="ExcessiveClassLength"/>
+        <exclude name="TooManyPublicMethods"/>
+        <exclude name="TooManyMethods"/>
+    </rule>
+
+    <!-- Regras de Design -->
+    <rule ref="rulesets/design.xml">
+        <exclude name="CouplingBetweenObjects"/>
+    </rule>
+
+    <!-- Regras de Naming -->
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
+    </rule>
+
+    <!-- Regras de Unused Code -->
+    <rule ref="rulesets/unusedcode.xml"/>
+</ruleset>
